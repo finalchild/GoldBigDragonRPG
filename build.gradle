@@ -1,0 +1,60 @@
+/*
+ * Copyright 2015, 2016, 2017 GoldBigDragon
+ * Copyright 2017 Final Child
+ *
+ * This file is part of GoldBigDragonRPG.
+ *
+ * GoldBigDragonRPG is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 2 of the License.
+ *
+ * GoldBigDragonRPG is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with GoldBigDragonRPG.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group 'io.github.goldbigdragon'
+version '0.0.1-SNAPSHOT'
+
+description 'Minecraft RPG Plugin! [KOR]'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    jcenter()
+    maven {
+        name 'Spigot Nexus'
+        url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+    maven {
+        name 'Herocraft Nexus'
+        url 'http://nexus.hc.to/content/repositories/pub_releases/'
+    }
+    maven {
+        name 'JitPack'
+        url 'https://jitpack.io/'
+    }
+    flatDir {
+        dir 'lib'
+    }
+    mavenLocal()
+}
+
+dependencies {
+    compile group: 'org.spigotmc', name: 'spigot', version: '1.12-R0.1-SNAPSHOT'
+    compile group: 'com.xxmicloxx', name: 'NoteBlockAPI', version: '1.1.7'
+    compile group: 'org.jnbt', name: 'jnbt', version: '1.1'
+    compile group: 'net.milkbowl.vault', name: 'VaultAPI', version: '1.6'
+    compile group: 'com.nisovin', name: 'magicspells', version: 'untagged-110138d95f13538cbbfe'
+}
