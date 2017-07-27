@@ -23,17 +23,17 @@ import java.lang.reflect.Field;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_10_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import com.mojang.authlib.GameProfile;
 
 import GBD_RPG.Monster.AI_Creature.CreatureMonster;
-import net.minecraft.server.v1_10_R1.DataWatcher;
-import net.minecraft.server.v1_10_R1.DataWatcherObject;
-import net.minecraft.server.v1_10_R1.DataWatcherRegistry;
-import net.minecraft.server.v1_10_R1.Packet;
-import net.minecraft.server.v1_10_R1.PacketPlayOutNamedEntitySpawn;
+import net.minecraft.server.v1_12_R1.DataWatcher;
+import net.minecraft.server.v1_12_R1.DataWatcherObject;
+import net.minecraft.server.v1_12_R1.DataWatcherRegistry;
+import net.minecraft.server.v1_12_R1.Packet;
+import net.minecraft.server.v1_12_R1.PacketPlayOutNamedEntitySpawn;
 
 public class NPC
 {

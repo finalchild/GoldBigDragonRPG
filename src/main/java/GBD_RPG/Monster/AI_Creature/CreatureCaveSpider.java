@@ -22,26 +22,26 @@ package GBD_RPG.Monster.AI_Creature;
 import java.lang.reflect.Field;
 
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
-import org.bukkit.craftbukkit.v1_10_R1.entity.CraftLivingEntity;
+import org.bukkit.craftbukkit.v1_12_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_12_R1.entity.CraftLivingEntity;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 
 import com.google.common.collect.Sets;
 
-import net.minecraft.server.v1_10_R1.EntityCaveSpider;
-import net.minecraft.server.v1_10_R1.EntityHuman;
-import net.minecraft.server.v1_10_R1.World;
+import net.minecraft.server.v1_12_R1.EntityCaveSpider;
+import net.minecraft.server.v1_12_R1.EntityHuman;
+import net.minecraft.server.v1_12_R1.World;
 
-import net.minecraft.server.v1_10_R1.PathfinderGoalFloat;
-import net.minecraft.server.v1_10_R1.PathfinderGoalHurtByTarget;
-import net.minecraft.server.v1_10_R1.PathfinderGoalLookAtPlayer;
-import net.minecraft.server.v1_10_R1.PathfinderGoalMeleeAttack;
-import net.minecraft.server.v1_10_R1.PathfinderGoalMoveTowardsRestriction;
-import net.minecraft.server.v1_10_R1.PathfinderGoalNearestAttackableTarget;
-import net.minecraft.server.v1_10_R1.PathfinderGoalPanic;
-import net.minecraft.server.v1_10_R1.PathfinderGoalRandomLookaround;
-import net.minecraft.server.v1_10_R1.PathfinderGoalRandomStroll;
-import net.minecraft.server.v1_10_R1.PathfinderGoalSelector;
+import net.minecraft.server.v1_12_R1.PathfinderGoalFloat;
+import net.minecraft.server.v1_12_R1.PathfinderGoalHurtByTarget;
+import net.minecraft.server.v1_12_R1.PathfinderGoalLookAtPlayer;
+import net.minecraft.server.v1_12_R1.PathfinderGoalMeleeAttack;
+import net.minecraft.server.v1_12_R1.PathfinderGoalMoveTowardsRestriction;
+import net.minecraft.server.v1_12_R1.PathfinderGoalNearestAttackableTarget;
+import net.minecraft.server.v1_12_R1.PathfinderGoalPanic;
+import net.minecraft.server.v1_12_R1.PathfinderGoalRandomLookaround;
+import net.minecraft.server.v1_12_R1.PathfinderGoalRandomStroll;
+import net.minecraft.server.v1_12_R1.PathfinderGoalSelector;
 
 public class CreatureCaveSpider extends EntityCaveSpider
 {

@@ -30,7 +30,7 @@ import org.bukkit.GameMode;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.v1_10_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
@@ -73,7 +73,7 @@ import GBD_RPG.User.UserData_Object;
 import GBD_RPG.Util.YamlController;
 import GBD_RPG.Util.YamlManager;
 import net.milkbowl.vault.economy.Economy;
-import net.minecraft.server.v1_10_R1.PacketPlayInClientCommand;
+import net.minecraft.server.v1_12_R1.PacketPlayInClientCommand;
 
 public class Main_Main extends JavaPlugin implements Listener
 {

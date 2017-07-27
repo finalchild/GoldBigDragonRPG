@@ -26,7 +26,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_10_R1.entity.CraftZombie;
+import org.bukkit.craftbukkit.v1_12_R1.entity.CraftZombie;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
 import org.bukkit.entity.Skeleton.SkeletonType;

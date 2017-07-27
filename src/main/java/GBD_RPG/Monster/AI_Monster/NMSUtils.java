@@ -27,8 +27,8 @@ import java.util.Map;
 
 import org.bukkit.Bukkit;
 
-import net.minecraft.server.v1_10_R1.EntityInsentient;
-import net.minecraft.server.v1_10_R1.EntityTypes;
+import net.minecraft.server.v1_12_R1.EntityInsentient;
+import net.minecraft.server.v1_12_R1.EntityTypes;
 
 public class NMSUtils
 {

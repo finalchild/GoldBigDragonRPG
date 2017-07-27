@@ -25,7 +25,7 @@ import java.util.Set;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
-import org.bukkit.craftbukkit.v1_10_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
@@ -36,8 +36,8 @@ import GBD_RPG.User.UserData_Object;
 import GBD_RPG.Util.Util_GUI;
 import GBD_RPG.Util.YamlController;
 import GBD_RPG.Util.YamlManager;
-import net.minecraft.server.v1_10_R1.NBTTagByte;
-import net.minecraft.server.v1_10_R1.NBTTagCompound;
+import net.minecraft.server.v1_12_R1.NBTTagByte;
+import net.minecraft.server.v1_12_R1.NBTTagCompound;
 
 public class CustomItem_GUI extends Util_GUI
 {

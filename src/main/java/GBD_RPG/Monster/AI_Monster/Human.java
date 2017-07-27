@@ -25,20 +25,20 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.UUID;
 
-import net.minecraft.server.v1_10_R1.DataWatcher;
-import net.minecraft.server.v1_10_R1.DataWatcherObject;
-import net.minecraft.server.v1_10_R1.DataWatcherRegistry;
-import net.minecraft.server.v1_10_R1.EnumItemSlot;
-import net.minecraft.server.v1_10_R1.PacketPlayOutAnimation;
-import net.minecraft.server.v1_10_R1.PacketPlayOutBed;
-import net.minecraft.server.v1_10_R1.PacketPlayOutEntity;
-import net.minecraft.server.v1_10_R1.PacketPlayOutEntity.PacketPlayOutRelEntityMoveLook;
-import net.minecraft.server.v1_10_R1.PacketPlayOutEntityDestroy;
-import net.minecraft.server.v1_10_R1.PacketPlayOutEntityEquipment;
-import net.minecraft.server.v1_10_R1.PacketPlayOutEntityHeadRotation;
-import net.minecraft.server.v1_10_R1.PacketPlayOutEntityMetadata;
-import net.minecraft.server.v1_10_R1.PacketPlayOutEntityTeleport;
-import net.minecraft.server.v1_10_R1.PacketPlayOutNamedEntitySpawn;
+import net.minecraft.server.v1_12_R1.DataWatcher;
+import net.minecraft.server.v1_12_R1.DataWatcherObject;
+import net.minecraft.server.v1_12_R1.DataWatcherRegistry;
+import net.minecraft.server.v1_12_R1.EnumItemSlot;
+import net.minecraft.server.v1_12_R1.PacketPlayOutAnimation;
+import net.minecraft.server.v1_12_R1.PacketPlayOutBed;
+import net.minecraft.server.v1_12_R1.PacketPlayOutEntity;
+import net.minecraft.server.v1_12_R1.PacketPlayOutEntity.PacketPlayOutRelEntityMoveLook;
+import net.minecraft.server.v1_12_R1.PacketPlayOutEntityDestroy;
+import net.minecraft.server.v1_12_R1.PacketPlayOutEntityEquipment;
+import net.minecraft.server.v1_12_R1.PacketPlayOutEntityHeadRotation;
+import net.minecraft.server.v1_12_R1.PacketPlayOutEntityMetadata;
+import net.minecraft.server.v1_12_R1.PacketPlayOutEntityTeleport;
+import net.minecraft.server.v1_12_R1.PacketPlayOutNamedEntitySpawn;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
@@ -47,8 +47,8 @@ import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.craftbukkit.v1_10_R1.entity.CraftPlayer;
-import org.bukkit.craftbukkit.v1_10_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -102,15 +102,15 @@ public class Human {
 		PacketPlayOutNamedEntitySpawn spawn = new PacketPlayOutNamedEntitySpawn();
 
 		/*
-		[16:21:55 INFO]: private int net.minecraft.server.v1_10_R1.PacketPlayOutNamedEntitySpawn.a
-		[16:21:55 INFO]: private java.util.UUID net.minecraft.server.v1_10_R1.PacketPlayOutNamedEntitySpawn.b
-		[16:21:55 INFO]: private double net.minecraft.server.v1_10_R1.PacketPlayOutNamedEntitySpawn.c
-		[16:21:55 INFO]: private double net.minecraft.server.v1_10_R1.PacketPlayOutNamedEntitySpawn.d
-		[16:21:55 INFO]: private double net.minecraft.server.v1_10_R1.PacketPlayOutNamedEntitySpawn.e
-		[16:21:55 INFO]: private byte net.minecraft.server.v1_10_R1.PacketPlayOutNamedEntitySpawn.f
-		[16:21:55 INFO]: private byte net.minecraft.server.v1_10_R1.PacketPlayOutNamedEntitySpawn.g
-		[16:21:55 INFO]: private net.minecraft.server.v1_10_R1.DataWatcher net.minecraft.server.v1_10_R1.PacketPlayOutNamedEntitySpawn.h
-		[16:21:55 INFO]: private java.util.List net.minecraft.server.v1_10_R1.PacketPlayOutNamedEntitySpawn.i
+		[16:21:55 INFO]: private int net.minecraft.server.v1_12_R1.PacketPlayOutNamedEntitySpawn.a
+		[16:21:55 INFO]: private java.util.UUID net.minecraft.server.v1_12_R1.PacketPlayOutNamedEntitySpawn.b
+		[16:21:55 INFO]: private double net.minecraft.server.v1_12_R1.PacketPlayOutNamedEntitySpawn.c
+		[16:21:55 INFO]: private double net.minecraft.server.v1_12_R1.PacketPlayOutNamedEntitySpawn.d
+		[16:21:55 INFO]: private double net.minecraft.server.v1_12_R1.PacketPlayOutNamedEntitySpawn.e
+		[16:21:55 INFO]: private byte net.minecraft.server.v1_12_R1.PacketPlayOutNamedEntitySpawn.f
+		[16:21:55 INFO]: private byte net.minecraft.server.v1_12_R1.PacketPlayOutNamedEntitySpawn.g
+		[16:21:55 INFO]: private net.minecraft.server.v1_12_R1.DataWatcher net.minecraft.server.v1_12_R1.PacketPlayOutNamedEntitySpawn.h
+		[16:21:55 INFO]: private java.util.List net.minecraft.server.v1_12_R1.PacketPlayOutNamedEntitySpawn.i
 		*/
 			setPrivateField(PacketPlayOutNamedEntitySpawn.class, spawn, "a", id);
 			setPrivateField(PacketPlayOutNamedEntitySpawn.class, spawn, "b", uuid);
