@@ -29,12 +29,12 @@ import org.bukkit.block.Block;
 
 import com.google.common.primitives.UnsignedBytes;
 
-import JNBT.ByteArrayTag;
-import JNBT.CompoundTag;
-import JNBT.NBTInputStream;
-import JNBT.ShortTag;
-import JNBT.StringTag;
-import JNBT.Tag;
+import org.jnbt.ByteArrayTag;
+import org.jnbt.CompoundTag;
+import org.jnbt.NBTInputStream;
+import org.jnbt.ShortTag;
+import org.jnbt.StringTag;
+import org.jnbt.Tag;
 
 public class Schematic
 {
