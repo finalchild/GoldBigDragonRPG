@@ -46,6 +46,10 @@ repositories {
         url 'http://nexus.hc.to/content/repositories/pub_releases/'
     }
     maven {
+        name 'Citizens Repository'
+        url 'http://repo.citizensnpcs.co/'
+    }
+    maven {
         name 'JitPack'
         url 'https://jitpack.io/'
     }
@@ -59,6 +63,7 @@ dependencies {
     compile group: 'org.spigotmc', name: 'spigot', version: '1.12-R0.1-SNAPSHOT'
     compile group: 'com.comphenix.protocol', name: 'ProtocolLib', version: '4.4.0-SNAPSHOT'
     compile group: 'net.milkbowl.vault', name: 'VaultAPI', version: '1.6'
+    compile group: 'net.citizensnpcs', name: 'citizensapi', version: '2.0.22-SNAPSHOT'
     compile group: 'com.github.koca2000', name: 'NoteBlockAPI', version: '1.1.5'
     compile group: 'com.nisovin', name: 'magicspells', version: 'untagged-110138d95f13538cbbfe'
     compile group: 'org.jnbt', name: 'jnbt', version: '1.1'

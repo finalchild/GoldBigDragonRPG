@@ -5,7 +5,7 @@ author: GoldBigDragon
 authors: [Final Child]
 website: http://cafe.naver.com/goldbigdragon
 main: io.github.goldbigdragon.Main_Main.Main_Main
-depend: [ProtocolLib, Vault, NoteBlockAPI, MagicSpells]
+depend: [ProtocolLib, Vault, Citizens, NoteBlockAPI, MagicSpells]
 commands:
   경주:
     aliases: [경험치주기, giveexp]
