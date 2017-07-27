@@ -179,7 +179,7 @@ public class UseableItem_GUI extends Util_GUI {
             if (count > a.length || loc >= 45) break;
 
             YamlManager JobList = YC.getNewConfig("Skill/JobList.yml");
-            if (JobList.contains("Mabinogi.Added." + SkillName) == true) {
+            if (JobList.contains("Mabinogi.Added." + SkillName)) {
                 Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + SkillName, SkillList.getInt(a[count].toString() + ".ID"), SkillList.getInt(a[count].toString() + ".DATA"), SkillList.getInt(a[count].toString() + ".Amount"), Arrays.asList(ChatColor.DARK_AQUA + "최대 스킬 레벨 : " + ChatColor.WHITE + JobLevel, "", ChatColor.YELLOW + "[좌 클릭시 스킬 등록]"), loc, inv);
                 loc++;
             }
@@ -218,13 +218,13 @@ public class UseableItem_GUI extends Util_GUI {
                 UseableItemListGUI(player, page + 1);
             else {
                 int number = ((page * 45) + event.getSlot());
-                if (event.isLeftClick() == true && event.isShiftClick() == false) {
+                if (event.isLeftClick() && !event.isShiftClick()) {
                     player.sendMessage(ChatColor.GREEN + "[SYSTEM] : 클릭한 아이템을 지급 받았습니다!");
                     player.getInventory().addItem(event.getCurrentItem());
                 }
-                if (event.isLeftClick() == true && event.isShiftClick() == true)
+                if (event.isLeftClick() && event.isShiftClick())
                     NewUseableItemGUI(player, number);
-                else if (event.isRightClick() == true && event.isShiftClick() == true) {
+                else if (event.isRightClick() && event.isShiftClick()) {
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager ItemList = YC.getNewConfig("Item/Consume.yml");
                     short Acount = (short) (ItemList.getConfigurationSection("").getKeys(false).toArray().length - 1);
@@ -366,7 +366,7 @@ public class UseableItem_GUI extends Util_GUI {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager Config = YC.getNewConfig("config.yml");
 
-            if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System") == true) {
+            if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 SelectSkillGUI(player, (short) 0, itemnumber);
             } else {
@@ -389,7 +389,7 @@ public class UseableItem_GUI extends Util_GUI {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager ItemList = YC.getNewConfig("Item/Consume.yml");
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
-            if (ItemList.getBoolean(itemnumber + ".Rebirth") == false)
+            if (!ItemList.getBoolean(itemnumber + ".Rebirth"))
                 ItemList.set(itemnumber + ".Rebirth", true);
             else
                 ItemList.set(itemnumber + ".Rebirth", false);
@@ -652,7 +652,7 @@ public class UseableItem_GUI extends Util_GUI {
                             lore = lore + ChatColor.DARK_AQUA + " + 포만감 : " + ItemList.getInt(ItemNumber + ".Saturation") + "%enter%";
                         else if (ItemList.getInt(ItemNumber + ".Saturation") < 0)
                             lore = lore + ChatColor.RED + " - 포만감 : " + ItemList.getInt(ItemNumber + ".Saturation") + "%enter%";
-                        if (ItemList.getBoolean(ItemNumber + ".Rebirth") == true)
+                        if (ItemList.getBoolean(ItemNumber + ".Rebirth"))
                             lore = lore + ChatColor.GOLD + "" + ChatColor.BOLD + " + 환생%enter%";
                         break;
                     case "[룬]":
@@ -843,7 +843,7 @@ public class UseableItem_GUI extends Util_GUI {
                             lore = lore + ChatColor.DARK_AQUA + " + 포만감 : " + ItemList.getInt(ItemNumber + ".Saturation") + "%enter%";
                         else if (ItemList.getInt(ItemNumber + ".Saturation") < 0)
                             lore = lore + ChatColor.RED + " - 포만감 : " + ItemList.getInt(ItemNumber + ".Saturation") + "%enter%";
-                        if (ItemList.getBoolean(ItemNumber + ".Rebirth") == true)
+                        if (ItemList.getBoolean(ItemNumber + ".Rebirth"))
                             lore = lore + ChatColor.GOLD + "" + ChatColor.BOLD + " + 환생%enter%";
                         break;
                     case "[룬]":
@@ -1031,7 +1031,7 @@ public class UseableItem_GUI extends Util_GUI {
                             lore = lore + ChatColor.DARK_AQUA + " 포만감 : " + ItemList.getInt(ItemNumber + ".Saturation") + "%enter%";
                         else if (ItemList.getInt(ItemNumber + ".Saturation") < 0)
                             lore = lore + ChatColor.RED + " 포만감 : " + ItemList.getInt(ItemNumber + ".Saturation") + "%enter%";
-                        if (ItemList.getBoolean(ItemNumber + ".Rebirth") == true)
+                        if (ItemList.getBoolean(ItemNumber + ".Rebirth"))
                             lore = lore + ChatColor.GOLD + "" + ChatColor.BOLD + " + 환생%enter%";
                         break;
                     case "[룬]":
@@ -1218,7 +1218,7 @@ public class UseableItem_GUI extends Util_GUI {
                             lore = lore + ChatColor.DARK_AQUA + " 포만감 : " + ItemList.getInt(ItemNumber + ".Saturation") + "%enter%";
                         else if (ItemList.getInt(ItemNumber + ".Saturation") < 0)
                             lore = lore + ChatColor.RED + " 포만감 : " + ItemList.getInt(ItemNumber + ".Saturation") + "%enter%";
-                        if (ItemList.getBoolean(ItemNumber + ".Rebirth") == true)
+                        if (ItemList.getBoolean(ItemNumber + ".Rebirth"))
                             lore = lore + ChatColor.GOLD + "" + ChatColor.BOLD + " + 환생%enter%";
                         break;
                     case "[룬]":

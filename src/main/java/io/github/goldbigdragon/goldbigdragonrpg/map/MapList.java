@@ -40,7 +40,7 @@ import org.bukkit.map.MapRenderer;
 public class MapList extends MapRenderer {
     @Override
     public void render(MapView MV, MapCanvas MC, Player player) {
-        if (Main_ServerOption.Mapping == true) {
+        if (Main_ServerOption.Mapping) {
             Main_ServerOption.Mapping = false;
             String URL = "null";
             int Xcenter = 0;

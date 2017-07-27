@@ -201,7 +201,7 @@ public class CustomItem_Chat extends Util_Chat {
         } else if (SayType.compareTo("NUR") == 0)//NewUpgradeRecipe
         {
             Message = Message.replace(".", "");
-            if (RecipeList.contains(Message) == true) {
+            if (RecipeList.contains(Message)) {
                 player.sendMessage(ChatColor.RED + "[개조] : 해당 이름의 개조식은 이미 존재합니다!");
                 s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                 return;

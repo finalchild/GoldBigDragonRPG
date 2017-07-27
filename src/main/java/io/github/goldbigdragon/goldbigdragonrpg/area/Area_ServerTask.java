@@ -38,7 +38,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 public class Area_ServerTask {
     public void AreaMobSpawn(long UTC) {
         String AreaName = ServerTick_Main.Schedule.get(UTC).getString((byte) 0);
-        if (Main_ServerOption.PlayerCurrentArea.values().contains(AreaName) == false) {
+        if (!Main_ServerOption.PlayerCurrentArea.values().contains(AreaName)) {
             ServerTick_Main.MobSpawningAreaList.remove(AreaName);
             return;
         }

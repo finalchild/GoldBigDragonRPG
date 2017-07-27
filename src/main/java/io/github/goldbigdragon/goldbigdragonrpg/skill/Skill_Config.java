@@ -39,7 +39,7 @@ public class Skill_Config {
         PlayerSkillYML.createSection("MapleStory");
         PlayerSkillYML.createSection("MapleStory." + Config.getString("Server.DefaultJob") + ".Skill");
         Object[] DefaultSkills = null;
-        if (JobList.contains(("MapleStory." + Config.getString("Server.DefaultJob") + "." + Config.getString("Server.DefaultJob") + ".Skill")) == true)
+        if (JobList.contains(("MapleStory." + Config.getString("Server.DefaultJob") + "." + Config.getString("Server.DefaultJob") + ".Skill")))
             DefaultSkills = JobList.getConfigurationSection("MapleStory." + Config.getString("Server.DefaultJob") + "." + Config.getString("Server.DefaultJob") + ".Skill").getKeys(false).toArray();
         if (DefaultSkills != null)
             for (short count = 0; count < DefaultSkills.length; count++)

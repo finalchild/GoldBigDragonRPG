@@ -49,7 +49,7 @@ public class Main_PlayerJoin implements Listener {
         String playerUUID = player.getUniqueId().toString();
         new User_Object(player);
         YamlController YC = new YamlController(Main_Main.plugin);
-        if (YC.isExit("Skill/PlayerData/" + playerUUID + ".yml") == false)
+        if (!YC.isExit("Skill/PlayerData/" + playerUUID + ".yml"))
             new Skill_Config().CreateNewPlayerSkill(player);
         else
             new Job_Main().PlayerFixAllSkillAndJobYML(player);
@@ -68,7 +68,7 @@ public class Main_PlayerJoin implements Listener {
 
         new UserData_Object().UserDataInit(player);
 
-        if (player.isOp() == true)
+        if (player.isOp())
             new Effect_Packet().sendTitleSubTitle(player, "\'§e/오피박스\'", "\'§eGoldBigDragonAdvanced 가이드 및 서버 설정이 가능합니다.\'", (byte) 1, (byte) 10, (byte) 1);
         else {
             YamlManager Config = YC.getNewConfig("config.yml");
@@ -92,7 +92,7 @@ public class Main_PlayerJoin implements Listener {
                 new Effect_Packet().sendTitleSubTitle(player, "\'현재 이벤트가 진행중입니다.\'", "\'" + alert + "\'", (byte) 1, (byte) 10, (byte) 1);
             }
         }
-        if (YC.isExit("Quest/PlayerData/" + playerUUID + ".yml") == false) {
+        if (!YC.isExit("Quest/PlayerData/" + playerUUID + ".yml")) {
             new Quest_Config().CreateNewPlayerConfig(player);
 
             YamlManager NewBieYM = YC.getNewConfig("ETC/NewBie.yml");

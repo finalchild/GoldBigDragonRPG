@@ -67,7 +67,7 @@ public class Quest_GUI extends Util_GUI {
         byte ItemAmount = 1;
         byte loc = 0;
         for (int count = page * 45; count < a.length; count++) {
-            if (QuestList.contains(a[count].toString()) == false) {
+            if (!QuestList.contains(a[count].toString())) {
                 PlayerQuestList.removeKey("Started." + a[count].toString());
                 PlayerQuestList.saveConfig();
             } else {
@@ -164,7 +164,7 @@ public class Quest_GUI extends Util_GUI {
             String QuestName = a[count].toString();
             Object[] QuestFlow = QuestList.getConfigurationSection(QuestName + ".FlowChart").getKeys(false).toArray();
             if (count > a.length || loc >= 45) break;
-            if (ChoosePrevQuest == false) {
+            if (!ChoosePrevQuest) {
                 switch (QuestList.getString(a[count].toString() + ".Type")) {
                     case "N":
                         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + QuestName, 340, 0, 1, Arrays.asList(ChatColor.WHITE + "퀘스트 구성 요소 : " + QuestFlow.length + "개", ChatColor.DARK_AQUA + "퀘스트 타입 : 일반 퀘스트", "", ChatColor.YELLOW + "[우클릭시 세부 설정을 합니다.]", ChatColor.RED + "[Shift + 우클릭시 삭제됩니다.]"), loc, inv);
@@ -208,7 +208,7 @@ public class Quest_GUI extends Util_GUI {
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
-        if (ChoosePrevQuest == false)
+        if (!ChoosePrevQuest)
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 퀘스트", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 퀘스트를 생성합니다."), 49, inv);
 
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
@@ -480,7 +480,7 @@ public class Quest_GUI extends Util_GUI {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "" + Main_ServerOption.INT + " 제한", 369, 0, 1, Arrays.asList(ChatColor.WHITE + "퀘스트 수행에 필요한", ChatColor.WHITE + "" + Main_ServerOption.INT + " 스텟을 설정합니다.", "", ChatColor.AQUA + "[필요 " + Main_ServerOption.INT + " : " + QuestList.getInt(QuestName + ".Need.INT") + "]"), 22, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "" + Main_ServerOption.WILL + " 제한", 370, 0, 1, Arrays.asList(ChatColor.WHITE + "퀘스트 수행에 필요한", ChatColor.WHITE + "" + Main_ServerOption.WILL + " 스텟을 설정합니다.", "", ChatColor.AQUA + "[필요 " + Main_ServerOption.WILL + " : " + QuestList.getInt(QuestName + ".Need.WILL") + "]"), 23, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "" + Main_ServerOption.LUK + " 제한", 322, 0, 1, Arrays.asList(ChatColor.WHITE + "퀘스트 수행에 필요한", ChatColor.WHITE + "" + Main_ServerOption.LUK + " 스텟을 설정합니다.", "", ChatColor.AQUA + "[필요 " + Main_ServerOption.LUK + " : " + QuestList.getInt(QuestName + ".Need.LUK") + "]"), 24, inv);
-        if (QuestList.getString(QuestName + ".Need.PrevQuest").equalsIgnoreCase("null") == true)
+        if (QuestList.getString(QuestName + ".Need.PrevQuest").equalsIgnoreCase("null"))
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "필수 완료 퀘스트", 386, 0, 1, Arrays.asList(ChatColor.WHITE + "이전 퀘스트를 수행한 뒤", ChatColor.WHITE + "현재 퀘스트를 수행 하도록 합니다.", "", ChatColor.AQUA + "[이전 퀘스트 : 없음]"), 29, inv);
         else
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "필수 완료 퀘스트", 386, 0, 1, Arrays.asList(ChatColor.WHITE + "이전 퀘스트를 수행한 뒤", ChatColor.WHITE + "현재 퀘스트를 수행 하도록 합니다.", ChatColor.RED + "[Shift + 우클릭시 삭제됩니다]", "", ChatColor.AQUA + "[이전 퀘스트 : " + QuestList.getString(QuestName + ".Need.PrevQuest") + "]"), 29, inv);
@@ -550,9 +550,9 @@ public class Quest_GUI extends Util_GUI {
         String UniqueCode = "§0§0§5§0§8§r";
         Inventory inv = null;
 
-        if (QuestList.contains(QuestName + ".FlowChart." + Flow + ".Item") == true) {
+        if (QuestList.contains(QuestName + ".FlowChart." + Flow + ".Item")) {
             Object[] a = QuestList.getConfigurationSection(QuestName + ".FlowChart." + Flow + ".Item").getKeys(false).toArray();
-            if (type == false) {
+            if (!type) {
                 inv = Bukkit.createInventory(null, 27, UniqueCode + "§0모아야 할 아이템 목록");
                 for (short count = 0; count < a.length; count++)
                     ItemStackStack(QuestList.getItemStack(QuestName + ".FlowChart." + Flow + ".Item." + a[count]), count + 10, inv);
@@ -574,7 +574,7 @@ public class Quest_GUI extends Util_GUI {
                     Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "보상 받기", 54, 0, 1, Arrays.asList(ChatColor.GRAY + "보상을 수령합니다.", ChatColor.BLACK + "" + Flow), 22, inv);
             }
         } else {
-            if (type == false) {
+            if (!type) {
                 inv = Bukkit.createInventory(null, 27, UniqueCode + "§0모아야 할 아이템 목록");
             } else {
                 inv = Bukkit.createInventory(null, 27, UniqueCode + "§0보상 목록");
@@ -643,7 +643,7 @@ public class Quest_GUI extends Util_GUI {
             int PlayerHarvestAmount = PlayerQuestList.getInt("Started." + QuestName + ".Block." + counter);
             Main_Interact IT = new Main_Interact();
 
-            if (DataEquals == true)
+            if (DataEquals)
                 Stack(ChatColor.YELLOW + IT.SetItemDefaultName((short) BlockID, (byte) BlockData), BlockID, BlockData, 1, Arrays.asList(ChatColor.WHITE + "[" + PlayerHarvestAmount + "/" + Amount + "]", "", ChatColor.GRAY + "아이템 ID : " + BlockID, ChatColor.GRAY + "아이템 Data : " + BlockData), counter, inv);
             else
                 Stack(ChatColor.YELLOW + "아무런 " + IT.SetItemDefaultName((short) BlockID, (byte) BlockData) + ChatColor.YELLOW + " 종류", BlockID, 0, 1, Arrays.asList(ChatColor.WHITE + "[" + PlayerHarvestAmount + "/" + Amount + "]", "", ChatColor.GRAY + "아이템 ID : " + BlockID), counter, inv);
@@ -658,7 +658,7 @@ public class Quest_GUI extends Util_GUI {
         String UniqueCode = "§0§0§5§0§9§r";
         Inventory inv = Bukkit.createInventory(null, 27, UniqueCode + "§0계속 등록 하시겠습니까?");
 
-        if (Harvest == false) {
+        if (!Harvest) {
             Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "계속 등록하기", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "사냥 대상을 추가로 등록합니다.", ChatColor.BLACK + "" + Flow, ChatColor.BLACK + "" + Mob), 10, inv);
             Stack2(ChatColor.RED + "" + ChatColor.BOLD + "등록 중단하기", 166, 0, 1, Arrays.asList(ChatColor.GRAY + "사냥 대상 추가를 종료합니다.", ChatColor.BLACK + ChatColor.stripColor(QuestName)), 16, inv);
         } else {
@@ -695,7 +695,7 @@ public class Quest_GUI extends Util_GUI {
             String PermitionS = ChatColor.DARK_AQUA + "<OP만 사용 가능>";
             String sensitiveS = ChatColor.BLUE + "<반경 " + sensitive + "블록 이내를 도착지로 판정>";
             String ShowArrowS = ChatColor.DARK_AQUA + "<기본 화살표 모양>";
-            if (Permition == false)
+            if (!Permition)
                 PermitionS = ChatColor.DARK_AQUA + "<모두 사용 가능>";
             if (Time >= 0)
                 TimeS = ChatColor.DARK_AQUA + "<" + Time + "초 동안 유지>";
@@ -1186,7 +1186,7 @@ public class Quest_GUI extends Util_GUI {
         boolean ChooseQuestGUI = Boolean.parseBoolean(ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1)));
         if (slot == 53)//닫기
         {
-            if (ChooseQuestGUI == true)
+            if (ChooseQuestGUI)
                 u.clearAll(player);
             s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
@@ -1194,7 +1194,7 @@ public class Quest_GUI extends Util_GUI {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
             {
-                if (ChooseQuestGUI == true) {
+                if (ChooseQuestGUI) {
                     QuestOptionGUI(player, u.getString(player, (byte) 1));
                     u.clearAll(player);
                 } else
@@ -1209,7 +1209,7 @@ public class Quest_GUI extends Util_GUI {
                 player.sendMessage(ChatColor.GREEN + "[타입 : 일반 / 반복 / 일일 / 일주 / 한달]");
                 player.closeInventory();
             } else {
-                if (ChooseQuestGUI == true) {
+                if (ChooseQuestGUI) {
                     String QuestName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager QuestList = YC.getNewConfig("Quest/QuestList.yml");
@@ -1223,9 +1223,9 @@ public class Quest_GUI extends Util_GUI {
                         u.clearAll(player);
                     }
                 } else {
-                    if (event.getClick().isLeftClick() == true)
+                    if (event.getClick().isLeftClick())
                         FixQuestGUI(player, (short) 0, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
-                    else if (event.getClick().isRightClick() == true && event.isShiftClick() == true) {
+                    else if (event.getClick().isRightClick() && event.isShiftClick()) {
                         String QuestName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
                         YamlController YC = new YamlController(Main_Main.plugin);
                         YamlManager QuestList = YC.getNewConfig("Quest/QuestList.yml");
@@ -1235,14 +1235,14 @@ public class Quest_GUI extends Util_GUI {
                         Player[] a = new Player[playerlist.size()];
                         playerlist.toArray(a);
                         for (short count = 0; count < a.length; count++) {
-                            if (a[count].isOnline() == true) {
+                            if (a[count].isOnline()) {
                                 s.SP(a[count], Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                                 a[count].sendMessage(ChatColor.LIGHT_PURPLE + "[관리자] : " + ChatColor.YELLOW + player.getName() + ChatColor.LIGHT_PURPLE + "님께서 " + ChatColor.YELLOW + QuestName + ChatColor.LIGHT_PURPLE + "퀘스트를 삭제하셨습니다!");
                             }
                         }
                         Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + player.getName() + ChatColor.LIGHT_PURPLE + "님께서 " + ChatColor.YELLOW + QuestName + ChatColor.LIGHT_PURPLE + "퀘스트를 삭제하셨습니다!");
                         AllOfQuestListGUI(player, (short) (Integer.parseInt(event.getInventory().getTitle().split(" : ")[1]) - 1), false);
-                    } else if (event.getClick().isRightClick() == true)
+                    } else if (event.getClick().isRightClick())
                         QuestOptionGUI(player, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                 }
             }
@@ -1272,7 +1272,7 @@ public class Quest_GUI extends Util_GUI {
                 SelectObjectPage(player, (byte) 0, QuestName);
             else {
                 short Flow = Short.parseShort(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
-                if (event.getClick().isLeftClick() == true) {
+                if (event.getClick().isLeftClick()) {
                     if (event.getCurrentItem().getItemMeta().getLore().get(0).contains(" : "))
                         switch (event.getCurrentItem().getItemMeta().getLore().get(0).split(" : ")[1]) {
                             case "전달":
@@ -1293,7 +1293,7 @@ public class Quest_GUI extends Util_GUI {
                                 Quest_OPChoice(player, QuestName, (short) Flow, (short) page);
                                 break;
                         }
-                } else if (event.getClick().isRightClick() == true && event.isShiftClick() == true) {
+                } else if (event.getClick().isRightClick() && event.isShiftClick()) {
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager QuestList = YC.getNewConfig("Quest/QuestList.yml");
 
@@ -1329,17 +1329,17 @@ public class Quest_GUI extends Util_GUI {
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager PlayerQuestList = YC.getNewConfig("Quest/PlayerData/" + player.getUniqueId() + ".yml");
                 int Flow = PlayerQuestList.getInt("Started." + QuestName + ".Flow");
-                if (event.getCurrentItem().getItemMeta().getLore().toString().contains("전달") == true)
+                if (event.getCurrentItem().getItemMeta().getLore().toString().contains("전달"))
                     ShowItemGUI(player, QuestName, (short) Flow, false, false);
-                else if (event.getCurrentItem().getItemMeta().getLore().toString().contains("보상") == true)
+                else if (event.getCurrentItem().getItemMeta().getLore().toString().contains("보상"))
                     ShowItemGUI(player, QuestName, (short) Flow, false, true);
-                else if (event.getCurrentItem().getItemMeta().getLore().toString().contains("처치") == true)
+                else if (event.getCurrentItem().getItemMeta().getLore().toString().contains("처치"))
                     KillMonsterGUI(player, QuestName, (short) Flow, player.isOp());
-                else if (event.getCurrentItem().getItemMeta().getLore().toString().contains("독백") == true)
+                else if (event.getCurrentItem().getItemMeta().getLore().toString().contains("독백"))
                     QuestRouter(player, QuestName);
-                else if (event.getCurrentItem().getItemMeta().getLore().toString().contains("채집") == true)
+                else if (event.getCurrentItem().getItemMeta().getLore().toString().contains("채집"))
                     HarvestGUI(player, QuestName, (short) Flow, false);
-                else if (event.getCurrentItem().getItemMeta().getLore().toString().contains("선택지") == true)
+                else if (event.getCurrentItem().getItemMeta().getLore().toString().contains("선택지"))
                     Quest_UserChoice(player, QuestName, (short) Flow);
             }
         }
@@ -1649,7 +1649,7 @@ public class Quest_GUI extends Util_GUI {
                 String QuestName = ChatColor.stripColor(event.getInventory().getItem(26).getItemMeta().getLore().get(1));
                 short QuestFlow = Short.parseShort(ChatColor.stripColor(event.getInventory().getItem(22).getItemMeta().getLore().get(1)));
 
-                if (QuestList.contains(QuestName + ".FlowChart." + QuestFlow + ".Item") == true) {
+                if (QuestList.contains(QuestName + ".FlowChart." + QuestFlow + ".Item")) {
                     Object[] p = QuestList.getConfigurationSection(QuestName + ".FlowChart." + QuestFlow + ".Item").getKeys(false).toArray();
                     short emptySlot = 0;
                     ItemStack item[] = new ItemStack[p.length];
@@ -1673,7 +1673,7 @@ public class Quest_GUI extends Util_GUI {
                 }
                 Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).addStat_MoneyAndEXP(QuestList.getLong(QuestName + ".FlowChart." + QuestFlow + ".Money"), 0, false);
 
-                if (YC.isExit("NPC/PlayerData/" + player.getUniqueId() + ".yml") == false) {
+                if (!YC.isExit("NPC/PlayerData/" + player.getUniqueId() + ".yml")) {
                     YM = YC.getNewConfig("NPC/PlayerData/" + player.getUniqueId() + ".yml");
                     YM.set(QuestList.getString(QuestName + ".FlowChart." + QuestFlow + ".TargetNPCuuid") + ".love", QuestList.getInt(QuestName + ".FlowChart." + QuestFlow + ".Love"));
                     YM.set(QuestList.getString(QuestName + ".FlowChart." + QuestFlow + ".TargetNPCuuid") + ".Career", 0);
@@ -1811,11 +1811,11 @@ public class Quest_GUI extends Util_GUI {
                 QuestOptionGUI(player, QuestName);
             } else if (slot == 29)//필수 완료 퀘스트
             {
-                if (event.isLeftClick() == true && event.isShiftClick() == false) {
+                if (event.isLeftClick() && !event.isShiftClick()) {
                     UserData_Object u = new UserData_Object();
                     u.setString(player, (byte) 1, QuestName);
                     AllOfQuestListGUI(player, (short) 0, true);
-                } else if (event.isRightClick() == true && event.isShiftClick() == true) {
+                } else if (event.isRightClick() && event.isShiftClick()) {
                     s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.8F);
                     QuestList.set(QuestName + ".Need.PrevQuest", "null");
                     QuestList.saveConfig();
@@ -1886,7 +1886,7 @@ public class Quest_GUI extends Util_GUI {
                 Quest_NavigationListGUI(player, (short) (page + 1), QuestName);
                 return;
             default:
-                if (event.isLeftClick() == true) {
+                if (event.isLeftClick()) {
                     s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager QuestConfig = YC.getNewConfig("Quest/QuestList.yml");

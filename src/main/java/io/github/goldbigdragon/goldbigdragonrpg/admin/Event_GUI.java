@@ -102,7 +102,7 @@ public class Event_GUI extends Util_GUI {
     public void AllPlayerGiveEventGUI(Player player, boolean All) {
         String UniqueCode = "§1§0§1§0§a§r";
         Inventory inv = Bukkit.createInventory(null, 45, UniqueCode + "§0이벤트 전체 지급");
-        if (All == false)
+        if (!All)
             inv = Bukkit.createInventory(null, 45, "§1§0§1§0§b§r" + "§0이벤트 랜덤 지급");
         for (byte count = 0; count < 10; count++)
             Stack2(ChatColor.YELLOW + "[ 지급 할 아이템 ]", 160, 4, 1, null, count, inv);

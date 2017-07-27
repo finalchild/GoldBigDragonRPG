@@ -52,7 +52,7 @@ public class Struct_PostBox extends Util_GUI {
         Inventory inv = Bukkit.createInventory(null, 45, UniqueCode + "§c§l우편함");
         if (Type == 0)//받은 우편
         {
-            if (PlayerPost.contains("Recieve") == false) {
+            if (!PlayerPost.contains("Recieve")) {
                 PlayerPost.createSection("Recieve");
                 PlayerPost.saveConfig();
             }
@@ -118,7 +118,7 @@ public class Struct_PostBox extends Util_GUI {
             }
         } else//보낸 우편
         {
-            if (PlayerPost.contains("Send") == false) {
+            if (!PlayerPost.contains("Send")) {
                 PlayerPost.createSection("Send");
                 PlayerPost.saveConfig();
             }
@@ -281,7 +281,7 @@ public class Struct_PostBox extends Util_GUI {
                 long UTC = Long.parseLong(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getLore().get(event.getCurrentItem().getItemMeta().getLore().size() - 1)));
                 if (Type == 0)//수신함
                 {
-                    if (PlayerPost.contains("Recieve." + UTC) == false) {
+                    if (!PlayerPost.contains("Recieve." + UTC)) {
                         PostBoxMainGUI(player, Type);
                         return;
                     }
@@ -349,7 +349,7 @@ public class Struct_PostBox extends Util_GUI {
                                         player.sendMessage(ChatColor.RED + "[우편] : 소지금이 부족합니다!");
                                     }
                                 }
-                            } else if (event.isRightClick() && event.getCurrentItem().getItemMeta().getLore().get(event.getCurrentItem().getItemMeta().getLore().size() - 2).contains("반송") == true) {
+                            } else if (event.isRightClick() && event.getCurrentItem().getItemMeta().getLore().get(event.getCurrentItem().getItemMeta().getLore().size() - 2).contains("반송")) {
                                 if (PlayerPost.getString("Recieve." + UTC + ".From").compareTo("[반송]") != 0) {
                                     SenderPost.removeKey("Send." + UTC);
                                     SenderPost.saveConfig();
@@ -365,7 +365,7 @@ public class Struct_PostBox extends Util_GUI {
                     }
                 } else//송신함
                 {
-                    if (PlayerPost.contains("Send." + UTC) == false) {
+                    if (!PlayerPost.contains("Send." + UTC)) {
                         PostBoxMainGUI(player, Type);
                         return;
                     }
@@ -435,11 +435,11 @@ public class Struct_PostBox extends Util_GUI {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager TargetPost = YC.getNewConfig("Post/" + targetUID + ".yml");
         YamlManager PlayerPost = YC.getNewConfig("Post/" + player.getUniqueId().toString() + ".yml");
-        if (TargetPost.contains("Recieve") == false) {
+        if (!TargetPost.contains("Recieve")) {
             TargetPost.createSection("Recieve");
             TargetPost.saveConfig();
         }
-        if (TargetPost.contains("Send") == false) {
+        if (!TargetPost.contains("Send")) {
             TargetPost.createSection("Send");
             TargetPost.saveConfig();
         }
@@ -477,7 +477,7 @@ public class Struct_PostBox extends Util_GUI {
     public void SendPost_Server(String targetUUID, String Name, String Title, String Memo, ItemStack item) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager TargetPost = YC.getNewConfig("Post/" + targetUUID + ".yml");
-        if (TargetPost.contains("Recieve") == false) {
+        if (!TargetPost.contains("Recieve")) {
             TargetPost.createSection("Recieve");
             TargetPost.saveConfig();
         }

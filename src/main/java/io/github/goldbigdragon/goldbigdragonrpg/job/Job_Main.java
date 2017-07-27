@@ -34,7 +34,7 @@ public class Job_Main {
     public void AllPlayerFixAllSkillAndJobYML() {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager Config = YC.getNewConfig("config.yml");
-        if (Config.contains("Time.LastSkillChanged") == false) {
+        if (!Config.contains("Time.LastSkillChanged")) {
             Config.set("Time.LastSkillChanged", -1);
             Config.saveConfig();
         }
@@ -46,7 +46,7 @@ public class Job_Main {
         YamlManager PlayerList = null;
         for (short count = 0; count < players.length; count++) {
             PlayerList = YC.getNewConfig("Skill/PlayerData/" + players[count].getUniqueId().toString() + ".yml");
-            if (Config.getInt("Time.LastSkillChanged") != PlayerList.getInt("Update") || PlayerList.contains("Update") == false) {
+            if (Config.getInt("Time.LastSkillChanged") != PlayerList.getInt("Update") || !PlayerList.contains("Update")) {
                 PlayerList.set("Update", Config.getInt("Time.LastSkillChanged"));
                 PlayerList.saveConfig();
                 FixJobList();
@@ -59,12 +59,12 @@ public class Job_Main {
     public void PlayerFixAllSkillAndJobYML(Player player) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager Config = YC.getNewConfig("config.yml");
-        if (Config.contains("Time.LastSkillChanged") == false) {
+        if (!Config.contains("Time.LastSkillChanged")) {
             Config.set("Time.LastSkillChanged", -1);
             Config.saveConfig();
         }
         YamlManager PlayerList = YC.getNewConfig("Skill/PlayerData/" + player.getUniqueId().toString() + ".yml");
-        if (Config.getInt("Time.LastSkillChanged") != PlayerList.getInt("Update") || PlayerList.contains("Update") == false) {
+        if (Config.getInt("Time.LastSkillChanged") != PlayerList.getInt("Update") || !PlayerList.contains("Update")) {
             PlayerList.set("Update", Config.getInt("Time.LastSkillChanged"));
             PlayerList.saveConfig();
             FixJobList();
@@ -96,7 +96,7 @@ public class Job_Main {
                 if (Categori[counter].toString().compareTo("Added") != 0) {
                     Object[] Skills = JobList.getConfigurationSection("Mabinogi." + Categori[counter].toString()).getKeys(false).toArray();
                     for (short countta = 0; countta < Skills.length; countta++) {
-                        if (SkillList.contains(Skills[countta].toString()) == false)
+                        if (!SkillList.contains(Skills[countta].toString()))
                             JobList.removeKey("Mabinogi." + Categori[counter].toString() + "." + Skills[countta].toString());
                     }
                 }
@@ -109,7 +109,7 @@ public class Job_Main {
                 for (short count = 0; count < SubJob.length; count++) {
                     Object[] SubJobSkills = JobList.getConfigurationSection("MapleStory." + Job[counter].toString() + "." + SubJob[count] + ".Skill").getKeys(false).toArray();
                     for (short countta = 0; countta < SubJobSkills.length; countta++) {
-                        if (SkillList.contains(SubJobSkills[countta].toString()) == false) {
+                        if (!SkillList.contains(SubJobSkills[countta].toString())) {
                             JobList.removeKey("MapleStory." + Job[counter].toString() + "." + SubJob[count].toString() + ".Skill." + SubJobSkills[countta].toString());
                             JobList.saveConfig();
                         }
@@ -124,7 +124,7 @@ public class Job_Main {
     //마비노기 버전에서는 삭제된 카테고리를 플레이어 스킬 목록에서 제거해 주며, 새로 나온 카테고리를 플레이어에게 등록해 준다.
     {
         YamlController YC = new YamlController(Main_Main.plugin);
-        if (YC.isExit("Skill/PlayerData/" + player.getUniqueId().toString() + ".yml") == false)
+        if (!YC.isExit("Skill/PlayerData/" + player.getUniqueId().toString() + ".yml"))
             new Skill_Config().CreateNewPlayerSkill(player);
 
         YamlManager PlayerList = YC.getNewConfig("Skill/PlayerData/" + player.getUniqueId().toString() + ".yml");
@@ -140,12 +140,12 @@ public class Job_Main {
                 Categori.add(JobList.getConfigurationSection("Mabinogi").getKeys(false).toArray()[count].toString());
 
             for (short count = 0; count < PlayerCategori.size(); count++)
-                if (Categori.contains(PlayerCategori.get(count)) == false)
+                if (!Categori.contains(PlayerCategori.get(count)))
                     PlayerList.removeKey("Mabinogi." + PlayerCategori.get(count).toString());
 
             for (short count = 0; count < Categori.size(); count++)
                 if (Categori.get(count).compareTo("Added") != 0)
-                    if (PlayerCategori.contains(Categori.get(count)) == false)
+                    if (!PlayerCategori.contains(Categori.get(count)))
                         PlayerList.createSection("Mabinogi." + Categori.get(count));
 
 
@@ -162,14 +162,14 @@ public class Job_Main {
                     for (short countta = 0; countta < PlayerList.getConfigurationSection("Mabinogi." + Categori.get(count)).getKeys(false).toArray().length; countta++)
                         PlayerSkillList.add(PlayerList.getConfigurationSection("Mabinogi." + Categori.get(count)).getKeys(false).toArray()[countta].toString());
                     for (short countta = 0; countta < PlayerSkillList.size(); countta++)
-                        if (JobSkillList.contains(PlayerSkillList.get(countta)) == false)
+                        if (!JobSkillList.contains(PlayerSkillList.get(countta)))
                             PlayerList.removeKey("Mabinogi." + Categori.get(count) + "." + PlayerSkillList.get(countta));
 
                     //히든 스킬 외의 일반 스킬들을 추려내어, 일반 스킬이 없는 플레이어에게
                     //스킬을 전수해 주는 구문.
                     for (short countta = 0; countta < JobSkillList.size(); countta++) {
-                        if (JobList.getBoolean("Mabinogi." + Categori.get(count) + "." + JobSkillList.get(countta)) == true)
-                            if (PlayerSkillList.contains(JobSkillList.get(countta)) == false)
+                        if (JobList.getBoolean("Mabinogi." + Categori.get(count) + "." + JobSkillList.get(countta)))
+                            if (!PlayerSkillList.contains(JobSkillList.get(countta)))
                                 PlayerList.set("Mabinogi." + Categori.get(count) + "." + JobSkillList.get(countta), 1);
                     }
 
@@ -193,7 +193,7 @@ public class Job_Main {
                         isJobExit = true;
                         break;
                     }
-            if (isJobExit == false) {
+            if (!isJobExit) {
                 YamlManager Config = YC.getNewConfig("config.yml");
                 String ServerDefaultJob = Config.getString("Server.DefaultJob");
                 PlayerList = YC.getNewConfig("Skill/PlayerData/" + player.getUniqueId().toString() + ".yml");
@@ -201,7 +201,7 @@ public class Job_Main {
                 PlayerList.set("Job.LV", 1);
                 Object[] Skills = JobList.getConfigurationSection("MapleStory." + ServerDefaultJob + "." + ServerDefaultJob + ".Skill").getKeys(false).toArray();
                 for (short count = 0; count < Skills.length; count++)
-                    if (PlayerList.contains("MapleStory." + ServerDefaultJob + ".Skill." + Skills[count].toString()) == false)
+                    if (!PlayerList.contains("MapleStory." + ServerDefaultJob + ".Skill." + Skills[count].toString()))
                         PlayerList.set("MapleStory." + ServerDefaultJob + ".Skill." + Skills[count].toString(), 1);
                 PlayerList.saveConfig();
             }
@@ -211,7 +211,7 @@ public class Job_Main {
             for (short counter = 0; counter < Jobs.length; counter++) {
                 for (short count = 0; count < PlayerJob.length; count++) {
                     Object[] SubJobs = JobList.getConfigurationSection("MapleStory." + Jobs[counter]).getKeys(false).toArray();
-                    if (PlayerList.contains("MapleStory." + PlayerJob[count].toString() + ".Skill") == false) {
+                    if (!PlayerList.contains("MapleStory." + PlayerJob[count].toString() + ".Skill")) {
                         PlayerList.createSection("MapleStory." + PlayerJob[count].toString() + ".Skill");
                         PlayerList.saveConfig();
                     }
@@ -226,11 +226,11 @@ public class Job_Main {
                                 PlayerJobSkills.add(PlayerList.getConfigurationSection("MapleStory." + PlayerJob[count].toString() + ".Skill").getKeys(false).toArray()[count1].toString());
 
                             for (short cc = 0; cc < PlayerJobSkills.size(); cc++)
-                                if (SubJobSkills.contains(PlayerJobSkills.get(cc)) == false)
+                                if (!SubJobSkills.contains(PlayerJobSkills.get(cc)))
                                     PlayerList.removeKey("MapleStory." + PlayerJob[count].toString() + ".Skill." + PlayerJobSkills.get(cc).toString());
 
                             for (short cc = 0; cc < SubJobSkills.size(); cc++)
-                                if (PlayerJobSkills.contains(SubJobSkills.get(cc)) == false)
+                                if (!PlayerJobSkills.contains(SubJobSkills.get(cc)))
                                     PlayerList.set("MapleStory." + SubJobs[countta] + ".Skill." + SubJobSkills.get(cc), 1);
 
                             //스킬 최대 레벨 넘긴것들을 최대 레벨로 수정 해 주기.
@@ -259,7 +259,7 @@ public class Job_Main {
         YamlManager PlayerList = YC.getNewConfig("Skill/PlayerData/" + player.getUniqueId().toString() + ".yml");
 
         //스킬 최대 레벨보다 레벨이 높은 스킬을 최대 레벨치로 수정해 주는 구문
-        if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System") == true) {
+        if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
             Object[] CategoriList = PlayerList.getConfigurationSection("Mabinogi").getKeys(false).toArray();
             PlayerList.saveConfig();
             for (short count = 0; count < CategoriList.length; count++) {

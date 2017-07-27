@@ -98,42 +98,42 @@ public class Area_GUI extends Util_GUI {
         String UniqueCode = "§0§0§2§0§1§r";
         Inventory inv = Bukkit.createInventory(null, 45, UniqueCode + "§0영역 설정");
 
-        if (AreaConfig.getBoolean(AreaName + ".BlockUse") == false)
+        if (!AreaConfig.getBoolean(AreaName + ".BlockUse"))
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[블록 사용]", 166, 0, 1, Arrays.asList("", ChatColor.RED + "" + ChatColor.BOLD + "[   거부   ]", ""), 9, inv);
         else
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[블록 사용]", 116, 0, 1, Arrays.asList("", ChatColor.GREEN + "" + ChatColor.BOLD + "[   허용   ]", ""), 9, inv);
 
-        if (AreaConfig.getBoolean(AreaName + ".BlockPlace") == false)
+        if (!AreaConfig.getBoolean(AreaName + ".BlockPlace"))
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[블록 설치]", 166, 0, 1, Arrays.asList("", ChatColor.RED + "" + ChatColor.BOLD + "[   거부   ]", ""), 10, inv);
         else
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[블록 설치]", 2, 0, 1, Arrays.asList("", ChatColor.GREEN + "" + ChatColor.BOLD + "[   허용   ]", ""), 10, inv);
 
-        if (AreaConfig.getBoolean(AreaName + ".BlockBreak") == false)
+        if (!AreaConfig.getBoolean(AreaName + ".BlockBreak"))
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[블록 파괴]", 166, 0, 1, Arrays.asList("", ChatColor.RED + "" + ChatColor.BOLD + "[   거부   ]", ""), 11, inv);
         else
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[블록 파괴]", 278, 0, 1, Arrays.asList("", ChatColor.GREEN + "" + ChatColor.BOLD + "[   허용   ]", ""), 11, inv);
 
-        if (AreaConfig.getBoolean(AreaName + ".PVP") == false)
+        if (!AreaConfig.getBoolean(AreaName + ".PVP"))
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[   PVP   ]", 166, 0, 1, Arrays.asList("", ChatColor.RED + "" + ChatColor.BOLD + "[   거부   ]", ""), 12, inv);
         else
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[   PVP   ]", 267, 0, 1, Arrays.asList("", ChatColor.GREEN + "" + ChatColor.BOLD + "[   허용   ]", ""), 12, inv);
 
-        if (AreaConfig.getBoolean(AreaName + ".MobSpawn") == false)
+        if (!AreaConfig.getBoolean(AreaName + ".MobSpawn"))
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[몬스터 스폰]", 166, 0, 1, Arrays.asList("", ChatColor.RED + "" + ChatColor.BOLD + "[   거부   ]", ""), 13, inv);
         else
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[몬스터 스폰]", 52, 0, 1, Arrays.asList("", ChatColor.GREEN + "" + ChatColor.BOLD + "[   허용   ]", ""), 13, inv);
 
-        if (AreaConfig.getBoolean(AreaName + ".Alert") == false)
+        if (!AreaConfig.getBoolean(AreaName + ".Alert"))
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[입장 메시지]", 166, 0, 1, Arrays.asList("", ChatColor.RED + "" + ChatColor.BOLD + "[   없음   ]", ""), 14, inv);
         else
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[입장 메시지]", 340, 0, 1, Arrays.asList("", ChatColor.GREEN + "" + ChatColor.BOLD + "[   전송   ]", ""), 14, inv);
 
-        if (AreaConfig.getBoolean(AreaName + ".SpawnPoint") == false)
+        if (!AreaConfig.getBoolean(AreaName + ".SpawnPoint"))
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[리스폰 장소]", 166, 0, 1, Arrays.asList("", ChatColor.RED + "" + ChatColor.BOLD + "[   불가   ]", ""), 15, inv);
         else
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[리스폰 장소]", 397, 3, 1, Arrays.asList("", ChatColor.GREEN + "" + ChatColor.BOLD + "[   가능   ]", ""), 15, inv);
 
-        if (AreaConfig.getBoolean(AreaName + ".Music") == false)
+        if (!AreaConfig.getBoolean(AreaName + ".Music"))
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[배경음 재생]", 166, 0, 1, Arrays.asList("", ChatColor.RED + "" + ChatColor.BOLD + "[   중지   ]", ""), 16, inv);
         else
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[배경음 재생]", 84, 0, 1, Arrays.asList("", ChatColor.GREEN + "" + ChatColor.BOLD + "[   재생   ]", ""), 16, inv);
@@ -196,7 +196,7 @@ public class Area_GUI extends Util_GUI {
 
         String UniqueCode = "§0§0§2§0§2§r";
         Inventory inv = Bukkit.createInventory(null, 54, UniqueCode + "§0영역 몬스터 스폰 룰 : " + (page + 1));
-        if (AreaConfig.contains(AreaName + ".MonsterSpawnRule") == false) {
+        if (!AreaConfig.contains(AreaName + ".MonsterSpawnRule")) {
             AreaConfig.createSection(AreaName + ".MonsterSpawnRule");
             AreaConfig.saveConfig();
         }
@@ -251,7 +251,7 @@ public class Area_GUI extends Util_GUI {
         short MobNameListLength = (short) MonsterNameList.length;
         for (int count = page * 45; count < MobNameListLength; count++) {
             String MonsterName = MonsterNameList[count].toString();
-            if (MonsterConfig.contains(MonsterName) == true) {
+            if (MonsterConfig.contains(MonsterName)) {
                 String Name = MonsterConfig.getString(MonsterName + ".Name");
                 if (count > MobNameListLength || loc >= 45) break;
                 Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + MonsterName, 383, 0, 1, Arrays.asList(
@@ -445,7 +445,7 @@ public class Area_GUI extends Util_GUI {
                 }
             }
 
-            if (isExit == false) {
+            if (!isExit) {
 
                 String Lore = null;
 
@@ -827,9 +827,9 @@ public class Area_GUI extends Util_GUI {
             } else if (slot == 50)//다음 페이지
                 AreaListGUI(player, (short) (page + 1));
             else {
-                if (event.isLeftClick() == true)
+                if (event.isLeftClick())
                     AreaSettingGUI(player, AreaName);
-                else if (event.isShiftClick() == true && event.isRightClick() == true) {
+                else if (event.isShiftClick() && event.isRightClick()) {
                     s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager AreaConfig = YC.getNewConfig("Area/AreaList.yml");
@@ -863,49 +863,49 @@ public class Area_GUI extends Util_GUI {
             else if (slot >= 9 && slot <= 16) {
                 if (slot == 9)//블록 사용
                 {
-                    if (AreaConfig.getBoolean(AreaName + ".BlockUse") == false)
+                    if (!AreaConfig.getBoolean(AreaName + ".BlockUse"))
                         AreaConfig.set(AreaName + ".BlockUse", true);
                     else
                         AreaConfig.set(AreaName + ".BlockUse", false);
                 } else if (slot == 10)//블록 설치
                 {
-                    if (AreaConfig.getBoolean(AreaName + ".BlockPlace") == false)
+                    if (!AreaConfig.getBoolean(AreaName + ".BlockPlace"))
                         AreaConfig.set(AreaName + ".BlockPlace", true);
                     else
                         AreaConfig.set(AreaName + ".BlockPlace", false);
                 } else if (slot == 11)//블록 파괴
                 {
-                    if (AreaConfig.getBoolean(AreaName + ".BlockBreak") == false)
+                    if (!AreaConfig.getBoolean(AreaName + ".BlockBreak"))
                         AreaConfig.set(AreaName + ".BlockBreak", true);
                     else
                         AreaConfig.set(AreaName + ".BlockBreak", false);
                 } else if (slot == 12)//PVP
                 {
-                    if (AreaConfig.getBoolean(AreaName + ".PVP") == false)
+                    if (!AreaConfig.getBoolean(AreaName + ".PVP"))
                         AreaConfig.set(AreaName + ".PVP", true);
                     else
                         AreaConfig.set(AreaName + ".PVP", false);
                 } else if (slot == 13)//몬스터 스폰
                 {
-                    if (AreaConfig.getBoolean(AreaName + ".MobSpawn") == false)
+                    if (!AreaConfig.getBoolean(AreaName + ".MobSpawn"))
                         AreaConfig.set(AreaName + ".MobSpawn", true);
                     else
                         AreaConfig.set(AreaName + ".MobSpawn", false);
                 } else if (slot == 14)//입장 메시지
                 {
-                    if (AreaConfig.getBoolean(AreaName + ".Alert") == false)
+                    if (!AreaConfig.getBoolean(AreaName + ".Alert"))
                         AreaConfig.set(AreaName + ".Alert", true);
                     else
                         AreaConfig.set(AreaName + ".Alert", false);
                 } else if (slot == 15)//리스폰 장소
                 {
-                    if (AreaConfig.getBoolean(AreaName + ".SpawnPoint") == false)
+                    if (!AreaConfig.getBoolean(AreaName + ".SpawnPoint"))
                         AreaConfig.set(AreaName + ".SpawnPoint", true);
                     else
                         AreaConfig.set(AreaName + ".SpawnPoint", false);
                 } else if (slot == 16)//배경음 재생
                 {
-                    if (AreaConfig.getBoolean(AreaName + ".Music") == false)
+                    if (!AreaConfig.getBoolean(AreaName + ".Music"))
                         AreaConfig.set(AreaName + ".Music", true);
                     else
                         AreaConfig.set(AreaName + ".Music", false);
@@ -1021,7 +1021,7 @@ public class Area_GUI extends Util_GUI {
             } else if (slot == 50)//다음 페이지
                 AreaMonsterSettingGUI(player, (short) (page + 1), AreaName);
             else {
-                if (event.isShiftClick() == true && event.isRightClick() == true) {
+                if (event.isShiftClick() && event.isRightClick()) {
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager AreaConfig = YC.getNewConfig("Area/AreaList.yml");
                     String MonsterName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
@@ -1082,9 +1082,9 @@ public class Area_GUI extends Util_GUI {
                 AreaBlockSettingGUI(player, (short) (page + 1), AreaName);
             else {
                 String BlockName = event.getCurrentItem().getTypeId() + ":" + event.getCurrentItem().getData().getData();
-                if (event.isShiftClick() == false && event.isLeftClick() == true)
+                if (!event.isShiftClick() && event.isLeftClick())
                     AreaBlockItemSettingGUI(player, AreaName, BlockName);
-                else if (event.isShiftClick() == true && event.isRightClick() == true) {
+                else if (event.isShiftClick() && event.isRightClick()) {
                     s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager AreaConfig = YC.getNewConfig("Area/AreaList.yml");

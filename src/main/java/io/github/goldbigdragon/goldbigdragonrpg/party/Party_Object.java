@@ -102,7 +102,7 @@ public class Party_Object {
 
     public void ChangeLock(Player player) {
         if (player.getName().equals(this.Leader)) {
-            if (this.PartyLock == false) {
+            if (!this.PartyLock) {
                 this.PartyLock = true;
                 PartyBroadCastMessage(ChatColor.RED + "[파티] : 더이상 파티 모집을 하지 않습니다!", null);
                 PartyBroadCastSound(Sound.BLOCK_ANVIL_LAND, 1.0F, 1.0F, null);
@@ -125,9 +125,9 @@ public class Party_Object {
     }
 
     public void JoinParty(Player player) {
-        if (Main_ServerOption.PartyJoiner.containsKey(player) == false)
+        if (!Main_ServerOption.PartyJoiner.containsKey(player))
             if (this.PartyCapacity > getPartyMembers())
-                if (this.PartyLock == false)
+                if (!this.PartyLock)
                     if (this.PartyPassword == null) {
                         for (byte count = 0; count < this.PartyCapacity; count++)
                             if (this.PartyMember[count] == null) {
@@ -240,7 +240,7 @@ public class Party_Object {
 
     public void KickPartyMember(Player player, String target) {
         if (player.getName() == this.Leader || player.getName().equals(this.Leader)) {
-            if (player.getName().equals(target) == false)
+            if (!player.getName().equals(target))
                 if (Bukkit.getServer().getOfflinePlayer(target).isOnline())
                     for (byte count = 0; count < this.PartyCapacity; count++) {
                         if (this.PartyMember[count].equals(target)) {

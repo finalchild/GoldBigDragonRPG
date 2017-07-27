@@ -81,7 +81,7 @@ public class SpellMain implements Listener {
         Battle_Calculator damage = new Battle_Calculator();
         Battle_Calculator dam = new Battle_Calculator();
         int bonuspower = 0;
-        if (Main_ServerOption.PlayerUseSpell.containsKey(player) == true) {
+        if (Main_ServerOption.PlayerUseSpell.containsKey(player)) {
             Damageable p = player;
             String switchCheck = Main_ServerOption.PlayerUseSpell.get(player);
             if (switchCheck.compareTo("생명력") == 0)
@@ -111,14 +111,14 @@ public class SpellMain implements Listener {
                 if (t.isOnline())
                     negativeBonus = dam.getMagicProtect(t, Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_INT());
                 else {
-                    if (t.isCustomNameVisible() == true) {
+                    if (t.isCustomNameVisible()) {
                         String name = new Monster_Kill().getRealName(target);
                         if (Main_ServerOption.MonsterList.containsKey(name))
                             negativeBonus = Main_ServerOption.MonsterList.get(name).getMPRO();
                     }
                 }
             } else {
-                if (target.isCustomNameVisible() == true) {
+                if (target.isCustomNameVisible()) {
                     String name = new Monster_Kill().getRealName(target);
                     if (Main_ServerOption.MonsterList.containsKey(name))
                         negativeBonus = Main_ServerOption.MonsterList.get(name).getMPRO();
@@ -382,7 +382,7 @@ public class SpellMain implements Listener {
         int BonusMana = d.getPlayerEquipmentStat(player, "마나", false, newSlot)[0];
         int MaxMana = Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_MaxMP() + BonusMana;
 
-        if (MaxMana > 0 && Main_ServerOption.MagicSpellsEnable == true) {
+        if (MaxMana > 0 && Main_ServerOption.MagicSpellsEnable) {
             try {
                 MagicSpells.getManaHandler().setMaxMana(player, MaxMana);
             } catch (NoClassDefFoundError e) {

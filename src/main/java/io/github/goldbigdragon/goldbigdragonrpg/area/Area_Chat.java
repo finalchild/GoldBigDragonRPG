@@ -112,7 +112,7 @@ public class Area_Chat extends Util_Chat {
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 if (Integer.parseInt(Message) == 0) {
                     AreaConfig = YC.getNewConfig("config.yml");
-                    if (AreaConfig.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System") == true) {
+                    if (AreaConfig.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
                         u.setString(player, (byte) 2, "MinRLR");
                         player.sendMessage(ChatColor.GREEN + "[영역] : " + ChatColor.YELLOW + u.getString(player, (byte) 3) + ChatColor.GREEN + " 영역의 입장에 필요한 최소 누적 레벨을 입력 하세요!" + ChatColor.GRAY + " (0 입력시 제한 없음)");
                     } else {
@@ -133,7 +133,7 @@ public class Area_Chat extends Util_Chat {
                 AreaConfig.saveConfig();
                 AreaConfig = YC.getNewConfig("config.yml");
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
-                if (AreaConfig.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System") == true) {
+                if (AreaConfig.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
                     u.setString(player, (byte) 2, "MinRLR");
                     player.sendMessage(ChatColor.GREEN + "[영역] : " + ChatColor.YELLOW + u.getString(player, (byte) 3) + ChatColor.GREEN + " 영역의 입장에 필요한 최소 누적 레벨을 입력 하세요!" + ChatColor.GRAY + " (0 입력시 제한 없음)");
                 } else {

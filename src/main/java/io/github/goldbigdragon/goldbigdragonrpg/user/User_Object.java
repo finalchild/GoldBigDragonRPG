@@ -191,7 +191,7 @@ public class User_Object {
             for (; ; ) {
                 if (Stat_EXP < Stat_MaxEXP)
                     break;
-                else if (Main_ServerOption.MaxLevel <= Stat_Level || levelYAML.contains((Stat_Level + 1) + "") == false) {
+                else if (Main_ServerOption.MaxLevel <= Stat_Level || !levelYAML.contains((Stat_Level + 1) + "")) {
                     Stat_EXP = Stat_MaxEXP;
                     break;
                 } else {
@@ -733,7 +733,7 @@ public class User_Object {
         PlayerUUID = player.getUniqueId().toString();
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager PlayerConfig = YC.getNewConfig("Stats/" + PlayerUUID + ".yml");
-        if (PlayerConfig.contains("Stat.STR") == false) {
+        if (!PlayerConfig.contains("Stat.STR")) {
             PlayerConfig = YC.getNewConfig("Level.yml");
             Stat_Level = 1;
             Stat_RealLevel = 1;
@@ -888,7 +888,7 @@ public class User_Object {
                         if (getIt)
                             break;
                     }
-                    if (getIt == false) {
+                    if (!getIt) {
                         PlayerJob.set("Job.Type", Config.getString("Server.DefaultJob"));
                         PlayerJob.set("Job.Root", Config.getString("Server.DefaultJob"));
                         PlayerRootJob = Config.getString("Server.DefaultJob");

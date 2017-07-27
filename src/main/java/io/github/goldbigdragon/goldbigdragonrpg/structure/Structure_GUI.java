@@ -152,7 +152,7 @@ public class Structure_GUI extends Util_GUI {
             else {
                 String StructureName = event.getCurrentItem().getItemMeta().getDisplayName();
                 StructureName = StructureName.substring(2, StructureName.length());
-                if (event.isLeftClick() == true) {
+                if (event.isLeftClick()) {
                     if (StructureName.contains("게시판")) {
                         if (StructureName.contains("거래"))
                             new Struct_TradeBoard().TradeBoardSettingGUI(player);
@@ -160,7 +160,7 @@ public class Structure_GUI extends Util_GUI {
                             new Struct_Board().BoardSettingGUI(player, StructureName);
                     }
                     //기능 개체 세부내용(player, StructureName);
-                } else if (event.isShiftClick() == true && event.isRightClick() == true) {
+                } else if (event.isShiftClick() && event.isRightClick()) {
                     s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager StructureConfig = YC.getNewConfig("Structure/StructureList.yml");
@@ -272,7 +272,7 @@ public class Structure_GUI extends Util_GUI {
                 for (; ; ) {
                     for (byte count = 0; count < 6; count++)
                         Salt = Salt + getRandomCode();
-                    if (StructureConfig.contains(Salt) == false)
+                    if (!StructureConfig.contains(Salt))
                         break;
                     Salt = Code;
                 }

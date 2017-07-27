@@ -36,7 +36,7 @@ public class Area_Command {
     public void onCommand(CommandSender talker, Command command, String string, String[] args) {
         Effect_Sound s = new Effect_Sound();
         Player player = (Player) talker;
-        if (player.isOp() == false) {
+        if (!player.isOp()) {
             talker.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
             s.SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             return;
@@ -66,7 +66,7 @@ public class Area_Command {
             Area_Main A = new Area_Main();
             switch (args[1]) {
                 case "생성":
-                    if (Main_ServerOption.catchedLocation1.containsKey(player) == true && Main_ServerOption.catchedLocation2.containsKey(player) == true) {
+                    if (Main_ServerOption.catchedLocation1.containsKey(player) && Main_ServerOption.catchedLocation2.containsKey(player)) {
                         A.CreateNewArea(player, Main_ServerOption.catchedLocation1.get(player), Main_ServerOption.catchedLocation2.get(player), args[0]);
                         return;
                     } else {

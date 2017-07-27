@@ -79,7 +79,7 @@ public class Dungeon_ServerTask {
         Xloc = (Xloc * 21) + DSO.getStartX();
         Zloc = (Zloc * 21) + DSO.getStartZ();
         Location loc = new Location(w, Xloc, Yloc, Zloc);
-        if (DSO.isBossRoomAdded() == false) {
+        if (!DSO.isBossRoomAdded()) {
             for (int counter = 0; counter < DSO.getGridSize(); counter++) {
                 if (DSO.getGrid(counter) == '■') {
                     w = Bukkit.getServer().getWorld("Dungeon");

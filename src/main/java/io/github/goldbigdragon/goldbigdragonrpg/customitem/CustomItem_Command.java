@@ -37,7 +37,7 @@ import org.bukkit.material.MaterialData;
 public class CustomItem_Command {
     public void onCommand1(CommandSender talker, Command command, String string, String[] args) {
         Player player = (Player) talker;
-        if (talker.isOp() == true) {
+        if (talker.isOp()) {
             if (args.length == 0 || args.length >= 4) {
                 HelpMessage(player);
                 return;
@@ -58,7 +58,7 @@ public class CustomItem_Command {
 
     public void onCommand2(CommandSender talker, Command command, String string, String[] args) {
         Player player = (Player) talker;
-        if (talker.isOp() == true) {
+        if (talker.isOp()) {
             String s = "";
             switch (ChatColor.stripColor(args[0])) {
                 case "태그삭제": {
@@ -135,11 +135,11 @@ public class CustomItem_Command {
                     }
                     player.getInventory().getItemInMainHand().setDurability((short) -player.getInventory().getItemInMainHand().getType().getMaxDurability());
                     ItemStack item = player.getInventory().getItemInMainHand();
-                    if (item.hasItemMeta() == true) {
-                        if (item.getItemMeta().hasLore() == true) {
+                    if (item.hasItemMeta()) {
+                        if (item.getItemMeta().hasLore()) {
                             for (short count = 0; count < item.getItemMeta().getLore().size(); count++) {
                                 ItemMeta Meta = item.getItemMeta();
-                                if (Meta.getLore().get(count).contains("내구도") == true) {
+                                if (Meta.getLore().get(count).contains("내구도")) {
                                     String[] Lore = Meta.getLore().get(count).split(" : ");
                                     String[] SubLore = Lore[1].split(" / ");
                                     List<String> PLore = Meta.getLore();
@@ -169,7 +169,7 @@ public class CustomItem_Command {
     }
 
     public void SettingItemMeta(Player player, byte type, int value) {
-        if (player.isOp() == false) {
+        if (!player.isOp()) {
             new Effect_Sound().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
             return;
@@ -189,7 +189,7 @@ public class CustomItem_Command {
                 case 1: {
                     ItemStack it = new MaterialData(item.getTypeId(), (byte) value).toItemStack();
                     it.setAmount(item.getAmount());
-                    if (item.hasItemMeta() == true)
+                    if (item.hasItemMeta())
                         it.setItemMeta(item.getItemMeta());
                     player.getInventory().setItemInMainHand(it);
                 }
@@ -206,7 +206,7 @@ public class CustomItem_Command {
     }
 
     public void SettingItemMeta(Player player, byte type, String value) {
-        if (player.isOp() == false) {
+        if (!player.isOp()) {
             new Effect_Sound().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
             return;
@@ -229,7 +229,7 @@ public class CustomItem_Command {
                 break;
                 case 1: {
                     value = ChatColor.WHITE + value;
-                    if (itemMeta.hasLore() == false)
+                    if (!itemMeta.hasLore())
                         itemMeta.setLore(Arrays.asList(value));
                     else {
                         Lore = itemMeta.getLore();
@@ -241,7 +241,7 @@ public class CustomItem_Command {
                 }
                 break;
                 case 2: {
-                    if (itemMeta.hasLore() == false) {
+                    if (!itemMeta.hasLore()) {
                         return;
                     } else {
                         Lore = itemMeta.getLore();

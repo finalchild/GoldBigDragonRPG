@@ -189,8 +189,8 @@ public class ETC {
     }
 
     public void UpdatePlayerHPMP(Player player) {
-        if (Bukkit.getPluginManager().isPluginEnabled("MagicSpells") == true
-                && Main_ServerOption.MagicSpellsCatched == true) {
+        if (Bukkit.getPluginManager().isPluginEnabled("MagicSpells")
+                && Main_ServerOption.MagicSpellsCatched) {
             io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain MS = new io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain();
             MS.setPlayerMaxAndNowMana(player);
         }
@@ -206,7 +206,7 @@ public class ETC {
     }
 
     public void SlotChangedUpdatePlayerHPMP(Player player, ItemStack newSlot) {
-        if (Main_ServerOption.MagicSpellsCatched == true) {
+        if (Main_ServerOption.MagicSpellsCatched) {
             io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain MS = new io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain();
             MS.setSlotChangePlayerMaxAndNowMana(player, newSlot);
         }

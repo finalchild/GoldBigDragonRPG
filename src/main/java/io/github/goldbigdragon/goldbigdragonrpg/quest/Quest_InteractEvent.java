@@ -52,7 +52,7 @@ public class Quest_InteractEvent {
                     if (target.getType() == EntityType.PLAYER)
                         u.setString(player, (byte) 3, target.getName());
                     else {
-                        if (target.isCustomNameVisible() == false)
+                        if (!target.isCustomNameVisible())
                             u.setString(player, (byte) 3, target.getName());
                         else
                             u.setString(player, (byte) 3, target.getCustomName());
@@ -65,7 +65,7 @@ public class Quest_InteractEvent {
                 if (target.getType() == EntityType.PLAYER)
                     u.setString(player, (byte) 2, target.getName());
                 else {
-                    if (target.isCustomNameVisible() == false)
+                    if (!target.isCustomNameVisible())
                         u.setString(player, (byte) 2, target.getName());
                     else
                         u.setString(player, (byte) 2, target.getCustomName());
@@ -96,7 +96,7 @@ public class Quest_InteractEvent {
                             QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + b + ".NPCname", target.getName());
                             QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + b + ".NPCuuid", ((Player) target).getUniqueId().toString());
                         } else {
-                            if (target.isCustomNameVisible() == true)
+                            if (target.isCustomNameVisible())
                                 QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + b + ".NPCname", target.getCustomName());
                             else
                                 QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + b + ".NPCname", target.getName());
@@ -117,7 +117,7 @@ public class Quest_InteractEvent {
                         QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + c + ".TargetNPCuuid", ((Player) target).getUniqueId().toString());
                         QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + c + ".TargetNPCname", target.getName());
                     } else {
-                        if (target.isCustomNameVisible() == true)
+                        if (target.isCustomNameVisible())
                             QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + c + ".TargetNPCname", target.getCustomName());
                         else
                             QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + c + ".TargetNPCname", target.getName());

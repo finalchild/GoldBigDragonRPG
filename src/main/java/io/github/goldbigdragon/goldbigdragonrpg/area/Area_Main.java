@@ -69,13 +69,13 @@ public class Area_Main {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager AreaList = YC.getNewConfig("Area/AreaList.yml");
 
-        if (AreaList.contains(name) == true) {
+        if (AreaList.contains(name)) {
             new Effect_Sound().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 이름은 이미 등록되어 있습니다!");
             return;
         }
 
-        if (loc1.getWorld().equals(loc2.getWorld()) == false) {
+        if (!loc1.getWorld().equals(loc2.getWorld())) {
             new Effect_Sound().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 서로 다른 월드간은 영역 지정을 할 수 없습니다!");
             return;
@@ -263,7 +263,7 @@ public class Area_Main {
 
                 String[] ret = new String[2];
                 for (short count = 0; count < AreaName.size(); count++) {
-                    if (AreaYM.contains(AreaName.get(count) + ".Priority") == false) {
+                    if (!AreaYM.contains(AreaName.get(count) + ".Priority")) {
                         AreaYM.set(AreaName.get(count) + ".Priority", 5);
                         AreaYM.saveConfig();
                     }
@@ -329,7 +329,7 @@ public class Area_Main {
     public void sendAreaTitle(Player player, String AreaName) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager AreaList = YC.getNewConfig("Area/AreaList.yml");
-        if (getAreaOption(AreaName, (char) 4) == true) {
+        if (getAreaOption(AreaName, (char) 4)) {
             String Title = AreaList.getString(AreaName + ".Name").replace("%player%", player.getName());
             String Description = AreaList.getString(AreaName + ".Description").replace("%player%", player.getName());
             new Effect_Packet().sendTitleSubTitle(player, "\'" + Title + "\'", "\'" + Description + "\'", (byte) 1, (byte) 10, (byte) 1);
@@ -341,10 +341,10 @@ public class Area_Main {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager AreaConfig = YC.getNewConfig("Area/AreaList.yml");
         if (Long.parseLong(Count) != -1) {
-            if (AreaConfig.contains(AreaName + ".MonsterSpawnRule") == true) {
+            if (AreaConfig.contains(AreaName + ".MonsterSpawnRule")) {
                 if (AreaConfig.getConfigurationSection(AreaName + ".MonsterSpawnRule").getKeys(false).size() != 0) {
                     if (AreaConfig.getString(AreaName + ".MonsterSpawnRule." + Count + ".loc.world") != null) {
-                        if (ServerTick_Main.MobSpawningAreaList.contains(AreaName) == false)
+                        if (!ServerTick_Main.MobSpawningAreaList.contains(AreaName))
                             ServerTick_Main.MobSpawningAreaList.add(AreaName);
 
                         Long UTC = ServerTick_Main.nowUTC + 5;
@@ -372,9 +372,9 @@ public class Area_Main {
                 }
             }
         } else {
-            if (AreaConfig.contains(AreaName + ".MonsterSpawnRule") == true) {
+            if (AreaConfig.contains(AreaName + ".MonsterSpawnRule")) {
                 if (AreaConfig.getConfigurationSection(AreaName + ".MonsterSpawnRule").getKeys(false).size() != 0) {
-                    if (ServerTick_Main.MobSpawningAreaList.contains(AreaName) == false) {
+                    if (!ServerTick_Main.MobSpawningAreaList.contains(AreaName)) {
                         ServerTick_Main.MobSpawningAreaList.add(AreaName);
                         Object[] RuleName = AreaConfig.getConfigurationSection(AreaName + ".MonsterSpawnRule").getKeys(false).toArray();
                         for (short count = 0; count < RuleName.length; count++) {

@@ -252,7 +252,7 @@ public class Equip_GUI extends Util_GUI {
             for (byte count = 0; count < 12; count++) {
                 if (mySideSlot[count] != null) {
                     if (mySideSlot[count].hasItemMeta()) {
-                        if (mySideSlot[count].getItemMeta().hasLore() == false &&
+                        if (!mySideSlot[count].getItemMeta().hasLore() &&
                                 mySideSlot[count].getItemMeta().hasDisplayName()) {
                             if (mySideSlot[count].getItemMeta().getDisplayName().compareTo(ChatColor.GRAY + "" + ChatColor.BOLD + "[아무것도 올려지지 않음]") == 0) {
                                 emptySlot = count;
@@ -344,7 +344,7 @@ public class Equip_GUI extends Util_GUI {
                     (event.getSlot() >= 37 && event.getSlot() <= 39)) {
                 if (event.getCurrentItem() != null) {
                     if (event.getCurrentItem().hasItemMeta()) {
-                        if (event.getCurrentItem().getItemMeta().hasLore() == false &&
+                        if (!event.getCurrentItem().getItemMeta().hasLore() &&
                                 event.getCurrentItem().getItemMeta().hasDisplayName()) {
                             if (event.getCurrentItem().getItemMeta().getDisplayName().compareTo(ChatColor.GRAY + "" + ChatColor.BOLD + "[아무것도 올려지지 않음]") == 0) {
                                 return;
@@ -461,7 +461,7 @@ public class Equip_GUI extends Util_GUI {
                             for (byte count2 = 10; count2 < 13; count2++) {
                                 if (event.getInventory().getItem(count2 + (count * 9)) != null) {
                                     if (event.getInventory().getItem(count2 + (count * 9)).hasItemMeta()) {
-                                        if (event.getInventory().getItem(count2 + (count * 9)).getItemMeta().hasLore() == false &&
+                                        if (!event.getInventory().getItem(count2 + (count * 9)).getItemMeta().hasLore() &&
                                                 event.getInventory().getItem(count2 + (count * 9)).getItemMeta().hasDisplayName()) {
                                             if (event.getInventory().getItem(count2 + (count * 9)).getItemMeta().getDisplayName().compareTo(ChatColor.GRAY + "" + ChatColor.BOLD + "[아무것도 올려지지 않음]") != 0)
                                                 target.getInventory().addItem(event.getInventory().getItem(count2 + (count * 9)));
@@ -478,7 +478,7 @@ public class Equip_GUI extends Util_GUI {
                             for (byte count2 = 10; count2 < 13; count2++) {
                                 if (target.getOpenInventory().getItem(count2 + (count * 9)) != null) {
                                     if (target.getOpenInventory().getItem(count2 + (count * 9)).hasItemMeta()) {
-                                        if (target.getOpenInventory().getItem(count2 + (count * 9)).getItemMeta().hasLore() == false &&
+                                        if (!target.getOpenInventory().getItem(count2 + (count * 9)).getItemMeta().hasLore() &&
                                                 target.getOpenInventory().getItem(count2 + (count * 9)).getItemMeta().hasDisplayName()) {
                                             if (target.getOpenInventory().getItem(count2 + (count * 9)).getItemMeta().getDisplayName().compareTo(ChatColor.GRAY + "" + ChatColor.BOLD + "[아무것도 올려지지 않음]") != 0)
                                                 player.getInventory().addItem(target.getOpenInventory().getItem(count2 + (count * 9)));
@@ -524,7 +524,7 @@ public class Equip_GUI extends Util_GUI {
                     for (byte count2 = 10; count2 < 13; count2++) {
                         if (event.getInventory().getItem(count2 + (count * 9)) != null) {
                             if (event.getInventory().getItem(count2 + (count * 9)).hasItemMeta()) {
-                                if (event.getInventory().getItem(count2 + (count * 9)).getItemMeta().hasLore() == false &&
+                                if (!event.getInventory().getItem(count2 + (count * 9)).getItemMeta().hasLore() &&
                                         event.getInventory().getItem(count2 + (count * 9)).getItemMeta().hasDisplayName()) {
                                     if (event.getInventory().getItem(count2 + (count * 9)).getItemMeta().getDisplayName().compareTo(ChatColor.GRAY + "" + ChatColor.BOLD + "[아무것도 올려지지 않음]") != 0)
                                         player.getInventory().addItem(event.getInventory().getItem(count2 + (count * 9)));
@@ -559,7 +559,7 @@ public class Equip_GUI extends Util_GUI {
                 for (byte count2 = 10; count2 < 13; count2++) {
                     if (event.getInventory().getItem(count2 + (count * 9)) != null) {
                         if (event.getInventory().getItem(count2 + (count * 9)).hasItemMeta()) {
-                            if (event.getInventory().getItem(count2 + (count * 9)).getItemMeta().hasLore() == false &&
+                            if (!event.getInventory().getItem(count2 + (count * 9)).getItemMeta().hasLore() &&
                                     event.getInventory().getItem(count2 + (count * 9)).getItemMeta().hasDisplayName()) {
                                 if (event.getInventory().getItem(count2 + (count * 9)).getItemMeta().getDisplayName().compareTo(ChatColor.GRAY + "" + ChatColor.BOLD + "[아무것도 올려지지 않음]") != 0)
                                     player.getInventory().addItem(event.getInventory().getItem(count2 + (count * 9)));
@@ -583,14 +583,14 @@ public class Equip_GUI extends Util_GUI {
     public void SetFriends(Player player, Player target) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager FriendsList = YC.getNewConfig("Friend/" + player.getUniqueId().toString() + ".yml");
-        if (FriendsList.contains("Name") == false) {
+        if (!FriendsList.contains("Name")) {
             FriendsList.set("Name", player.getName());
             FriendsList.createSection("Friends");
             FriendsList.createSection("Waitting");
             FriendsList.saveConfig();
         }
         YamlManager SideFriendsList = YC.getNewConfig("Friend/" + target.getUniqueId().toString() + ".yml");
-        if (SideFriendsList.contains("Name") == false) {
+        if (!SideFriendsList.contains("Name")) {
             SideFriendsList.set("Name", target.getName());
             SideFriendsList.createSection("Friends");
             SideFriendsList.createSection("Waitting");
@@ -650,7 +650,7 @@ public class Equip_GUI extends Util_GUI {
     public void FriendJoinQuitMessage(Player player, boolean isJoinMessage) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager FriendsList = YC.getNewConfig("Friend/" + player.getUniqueId().toString() + ".yml");
-        if (FriendsList.contains("Name") == false) {
+        if (!FriendsList.contains("Name")) {
             FriendsList.set("Name", player.getName());
             FriendsList.createSection("Friends");
             FriendsList.createSection("Waitting");
@@ -684,13 +684,13 @@ public class Equip_GUI extends Util_GUI {
 
     public void AddExchangeTarget(Player player, Player target) {
         Effect_Sound s = new Effect_Sound();
-        if (ServerTick_Main.PlayerTaskList.containsKey(target.getName()) == true) {
+        if (ServerTick_Main.PlayerTaskList.containsKey(target.getName())) {
             s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
             player.sendMessage(ChatColor.RED + "[교환] : 해당 플레이어는 현재 다른 요청을 처리하고 있습니다.");
             player.sendMessage(ChatColor.GRAY + "(잠시 후 다시 시도 해 보세요.)");
             return;
         }
-        if (ServerTick_Main.PlayerTaskList.containsKey(player.getName()) == true) {
+        if (ServerTick_Main.PlayerTaskList.containsKey(player.getName())) {
             s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
             player.sendMessage(ChatColor.RED + "[교환] : 당신은 먼저 요청받은 일을 처리해야 합니다.");
             return;

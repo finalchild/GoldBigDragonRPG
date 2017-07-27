@@ -240,26 +240,26 @@ public class Dungeon_ScheduleObject {
         int loc = GridLoc.get(index);
         switch (Direction) {
             case 'N':
-                if (GridLoc.contains(loc - size) == false)
+                if (!GridLoc.contains(loc - size))
                     return (char) -1;
                 loc = loc - size;
                 break;
             case 'E':
                 if (loc % size == size - 1)
                     return (char) -1;
-                if (GridLoc.contains(loc + 1) == false)
+                if (!GridLoc.contains(loc + 1))
                     return (char) -1;
                 loc = loc + 1;
                 break;
             case 'S':
-                if (GridLoc.contains(loc + size) == false)
+                if (!GridLoc.contains(loc + size))
                     return (char) -1;
                 loc = loc + size;
                 break;
             case 'W':
                 if (loc % size == 0)
                     return (char) -1;
-                if (GridLoc.contains(loc - 1) == false)
+                if (!GridLoc.contains(loc - 1))
                     return (char) -1;
                 loc = loc - 1;
                 break;

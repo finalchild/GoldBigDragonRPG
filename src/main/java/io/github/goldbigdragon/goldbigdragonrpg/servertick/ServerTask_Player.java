@@ -226,7 +226,7 @@ public class ServerTask_Player {
             new Gamble_GUI().SlotMachine_RollingGUI(STSO.getString((byte) 0), ID, true, STSO.getString((byte) 1));
 
             if (Bukkit.getServer().getPlayer(STSO.getString((byte) 0)) != null) {
-                if (Bukkit.getServer().getPlayer(STSO.getString((byte) 0)).isOnline() == true) {
+                if (Bukkit.getServer().getPlayer(STSO.getString((byte) 0)).isOnline()) {
                     Player player = Bukkit.getServer().getPlayer(STSO.getString((byte) 0));
                     String MachineNumber = STSO.getString((byte) 1);
                     String Present = null;

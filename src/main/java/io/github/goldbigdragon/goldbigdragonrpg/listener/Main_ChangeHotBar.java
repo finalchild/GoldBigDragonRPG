@@ -50,10 +50,10 @@ public class Main_ChangeHotBar implements Listener {
 
         byte NewSlot = (byte) event.getNewSlot();
         if (player.getInventory().getItem(NewSlot) != null) {
-            if (player.getInventory().getItem(NewSlot).hasItemMeta() == true) {
+            if (player.getInventory().getItem(NewSlot).hasItemMeta()) {
                 ItemStack item = player.getInventory().getItem(NewSlot);
-                if (item.getItemMeta().hasLore() == true) {
-                    if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isClickUse() == false && item.getItemMeta().getLore().toString().contains("[소비]")) {
+                if (item.getItemMeta().hasLore()) {
+                    if (!Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isClickUse() && item.getItemMeta().getLore().toString().contains("[소비]")) {
                         byte PrevSlot = (byte) event.getPreviousSlot();
 
                         int Health = 0;
@@ -69,11 +69,11 @@ public class Main_ChangeHotBar implements Listener {
                                 else if (nowlore.contains("포만감"))
                                     Food = Integer.parseInt(nowlore.split(" : ")[1]);
                             } else if (nowlore.contains("환생")) {
-                                if (nowlore.contains(" + ") == true) {
+                                if (nowlore.contains(" + ")) {
                                     YamlController YC = new YamlController(Main_Main.plugin);
                                     YamlManager Config = YC.getNewConfig("config.yml");
                                     Effect_Sound s = new Effect_Sound();
-                                    if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System") == true) {
+                                    if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
                                         Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).addStat_RealLevel(1);
                                         Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setStat_Level(1);
                                         Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setStat_EXP(0);
@@ -101,7 +101,7 @@ public class Main_ChangeHotBar implements Listener {
                                 Dp.setHealth(Dp.getHealth() + Health);
                         }
                         if (Mana > 0) {
-                            if (Main_ServerOption.MagicSpellsCatched == true) {
+                            if (Main_ServerOption.MagicSpellsCatched) {
                                 io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain MS = new io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain();
                                 MS.DrinkManaPotion(player, Mana);
                                 sound.SL(player.getLocation(), Sound.BLOCK_WATER_AMBIENT, 2.0F, 1.9F);
@@ -134,7 +134,7 @@ public class Main_ChangeHotBar implements Listener {
                             YamlManager AllSkillList = YC.getNewConfig("Skill/SkillList.yml");
                             short PlayerSkillRank = 0;
 
-                            if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System") == false)
+                            if (!Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System"))
                                 PlayerSkillRank = (short) PlayerSkillList.getInt("MapleStory." + CategoryName + ".Skill." + Skillname);
                             else
                                 PlayerSkillRank = (short) PlayerSkillList.getInt("Mabinogi." + CategoryName + "." + Skillname);
@@ -158,10 +158,10 @@ public class Main_ChangeHotBar implements Listener {
 
                             boolean Useable = false;
 
-                            if (DistrictWeapon.equalsIgnoreCase("없음") == false) {
+                            if (!DistrictWeapon.equalsIgnoreCase("없음")) {
                                 if (player.getInventory().getItem(PrevSlot) != null) {
                                     ItemStack PrevItem = player.getInventory().getItem(PrevSlot);
-                                    if (player.getInventory().getItem(PrevSlot).hasItemMeta() == false) {
+                                    if (!player.getInventory().getItem(PrevSlot).hasItemMeta()) {
                                         short PlayerItemIDItemStack = (short) PrevItem.getTypeId();
                                         switch (DistrictWeapon) {
                                             case "근접 무기": {
@@ -263,7 +263,7 @@ public class Main_ChangeHotBar implements Listener {
                                             break;
                                         }
                                     } else {
-                                        if (PrevItem.getItemMeta().hasLore() == true) {
+                                        if (PrevItem.getItemMeta().hasLore()) {
                                             switch (DistrictWeapon) {
                                                 case "근접 무기":
                                                     if (PrevItem.getItemMeta().getLore().toString().contains("[한손 검]") || PrevItem.getItemMeta().getLore().toString().contains("[양손 검]")
@@ -290,20 +290,20 @@ public class Main_ChangeHotBar implements Listener {
                                     }
                                 }
                             }
-                            if (Useable == false && DistrictWeapon.equalsIgnoreCase("없음") == false) {
+                            if (!Useable && !DistrictWeapon.equalsIgnoreCase("없음")) {
                                 player.sendMessage(ChatColor.RED + "[스킬] : 현재 무기로는 스킬을 사용할 수 없습니다!");
                                 player.sendMessage(ChatColor.RED + "필요 무기 타입 : " + DistrictWeapon);
                                 return;
                             }
-                            if (Command.equalsIgnoreCase("null") == false) {
-                                if (isConsole == true)
+                            if (!Command.equalsIgnoreCase("null")) {
+                                if (isConsole)
                                     Bukkit.getConsoleSender().sendMessage(Command);
                                 else
                                     player.chat(Command);
                             }
 
-                            if (Bukkit.getPluginManager().isPluginEnabled("MagicSpells") == true) {
-                                if (Spell.equalsIgnoreCase("null") == false) {
+                            if (Bukkit.getPluginManager().isPluginEnabled("MagicSpells")) {
+                                if (!Spell.equalsIgnoreCase("null")) {
                                     Object[] spells = MagicSpells.spells().toArray();
                                     Spell spell;
                                     boolean isExit = false;
@@ -314,7 +314,7 @@ public class Main_ChangeHotBar implements Listener {
                                             break;
                                         }
                                     }
-                                    if (isExit == true) {
+                                    if (isExit) {
                                         io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain MS = new io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain();
                                         MS.CastSpell(player, Spell);
                                     } else {

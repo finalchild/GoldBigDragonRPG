@@ -345,7 +345,7 @@ public class Quest_Chat extends Util_Chat {
                         Flownumber = (short) (b.size() - 1);
                     else
                         Flownumber = (short) b.size();
-                    if (QuestConfig.contains(u.getString(player, (byte) 2) + ".FlowChart." + Flownumber + ".Monster") == false) {
+                    if (!QuestConfig.contains(u.getString(player, (byte) 2) + ".FlowChart." + Flownumber + ".Monster")) {
                         QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + Flownumber + ".Type", "Hunt");
                         QuestConfig.createSection(u.getString(player, (byte) 2) + ".FlowChart." + Flownumber + ".Monster");
                         QuestConfig.saveConfig();
@@ -391,7 +391,7 @@ public class Quest_Chat extends Util_Chat {
                             Flownumber = (short) (b.size() - 1);
                         else
                             Flownumber = (short) b.size();
-                        if (QuestConfig.contains(u.getString(player, (byte) 2) + ".FlowChart." + Flownumber + ".Block") == false) {
+                        if (!QuestConfig.contains(u.getString(player, (byte) 2) + ".FlowChart." + Flownumber + ".Block")) {
                             QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + Flownumber + ".Type", "Harvest");
                             QuestConfig.createSection(u.getString(player, (byte) 2) + ".FlowChart." + Flownumber + ".Block");
                             QuestConfig.saveConfig();
@@ -407,7 +407,7 @@ public class Quest_Chat extends Util_Chat {
                         QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + Flownumber + ".Block." + BlockNumber + ".DataEquals", u.getBoolean(player, (byte) 1));
                         QuestConfig.saveConfig();
 
-                        if (u.getBoolean(player, (byte) 1) == false)
+                        if (!u.getBoolean(player, (byte) 1))
                             player.sendMessage(ChatColor.GREEN + "[퀘스트] : 아이템 ID가 " + ChatColor.YELLOW + u.getInt(player, (byte) 1) + ChatColor.GREEN + " 인 모든 블록을 " + ChatColor.YELLOW + Integer.parseInt(event.getMessage()) + ChatColor.GREEN + " 개 채집하도록 설정되었습니다!");
                         else
                             player.sendMessage(ChatColor.GREEN + "[퀘스트] : 아이템 코드 " + ChatColor.YELLOW + u.getInt(player, (byte) 1) + ":" + u.getInt(player, (byte) 2) + ChatColor.GREEN + " 인 블록을 " + ChatColor.YELLOW + Integer.parseInt(event.getMessage()) + ChatColor.GREEN + " 개 채집하도록 설정되었습니다!");
@@ -423,7 +423,7 @@ public class Quest_Chat extends Util_Chat {
         }
 
         if (u.getString(player, (byte) 2) != null) {
-            if (u.getString(player, (byte) 1).contains("District") == true) {
+            if (u.getString(player, (byte) 1).contains("District")) {
                 if (isIntMinMax(event.getMessage(), player, 0, Integer.MAX_VALUE)) {
                     String QuestName = u.getString(player, (byte) 2);
                     int value = Integer.parseInt(event.getMessage());

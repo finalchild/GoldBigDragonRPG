@@ -44,7 +44,7 @@ public class Admin_Command {
         YamlController YC = new YamlController(Main_Main.plugin);
         Effect_Sound s = new Effect_Sound();
 
-        if (player.isOp() == true) {
+        if (player.isOp()) {
             if (string.compareTo("테스트") == 0 || string.compareTo("gbdtest") == 0) {
                 player.sendMessage("테스트1");
             } else if (string.compareTo("테스트2") == 0 || string.compareTo("gbdtest2") == 0) {

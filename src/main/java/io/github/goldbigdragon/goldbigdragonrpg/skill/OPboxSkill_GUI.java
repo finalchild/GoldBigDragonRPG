@@ -57,16 +57,16 @@ public class OPboxSkill_GUI extends Util_GUI {
                 JobLevel = (short) SkillList.getConfigurationSection(a[count].toString() + ".SkillRank").getKeys(false).size();
             if (count > a.length || loc >= 45) break;
 
-            if (isJobGUI == true) {
+            if (isJobGUI) {
                 YamlManager JobList = YC.getNewConfig("Skill/JobList.yml");
                 if (WhatJob.compareTo("Maple") == 0) {
                     UserData_Object u = new UserData_Object();
-                    if (JobList.contains("MapleStory." + u.getString(player, (byte) 3) + "." + u.getString(player, (byte) 2) + ".Skill." + SkillName) == false) {
+                    if (!JobList.contains("MapleStory." + u.getString(player, (byte) 3) + "." + u.getString(player, (byte) 2) + ".Skill." + SkillName)) {
                         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + SkillName, SkillList.getInt(a[count].toString() + ".ID"), SkillList.getInt(a[count].toString() + ".DATA"), SkillList.getInt(a[count].toString() + ".Amount"), Arrays.asList(ChatColor.DARK_AQUA + "최대 스킬 레벨 : " + ChatColor.WHITE + JobLevel, "", ChatColor.YELLOW + "[좌 클릭시 스킬 등록]"), loc, inv);
                         loc++;
                     }
                 } else {
-                    if (JobList.contains("Mabinogi.Added." + SkillName) == false) {
+                    if (!JobList.contains("Mabinogi.Added." + SkillName)) {
                         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + SkillName, SkillList.getInt(a[count].toString() + ".ID"), SkillList.getInt(a[count].toString() + ".DATA"), SkillList.getInt(a[count].toString() + ".Amount"), Arrays.asList(ChatColor.DARK_AQUA + "최대 스킬 레벨 : " + ChatColor.WHITE + JobLevel, "", ChatColor.YELLOW + "[좌 클릭시 스킬 등록]"), loc, inv);
                         loc++;
                     }
@@ -83,7 +83,7 @@ public class OPboxSkill_GUI extends Util_GUI {
         if (page != 0)
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        if (isJobGUI == false)
+        if (!isJobGUI)
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 스킬", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 스킬을 생성합니다."), 49, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다.", ChatColor.BLACK + WhatJob), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + "" + isJobGUI), 53, inv);
@@ -107,7 +107,7 @@ public class OPboxSkill_GUI extends Util_GUI {
                 lore = ChatColor.GRAY + "[지정된 커맨드 없음]%enter%";
             else {
                 lore = ChatColor.DARK_AQUA + "커맨드 : " + ChatColor.WHITE + SkillList.getString(SkillName + ".SkillRank." + (count + 1) + ".Command") + "%enter%";
-                if (SkillList.getBoolean(SkillName + ".SkillRank." + (count + 1) + ".BukkitPermission") == false)
+                if (!SkillList.getBoolean(SkillName + ".SkillRank." + (count + 1) + ".BukkitPermission"))
                     lore = lore + ChatColor.WHITE + "[개인 권한 사용]%enter%";
                 else
                     lore = lore + ChatColor.LIGHT_PURPLE + "[콘솔 권한 사용]%enter%";
@@ -228,18 +228,18 @@ public class OPboxSkill_GUI extends Util_GUI {
             lore = ChatColor.WHITE + SkillList.getString(SkillName + ".SkillRank." + SkillLevel + ".Command");
 
         Stack2(ChatColor.DARK_AQUA + "[커맨드 지정]", 137, 0, 1, Arrays.asList("", ChatColor.DARK_AQUA + "[현재 등록된 커맨드]", lore, "", ChatColor.YELLOW + "[좌 클릭시 커맨드 변경]"), 11, inv);
-        if (SkillList.getBoolean(SkillName + ".SkillRank." + SkillLevel + ".BukkitPermission") == false)
+        if (!SkillList.getBoolean(SkillName + ".SkillRank." + SkillLevel + ".BukkitPermission"))
             Stack2(ChatColor.DARK_AQUA + "[커맨드 권한]", 397, 3, 1, Arrays.asList("", ChatColor.DARK_AQUA + "[커맨드 실행시 사용될 권한]", ChatColor.GRAY + "[  개인  ]", "", ChatColor.YELLOW + "[좌 클릭시 권한 변경]"), 13, inv);
         else
             Stack2(ChatColor.DARK_AQUA + "[커맨드 권한]", 137, 3, 1, Arrays.asList("", ChatColor.DARK_AQUA + "[커맨드 실행시 사용될 권한]", ChatColor.LIGHT_PURPLE + "[  버킷  ]", "", ChatColor.YELLOW + "[좌 클릭시 권한 변경]"), 13, inv);
 
-        if (Bukkit.getPluginManager().isPluginEnabled("MagicSpells") == true) {
+        if (Bukkit.getPluginManager().isPluginEnabled("MagicSpells")) {
             if (SkillList.getString(SkillName + ".SkillRank." + SkillLevel + ".MagicSpells").equalsIgnoreCase("null"))
                 Stack2(ChatColor.DARK_AQUA + "[매직 스펠]", 280, 0, 1, Arrays.asList("", ChatColor.DARK_AQUA + "[현재 등록된 스펠]", ChatColor.GRAY + "[  없음  ]", "", ChatColor.YELLOW + "[좌 클릭시 스펠 변경]"), 15, inv);
             else
                 Stack2(ChatColor.DARK_AQUA + "[매직 스펠]", 369, 0, 1, Arrays.asList("", ChatColor.DARK_AQUA + "[현재 등록된 스펠]", ChatColor.WHITE + SkillList.getString(SkillName + ".SkillRank." + SkillLevel + ".MagicSpells"), "", ChatColor.YELLOW + "[좌 클릭시 스펠 변경]"), 15, inv);
 
-            if (SkillList.contains(SkillName + ".SkillRank." + SkillLevel + ".AffectStat") == false) {
+            if (!SkillList.contains(SkillName + ".SkillRank." + SkillLevel + ".AffectStat")) {
                 SkillList.set(SkillName + ".SkillRank." + SkillLevel + ".AffectStat", "없음");
                 SkillList.saveConfig();
             }
@@ -268,7 +268,7 @@ public class OPboxSkill_GUI extends Util_GUI {
             Stack2(ChatColor.RED + "[스킬 공격력 상승]", 166, 0, 1, Arrays.asList("", ChatColor.RED + "[MagicSpells 플러그인을 찾을 수 없음]", ChatColor.GRAY + "MagicSpells 플러그인이 있을 경우", ChatColor.GRAY + "사용할 수 있는 옵션입니다.", ""), 21, inv);
         }
 
-        if (SkillList.contains(SkillName + ".SkillRank." + SkillLevel + ".DistrictWeapon") == false) {
+        if (!SkillList.contains(SkillName + ".SkillRank." + SkillLevel + ".DistrictWeapon")) {
             SkillList.set(SkillName + ".SkillRank." + SkillLevel + ".DistrictWeapon", "없음");
             SkillList.saveConfig();
         }
@@ -315,7 +315,7 @@ public class OPboxSkill_GUI extends Util_GUI {
                 break;
         }
 
-        if (SkillList.contains(SkillName + ".SkillRank." + SkillLevel + ".Lore") == false) {
+        if (!SkillList.contains(SkillName + ".SkillRank." + SkillLevel + ".Lore")) {
             SkillList.set(SkillName + ".SkillRank." + SkillLevel + ".Lore", ChatColor.GRAY + "     [설명 없음]     ");
             SkillList.saveConfig();
         }
@@ -362,14 +362,14 @@ public class OPboxSkill_GUI extends Util_GUI {
         {
             s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
-            if (isJobGUI == true && WhatJob.compareTo("Maple") == 0)
+            if (isJobGUI && WhatJob.compareTo("Maple") == 0)
                 u.clearAll(player);
         } else {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             if (slot == 45)//이전 목록
             {
-                if (isJobGUI == true) {
+                if (isJobGUI) {
                     if (WhatJob.compareTo("Maple") == 0) {
                         new Job_GUI().MapleStory_JobSetting(player, u.getString(player, (byte) 3));
                         u.clearAll(player);
@@ -392,7 +392,7 @@ public class OPboxSkill_GUI extends Util_GUI {
                 u.setType(player, "Skill");
                 u.setString(player, (byte) 1, "CS");
             } else {
-                if (isJobGUI == true) {
+                if (isJobGUI) {
                     String SkillName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
                     if (WhatJob.compareTo("Maple") == 0) {
                         s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
@@ -418,17 +418,17 @@ public class OPboxSkill_GUI extends Util_GUI {
                     }
                     return;
                 } else {
-                    if (event.isShiftClick() == true && event.isLeftClick() == true) {
+                    if (event.isShiftClick() && event.isLeftClick()) {
                         s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                         player.closeInventory();
                         player.sendMessage(ChatColor.LIGHT_PURPLE + "[스킬] : 스킬 아이콘의 ID값을 입력 해 주세요!!");
                         u.setType(player, "Skill");
                         u.setString(player, (byte) 1, "CSID");
                         u.setString(player, (byte) 2, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
-                    } else if (event.isLeftClick() == true && event.isRightClick() == false) {
+                    } else if (event.isLeftClick() && !event.isRightClick()) {
                         s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                         IndividualSkillOptionGUI(player, (short) 0, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
-                    } else if (event.isShiftClick() == true && event.isRightClick() == true) {
+                    } else if (event.isShiftClick() && event.isRightClick()) {
                         s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                         YamlController YC = new YamlController(Main_Main.plugin);
                         YamlManager Config = YC.getNewConfig("Config.yml");
@@ -481,10 +481,10 @@ public class OPboxSkill_GUI extends Util_GUI {
                 YamlManager Config = YC.getNewConfig("Config.yml");
                 YamlManager SkillList = YC.getNewConfig("Skill/SkillList.yml");
                 short size = (short) SkillList.getConfigurationSection(SkillName + ".SkillRank").getKeys(false).size();
-                if (event.isLeftClick() == true && event.isRightClick() == false) {
+                if (event.isLeftClick() && !event.isRightClick()) {
                     s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                     SkillRankOptionGUI(player, SkillName, (short) ((page * 45) + event.getSlot() + 1));
-                } else if (event.isShiftClick() == true && event.isRightClick() == true && (page * 45) + event.getSlot() != 0 && (page * 45) + event.getSlot() + 1 == size) {
+                } else if (event.isShiftClick() && event.isRightClick() && (page * 45) + event.getSlot() != 0 && (page * 45) + event.getSlot() + 1 == size) {
                     Config.set("Time.LastSkillChanged", new Util_Number().RandomNum(0, 100000) - new Util_Number().RandomNum(0, 100000));
                     Config.saveConfig();
                     s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
@@ -548,7 +548,7 @@ public class OPboxSkill_GUI extends Util_GUI {
             return;
             case 13://커맨드 권한
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
-                if (SkillList.getBoolean(SkillName + ".SkillRank." + SkillLevel + ".BukkitPermission") == true)
+                if (SkillList.getBoolean(SkillName + ".SkillRank." + SkillLevel + ".BukkitPermission"))
                     SkillList.set(SkillName + ".SkillRank." + SkillLevel + ".BukkitPermission", false);
                 else
                     SkillList.set(SkillName + ".SkillRank." + SkillLevel + ".BukkitPermission", true);
@@ -556,7 +556,7 @@ public class OPboxSkill_GUI extends Util_GUI {
                 SkillRankOptionGUI(player, SkillName, SkillLevel);
                 return;
             case 15://매직 스펠
-                if (Bukkit.getPluginManager().isPluginEnabled("MagicSpells") == true) {
+                if (Bukkit.getPluginManager().isPluginEnabled("MagicSpells")) {
                     s.SP(player, Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.9F);
                     player.closeInventory();
                     new io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain().ShowAllMaigcGUI(player, (short) 0, SkillName, SkillLevel, (byte) 0);
@@ -661,7 +661,7 @@ public class OPboxSkill_GUI extends Util_GUI {
                                     break;
                                 }
                             }
-                            if (isExit == false)
+                            if (!isExit)
                                 SkillList.set(SkillName + ".SkillRank." + SkillLevel + ".DistrictWeapon", "없음");
                         }
                         break;
@@ -672,7 +672,7 @@ public class OPboxSkill_GUI extends Util_GUI {
                 return;
             case 21://스킬 대미지 상승
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
-                if (Bukkit.getPluginManager().isPluginEnabled("MagicSpells") == true) {
+                if (Bukkit.getPluginManager().isPluginEnabled("MagicSpells")) {
                     String switchNeed = SkillList.getString(SkillName + ".SkillRank." + SkillLevel + ".AffectStat");
                     if (switchNeed.compareTo("없음") == 0)
                         SkillList.set(SkillName + ".SkillRank." + SkillLevel + ".AffectStat", "생명력");

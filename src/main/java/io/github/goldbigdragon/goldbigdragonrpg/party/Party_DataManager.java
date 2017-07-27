@@ -78,13 +78,13 @@ public class Party_DataManager {
                             if (Bukkit.getServer().getPlayer(PM[counter]) == null)
                                 Main_ServerOption.Party.get(PCT).QuitPartyOfflinePlayer(PM[counter]);
                             else {
-                                if (Bukkit.getServer().getPlayer(PM[counter]).isOnline() == false)
+                                if (!Bukkit.getServer().getPlayer(PM[counter]).isOnline())
                                     Main_ServerOption.Party.get(PCT).QuitParty((Player) Bukkit.getServer().getOfflinePlayer(PM[counter]));
                                 else
                                     Main_ServerOption.PartyJoiner.put((Player) Bukkit.getServer().getPlayer(PM[counter]), PCT);
                             }
 
-                    if (Bukkit.getServer().getOfflinePlayer(PL).isOnline() == false)
+                    if (!Bukkit.getServer().getOfflinePlayer(PL).isOnline())
                         Main_ServerOption.Party.get(PCT).QuitPartyOfflinePlayer(PL);
 
                     if (Main_ServerOption.Party.get(PCT).getPartyMembers() == 0)

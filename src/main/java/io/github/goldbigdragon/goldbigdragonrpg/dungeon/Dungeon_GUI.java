@@ -547,7 +547,7 @@ public final class Dungeon_GUI extends Util_GUI {
                                     break;
                                 }
                             }
-                            if (isExit == false) {
+                            if (!isExit) {
                                 DungeonConfig.set(Type + "." + count, null);
                                 DungeonConfig.saveConfig();
                                 Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[없음]", 383, 0, 1, Arrays.asList("", ChatColor.YELLOW + "[좌 클릭시 등록]"), count + 1 + (count2 * 9), inv);
@@ -1155,13 +1155,13 @@ public final class Dungeon_GUI extends Util_GUI {
             } else if (slot == 50)//다음 페이지
                 DungeonListMainGUI(player, page + 1, Type);
             else {
-                if (event.getCurrentItem().hasItemMeta() == false)
+                if (!event.getCurrentItem().hasItemMeta())
                     return;
                 if (Type == 52) {
                     String DungeonName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
-                    if (event.isLeftClick() == true)
+                    if (event.isLeftClick())
                         DungeonSetUpGUI(player, DungeonName);
-                    else if (event.isShiftClick() == true && event.isRightClick() == true) {
+                    else if (event.isShiftClick() && event.isRightClick()) {
                         s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                         YamlController YC = new YamlController(Main_Main.plugin);
                         YamlManager DungeonConfig = YC.getNewConfig("Dungeon/DungeonList.yml");
@@ -1176,7 +1176,7 @@ public final class Dungeon_GUI extends Util_GUI {
                         file = new File("plugins/GoldBigDragonRPG/Dungeon/Dungeon/" + DungeonName);
                         file.delete();
                         DungeonListMainGUI(player, page, Type);
-                    } else if (event.isShiftClick() == false && event.isRightClick()) {
+                    } else if (!event.isShiftClick() && event.isRightClick()) {
                         YamlController YC = new YamlController(Main_Main.plugin);
                         YamlManager DungeonConfig = YC.getNewConfig("Dungeon/Dungeon/" + DungeonName + "/Option.yml");
                         new Dungeon_Creater().CreateTestSeed(player, DungeonConfig.getInt("Size"), DungeonConfig.getInt("Maze_Level"), DungeonConfig.getString("Type.Name"));
@@ -1184,7 +1184,7 @@ public final class Dungeon_GUI extends Util_GUI {
                 }
                 if (Type == 358) {
                     String DungeonName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
-                    if (event.isLeftClick() == true && event.isShiftClick() == false)
+                    if (event.isLeftClick() && !event.isShiftClick())
                         EnterCardSetUpGUI(player, DungeonName);
                     else if (event.isShiftClick() && event.isRightClick()) {
                         s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
@@ -1216,9 +1216,9 @@ public final class Dungeon_GUI extends Util_GUI {
                 }
                 if (Type == 120) {
                     String DungeonName = event.getCurrentItem().getItemMeta().getLore().get(event.getCurrentItem().getItemMeta().getLore().size() - 1);
-                    if (event.isLeftClick() == true && event.isShiftClick() == false)
+                    if (event.isLeftClick() && !event.isShiftClick())
                         AltarSettingGUI(player, DungeonName);
-                    else if (event.isShiftClick() == true && event.isRightClick() == true) {
+                    else if (event.isShiftClick() && event.isRightClick()) {
                         s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                         YamlController YC = new YamlController(Main_Main.plugin);
                         YamlManager DungeonConfig = YC.getNewConfig("Dungeon/AltarList.yml");
@@ -1234,7 +1234,7 @@ public final class Dungeon_GUI extends Util_GUI {
                         File file = new File("plugins/GoldBigDragonRPG/Dungeon/Altar/" + DungeonName + ".yml");
                         file.delete();
                         DungeonListMainGUI(player, page, Type);
-                    } else if (event.isShiftClick() == true && event.isLeftClick() == true) {
+                    } else if (event.isShiftClick() && event.isLeftClick()) {
                         s.SP(player, Sound.ENTITY_ENDERMEN_TELEPORT, 0.8F, 1.0F);
                         YamlController YC = new YamlController(Main_Main.plugin);
                         YamlManager DungeonConfig = YC.getNewConfig("Dungeon/AltarList.yml");
@@ -1273,7 +1273,7 @@ public final class Dungeon_GUI extends Util_GUI {
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager DungeonConfig = YC.getNewConfig("Dungeon/Dungeon/" + DungeonName + "/Option.yml");
                 String DungeonTheme = DungeonConfig.getString("Type.Name");
-                if (Main_ServerOption.DungeonTheme.contains(DungeonTheme) == false)
+                if (!Main_ServerOption.DungeonTheme.contains(DungeonTheme))
                     DungeonConfig.set("Type.Name", Main_ServerOption.DungeonTheme.get(0));
                 else {
                     for (int count = 0; count < Main_ServerOption.DungeonTheme.size(); count++)
@@ -1691,7 +1691,7 @@ public final class Dungeon_GUI extends Util_GUI {
                 for (; ; ) {
                     for (int count = 0; count < 6; count++)
                         Salt = Salt + getRandomCode();
-                    if (AltarList.contains(Salt) == false)
+                    if (!AltarList.contains(Salt))
                         break;
                     Salt = Code;
                 }
@@ -1957,7 +1957,7 @@ public final class Dungeon_GUI extends Util_GUI {
             int LvDistrict = -1;
             int RealLvDistrict = -1;
             if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getDungeon_Enter() != null) {
-                if (new Util_Player().giveItem(player, item) == false)
+                if (!new Util_Player().giveItem(player, item))
                     new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
                 s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
                 player.sendMessage(ChatColor.WHITE + "(이미 던전이 만들어 지고 있다...)");
@@ -2008,21 +2008,21 @@ public final class Dungeon_GUI extends Util_GUI {
                                 if (EnterCardConfig.contains(ChatColor.stripColor(item.getItemMeta().getLore().get(1)))) {
                                     PartyEnterDungeon(player, item, AltarName, capacity, EnterCardConfig.getString(ChatColor.stripColor(item.getItemMeta().getLore().get(1)) + ".Dungeon"), LvDistrict, RealLvDistrict);
                                 } else {
-                                    if (new Util_Player().giveItem(player, item) == false)
+                                    if (!new Util_Player().giveItem(player, item))
                                         new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
                                     s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
                                     player.sendMessage(ChatColor.WHITE + "(이 물건은 제물로 바칠 수 없는 듯 하다...)");
                                     return;
                                 }
                             } else {
-                                if (new Util_Player().giveItem(player, item) == false)
+                                if (!new Util_Player().giveItem(player, item))
                                     new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
                                 s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
                                 player.sendMessage(ChatColor.WHITE + "(던전 통행증의 유효시간이 지났다...)");
                                 return;
                             }
                         } else {
-                            if (new Util_Player().giveItem(player, item) == false)
+                            if (!new Util_Player().giveItem(player, item))
                                 new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
                             s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
                             player.sendMessage(ChatColor.WHITE + "(이 물건은 제물로 바칠 수 없는 듯 하다...)");
@@ -2036,14 +2036,14 @@ public final class Dungeon_GUI extends Util_GUI {
                             else {
                                 AltarConfig.set("NormalDungeon", null);
                                 AltarConfig.saveConfig();
-                                if (new Util_Player().giveItem(player, item) == false)
+                                if (!new Util_Player().giveItem(player, item))
                                     new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
                                 s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
                                 player.sendMessage(ChatColor.WHITE + "(이 물건은 제물로 바칠 수 없는 듯 하다...)");
                                 return;
                             }
                         } else {
-                            if (new Util_Player().giveItem(player, item) == false)
+                            if (!new Util_Player().giveItem(player, item))
                                 new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
                             s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
                             player.sendMessage(ChatColor.WHITE + "(이 물건은 제물로 바칠 수 없는 듯 하다...)");
@@ -2060,14 +2060,14 @@ public final class Dungeon_GUI extends Util_GUI {
                 else {
                     AltarConfig.set("NormalDungeon", null);
                     AltarConfig.saveConfig();
-                    if (new Util_Player().giveItem(player, item) == false)
+                    if (!new Util_Player().giveItem(player, item))
                         new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
                     s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
                     player.sendMessage(ChatColor.WHITE + "(이 물건은 제물로 바칠 수 없는 듯 하다...)");
                     return;
                 }
             } else {
-                if (new Util_Player().giveItem(player, item) == false)
+                if (!new Util_Player().giveItem(player, item))
                     new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
                 s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
                 player.sendMessage(ChatColor.WHITE + "(이 물건은 제물로 바칠 수 없는 듯 하다...)");
@@ -2081,7 +2081,7 @@ public final class Dungeon_GUI extends Util_GUI {
             Effect_Sound s = new Effect_Sound();
             if (capacity != -1)
                 if (Main_ServerOption.Party.get(Main_ServerOption.PartyJoiner.get(player)).getPartyMembers() != capacity) {
-                    if (new Util_Player().giveItem(player, item) == false)
+                    if (!new Util_Player().giveItem(player, item))
                         new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
                     s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
                     player.sendMessage(ChatColor.RED + "[던전] : 던전 입장 인원이 맞지 않습니다! (" + capacity + "명)");
@@ -2108,7 +2108,7 @@ public final class Dungeon_GUI extends Util_GUI {
                 }
                 for (int count = 0; count < NearPartyMember.size(); count++) {
                     if (Main_ServerOption.PlayerList.get(NearPartyMember.get(count).getUniqueId().toString()).getStat_Level() < LvDistrict) {
-                        if (new Util_Player().giveItem(player, item) == false)
+                        if (!new Util_Player().giveItem(player, item))
                             new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
                         s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
                         player.sendMessage(ChatColor.RED + "[던전] : 파티원 " + NearPartyMember.get(count).getName() + "님의 레벨이 낮아 던전에 입장할 수 없습니다!");
@@ -2116,7 +2116,7 @@ public final class Dungeon_GUI extends Util_GUI {
                         return;
                     }
                     if (Main_ServerOption.PlayerList.get(NearPartyMember.get(count).getUniqueId().toString()).getStat_RealLevel() < RealLvDistrict) {
-                        if (new Util_Player().giveItem(player, item) == false)
+                        if (!new Util_Player().giveItem(player, item))
                             new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
                         s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
                         player.sendMessage(ChatColor.RED + "[던전] : 파티원 " + NearPartyMember.get(count).getName() + "님의 누적 레벨이 낮아 던전에 입장할 수 없습니다!");
@@ -2124,14 +2124,14 @@ public final class Dungeon_GUI extends Util_GUI {
                         return;
                     }
                 }
-                if (new Dungeon_Creater().CreateDungeon(player, DungeonConfig.getInt("Size"), DungeonConfig.getInt("Maze_Level"), DungeonConfig.getString("Type.Name"), DungeonName, NearPartyMember, AltarName, item) == false) {
-                    if (new Util_Player().giveItem(player, item) == false)
+                if (!new Dungeon_Creater().CreateDungeon(player, DungeonConfig.getInt("Size"), DungeonConfig.getInt("Maze_Level"), DungeonConfig.getString("Type.Name"), DungeonName, NearPartyMember, AltarName, item)) {
+                    if (!new Util_Player().giveItem(player, item))
                         new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
                     s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
                     return;
                 }
             } else {
-                if (new Util_Player().giveItem(player, item) == false)
+                if (!new Util_Player().giveItem(player, item))
                     new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
                 s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
                 player.sendMessage(ChatColor.RED + "[파티] : 파티의 리더만 제단에 물건을 바칠 수 있습니다!");
@@ -2154,7 +2154,7 @@ public final class Dungeon_GUI extends Util_GUI {
             if (RealLvDistrict == -1)
                 RealLvDistrict = DungeonConfig.getInt("District.RealLevel");
             if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Level() < LvDistrict) {
-                if (new Util_Player().giveItem(player, item) == false)
+                if (!new Util_Player().giveItem(player, item))
                     new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
                 s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
                 player.sendMessage(ChatColor.RED + "[던전] : 당신의 레벨이 낮아 던전에 입장할 수 없습니다!");
@@ -2162,21 +2162,21 @@ public final class Dungeon_GUI extends Util_GUI {
                 return;
             }
             if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_RealLevel() < RealLvDistrict) {
-                if (new Util_Player().giveItem(player, item) == false)
+                if (!new Util_Player().giveItem(player, item))
                     new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
                 s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
                 player.sendMessage(ChatColor.RED + "[던전] : 당신의 누적 레벨이 낮아 던전에 입장할 수 없습니다!");
                 player.sendMessage(ChatColor.RED + "(누적 레벨 제한 : " + DungeonConfig.getInt("District.RealLevel") + ")");
                 return;
             }
-            if (new Dungeon_Creater().CreateDungeon(player, DungeonConfig.getInt("Size"), DungeonConfig.getInt("Maze_Level"), DungeonConfig.getString("Type.Name"), DungeonName, null, AltarName, item) == false) {
-                if (new Util_Player().giveItem(player, item) == false)
+            if (!new Dungeon_Creater().CreateDungeon(player, DungeonConfig.getInt("Size"), DungeonConfig.getInt("Maze_Level"), DungeonConfig.getString("Type.Name"), DungeonName, null, AltarName, item)) {
+                if (!new Util_Player().giveItem(player, item))
                     new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
                 s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
                 return;
             }
         } else {
-            if (new Util_Player().giveItem(player, item) == false)
+            if (!new Util_Player().giveItem(player, item))
                 new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
             s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
             player.sendMessage(ChatColor.RED + "[던전] : 던전 입장 인원이 맞지 않습니다! (" + capacity + "명)");

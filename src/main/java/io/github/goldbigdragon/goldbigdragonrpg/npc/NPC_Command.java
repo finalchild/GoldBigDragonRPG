@@ -40,7 +40,7 @@ public class NPC_Command {
     public void onCommand(CommandSender talker, Command command, String string, String[] args) {
         Effect_Sound s = new Effect_Sound();
         Player player = (Player) talker;
-        if (player.isOp() == false) {
+        if (!player.isOp()) {
             talker.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
             s.SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             return;
@@ -57,10 +57,10 @@ public class NPC_Command {
         List<Entity> NearbyEntity = player.getNearbyEntities(3.0, 3.0, 3.0);
 
         for (short count = 0; count < NearbyEntity.size(); count++) {
-            if (CitizensAPI.getNPCRegistry().isNPC(NearbyEntity.get(count)) == true) {
+            if (CitizensAPI.getNPCRegistry().isNPC(NearbyEntity.get(count))) {
                 YamlController YC = new YamlController(Main_Main.plugin);
                 NPC npc = CitizensAPI.getNPCRegistry().getNPC(NearbyEntity.get(count));
-                if (YC.isExit("NPC/NPCData/" + npc.getUniqueId().toString() + ".yml") == true) {
+                if (YC.isExit("NPC/NPCData/" + npc.getUniqueId().toString() + ".yml")) {
                     YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + npc.getUniqueId().toString() + ".yml");
                     int directory = 0;
                     switch (ChatColor.stripColor(args[0])) {

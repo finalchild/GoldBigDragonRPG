@@ -39,7 +39,7 @@ public class NPC_Chat extends Util_Chat {
         String NPCuuid = u.getString(player, (byte) 3);
         YamlController YC = new YamlController(Main_Main.plugin);
 
-        if (YC.isExit("NPC/NPCData/" + NPCuuid + ".yml") == false) {
+        if (!YC.isExit("NPC/NPCData/" + NPCuuid + ".yml")) {
             NPC_Config NPCC = new NPC_Config();
             NPCC.NPCNPCconfig(NPCuuid);
         }
@@ -260,7 +260,7 @@ public class NPC_Chat extends Util_Chat {
                             isExitJob = true;
                     }
                 }
-                if (isExitJob == true) {
+                if (isExitJob) {
                     NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getString(player, (byte) 2) + ".yml");
                     NPCscript.removeKey("Job");
                     NPCscript.set("Job.Type", "Master");

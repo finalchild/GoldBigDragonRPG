@@ -206,7 +206,7 @@ public class Monster_Kill {
                     name = null;
                 else if (ChatColor.stripColor(name).length() == 0)
                     name = null;
-                if (Choosedentity.isDead() == false) {
+                if (!Choosedentity.isDead()) {
                     int DEF = 0;
                     int PRO = 0;
 
@@ -248,7 +248,7 @@ public class Monster_Kill {
                             Choosedentity.getType() != EntityType.THROWN_EXP_BOTTLE && Choosedentity.getType() != EntityType.UNKNOWN &&
                             Choosedentity.getType() != EntityType.WITHER_SKULL) {
                         if (Choosedentity != entity)
-                            if (Choosedentity.isDead() == false) {
+                            if (!Choosedentity.isDead()) {
                                 LivingEntity LE = (LivingEntity) Choosedentity;
                                 LE.damage(Temp, entity);
                             }
@@ -310,7 +310,7 @@ public class Monster_Kill {
                             break;
                         case '2': //보스 [보스방 문을 탐지하기 위해서 보상방 철창 중앙의 위치를 던전 콘피그에 저장 시킨다.]
                             Player player = entity.getKiller();
-                            if (entity.getKiller() == null || entity.getKiller().isOnline() == false) {
+                            if (entity.getKiller() == null || !entity.getKiller().isOnline()) {
                                 List<Entity> e = (List<Entity>) loc.getWorld().getNearbyEntities(loc, 35D, 20D, 35D);
                                 for (short count = 0; count < e.size(); count++) {
                                     if (e.get(count).getType() == EntityType.PLAYER) {
@@ -332,14 +332,14 @@ public class Monster_Kill {
                                         ArrayList<String> BossList = new ArrayList<String>();
                                         boolean isChecked = false;
                                         for (byte count = 0; count < BossCount; count++) {
-                                            if (isChecked == false && DungeonConfig.getString("Boss." + count).compareTo(name) == 0)
+                                            if (!isChecked && DungeonConfig.getString("Boss." + count).compareTo(name) == 0)
                                                 isChecked = true;
                                             else
                                                 BossList.add(DungeonConfig.getString("Boss." + count));
                                         }
                                         DungeonConfig.removeKey("Boss");
                                         DungeonConfig.saveConfig();
-                                        if (BossList.isEmpty() == false) {
+                                        if (!BossList.isEmpty()) {
                                             for (int count = 0; count < BossList.size(); count++)
                                                 DungeonConfig.set("Boss." + count, BossList.get(count));
                                             DungeonConfig.saveConfig();
@@ -361,7 +361,7 @@ public class Monster_Kill {
         if (event.getEntity() != null && event.getEntity().getKiller() != null) {
             if (event.getEntity().getLastDamageCause().getCause() == DamageCause.ENTITY_ATTACK || event.getEntity().getLastDamageCause().getCause() == DamageCause.PROJECTILE
                     || event.getEntity().getLastDamageCause().getCause() == DamageCause.MAGIC) {
-                if (Bukkit.getServer().getPlayer(event.getEntity().getKiller().getName()).isOnline() == true) {
+                if (Bukkit.getServer().getPlayer(event.getEntity().getKiller().getName()).isOnline()) {
                     Player player = (Player) Bukkit.getServer().getPlayer(event.getEntity().getKiller().getName());
                     if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_MobHealth())
                         new Effect_Packet().sendTitleSubTitle(player, "\'" + ChatColor.BLACK + "■■■■■■■■■■" + "\'", "\'" + ChatColor.DARK_RED + "" + ChatColor.BOLD + "[DEAD]" + "\'", (byte) 0, (byte) 0, (byte) 1);
@@ -382,7 +382,7 @@ public class Monster_Kill {
             String name = e.get(i).getCustomName();
             if (name != null) {
                 if (name.length() >= 6) {
-                    if (e.get(i).isDead() == false) {
+                    if (!e.get(i).isDead()) {
                         if (name.compareTo("爆死") != 0) {
                             if (name.charAt(0) == '§' && name.charAt(1) == '2' &&
                                     name.charAt(2) == '§' && name.charAt(3) == '0' &&
@@ -444,7 +444,7 @@ public class Monster_Kill {
                     new Util_Player().addMoneyAndEXP(player, N.RandomNum(Config.getInt("Normal_Monster.NETHER_SKELETON.MIN_MONEY"), Config.getInt("Normal_Monster.NETHER_SKELETON.MAX_MONEY")) * amount, Config.getLong("Normal_Monster.NETHER_SKELETON.EXP"), event.getEntity().getLocation(), true, false);
             } else if (ET == EntityType.CREEPER) {
                 Creeper c = (Creeper) event.getEntity();
-                if (c.isPowered() == false)
+                if (!c.isPowered())
                     new Util_Player().addMoneyAndEXP(player, N.RandomNum(Config.getInt("Normal_Monster.CREEPER.MIN_MONEY"), Config.getInt("Normal_Monster.CREEPER.MAX_MONEY")) * amount, Config.getLong("Normal_Monster.CREEPER.EXP"), event.getEntity().getLocation(), true, false);
                 else
                     new Util_Player().addMoneyAndEXP(player, N.RandomNum(Config.getInt("Normal_Monster.CHARGED_CREEPER.MIN_MONEY"), Config.getInt("Normal_Monster.CHARGED_CREEPER.MAX_MONEY")) * amount, Config.getLong("Normal_Monster.CHARGED_CREEPER.EXP"), event.getEntity().getLocation(), true, false);
@@ -481,13 +481,13 @@ public class Monster_Kill {
         YamlManager QuestList = YC.getNewConfig("Quest/QuestList.yml");
         YamlManager PlayerQuestList = YC.getNewConfig("Quest/PlayerData/" + player.getUniqueId() + ".yml");
 
-        if (Main_ServerOption.PartyJoiner.containsKey(player) == false) {
+        if (!Main_ServerOption.PartyJoiner.containsKey(player)) {
             Object[] a = PlayerQuestList.getConfigurationSection("Started.").getKeys(false).toArray();
             for (short count = 0; count < a.length; count++) {
                 String QuestName = (String) a[count];
                 short Flow = (short) PlayerQuestList.getInt("Started." + QuestName + ".Flow");
                 if (PlayerQuestList.getString("Started." + QuestName + ".Type").equalsIgnoreCase("Hunt")) {
-                    if (QuestList.contains(QuestName) == false) {
+                    if (!QuestList.contains(QuestName)) {
                         PlayerQuestList.removeKey("Started." + QuestName);
                         PlayerQuestList.saveConfig();
                         return;
@@ -499,7 +499,7 @@ public class Monster_Kill {
                         int MAX = QuestList.getInt(QuestName + ".FlowChart." + Flow + ".Monster." + counter + ".Amount");
                         String KilledName = "null";
                         KilledName = event.getEntity().getName();
-                        if (event.getEntity().isCustomNameVisible() == true) {
+                        if (event.getEntity().isCustomNameVisible()) {
                             KilledName = event.getEntity().getCustomName();
                             if (event.getEntity().getLocation().getWorld().getName().compareTo("Dungeon") == 0) {
                                 if (KilledName.length() >= 6) {
@@ -511,7 +511,7 @@ public class Monster_Kill {
                                 }
                             }
                         }
-                        if (QMobName.equalsIgnoreCase(KilledName) == true && MAX > PlayerQuestList.getInt("Started." + QuestName + ".Hunt." + counter)) {
+                        if (QMobName.equalsIgnoreCase(KilledName) && MAX > PlayerQuestList.getInt("Started." + QuestName + ".Hunt." + counter)) {
                             //퀘스트 진행도 알림//
                             PlayerQuestList.set("Started." + QuestName + ".Hunt." + counter, PlayerQuestList.getInt("Started." + QuestName + ".Hunt." + counter) + 1);
                             PlayerQuestList.saveConfig();
@@ -554,7 +554,7 @@ public class Monster_Kill {
                                     int MAX = QuestList.getInt(QuestName + ".FlowChart." + Flow + ".Monster." + counter + ".Amount");
                                     String KilledName = "null";
                                     KilledName = event.getEntity().getName();
-                                    if (event.getEntity().isCustomNameVisible() == true) {
+                                    if (event.getEntity().isCustomNameVisible()) {
                                         KilledName = event.getEntity().getCustomName();
                                         if (event.getEntity().getLocation().getWorld().getName().compareTo("Dungeon") == 0) {
                                             if (KilledName.length() >= 6) {
@@ -566,7 +566,7 @@ public class Monster_Kill {
                                             }
                                         }
                                     }
-                                    if (QMobName.equalsIgnoreCase(KilledName) == true && MAX > PlayerQuestList.getInt("Started." + QuestName + ".Hunt." + counter)) {
+                                    if (QMobName.equalsIgnoreCase(KilledName) && MAX > PlayerQuestList.getInt("Started." + QuestName + ".Hunt." + counter)) {
                                         //퀘스트 진행도 알림//
                                         PlayerQuestList.set("Started." + QuestName + ".Hunt." + counter, PlayerQuestList.getInt("Started." + QuestName + ".Hunt." + counter) + 1);
                                         PlayerQuestList.saveConfig();

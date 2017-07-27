@@ -110,8 +110,8 @@ public class Dungeon_SeedMaker {
                 RightPass.add(0, whenIsaved);
                 DungeonClearSimulation(whenIsaved, whenIChoosed, false);
                 //던전을 모의로 돌아 클리어 가능하게 방이 이어 졌는지 검사
-                if (PerfectDungeon == true)
-                    if (DoorCreator() == true)//열쇠방 및 구슬방 구축
+                if (PerfectDungeon)
+                    if (DoorCreator())//열쇠방 및 구슬방 구축
                         return createMap();
                 return "null";
             }
@@ -169,25 +169,25 @@ public class Dungeon_SeedMaker {
         }
 
 
-        if (isEmptyN == false && isEmptyE == false && isEmptyW == false && isEmptyS == false)
+        if (!isEmptyN && !isEmptyE && !isEmptyW && !isEmptyS)
             return 'V';
         for (int count = 0; count < 100; count++) {
             char randomnum = (char) Randomnum(0, 3);
             switch (randomnum) {
                 case 0:
-                    if (isEmptyE == true)
+                    if (isEmptyE)
                         return 'E';
                     break;
                 case 1:
-                    if (isEmptyW == true)
+                    if (isEmptyW)
                         return 'W';
                     break;
                 case 2:
-                    if (isEmptyN == true)
+                    if (isEmptyN)
                         return 'N';
                     break;
                 case 3:
-                    if (isEmptyS == true)
+                    if (isEmptyS)
                         return 'S';
                     break;
             }
@@ -288,7 +288,7 @@ public class Dungeon_SeedMaker {
         }
 
 
-        if (isEmptyN == true && isEmptyE == true && isEmptyW == true && isEmptyS == true)
+        if (isEmptyN && isEmptyE && isEmptyW && isEmptyS)
             return true;
         else
             return false;
@@ -587,7 +587,7 @@ public class Dungeon_SeedMaker {
         isEmptyW = (SearchRoad(loc, 'W'));
         isEmptyE = (SearchRoad(loc, 'E'));
 
-        if (isNoExit == false) {
+        if (!isNoExit) {
             switch (WhereIcome) {
                 case 'N':
                     isEmptyN = false;
@@ -650,20 +650,20 @@ public class Dungeon_SeedMaker {
         for (int count2 = 0; count2 < RightPass.size(); count2++)
             if (RightPass.get(count2) == loc)
                 PassAdded = true;
-        if (PassAdded == false)
+        if (!PassAdded)
             RightPass.add(0, loc);
         PassedRoom.add(0, loc);
         if (Grid[loc] == "◇" || Grid[loc] == "□" || Grid[loc] == "＠") {
             whenIChoosed = (char) 'V';
             whenIsaved = loc;
-            if (NoClear == false)
+            if (!NoClear)
                 isNoExit = false;
             NoClear = true;
         }
 
-        if (isEmptyN == false && isEmptyE == false && isEmptyW == false && isEmptyS == false) {
+        if (!isEmptyN && !isEmptyE && !isEmptyW && !isEmptyS) {
             //모든 길이 막혔을 경우 마지막 저장 위치에서 다시 시작함.
-            if (isNoExit == false) {
+            if (!isNoExit) {
                 isNoExit = true;
                 if (LoopBreakerUse(0))
                     return;
@@ -836,7 +836,7 @@ public class Dungeon_SeedMaker {
                     }
                     TotalKeyRoom++;
                     key--;
-                } else if (NotFoundKey == false && key == 0) {
+                } else if (!NotFoundKey && key == 0) {
                     if (Maze_Level >= Randomnum(0, 20)) {
                         if (count - 1 >= 0) {
                             boolean CanCreateThat = false;

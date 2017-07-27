@@ -44,7 +44,7 @@ public class UserSkill_GUI extends Util_GUI {
         YamlManager Config = YC.getNewConfig("config.yml");
         YamlManager PlayerSkillList = YC.getNewConfig("Skill/PlayerData/" + player.getUniqueId().toString() + ".yml");
         Inventory inv = null;
-        if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System") == false) {
+        if (!Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
             String UniqueCode = "§0§0§b§0§3§r";
             inv = Bukkit.createInventory(null, 54, UniqueCode + "§0직업군 선택 : " + (page + 1));
             Object[] a = PlayerSkillList.getConfigurationSection("MapleStory").getKeys(false).toArray();
@@ -94,7 +94,7 @@ public class UserSkill_GUI extends Util_GUI {
         YamlManager AllSkillList = YC.getNewConfig("Skill/SkillList.yml");
         Inventory inv = null;
         String UniqueCode = "§0§0§b§0§5§r";
-        if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System") == false) {
+        if (!Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
             inv = Bukkit.createInventory(null, 54, UniqueCode + "§0보유 스킬 목록 : " + (page + 1));
             Object[] a = PlayerSkillList.getConfigurationSection("MapleStory." + CategoriName + ".Skill").getKeys(false).toArray();
 
@@ -292,16 +292,16 @@ public class UserSkill_GUI extends Util_GUI {
             else if (slot == 50)//다음 페이지
                 SkillListGUI(player, (short) (page + 1), isMabinogi, CategoriName);
             else {
-                if (event.isLeftClick() == true && event.isShiftClick() == false)
+                if (event.isLeftClick() && !event.isShiftClick())
                     AddQuickBarGUI(player, isMabinogi, CategoriName, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
-                else if (event.isLeftClick() == true && event.isShiftClick() == true) {
+                else if (event.isLeftClick() && event.isShiftClick()) {
                     YamlController YC = new YamlController(Main_Main.plugin);
                     String SkillName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
                     YamlManager PlayerSkillList = YC.getNewConfig("Skill/PlayerData/" + player.getUniqueId().toString() + ".yml");
                     YamlManager AllSkillList = YC.getNewConfig("Skill/SkillList.yml");
                     short SkillRank = 1;
                     short SkillMaxRank = (short) AllSkillList.getConfigurationSection(SkillName + ".SkillRank").getKeys(false).size();
-                    if (isMabinogi == false)
+                    if (!isMabinogi)
                         SkillRank = (short) PlayerSkillList.getInt("MapleStory." + CategoriName + ".Skill." + SkillName);
                     else
                         SkillRank = (short) PlayerSkillList.getInt("Mabinogi." + CategoriName + "." + SkillName);
@@ -315,7 +315,7 @@ public class UserSkill_GUI extends Util_GUI {
                             player.sendMessage(ChatColor.RED + "[스킬] : 누적 레벨이 부족합니다!");
                             return;
                         } else if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_SkillPoint() >= AllSkillList.getInt(SkillName + ".SkillRank." + (SkillRank + 1) + ".SkillPoint")) {
-                            if (isMabinogi == false)
+                            if (!isMabinogi)
                                 PlayerSkillList.set("MapleStory." + CategoriName + ".Skill." + SkillName, SkillRank + 1);
                             else
                                 PlayerSkillList.set("Mabinogi." + CategoriName + "." + SkillName, SkillRank + 1);
@@ -339,7 +339,7 @@ public class UserSkill_GUI extends Util_GUI {
                             PlayerSkillList.saveConfig();
                             s.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 0.8F, 1.7F);
 
-                            if (Main_ServerOption.MagicSpellsCatched == true) {
+                            if (Main_ServerOption.MagicSpellsCatched) {
                                 io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain MS = new io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain();
                                 MS.setPlayerMaxAndNowMana(player);
                             }

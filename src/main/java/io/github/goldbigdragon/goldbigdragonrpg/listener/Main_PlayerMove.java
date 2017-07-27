@@ -56,16 +56,16 @@ public class Main_PlayerMove implements Listener {
                     A.AreaMonsterSpawnAdd(Area, "-1");
                     new io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain().Stop(player);
                     Main_ServerOption.PlayerList.get(event.getPlayer().getUniqueId().toString()).setETC_CurrentArea(Area);
-                    if (A.getAreaOption(Area, (char) 2) == true)
+                    if (A.getAreaOption(Area, (char) 2))
                         Main_ServerOption.PlayerList.get(event.getPlayer().getUniqueId().toString()).setETC_LastVisited(Area);
                     if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isBgmOn()) {
-                        if (A.getAreaOption(Area, (char) 6) == true) {
+                        if (A.getAreaOption(Area, (char) 6)) {
                             YamlController YC = new YamlController(Main_Main.plugin);
                             YamlManager AreaList = YC.getNewConfig("Area/AreaList.yml");
                             new io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain().Play(player, AreaList.getInt(Area + ".BGM"));
                         }
                     }
-                    if (A.getAreaOption(Area, (char) 4) == true) {
+                    if (A.getAreaOption(Area, (char) 4)) {
                         YamlController YC = new YamlController(Main_Main.plugin);
                         YamlManager QuestList = YC.getNewConfig("Quest/QuestList.yml");
                         YamlManager PlayerQuestList = YC.getNewConfig("Quest/PlayerData/" + player.getUniqueId() + ".yml");

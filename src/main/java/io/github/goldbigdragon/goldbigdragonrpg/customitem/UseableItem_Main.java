@@ -43,7 +43,7 @@ public class UseableItem_Main {
         Effect_Sound sound = new Effect_Sound();
         ItemStack item = player.getInventory().getItemInMainHand();
         if (type.compareTo("귀환서") == 0) {
-            if (ServerTick_Main.PlayerTaskList.containsKey(player.getName()) == true) {
+            if (ServerTick_Main.PlayerTaskList.containsKey(player.getName())) {
                 sound.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                 new Effect_Packet().sendActionBar(player, "§c§l[현재 텔레포트를 할 수 없는 상태입니다!]");
                 return;
@@ -93,7 +93,7 @@ public class UseableItem_Main {
             if (item.getItemMeta().getDisplayName().compareTo("§2§3§4§3§3§l[스텟 초기화 주문서]") == 0) {
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager Config = YC.getNewConfig("config.yml");
-                if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System") == false) {
+                if (!Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
                     if (item.getAmount() != 1) {
                         item.setAmount(item.getAmount() - 1);
                         player.getInventory().setItem(player.getInventory().getHeldItemSlot(), item);
@@ -227,7 +227,7 @@ public class UseableItem_Main {
         } else if (type.compareTo("스킬북") == 0) {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager Config = YC.getNewConfig("config.yml");
-            if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System") == true) {
+            if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
                 String Skillname = null;
                 for (short counter = 0; counter < item.getItemMeta().getLore().size(); counter++) {
                     String nowlore = ChatColor.stripColor(item.getItemMeta().getLore().get(counter));
@@ -247,9 +247,9 @@ public class UseableItem_Main {
                 YamlManager AllSkills = YC.getNewConfig("Skill/SkillList.yml");
                 if (AllSkills.contains(Skillname)) {
                     AllSkills = YC.getNewConfig("Skill/JobList.yml");
-                    if (AllSkills.contains("Mabinogi.Added." + Skillname) == true) {
+                    if (AllSkills.contains("Mabinogi.Added." + Skillname)) {
                         YamlManager PlayerSkillList = YC.getNewConfig("Skill/PlayerData/" + player.getUniqueId().toString() + ".yml");
-                        if (PlayerSkillList.contains("Mabinogi." + AllSkills.getString("Mabinogi.Added." + Skillname) + "." + Skillname) == false) {
+                        if (!PlayerSkillList.contains("Mabinogi." + AllSkills.getString("Mabinogi.Added." + Skillname) + "." + Skillname)) {
                             PlayerSkillList.set("Mabinogi." + AllSkills.getString("Mabinogi.Added." + Skillname) + "." + Skillname, 1);
                             PlayerSkillList.saveConfig();
                             if (item.getAmount() != 1) {
@@ -310,7 +310,7 @@ public class UseableItem_Main {
                     Dp.setHealth(Dp.getHealth() + Health);
             }
             if (Mana > 0) {
-                if (Main_ServerOption.MagicSpellsCatched == true) {
+                if (Main_ServerOption.MagicSpellsCatched) {
                     io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain MG = new io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain();
                     MG.DrinkManaPotion(player, Mana);
                     sound.SL(player.getLocation(), Sound.BLOCK_WATER_AMBIENT, 2.0F, 1.9F);

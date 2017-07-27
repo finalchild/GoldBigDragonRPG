@@ -251,9 +251,9 @@ public class Upgrade_GUI extends Util_GUI {
             } else if (slot == 50)//다음 페이지
                 UpgradeRecipeGUI(player, page + 1);
             else {
-                if (event.isLeftClick() == true && event.isShiftClick() == false)
+                if (event.isLeftClick() && !event.isShiftClick())
                     UpgradeRecipeSettingGUI(player, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
-                else if (event.isRightClick() == true && event.isShiftClick() == true) {
+                else if (event.isRightClick() && event.isShiftClick()) {
                     s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager ItemList = YC.getNewConfig("Item/Upgrade.yml");

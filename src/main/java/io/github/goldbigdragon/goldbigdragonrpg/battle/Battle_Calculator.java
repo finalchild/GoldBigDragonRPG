@@ -328,7 +328,7 @@ public class Battle_Calculator {
         if (newSlot == null)
             item.add(player.getInventory().getItemInMainHand());
         else {
-            if (newSlot.hasItemMeta() == false)
+            if (!newSlot.hasItemMeta())
                 newSlot = null;
             else
                 item.add(newSlot);
@@ -342,28 +342,28 @@ public class Battle_Calculator {
             if (item.get(counter) != null) {
                 if (counter >= 4 && newSlot == null) {
                     if (counter == 4) {
-                        if (isCombat == false && !(item.get(4).getTypeId() == 261 || item.get(4).getTypeId() == 262 || item.get(4).getTypeId() == 439 || item.get(4).getTypeId() == 440) && type.compareTo(Main_ServerOption.Damage) == 0)
+                        if (!isCombat && !(item.get(4).getTypeId() == 261 || item.get(4).getTypeId() == 262 || item.get(4).getTypeId() == 439 || item.get(4).getTypeId() == 440) && type.compareTo(Main_ServerOption.Damage) == 0)
                             isCancel = true;
                     } else {
-                        if (isCombat == false && !(item.get(5).getTypeId() == 261 || item.get(5).getTypeId() == 262 || item.get(5).getTypeId() == 439 || item.get(5).getTypeId() == 440) && type.compareTo(Main_ServerOption.Damage) == 0)
+                        if (!isCombat && !(item.get(5).getTypeId() == 261 || item.get(5).getTypeId() == 262 || item.get(5).getTypeId() == 439 || item.get(5).getTypeId() == 440) && type.compareTo(Main_ServerOption.Damage) == 0)
                             isCancel = true;
                         if (isCombat && (item.get(counter).getTypeId() == 261) && type.compareTo(Main_ServerOption.Damage) == 0)
                             break;
                     }
                 }
-                if (isCancel == false) {
-                    if (item.get(counter).hasItemMeta() == true) {
-                        if (item.get(counter).getItemMeta().hasLore() == true) {
-                            if (item.get(counter).getItemMeta().getLore().toString().contains(type) == true) {
+                if (!isCancel) {
+                    if (item.get(counter).hasItemMeta()) {
+                        if (item.get(counter).getItemMeta().hasLore()) {
+                            if (item.get(counter).getItemMeta().getLore().toString().contains(type)) {
                                 if (!(item.get(counter).getItemMeta().getLore().toString().contains("[주문서]") || item.get(counter).getItemMeta().getLore().toString().contains("[룬]") || item.get(counter).getItemMeta().getLore().toString().contains("[소비]"))) {
                                     boolean useable = true;
                                     for (byte count = 0; count < item.get(counter).getItemMeta().getLore().size(); count++) {
                                         String nowlore = ChatColor.stripColor(item.get(counter).getItemMeta().getLore().get(count));
                                         if (nowlore.contains(" : ")) {
-                                            if (nowlore.contains("직업") == true)
+                                            if (nowlore.contains("직업"))
                                                 if (nowlore.split(" : ")[1].compareTo(Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getPlayerRootJob()) != 0)
                                                     useable = false;
-                                            if (nowlore.contains("최소") == true) {
+                                            if (nowlore.contains("최소")) {
                                                 String[] Resist = nowlore.split(" ");
                                                 if (Resist[Resist.length - 3].compareTo("레벨") == 0)
                                                     useable = Integer.parseInt(Resist[Resist.length - 1]) <= Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Level();
@@ -380,11 +380,11 @@ public class Battle_Calculator {
                                                 else if (Resist[Resist.length - 3].compareTo(Main_ServerOption.LUK) == 0)
                                                     useable = Integer.parseInt(Resist[Resist.length - 1]) <= Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_LUK();
                                             }
-                                            if (useable == false) {
+                                            if (!useable) {
                                                 Totaluseable = false;
                                                 break;
                                             }
-                                            if (nowlore.contains("내구도") == true) {
+                                            if (nowlore.contains("내구도")) {
                                                 String[] Lore2 = nowlore.split(" : ");
                                                 String[] SubLore = Lore2[1].split(" / ");
                                                 if (Integer.parseInt(SubLore[0]) <= 0) {
@@ -396,15 +396,15 @@ public class Battle_Calculator {
                                     }
                                     if (useable) {
                                         for (byte count = 0; count < item.get(counter).getItemMeta().getLore().size(); count++) {
-                                            if (item.get(counter).getItemMeta().getLore().get(count).contains(type) == true) {
+                                            if (item.get(counter).getItemMeta().getLore().get(count).contains(type)) {
                                                 if (item.get(counter).getItemMeta().getLore().get(count).contains(" : ") || item.get(counter).getItemMeta().getLore().get(count).contains("/")) {
-                                                    if (ExitDurability == true) {
+                                                    if (ExitDurability) {
                                                         Lore = ChatColor.stripColor(item.get(counter).getItemMeta().getLore().get(count)).split(" : ");
                                                         if (Lore[0].contains(type)) {
                                                             if (type.compareTo(Main_ServerOption.STR) == 0 || type.compareTo(Main_ServerOption.DEX) == 0 ||
                                                                     type.compareTo(Main_ServerOption.INT) == 0 || type.compareTo(Main_ServerOption.WILL) == 0 ||
                                                                     type.compareTo(Main_ServerOption.LUK) == 0) {
-                                                                if (item.get(counter).getItemMeta().getLore().get(count).contains("최소") == false)
+                                                                if (!item.get(counter).getItemMeta().getLore().get(count).contains("최소"))
                                                                     bonus[0] = bonus[0] + Integer.parseInt(Lore[1]);
                                                             } else if (type.compareTo(Main_ServerOption.Damage) == 0 || type.compareTo(Main_ServerOption.MagicDamage) == 0 || type.compareTo("업그레이드") == 0) {
                                                                 if (type.compareTo(Main_ServerOption.Damage) == 0) {
@@ -431,7 +431,7 @@ public class Battle_Calculator {
                 }
             }
         }
-        if (Totaluseable == false)
+        if (!Totaluseable)
             new Effect_Packet().sendTitleSubTitle(player, "\'§e\'", "\'§c(장비가 제 성능을 하지 못하고 있다!)\'", (byte) 1, (byte) 1, (byte) 1);
         return bonus;
     }
@@ -455,8 +455,8 @@ public class Battle_Calculator {
             }
         for (byte counter = 0; counter < item.size(); counter++) {
             if (item.get(counter) != null)
-                if (item.get(counter).hasItemMeta() == true) {
-                    if (item.get(counter).getItemMeta().hasLore() == true) {
+                if (item.get(counter).hasItemMeta()) {
+                    if (item.get(counter).getItemMeta().hasLore()) {
                         if (item.get(counter).getItemMeta().getLore().toString().contains("내구도")) {
                             if (!(item.get(counter).getItemMeta().getLore().toString().contains("[주문서]") || item.get(counter).getItemMeta().getLore().toString().contains("[룬]") || item.get(counter).getItemMeta().getLore().toString().contains("[소비]"))) {
                                 for (byte count = 0; count < item.get(counter).getItemMeta().getLore().size(); count++) {
@@ -464,7 +464,7 @@ public class Battle_Calculator {
                                     if (nowlore.contains(" : ")) {
                                         ItemMeta Meta = item.get(counter).getItemMeta();
                                         if (nowlore.contains(" / ")) {
-                                            if (Meta.getLore().get(count).contains("내구도") == true) {
+                                            if (Meta.getLore().get(count).contains("내구도")) {
                                                 String[] Lore = ChatColor.stripColor(Meta.getLore().get(count)).split(" : ");
                                                 String[] SubLore = Lore[1].split(" / ");
                                                 List<String> PLore = Meta.getLore();
@@ -536,17 +536,17 @@ public class Battle_Calculator {
                     }
                 }
         }
-        if (DurabilityExit == true) {
+        if (DurabilityExit) {
             for (byte counter = 0; counter < item.size(); counter++) {
                 if (item.get(counter) != null)
-                    if (item.get(counter).hasItemMeta() == true) {
-                        if (item.get(counter).getItemMeta().hasLore() == true) {
+                    if (item.get(counter).hasItemMeta()) {
+                        if (item.get(counter).getItemMeta().hasLore()) {
                             if (item.get(counter).getItemMeta().getLore().toString().contains("숙련도")) {
                                 for (byte count = 0; count < item.get(counter).getItemMeta().getLore().size(); count++) {
                                     String nowlore = ChatColor.stripColor(item.get(counter).getItemMeta().getLore().get(count));
                                     if (nowlore.contains(" : ")) {
                                         ItemMeta Meta = item.get(counter).getItemMeta();
-                                        if (Meta.getLore().get(count).contains("숙련도") == true) {
+                                        if (Meta.getLore().get(count).contains("숙련도")) {
                                             float Proficiency = 0.07F * Main_ServerOption.Event_Proficiency;
                                             String[] Lore = ChatColor.stripColor(Meta.getLore().get(count)).split(" : ");
                                             String[] SubLore = Lore[1].split("%");
@@ -582,15 +582,15 @@ public class Battle_Calculator {
             if (item.get(counter) != null) {
                 if (counter == 1 && (item.get(counter).getTypeId() == 442 || item.get(counter).getTypeId() == 261))
                     return;
-                if (item.get(counter).hasItemMeta() == true) {
-                    if (item.get(counter).getItemMeta().hasLore() == true) {
+                if (item.get(counter).hasItemMeta()) {
+                    if (item.get(counter).getItemMeta().hasLore()) {
                         if (item.get(counter).getItemMeta().getLore().toString().contains("내구도")) {
                             if (!(item.get(counter).getItemMeta().getLore().toString().contains("[주문서]") || item.get(counter).getItemMeta().getLore().toString().contains("[룬]") || item.get(counter).getItemMeta().getLore().toString().contains("[소비]"))) {
                                 for (byte count = 0; count < item.get(counter).getItemMeta().getLore().size(); count++) {
                                     String nowlore = ChatColor.stripColor(item.get(counter).getItemMeta().getLore().get(count));
                                     if (nowlore.contains(" : ") && nowlore.contains(" / ")) {
                                         ItemMeta Meta = item.get(counter).getItemMeta();
-                                        if (Meta.getLore().get(count).contains("내구도") == true) {
+                                        if (Meta.getLore().get(count).contains("내구도")) {
                                             String[] Lore = ChatColor.stripColor(Meta.getLore().get(count)).split(" : ");
                                             String[] SubLore = Lore[1].split(" / ");
                                             List<String> PLore = Meta.getLore();
@@ -623,15 +623,15 @@ public class Battle_Calculator {
                         }
                     }
                 }
-                if (DurabilityExit == true) {
-                    if (item.get(counter).hasItemMeta() == true) {
-                        if (item.get(counter).getItemMeta().hasLore() == true) {
+                if (DurabilityExit) {
+                    if (item.get(counter).hasItemMeta()) {
+                        if (item.get(counter).getItemMeta().hasLore()) {
                             if (item.get(counter).getItemMeta().getLore().toString().contains("숙련도")) {
                                 for (byte count = 0; count < item.get(counter).getItemMeta().getLore().size(); count++) {
                                     String nowlore = ChatColor.stripColor(item.get(counter).getItemMeta().getLore().get(count));
                                     if (nowlore.contains(" : ")) {
                                         ItemMeta Meta = item.get(counter).getItemMeta();
-                                        if (Meta.getLore().get(count).contains("숙련도") == true) {
+                                        if (Meta.getLore().get(count).contains("숙련도")) {
                                             float Proficiency = 0.07F * Main_ServerOption.Event_Proficiency;
                                             String[] Lore = ChatColor.stripColor(Meta.getLore().get(count)).split(" : ");
                                             String[] SubLore = Lore[1].split("%");

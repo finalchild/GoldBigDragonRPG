@@ -35,7 +35,7 @@ public class Warp_Main {
     public void CreateNewTeleportSpot(Player player, String TeleportName) {
         Effect_Sound s = new Effect_Sound();
 
-        if (player.isOp() == false) {
+        if (!player.isOp()) {
             s.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
             return;
@@ -66,11 +66,11 @@ public class Warp_Main {
     }
 
     public void setTeleportPermission(Player player, String TeleportSpotName) {
-        if (player.isOp() == true) {
+        if (player.isOp()) {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager TeleportList = YC.getNewConfig("Teleport/TeleportList.yml");
             if (TeleportList.contains(TeleportSpotName)) {
-                if (TeleportList.getBoolean(TeleportSpotName + ".OnlyOpUse") == true) {
+                if (TeleportList.getBoolean(TeleportSpotName + ".OnlyOpUse")) {
                     TeleportList.set(TeleportSpotName + ".OnlyOpUse", false);
                     player.sendMessage(ChatColor.GREEN + "[SYSTEM] : 해당 지역은 일반 유저도 워프할 수 있게 되었습니다!");
                 } else {
@@ -94,7 +94,7 @@ public class Warp_Main {
 
 
     public void RemoveTeleportList(Player player, String TeleportName) {
-        if (player.isOp() == false) {
+        if (!player.isOp()) {
             new Effect_Sound().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
             return;
@@ -131,7 +131,7 @@ public class Warp_Main {
         YamlManager TeleportList = YC.getNewConfig("Teleport/TeleportList.yml");
 
         if (TeleportList.contains(TeleportSpotName)) {
-            if (TeleportList.getBoolean(TeleportSpotName + ".OnlyOpUse") == true && player.isOp() == false) {
+            if (TeleportList.getBoolean(TeleportSpotName + ".OnlyOpUse") && !player.isOp()) {
                 s.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                 player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 구역은 제한된 지역입니다!");
                 return;
@@ -146,7 +146,7 @@ public class Warp_Main {
         }
         for (short counter = 0; counter < Bukkit.getServer().getWorlds().size(); counter++) {
             if (Bukkit.getServer().getWorlds().get(counter).getName().equalsIgnoreCase(TeleportSpotName)) {
-                if (player.isOp() == true) {
+                if (player.isOp()) {
                     s.SP(player, org.bukkit.Sound.ENTITY_ENDERMEN_TELEPORT, 0.8F, 1.0F);
                     player.teleport(Bukkit.getServer().getWorld(TeleportSpotName).getSpawnLocation());
                     p.givePotionEffect(player, PotionEffectType.BLINDNESS, 1, 15);

@@ -77,7 +77,7 @@ public class CitizensMain implements Listener {
                                 isThatTarget = true;
                             if (ChatColor.stripColor(QuestList.getString(QuestName + ".FlowChart." + QuestFlow + ".NPCname")).equalsIgnoreCase(ChatColor.stripColor(target.getName())))
                                 isThatTarget = true;
-                            if (isThatTarget == true) {
+                            if (isThatTarget) {
                                 event.setCancelled(true);
                                 QGUI.QuestRouter(player, QuestName);
                                 return;
@@ -95,7 +95,7 @@ public class CitizensMain implements Listener {
                                 isThatTarget = true;
                             if (ChatColor.stripColor(QuestList.getString(QuestName + ".FlowChart." + QuestFlow + ".TargetNPCname")).equalsIgnoreCase(ChatColor.stripColor(target.getName())))
                                 isThatTarget = true;
-                            if (isThatTarget == true) {
+                            if (isThatTarget) {
                                 event.setCancelled(true);
                                 PlayerQuestList.set("Started." + QuestName + ".Flow", PlayerQuestList.getInt("Started." + QuestName + ".Flow") + 1);
                                 PlayerQuestList.saveConfig();
@@ -108,8 +108,8 @@ public class CitizensMain implements Listener {
                                 isThatTarget = true;
                             if (ChatColor.stripColor(QuestList.getString(QuestName + ".FlowChart." + QuestFlow + ".TargetNPCname")).equalsIgnoreCase(ChatColor.stripColor(target.getName())))
                                 isThatTarget = true;
-                            if (isThatTarget == true) {
-                                if (QuestList.contains(QuestName + ".FlowChart." + QuestFlow + ".Item") == false) {
+                            if (isThatTarget) {
+                                if (!QuestList.contains(QuestName + ".FlowChart." + QuestFlow + ".Item")) {
                                     if (PlayerQuestList.getInt("Started." + QuestName + ".Flow") == 0) {
                                         QGUI.QuestRouter(player, QuestName);
                                     } else {
@@ -176,9 +176,9 @@ public class CitizensMain implements Listener {
                                 isThatTarget = true;
                             if (ChatColor.stripColor(QuestList.getString(QuestName + ".FlowChart." + QuestFlow + ".TargetNPCname")).equalsIgnoreCase(ChatColor.stripColor(target.getName())))
                                 isThatTarget = true;
-                            if (isThatTarget == true) {
+                            if (isThatTarget) {
                                 event.setCancelled(true);
-                                if (QuestList.contains(QuestName + ".FlowChart." + QuestFlow + ".Item") == true) {
+                                if (QuestList.contains(QuestName + ".FlowChart." + QuestFlow + ".Item")) {
                                     Object[] p = QuestList.getConfigurationSection(QuestName + ".FlowChart." + QuestFlow + ".Item").getKeys(false).toArray();
                                     byte emptySlot = 0;
                                     ItemStack item[] = new ItemStack[p.length];
@@ -200,7 +200,7 @@ public class CitizensMain implements Listener {
 
                                         Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).addStat_MoneyAndEXP(QuestList.getLong(QuestName + ".FlowChart." + QuestFlow + ".Money"), 0, false);
 
-                                        if (YC.isExit("NPC/PlayerData/" + player.getUniqueId() + ".yml") == false) {
+                                        if (!YC.isExit("NPC/PlayerData/" + player.getUniqueId() + ".yml")) {
                                             YM = YC.getNewConfig("NPC/PlayerData/" + player.getUniqueId() + ".yml");
                                             YM.set(QuestList.getString(QuestName + ".FlowChart." + QuestFlow + ".TargetNPCuuid") + ".love", QuestList.getInt(QuestName + ".FlowChart." + QuestFlow + ".Love"));
                                             YM.set(QuestList.getString(QuestName + ".FlowChart." + QuestFlow + ".TargetNPCuuid") + ".Career", 0);
@@ -239,7 +239,7 @@ public class CitizensMain implements Listener {
         u.setNPCuuid(player, event.getNPC().getUniqueId().toString());
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager DNPC = YC.getNewConfig("NPC/DistrictNPC.yml");
-        if (player.isOp() == true) {
+        if (player.isOp()) {
             if (new UserData_Object().getInt(player, (byte) 4) == 114) {
                 DNPC.removeKey(event.getNPC().getUniqueId().toString());
                 DNPC.saveConfig();
@@ -249,7 +249,7 @@ public class CitizensMain implements Listener {
             }
         }
 
-        if (DNPC.contains(event.getNPC().getUniqueId().toString()) == false) {
+        if (!DNPC.contains(event.getNPC().getUniqueId().toString())) {
             NPC_GUI NPGUI = new NPC_GUI();
             NPGUI.MainGUI(event.getClicker(), event.getNPC().getName(), event.getClicker().isOp());
         }

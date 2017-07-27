@@ -518,38 +518,38 @@ public class Monster_GUI extends Util_GUI {
         Inventory inv = Bukkit.createInventory(null, 9, UniqueCode + "§0몬스터 장비 설정");
         YamlManager MobList = YC.getNewConfig("Monster/MonsterList.yml");
 
-        if (MobList.contains(mob + ".Head.Item") == true &&
-                MobList.getItemStack(mob + ".Head.Item").equals(new ItemStack(Material.AIR)) == false)
+        if (MobList.contains(mob + ".Head.Item") &&
+                !MobList.getItemStack(mob + ".Head.Item").equals(new ItemStack(Material.AIR)))
             inv.setItem(0, MobList.getItemStack(mob + ".Head.Item"));
         else
             Stack(ChatColor.WHITE + "머리", 302, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요."), (byte) 0, inv);
 
-        if (MobList.contains(mob + ".Chest.Item") == true &&
-                MobList.getItemStack(mob + ".Chest.Item").equals(new ItemStack(Material.AIR)) == false)
+        if (MobList.contains(mob + ".Chest.Item") &&
+                !MobList.getItemStack(mob + ".Chest.Item").equals(new ItemStack(Material.AIR)))
             inv.setItem(1, MobList.getItemStack(mob + ".Chest.Item"));
         else
             Stack(ChatColor.WHITE + "갑옷", 303, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요."), (byte) 1, inv);
 
-        if (MobList.contains(mob + ".Leggings.Item") == true &&
-                MobList.getItemStack(mob + ".Leggings.Item").equals(new ItemStack(Material.AIR)) == false)
+        if (MobList.contains(mob + ".Leggings.Item") &&
+                !MobList.getItemStack(mob + ".Leggings.Item").equals(new ItemStack(Material.AIR)))
             inv.setItem(2, MobList.getItemStack(mob + ".Leggings.Item"));
         else
             Stack(ChatColor.WHITE + "바지", 304, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요."), (byte) 2, inv);
 
-        if (MobList.contains(mob + ".Boots.Item") == true &&
-                MobList.getItemStack(mob + ".Boots.Item").equals(new ItemStack(Material.AIR)) == false)
+        if (MobList.contains(mob + ".Boots.Item") &&
+                !MobList.getItemStack(mob + ".Boots.Item").equals(new ItemStack(Material.AIR)))
             inv.setItem(3, MobList.getItemStack(mob + ".Boots.Item"));
         else
             Stack(ChatColor.WHITE + "부츠", 305, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요."), (byte) 3, inv);
 
-        if (MobList.contains(mob + ".Hand.Item") == true &&
-                MobList.getItemStack(mob + ".Hand.Item").equals(new ItemStack(Material.AIR)) == false)
+        if (MobList.contains(mob + ".Hand.Item") &&
+                !MobList.getItemStack(mob + ".Hand.Item").equals(new ItemStack(Material.AIR)))
             inv.setItem(4, MobList.getItemStack(mob + ".Hand.Item"));
         else
             Stack(ChatColor.WHITE + "오른손", 267, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요."), (byte) 4, inv);
 
-        if (MobList.contains(mob + ".OffHand.Item") == true &&
-                MobList.getItemStack(mob + ".OffHand.Item").equals(new ItemStack(Material.AIR)) == false)
+        if (MobList.contains(mob + ".OffHand.Item") &&
+                !MobList.getItemStack(mob + ".OffHand.Item").equals(new ItemStack(Material.AIR)))
             inv.setItem(5, MobList.getItemStack(mob + ".OffHand.Item"));
         else
             Stack(ChatColor.WHITE + "왼손", 267, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요."), (byte) 5, inv);
@@ -644,9 +644,9 @@ public class Monster_GUI extends Util_GUI {
             } else if (slot == 50)//다음 페이지
                 MonsterListGUI(player, page + 1);
             else {
-                if (event.isLeftClick() == true && event.isShiftClick() == false)
+                if (event.isLeftClick() && !event.isShiftClick())
                     MonsterOptionSettingGUI(player, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
-                else if (event.isLeftClick() == true && event.isShiftClick())
+                else if (event.isLeftClick() && event.isShiftClick())
                     new Monster_Spawn().SpawnEggGive(player, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                 else if (event.isRightClick() && event.isShiftClick()) {
                     s.SP(player, Sound.BLOCK_LAVA_POP, 1.0F, 1.0F);

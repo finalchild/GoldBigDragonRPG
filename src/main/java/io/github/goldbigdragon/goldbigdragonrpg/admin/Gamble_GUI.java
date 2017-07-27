@@ -161,9 +161,9 @@ public class Gamble_GUI extends Util_GUI {
                 GamblePresentGUI(player, (short) (page + 1), isChoose, DetailChoose, DeDetailChoose);
             else {
                 if (isChoose == 0) {
-                    if (event.isLeftClick() == true && event.isShiftClick() == false)
+                    if (event.isLeftClick() && !event.isShiftClick())
                         GambleDetailViewPackageGUI(player, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
-                    else if (event.isRightClick() == true && event.isShiftClick() == true) {
+                    else if (event.isRightClick() && event.isShiftClick()) {
                         YamlController YC = new YamlController(Main_Main.plugin);
                         YamlManager PresentList = YC.getNewConfig("Item/GamblePresent.yml");
                         PresentList.removeKey(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
@@ -355,9 +355,9 @@ public class Gamble_GUI extends Util_GUI {
             } else if (slot == 50)//다음 페이지
                 SlotMachine_MainGUI(player, page + 1);
             else {
-                if (event.isLeftClick() == true && event.isShiftClick() == false)
+                if (event.isLeftClick() && !event.isShiftClick())
                     SlotMachine_DetailGUI(player, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
-                else if (event.isRightClick() == true && event.isShiftClick() == true) {
+                else if (event.isRightClick() && event.isShiftClick()) {
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager PresentList = YC.getNewConfig("ETC/SlotMachine.yml");
                     PresentList.removeKey(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
@@ -571,7 +571,7 @@ public class Gamble_GUI extends Util_GUI {
                 return;
             for (byte countta = 0; countta < player.getInventory().getSize(); countta++) {
                 if (player.getInventory().getItem(countta) != null) {
-                    if (player.getInventory().getItem(countta).isSimilar(Coin) == true) {
+                    if (player.getInventory().getItem(countta).isSimilar(Coin)) {
                         if (player.getInventory().getItem(countta).getAmount() >= Coin.getAmount()) {
                             ItemStack ii = player.getInventory().getItem(countta);
                             if (ii.getAmount() == Coin.getAmount())
@@ -581,14 +581,14 @@ public class Gamble_GUI extends Util_GUI {
                                 player.getInventory().setItem(countta, ii);
                             }
                             player.updateInventory();
-                            if (event.getInventory().getItem(16).getTypeId() == 166 && event.getInventory().getItem(16).hasItemMeta() == true)
+                            if (event.getInventory().getItem(16).getTypeId() == 166 && event.getInventory().getItem(16).hasItemMeta())
                                 if (event.getInventory().getItem(16).getItemMeta().getDisplayName().compareTo(ChatColor.RED + "" + ChatColor.BOLD + "[기기 수리 중]") == 0) {
                                     s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                     player.sendMessage(ChatColor.RED + "[슬롯 머신] : 현재 기기는 수리 중입니다! 관리자에게 문의하세요!");
                                     return;
                                 }
 
-                            if (ServerTick_Main.PlayerTaskList.containsKey(player.getName()) == true) {
+                            if (ServerTick_Main.PlayerTaskList.containsKey(player.getName())) {
                                 s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                 player.sendMessage(ChatColor.RED + "[슬롯 머신] : 이미 대기중인 작업이 있습니다! 볼일을 다 보고 오세요!");
                                 return;

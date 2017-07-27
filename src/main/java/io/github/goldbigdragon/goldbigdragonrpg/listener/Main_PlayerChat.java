@@ -64,7 +64,7 @@ public class Main_PlayerChat extends Util_Chat implements Listener {
             TEMProuter(event, u.getTemp(player));
             return;
         }
-        if (player.isOp() == true)
+        if (player.isOp())
             if (u.getType(player) != null)
                 if (u.getType(player).compareTo("Quest") == 0) {
                     new Quest_Chat().QuestTypeChatting(event);
@@ -145,7 +145,7 @@ public class Main_PlayerChat extends Util_Chat implements Listener {
                     Bukkit.broadcastMessage(Prefix);
                     return;
                 case 1:
-                    if (Main_ServerOption.PartyJoiner.containsKey(player) == false) {
+                    if (!Main_ServerOption.PartyJoiner.containsKey(player)) {
                         player.sendMessage(ChatColor.BLUE + "[파티] : 파티에 가입되어 있지 않습니다!");
                         sound.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     } else {
@@ -158,7 +158,7 @@ public class Main_PlayerChat extends Util_Chat implements Listener {
                     return;
                 case 3:
                     event.setCancelled(true);
-                    if (player.isOp() == false) {
+                    if (!player.isOp()) {
                         player.sendMessage(ChatColor.LIGHT_PURPLE + "[관리자] : 당신은 관리자가 아닙니다!");
                         sound.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     } else {
@@ -179,7 +179,7 @@ public class Main_PlayerChat extends Util_Chat implements Listener {
                     return;
                 case 1:
                     event.setCancelled(true);
-                    if (Main_ServerOption.PartyJoiner.containsKey(player) == false) {
+                    if (!Main_ServerOption.PartyJoiner.containsKey(player)) {
                         player.sendMessage(ChatColor.BLUE + "[파티] : 파티에 가입되어 있지 않습니다!");
                         sound.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     } else {
@@ -192,7 +192,7 @@ public class Main_PlayerChat extends Util_Chat implements Listener {
                     return;
                 case 3:
                     event.setCancelled(true);
-                    if (player.isOp() == false) {
+                    if (!player.isOp()) {
                         player.sendMessage(ChatColor.LIGHT_PURPLE + "[관리자] : 당신은 관리자가 아닙니다!");
                         sound.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     } else {
@@ -200,7 +200,7 @@ public class Main_PlayerChat extends Util_Chat implements Listener {
                         Player[] a = new Player[playerlist.size()];
                         playerlist.toArray(a);
                         for (short count = 0; count < a.length; count++) {
-                            if (a[count].isOnline() == true) {
+                            if (a[count].isOnline()) {
                                 Player send = (Player) Bukkit.getOfflinePlayer(((Player) a[count]).getName());
                                 send.sendMessage(ChatColor.LIGHT_PURPLE + "[관리자] " + player.getName() + " : " + event.getMessage());
                             }

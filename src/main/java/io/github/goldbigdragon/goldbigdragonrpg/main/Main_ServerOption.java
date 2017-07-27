@@ -173,13 +173,13 @@ public class Main_ServerOption {
         Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "[OK]" + ChatColor.DARK_GRAY + " NBS 파일 로드");
         new Main_Config().CheckConfig(YC);
         Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "[OK]" + ChatColor.DARK_GRAY + " 콘피그 정보 로드");
-        if (YC.isExit("Skill/SkillList.yml") == false)
+        if (!YC.isExit("Skill/SkillList.yml"))
             new Skill_Config().CreateNewSkillList();
         Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "[OK]" + ChatColor.DARK_GRAY + " 스킬 정보 로드");
-        if (YC.isExit("Skill/JobList.yml") == false)
+        if (!YC.isExit("Skill/JobList.yml"))
             new Skill_Config().CreateNewJobList();
         Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "[OK]" + ChatColor.DARK_GRAY + " 직업 정보 로드");
-        if (YC.isExit("ETC/NewBie.yml") == false)
+        if (!YC.isExit("ETC/NewBie.yml"))
             new NewBie_Config().CreateNewConfig();
         Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "[OK]" + ChatColor.DARK_GRAY + " 초보자 정보 로드");
 
@@ -197,7 +197,7 @@ public class Main_ServerOption {
         new ServerTick_ScheduleManager().loadCategoriFile();
         Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "[OK]" + ChatColor.DARK_GRAY + " 틱 정보 로드");
 
-        if (Bukkit.getServer().getOnlineMode() == false)
+        if (!Bukkit.getServer().getOnlineMode())
             Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "비 정품 서버에서는 일부 기능이 정상적인 실행이 되지 않을수도 있습니다.");
 
         if (Bukkit.getWorld("Dungeon") == null) {
@@ -257,7 +257,7 @@ public class Main_ServerOption {
                     }
                 }
             }
-            if (isPlayerExist == false) {
+            if (!isPlayerExist) {
                 while (entityList.hasNext())
                     entityList.next().remove();
                 YamlManager DungeonData = YC.getNewConfig("Dungeon/DungeonData.yml");
@@ -270,12 +270,12 @@ public class Main_ServerOption {
             }
         }
         File directory = new File(Main_Main.plugin.getDataFolder() + "\\Dungeon\\Schematic");
-        if (directory.exists() == false)
+        if (!directory.exists())
             directory.mkdir();
         File[] fileList = directory.listFiles();
         try {
             for (int count = 0; count < fileList.length; count++)
-                if (fileList[count].isFile() == false) {
+                if (!fileList[count].isFile()) {
                     File InnerDirectory = new File(Main_Main.plugin.getDataFolder() + "\\Dungeon\\Schematic\\" + fileList[count].getName());
                     File[] schematicList = InnerDirectory.listFiles();
                     if (schematicList.length != 25) {
@@ -283,29 +283,29 @@ public class Main_ServerOption {
                         for (byte count2 = 0; count2 < schematicList.length; count2++)
                             DungeonFile.add(schematicList[count2].getName());
                         Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[Fail] " + fileList[count].getName() + " 던전 테마를 사용하려면 아래 구성물들이 더 필요합니다!");
-                        if (DungeonFile.contains("Boss.schematic") == false)
+                        if (!DungeonFile.contains("Boss.schematic"))
                             Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "　 Boss.schematic");
                         for (byte count2 = 0; count2 < 4; count2++)
-                            if (DungeonFile.contains("Closed_Door" + count2 + ".schematic") == false)
+                            if (!DungeonFile.contains("Closed_Door" + count2 + ".schematic"))
                                 Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "　 Closed_Door" + count2 + ".schematic");
-                        if (DungeonFile.contains("CrossRoad.schematic") == false)
+                        if (!DungeonFile.contains("CrossRoad.schematic"))
                             Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "　 CrossRoad.schematic");
                         for (byte count2 = 0; count2 < 4; count2++)
-                            if (DungeonFile.contains("Door" + count2 + ".schematic") == false)
+                            if (!DungeonFile.contains("Door" + count2 + ".schematic"))
                                 Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "　 Door" + count2 + ".schematic");
                         for (byte count2 = 0; count2 < 4; count2++)
-                            if (DungeonFile.contains("LRoad" + count2 + ".schematic") == false)
+                            if (!DungeonFile.contains("LRoad" + count2 + ".schematic"))
                                 Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "　 LRoad" + count2 + ".schematic");
                         for (byte count2 = 0; count2 < 2; count2++)
-                            if (DungeonFile.contains("Road" + count2 + ".schematic") == false)
+                            if (!DungeonFile.contains("Road" + count2 + ".schematic"))
                                 Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "　 Road" + count2 + ".schematic");
-                        if (DungeonFile.contains("Room.schematic") == false)
+                        if (!DungeonFile.contains("Room.schematic"))
                             Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "　 Room.schematic");
                         for (byte count2 = 0; count2 < 4; count2++)
-                            if (DungeonFile.contains("TRoad" + count2 + ".schematic") == false)
+                            if (!DungeonFile.contains("TRoad" + count2 + ".schematic"))
                                 Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "　 TRoad" + count2 + ".schematic");
                         for (byte count2 = 0; count2 < 4; count2++)
-                            if (DungeonFile.contains("Wall" + count2 + ".schematic") == false)
+                            if (!DungeonFile.contains("Wall" + count2 + ".schematic"))
                                 Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "　 Wall" + count2 + ".schematic");
                     } else {
                         DungeonTheme.add(fileList[count].getName());
@@ -382,9 +382,9 @@ public class Main_ServerOption {
     }
 
     public void MagicSpellCatch() {
-        if (MagicSpellsCatched == false) {
+        if (!MagicSpellsCatched) {
             MagicSpellsCatched = true;
-            if (Bukkit.getPluginManager().isPluginEnabled("MagicSpells") == false) {
+            if (!Bukkit.getPluginManager().isPluginEnabled("MagicSpells")) {
                 ErrorMessage();
                 Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "MagicSpells 플러그인을 찾을 수 없습니다!");
                 Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "MagicSpells 다운로드 URL");
@@ -398,9 +398,9 @@ public class Main_ServerOption {
     }
 
     public void CitizensCatch() {
-        if (CitizensCatched == false) {
+        if (!CitizensCatched) {
             CitizensCatched = true;
-            if (Bukkit.getPluginManager().isPluginEnabled("Citizens") == false) {
+            if (!Bukkit.getPluginManager().isPluginEnabled("Citizens")) {
                 ErrorMessage();
                 Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "Citizens 플러그인을 찾을 수 없습니다!");
                 Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "Citizens 다운로드 URL");

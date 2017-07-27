@@ -45,13 +45,13 @@ public class Corpse_Main {
 
     public boolean DeathCapture(Player player, boolean isJoin) {
         if (player.getGameMode() == GameMode.SPECTATOR) {
-            if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isDeath() == true) {
+            if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isDeath()) {
                 Location l = Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getLastDeathPoint();
                 if (l.getBlockY() < 0)
                     l.setY(0);
                 if (l.getBlockX() != player.getLocation().getBlockX() || l.getBlockY() != player.getLocation().getBlockY() || l.getBlockZ() != player.getLocation().getBlockZ())
                     player.teleport(l);
-                if (isJoin == false)
+                if (!isJoin)
                     new Corpse_GUI().OpenReviveSelectGUI(player);
                 else if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isBgmOn()) {
                     new io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain().Stop(player);
@@ -60,7 +60,7 @@ public class Corpse_Main {
                     if (Config.getInt("Death.Track") != -1)
                         new io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain().Play(player, Config.getInt("Death.Track"));
                 }
-                if (Corpses.containsKey(player.getName()) == false)
+                if (!Corpses.containsKey(player.getName()))
                     CreateCorpse(player);
                 return true;
             }
@@ -70,7 +70,7 @@ public class Corpse_Main {
 
     public void asyncDeathCapture(final Player player) {
         if (player.getGameMode() == GameMode.SPECTATOR) {
-            if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isDeath() == true) {
+            if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isDeath()) {
                 Location l = Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getLastDeathPoint();
                 if (l.getBlockY() < 0)
                     l.setY(0);
@@ -87,7 +87,7 @@ public class Corpse_Main {
                     }, 0);
                 }
                 new Corpse_GUI().OpenReviveSelectGUI(player);
-                if (Corpses.containsKey(player.getName()) == false) {
+                if (!Corpses.containsKey(player.getName())) {
                     Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main_Main.plugin, new Runnable() {
                         @Override
                         public void run() {

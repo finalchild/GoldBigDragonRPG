@@ -45,13 +45,13 @@ public class Util_Player {
             EXP = Long.MIN_VALUE;
         else
             EXP = EXP * Main_ServerOption.Event_Exp;
-        if (Main_ServerOption.PartyJoiner.containsKey(player) == false)
+        if (!Main_ServerOption.PartyJoiner.containsKey(player))
             Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).addStat_MoneyAndEXP(Money, EXP, true);
         else if (givePartyMemberToo) {
             Player[] party = Main_ServerOption.Party.get(Main_ServerOption.PartyJoiner.get(player)).getMember();
             byte partymember = 0;
             for (byte count = 0; count < party.length; count++)
-                if (party[count].isOnline() == true)
+                if (party[count].isOnline())
                     if (party[count].getLocation().getWorld() == loc.getWorld())
                         if (loc.distance(party[count].getLocation()) <= Main_ServerOption.EXPShareDistance)
                             partymember++;
@@ -59,7 +59,7 @@ public class Util_Player {
             EXP = (EXP / partymember);
 
             for (byte count = 0; count < party.length; count++) {
-                if (party[count].isOnline() == true)
+                if (party[count].isOnline())
                     if (party[count].getLocation().getWorld() == loc.getWorld())
                         if (loc.distance(party[count].getLocation()) <= Main_ServerOption.EXPShareDistance)
                             Main_ServerOption.PlayerList.get(party[count].getUniqueId().toString()).addStat_MoneyAndEXP(Money, EXP, true);

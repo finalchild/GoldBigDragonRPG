@@ -26,7 +26,7 @@ import net.md_5.bungee.api.ChatColor;
 public class Main_Config {
     public void CheckConfig(YamlController YC) {
         YamlManager Config = YC.getNewConfig("config.yml");
-        if (Config.contains("Version") == false) {
+        if (!Config.contains("Version")) {
             Config.set("Version", "Advanced");
             Config.set("Update", 20170527);
             Config.set("Server.BroadCastSecond", 30);
@@ -349,7 +349,7 @@ public class Main_Config {
         Main_ServerOption.dualWeapon = Config.getBoolean("Server.LeftHandWeaponDamageEnable");
 
         Config = YC.getNewConfig("MapImageURL.yml");
-        if (Config.contains("GBD.URL") == false) {
+        if (!Config.contains("GBD.URL")) {
             Config.set("KoreaLanguage(UTF-8)->JavaEntityLanguage", "http://itpro.cz/juniconv/");
             Config.set("GBD.URL", "http://cafeptthumb3.phinf.naver.net/20140309_183/dnwndugod642_1394374547812opRrb_PNG/GBD%28classic%29.png?type=w740");
             Config.set("GBD.Xcenter", 0);
@@ -364,7 +364,7 @@ public class Main_Config {
         }
 
         Config = YC.getNewConfig("Level.yml");
-        if (Config.contains(1 + "") == false) {
+        if (!Config.contains(1 + "")) {
             long EXP = 100;
             for (int level = 1; level < 250; level++) {
                 if (level + ((1.1) * EXP) < 0 || level + (1.1) * EXP > Long.MAX_VALUE)

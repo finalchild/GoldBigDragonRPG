@@ -39,11 +39,11 @@ public class Quest_Command {
             new Quest_GUI().MyQuestListGUI(player, (short) 0);
             return;
         }
-        if (talker.isOp() == true) {
-            if (player.isOp() == true) {
+        if (talker.isOp()) {
+            if (player.isOp()) {
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager QuestConfig = YC.getNewConfig("Quest/QuestList.yml");
-                if (YC.isExit("Quest/QuestList.yml") == false) {
+                if (!YC.isExit("Quest/QuestList.yml")) {
                     QuestConfig.set("Do_not_Touch_This", true);
                     QuestConfig.saveConfig();
                 }

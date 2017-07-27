@@ -66,7 +66,7 @@ public class Struct_CampFire extends Util_GUI {
         if (event.getSlot() == 3 || event.getSlot() == 5) {
             if (event.getSlot() == 5) {
                 ItemStack item = new MaterialData(280, (byte) 0).toItemStack(1);
-                if (new Util_Player().deleteItem(player, item, 10) == false) {
+                if (!new Util_Player().deleteItem(player, item, 10)) {
                     s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                     player.sendMessage(ChatColor.RED + "[SYSTEM] : 불을 지피기 위해 필요한 막대기 개수가 모자랍니다!");
                     return;

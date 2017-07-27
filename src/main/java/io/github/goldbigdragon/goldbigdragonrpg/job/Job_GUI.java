@@ -114,7 +114,7 @@ public class Job_GUI extends Util_GUI {
             int NeedWILL = JobList.getInt("MapleStory." + JobName + "." + JobNick + ".NeedWILL");
             int NeedLUK = JobList.getInt("MapleStory." + JobName + "." + JobNick + ".NeedLUK");
             String PrevJob = JobList.getString("MapleStory." + JobName + "." + JobNick + ".PrevJob");
-            if (PrevJob.equalsIgnoreCase("null") == true)
+            if (PrevJob.equalsIgnoreCase("null"))
                 PrevJob = "없음";
             if (count == 0)
                 Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + JobNick, IconID, IconData, IconAmount, Arrays.asList(ChatColor.DARK_AQUA + "등록된 스킬 수 : " + ChatColor.WHITE + JobSkillList + ChatColor.DARK_AQUA + "개", ChatColor.GREEN + "승급 필요 레벨 : " + ChatColor.WHITE + NeedLevel + ChatColor.GREEN + " 이상", ChatColor.GREEN + "승급 필요 " + Main_ServerOption.STR + " : " + ChatColor.WHITE + NeedSTR + ChatColor.GREEN + " 이상", ChatColor.GREEN + "승급 필요 " + Main_ServerOption.DEX + " : " + ChatColor.WHITE + NeedDEX + ChatColor.GREEN + " 이상", ChatColor.GREEN + "승급 필요 " + Main_ServerOption.INT + " : " + ChatColor.WHITE + NeedINT + ChatColor.GREEN + " 이상", ChatColor.GREEN + "승급 필요 " + Main_ServerOption.WILL + " : " + ChatColor.WHITE + NeedWILL + ChatColor.GREEN + " 이상", ChatColor.GREEN + "승급 필요 " + Main_ServerOption.LUK + " : " + ChatColor.WHITE + NeedLUK + ChatColor.GREEN + " 이상", ChatColor.GREEN + "이전 승급 단계 : " + ChatColor.WHITE + PrevJob, "", ChatColor.YELLOW + "[좌 클릭시 직업 스킬 등록]", ChatColor.YELLOW + "[우 클릭시 직업 스킬 확인]", ChatColor.YELLOW + "[Shift + 좌 클릭시 승급 제한 설정]", ChatColor.YELLOW + "" + ChatColor.BOLD + "[기본 클래스]"), count, inv);
@@ -180,7 +180,7 @@ public class Job_GUI extends Util_GUI {
             byte IconData = (byte) SkillList.getInt(SkillName + ".DATA");
             byte IconAmount = (byte) SkillList.getInt(SkillName + ".Amount");
 
-            if (SkillPublic == true)
+            if (SkillPublic)
                 Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + SkillName, IconID, IconData, IconAmount, Arrays.asList("", ChatColor.DARK_AQUA + "[   기본 스킬   ]", ChatColor.GRAY + "서버 접속시 기본적으로", ChatColor.GRAY + "주어지는 스킬입니다.", "", ChatColor.YELLOW + "[좌 클릭시 히든 스킬 전환]", ChatColor.RED + "[Shift + 우클릭시 스킬 삭제]", "", ChatColor.RED + "     ※  주의  ※     ", ChatColor.RED + "히든 스킬으로 전환 하더라도", ChatColor.RED + "원래 해당 스킬을 알고 있던", ChatColor.RED + "유저의 스킬은 삭제되지 않으며,", ChatColor.RED + "신규 유저들의 스킬 자동 습득만", ChatColor.RED + "불가능 하게 됩니다."), loc, inv);
             else
                 Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + SkillName, IconID, IconData, IconAmount, Arrays.asList("", ChatColor.DARK_PURPLE + "[   히든 스킬   ]", ChatColor.GRAY + "책을 읽거나 퀘스트 수행을 통하여", ChatColor.GRAY + "얻을 수 있는 스킬입니다.", "", ChatColor.YELLOW + "[좌 클릭시 기본 스킬 전환]", ChatColor.RED + "[Shift + 우클릭시 스킬 삭제]", "", ChatColor.RED + "     ※  주의  ※     ", ChatColor.RED + "기본 스킬으로 전환 시킬 경우", ChatColor.RED + "현재 접속한 모든 인원에게,", ChatColor.RED + "그리고 전환 이후에 들어오는 모든", ChatColor.RED + "신규 유저들에게 해당 스킬이 주어집니다.", ChatColor.RED + "[현재 접속자 수에 비례한 렉 발생]"), loc, inv);
@@ -270,17 +270,17 @@ public class Job_GUI extends Util_GUI {
             } else if (slot == 50)//다음 페이지
                 MapleStory_ChooseJob(player, (short) Integer.parseInt(event.getInventory().getTitle().split(" : ")[1]));
             else {
-                if (event.isLeftClick() == true && event.isRightClick() == false)
+                if (event.isLeftClick() && !event.isRightClick())
                     MapleStory_JobSetting(player, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
-                if (event.getCurrentItem().getItemMeta().getLore().toString().contains("설정") == true && event.isShiftClick() == true
-                        && event.isLeftClick() == true) {
+                if (event.getCurrentItem().getItemMeta().getLore().toString().contains("설정") && event.isShiftClick()
+                        && event.isLeftClick()) {
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager Config = YC.getNewConfig("config.yml");
                     Config.set("Server.DefaultJob", ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                     Config.saveConfig();
                     MapleStory_ChooseJob(player, (short) (Integer.parseInt(event.getInventory().getTitle().split(" : ")[1]) - 1));
-                } else if (event.getCurrentItem().getItemMeta().getLore().toString().contains("설정") == true && event.isShiftClick() == true
-                        && event.isRightClick() == true) {
+                } else if (event.getCurrentItem().getItemMeta().getLore().toString().contains("설정") && event.isShiftClick()
+                        && event.isRightClick()) {
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager Config = YC.getNewConfig("config.yml");
                     if (Config.getString("Server.DefaultJob").equalsIgnoreCase(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()))) {
@@ -335,13 +335,13 @@ public class Job_GUI extends Util_GUI {
                 }
             } else {
                 String JobNick = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
-                if (event.isLeftClick() == true && event.isShiftClick() == false) {
+                if (event.isLeftClick() && !event.isShiftClick()) {
                     UserData_Object u = new UserData_Object();
                     u.setType(player, "Job");
                     u.setString(player, (byte) 2, JobNick);
                     u.setString(player, (byte) 3, JobName);
                     new OPboxSkill_GUI().AllSkillsGUI(player, (short) 0, true, "Maple");
-                } else if (event.isShiftClick() == true && event.isLeftClick() == true) {
+                } else if (event.isShiftClick() && event.isLeftClick()) {
                     player.closeInventory();
                     player.sendMessage(ChatColor.LIGHT_PURPLE + "[직업] : " + ChatColor.YELLOW + JobNick + ChatColor.LIGHT_PURPLE + "의 승급 필요 레벨을 입력 하세요!");
 
@@ -351,10 +351,10 @@ public class Job_GUI extends Util_GUI {
                     u.setString(player, (byte) 2, JobName);
                     u.setString(player, (byte) 3, JobNick);
 
-                } else if (event.isShiftClick() == false && event.isRightClick() == true) {
+                } else if (!event.isShiftClick() && event.isRightClick()) {
                     s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                     AddedSkillsListGUI(player, 0, JobName, JobNick);
-                } else if (event.isShiftClick() == true && event.isRightClick() == true) {
+                } else if (event.isShiftClick() && event.isRightClick()) {
                     if (event.getSlot() == 0) {
                         s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.RED + "[직업] : 기본 클래스는 삭제할 수 없습니다!");
@@ -396,7 +396,7 @@ public class Job_GUI extends Util_GUI {
             else if (slot == 50)//다음 페이지
                 AddedSkillsListGUI(player, page + 1, JobName, JobNick);
             else {
-                if (event.isShiftClick() == true && event.isRightClick() == true) {
+                if (event.isShiftClick() && event.isRightClick()) {
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager JobList = YC.getNewConfig("Skill/JobList.yml");
                     s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
@@ -438,13 +438,13 @@ public class Job_GUI extends Util_GUI {
                 u.setString(player, (byte) 1, "CC");
             } else {
                 String CategoriName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
-                if (event.isLeftClick() == true) {
-                    if (event.isShiftClick() == false) {
+                if (event.isLeftClick()) {
+                    if (!event.isShiftClick()) {
                         OPboxSkill_GUI OGUI = new OPboxSkill_GUI();
                         OGUI.AllSkillsGUI(player, (short) 0, true, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                     } else
                         Mabinogi_SkillSetting(player, (short) 0, CategoriName);
-                } else if (event.isShiftClick() == true && event.isRightClick() == true) {
+                } else if (event.isShiftClick() && event.isRightClick()) {
                     s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager SkillList = YC.getNewConfig("Skill/JobList.yml");
@@ -489,8 +489,8 @@ public class Job_GUI extends Util_GUI {
                 String SkillName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager SkillList = YC.getNewConfig("Skill/JobList.yml");
-                if (event.isLeftClick() == true) {
-                    if (SkillList.getBoolean("Mabinogi." + CategoriName + "." + SkillName) == true) {
+                if (event.isLeftClick()) {
+                    if (SkillList.getBoolean("Mabinogi." + CategoriName + "." + SkillName)) {
                         SkillList.set("Mabinogi." + CategoriName + "." + SkillName, false);
                         SkillList.saveConfig();
                         Mabinogi_SkillSetting(player, (short) page, CategoriName);
@@ -503,7 +503,7 @@ public class Job_GUI extends Util_GUI {
                         Config.saveConfig();
                         new Job_Main().AllPlayerFixAllSkillAndJobYML();
                     }
-                } else if (event.isShiftClick() == true && event.isRightClick() == true) {
+                } else if (event.isShiftClick() && event.isRightClick()) {
                     s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                     SkillList.removeKey("Mabinogi.Added." + SkillName);
                     SkillList.removeKey("Mabinogi." + CategoriName + "." + SkillName);

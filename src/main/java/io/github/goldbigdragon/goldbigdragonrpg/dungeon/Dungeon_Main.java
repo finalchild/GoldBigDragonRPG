@@ -593,7 +593,7 @@ public class Dungeon_Main {
                     }
                 }
 
-                if (treasureGet == false)
+                if (!treasureGet)
                     new Effect_Packet().sendActionBar(player, ChatColor.RED + "" + ChatColor.BOLD + "[꽝! 다음 기회에...]");
             } else {
                 s.SP(player, Sound.ENTITY_ZOMBIE_ATTACK_IRON_DOOR, 1.0F, 0.5F);
@@ -620,11 +620,11 @@ public class Dungeon_Main {
         Object[] MobList = null;
         String ListName = "Normal";
         byte randomLevel = (byte) new Util_Number().RandomNum(0, 3);
-        if (MonsterConfig.contains("Normal") == false)
+        if (!MonsterConfig.contains("Normal"))
             MonsterConfig.createSection("Normal");
-        if (MonsterConfig.contains("Middle") == false)
+        if (!MonsterConfig.contains("Middle"))
             MonsterConfig.createSection("Middle");
-        if (MonsterConfig.contains("High") == false)
+        if (!MonsterConfig.contains("High"))
             MonsterConfig.createSection("High");
         if (randomLevel <= 1) {
             if (MonsterConfig.getConfigurationSection("Normal").getKeys(false).size() == 0)

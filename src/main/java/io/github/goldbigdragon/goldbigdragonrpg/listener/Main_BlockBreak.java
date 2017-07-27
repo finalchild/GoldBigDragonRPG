@@ -63,7 +63,7 @@ public class Main_BlockBreak implements Listener {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager AreaConfig = YC.getNewConfig("Area/AreaList.yml");
 
-            if (A.getAreaOption(Area[0], (char) 1) == false && event.getPlayer().isOp() == false) {
+            if (!A.getAreaOption(Area[0], (char) 1) && !event.getPlayer().isOp()) {
                 event.setCancelled(true);
                 new Effect_Sound().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                 event.getPlayer().sendMessage(ChatColor.RED + "[SYSTEM] : " + ChatColor.YELLOW + Area[1] + ChatColor.RED + " 지역 에서는 블록 채집이 불가능합니다!");
@@ -85,7 +85,7 @@ public class Main_BlockBreak implements Listener {
             }
             if (player.getGameMode() != GameMode.CREATIVE) {
                 String BlockData = event.getBlock().getTypeId() + ":" + event.getBlock().getData();
-                if (AreaConfig.contains(Area[0] + ".Mining." + BlockData) == true) {
+                if (AreaConfig.contains(Area[0] + ".Mining." + BlockData)) {
                     event.setCancelled(true);
                     event.getBlock().setType(Material.AIR);
                     Main_ItemDrop ItemDrop = new Main_ItemDrop();
@@ -119,7 +119,7 @@ public class Main_BlockBreak implements Listener {
         }
         Quest(event, player);
         if (event.getBlock().getLocation().getWorld().getName().compareTo("Dungeon") == 0
-                && player.isOp() == false) {
+                && !player.isOp()) {
             event.setCancelled(true);
             return;
         }
@@ -147,11 +147,11 @@ public class Main_BlockBreak implements Listener {
     private void Quest(BlockBreakEvent event, Player player) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager QuestList = YC.getNewConfig("Quest/QuestList.yml");
-        if (YC.isExit("Quest/PlayerData/" + player.getUniqueId() + ".yml") == false)
+        if (!YC.isExit("Quest/PlayerData/" + player.getUniqueId() + ".yml"))
             new Quest_Config().CreateNewPlayerConfig(player);
         YamlManager PlayerQuestList = YC.getNewConfig("Quest/PlayerData/" + player.getUniqueId() + ".yml");
 
-        if (Main_ServerOption.PartyJoiner.containsKey(player) == false) {
+        if (!Main_ServerOption.PartyJoiner.containsKey(player)) {
             if (PlayerQuestList.contains("Started"))
                 if (PlayerQuestList.getConfigurationSection("Started").getKeys(false).toArray().length >= 1) {
                     Object[] a = PlayerQuestList.getConfigurationSection("Started").getKeys(false).toArray();
@@ -167,7 +167,7 @@ public class Main_BlockBreak implements Listener {
                                 int MAX = QuestList.getInt(QuestName + ".FlowChart." + Flow + ".Block." + counter + ".Amount");
                                 boolean DataEquals = QuestList.getBoolean(QuestName + ".FlowChart." + Flow + ".Block." + counter + ".DataEquals");
                                 if (BlockID == event.getBlock().getTypeId() && MAX > PlayerQuestList.getInt("Started." + QuestName + ".Block." + counter)) {
-                                    if (DataEquals == false) {
+                                    if (!DataEquals) {
                                         PlayerQuestList.set("Started." + QuestName + ".Block." + counter, PlayerQuestList.getInt("Started." + QuestName + ".Block." + counter) + 1);
                                         PlayerQuestList.saveConfig();
                                     } else {
@@ -214,7 +214,7 @@ public class Main_BlockBreak implements Listener {
                                     int MAX = QuestList.getInt(QuestName + ".FlowChart." + Flow + ".Block." + counter + ".Amount");
                                     boolean DataEquals = QuestList.getBoolean(QuestName + ".FlowChart." + Flow + ".Block." + counter + ".DataEquals");
                                     if (BlockID == event.getBlock().getTypeId() && MAX > PlayerQuestList.getInt("Started." + QuestName + ".Block." + counter)) {
-                                        if (DataEquals == false) {
+                                        if (!DataEquals) {
                                             PlayerQuestList.set("Started." + QuestName + ".Block." + counter, PlayerQuestList.getInt("Started." + QuestName + ".Block." + counter) + 1);
                                             PlayerQuestList.saveConfig();
                                         } else {

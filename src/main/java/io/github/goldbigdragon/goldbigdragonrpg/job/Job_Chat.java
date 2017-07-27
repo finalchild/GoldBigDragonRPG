@@ -49,7 +49,7 @@ public class Job_Chat extends Util_Chat {
 
         switch (u.getString(player, (byte) 1)) {
             case "CC"://CreateCategory
-                if (JobList.getConfigurationSection("Mabinogi").getKeys(false).toString().contains(Message) == false) {
+                if (!JobList.getConfigurationSection("Mabinogi").getKeys(false).toString().contains(Message)) {
                     JobList.createSection("Mabinogi." + Message);
                     JobList.saveConfig();
                     sound.SP(player, org.bukkit.Sound.ENTITY_HORSE_SADDLE, 1.0F, 0.5F);
@@ -201,7 +201,7 @@ public class Job_Chat extends Util_Chat {
                     }
                 } else
                     checked = true;
-                if (checked == true) {
+                if (checked) {
                     if (Message.compareTo("없음") != 0)
                         JobList.set("MapleStory." + JobName3 + "." + JobNick2 + ".PrevJob", ChatColor.stripColor(Message));
                     else

@@ -91,7 +91,7 @@ public class OPbox_GUI extends Util_GUI {
                 Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "서버 설정", 137, 0, 1, Arrays.asList(ChatColor.GRAY + "서버에 대한 전반적인 설정을 합니다."), 12, inv);
                 Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "몬스터", 397, 4, 1, Arrays.asList(ChatColor.GRAY + "커스텀 몬스터를 생성하거나", ChatColor.GRAY + "스폰 에그를 얻습니다."), 14, inv);
                 Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이벤트", 401, 0, 1, Arrays.asList(ChatColor.GRAY + "이벤트 개최시 접속된 모든", ChatColor.GRAY + "플레이어들에게 알려지며,", ChatColor.GRAY + "이후 입장하는 모든 플레이어에게", ChatColor.GRAY + "이벤트 진행을 알려줍니다."), 16, inv);
-                if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System") == true) {
+                if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
                     Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "게임 성향", 346, 0, 1, Arrays.asList(ChatColor.WHITE + "[마비노기]", ChatColor.GRAY + "환생과 누적레벨이 존재하며,", ChatColor.GRAY + "스텟을 임의로 올릴 수 없습니다.", ChatColor.RED + "플레이어의 스텟 데이터가 이어지므로", ChatColor.RED + "변경시 주의가 필요합니다."), 28, inv);
                 } else {
                     {
@@ -165,7 +165,7 @@ public class OPbox_GUI extends Util_GUI {
         Stack2(" ", 160, 11, 1, null, 43, inv);
         Stack2(" ", 160, 11, 1, null, 44, inv);
 
-        if (Config.getBoolean("Server.EntitySpawn") == true) {
+        if (Config.getBoolean("Server.EntitySpawn")) {
             Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "엔티티 스폰", 52, 0, 1, Arrays.asList(ChatColor.GREEN + "[활성화]", ChatColor.GRAY + "해당 옵션이 비활성화 상태일 경우", ChatColor.GRAY + "더이상 엔티티들이 소환되지 않습니다."), 10, inv);
         } else {
             {
@@ -173,7 +173,7 @@ public class OPbox_GUI extends Util_GUI {
             }
         }
 
-        if (Config.getBoolean("Server.PVP") == true) {
+        if (Config.getBoolean("Server.PVP")) {
             Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "유저간 PVP", 276, 0, 1, Arrays.asList(ChatColor.GREEN + "[활성화]", ChatColor.GRAY + "현재 유저간 전투가 허용 됩니다."), 11, inv);
         } else {
             {
@@ -207,7 +207,7 @@ public class OPbox_GUI extends Util_GUI {
                 break;
         }
 
-        if (Config.getBoolean("Server.CustomWeaponBreak") == true) {
+        if (Config.getBoolean("Server.CustomWeaponBreak")) {
             Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "커스텀 무기 파괴", 268, 50, 1, Arrays.asList(ChatColor.GREEN + "[활성화]", ChatColor.GRAY + "커스텀 무기의 내구도가 0이 될 경우", ChatColor.GRAY + "일반 무기와 같이 파괴됩니다."), 13, inv);
         } else {
             {
@@ -241,7 +241,7 @@ public class OPbox_GUI extends Util_GUI {
             ItemStackStack(getPlayerSkull(ChatColor.GREEN + "" + ChatColor.BOLD + "채팅 형태", 1, Arrays.asList(ChatColor.GRAY + "채팅 형태를 변경합니다.", ChatColor.GRAY + "단, 형태를 변경할 경우", ChatColor.GRAY + "모든 일반 채팅이 브로드", ChatColor.GRAY + "캐스트 형식으로 변경되므로", ChatColor.GRAY + "주의해야 합니다.", "", ChatColor.DARK_AQUA + "[현재 채팅 형태]", ChatColor.WHITE + Prefix, "", ChatColor.YELLOW + "[좌 클릭시 접두사 변경]", ChatColor.RED + "[우 클릭시 접두사 제거]", "", ChatColor.GREEN + "[코드 제공]", ChatColor.WHITE + "" + ChatColor.BOLD + "B4TT3RY"), "B4TT3RY__"), 19, inv);
         }
 
-        if (Config.getBoolean("Server.CustomBlockPlace") == true)
+        if (Config.getBoolean("Server.CustomBlockPlace"))
             Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "커스텀 블록 설치", 1, 0, 1, Arrays.asList(ChatColor.GREEN + "[가능]", ChatColor.GRAY + "아이템에 설명이 붙어 있거나", ChatColor.GRAY + "이름이 변경된 아이템이", ChatColor.GRAY + "설치되는 것을 막지 않습니다."), 20, inv);
         else
             Stack2(ChatColor.RED + "" + ChatColor.BOLD + "커스텀 블록 설치", 166, 0, 1, Arrays.asList(ChatColor.RED + "[불가능]", ChatColor.GRAY + "아이템에 설명이 붙어 있거나", ChatColor.GRAY + "이름이 변경된 아이템이", ChatColor.GRAY + "설치되는 것을 막습니다."), 20, inv);
@@ -371,7 +371,7 @@ public class OPbox_GUI extends Util_GUI {
         Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[다시 일어선다]", 2266, 0, 1, Arrays.asList("", ChatColor.GRAY + "[현재 설정 상태]", "", ChatColor.GREEN + " + " + Config.getString("Death.Spawn_Here.SetHealth") + " 생명력", ChatColor.RED + " - 경험치 " + Config.getString("Death.Spawn_Here.PenaltyEXP") + " 감소", ChatColor.RED + " - 소지금 " + Config.getString("Death.Spawn_Here.PenaltyMoney") + " 감소", "", ChatColor.YELLOW + "[좌 클릭시 변경]"), 12, inv);
         Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[구조를 기다린다]", 397, 3, 1, Arrays.asList("", ChatColor.GRAY + "[현재 설정 상태]", "", ChatColor.GREEN + " + " + Config.getString("Death.Spawn_Help.SetHealth") + " 생명력", ChatColor.RED + " - 경험치 " + Config.getString("Death.Spawn_Help.PenaltyEXP") + " 감소", ChatColor.RED + " - 소지금 " + Config.getString("Death.Spawn_Help.PenaltyMoney") + " 감소", "", ChatColor.YELLOW + "[좌 클릭시 변경]"), 14, inv);
         Stack2(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "[부활석 사용]", 399, 0, 1, Arrays.asList("", ChatColor.GRAY + "[현재 설정 상태]", "", ChatColor.GREEN + " + " + Config.getString("Death.Spawn_Item.SetHealth") + " 생명력", ChatColor.RED + " - 경험치 " + Config.getString("Death.Spawn_Item.PenaltyEXP") + " 감소", ChatColor.RED + " - 소지금 " + Config.getString("Death.Spawn_Item.PenaltyMoney") + " 감소", "", ChatColor.YELLOW + "[좌 클릭시 변경]"), 16, inv);
-        if (Config.getInt("Death.Track") == -1 || Config.contains("Death.Track") == false)
+        if (Config.getInt("Death.Track") == -1 || !Config.contains("Death.Track"))
             Stack2(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "[사망 BGM]", 166, 0, 1, Arrays.asList(ChatColor.RED + "[없음]", ChatColor.GRAY + "사망 BGM을 설정하지 않았습니다."), 19, inv);
         else
             Stack2(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "[사망 BGM]", 2264, 0, 1, Arrays.asList(ChatColor.GREEN + "" + Config.getInt("Death.Track") + "번 트랙 재생"), 19, inv);
@@ -380,7 +380,7 @@ public class OPbox_GUI extends Util_GUI {
             Stack2(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "[다시 일어서기]", 166, 0, 1, Arrays.asList(ChatColor.RED + "[불가능]", ChatColor.GRAY + "제자리 부활 옵션을 사용하지 않습니다."), 21, inv);
         else
             Stack2(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "[다시 일어서기]", 2264, 0, 1, Arrays.asList(ChatColor.GREEN + "[가능]", ChatColor.GRAY + "제자리 부활 옵션을 사용합니다."), 21, inv);
-        if (Config.getBoolean("Death.SystemOn") == false)
+        if (!Config.getBoolean("Death.SystemOn"))
             Stack2(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "[사망 시스템]", 166, 0, 1, Arrays.asList(ChatColor.RED + "[비 활성화]", ChatColor.GRAY + "사망 시스템을 사용하지 않습니다."), 31, inv);
         else
             Stack2(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "[사망 시스템]", 397, 0, 1, Arrays.asList(ChatColor.GREEN + "[활성화]", ChatColor.GRAY + "사망 시스템을 사용합니다."), 31, inv);
@@ -568,7 +568,7 @@ public class OPbox_GUI extends Util_GUI {
                 YamlManager Config = YC.getNewConfig("config.yml");
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 Config.set("Time.LastSkillChanged", new Util_Number().RandomNum(0, 100000) - new Util_Number().RandomNum(0, 100000));
-                if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System") == true) {
+                if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
                     Config.set("Server.Like_The_Mabinogi_Online_Stat_System", false);
                 } else {
                     Config.set("Server.Like_The_Mabinogi_Online_Stat_System", true);
@@ -616,11 +616,11 @@ public class OPbox_GUI extends Util_GUI {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if ((slot >= 10 && slot <= 13) || slot == 20 || slot == 24 || slot == 25) {
                 if (slot == 10)//엔티티 스폰
-                    Config.set("Server.EntitySpawn", Config.getBoolean("Server.EntitySpawn") == false);
+                    Config.set("Server.EntitySpawn", !Config.getBoolean("Server.EntitySpawn"));
                 else if (slot == 11)//PVP
                 {
-                    Config.set("Server.PVP", Config.getBoolean("Server.PVP") == false);
-                    Main_ServerOption.PVP = Config.getBoolean("Server.PVP") == false;
+                    Config.set("Server.PVP", !Config.getBoolean("Server.PVP"));
+                    Main_ServerOption.PVP = !Config.getBoolean("Server.PVP");
                 } else if (slot == 12)//몬스터 스폰 효과
                 {
                     if (Config.getInt("Server.MonsterSpawnEffect") < 7)
@@ -628,17 +628,17 @@ public class OPbox_GUI extends Util_GUI {
                     else
                         Config.set("Server.MonsterSpawnEffect", 0);
                 } else if (slot == 13)//커스텀 무기 파괴
-                    Config.set("Server.CustomWeaponBreak", Config.getBoolean("Server.CustomWeaponBreak") == false);
+                    Config.set("Server.CustomWeaponBreak", !Config.getBoolean("Server.CustomWeaponBreak"));
                 else if (slot == 20)//커스텀 블록 설치/설치 금지
-                    Config.set("Server.CustomBlockPlace", Config.getBoolean("Server.CustomBlockPlace") == false);
+                    Config.set("Server.CustomBlockPlace", !Config.getBoolean("Server.CustomBlockPlace"));
                 else if (slot == 24)//폭발 방지 변경
                 {
-                    Config.set("Server.AntiExplode", Config.getBoolean("Server.AntiExplode") == false);
-                    Main_ServerOption.AntiExplode = Config.getBoolean("Server.AntiExplode") == false;
+                    Config.set("Server.AntiExplode", !Config.getBoolean("Server.AntiExplode"));
+                    Main_ServerOption.AntiExplode = !Config.getBoolean("Server.AntiExplode");
                 } else if (slot == 25)//왼손 무기 계산
                 {
-                    Config.set("Server.LeftHandWeaponDamageEnable", Config.getBoolean("Server.LeftHandWeaponDamageEnable") == false);
-                    Main_ServerOption.dualWeapon = Config.getBoolean("Server.LeftHandWeaponDamageEnable") == false;
+                    Config.set("Server.LeftHandWeaponDamageEnable", !Config.getBoolean("Server.LeftHandWeaponDamageEnable"));
+                    Main_ServerOption.dualWeapon = !Config.getBoolean("Server.LeftHandWeaponDamageEnable");
                 }
                 Config.saveConfig();
                 OPBoxGUI_Setting(player);
@@ -763,7 +763,7 @@ public class OPbox_GUI extends Util_GUI {
                 u.setInt(player, (byte) 0, BCnumber);
             } else if (slot == 50)//다음 페이지
                 OPBoxGUI_BroadCast(player, (byte) (Integer.parseInt(event.getInventory().getTitle().split(" : ")[1])));
-            else if (event.isShiftClick() == true && event.isRightClick() == true) {
+            else if (event.isShiftClick() && event.isRightClick()) {
                 s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager BroadCast = YC.getNewConfig("BroadCast.yml");
@@ -913,7 +913,7 @@ public class OPbox_GUI extends Util_GUI {
             {
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager Config = YC.getNewConfig("config.yml");
-                if (Config.getInt("Death.Track") == -1 || Config.contains("Death.Track") == false)
+                if (Config.getInt("Death.Track") == -1 || !Config.contains("Death.Track"))
                     new Area_GUI().AreaMusicSettingGUI(player, 0, "DeathBGM¡");
                 else {
                     Config.set("Death.Track", -1);

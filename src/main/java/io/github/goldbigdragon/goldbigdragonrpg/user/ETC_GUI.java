@@ -81,7 +81,7 @@ public final class ETC_GUI extends Util_GUI {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager NewBieYM = YC.getNewConfig("ETC/NewBie.yml");
 
-        if (NewBieYM.contains("Guide") == false) {
+        if (!NewBieYM.contains("Guide")) {
             NewBieYM.createSection("Guide");
             NewBieYM.saveConfig();
         }
@@ -105,7 +105,7 @@ public final class ETC_GUI extends Util_GUI {
         YamlManager FriendsList = YC.getNewConfig("Friend/" + player.getUniqueId().toString() + ".yml");
 
         YamlManager SideFriendsList = null;
-        if (FriendsList.contains("Name") == false) {
+        if (!FriendsList.contains("Name")) {
             FriendsList.set("Name", player.getName());
             FriendsList.createSection("Friends");
             FriendsList.createSection("Waitting");
@@ -163,7 +163,7 @@ public final class ETC_GUI extends Util_GUI {
     public void WaittingFriendsGUI(Player player, short page) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager FriendsList = YC.getNewConfig("Friend/" + player.getUniqueId().toString() + ".yml");
-        if (FriendsList.contains("Name") == false) {
+        if (!FriendsList.contains("Name")) {
             FriendsList.set("Name", player.getName());
             FriendsList.createSection("Friends");
             FriendsList.createSection("Waitting");

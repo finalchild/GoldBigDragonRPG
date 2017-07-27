@@ -228,10 +228,10 @@ public class Main_Main extends JavaPlugin implements Listener {
     @EventHandler
     private void PlayerItemDrop(PlayerDropItemEvent event) {
         ItemStack IT = event.getItemDrop().getItemStack();
-        if (IT.hasItemMeta() == true)
-            if (IT.getItemMeta().hasLore() == true)
+        if (IT.hasItemMeta())
+            if (IT.getItemMeta().hasLore())
                 if (IT.getItemMeta().getLore().size() == 4)
-                    if (IT.getItemMeta().getLore().get(3).equals(ChatColor.YELLOW + "[클릭시 퀵슬롯에서 삭제]") == true)
+                    if (IT.getItemMeta().getLore().get(3).equals(ChatColor.YELLOW + "[클릭시 퀵슬롯에서 삭제]"))
                         event.setCancelled(true);
         return;
     }
@@ -317,12 +317,12 @@ public class Main_Main extends JavaPlugin implements Listener {
                     }
                 }
             } else {
-                if (event.getPlayer().isOp() == false) {
+                if (!event.getPlayer().isOp()) {
                     String TargetArea = null;
                     Area_Main A = new Area_Main();
                     if (A.getAreaName((Entity) AS) != null)
                         TargetArea = A.getAreaName((Entity) AS)[0];
-                    if (TargetArea != null && A.getAreaOption(TargetArea, (char) 7) == false) {
+                    if (TargetArea != null && !A.getAreaOption(TargetArea, (char) 7)) {
                         event.setCancelled(true);
                         return;
                     }
@@ -359,7 +359,7 @@ public class Main_Main extends JavaPlugin implements Listener {
             }, 1L);
         }
         Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setLastDeathPoint(new Location(event.getEntity().getLocation().getWorld(), event.getEntity().getLocation().getX(), event.getEntity().getLocation().getY(), event.getEntity().getLocation().getZ(), event.getEntity().getLocation().getYaw(), event.getEntity().getLocation().getPitch()));
-        if (event.getKeepInventory() == false) {
+        if (!event.getKeepInventory()) {
             List<ItemStack> Ilist = event.getDrops();
             event.setKeepInventory(true);
             event.getEntity().getInventory().clear();
@@ -388,7 +388,7 @@ public class Main_Main extends JavaPlugin implements Listener {
     private void KeepItemDurability(PlayerItemDamageEvent event) {
         ItemStack item = event.getItem();
         if (item.hasItemMeta())
-            if (item.getItemMeta().hasLore() == true)
+            if (item.getItemMeta().hasLore())
                 if (item.getItemMeta().getLore().toString().contains("내구도"))
                     event.setCancelled(true);
         return;
@@ -409,9 +409,9 @@ public class Main_Main extends JavaPlugin implements Listener {
                     Area_Main A = new Area_Main();
                     String[] Area = A.getAreaName(event.getClickedBlock());
                     if (Area != null) {
-                        if (A.getAreaOption(Area[0], (char) 7) == false) {
+                        if (!A.getAreaOption(Area[0], (char) 7)) {
                             event.setCancelled(true);
-                            if (event.getPlayer().isOp() == false) {
+                            if (!event.getPlayer().isOp()) {
                                 new Effect_Sound().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                                 event.getPlayer().sendMessage(ChatColor.RED + "[SYSTEM] : " + ChatColor.YELLOW + Area[1] + ChatColor.RED + " 지역에 있는 작물은 손 댈 수없습니다!");
                             }
@@ -513,7 +513,7 @@ public class Main_Main extends JavaPlugin implements Listener {
 
     @EventHandler
     private void InventoryClick(InventoryClickEvent event) {
-        if (Bukkit.getPluginManager().isPluginEnabled("MagicSpells") == true && Main_ServerOption.MagicSpellsCatched == true) {
+        if (Bukkit.getPluginManager().isPluginEnabled("MagicSpells") && Main_ServerOption.MagicSpellsCatched) {
             ETC ETC = new ETC();
             ETC.UpdatePlayerHPMP((Player) event.getWhoClicked());
         }
@@ -549,8 +549,8 @@ public class Main_Main extends JavaPlugin implements Listener {
 
     @EventHandler
     private void InventoryClose(InventoryCloseEvent event) {
-        if (Bukkit.getPluginManager().isPluginEnabled("MagicSpells") == true
-                && Main_ServerOption.MagicSpellsCatched == true) {
+        if (Bukkit.getPluginManager().isPluginEnabled("MagicSpells")
+                && Main_ServerOption.MagicSpellsCatched) {
             ETC ETC = new ETC();
             ETC.UpdatePlayerHPMP((Player) event.getPlayer());
         }
@@ -580,7 +580,7 @@ public class Main_Main extends JavaPlugin implements Listener {
             switch (string) {
                 case "gui사용":
                 case "gbdenablegui":
-                    if (player.isOp() == true) {
+                    if (player.isOp()) {
                         s.SP((Player) talker, org.bukkit.Sound.ENTITY_VILLAGER_YES, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.GREEN + "[NPC] : GUI를 활성화 시킬 NPC를 우클릭 하세요!");
                         new UserData_Object().setInt(player, (byte) 4, 114);
@@ -608,14 +608,14 @@ public class Main_Main extends JavaPlugin implements Listener {
                             ItemC.HelpMessage(player);
                             return true;
                         }
-                        if (ChatColor.stripColor(args[0]).equalsIgnoreCase("설명제거") == true)
+                        if (ChatColor.stripColor(args[0]).equalsIgnoreCase("설명제거"))
                             ItemC.onCommand2(talker, command, string, args);
                         else {
                             ItemC.HelpMessage(player);
                             return true;
                         }
                     }
-                    if (ChatColor.stripColor(args[0]).equalsIgnoreCase("목록") == false && ChatColor.stripColor(args[0]).equalsIgnoreCase("등록") == false && ChatColor.stripColor(args[0]).equalsIgnoreCase("삭제") == false && ChatColor.stripColor(args[0]).equalsIgnoreCase("받기") == false && ChatColor.stripColor(args[0]).equalsIgnoreCase("주기") == false)
+                    if (!ChatColor.stripColor(args[0]).equalsIgnoreCase("목록") && !ChatColor.stripColor(args[0]).equalsIgnoreCase("등록") && !ChatColor.stripColor(args[0]).equalsIgnoreCase("삭제") && !ChatColor.stripColor(args[0]).equalsIgnoreCase("받기") && !ChatColor.stripColor(args[0]).equalsIgnoreCase("주기"))
                         ItemC.onCommand2(talker, command, string, args);
                     else
                         ItemC.onCommand1(talker, command, string, args);
@@ -671,7 +671,7 @@ public class Main_Main extends JavaPlugin implements Listener {
                     return true;
                 case "몬스터":
                 case "gbdmobs":
-                    if (talker.isOp() == true) {
+                    if (talker.isOp()) {
                         s.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
                         new Monster_GUI().MonsterListGUI(player, 0);
                     } else {
@@ -701,7 +701,7 @@ public class Main_Main extends JavaPlugin implements Listener {
                     return true;
                 case "커맨드":
                 case "gbdcommand":
-                    if (player.isOp() == true) {
+                    if (player.isOp()) {
                         UserData_Object u = new UserData_Object();
                         if (u.getType(player) != null && u.getType(player).compareTo("Skill") == 0) {
                             if (u.getString(player, (byte) 1).equalsIgnoreCase("SKC")) {
@@ -711,7 +711,7 @@ public class Main_Main extends JavaPlugin implements Listener {
                                 CommandString = CommandString + args[args.length - 1];
                                 YamlController YC = new YamlController(this);
                                 YamlManager SkillList = YC.getNewConfig("Skill/SkillList.yml");
-                                if (CommandString.contains("/") == false)
+                                if (!CommandString.contains("/"))
                                     CommandString = "/" + CommandString;
                                 if (CommandString.equalsIgnoreCase("/없음"))
                                     SkillList.set(u.getString(player, (byte) 2) + ".SkillRank." + u.getInt(player, (byte) 4) + ".Command", "null");

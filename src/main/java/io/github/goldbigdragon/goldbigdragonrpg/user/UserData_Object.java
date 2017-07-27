@@ -107,7 +107,7 @@ public class UserData_Object {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager UserData = YC.getNewConfig("UserData/" + player.getUniqueId() + ".yml");
         String Temp = UserData.getString("Data.Temp");
-        if (Temp != null && Temp.isEmpty() == false && Temp.compareTo("MemorySection[path='Data.Temp', root='YamlConfiguration']") != 0)
+        if (Temp != null && !Temp.isEmpty() && Temp.compareTo("MemorySection[path='Data.Temp', root='YamlConfiguration']") != 0)
             return Temp;
         else
             return null;

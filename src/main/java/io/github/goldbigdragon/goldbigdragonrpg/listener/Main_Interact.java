@@ -79,7 +79,7 @@ public class Main_Interact {
                     Area_Main A = new Area_Main();
                     String[] Area = A.getAreaName(event.getClickedBlock());
                     if (Area != null) {
-                        if (A.getAreaOption(Area[0], (char) 7) == false && event.getPlayer().isOp() == false) {
+                        if (!A.getAreaOption(Area[0], (char) 7) && !event.getPlayer().isOp()) {
                             event.setCancelled(true);
                             new Effect_Sound().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                             event.getPlayer().sendMessage(ChatColor.RED + "[SYSTEM] : " + ChatColor.YELLOW + Area[1] + ChatColor.RED + " 지역에 있는 블록은 손 댈 수없습니다!");
@@ -92,7 +92,7 @@ public class Main_Interact {
                         Area_Main A = new Area_Main();
                         String[] Area = A.getAreaName(event.getClickedBlock());
                         if (Area != null) {
-                            if (A.getAreaOption(Area[0], (char) 7) == false && event.getPlayer().isOp() == false) {
+                            if (!A.getAreaOption(Area[0], (char) 7) && !event.getPlayer().isOp()) {
                                 event.setCancelled(true);
                                 new Effect_Sound().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                                 event.getPlayer().sendMessage(ChatColor.RED + "[SYSTEM] : " + ChatColor.YELLOW + Area[1] + ChatColor.RED + " 지역에서는 양동이를 사용할 수없습니다!");
@@ -114,7 +114,7 @@ public class Main_Interact {
             if (target.getType() == EntityType.PLAYER) {
                 if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isOption_SeeInventory()) {
                     Player t = (Player) target;
-                    if (t.isOnline() == true) {
+                    if (t.isOnline()) {
                         Equip_GUI EGUI = new Equip_GUI();
                         EGUI.EquipWatchGUI(player, t);
                         return;
@@ -130,7 +130,7 @@ public class Main_Interact {
 
             String[] Area = new Area_Main().getAreaName(target);
             if (Area != null) {
-                if (new Area_Main().getAreaOption(Area[0], (char) 7) == false && event.getPlayer().isOp() == false) {
+                if (!new Area_Main().getAreaOption(Area[0], (char) 7) && !event.getPlayer().isOp()) {
                     event.setCancelled(true);
                     new Effect_Sound().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     event.getPlayer().sendMessage(ChatColor.RED + "[SYSTEM] : " + ChatColor.YELLOW + Area[1] + ChatColor.RED + " 지역에 있는 엔티티는 손 댈 수없습니다!");
@@ -165,8 +165,8 @@ public class Main_Interact {
     private void ItemUse(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         if (player.getInventory().getItemInMainHand() != null)
-            if (player.getInventory().getItemInMainHand().hasItemMeta() == true) {
-                if (player.getInventory().getItemInMainHand().getItemMeta().hasLore() == true) {
+            if (player.getInventory().getItemInMainHand().hasItemMeta()) {
+                if (player.getInventory().getItemInMainHand().getItemMeta().hasLore()) {
                     int itemID = player.getInventory().getItemInMainHand().getData().getItemTypeId();
                     if (itemID == 383 && event.getItem().getData().getData() == 0 && event.getAction() == Action.RIGHT_CLICK_BLOCK) {
                         if (Main_ServerOption.MonsterList.containsKey(ChatColor.stripColor(event.getItem().getItemMeta().getDisplayName()))) {
@@ -186,7 +186,7 @@ public class Main_Interact {
                     else if (itemID == 395 || itemID == 358) {
                         Object[] lore = player.getInventory().getItemInMainHand().getItemMeta().getLore().toArray();
                         for (byte counter = 0; counter < lore.length; counter++)
-                            if (lore[counter].toString().contains("내용") == true) {
+                            if (lore[counter].toString().contains("내용")) {
                                 UserData_Object u = new UserData_Object();
                                 //지도에 이미지 넣는 작업
                                 if (player.isOp()) {

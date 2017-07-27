@@ -187,13 +187,13 @@ public class ServerTick_Main {
                                     A.AreaMonsterSpawnAdd(Area, "-1");
                                     NBAPI.Stop(player);
                                     uo.setETC_CurrentArea(Area);
-                                    if (AreaList.getBoolean(Area + ".SpawnPoint") == true)
+                                    if (AreaList.getBoolean(Area + ".SpawnPoint"))
                                         uo.setETC_LastVisited(Area);
                                     if (uo.isBgmOn()) {
-                                        if (AreaList.getBoolean(Area + ".Music") == true)
+                                        if (AreaList.getBoolean(Area + ".Music"))
                                             NBAPI.Play(player, AreaList.getInt(Area + ".BGM"));
                                     }
-                                    if (AreaList.getBoolean(Area + ".Alert") == true) {
+                                    if (AreaList.getBoolean(Area + ".Alert")) {
                                         YamlManager QuestList = YC.getNewConfig("Quest/QuestList.yml");
                                         YamlManager PlayerQuestList = YC.getNewConfig("Quest/PlayerData/" + player.getUniqueId() + ".yml");
 
@@ -232,7 +232,7 @@ public class ServerTick_Main {
 
             @Override
             public void run() {
-                if (directory.exists() == false)
+                if (!directory.exists())
                     directory.mkdir();
                 File[] fileList = directory.listFiles();
                 YamlController YC = new YamlController(Main_Main.plugin);

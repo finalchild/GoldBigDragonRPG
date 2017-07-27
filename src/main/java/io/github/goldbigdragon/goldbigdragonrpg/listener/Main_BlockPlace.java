@@ -37,10 +37,10 @@ public class Main_BlockPlace implements Listener {
     @EventHandler
     public void BlockPlaceE(BlockPlaceEvent event) {
         Player player = event.getPlayer();
-        if (event.getItemInHand().hasItemMeta() == true && player.isOp() == false) {
+        if (event.getItemInHand().hasItemMeta() && !player.isOp()) {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager Config = YC.getNewConfig("config.yml");
-            if (Config.getBoolean("Server.CustomBlockPlace") == false)
+            if (!Config.getBoolean("Server.CustomBlockPlace"))
                 event.setCancelled(true);
             return;
         }
@@ -53,13 +53,13 @@ public class Main_BlockPlace implements Listener {
         Area_Main A = new Area_Main();
         String[] Area = A.getAreaName(event.getBlock());
         if (Area != null)
-            if (A.getAreaOption(Area[0], (char) 5) == false && player.isOp() == false) {
+            if (!A.getAreaOption(Area[0], (char) 5) && !player.isOp()) {
                 event.setCancelled(true);
                 new Effect_Sound().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                 player.sendMessage(ChatColor.RED + "[SYSTEM] : " + ChatColor.YELLOW + Area[1] + ChatColor.RED + " 지역 에서는 블록 설치가 불가능합니다!");
                 return;
             }
-        if (player.isOp() == false)
+        if (!player.isOp())
             EXPexceptionBlock(event.getBlock().getTypeId(), event.getBlock().getLocation());
         return;
     }

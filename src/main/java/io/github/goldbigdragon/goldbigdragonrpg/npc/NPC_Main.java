@@ -89,11 +89,11 @@ public class NPC_Main {
             scriptget = true;
             YamlManager SkillList = YC.getNewConfig("Skill/SkillList.yml");
             String Skillname = NPCscript.getString(TalkSubject + "." + randomScript + ".giveSkill");
-            if (ScriptType == 6 && SkillList.contains(NPCscript.getString(TalkSubject + "." + randomScript + ".giveSkill")) == true) {
+            if (ScriptType == 6 && SkillList.contains(NPCscript.getString(TalkSubject + "." + randomScript + ".giveSkill"))) {
                 YamlManager JobList = YC.getNewConfig("Skill/JobList.yml");
                 YamlManager PlayerSkill = YC.getNewConfig("Skill/PlayerData/" + player.getUniqueId() + ".yml");
                 String Categori = JobList.getString("Mabinogi.Added." + NPCscript.getString(TalkSubject + "." + randomScript + ".giveSkill"));
-                if (PlayerSkill.contains("Mabinogi." + Categori + "." + NPCscript.getString(TalkSubject + "." + randomScript + ".giveSkill")) == false) {
+                if (!PlayerSkill.contains("Mabinogi." + Categori + "." + NPCscript.getString(TalkSubject + "." + randomScript + ".giveSkill"))) {
                     Effect_Sound s = new Effect_Sound();
                     PlayerSkill.set("Mabinogi." + Categori + "." + Skillname, 1);
                     PlayerSkill.saveConfig();
@@ -104,7 +104,7 @@ public class NPC_Main {
                 }
             }
         }
-        if (scriptget == false) {
+        if (!scriptget) {
             String[] script = new String[1];
             randomScript = (byte) new Util_Number().RandomNum(0, 2);
             if (randomScript == 0)

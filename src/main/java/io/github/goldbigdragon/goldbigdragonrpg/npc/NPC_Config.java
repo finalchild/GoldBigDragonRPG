@@ -29,14 +29,14 @@ public class NPC_Config {
     public void PlayerNPCconfig(Player player, String NPCuuid) {
         YamlManager NPCscript = null;
         YamlController YC = new YamlController(Main_Main.plugin);
-        if (YC.isExit("NPC/PlayerData/" + player.getUniqueId() + ".yml") == false) {
+        if (!YC.isExit("NPC/PlayerData/" + player.getUniqueId() + ".yml")) {
             NPCscript = YC.getNewConfig("NPC/PlayerData/" + player.getUniqueId() + ".yml");
             NPCscript.set(NPCuuid + ".love", 0);
             NPCscript.set(NPCuuid + ".Career", 0);
             NPCscript.saveConfig();
         }
         NPCscript = YC.getNewConfig("NPC/PlayerData/" + player.getUniqueId() + ".yml");
-        if (NPCscript.contains(NPCuuid) == false) {
+        if (!NPCscript.contains(NPCuuid)) {
             NPCscript = YC.getNewConfig("NPC/PlayerData/" + player.getUniqueId() + ".yml");
             NPCscript.set(NPCuuid + ".love", 0);
             NPCscript.set(NPCuuid + ".Career", 0);
@@ -47,7 +47,7 @@ public class NPC_Config {
     public void NPCNPCconfig(String NPCuuid) {
         YamlManager NPCscript = null;
         YamlController YC = new YamlController(Main_Main.plugin);
-        if (YC.isExit("NPC/NPCData/" + NPCuuid + ".yml") == false) {
+        if (!YC.isExit("NPC/NPCData/" + NPCuuid + ".yml")) {
             NPCscript = YC.getNewConfig("NPC/NPCData/" + NPCuuid + ".yml");
             NPCscript.set("NPCuuid", "NPC's uuid");
             NPCscript.set("KoreaLanguage(UTF-8)->JavaEntityLanguage", "http://itpro.cz/juniconv/");

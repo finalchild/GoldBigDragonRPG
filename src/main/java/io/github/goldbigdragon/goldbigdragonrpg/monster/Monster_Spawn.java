@@ -89,16 +89,16 @@ public class Monster_Spawn {
 
         YamlController YC = new YamlController(Main_Main.plugin);
         if (Area != null) {
-            if (A.getAreaOption(Area[0], (char) 3) == false) {
+            if (!A.getAreaOption(Area[0], (char) 3)) {
                 event.setCancelled(true);
                 return;
-            } else if (A.getAreaOption(Area[0], (char) 8) == false) {
+            } else if (!A.getAreaOption(Area[0], (char) 8)) {
                 YamlManager AreaList = YC.getNewConfig("Area/AreaList.yml");
                 String AreaName = A.getAreaName(event.getEntity())[0];
                 Object[] MobNameList = AreaList.getConfigurationSection(AreaName + ".Monster").getKeys(false).toArray();
                 boolean isExit = false;
                 for (byte count = 0; count < 10; count++) {
-                    if (isExit == true) break;
+                    if (isExit) break;
                     if (MobNameList.length != 0) {
                         short RandomMob = (short) new Util_Number().RandomNum(0, MobNameList.length - 1);
                         if (Main_ServerOption.MonsterList.containsKey(MobNameList[RandomMob].toString())) {
@@ -158,7 +158,7 @@ public class Monster_Spawn {
 
     public void StayLive(Entity e, boolean isStayLive) {
         if (e.getType() != EntityType.ENDER_CRYSTAL)
-            if (e.isDead() == false) {
+            if (!e.isDead()) {
                 LivingEntity LE = (LivingEntity) e;
                 LE.setRemoveWhenFarAway(isStayLive);
             }
@@ -486,8 +486,8 @@ public class Monster_Spawn {
                 Monster.getEquipment().setHelmet(null);
             else {
                 Monster.getEquipment().setHelmet(Equip);
-                if (Equip.hasItemMeta() == true)
-                    if (Equip.getItemMeta().hasLore() == true)
+                if (Equip.hasItemMeta())
+                    if (Equip.getItemMeta().hasLore())
                         if (ChatColor.stripColor(Equip.getItemMeta().getLore().get(0)).compareTo("이곳에 아이템을 넣어 주세요.") == 0)
                             Monster.getEquipment().setHelmet(null);
             }
@@ -496,8 +496,8 @@ public class Monster_Spawn {
                 Monster.getEquipment().setChestplate(null);
             else {
                 Monster.getEquipment().setChestplate(Equip);
-                if (Equip.hasItemMeta() == true)
-                    if (Equip.getItemMeta().hasLore() == true)
+                if (Equip.hasItemMeta())
+                    if (Equip.getItemMeta().hasLore())
                         if (ChatColor.stripColor(Equip.getItemMeta().getLore().get(0)).compareTo("이곳에 아이템을 넣어 주세요.") == 0)
                             Monster.getEquipment().setChestplate(null);
             }
@@ -506,8 +506,8 @@ public class Monster_Spawn {
                 Monster.getEquipment().setLeggings(null);
             else {
                 Monster.getEquipment().setLeggings(Equip);
-                if (Equip.hasItemMeta() == true)
-                    if (Equip.getItemMeta().hasLore() == true)
+                if (Equip.hasItemMeta())
+                    if (Equip.getItemMeta().hasLore())
                         if (ChatColor.stripColor(Equip.getItemMeta().getLore().get(0)).compareTo("이곳에 아이템을 넣어 주세요.") == 0)
                             Monster.getEquipment().setLeggings(null);
             }
@@ -516,8 +516,8 @@ public class Monster_Spawn {
                 Monster.getEquipment().setBoots(null);
             else {
                 Monster.getEquipment().setBoots(Equip);
-                if (Equip.hasItemMeta() == true)
-                    if (Equip.getItemMeta().hasLore() == true)
+                if (Equip.hasItemMeta())
+                    if (Equip.getItemMeta().hasLore())
                         if (ChatColor.stripColor(Equip.getItemMeta().getLore().get(0)).compareTo("이곳에 아이템을 넣어 주세요.") == 0)
                             Monster.getEquipment().setBoots(null);
             }
@@ -526,8 +526,8 @@ public class Monster_Spawn {
                 Monster.getEquipment().setItemInMainHand(null);
             else {
                 Monster.getEquipment().setItemInMainHand(Equip);
-                if (Equip.hasItemMeta() == true)
-                    if (Equip.getItemMeta().hasLore() == true)
+                if (Equip.hasItemMeta())
+                    if (Equip.getItemMeta().hasLore())
                         if (ChatColor.stripColor(Equip.getItemMeta().getLore().get(0)).compareTo("이곳에 아이템을 넣어 주세요.") == 0)
                             Monster.getEquipment().setItemInMainHand(null);
             }
@@ -536,8 +536,8 @@ public class Monster_Spawn {
                 Monster.getEquipment().setItemInOffHand(null);
             else {
                 Monster.getEquipment().setItemInOffHand(Equip);
-                if (Equip.hasItemMeta() == true)
-                    if (Equip.getItemMeta().hasLore() == true)
+                if (Equip.hasItemMeta())
+                    if (Equip.getItemMeta().hasLore())
                         if (ChatColor.stripColor(Equip.getItemMeta().getLore().get(0)).compareTo("이곳에 아이템을 넣어 주세요.") == 0)
                             Monster.getEquipment().setItemInOffHand(null);
             }
@@ -551,11 +551,11 @@ public class Monster_Spawn {
             Monster.getEquipment().setItemInOffHandDropChance((float) (MobList.getInt(mob + ".OffHand.DropChance") * Config.getInt("Event.DropChance") / 1000.0));
 
             if (Monster.getType() == EntityType.SKELETON) {
-                if (MobList.getString(mob + ".Type").equalsIgnoreCase("네더스켈레톤") == true) {
+                if (MobList.getString(mob + ".Type").equalsIgnoreCase("네더스켈레톤")) {
                     ((Skeleton) Monster).setSkeletonType(SkeletonType.WITHER);
                 }
             } else if (Monster.getType() == EntityType.CREEPER) {
-                if (MobList.getString(mob + ".Type").equalsIgnoreCase("번개크리퍼") == true) {
+                if (MobList.getString(mob + ".Type").equalsIgnoreCase("번개크리퍼")) {
                     ((Creeper) Monster).setPowered(true);
                 }
             } else if (Monster.getType() == EntityType.SLIME) {

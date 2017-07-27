@@ -83,7 +83,7 @@ public class Party_Command {
         } else {
             switch (args[0]) {
                 case "생성": {
-                    if (Main_ServerOption.PartyJoiner.containsKey(player) == false) {
+                    if (!Main_ServerOption.PartyJoiner.containsKey(player)) {
                         ETC e = new ETC();
                         long nowSec = e.getSec();
                         if (args.length >= 3) {

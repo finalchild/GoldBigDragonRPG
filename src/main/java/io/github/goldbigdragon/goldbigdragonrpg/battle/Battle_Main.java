@@ -83,7 +83,7 @@ public class Battle_Main implements Listener {
                     Projectile projectile = (Projectile) event.getDamager();
                     if (projectile.getShooter() != null && projectile.getShooter() instanceof Player) {
                         if (projectile.getType() == EntityType.ARROW || projectile.getType() == EntityType.SPECTRAL_ARROW || projectile.getType() == EntityType.TIPPED_ARROW) {
-                            if (projectile.isCustomNameVisible() == true) {
+                            if (projectile.isCustomNameVisible()) {
                                 if (projectile.getCustomName().compareTo(ChatColor.RED + "" + ChatColor.BOLD + "[불 화살]") == 0)
                                     DamageSetter(event, "R_A_F", (Entity) projectile.getShooter(), true);
                                 else
@@ -119,12 +119,12 @@ public class Battle_Main implements Listener {
                     return;
                 } else {
                     if (Attacker.getType() == EntityType.PLAYER)
-                        if (((Player) Attacker).isOp() == false) {
+                        if (!((Player) Attacker).isOp()) {
                             String TargetArea = null;
                             Area_Main A = new Area_Main();
                             if (A.getAreaName(event.getEntity()) != null)
                                 TargetArea = A.getAreaName(event.getEntity())[0];
-                            if (TargetArea != null && A.getAreaOption(TargetArea, (char) 1) == false) {
+                            if (TargetArea != null && !A.getAreaOption(TargetArea, (char) 1)) {
                                 event.setCancelled(true);
                                 return;
                             }
@@ -132,12 +132,12 @@ public class Battle_Main implements Listener {
                 }
             } else {
                 if (Attacker.getType() == EntityType.PLAYER)
-                    if (((Player) Attacker).isOp() == false) {
+                    if (!((Player) Attacker).isOp()) {
                         String TargetArea = null;
                         Area_Main A = new Area_Main();
                         if (A.getAreaName(event.getEntity()) != null)
                             TargetArea = A.getAreaName(event.getEntity())[0];
-                        if (TargetArea != null && A.getAreaOption(TargetArea, (char) 1) == false) {
+                        if (TargetArea != null && !A.getAreaOption(TargetArea, (char) 1)) {
                             event.setCancelled(true);
                             return;
                         }
@@ -150,7 +150,7 @@ public class Battle_Main implements Listener {
             Player player = (Player) Attacker;
             Player target = (Player) event.getEntity();
             if (player.isOnline() && target.isOnline()) {
-                if (Main_ServerOption.PVP == false) {
+                if (!Main_ServerOption.PVP) {
                     event.setCancelled(true);
                     return;
                 }
@@ -168,10 +168,10 @@ public class Battle_Main implements Listener {
                 if (A.getAreaName(target) != null)
                     TargetArea = A.getAreaName(target)[0];
 
-                if (AttackerArea != null && A.getAreaOption(AttackerArea, (char) 0) == false) {
+                if (AttackerArea != null && !A.getAreaOption(AttackerArea, (char) 0)) {
                     event.setCancelled(true);
                     return;
-                } else if (TargetArea != null && A.getAreaOption(TargetArea, (char) 0) == false) {
+                } else if (TargetArea != null && !A.getAreaOption(TargetArea, (char) 0)) {
                     event.setCancelled(true);
                     return;
                 }
@@ -237,7 +237,7 @@ public class Battle_Main implements Listener {
             if (Attacker instanceof Player) {
                 Player player = (Player) Attacker;
                 if (player.isOnline())
-                    if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_Critical() == true)
+                    if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_Critical())
                         t.sendTitleSubTitle(player, "\'\'", "\'" + ChatColor.YELLOW + "크리티컬 히트!\'", (byte) 1, (byte) 0, (byte) 1);
             }
             sound.SL(event.getEntity().getLocation(), Sound.ENTITY_ZOMBIE_ATTACK_IRON_DOOR, (float) 0.5, (float) 2.0);
@@ -418,9 +418,9 @@ public class Battle_Main implements Listener {
     public void Alert(Player player, Entity defenser, int Damage) {
         Effect_Packet t = new Effect_Packet();
 
-        if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_Damage() == true)
+        if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_Damage())
             t.sendActionBar(player, ChatColor.RED + "" + ChatColor.BOLD + Damage + "데미지!");
-        if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_MobHealth() == true) {
+        if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_MobHealth()) {
             if (defenser instanceof LivingEntity) {
                 LivingEntity defenser2 = (LivingEntity) defenser;
                 Damageable getouter = (Damageable) defenser2;

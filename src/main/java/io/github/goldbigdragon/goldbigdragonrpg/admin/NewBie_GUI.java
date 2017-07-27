@@ -135,7 +135,7 @@ public class NewBie_GUI extends Util_GUI {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager NewBieYM = YC.getNewConfig("ETC/NewBie.yml");
 
-        if (NewBieYM.contains("Guide") == false) {
+        if (!NewBieYM.contains("Guide")) {
             NewBieYM.createSection("Guide");
             NewBieYM.saveConfig();
         }
@@ -267,7 +267,7 @@ public class NewBie_GUI extends Util_GUI {
                 YamlManager NewBieYM = YC.getNewConfig("ETC/NewBie.yml");
                 YamlManager QuestList = YC.getNewConfig("Quest/QuestList.yml");
 
-                if (QuestList.contains(QuestName) == true) {
+                if (QuestList.contains(QuestName)) {
                     if (QuestList.getConfigurationSection(QuestName + ".FlowChart").getKeys(false).toArray().length != 0) {
                         NewBieYM.set("FirstQuest", QuestName);
                         NewBieYM.saveConfig();

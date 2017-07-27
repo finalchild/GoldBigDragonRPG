@@ -32,7 +32,7 @@ public class Quest_Config {
         YamlController YC = new YamlController(Main_Main.plugin);
         QuestConfig = YC.getNewConfig("Quest/QuestList.yml");
 
-        if (YC.isExit("Quest/QuestList.yml") == false) {
+        if (!YC.isExit("Quest/QuestList.yml")) {
             QuestConfig.set("Do_not_Touch_This", true);
             QuestConfig.saveConfig();
         }

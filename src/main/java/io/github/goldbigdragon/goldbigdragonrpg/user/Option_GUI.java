@@ -146,17 +146,17 @@ public class Option_GUI extends Util_GUI {
                 new ETC_GUI().ETCGUI_Main(player);
             else {
                 if (slot == 2)//경험치 획득 알림
-                    Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setAlert_EXPget(Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_EXPget() == false);
+                    Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setAlert_EXPget(!Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_EXPget());
                 else if (slot == 3)//아이템 획득 알림
-                    Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setAlert_ItemPickUp(Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_ItemPickUp() == false);
+                    Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setAlert_ItemPickUp(!Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_ItemPickUp());
                 else if (slot == 4)//전투 도우미
-                    Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setAlert_MobHealth(Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_MobHealth() == false);
+                    Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setAlert_MobHealth(!Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_MobHealth());
                 else if (slot == 5)//데미지 알림
-                    Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setAlert_Damage(Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_Damage() == false);
+                    Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setAlert_Damage(!Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_Damage());
                 else if (slot == 6)//클릭시 사용
-                    Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setClickUse(Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isClickUse() == false);
+                    Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setClickUse(!Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isClickUse());
                 else if (slot == 11)//장비 구경
-                    Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setOption_EquipLook(Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isOption_EquipLook() == false);
+                    Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setOption_EquipLook(!Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isOption_EquipLook());
                 else if (slot == 12)//채팅 옵션
                 {
                     if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getOption_ChattingType() < 3)
@@ -164,13 +164,13 @@ public class Option_GUI extends Util_GUI {
                     else
                         Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setOption_ChattingType((byte) (0));
                 } else if (slot == 13)//장비 전환 사운드
-                    Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setOption_HotBarSound(Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isOption_HotBarSound() == false);
+                    Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setOption_HotBarSound(!Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isOption_HotBarSound());
                 else if (slot == 14)//BGM 재생
                 {
-                    Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setBgm(Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isBgmOn() == false);
+                    Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setBgm(!Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isBgmOn());
                     new io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain().Stop(player);
                 } else if (slot == 15)//우클릭시 상대방 정보 보기
-                    Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setOption_SeeInventory(Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isOption_SeeInventory() == false);
+                    Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setOption_SeeInventory(!Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isOption_SeeInventory());
 
                 optionGUI(player);
             }

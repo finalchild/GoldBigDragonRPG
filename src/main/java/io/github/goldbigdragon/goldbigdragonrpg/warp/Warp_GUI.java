@@ -63,8 +63,8 @@ public class Warp_GUI extends Util_GUI {
                 short yaw = (short) TelePort.getInt(TelePortTitle + ".Yaw");
                 boolean OnlyOpUse = TelePort.getBoolean(TelePortTitle + ".OnlyOpUse");
 
-                if (player.isOp() == true) {
-                    if (OnlyOpUse == true)
+                if (player.isOp()) {
+                    if (OnlyOpUse)
                         Stack(ChatColor.WHITE + TelePortTitle, 345, 0, 1, Arrays.asList(ChatColor.DARK_AQUA + "월드 : " + ChatColor.WHITE + "" + ChatColor.BOLD + world,
                                 ChatColor.DARK_AQUA + "x 좌표 : " + ChatColor.WHITE + "" + ChatColor.BOLD + x
                                 , ChatColor.DARK_AQUA + "y 좌표 : " + ChatColor.WHITE + "" + ChatColor.BOLD + y
@@ -84,7 +84,7 @@ public class Warp_GUI extends Util_GUI {
                                 , ChatColor.GREEN + "[일반 유저도 명령어로 이동 가능합니다.]", "", ChatColor.YELLOW + "[좌 클릭시 해당 위치로 워프합니다.]", ChatColor.YELLOW + "[Shift + 좌 클릭시 권한을 변경합니다.]", ChatColor.RED + "[Shift + 우 클릭시 해당 워프를 삭제합니다.]"), loc, inv);
                     loc++;
                 } else {
-                    if (OnlyOpUse == false)
+                    if (!OnlyOpUse)
                         Stack(ChatColor.WHITE + TelePortTitle, 345, 0, 1, Arrays.asList(ChatColor.DARK_AQUA + "월드 : " + ChatColor.WHITE + "" + ChatColor.BOLD + world,
                                 ChatColor.DARK_AQUA + "x 좌표 : " + ChatColor.WHITE + "" + ChatColor.BOLD + x
                                 , ChatColor.DARK_AQUA + "y 좌표 : " + ChatColor.WHITE + "" + ChatColor.BOLD + y
@@ -95,7 +95,7 @@ public class Warp_GUI extends Util_GUI {
                     loc++;
                 }
             } else {
-                if (player.isOp() == true) {
+                if (player.isOp()) {
                     String world = worldname[a];
                     int x = (int) Bukkit.getServer().getWorld(worldname[a]).getSpawnLocation().getX();
                     short y = (short) Bukkit.getServer().getWorld(worldname[a]).getSpawnLocation().getY();
@@ -122,7 +122,7 @@ public class Warp_GUI extends Util_GUI {
         if (page != 0)
             Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        if (player.isOp() == true)
+        if (player.isOp())
             Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "새 워프", 339, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 워프 지점을 생성합니다."), 49, inv);
         Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
@@ -160,7 +160,7 @@ public class Warp_GUI extends Util_GUI {
                 if (event.getCurrentItem().getTypeId() == 2)
                     new Warp_Main().TeleportUser(player, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                 else {
-                    if (event.isShiftClick() == false && event.isLeftClick())
+                    if (!event.isShiftClick() && event.isLeftClick())
                         new Warp_Main().TeleportUser(player, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                     else if (event.isShiftClick() && event.isLeftClick() && player.isOp()) {
                         new Warp_Main().setTeleportPermission(player, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));

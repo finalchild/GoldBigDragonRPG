@@ -77,7 +77,7 @@ public class Stats_GUI extends Util_GUI {
         inv.setItem(26, EXIT);
 
         int StatPoint = Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_StatPoint();
-        if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System") == true) {
+        if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
             Stack2(ChatColor.GREEN + "    [" + ChatColor.WHITE + "" + ChatColor.BOLD + "상태" + ChatColor.GREEN + "]", 397, 3, 1,
                     Arrays.asList(ChatColor.WHITE + "[레벨] : " + ChatColor.BOLD + Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Level(),
                             ChatColor.WHITE + "[누적 레벨] : " + ChatColor.BOLD + Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_RealLevel(),
@@ -94,9 +94,9 @@ public class Stats_GUI extends Util_GUI {
         }
 
         int DefaultDamage = 0;
-        if (player.getInventory().getItemInMainHand().hasItemMeta() == true) {
-            if (player.getInventory().getItemInMainHand().getItemMeta().hasLore() == true) {
-                if (player.getInventory().getItemInMainHand().getItemMeta().getLore().toString().contains(Main_ServerOption.Damage + " : ") == true) {
+        if (player.getInventory().getItemInMainHand().hasItemMeta()) {
+            if (player.getInventory().getItemInMainHand().getItemMeta().hasLore()) {
+                if (player.getInventory().getItemInMainHand().getItemMeta().getLore().toString().contains(Main_ServerOption.Damage + " : ")) {
                     switch (player.getInventory().getItemInMainHand().getType()) {
                         case WOOD_SPADE:
                         case GOLD_SPADE:
@@ -231,7 +231,7 @@ public class Stats_GUI extends Util_GUI {
                 Arrays.asList(lore.split("%enter%")), 24, inv);
 
 
-        if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System") == false) {
+        if (!Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
             Stack2(ChatColor.GOLD + "    [" + ChatColor.WHITE + "" + ChatColor.BOLD + "" + Main_ServerOption.STR + " 상승" + ChatColor.GOLD + "]", 399, 0, 1,
                     Arrays.asList(ChatColor.GRAY + "" + Main_ServerOption.STR + " 스텟을 한단계 상승 시킵니다.", ChatColor.GRAY + "남은 스텟 포인트 : " + StatPoint), 29, inv);
             Stack2(ChatColor.GOLD + "    [" + ChatColor.WHITE + "" + ChatColor.BOLD + "" + Main_ServerOption.DEX + " 상승" + ChatColor.GOLD + "]", 399, 0, 1,
@@ -276,7 +276,7 @@ public class Stats_GUI extends Util_GUI {
             if (slot >= 29 && slot <= 33) {
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager Config = YC.getNewConfig("config.yml");
-                if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System") == false)
+                if (!Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System"))
                     if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_StatPoint() >= 1) {
                         boolean isOk = false;
                         if (slot == 29)

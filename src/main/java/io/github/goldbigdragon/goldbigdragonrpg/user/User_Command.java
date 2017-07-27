@@ -91,7 +91,7 @@ public class User_Command {
                     player.sendMessage(ChatColor.YELLOW + "[현재 소지 금액] " + ChatColor.WHITE + ChatColor.BOLD + "" + Money + " " + Main_ServerOption.Money);
                     player.sendMessage(ChatColor.GOLD + "/돈 꺼내기 [금액]" + ChatColor.WHITE + " 해당 금액 만큼 돈을 아이템으로 꺼냅니다.");
                     player.sendMessage(ChatColor.GOLD + "/돈 랭킹 [닉네임]" + ChatColor.WHITE + " 해당 플레이어의 랭킹을 확인합니다.");
-                    if (player.isOp() == true)
+                    if (player.isOp())
                         player.sendMessage(ChatColor.AQUA + "/돈 주기 [금액] [플레이어]" + ChatColor.WHITE + " 해당 금액 만큼 플레이어에게 돈을 줍니니다." + ChatColor.AQUA + "" + ChatColor.BOLD + "(관리자)");
                 } else if (args.length == 2 && args[0].compareTo("꺼내기") == 0) {
                     try {
@@ -382,7 +382,7 @@ public class User_Command {
                     player.sendMessage(ChatColor.GOLD + "/돈" + ChatColor.WHITE + " 현재 자신이 보유한 금액을 확인합니다.");
                     player.sendMessage(ChatColor.GOLD + "/돈 꺼내기 [금액]" + ChatColor.WHITE + " 해당 금액 만큼 돈을 아이템으로 꺼냅니다.");
                     player.sendMessage(ChatColor.GOLD + "/돈 랭킹 [닉네임]" + ChatColor.WHITE + " 해당 플레이어의 랭킹을 확인합니다.");
-                    if (player.isOp() == true)
+                    if (player.isOp())
                         player.sendMessage(ChatColor.AQUA + "/돈 주기 [금액] [플레이어]" + ChatColor.WHITE + " 해당 금액 만큼 플레이어에게 돈을 줍니니다." + ChatColor.AQUA + "" + ChatColor.BOLD + "(관리자)");
                 }
             }

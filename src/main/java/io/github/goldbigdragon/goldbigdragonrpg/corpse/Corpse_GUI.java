@@ -111,9 +111,9 @@ public class Corpse_GUI extends Util_GUI {
             item = Config.getItemStack("Death.ReviveItem");
             if (item == null)
                 Stack2(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "[부활석 사용]", 399, 0, 1, Arrays.asList(ChatColor.GRAY + "제자리 부활 아이템을 사용합니다.", "", ChatColor.GREEN + " + " + Config.getString("Death.Spawn_Item.SetHealth") + " 생명력", ChatColor.RED + " - 경험치 " + Config.getString("Death.Spawn_Item.PenaltyEXP") + " 감소", ChatColor.RED + " - 소지금 " + Config.getString("Death.Spawn_Item.PenaltyMoney") + " 감소"), 16, inv);
-            else if (item.hasItemMeta() == false)
+            else if (!item.hasItemMeta())
                 Stack2(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "[부활석 사용]", item.getTypeId(), item.getData().getData(), item.getAmount(), Arrays.asList(ChatColor.GRAY + "제자리 부활 아이템을 사용합니다.", "", ChatColor.GREEN + " + " + Config.getString("Death.Spawn_Item.SetHealth") + " 생명력", ChatColor.RED + " - 경험치 " + Config.getString("Death.Spawn_Item.PenaltyEXP") + " 감소", ChatColor.RED + " - 소지금 " + Config.getString("Death.Spawn_Item.PenaltyMoney") + " 감소"), 16, inv);
-            else if (item.getItemMeta().hasDisplayName() == false)
+            else if (!item.getItemMeta().hasDisplayName())
                 Stack2(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "[부활석 사용]", item.getTypeId(), item.getData().getData(), item.getAmount(), Arrays.asList(ChatColor.GRAY + "제자리 부활 아이템을 사용합니다.", "", ChatColor.GREEN + " + " + Config.getString("Death.Spawn_Item.SetHealth") + " 생명력", ChatColor.RED + " - 경험치 " + Config.getString("Death.Spawn_Item.PenaltyEXP") + " 감소", ChatColor.RED + " - 소지금 " + Config.getString("Death.Spawn_Item.PenaltyMoney") + " 감소"), 16, inv);
             else
                 Stack2(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "[" + item.getItemMeta().getDisplayName() + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " 사용]", item.getTypeId(), item.getData().getData(), item.getAmount(), Arrays.asList(ChatColor.GRAY + "제자리 부활 아이템을 사용합니다.", "", ChatColor.GREEN + " + " + Config.getString("Death.Spawn_Item.SetHealth") + " 생명력", ChatColor.RED + " - 경험치 " + Config.getString("Death.Spawn_Item.PenaltyEXP") + " 감소", ChatColor.RED + " - 소지금 " + Config.getString("Death.Spawn_Item.PenaltyMoney") + " 감소"), 16, inv);
@@ -156,7 +156,7 @@ public class Corpse_GUI extends Util_GUI {
             } else {
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager FriendsList = YC.getNewConfig("Friend/" + player.getUniqueId().toString() + ".yml");
-                if (FriendsList.contains("Name") == false) {
+                if (!FriendsList.contains("Name")) {
                     s.SP(player, Sound.ENTITY_VILLAGER_NO, 1.0F, 1.0F);
                     player.sendMessage(ChatColor.LIGHT_PURPLE + "[구조 요청] : 구조 요청 신호를 보낼 수 있는 친구가 없습니다!");
                 } else {
@@ -234,7 +234,7 @@ public class Corpse_GUI extends Util_GUI {
                 Object[] arealist = AreaList.getConfigurationSection("").getKeys(false).toArray();
                 for (short count = 0; count < arealist.length; count++) {
                     if (arealist[count].toString().compareTo(respawnCity) == 0) {
-                        if (AreaList.getBoolean(arealist[count].toString() + ".SpawnPoint") == true) {
+                        if (AreaList.getBoolean(arealist[count].toString() + ".SpawnPoint")) {
                             String world = AreaList.getString(arealist[count].toString() + ".World");
                             double X = AreaList.getDouble(arealist[count].toString() + ".SpawnLocation.X");
                             float Y = (float) AreaList.getDouble(arealist[count].toString() + ".SpawnLocation.Y");

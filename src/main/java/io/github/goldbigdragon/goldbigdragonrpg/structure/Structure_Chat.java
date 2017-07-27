@@ -219,7 +219,7 @@ public class Structure_Chat {
                         player.sendMessage(ChatColor.RED + "[거래 게시판] : 동일 상품을 이미 등록하셨습니다!");
                         return;
                     }
-                    if (Board.contains("Sell." + ItemName) == false)
+                    if (!Board.contains("Sell." + ItemName))
                         Board.set("Sell." + ItemName + ".Item", itemAmountOne);
                     Board.set("SellRegistered", Board.getInt("SellRegistered") + 1);
                     Board.set("Sell." + ItemName + "." + player.getUniqueId().toString() + ".Name", player.getName());
@@ -272,7 +272,7 @@ public class Structure_Chat {
                                     player.sendMessage(ChatColor.RED + "[거래 게시판] : 동일 상품을 이미 등록하셨습니다!");
                                     return;
                                 }
-                                if (Board.contains("Buy." + ItemName) == false)
+                                if (!Board.contains("Buy." + ItemName))
                                     Board.set("Buy." + ItemName + ".Item", itemAmountOne);
                                 Board.set("BuyRegistered", Board.getInt("BuyRegistered") + 1);
                                 Board.set("Buy." + ItemName + "." + player.getUniqueId().toString() + ".Name", player.getName());
@@ -325,7 +325,7 @@ public class Structure_Chat {
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager Board = YC.getNewConfig("Structure/UserShopBoard.yml");
                     short ExitAmount = (byte) Board.getInt("Buy." + u.getString(player, (byte) 1) + "." + u.getString(player, (byte) 2) + ".Amount");
-                    if (Board.contains("Buy." + u.getString(player, (byte) 1) + "." + u.getString(player, (byte) 2)) == false) {
+                    if (!Board.contains("Buy." + u.getString(player, (byte) 1) + "." + u.getString(player, (byte) 2))) {
                         s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
                         player.sendMessage(ChatColor.RED + "[거래 게시판] : 거래 정보가 바뀌었습니다! 재 시도 해 주시길 바랍니다!");
                         u.clearAll(player);
@@ -378,7 +378,7 @@ public class Structure_Chat {
                                     Board.removeKey("Buy." + u.getString(player, (byte) 1) + "." + u.getString(player, (byte) 2));
                                 Board.set("BuyRegistered", Board.getInt("BuyRegistered") - 1);
                                 YamlManager USRL = YC.getNewConfig("Structure/UserShopRegisterList.yml");
-                                if (USRL.contains(u.getString(player, (byte) 2)) == true) {
+                                if (USRL.contains(u.getString(player, (byte) 2))) {
                                     USRL.set(u.getString(player, (byte) 2), USRL.getInt(u.getString(player, (byte) 2)) - 1);
                                     USRL.saveConfig();
                                 }
@@ -487,7 +487,7 @@ public class Structure_Chat {
                             Board.removeKey("Sell." + u.getString(player, (byte) 1) + "." + u.getString(player, (byte) 2));
                         Board.set("SellRegistered", Board.getInt("SellRegistered") - 1);
                         YamlManager USRL = YC.getNewConfig("Structure/UserShopRegisterList.yml");
-                        if (USRL.contains(Target.getUniqueId().toString()) == true) {
+                        if (USRL.contains(Target.getUniqueId().toString())) {
                             USRL.set(Target.getUniqueId().toString(), USRL.getInt(Target.getUniqueId().toString()) - 1);
                             USRL.saveConfig();
                         }

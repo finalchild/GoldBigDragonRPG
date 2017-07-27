@@ -56,7 +56,7 @@ public class Struct_TradeBoard extends Util_GUI {
         String UniqueCode = "§0§0§d§0§7§r";
         Inventory inv = Bukkit.createInventory(null, 54, UniqueCode + "" + Color + "" + ChatColor.BOLD + "" + "거래 게시판 : " + (page + 1));
 
-        if (Board.contains("Buy") == false) {
+        if (!Board.contains("Buy")) {
             Board.set("LimitPerPlayer", 5);
             Board.set("RegisterCommission", 1000);//등록 수수료
             Board.set("SellCommission", 1);//판매 수수료
@@ -425,7 +425,7 @@ public class Struct_TradeBoard extends Util_GUI {
                     YamlManager Board = YC.getNewConfig("Structure/UserShopBoard.yml");
                     if (Board.contains(ShopTypeString + "." + ItemName + "." + RegisterUUID)) {
                         YamlManager USRL = YC.getNewConfig("Structure/UserShopRegisterList.yml");
-                        if (USRL.contains(player.getUniqueId().toString()) == true) {
+                        if (USRL.contains(player.getUniqueId().toString())) {
                             USRL.set(player.getUniqueId().toString(), USRL.getInt(player.getUniqueId().toString()) - 1);
                             USRL.saveConfig();
                         }
@@ -459,7 +459,7 @@ public class Struct_TradeBoard extends Util_GUI {
                 }
             }
             //물품 구매 모드일 때, 좌클릭
-            else if (ShopType == 0 && event.isLeftClick() && event.isShiftClick() == false) {
+            else if (ShopType == 0 && event.isLeftClick() && !event.isShiftClick()) {
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager Board = YC.getNewConfig("Structure/UserShopBoard.yml");
 
@@ -492,7 +492,7 @@ public class Struct_TradeBoard extends Util_GUI {
                 }
             }
             //물품 판매 모드일 때, 좌클릭
-            else if (ShopType == 1 && event.isLeftClick() && event.isShiftClick() == false) {
+            else if (ShopType == 1 && event.isLeftClick() && !event.isShiftClick()) {
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager Board = YC.getNewConfig("Structure/UserShopBoard.yml");
                 short itemcount = 0;
@@ -538,13 +538,13 @@ public class Struct_TradeBoard extends Util_GUI {
             }
 
             //물품 교환 모드일 때, 좌클릭
-            else if (ShopType == 2 && event.isLeftClick() && event.isShiftClick() == false) {
+            else if (ShopType == 2 && event.isLeftClick() && !event.isShiftClick()) {
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager Board = YC.getNewConfig("Structure/UserShopBoard.yml");
 
                 UserData_Object u = new UserData_Object();
                 short needAmount = (short) Board.getInt("Exchange." + ItemName + "." + RegisterUUID + ".WantItemAmount");
-                if (Board.contains("Exchange." + ItemName + "." + RegisterUUID) == false) {
+                if (!Board.contains("Exchange." + ItemName + "." + RegisterUUID)) {
                     s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                     player.sendMessage(ChatColor.RED + "[거래 게시판] : 거래 정보가 바뀌었습니다! 재 시도 해 주시길 바랍니다!");
                     u.clearAll(player);
@@ -602,7 +602,7 @@ public class Struct_TradeBoard extends Util_GUI {
                         Board.removeKey("Exchange." + ItemName + "." + RegisterUUID);
                     Board.set("ExchangeRegistered", Board.getInt("ExchangeRegistered") - 1);
                     YamlManager USRL = YC.getNewConfig("Structure/UserShopRegisterList.yml");
-                    if (USRL.contains(player.getUniqueId().toString()) == true) {
+                    if (USRL.contains(player.getUniqueId().toString())) {
                         USRL.set(Target.getUniqueId().toString(), USRL.getInt(Target.getUniqueId().toString()) - 1);
                         USRL.saveConfig();
                     }
@@ -684,7 +684,7 @@ public class Struct_TradeBoard extends Util_GUI {
         if (event.getSlot() == 1 || event.getSlot() == 3 || event.getSlot() == 5) {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager USRL = YC.getNewConfig("Structure/UserShopRegisterList.yml");
-            if (USRL.contains(player.getUniqueId().toString()) == true) {
+            if (USRL.contains(player.getUniqueId().toString())) {
                 YamlManager Board = YC.getNewConfig("Structure/UserShopBoard.yml");
                 if (USRL.getInt(player.getUniqueId().toString()) >= Board.getInt("LimitPerPlayer")) {
                     s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
@@ -917,7 +917,7 @@ public class Struct_TradeBoard extends Util_GUI {
                     player.sendMessage(ChatColor.RED + "[거래 게시판] : 동일 상품을 이미 등록하셨습니다!");
                     return;
                 }
-                if (Board.contains("Exchange." + ItemName) == false)
+                if (!Board.contains("Exchange." + ItemName))
                     Board.set("Exchange." + ItemName + ".Item", event.getCurrentItem());
                 Board.set("ExchangeRegistered", Board.getInt("ExchangeRegistered") + 1);
                 Board.set("Exchange." + ItemName + "." + player.getUniqueId().toString() + ".Name", player.getName());

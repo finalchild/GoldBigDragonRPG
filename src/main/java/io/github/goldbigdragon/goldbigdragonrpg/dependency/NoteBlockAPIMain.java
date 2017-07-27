@@ -52,7 +52,7 @@ public class NoteBlockAPIMain implements Listener {
     public void NoteBlockAPIAddMusic() {
         if (!MusicFolder.exists())
             MusicFolder.mkdirs();
-        else if (Musics.size() == 0 && MusicAdded == false) {
+        else if (Musics.size() == 0 && !MusicAdded) {
             if (MusicFolder.listFiles().length >= 0) {
                 for (File child : MusicFolder.listFiles()) {
                     if (child.getName().contains("nbs"))
@@ -64,10 +64,10 @@ public class NoteBlockAPIMain implements Listener {
     }
 
     public boolean SoundList(Player player, boolean isGUIclicked) {
-        if (MusicAdded == false) {
+        if (!MusicAdded) {
             MusicAdded = true;
             NoteBlockAPIAddMusic();
-            if (isGUIclicked == false)
+            if (!isGUIclicked)
                 return true;
         }
         if (Musics.size() == 0) {
@@ -79,7 +79,7 @@ public class NoteBlockAPIMain implements Listener {
     }
 
     public String getTitle(int MusicNumber) {
-        if (MusicAdded == false || Musics.size() == 0 || Musics.size() < MusicNumber) {
+        if (!MusicAdded || Musics.size() == 0 || Musics.size() < MusicNumber) {
             MusicAdded = true;
             NoteBlockAPIAddMusic();
             return "[음반 없음]";
@@ -94,7 +94,7 @@ public class NoteBlockAPIMain implements Listener {
     }
 
     public String getAuthor(int MusicNumber) {
-        if (MusicAdded == false || Musics.size() == 0 || Musics.size() < MusicNumber) {
+        if (!MusicAdded || Musics.size() == 0 || Musics.size() < MusicNumber) {
             MusicAdded = true;
             NoteBlockAPIAddMusic();
             return "[음반 없음]";
@@ -109,7 +109,7 @@ public class NoteBlockAPIMain implements Listener {
     }
 
     public String getDescription(int MusicNumber) {
-        if (MusicAdded == false || Musics.size() == 0 || Musics.size() < MusicNumber) {
+        if (!MusicAdded || Musics.size() == 0 || Musics.size() < MusicNumber) {
             MusicAdded = true;
             NoteBlockAPIAddMusic();
             return "[음반 없음]";
@@ -124,7 +124,7 @@ public class NoteBlockAPIMain implements Listener {
     }
 
     public int SoundSize() {
-        if (MusicAdded == false || Musics.size() == 0) {
+        if (!MusicAdded || Musics.size() == 0) {
             MusicAdded = true;
             NoteBlockAPIAddMusic();
         }

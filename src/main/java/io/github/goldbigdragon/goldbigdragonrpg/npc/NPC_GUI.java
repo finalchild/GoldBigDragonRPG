@@ -65,7 +65,7 @@ public class NPC_GUI extends Util_GUI {
 
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager PlayerNPC = null;
-        if (YC.isExit("NPC/PlayerData/" + player.getUniqueId() + ".yml") == false) {
+        if (!YC.isExit("NPC/PlayerData/" + player.getUniqueId() + ".yml")) {
             PlayerNPC = YC.getNewConfig("NPC/PlayerData/" + player.getUniqueId() + ".yml");
             PlayerNPC.set(u.getNPCuuid(player) + ".love", 0);
             PlayerNPC.set(u.getNPCuuid(player) + ".Career", 0);
@@ -79,11 +79,11 @@ public class NPC_GUI extends Util_GUI {
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "GUI 비 활성화", 166, 0, 1, Arrays.asList(ChatColor.GRAY + "이 NPC는 GoldBigDragonRPG의", ChatColor.GRAY + "NPC GUI 화면을 사용하지 않게 합니다.", ""), 8, inv);
 
         YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
-        if (NPCscript.contains("Job") == false) {
+        if (!NPCscript.contains("Job")) {
             NPCscript.set("Job.Type", "null");
             NPCscript.saveConfig();
         }
-        if (NPCscript.contains("NatureTalk") == false) {
+        if (!NPCscript.contains("NatureTalk")) {
             NPCscript.set("NPCuuid", "NPC's uuid");
             NPCscript.set("KoreaLanguage(UTF-8)->JavaEntityLanguage", "http://itpro.cz/juniconv/");
             NPCscript.set("NatureTalk.1.love", 0);
@@ -94,7 +94,7 @@ public class NPC_GUI extends Util_GUI {
             NPCscript.set("NatureTalk.3.Script", "§1색깔은 §4이렇게 §f넣을 수 있어!");
             NPCscript.saveConfig();
         }
-        if (NPCscript.contains("NearByNEWS") == false) {
+        if (!NPCscript.contains("NearByNEWS")) {
             NPCscript.set("NearByNEWS.1.love", 0);
             NPCscript.set("NearByNEWS.1.Script", "§f너희집에서 어제 다이아몬드를 본 것 같은데...");
             NPCscript.set("NearByNEWS.2.love", 0);
@@ -103,7 +103,7 @@ public class NPC_GUI extends Util_GUI {
             NPCscript.set("NearByNEWS.3.Script", "§f음...");
             NPCscript.saveConfig();
         }
-        if (NPCscript.contains("AboutSkills") == false) {
+        if (!NPCscript.contains("AboutSkills")) {
             NPCscript.set("AboutSkills.1.love", 0);
             NPCscript.set("AboutSkills.1.giveSkill", "null");
             NPCscript.set("AboutSkills.1.AlreadyGetScript", "null");
@@ -118,15 +118,15 @@ public class NPC_GUI extends Util_GUI {
             NPCscript.set("AboutSkills.3.Script", "§f너에게 가르쳐 줄만한%enter%§f기술이 없는것 같은데...");
             NPCscript.saveConfig();
         }
-        if (NPCscript.contains("Shop.Sell") == false) {
+        if (!NPCscript.contains("Shop.Sell")) {
             NPCscript.createSection("Shop.Sell");
             NPCscript.saveConfig();
         }
-        if (NPCscript.contains("Shop.Buy") == false) {
+        if (!NPCscript.contains("Shop.Buy")) {
             NPCscript.createSection("Shop.Buy");
             NPCscript.saveConfig();
         }
-        if (NPCscript.contains("Quest") == false) {
+        if (!NPCscript.contains("Quest")) {
             NPCscript.createSection("Quest");
             NPCscript.saveConfig();
         }
@@ -147,11 +147,11 @@ public class NPC_GUI extends Util_GUI {
                 for (short count = 0; count < Job.length; count++) {
                     Object[] a = JobList.getConfigurationSection("MapleStory." + Job[count].toString()).getKeys(false).toArray();
                     for (byte counter = 0; counter < a.length; counter++) {
-                        if (a[counter].toString().equalsIgnoreCase(NPCscript.getString("Job.Job")) == true)
+                        if (a[counter].toString().equalsIgnoreCase(NPCscript.getString("Job.Job")))
                             isExitJob = true;
                     }
                 }
-                if (isExitJob == false) {
+                if (!isExitJob) {
                     NPCscript.removeKey("Job");
                     NPCscript.set("Job.Type", "null");
                     NPCscript.saveConfig();
@@ -159,7 +159,7 @@ public class NPC_GUI extends Util_GUI {
                 for (short count = 0; count < Job.length; count++) {
                     Object[] a = JobList.getConfigurationSection("MapleStory." + Job[count].toString()).getKeys(false).toArray();
                     for (byte counter = 0; counter < a.length; counter++) {
-                        if (a[counter].toString().equalsIgnoreCase(NPCscript.getString("Job.Job")) == true) {
+                        if (a[counter].toString().equalsIgnoreCase(NPCscript.getString("Job.Job"))) {
                             YamlManager PlayerJob = YC.getNewConfig("Skill/PlayerData/" + player.getUniqueId().toString() + ".yml");
                             short ID = (short) JobList.getInt("MapleStory." + Job[count].toString() + "." + a[counter].toString() + ".IconID");
                             byte DATA = (byte) JobList.getInt("MapleStory." + Job[count].toString() + "." + a[counter].toString() + ".IconData");
@@ -198,8 +198,8 @@ public class NPC_GUI extends Util_GUI {
                                 lore = lore + ChatColor.RED + "필요 " + Main_ServerOption.LUK + " : " + NeedLUK + "%enter%";
                             else
                                 lore = lore + ChatColor.AQUA + "필요 " + Main_ServerOption.LUK + " : " + NeedLUK + "%enter%";
-                            if (PrevJob.equalsIgnoreCase("null") == false) {
-                                if (PlayerJob.getString("Job.Type").equalsIgnoreCase(PrevJob) == false)
+                            if (!PrevJob.equalsIgnoreCase("null")) {
+                                if (!PlayerJob.getString("Job.Type").equalsIgnoreCase(PrevJob))
                                     lore = lore + ChatColor.RED + "이전 직업 : " + PrevJob + "%enter%";
                                 else
                                     lore = lore + ChatColor.AQUA + "이전 직업 : " + PrevJob + "%enter%";
@@ -227,7 +227,7 @@ public class NPC_GUI extends Util_GUI {
                 break;
         }
 
-        if (isOP == true) {
+        if (isOP) {
             switch (NPCscript.getString("Job.Type")) {
                 case "null":
                     Stack2(ChatColor.GOLD + "" + ChatColor.BOLD + "직업 설정", 403, 0, 1, Arrays.asList(ChatColor.GRAY + "이 NPC에게는 아직 직업이 없습니다!", ChatColor.GRAY + "직업을 가지면 다양한 기능을 제공합니다.", "", ChatColor.YELLOW + "[클릭시 직업 설정]"), 4, inv);
@@ -247,7 +247,7 @@ public class NPC_GUI extends Util_GUI {
                     for (short count = 0; count < Job.length; count++) {
                         Object[] a = JobList.getConfigurationSection("MapleStory." + Job[count].toString()).getKeys(false).toArray();
                         for (byte counter = 0; counter < a.length; counter++) {
-                            if (a[counter].toString().equalsIgnoreCase(NPCscript.getString("Job.Job")) == true) {
+                            if (a[counter].toString().equalsIgnoreCase(NPCscript.getString("Job.Job"))) {
                                 YamlManager PlayerJob = YC.getNewConfig("Skill/PlayerData/" + player.getUniqueId().toString() + ".yml");
                                 short ID = (short) JobList.getInt("MapleStory." + Job[count].toString() + "." + a[counter].toString() + ".IconID");
                                 byte DATA = (byte) JobList.getInt("MapleStory." + Job[count].toString() + "." + a[counter].toString() + ".IconData");
@@ -286,8 +286,8 @@ public class NPC_GUI extends Util_GUI {
                                 else
                                     lore = lore + ChatColor.AQUA + "필요 " + Main_ServerOption.LUK + " : " + NeedLUK + "%enter%";
 
-                                if (PrevJob.equalsIgnoreCase("null") == false) {
-                                    if (PlayerJob.getString("Job.Type").equalsIgnoreCase(PrevJob) == false)
+                                if (!PrevJob.equalsIgnoreCase("null")) {
+                                    if (!PlayerJob.getString("Job.Type").equalsIgnoreCase(PrevJob))
                                         lore = lore + ChatColor.RED + "이전 직업 : " + PrevJob + "%enter%";
                                     else
                                         lore = lore + ChatColor.AQUA + "이전 직업 : " + PrevJob + "%enter%";
@@ -334,7 +334,7 @@ public class NPC_GUI extends Util_GUI {
         Inventory inv = Bukkit.createInventory(null, 54, UniqueCode + "§0[NPC] " + ChatColor.stripColor(NPCname));
 
         YamlController YC = new YamlController(Main_Main.plugin);
-        if (YC.isExit("NPC/NPCData/" + u.getNPCuuid(player) + ".yml") == false) {
+        if (!YC.isExit("NPC/NPCData/" + u.getNPCuuid(player) + ".yml")) {
             NPC_Config NPCC = new NPC_Config();
             NPCC.NPCNPCconfig(u.getNPCuuid(player));
         }
@@ -342,10 +342,10 @@ public class NPC_GUI extends Util_GUI {
         ItemStack item;
         ItemMeta IM = null;
         short a = 0;
-        if (Buy == true) {
+        if (Buy) {
             a = (short) NPCscript.getConfigurationSection("Shop.Sell").getKeys(false).size();
 
-            if (isEditMode == false)
+            if (!isEditMode)
                 Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, null, 0, inv);
             else
                 Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, Arrays.asList(ChatColor.BLACK + "-1"), 0, inv);
@@ -380,7 +380,7 @@ public class NPC_GUI extends Util_GUI {
             int discount = 0;
             if (Sale) {
                 YamlManager PlayerNPC = null;
-                if (YC.isExit("NPC/PlayerData/" + player.getUniqueId() + ".yml") == false) {
+                if (!YC.isExit("NPC/PlayerData/" + player.getUniqueId() + ".yml")) {
                     PlayerNPC = YC.getNewConfig("NPC/PlayerData/" + player.getUniqueId() + ".yml");
                     PlayerNPC.set(u.getNPCuuid(player) + ".love", 0);
                     PlayerNPC.set(u.getNPCuuid(player) + ".Career", 0);
@@ -399,14 +399,14 @@ public class NPC_GUI extends Util_GUI {
                 long price = NPCscript.getLong("Shop.Sell." + count + ".price");
                 if (Sale)
                     price = price - ((price / 100) * discount);
-                if (item.hasItemMeta() == true) {
-                    if (item.getItemMeta().hasLore() == true) {
+                if (item.hasItemMeta()) {
+                    if (item.getItemMeta().hasLore()) {
                         String[] lore = new String[IM.getLore().size() + 3];
                         for (byte counter = 0; counter < lore.length - 3; counter++)
                             lore[counter] = IM.getLore().get(counter);
                         lore[lore.length - 3] = "";
 
-                        if (isEditMode == false) {
+                        if (!isEditMode) {
                             if (price >= Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money())
                                 lore[lore.length - 2] = ChatColor.RED + "[가격 : " + price + " " + ChatColor.stripColor(Main_ServerOption.Money) + "]";
                             else
@@ -420,7 +420,7 @@ public class NPC_GUI extends Util_GUI {
                     } else {
                         String[] lore = new String[3];
                         lore[0] = "";
-                        if (isEditMode == false) {
+                        if (!isEditMode) {
                             if (price >= Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money())
                                 lore[1] = ChatColor.RED + "[가격 : " + price + " " + ChatColor.stripColor(Main_ServerOption.Money) + "]";
                             else
@@ -433,7 +433,7 @@ public class NPC_GUI extends Util_GUI {
                         IM.setLore(Arrays.asList(lore));
                     }
                 } else {
-                    if (isEditMode == false) {
+                    if (!isEditMode) {
                         if (price >= Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money()) {
                             List<String> l = Arrays.asList("", ChatColor.RED + "[가격 : " + price + " " + ChatColor.stripColor(Main_ServerOption.Money) + "]", ChatColor.WHITE + "[소지금 : " + Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money() + " " + ChatColor.stripColor(Main_ServerOption.Money) + "]");
                             IM.setLore(l);
@@ -464,7 +464,7 @@ public class NPC_GUI extends Util_GUI {
         } else {
             a = (short) NPCscript.getConfigurationSection("Shop.Buy").getKeys(false).toArray().length;
 
-            if (isEditMode == false)
+            if (!isEditMode)
                 Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, null, 0, inv);
             else
                 Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, Arrays.asList(ChatColor.BLACK + "-1"), 0, inv);
@@ -500,14 +500,14 @@ public class NPC_GUI extends Util_GUI {
                 IM = item.getItemMeta();
                 long price = NPCscript.getLong("Shop.Buy." + count + ".price");
 
-                if (item.hasItemMeta() == true) {
-                    if (item.getItemMeta().hasLore() == true) {
+                if (item.hasItemMeta()) {
+                    if (item.getItemMeta().hasLore()) {
                         String[] lore = new String[IM.getLore().size() + 3];
                         for (byte counter = 0; counter < lore.length - 3; counter++)
                             lore[counter] = IM.getLore().get(counter);
                         lore[lore.length - 3] = "";
 
-                        if (isEditMode == false) {
+                        if (!isEditMode) {
                             lore[lore.length - 2] = ChatColor.AQUA + "[가격 : " + price + " " + ChatColor.stripColor(Main_ServerOption.Money) + "]";
                             lore[lore.length - 1] = ChatColor.WHITE + "[소지금 : " + Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money() + " " + ChatColor.stripColor(Main_ServerOption.Money) + "]";
                         } else {
@@ -519,7 +519,7 @@ public class NPC_GUI extends Util_GUI {
                         String[] lore = new String[3];
                         lore[0] = "";
 
-                        if (isEditMode == false) {
+                        if (!isEditMode) {
                             lore[1] = ChatColor.AQUA + "[가격 : " + price + " " + ChatColor.stripColor(Main_ServerOption.Money) + "]";
                             lore[2] = ChatColor.WHITE + "[소지금 : " + Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money() + " " + ChatColor.stripColor(Main_ServerOption.Money) + "]";
                         } else {
@@ -530,7 +530,7 @@ public class NPC_GUI extends Util_GUI {
                     }
                 } else {
                     List<String> l = null;
-                    if (isEditMode == false)
+                    if (!isEditMode)
                         l = Arrays.asList("", ChatColor.AQUA + "[가격 : " + price + " " + ChatColor.stripColor(Main_ServerOption.Money) + "]", ChatColor.WHITE + "[소지금 : " + Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money() + " " + ChatColor.stripColor(Main_ServerOption.Money) + "]");
                     else
                         l = Arrays.asList("", ChatColor.WHITE + "[가격 : " + price + " " + ChatColor.stripColor(Main_ServerOption.Money) + "]", ChatColor.BLACK + "" + count);
@@ -581,7 +581,7 @@ public class NPC_GUI extends Util_GUI {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager QuestList = YC.getNewConfig("Quest/QuestList.yml");
 
-        if (YC.isExit("NPC/NPCData/" + u.getNPCuuid(player) + ".yml") == false) {
+        if (!YC.isExit("NPC/NPCData/" + u.getNPCuuid(player) + ".yml")) {
             NPC_Config NPCC = new NPC_Config();
             NPCC.NPCNPCconfig(u.getNPCuuid(player));
         }
@@ -652,8 +652,8 @@ public class NPC_GUI extends Util_GUI {
                 Temp[lorecount] = ChatColor.DARK_AQUA + "퀘스트 수행 가능 인원 : " + QuestList.getInt(QuestName + ".Server.Limit") + " 명 남음";
                 lorecount = lorecount + 1;
             }
-            if (QuestList.getString(QuestName + ".Need.PrevQuest") != null && QuestList.getString(QuestName + ".Need.PrevQuest").equalsIgnoreCase("null") == false) {
-                if (QuestList.contains(QuestList.getString(QuestName + ".Need.PrevQuest")) == false) {
+            if (QuestList.getString(QuestName + ".Need.PrevQuest") != null && !QuestList.getString(QuestName + ".Need.PrevQuest").equalsIgnoreCase("null")) {
+                if (!QuestList.contains(QuestList.getString(QuestName + ".Need.PrevQuest"))) {
                     QuestList.set(QuestName + ".Need.PrevQuest", "null");
                     QuestList.saveConfig();
                 } else {
@@ -664,7 +664,7 @@ public class NPC_GUI extends Util_GUI {
 
             Temp[lorecount] = "";
             lorecount = lorecount + 1;
-            if (isExit == true)
+            if (isExit)
                 Temp[lorecount] = ChatColor.GREEN + "[등록 된 퀘스트]";
             else
                 Temp[lorecount] = ChatColor.RED + "[등록 되지 않은 퀘스트]";
@@ -715,7 +715,7 @@ public class NPC_GUI extends Util_GUI {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager QuestList = YC.getNewConfig("Quest/QuestList.yml");
 
-        if (YC.isExit("NPC/NPCData/" + u.getNPCuuid(player) + ".yml") == false) {
+        if (!YC.isExit("NPC/NPCData/" + u.getNPCuuid(player) + ".yml")) {
             NPC_Config NPCC = new NPC_Config();
             NPCC.NPCNPCconfig(u.getNPCuuid(player));
         }
@@ -728,7 +728,7 @@ public class NPC_GUI extends Util_GUI {
 
         YamlManager PlayerQuestList = YC.getNewConfig("Quest/PlayerData/" + player.getUniqueId() + ".yml");
 
-        if (YC.isExit("Quest/PlayerData/" + player.getUniqueId() + ".yml") == false) {
+        if (!YC.isExit("Quest/PlayerData/" + player.getUniqueId() + ".yml")) {
             PlayerQuestList.set("PlayerName", player.getName());
             PlayerQuestList.set("PlayerUUID", player.getUniqueId().toString());
             PlayerQuestList.createSection("Started");
@@ -742,7 +742,7 @@ public class NPC_GUI extends Util_GUI {
         Set<String> PlayerFinished = PlayerQuestList.getConfigurationSection("Ended").getKeys(false);
 
         YamlManager PlayerNPC;
-        if (YC.isExit("NPC/PlayerData/" + player.getUniqueId() + ".yml") == false) {
+        if (!YC.isExit("NPC/PlayerData/" + player.getUniqueId() + ".yml")) {
             PlayerNPC = YC.getNewConfig("NPC/PlayerData/" + player.getUniqueId() + ".yml");
             PlayerNPC.set(u.getNPCuuid(player) + ".love", 0);
             PlayerNPC.set(u.getNPCuuid(player) + ".Career", 0);
@@ -756,30 +756,30 @@ public class NPC_GUI extends Util_GUI {
             String QuestName = NPCscript.getString("Quest." + a[count]);
             if (count > a.length || loc >= 45) break;
 
-            if (QuestList.contains(QuestName) == true) {
-                if (QuestList.getString(QuestName + ".Need.PrevQuest") != null && QuestList.getString(QuestName + ".Need.PrevQuest").equalsIgnoreCase("null") == false) {
-                    if (QuestList.contains(QuestList.getString(QuestName + ".Need.PrevQuest")) == false) {
+            if (QuestList.contains(QuestName)) {
+                if (QuestList.getString(QuestName + ".Need.PrevQuest") != null && !QuestList.getString(QuestName + ".Need.PrevQuest").equalsIgnoreCase("null")) {
+                    if (!QuestList.contains(QuestList.getString(QuestName + ".Need.PrevQuest"))) {
                         QuestList.set(QuestName + ".Need.PrevQuest", "null");
                         QuestList.saveConfig();
                     }
                 }
                 boolean gogogo = false;
-                if (QuestList.getString(QuestName + ".Need.PrevQuest") == null || QuestList.getString(QuestName + ".Need.PrevQuest").equalsIgnoreCase("null") == true) {
+                if (QuestList.getString(QuestName + ".Need.PrevQuest") == null || QuestList.getString(QuestName + ".Need.PrevQuest").equalsIgnoreCase("null")) {
                     gogogo = true;
                 }
-                if (QuestList.getString(QuestName + ".Need.PrevQuest") != null && QuestList.getString(QuestName + ".Need.PrevQuest").equalsIgnoreCase("null") == false) {
-                    if (PlayerQuestList.contains("Ended." + QuestList.getString(QuestName + ".Need.PrevQuest")) == true)
+                if (QuestList.getString(QuestName + ".Need.PrevQuest") != null && !QuestList.getString(QuestName + ".Need.PrevQuest").equalsIgnoreCase("null")) {
+                    if (PlayerQuestList.contains("Ended." + QuestList.getString(QuestName + ".Need.PrevQuest")))
                         gogogo = true;
                 } else {
                     gogogo = true;
                 }
-                if (gogogo == true) {
+                if (gogogo) {
                     String[] Temp = new String[12];
                     Temp[0] = "";
                     byte lorecount = 1;
                     if (QuestList.getInt(QuestName + ".Need.LV") != 0) {
                         YamlManager Config = YC.getNewConfig("config.yml");
-                        if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System") == true) {
+                        if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
                             if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_RealLevel() >= QuestList.getInt(QuestName + ".Need.LV"))
                                 Temp[lorecount] = ChatColor.GREEN + "레벨 제한 : " + QuestList.getInt(QuestName + ".Need.LV") + " 이상";
                             else
@@ -852,22 +852,22 @@ public class NPC_GUI extends Util_GUI {
 
                     switch (QuestList.getString(QuestName + ".Type")) {
                         case "N":
-                            if (PlayerHas.toString().contains(QuestName) == false && PlayerFinished.toString().contains(QuestName) == false) {
+                            if (!PlayerHas.toString().contains(QuestName) && !PlayerFinished.toString().contains(QuestName)) {
                                 lore[0] = ChatColor.WHITE + "[일반 퀘스트]";
                                 Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + QuestName, 340, 0, 1, Arrays.asList(lore), loc, inv);
                                 loc++;
                             }
                             break;
                         case "R":
-                            if (PlayerHas.toString().contains(QuestName) == false) {
+                            if (!PlayerHas.toString().contains(QuestName)) {
                                 lore[0] = ChatColor.WHITE + "[반복 퀘스트]";
                                 Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + QuestName, 386, 0, 1, Arrays.asList(lore), loc, inv);
                                 loc++;
                             }
                             break;
                         case "D":
-                            if (PlayerHas.toString().contains(QuestName) == false) {
-                                if (PlayerFinished.contains(QuestName) == true) {
+                            if (!PlayerHas.toString().contains(QuestName)) {
+                                if (PlayerFinished.contains(QuestName)) {
                                     ETC ETC = new ETC();
                                     Object e[] = PlayerFinished.toArray();
                                     for (int counter = 0; counter < e.length; counter++) {
@@ -915,8 +915,8 @@ public class NPC_GUI extends Util_GUI {
                             }
                             break;
                         case "W":
-                            if (PlayerHas.toString().contains(QuestName) == false) {
-                                if (PlayerFinished.contains(QuestName) == true) {
+                            if (!PlayerHas.toString().contains(QuestName)) {
+                                if (PlayerFinished.contains(QuestName)) {
                                     ETC ETC = new ETC();
                                     Object e[] = PlayerFinished.toArray();
                                     for (int counter = 0; counter < e.length; counter++) {
@@ -970,8 +970,8 @@ public class NPC_GUI extends Util_GUI {
                             }
                             break;
                         case "M":
-                            if (PlayerHas.toString().contains(QuestName) == false) {
-                                if (PlayerFinished.contains(QuestName) == true) {
+                            if (!PlayerHas.toString().contains(QuestName)) {
+                                if (PlayerFinished.contains(QuestName)) {
                                     ETC ETC = new ETC();
                                     Object e[] = PlayerFinished.toArray();
                                     for (int counter = 0; counter < e.length; counter++) {
@@ -1078,12 +1078,12 @@ public class NPC_GUI extends Util_GUI {
             for (short count = 0; count < WarpList.length; count++) {
                 isExit = false;
                 for (short counter = 0; counter < AreaList.length; counter++) {
-                    if (AreaList[counter].equals(NPCConfig.getString("Job.WarpList." + count + ".Area")) == true) {
+                    if (AreaList[counter].equals(NPCConfig.getString("Job.WarpList." + count + ".Area"))) {
                         isExit = true;
                         break;
                     }
                 }
-                if (isExit == false) {
+                if (!isExit) {
                     short Acount = (short) (WarpList.length - 1);
                     for (short counter = count; counter < Acount; counter++)
                         NPCConfig.set("Job.WarpList." + counter, NPCConfig.get("Job.WarpList." + (counter + 1)));
@@ -1097,7 +1097,7 @@ public class NPC_GUI extends Util_GUI {
         for (int count = page * 45; count < WarpList.length; count++) {
             if (count > WarpList.length || loc >= 45) break;
 
-            if (player.isOp() == true)
+            if (player.isOp())
                 Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + NPCConfig.getString("Job.WarpList." + count + ".DisplayName"), 368, 0, 1, Arrays.asList("",
                         ChatColor.YELLOW + "워프 비용 : " + ChatColor.WHITE + "" + NPCConfig.getInt("Job.WarpList." + count + ".Cost") + " " + Main_ServerOption.Money
                         , "", ChatColor.YELLOW + "[좌 클릭시 해당 지역으로 이동]", ChatColor.RED + "[Shift + 우클릭시 영역 삭제]"), loc, inv);
@@ -1113,7 +1113,7 @@ public class NPC_GUI extends Util_GUI {
         if (page != 0)
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        if (player.isOp() == true)
+        if (player.isOp())
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 워프", 381, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 워프 지점을 생성합니다.", "", ChatColor.YELLOW + "[영역을 설정한 지역만 등록 가능합니다.]"), 49, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + NPCname), 53, inv);
@@ -1238,7 +1238,7 @@ public class NPC_GUI extends Util_GUI {
             else
                 Lore = Lore + ChatColor.AQUA + "" + ChatColor.BOLD + "현재 금액 : " + playerMoney + " " + Main_ServerOption.Money + "%enter%";
 
-            if (player.isOp() == true)
+            if (player.isOp())
                 Lore = Lore + "%enter%" + ChatColor.RED + "[Shift + 우 클릭시 개조식 제거]%enter% ";
 
             String[] scriptA = Lore.split("%enter%");
@@ -1257,7 +1257,7 @@ public class NPC_GUI extends Util_GUI {
         if (page != 0)
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        if (player.isOp() == true)
+        if (player.isOp())
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "개조식 추가", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "현재 개조 장인이 새로운", ChatColor.GRAY + "개조 레시피를 알게 합니다."), 49, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + NPCname), 53, inv);
@@ -1552,7 +1552,7 @@ public class NPC_GUI extends Util_GUI {
         byte loc = 0;
         for (int count = page * 45; count < Skills.length; count++) {
             if (count > Skills.length || loc >= 45) break;
-            if (RealSkills.contains(Skills[count].toString()) == true) {
+            if (RealSkills.contains(Skills[count].toString())) {
                 Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "" + Skills[count], RealSkills.getInt(Skills[count].toString() + ".ID"), RealSkills.getInt(Skills[count].toString() + ".DATA"), RealSkills.getInt(Skills[count].toString() + ".Amount"), Arrays.asList("", ChatColor.GREEN + "[최대 랭크]", ChatColor.WHITE + "" + RealSkills.getConfigurationSection(Skills[count].toString() + ".SkillRank").getKeys(false).size()), loc, inv);
                 loc++;
             }
@@ -1685,7 +1685,7 @@ public class NPC_GUI extends Util_GUI {
             else {
                 ItemStack item = NPCConfig.getItemStack("Present." + count + ".item");
                 ItemMeta im = item.getItemMeta();
-                if (im.hasLore() == false)
+                if (!im.hasLore())
                     im.setLore(Arrays.asList("", ChatColor.GREEN + "호감도 : " + NPCConfig.getInt("Present." + count + ".love")));
                 else {
                     List<String> lore = item.getItemMeta().getLore();
@@ -1751,16 +1751,16 @@ public class NPC_GUI extends Util_GUI {
 
                 boolean isExit = false;
                 for (short count = 0; count < a.length; count++) {
-                    if (NPCscript.getString("Quest." + a[count]).equalsIgnoreCase(QuestName) == true) {
+                    if (NPCscript.getString("Quest." + a[count]).equalsIgnoreCase(QuestName)) {
                         isExit = true;
                         NPCscript.removeKey("Quest." + count);
                     }
-                    if (isExit == true) {
+                    if (isExit) {
                         if (count < a.length - 1)
                             NPCscript.set("Quest." + count, NPCscript.getString("Quest." + (count + 1)));
                     }
                 }
-                if (isExit == true) {
+                if (isExit) {
                     NPCscript.removeKey("Quest." + (a.length - 1));
                     s.SP(player, Sound.BLOCK_LAVA_POP, 1.0F, 0.8F);
                     player.sendMessage(ChatColor.RED + "[SYSTEM] : 퀘스트 제거 완료!");
@@ -1797,7 +1797,7 @@ public class NPC_GUI extends Util_GUI {
                 YamlManager QuestList = YC.getNewConfig("Quest/QuestList.yml");
                 YamlManager Config = YC.getNewConfig("config.yml");
                 for (byte counter = 0; counter < event.getCurrentItem().getItemMeta().getLore().size(); counter++) {
-                    if (event.getCurrentItem().getItemMeta().getLore().get(counter).contains("대기") == true) {
+                    if (event.getCurrentItem().getItemMeta().getLore().get(counter).contains("대기")) {
                         s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
                         player.sendMessage(ChatColor.RED + "[퀘스트] : 오늘은 더이상 퀘스트를 진행할 수 없습니다!");
                         return;
@@ -1818,7 +1818,7 @@ public class NPC_GUI extends Util_GUI {
                     String PrevQuest = QuestList.getString(QuestName + ".Need.PrevQuest");
 
                     int PLV = 0;
-                    if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System") == false)
+                    if (!Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System"))
                         PLV = Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Level();
                     else
                         PLV = Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_RealLevel();
@@ -1831,7 +1831,7 @@ public class NPC_GUI extends Util_GUI {
                             UserData_Object u = new UserData_Object();
                             YamlManager PlayerNPC = YC.getNewConfig("NPC/PlayerData/" + player.getUniqueId() + ".yml");
                             if (NeedLove <= PlayerNPC.getInt(u.getNPCuuid(player) + ".love")) {
-                                if (PrevQuest.equalsIgnoreCase("null") || PlayerQuest.contains("Ended." + PrevQuest) == true) {
+                                if (PrevQuest.equalsIgnoreCase("null") || PlayerQuest.contains("Ended." + PrevQuest)) {
                                     if (QuestList.getInt(QuestName + ".Server.Limit") != 0) {
                                         if (QuestList.getInt(QuestName + ".Server.Limit") == 1 || QuestList.getInt(QuestName + ".Server.Limit") < -1) {
                                             QuestList.set(QuestName + ".Server.Limit", -1);
@@ -1904,10 +1904,10 @@ public class NPC_GUI extends Util_GUI {
             if (Case.compareTo("대장장이") == 0 || Case.compareTo("룬 세공사") == 0 || Case.compareTo("주술사") == 0 ||
                     Case.compareTo("힐러") == 0 || Case.compareTo("전직 교관") == 0 || Case.compareTo("공간 이동술사") == 0 ||
                     Case.compareTo("개조 장인") == 0) {
-                if (event.getClick().isLeftClick() == true) {
+                if (event.getClick().isLeftClick()) {
                     YamlController YC = new YamlController(Main_Main.plugin);
                     UserData_Object u = new UserData_Object();
-                    if (YC.isExit("NPC/NPCData/" + u.getNPCuuid(player) + ".yml") == false) {
+                    if (!YC.isExit("NPC/NPCData/" + u.getNPCuuid(player) + ".yml")) {
                         NPC_Config NPCC = new NPC_Config();
                         NPCC.NPCNPCconfig(u.getNPCuuid(player));
                     }
@@ -2042,11 +2042,11 @@ public class NPC_GUI extends Util_GUI {
                     } else if (Case.compareTo("힐러") == 0) {
                         Damageable getouter = (Damageable) player;
                         int a = (int) getouter.getHealth();
-                        if (player.getHealthScale() == a && (player.hasPotionEffect(PotionEffectType.BLINDNESS) ||
+                        if (player.getHealthScale() == a && !(player.hasPotionEffect(PotionEffectType.BLINDNESS) ||
                                 player.hasPotionEffect(PotionEffectType.CONFUSION) || player.hasPotionEffect(PotionEffectType.HARM) ||
                                 player.hasPotionEffect(PotionEffectType.HUNGER) || player.hasPotionEffect(PotionEffectType.POISON) ||
                                 player.hasPotionEffect(PotionEffectType.SLOW) || player.hasPotionEffect(PotionEffectType.SLOW_DIGGING) ||
-                                player.hasPotionEffect(PotionEffectType.WEAKNESS) || player.hasPotionEffect(PotionEffectType.WITHER)) == false) {
+                                player.hasPotionEffect(PotionEffectType.WEAKNESS) || player.hasPotionEffect(PotionEffectType.WITHER))) {
                             s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                             player.sendMessage(ChatColor.DARK_AQUA + "[SYSTEM] : 당신은 치료받을 필요가 없습니다!");
                             return;
@@ -2122,7 +2122,7 @@ public class NPC_GUI extends Util_GUI {
                             }
                         }
                     }
-                } else if (event.getClick().isRightClick() == true && player.isOp() == true) {
+                } else if (event.getClick().isRightClick() && player.isOp()) {
                     s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                     NPCjobGUI(player, NPCname);
                 }
@@ -2227,7 +2227,7 @@ public class NPC_GUI extends Util_GUI {
             case 48: {
                 int showingPage = Integer.parseInt(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getLore().get(1).split("페이지 : ")[1]));
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
-                if (event.getInventory().getItem(0).getItemMeta().hasLore() == false) {
+                if (!event.getInventory().getItem(0).getItemMeta().hasLore()) {
                     if (event.getInventory().getItem(0).getData().getData() == (byte) 14)
                         ShopGUI(player, NPCname, (short) (showingPage - 1), false, false);
                     else
@@ -2242,7 +2242,7 @@ public class NPC_GUI extends Util_GUI {
             }
             case 49:
                 s.SP(player, Sound.BLOCK_CHEST_OPEN, 0.8F, 1.0F);
-                if (event.getInventory().getItem(0).getItemMeta().hasLore() == false) {
+                if (!event.getInventory().getItem(0).getItemMeta().hasLore()) {
                     if (event.getCurrentItem().getData().getData() == (byte) 14)
                         ShopGUI(player, NPCname, (short) 0, false, false);
                     else
@@ -2257,7 +2257,7 @@ public class NPC_GUI extends Util_GUI {
             case 50:
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 int showingPage2 = Integer.parseInt(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getLore().get(1).split("페이지 : ")[1]));
-                if (event.getInventory().getItem(0).getItemMeta().hasLore() == false) {
+                if (!event.getInventory().getItem(0).getItemMeta().hasLore()) {
                     if (event.getInventory().getItem(0).getData().getData() == (byte) 14)
                         ShopGUI(player, NPCname, (short) (showingPage2 - 1), false, false);
                     else
@@ -2279,10 +2279,10 @@ public class NPC_GUI extends Util_GUI {
                 if (event.getInventory().getItem(0).getData().getData() == (byte) 14)
                     isBuy = false;
                 if (event.getInventory().getItem(0).getItemMeta().hasLore()) {
-                    if (event.getClick().isRightClick() == true) {
+                    if (event.getClick().isRightClick()) {
                         UserData_Object u = new UserData_Object();
                         String Type = null;
-                        if (isBuy == true)
+                        if (isBuy)
                             Type = "Sell";
                         else
                             Type = "Buy";
@@ -2323,7 +2323,7 @@ public class NPC_GUI extends Util_GUI {
                     }
                     s.SP(player, org.bukkit.Sound.BLOCK_LAVA_POP, 2.0F, 1.7F);
                     int showingPage3 = Integer.parseInt(ChatColor.stripColor(event.getInventory().getItem(8).getItemMeta().getLore().get(0)));
-                    if (isBuy == true)
+                    if (isBuy)
                         ShopGUI(player, NPCname, (short) showingPage3, true, true);
                     else
                         ShopGUI(player, NPCname, (short) showingPage3, false, true);
@@ -2419,7 +2419,7 @@ public class NPC_GUI extends Util_GUI {
                     } else if (slot == 5)//전직 교관
                     {
                         YamlManager Config = YC.getNewConfig("config.yml");
-                        if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System") == false) {
+                        if (!Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
                             YamlManager JobList = YC.getNewConfig("Skill/JobList.yml");
                             Object[] Job = JobList.getConfigurationSection("MapleStory").getKeys(false).toArray();
                             if (Job.length == 1) {
@@ -2434,7 +2434,7 @@ public class NPC_GUI extends Util_GUI {
                             for (short count = 0; count < Job.length; count++) {
                                 Object[] a = JobList.getConfigurationSection("MapleStory." + Job[count].toString()).getKeys(false).toArray();
                                 for (short counter = 0; counter < a.length; counter++) {
-                                    if (a[counter].toString().equalsIgnoreCase(Config.getString("Server.DefaultJob")) == false)
+                                    if (!a[counter].toString().equalsIgnoreCase(Config.getString("Server.DefaultJob")))
                                         player.sendMessage(ChatColor.LIGHT_PURPLE + " " + Job[count].toString() + " ━ " + ChatColor.YELLOW + a[counter].toString());
                                 }
                             }
@@ -2479,7 +2479,7 @@ public class NPC_GUI extends Util_GUI {
             else if (slot == 49)//새 워프
                 WarperGUI(player, (short) 0, NPCname);
             else {
-                if (event.isLeftClick() == true && event.isShiftClick() == false) {
+                if (event.isLeftClick() && !event.isShiftClick()) {
                     ETC ETC = new ETC();
                     if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_AttackTime() + 15000 >= ETC.getSec()) {
                         player.sendMessage(ChatColor.RED + "[이동 불가] : " + ChatColor.YELLOW + ((Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_AttackTime() + 15000 - ETC.getSec()) / 1000) + ChatColor.RED + " 초 후에 이동 가능합니다!");
@@ -2500,7 +2500,7 @@ public class NPC_GUI extends Util_GUI {
                         s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.RED + "[워프] : 텔레포트 비용이 부족합니다!");
                     }
-                } else if (event.isRightClick() == true && event.isShiftClick() == true && player.isOp() == true) {
+                } else if (event.isRightClick() && event.isShiftClick() && player.isOp()) {
                     UserData_Object u = new UserData_Object();
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
@@ -2585,25 +2585,25 @@ public class NPC_GUI extends Util_GUI {
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
 
-                if (event.isLeftClick() == true && event.isShiftClick() == false) {
+                if (event.isLeftClick() && !event.isShiftClick()) {
                     if (player.getInventory().getItemInMainHand() != null) {
-                        if (player.getInventory().getItemInMainHand().hasItemMeta() == true) {
-                            if (player.getInventory().getItemInMainHand().getItemMeta().hasLore() == true) {
+                        if (player.getInventory().getItemInMainHand().hasItemMeta()) {
+                            if (player.getInventory().getItemInMainHand().getItemMeta().hasLore()) {
                                 List<String> Lore = event.getCurrentItem().getItemMeta().getLore();
                                 int Cost = 0;
                                 int NeedProficiency = 100;
                                 int UpgradeLevel = 0;
                                 for (byte counter = 0; counter < Lore.size(); counter++) {
-                                    if (Lore.get(counter).contains("비용") == true) {
-                                        if (Lore.get(counter).contains(" : ") == true) {
+                                    if (Lore.get(counter).contains("비용")) {
+                                        if (Lore.get(counter).contains(" : ")) {
                                             String RawString = ChatColor.stripColor(Lore.get(counter)).split(" : ")[1];
                                             Cost = Integer.parseInt(RawString.split(" ")[0]);
                                         }
-                                    } else if (Lore.get(counter).contains("숙련도") == true) {
-                                        if (Lore.get(counter).contains(" : ") == true)
+                                    } else if (Lore.get(counter).contains("숙련도")) {
+                                        if (Lore.get(counter).contains(" : "))
                                             NeedProficiency = Integer.parseInt(ChatColor.stripColor(Lore.get(counter)).split(" : ")[1]);
-                                    } else if (Lore.get(counter).contains("횟수") == true) {
-                                        if (Lore.get(counter).contains(" : ") == true) {
+                                    } else if (Lore.get(counter).contains("횟수")) {
+                                        if (Lore.get(counter).contains(" : ")) {
                                             String RawString = ChatColor.stripColor(Lore.get(counter)).split(" : ")[1];
                                             UpgradeLevel = Integer.parseInt(RawString.split(" ")[0]);
                                         }
@@ -2617,43 +2617,43 @@ public class NPC_GUI extends Util_GUI {
                                 Lore = player.getInventory().getItemInMainHand().getItemMeta().getLore();
                                 for (byte counter = 0; counter < Lore.size(); counter++) {
                                     if (Lore.get(counter).length() != 0) {
-                                        if (Lore.get(counter).contains("숙련도") == true) {
-                                            if (Lore.get(counter).contains(" : ") == true) {
+                                        if (Lore.get(counter).contains("숙련도")) {
+                                            if (Lore.get(counter).contains(" : ")) {
                                                 String RawString = ChatColor.stripColor(Lore.get(counter)).split(" : ")[1];
                                                 playerProficiency = Float.parseFloat(RawString.split("%")[0]);
                                             }
-                                        } else if (Lore.get(counter).contains("개조") == true) {
-                                            if (Lore.get(counter).contains(" : ") == true) {
+                                        } else if (Lore.get(counter).contains("개조")) {
+                                            if (Lore.get(counter).contains(" : ")) {
                                                 playerNowUpgradeLevel = Integer.parseInt(ChatColor.stripColor(Lore.get(counter)).split(" : ")[1].split(" / ")[0]);
                                                 playerMaxUpgradeLevel = Integer.parseInt(ChatColor.stripColor(Lore.get(counter)).split(" : ")[1].split(" / ")[1]);
                                             }
-                                        } else if (ChatColor.stripColor(Lore.get(counter)).charAt(0) == '[' && Lore.get(counter).contains("]") == true) {
+                                        } else if (ChatColor.stripColor(Lore.get(counter)).charAt(0) == '[' && Lore.get(counter).contains("]")) {
                                             PlayerWeaponType = "";
-                                            if (Lore.get(counter).contains("[근접") == true)
+                                            if (Lore.get(counter).contains("[근접"))
                                                 PlayerWeaponType = "[근접 무기]";
-                                            else if (Lore.get(counter).contains("[한손") == true)
+                                            else if (Lore.get(counter).contains("[한손"))
                                                 PlayerWeaponType = "[한손 검]";
-                                            else if (Lore.get(counter).contains("[양손") == true)
+                                            else if (Lore.get(counter).contains("[양손"))
                                                 PlayerWeaponType = "[양손 검]";
-                                            else if (Lore.get(counter).contains("[도끼]") == true)
+                                            else if (Lore.get(counter).contains("[도끼]"))
                                                 PlayerWeaponType = "[도끼]";
-                                            else if (Lore.get(counter).contains("[낫]") == true)
+                                            else if (Lore.get(counter).contains("[낫]"))
                                                 PlayerWeaponType = "[낫]";
-                                            else if (Lore.get(counter).contains("[원거리") == true)
+                                            else if (Lore.get(counter).contains("[원거리"))
                                                 PlayerWeaponType = "[원거리 무기]";
-                                            else if (Lore.get(counter).contains("[활]") == true)
+                                            else if (Lore.get(counter).contains("[활]"))
                                                 PlayerWeaponType = "[활]";
-                                            else if (Lore.get(counter).contains("[석궁]") == true)
+                                            else if (Lore.get(counter).contains("[석궁]"))
                                                 PlayerWeaponType = "[석궁]";
-                                            else if (Lore.get(counter).contains("[마법") == true)
+                                            else if (Lore.get(counter).contains("[마법"))
                                                 PlayerWeaponType = "[마법 무기]";
-                                            else if (Lore.get(counter).contains("[원드]") == true)
+                                            else if (Lore.get(counter).contains("[원드]"))
                                                 PlayerWeaponType = "[원드]";
-                                            else if (Lore.get(counter).contains("[스태프]") == true)
+                                            else if (Lore.get(counter).contains("[스태프]"))
                                                 PlayerWeaponType = "[스태프]";
-                                            else if (Lore.get(counter).contains("[방어구]") == true)
+                                            else if (Lore.get(counter).contains("[방어구]"))
                                                 PlayerWeaponType = "[방어구]";
-                                            else if (Lore.get(counter).contains("[기타]") == true)
+                                            else if (Lore.get(counter).contains("[기타]"))
                                                 PlayerWeaponType = "[기타]";
                                             else {
                                                 String LoreLine = ChatColor.stripColor(Lore.get(counter));
@@ -2746,7 +2746,7 @@ public class NPC_GUI extends Util_GUI {
                         s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.RED + "[개조] : 아이템을 손에 장착하고 있어야 합니다!");
                     }
-                } else if (event.isRightClick() == true && event.isShiftClick() == true && player.isOp() == true) {
+                } else if (event.isRightClick() && event.isShiftClick() && player.isOp()) {
                     s.SP(player, Sound.BLOCK_LAVA_POP, 1.2F, 1.0F);
                     NPCConfig.removeKey("Job.UpgradeRecipe." + ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                     NPCConfig.saveConfig();
@@ -2863,12 +2863,12 @@ public class NPC_GUI extends Util_GUI {
         List<String> Lore = item.getItemMeta().getLore();
         for (byte count = 0; count < Lore.size(); count++) {
             String SliceOfLore = Lore.get(count);
-            if (SliceOfLore.contains(Option) == true || (SliceOfLore.contains(Main_ServerOption.Damage) && !(SliceOfLore.contains("마법")) && (Option.compareTo("소댐") == 0)) ||
+            if (SliceOfLore.contains(Option) || (SliceOfLore.contains(Main_ServerOption.Damage) && !(SliceOfLore.contains("마법")) && (Option.compareTo("소댐") == 0)) ||
                     (SliceOfLore.contains(Main_ServerOption.Damage) && !(SliceOfLore.contains("마법")) && (Option.compareTo("맥댐") == 0)) || (SliceOfLore.contains(Main_ServerOption.MagicDamage) && (Option.compareTo("마소댐") == 0)) ||
                     (SliceOfLore.contains(Main_ServerOption.MagicDamage) && (Option.compareTo("마맥댐") == 0))
                     || (Option.compareTo("현재내구도") == 0 && SliceOfLore.contains("내구도"))) {
                 String WillBeLore = " ";
-                if (SliceOfLore.contains(" : ") == true) {
+                if (SliceOfLore.contains(" : ")) {
                     switch (Option) {
                         case "현재내구도":
                             if (SliceOfLore.contains("내구도") && !SliceOfLore.contains(Main_ServerOption.Damage)) {
@@ -2989,12 +2989,12 @@ public class NPC_GUI extends Util_GUI {
                 int SuccessRate = NPCConfig.getInt("Job.SuccessRate");
                 boolean Success = false;
                 if (event.getInventory().getItem(13) != null) {
-                    if (event.getInventory().getItem(13).hasItemMeta() == true) {
-                        if (event.getInventory().getItem(13).getItemMeta().hasLore() == true) {
+                    if (event.getInventory().getItem(13).hasItemMeta()) {
+                        if (event.getInventory().getItem(13).getItemMeta().hasLore()) {
                             if (event.getInventory().getItem(13).getItemMeta().getLore().toString().contains("[룬]")) {
                                 if (player.getInventory().getItemInMainHand() != null) {
-                                    if (player.getInventory().getItemInMainHand().hasItemMeta() == true) {
-                                        if (player.getInventory().getItemInMainHand().getItemMeta().hasLore() == true) {
+                                    if (player.getInventory().getItemInMainHand().hasItemMeta()) {
+                                        if (player.getInventory().getItemInMainHand().getItemMeta().hasLore()) {
                                             int Pay = NPCConfig.getInt("Job.Deal");
                                             if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money() >= Pay) {
                                                 ItemStack item = player.getInventory().getItemInMainHand();
@@ -3069,14 +3069,14 @@ public class NPC_GUI extends Util_GUI {
                                                 }
 
                                                 for (int count = 0; count < item.getItemMeta().getLore().size(); count++) {
-                                                    if (item.getItemMeta().getLore().get(count).contains("룬") == true) {
-                                                        if (item.getItemMeta().getLore().get(count).contains(" : ") == true) {
-                                                            if (item.getItemMeta().getLore().get(count).contains("○") == true) {
+                                                    if (item.getItemMeta().getLore().get(count).contains("룬")) {
+                                                        if (item.getItemMeta().getLore().get(count).contains(" : ")) {
+                                                            if (item.getItemMeta().getLore().get(count).contains("○")) {
                                                                 String Lore = item.getItemMeta().getLore().get(count).split(" : ")[1];
                                                                 int EmptyCircle = 0;
                                                                 String Circle = "";
                                                                 for (short k = 0; k < Lore.split(" ").length; k++) {
-                                                                    if (Lore.split(" ")[k].contains("○") == true) {
+                                                                    if (Lore.split(" ")[k].contains("○")) {
                                                                         EmptyCircle = k;
                                                                         break;
                                                                     }
@@ -3115,7 +3115,7 @@ public class NPC_GUI extends Util_GUI {
                                                                 ItemMeta IM = item.getItemMeta();
                                                                 String LL = "";
                                                                 for (byte k = 0; k < item.getItemMeta().getLore().size(); k++) {
-                                                                    if (item.getItemMeta().getLore().get(k).contains("룬") == true && item.getItemMeta().getLore().get(k).contains(" : ") == true) {
+                                                                    if (item.getItemMeta().getLore().get(k).contains("룬") && item.getItemMeta().getLore().get(k).contains(" : ")) {
                                                                         if (k < item.getItemMeta().getLore().size() - 1)
                                                                             LL = LL + Lore + "%enter%";
                                                                         else
@@ -3128,7 +3128,7 @@ public class NPC_GUI extends Util_GUI {
                                                                 ii.setItemMeta(IM);
                                                                 player.getInventory().setItemInMainHand(ii);
 
-                                                                if (Success == true) {
+                                                                if (Success) {
                                                                     ii = player.getInventory().getItemInMainHand();
                                                                     if (MaxDura != 0)
                                                                         ii = Calculator(ii, "Durability", MaxDura);
@@ -3340,7 +3340,7 @@ public class NPC_GUI extends Util_GUI {
             {
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager Config = YC.getNewConfig("config.yml");
-                if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System") == true) {
+                if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
                     YamlManager SkillList = YC.getNewConfig("Skill/JobList.yml");
                     if (SkillList.getConfigurationSection("Mabinogi").getKeys(false).toArray().length >= 0) {
                         if (SkillList.getConfigurationSection("Mabinogi.Added").getKeys(false).toArray().length >= 0) {
@@ -3452,7 +3452,7 @@ public class NPC_GUI extends Util_GUI {
                     if (slot == 49 && count != 0) {
                         if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money() >= value * count) {
                             for (int counter = 0; counter < count; counter++) {
-                                if (new Util_Player().giveItem(player, item) == false) {
+                                if (!new Util_Player().giveItem(player, item)) {
                                     s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.8F, 1.8F);
                                     player.sendMessage(ChatColor.RED + "[구매 실패] : 인벤토리가 부족하여 " + (count - counter) + "개를 구매하지 못하였습니다!");
                                     Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setStat_Money(Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money() - (counter * value));
@@ -3511,7 +3511,7 @@ public class NPC_GUI extends Util_GUI {
                     int ItemHave = new Util_Player().getItemAmount(player, item);
 
                     if (slot == 49 && count != 0) {
-                        if (new Util_Player().deleteItem(player, item, count) == false) {
+                        if (!new Util_Player().deleteItem(player, item, count)) {
                             s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.8F, 1.8F);
                             player.sendMessage(ChatColor.RED + "[판매 실패] : 물품이 부족하여 판매하지 못하였습니다!");
                             return;
@@ -3579,10 +3579,10 @@ public class NPC_GUI extends Util_GUI {
             ItemStack clickedItem = event.getCurrentItem();
             short ItemID = (short) clickedItem.getTypeId();
             boolean HasCustomDurability = false;
-            if (clickedItem.hasItemMeta() == true) {
-                if (clickedItem.getItemMeta().hasLore() == true) {
+            if (clickedItem.hasItemMeta()) {
+                if (clickedItem.getItemMeta().hasLore()) {
                     for (byte count = 0; count < clickedItem.getItemMeta().getLore().size(); count++) {
-                        if (clickedItem.getItemMeta().getLore().get(count).contains("내구도") == true) {
+                        if (clickedItem.getItemMeta().getLore().get(count).contains("내구도")) {
                             HasCustomDurability = true;
                             break;
                         }
@@ -3590,11 +3590,11 @@ public class NPC_GUI extends Util_GUI {
                 }
             }
             if ((ItemID >= 256 && ItemID <= 259) || (ItemID == 261) || (ItemID >= 267 && ItemID <= 279) || (ItemID >= 283 && ItemID <= 286) || (ItemID >= 290 && ItemID <= 294)
-                    || (ItemID >= 298 && ItemID <= 317) || ItemID == 346 || ItemID == 359 || ItemID == 398 || ItemID == 442 || ItemID == 443 || HasCustomDurability == true) {
+                    || (ItemID >= 298 && ItemID <= 317) || ItemID == 346 || ItemID == 359 || ItemID == 398 || ItemID == 442 || ItemID == 443 || HasCustomDurability) {
                 long playerMoney = Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money();
                 long FixPrice = Long.parseLong(ChatColor.stripColor(event.getInventory().getItem(0).getItemMeta().getLore().get(2)));
                 byte FixRate = (byte) Integer.parseInt(ChatColor.stripColor(event.getInventory().getItem(0).getItemMeta().getLore().get(1)));
-                if (HasCustomDurability == false) {
+                if (!HasCustomDurability) {
                     short nowDurability = (short) (clickedItem.getDurability());
 
                     if (nowDurability == 0) {
@@ -3641,7 +3641,7 @@ public class NPC_GUI extends Util_GUI {
                     int Maxdurability = 0;
                     int nowDurability = 0;
                     for (byte count = 0; count < clickedItem.getItemMeta().getLore().size(); count++) {
-                        if (clickedItem.getItemMeta().getLore().get(count).contains("내구도") == true) {
+                        if (clickedItem.getItemMeta().getLore().get(count).contains("내구도")) {
                             Maxdurability = Integer.parseInt(ChatColor.stripColor(clickedItem.getItemMeta().getLore().get(count)).split(" : ")[1].split(" / ")[1]);
                             nowDurability = Integer.parseInt(ChatColor.stripColor(clickedItem.getItemMeta().getLore().get(count)).split(" : ")[1].split(" / ")[0]);
                             break;
@@ -3684,11 +3684,11 @@ public class NPC_GUI extends Util_GUI {
                     if ((point10success != point10need || point1success != point1need) && (point10success != 0 || point1success != 0))
                         player.sendMessage(ChatColor.YELLOW + "[수리] : " + ChatColor.WHITE + ((point10success * 10) + point1success) + ChatColor.YELLOW + " 포인트 수리 성공, " + ChatColor.WHITE + ((point10need - (point10success)) * 10 + (point1need - point1success)) + ChatColor.YELLOW + " 포인트 수리 실패 ");
 
-                    if (clickedItem.hasItemMeta() == true) {
-                        if (clickedItem.getItemMeta().hasLore() == true) {
+                    if (clickedItem.hasItemMeta()) {
+                        if (clickedItem.getItemMeta().hasLore()) {
                             for (byte count = 0; count < clickedItem.getItemMeta().getLore().size(); count++) {
                                 ItemMeta Meta = clickedItem.getItemMeta();
-                                if (Meta.getLore().get(count).contains("내구도") == true) {
+                                if (Meta.getLore().get(count).contains("내구도")) {
                                     String[] Lore = ChatColor.stripColor(Meta.getLore().get(count)).split(" : ");
                                     String[] SubLore = Lore[1].split(" / ");
                                     List<String> PLore = Meta.getLore();
@@ -3777,7 +3777,7 @@ public class NPC_GUI extends Util_GUI {
                             return;
                         }
                         YamlManager PlayerNPC = null;
-                        if (YC.isExit("NPC/PlayerData/" + player.getUniqueId() + ".yml") == false) {
+                        if (!YC.isExit("NPC/PlayerData/" + player.getUniqueId() + ".yml")) {
                             UserData_Object u = new UserData_Object();
                             PlayerNPC = YC.getNewConfig("NPC/PlayerData/" + player.getUniqueId() + ".yml");
                             PlayerNPC.set(u.getNPCuuid(player) + ".love", 0);

@@ -66,7 +66,7 @@ public class Navigation_GUI extends Util_GUI {
             String PermitionS = ChatColor.DARK_AQUA + "<OP만 사용 가능>";
             String sensitiveS = ChatColor.BLUE + "<반경 " + sensitive + "블록 이내를 도착지로 판정>";
             String ShowArrowS = ChatColor.DARK_AQUA + "<기본 화살표 모양>";
-            if (Permition == false)
+            if (!Permition)
                 PermitionS = ChatColor.DARK_AQUA + "<모두 사용 가능>";
             if (Time >= 0)
                 TimeS = ChatColor.DARK_AQUA + "<" + Time + "초 동안 유지>";
@@ -115,7 +115,7 @@ public class Navigation_GUI extends Util_GUI {
         String PermitionS = ChatColor.BLUE + "[OP만 사용 가능]";
         String sensitiveS = ChatColor.BLUE + "[반경 " + sensitive + "블록 이내를 도착지로 판정]";
         String ShowArrowS = ChatColor.BLUE + "[기본 화살표 모양]";
-        if (Permition == false)
+        if (!Permition)
             PermitionS = ChatColor.BLUE + "[모두 사용 가능]";
         if (Time >= 0)
             TimeS = ChatColor.BLUE + "[" + Time + "초 동안 유지]";
@@ -226,10 +226,10 @@ public class Navigation_GUI extends Util_GUI {
             } else if (slot == 50)//다음 페이지
                 NavigationListGUI(player, (short) (page + 1));
             else {
-                if (event.isLeftClick() == true) {
+                if (event.isLeftClick()) {
                     s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                     NavigationOptionGUI(player, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
-                } else if (event.isShiftClick() == true && event.isRightClick() == true) {
+                } else if (event.isShiftClick() && event.isRightClick()) {
                     s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager NavigationConfig = YC.getNewConfig("Navigation/NavigationList.yml");
@@ -325,7 +325,7 @@ public class Navigation_GUI extends Util_GUI {
                 UseNavigationGUI(player, (short) (page - 1));
             else if (slot == 50)//다음 페이지
                 UseNavigationGUI(player, (short) (page + 1));
-            else if (event.isLeftClick() == true) {
+            else if (event.isLeftClick()) {
                 for (int count = 0; count < ServerTick_Main.NaviUsingList.size(); count++) {
                     if (ServerTick_Main.NaviUsingList.get(count).equals(player.getName())) {
                         s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);

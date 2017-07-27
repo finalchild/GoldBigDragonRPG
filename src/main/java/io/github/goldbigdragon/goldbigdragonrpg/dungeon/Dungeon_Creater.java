@@ -43,7 +43,7 @@ public class Dungeon_Creater {
         long[] XYZ = new long[3];
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager DungeonData = YC.getNewConfig("Dungeon/DungeonData.yml");
-        if (DungeonData.contains("StartPoint.X") == false) {
+        if (!DungeonData.contains("StartPoint.X")) {
             DungeonData.set("StartPoint.X", 1000);
             DungeonData.set("StartPoint.Y", 30);
             DungeonData.set("StartPoint.Z", 1000);
@@ -59,7 +59,7 @@ public class Dungeon_Creater {
         long totalSize = DungeonSize * 21;
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager DungeonData = YC.getNewConfig("Dungeon/DungeonData.yml");
-        if (DungeonData.contains("StartPoint.X") == false) {
+        if (!DungeonData.contains("StartPoint.X")) {
             DungeonData.set("StartPoint.X", 0 + totalSize);
             DungeonData.set("StartPoint.Z", 0 + totalSize);
         } else {
@@ -99,7 +99,7 @@ public class Dungeon_Creater {
             player.sendMessage(ChatColor.GRAY + "(plugins/GoldBigDragonRPG/Dungeon/Schematic/" + DungeonType + " 경로 아래에 그에 맞는 schematic 파일을 넣어 주세요!)");
             return false;
         }
-        if (fileCheck(DungeonType) == false) {
+        if (!fileCheck(DungeonType)) {
             player.sendMessage(ChatColor.RED + "[" + ChatColor.YELLOW + DungeonType + ChatColor.RED + "던전 타입 데이터가 없습니다! 관리자에게 문의하세요!]");
             player.sendMessage(ChatColor.GRAY + "(plugins/GoldBigDragonRPG/Dungeon/Schematic/" + DungeonType + " 경로 아래에 그에 맞는 schematic 파일을 넣어 주세요!)");
             return false;

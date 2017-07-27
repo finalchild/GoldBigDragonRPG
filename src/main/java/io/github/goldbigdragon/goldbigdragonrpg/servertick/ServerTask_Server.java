@@ -72,7 +72,7 @@ public class ServerTask_Server {
                 STSO.setInt((byte) 3, 1);
                 ServerTick_Main.Schedule.remove(UTC);
                 for (short count = 0; count < 32767; count++) {
-                    if (ServerTick_Main.Schedule.containsKey(UTC + (100 + count)) == false) {
+                    if (!ServerTick_Main.Schedule.containsKey(UTC + (100 + count))) {
                         ServerTick_Main.Schedule.put(UTC + (100 + count), STSO);
                         break;
                     }
@@ -89,7 +89,7 @@ public class ServerTask_Server {
             STSO.setCount(STSO.getCount() + 1);
             ServerTick_Main.Schedule.remove(UTC);
             for (short count = 0; count < 32767; count++) {
-                if (ServerTick_Main.Schedule.containsKey(UTC + (100 + count)) == false) {
+                if (!ServerTick_Main.Schedule.containsKey(UTC + (100 + count))) {
                     ServerTick_Main.Schedule.put(UTC + (100 + count), STSO);
                     break;
                 }

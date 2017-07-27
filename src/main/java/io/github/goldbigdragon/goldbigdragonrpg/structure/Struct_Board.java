@@ -46,7 +46,7 @@ public class Struct_Board extends Util_GUI {
         String UniqueCode = "§0§0§d§0§5§r";
         Inventory inv = Bukkit.createInventory(null, 54, UniqueCode + "§0게시판 : " + (page + 1));
 
-        if (Board.contains("Post_Number") == false) {
+        if (!Board.contains("Post_Number")) {
             Board.set("Post_Number", 0);
             Board.createSection("User");
             Board.set("Notice", "null");
@@ -60,11 +60,11 @@ public class Struct_Board extends Util_GUI {
         int AllPost = 0;
 
         for (int Post = postNumber; Post >= 0; Post--)
-            if (Board.contains("User." + Post + ".User") == true)
+            if (Board.contains("User." + Post + ".User"))
                 AllPost++;
         if (page != 0) {
             for (int Post = postNumber; Post >= 0; Post--) {
-                if (Board.contains("User." + Post + ".User") == true)
+                if (Board.contains("User." + Post + ".User"))
                     count++;
                 if (count > 28 * page) {
                     postNumber = Post;
@@ -77,7 +77,7 @@ public class Struct_Board extends Util_GUI {
         for (int Post = postNumber; Post >= 0; Post--) {
             if (count > 28)
                 break;
-            if (Board.contains("User." + Post + ".User") == true) {
+            if (Board.contains("User." + Post + ".User")) {
                 String PostUser = Board.getString("User." + Post + ".User");
                 String PostTitle = Board.getString("User." + Post + ".Title");
                 String PostMemo = Board.getString("User." + Post + ".Memo");
@@ -148,7 +148,7 @@ public class Struct_Board extends Util_GUI {
         String UniqueCode = "§0§0§d§0§6§r";
         Inventory inv = Bukkit.createInventory(null, 9, UniqueCode + "§0게시판 설정");
 
-        if (Board.contains("Post_Number") == false) {
+        if (!Board.contains("Post_Number")) {
             Board.set("Post_Number", 0);
             Board.createSection("User");
             Board.set("Notice", "null");
@@ -205,7 +205,7 @@ public class Struct_Board extends Util_GUI {
         {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager Board = YC.getNewConfig("Structure/" + Code + ".yml");
-            if (Board.getBoolean("OnlyUseOP") && player.isOp() == false) {
+            if (Board.getBoolean("OnlyUseOP") && !player.isOp()) {
                 s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                 player.sendMessage(ChatColor.RED + "[게시판] : 게시글 작성 권한이 없습니다!");
                 return;

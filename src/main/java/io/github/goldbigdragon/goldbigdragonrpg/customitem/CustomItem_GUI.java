@@ -224,13 +224,13 @@ public class CustomItem_GUI extends Util_GUI {
                     NewItemGUI(player, ItemCounter);
                 } else {
                     int number = ((page * 45) + event.getSlot());
-                    if (event.isLeftClick() == true && event.isShiftClick() == false) {
+                    if (event.isLeftClick() && !event.isShiftClick()) {
                         player.sendMessage(ChatColor.GREEN + "[SYSTEM] : 클릭한 아이템을 지급 받았습니다!");
                         player.getInventory().addItem(event.getCurrentItem());
                     }
-                    if (event.isLeftClick() == true && event.isShiftClick() == true)
+                    if (event.isLeftClick() && event.isShiftClick())
                         NewItemGUI(player, number);
-                    else if (event.isRightClick() == true && event.isShiftClick() == true) {
+                    else if (event.isRightClick() && event.isShiftClick()) {
                         short Acount = (short) (ItemList.getConfigurationSection("").getKeys(false).toArray().length - 1);
 
                         for (short counter = (short) number; counter < Acount; counter++)
