@@ -19,44 +19,30 @@
 
 package GBD_RPG.Monster.AI_Creature;
 
-import java.lang.reflect.Field;
-import java.util.List;
-import java.util.UUID;
-
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
+import com.comphenix.protocol.events.PacketContainer;
+import com.comphenix.protocol.wrappers.*;
+import com.google.common.collect.Lists;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
-import org.bukkit.craftbukkit.v1_12_R1.util.CraftChatMessage;
-import org.bukkit.entity.Player;
 
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.Property;
-
-import net.minecraft.server.v1_12_R1.DataWatcher;
-import net.minecraft.server.v1_12_R1.DataWatcherRegistry;
-import net.minecraft.server.v1_12_R1.EnumGamemode;
-import net.minecraft.server.v1_12_R1.MathHelper;
-import net.minecraft.server.v1_12_R1.Packet;
-import net.minecraft.server.v1_12_R1.PacketPlayOutAnimation;
-import net.minecraft.server.v1_12_R1.PacketPlayOutEntityDestroy;
-import net.minecraft.server.v1_12_R1.PacketPlayOutEntityHeadRotation;
-import net.minecraft.server.v1_12_R1.PacketPlayOutEntityStatus;
-import net.minecraft.server.v1_12_R1.PacketPlayOutEntityTeleport;
-import net.minecraft.server.v1_12_R1.PacketPlayOutNamedEntitySpawn;
-import net.minecraft.server.v1_12_R1.PacketPlayOutPlayerInfo;
-import net.minecraft.server.v1_12_R1.PacketPlayOutEntity.PacketPlayOutEntityLook;
-import net.minecraft.server.v1_12_R1.PacketPlayOutPlayerInfo.PlayerInfoData;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Random;
+import java.util.UUID;
 
 public class NPC {
 
-    private int entityID;
+    private int entityId;
     private Location location;
-    private GameProfile gameprofile;
+    private WrappedGameProfile gameProfile;
 
+    private static final Random random = new Random();
 
     public NPC(String name, Location location) {
-        entityID = (int) Math.ceil(Math.random() * 1000) + 2000;
-        gameprofile = new GameProfile(UUID.randomUUID(), name);
+        entityId = random.nextInt(1000) + 2000;
+        gameProfile = new WrappedGameProfile(UUID.randomUUID(), name);
         changeSkin();
         this.location = location.clone();
     }
@@ -64,51 +50,55 @@ public class NPC {
     public void changeSkin() {
         String value = "eyJ0aW1lc3RhbXAiOjE0NDI4MzY1MTU1NzksInByb2ZpbGVJZCI6IjkwZWQ3YWY0NmU4YzRkNTQ4MjRkZTc0YzI1MTljNjU1IiwicHJvZmlsZU5hbWUiOiJDb25DcmFmdGVyIiwic2lnbmF0dXJlUmVxdWlyZWQiOnRydWUsInRleHR1cmVzIjp7IlNLSU4iOnsidXJsIjoiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS8xMWNlZDMzMjNmYjczMmFjMTc3MTc5Yjg5NWQ5YzJmNjFjNzczZWYxNTVlYmQ1Y2M4YzM5NTZiZjlhMDlkMTIifX19";
         String signature = "tFGNBQNpxNGvD27SN7fqh3LqNinjJJFidcdF8LTRHOdoMNXcE5ezN172BnDlRsExspE9X4z7FPglqh/b9jrLFDfQrdqX3dGm1cKjYbvOXL9BO2WIOEJLTDCgUQJC4/n/3PZHEG2mVADc4v125MFYMfjzkznkA6zbs7w6z8f7pny9eCWNXPOQklstcdc1h/LvflnR+E4TUuxCf0jVsdT5AZsUYIsJa6fvr0+vItUXUdQ3pps0zthObPEnBdLYMtNY3G6ZLGVKcSGa/KRK2D/k69fmu/uTKbjAWtniFB/sdO0VNhLuvyr/PcZVXB78l1SfBR88ZMiW6XSaVqNnSP+MEfRkxgkJWUG+aiRRLE8G5083EQ8vhIle5GxzK68ZR48IrEX/JwFjALslCLXAGR05KrtuTD3xyq2Nut12GCaooBEhb46sipWLq4AXI9IpJORLOW8+GvY+FcDwMqXYN94juDQtbJGCQo8PX670YjbmVx7+IeFjLJJTZotemXu1wiQmDmtAAmug4U5jgMYIJryXMitD7r5pEop/cw42JbCO2u0b5NB7sI/mr4OhBKEesyC5usiARzuk6e/4aJUvwQ9nsiXfeYxZz8L/mh6e8YPJMyhVkFtblbt/4jPe0bs3xSUXO9XrDyhy9INC0jlLT22QjNzrDkD8aiGAopVvfnTTAug=";
-        gameprofile.getProperties().put("textures", new Property("textures", value, signature));
+        gameProfile.getProperties().put("textures", new WrappedSignedProperty("textures", value, signature));
     }
 
 
     public void animation(int animation) {
-        PacketPlayOutAnimation packet = new PacketPlayOutAnimation();
-        setValue(packet, "a", entityID);
-        setValue(packet, "b", (byte) animation);
+        PacketContainer packet = new PacketContainer(PacketType.Play.Server.ANIMATION);
+        packet.getIntegers()
+                .write(0, entityId)
+                .write(1, animation);
+
         sendPacket(packet);
     }
 
     public void status(int status) {
-        PacketPlayOutEntityStatus packet = new PacketPlayOutEntityStatus();
-        setValue(packet, "a", entityID);
-        setValue(packet, "b", (byte) status);
+        PacketContainer packet = new PacketContainer(PacketType.Play.Server.ENTITY_STATUS);
+        packet.getIntegers().write(0, entityId);
+        packet.getBytes().write(0, (byte) status);
+
         sendPacket(packet);
     }
 
     public void spawn() {
-        PacketPlayOutNamedEntitySpawn packet = new PacketPlayOutNamedEntitySpawn();
-
-        setValue(packet, "a", entityID);
-        setValue(packet, "b", gameprofile.getId());
-        setValue(packet, "c", getFixLocation(location.getX()));
-        setValue(packet, "d", getFixLocation(location.getY()));
-        setValue(packet, "e", getFixLocation(location.getZ()));
-        setValue(packet, "f", getFixRotation(location.getYaw()));
-        setValue(packet, "g", getFixRotation(location.getPitch()));
-        setValue(packet, "h", 0);
-        DataWatcher w = new DataWatcher(null);
-        w.set(DataWatcherRegistry.c.a(6), 20F);
-        setValue(packet, "i", w);
+        PacketContainer packet = new PacketContainer(PacketType.Play.Server.NAMED_ENTITY_SPAWN);
+        packet.getIntegers().write(0, entityId);
+        packet.getUUIDs().write(0, gameProfile.getUUID());
+        packet.getDoubles()
+                .write(0, location.getX())
+                .write(1, location.getY())
+                .write(2, location.getZ());
+        packet.getBytes()
+                .write(0, getFixRotation(location.getYaw()))
+                .write(1, getFixRotation(location.getPitch()));
+        packet.getDataWatcherModifier().write(0, new WrappedDataWatcher());
         addToTablist();
         sendPacket(packet);
         headRotation(location.getYaw(), location.getPitch());
     }
 
     public void teleport(Location location) {
-        PacketPlayOutEntityTeleport packet = new PacketPlayOutEntityTeleport();
-        setValue(packet, "a", entityID);
-        setValue(packet, "b", getFixLocation(location.getX()));
-        setValue(packet, "c", getFixLocation(location.getY()));
-        setValue(packet, "d", getFixLocation(location.getZ()));
-        setValue(packet, "e", getFixRotation(location.getYaw()));
-        setValue(packet, "f", getFixRotation(location.getPitch()));
+        PacketContainer packet = new PacketContainer(PacketType.Play.Server.ENTITY_TELEPORT);
+        packet.getIntegers().write(0, entityId);
+        packet.getDoubles()
+                .write(0, location.getX())
+                .write(1, location.getY())
+                .write(2, location.getZ());
+        packet.getBytes()
+                .write(0, getFixRotation(location.getYaw()))
+                .write(1, getFixRotation(location.getPitch()));
+        packet.getBooleans().write(0, true);
 
         sendPacket(packet);
         headRotation(location.getYaw(), location.getPitch());
@@ -116,83 +106,61 @@ public class NPC {
     }
 
     public void headRotation(float yaw, float pitch) {
-        PacketPlayOutEntityLook packet = new PacketPlayOutEntityLook(entityID, getFixRotation(yaw), getFixRotation(pitch), true);
-        PacketPlayOutEntityHeadRotation packetHead = new PacketPlayOutEntityHeadRotation();
-        setValue(packetHead, "a", entityID);
-        setValue(packetHead, "b", getFixRotation(yaw));
-
+        PacketContainer packet = new PacketContainer(PacketType.Play.Server.ENTITY_LOOK);
+        packet.getIntegers().write(0, entityId);
+        packet.getBytes()
+                .write(0, getFixRotation(yaw))
+                .write(1, getFixRotation(pitch));
+        packet.getBooleans()
+                .write(0, true)
+                .write(1, true);
+        PacketContainer packetHead = new PacketContainer(PacketType.Play.Server.ENTITY_HEAD_ROTATION);
+        packetHead.getIntegers().write(0, entityId);
+        packetHead.getBytes().write(0, getFixRotation(yaw));
 
         sendPacket(packet);
         sendPacket(packetHead);
     }
 
     public void destroy() {
-        PacketPlayOutEntityDestroy packet = new PacketPlayOutEntityDestroy(new int[]{entityID});
+        PacketContainer packet = new PacketContainer(PacketType.Play.Server.ENTITY_DESTROY);
+        packet.getIntegerArrays().write(0, new int[] {entityId});
         rmvFromTablist();
         sendPacket(packet);
     }
 
     public void addToTablist() {
-        PacketPlayOutPlayerInfo packet = new PacketPlayOutPlayerInfo();
-        PacketPlayOutPlayerInfo.PlayerInfoData data = packet.new PlayerInfoData(gameprofile, 1, EnumGamemode.NOT_SET, CraftChatMessage.fromString(gameprofile.getName())[0]);
-        @SuppressWarnings("unchecked")
-        List<PacketPlayOutPlayerInfo.PlayerInfoData> players = (List<PacketPlayOutPlayerInfo.PlayerInfoData>) getValue(packet, "b");
-        players.add(data);
-
-        setValue(packet, "a", PacketPlayOutPlayerInfo.EnumPlayerInfoAction.ADD_PLAYER);
-        setValue(packet, "b", players);
+        PacketContainer packet = new PacketContainer(PacketType.Play.Server.PLAYER_INFO);
+        packet.getPlayerInfoAction().write(0, EnumWrappers.PlayerInfoAction.ADD_PLAYER);
+        packet.getPlayerInfoDataLists().write(0, Lists.newArrayList(new PlayerInfoData(gameProfile, 1, EnumWrappers.NativeGameMode.NOT_SET, WrappedChatComponent.fromText(gameProfile.getName()))));
 
         sendPacket(packet);
     }
 
     public void rmvFromTablist() {
-        PacketPlayOutPlayerInfo packet = new PacketPlayOutPlayerInfo();
-        PacketPlayOutPlayerInfo.PlayerInfoData data = packet.new PlayerInfoData(gameprofile, 1, EnumGamemode.NOT_SET, CraftChatMessage.fromString(gameprofile.getName())[0]);
-        @SuppressWarnings("unchecked")
-        List<PacketPlayOutPlayerInfo.PlayerInfoData> players = (List<PacketPlayOutPlayerInfo.PlayerInfoData>) getValue(packet, "b");
-        players.add(data);
-
-        setValue(packet, "a", PacketPlayOutPlayerInfo.EnumPlayerInfoAction.REMOVE_PLAYER);
-        setValue(packet, "b", players);
+        PacketContainer packet = new PacketContainer(PacketType.Play.Server.PLAYER_INFO);
+        packet.getPlayerInfoAction().write(0, EnumWrappers.PlayerInfoAction.REMOVE_PLAYER);
+        packet.getPlayerInfoDataLists().write(0, Lists.newArrayList(new PlayerInfoData(gameProfile, 1, EnumWrappers.NativeGameMode.NOT_SET, WrappedChatComponent.fromText(gameProfile.getName()))));
 
         sendPacket(packet);
     }
 
-    public int getFixLocation(double pos) {
-        return (int) MathHelper.floor(pos * 32.0D);
+    public static int getFixLocation(double pos) {
+        return (int) (pos * 32);
     }
 
-    public byte getFixRotation(float yawpitch) {
-        return (byte) ((int) (yawpitch * 256.0F / 360.0F));
+    public static byte getFixRotation(float yawpitch) {
+        return (byte) (yawpitch * 256f / 360f);
     }
 
-
-    public void setValue(Object obj, String name, Object value) {
-        try {
-            Field field = obj.getClass().getDeclaredField(name);
-            field.setAccessible(true);
-            field.set(obj, value);
-        } catch (Exception e) {
-        }
-    }
-
-    public Object getValue(Object obj, String name) {
-        try {
-            Field field = obj.getClass().getDeclaredField(name);
-            field.setAccessible(true);
-            return field.get(obj);
-        } catch (Exception e) {
-        }
-        return null;
-    }
-
-    public void sendPacket(Packet<?> packet, Player player) {
-        ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
-    }
-
-    public void sendPacket(Packet<?> packet) {
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            sendPacket(packet, player);
-        }
+    public static void sendPacket(PacketContainer packet) {
+        ProtocolManager protocolManager = ProtocolLibrary.getProtocolManager();
+        Bukkit.getOnlinePlayers().forEach(onlinePlayer -> {
+            try {
+                protocolManager.sendServerPacket(onlinePlayer, packet);
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }
