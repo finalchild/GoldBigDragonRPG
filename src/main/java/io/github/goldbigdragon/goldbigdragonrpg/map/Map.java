@@ -36,7 +36,6 @@ public class Map implements Listener {
             for (MapRenderer MR : MV.getRenderers())
                 MV.removeRenderer(MR);
             MV.addRenderer(new MapList());
-            return;
         }
     }
 }

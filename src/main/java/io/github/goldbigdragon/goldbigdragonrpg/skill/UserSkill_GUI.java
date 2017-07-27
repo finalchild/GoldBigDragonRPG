@@ -309,11 +309,9 @@ public class UserSkill_GUI extends Util_GUI {
                         if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Level() < AllSkillList.getInt(SkillName + ".SkillRank." + (SkillRank + 1) + ".NeedLevel")) {
                             s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                             player.sendMessage(ChatColor.RED + "[스킬] : 레벨이 부족합니다!");
-                            return;
                         } else if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_RealLevel() < AllSkillList.getInt(SkillName + ".SkillRank." + (SkillRank + 1) + ".NeedRealLevel")) {
                             s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                             player.sendMessage(ChatColor.RED + "[스킬] : 누적 레벨이 부족합니다!");
-                            return;
                         } else if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_SkillPoint() >= AllSkillList.getInt(SkillName + ".SkillRank." + (SkillRank + 1) + ".SkillPoint")) {
                             if (!isMabinogi)
                                 PlayerSkillList.set("MapleStory." + CategoriName + ".Skill." + SkillName, SkillRank + 1);

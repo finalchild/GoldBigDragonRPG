@@ -84,7 +84,6 @@ public class Area_Command {
         }
         if (args.length <= 2) {
             HelpMessage(player);
-            return;
         } else {
             Area_Main A = new Area_Main();
             String SB = "";
@@ -96,7 +95,6 @@ public class Area_Command {
                     return;
                 case "설명":
                     A.OptionSetting(player, args[0], (char) 1, SB);
-                    return;
             }
         }
     }

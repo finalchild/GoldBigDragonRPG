@@ -255,7 +255,6 @@ public class CitizensMain implements Listener {
         }
 
         NPCquest(event);
-        return;
     }
 
     @EventHandler
@@ -268,7 +267,6 @@ public class CitizensMain implements Listener {
     public void NPCRemove(NPCRemoveEvent event) {
         File file = new File("plugins/GoldBigDragonRPG/NPC/NPCData/" + event.getNPC().getUniqueId().toString() + ".yml");
         file.delete();
-        return;
     }
 
 }

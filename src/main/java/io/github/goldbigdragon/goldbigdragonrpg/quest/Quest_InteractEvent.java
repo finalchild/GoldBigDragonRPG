@@ -133,7 +133,6 @@ public class Quest_InteractEvent {
             }
             return;
         }
-        return;
     }
 
     public void BlockInteract(PlayerInteractEvent event) {
@@ -198,6 +197,5 @@ public class Quest_InteractEvent {
                 }
             }
         }
-        return;
     }
 }

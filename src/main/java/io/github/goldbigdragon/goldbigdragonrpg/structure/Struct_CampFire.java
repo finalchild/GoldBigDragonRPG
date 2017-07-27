@@ -44,7 +44,6 @@ public class Struct_CampFire extends Util_GUI {
         Stack2(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "불 끄기", 326, 0, 1, Arrays.asList(ChatColor.WHITE + "모닥불의 불을 끕니다."), 3, inv);
         Stack2(ChatColor.RED + "" + ChatColor.BOLD + "불 지피기", 259, 0, 1, Arrays.asList(ChatColor.WHITE + "모닥불에 불을 지핍니다.", "", ChatColor.YELLOW + "[막대기 10개 필요]", ChatColor.BLACK + BoardCode), 5, inv);
         player.openInventory(inv);
-        return;
     }
 
     public String CreateCampFire(int LineNumber, String StructureCode, byte Direction) {

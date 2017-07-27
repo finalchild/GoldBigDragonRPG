@@ -36,7 +36,6 @@ public class Quest_Config {
             QuestConfig.set("Do_not_Touch_This", true);
             QuestConfig.saveConfig();
         }
-        return;
     }
 
     public void CreateNewPlayerConfig(Player player) {
@@ -79,7 +78,6 @@ public class Quest_Config {
             }
         }
         QuestConfig.saveConfig();
-        return;
     }
 
 }

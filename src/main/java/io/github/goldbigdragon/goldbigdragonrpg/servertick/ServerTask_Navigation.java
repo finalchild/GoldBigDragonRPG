@@ -128,7 +128,6 @@ public class ServerTask_Navigation {
                     ServerTick_Main.NaviUsingList.remove(count);
             }
         }
-        return;
     }
 
     public void ShowWay(Player player, String Way, short y, byte arrowtype) {
@@ -153,7 +152,6 @@ public class ServerTask_Navigation {
                     ArrowParticle_45(player, (byte) 4, y);
                 break;
         }
-        return;
     }
 
     private void ArrowParticle_0(Player player, byte rotation, short y) {
@@ -386,6 +384,5 @@ public class ServerTask_Navigation {
                 return;
             }
         }
-        return;
     }
 }

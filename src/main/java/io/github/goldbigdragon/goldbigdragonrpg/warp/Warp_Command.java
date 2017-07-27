@@ -61,7 +61,6 @@ public class Warp_Command {
                 default: {
                     TP.TeleportUser(player, args[0]);
                 }
-                return;
             }
         } else {
             HelpMessage(player);

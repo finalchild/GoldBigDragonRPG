@@ -42,13 +42,11 @@ public class Main_ItemDrop {
     public void PureItemNaturalDrop(Location loc, short Id, byte Data, byte Stack) {
         ItemStack Item = new MaterialData(Id, Data).toItemStack(Stack);
         Item item = loc.getWorld().dropItem(loc, Item);
-        return;
     }
 
     public void PureItemPowerDrop(Location loc, Material m, double X, float Y, double Z) {
         Item item = loc.getWorld().dropItem(loc, new ItemStack(m));
         item.setVelocity(new Vector(X, Y, Z));
-        return;
     }
 
     public void FixedItemNaturalDrop(Location loc, String Display, short ID, byte DATA, byte STACK, List<String> Lore) {
@@ -58,7 +56,6 @@ public class Main_ItemDrop {
         Item_Meta.setLore(Lore);
         Item.setItemMeta(Item_Meta);
         loc.getWorld().dropItemNaturally(loc, Item);
-        return;
     }
 
     public void FixedItemPowerDrop(Location loc, String Display, short ID, byte DATA, byte STACK, List<String> Lore, double X, float Y, double Z) {
@@ -69,13 +66,11 @@ public class Main_ItemDrop {
         Item.setItemMeta(Item_Meta);
         Item item = loc.getWorld().dropItemNaturally(loc, Item);
         item.setVelocity(new Vector(X, Y, Z));
-        return;
     }
 
     public void CustomItemDrop(Location loc, ItemStack m) {
         Item item = loc.getWorld().dropItem(loc, new ItemStack(m));
         item.setVelocity(new Vector(0, 0, 0));
-        return;
     }
 
 
@@ -93,7 +88,6 @@ public class Main_ItemDrop {
         int na = money % Config.getInt("Server.Max_Drop_Money");
         if (na >= 1)
             loc.getWorld().dropItemNaturally(loc, MoneyShape(na));
-        return;
     }
 
     public ItemStack MoneyShape(int money) {

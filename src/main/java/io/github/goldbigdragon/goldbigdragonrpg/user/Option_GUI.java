@@ -175,7 +175,6 @@ public class Option_GUI extends Util_GUI {
                 optionGUI(player);
             }
         }
-        return;
     }
 
 }

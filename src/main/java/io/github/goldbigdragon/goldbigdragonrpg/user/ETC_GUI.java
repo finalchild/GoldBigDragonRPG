@@ -259,7 +259,6 @@ public final class ETC_GUI extends Util_GUI {
                     new Navigation_GUI().UseNavigationGUI(player, (short) 0);
             }
         }
-        return;
     }
 
     public void GuideInventoryclick(InventoryClickEvent event) {
@@ -280,7 +279,6 @@ public final class ETC_GUI extends Util_GUI {
             player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[YouTube] " + ChatColor.WHITE + "" + ChatColor.BOLD + ": " + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "https://www.youtube.com/playlist?list=PLxqihkJXVJABIlxU3n6bNhhC8x6xPbORP   " + ChatColor.YELLOW + "" + ChatColor.BOLD + "[클릭시 가이드 페이지로 연결됩니다]");
             player.closeInventory();
         }
-        return;
     }
 
     public void FriendsGUIclick(InventoryClickEvent event) {

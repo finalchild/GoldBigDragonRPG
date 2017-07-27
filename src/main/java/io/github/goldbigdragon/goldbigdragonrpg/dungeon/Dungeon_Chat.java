@@ -100,7 +100,6 @@ public class Dungeon_Chat {
             }
             u.clearAll(player);
             new Dungeon_GUI().DungeonListMainGUI(player, 0, 52);
-            return;
         } else if (u.getString(player, (byte) 0).compareTo("DS") == 0) {
             if (isIntMinMax(event.getMessage(), player, 5, 50)) {
                 YamlManager DungeonList = YC.getNewConfig("Dungeon/Dungeon/" + u.getString(player, (byte) 1) + "/Option.yml");
@@ -189,7 +188,6 @@ public class Dungeon_Chat {
             }
             u.clearAll(player);
             new Dungeon_GUI().DungeonListMainGUI(player, 0, 358);
-            return;
         } else if (u.getString(player, (byte) 0).compareTo("ECID") == 0) {
             if (isIntMinMax(event.getMessage(), player, 1, 2267)) {
                 YamlManager EnterCardConfig = YC.getNewConfig("Dungeon/EnterCardList.yml");
@@ -273,7 +271,6 @@ public class Dungeon_Chat {
                 u.clearAll(player);
                 new Dungeon_GUI().DungeonListMainGUI(player, 0, 120);
             }
-            return;
         } else if (u.getString(player, (byte) 0).compareTo("EAN") == 0) {
             YamlManager AltarConfig = YC.getNewConfig("Dungeon/AltarList.yml");
             String AltarName = u.getString(player, (byte) 1).substring(2, u.getString(player, (byte) 1).length());

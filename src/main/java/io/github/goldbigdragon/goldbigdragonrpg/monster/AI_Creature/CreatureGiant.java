@@ -72,7 +72,6 @@ public class CreatureGiant extends EntityGiantZombie {
         } catch (Exception exc) {
             exc.printStackTrace();
         }
-        return;
     }
 
     public static Object spawn(Location location, String AI) {

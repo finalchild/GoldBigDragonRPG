@@ -65,7 +65,6 @@ public class Util_Player {
                             Main_ServerOption.PlayerList.get(party[count].getUniqueId().toString()).addStat_MoneyAndEXP(Money, EXP, true);
             }
         }
-        return;
     }
 
     public boolean giveItem(Player player, ItemStack item) {
@@ -89,7 +88,6 @@ public class Util_Player {
                 player.getInventory().addItem(item);
         } else
             new Struct_PostBox().SendPost_Server(player.getUniqueId().toString(), "[시스템]", "[인벤토리 부족]", "인벤토리가 부족하여 우편으로 아이템이 배송되었습니다.", item);
-        return;
     }
 
     public void giveItemDrop(Player player, ItemStack item, Location loc) {

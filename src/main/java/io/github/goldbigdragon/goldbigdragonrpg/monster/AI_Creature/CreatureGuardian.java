@@ -70,7 +70,6 @@ public class CreatureGuardian extends EntityGuardian {
         } catch (Exception exc) {
             exc.printStackTrace();
         }
-        return;
     }
 
     public static Object spawn(Location location, String AI) {

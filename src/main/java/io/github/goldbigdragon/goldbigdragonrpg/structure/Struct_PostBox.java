@@ -202,7 +202,6 @@ public class Struct_PostBox extends Util_GUI {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[닫기]", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + "" + Type), 26, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[우편 쓰기]", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 우편을 보냅니다."), 36, inv);
         player.openInventory(inv);
-        return;
     }
 
     public void ItemPutterGUI(Player player) {
@@ -292,7 +291,6 @@ public class Struct_PostBox extends Util_GUI {
                             PlayerPost.removeKey("Recieve." + UTC);
                             PlayerPost.saveConfig();
                             PostBoxMainGUI(player, Type);
-                            return;
                         } else {
                             s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                             player.sendMessage(ChatColor.RED + "[우편] : 인벤토리 공간이 부족합니다!");
@@ -306,7 +304,6 @@ public class Struct_PostBox extends Util_GUI {
                             SenderPost.removeKey("Send." + UTC);
                             SenderPost.saveConfig();
                             PostBoxMainGUI(player, Type);
-                            return;
                         } else {
                             if (event.isLeftClick()) {
                                 if (PlayerPost.getInt("Recieve." + UTC + ".Value") == 0) {
@@ -316,7 +313,6 @@ public class Struct_PostBox extends Util_GUI {
                                         SenderPost.removeKey("Send." + UTC);
                                         SenderPost.saveConfig();
                                         PostBoxMainGUI(player, Type);
-                                        return;
                                     } else {
                                         s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                         player.sendMessage(ChatColor.RED + "[우편] : 인벤토리 공간이 부족합니다!");
@@ -339,7 +335,6 @@ public class Struct_PostBox extends Util_GUI {
                                             SenderPost.saveConfig();
                                             PostBoxMainGUI(player, Type);
                                             SendPost_Server(Sender, "[거래 영수증]", "[은행 입금 완료]", player.getName() + " 님께서 대금 " + value + " " + Main_ServerOption.Money + ChatColor.WHITE + " 입금하였습니다.", null);
-                                            return;
                                         } else {
                                             s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                             player.sendMessage(ChatColor.RED + "[우편] : 인벤토리 공간이 부족합니다!");
@@ -359,7 +354,6 @@ public class Struct_PostBox extends Util_GUI {
                                     PlayerPost.saveConfig();
                                     PostBoxMainGUI(player, Type);
                                 }
-                                return;
                             }
                         }
                     }
@@ -378,7 +372,6 @@ public class Struct_PostBox extends Util_GUI {
                         PlayerPost.removeKey("Send." + UTC);
                         PlayerPost.saveConfig();
                         PostBoxMainGUI(player, Type);
-                        return;
                     } else {
                         if (new Util_Player().giveItem(player, PlayerPost.getItemStack("Send." + UTC + ".Item"))) {
                             ReceiverPost.removeKey("Recieve." + UTC + ".Item");
@@ -387,7 +380,6 @@ public class Struct_PostBox extends Util_GUI {
                             PlayerPost.removeKey("Send." + UTC);
                             PlayerPost.saveConfig();
                             PostBoxMainGUI(player, Type);
-                            return;
                         } else {
                             s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                             player.sendMessage(ChatColor.RED + "[우편] : 인벤토리 공간이 부족합니다!");
@@ -471,7 +463,6 @@ public class Struct_PostBox extends Util_GUI {
             }
         }
         u.clearAll(player);
-        return;
     }
 
     public void SendPost_Server(String targetUUID, String Name, String Title, String Memo, ItemStack item) {
@@ -488,7 +479,6 @@ public class Struct_PostBox extends Util_GUI {
         TargetPost.set("Recieve." + UTC + ".Item", item);
         TargetPost.set("Recieve." + UTC + ".Value", 0);
         TargetPost.saveConfig();
-        return;
     }
 
 

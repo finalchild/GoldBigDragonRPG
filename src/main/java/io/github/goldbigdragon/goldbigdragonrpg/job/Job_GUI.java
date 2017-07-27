@@ -324,7 +324,6 @@ public class Job_GUI extends Util_GUI {
                 if (NowJobLV == 18) {
                     s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                     player.sendMessage(ChatColor.RED + "[직업] : 최대 승급은 18차 까지 입니다!");
-                    return;
                 } else {
                     player.closeInventory();
                     player.sendMessage(ChatColor.LIGHT_PURPLE + "[직업] : " + ChatColor.YELLOW + JobName + ChatColor.LIGHT_PURPLE + "의 새 승급 형태 이름을 설정해 주세요!");
@@ -358,7 +357,6 @@ public class Job_GUI extends Util_GUI {
                     if (event.getSlot() == 0) {
                         s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.RED + "[직업] : 기본 클래스는 삭제할 수 없습니다!");
-                        return;
                     } else {
                         s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                         SkillList.removeKey("MapleStory." + JobName + "." + ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));

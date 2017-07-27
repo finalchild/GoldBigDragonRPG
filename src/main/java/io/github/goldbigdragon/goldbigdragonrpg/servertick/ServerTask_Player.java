@@ -43,7 +43,6 @@ public class ServerTask_Player {
         if (user == null) {
             ServerTick_Main.Schedule.remove(UTC);
             ServerTick_Main.PlayerTaskList.remove(ServerTick_Main.Schedule.get(UTC).getString((byte) 2));
-            return;
         } else {
             Location loc = user.getLocation();
             String[] savedLoc = ServerTick_Main.Schedule.get(UTC).getString((byte) 1).split(",");
@@ -106,7 +105,6 @@ public class ServerTask_Player {
             ServerTick_Main.Schedule.put(tick, ServerTick_Main.Schedule.get(UTC));
         } else {
             Cancel(UTC, (short) 0);
-            return;
         }
     }
 

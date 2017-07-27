@@ -61,7 +61,6 @@ public class Main_BlockPlace implements Listener {
             }
         if (!player.isOp())
             EXPexceptionBlock(event.getBlock().getTypeId(), event.getBlock().getLocation());
-        return;
     }
 
     public void EXPexceptionBlock(int id, Location loc) {
@@ -72,7 +71,6 @@ public class Main_BlockPlace implements Listener {
             EXPexceptionBlockList.createSection(loc.getWorld().getName() + "." + id + "." + Location);
             EXPexceptionBlockList.saveConfig();
         }
-        return;
     }
 
 }

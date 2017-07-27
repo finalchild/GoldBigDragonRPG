@@ -141,7 +141,6 @@ public class Main_BlockBreak implements Listener {
                 }
             }
         }
-        return;
     }
 
     private void Quest(BlockBreakEvent event, Player player) {
@@ -244,7 +243,6 @@ public class Main_BlockBreak implements Listener {
                 }
             }
         }
-        return;
     }
 
     private void LuckyBonus(Player player, Block block) {
@@ -294,7 +292,6 @@ public class Main_BlockBreak implements Listener {
             else if (id == 169)
                 new Main_ItemDrop().PureItemNaturalDrop(block.getLocation(), (short) 410, (byte) 0, amount);
         }
-        return;
     }
 
     private void EXPadd(BlockBreakEvent event) {
@@ -323,6 +320,5 @@ public class Main_BlockBreak implements Listener {
         else if (id == 153)
             new Util_Player().addMoneyAndEXP(player, Config.getInt("Getting.NetherQuartz.Money"), Config.getLong("Getting.NetherQuartz.EXP"), player.getLocation(), true, false);
 
-        return;
     }
 }

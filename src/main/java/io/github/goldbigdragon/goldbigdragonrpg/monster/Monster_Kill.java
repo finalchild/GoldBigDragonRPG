@@ -371,7 +371,6 @@ public class Monster_Kill {
                 }
             }
         }
-        return;
     }
 
     public byte SearchRoomMonster(byte searchSize, char Group, Location loc) {
@@ -473,7 +472,6 @@ public class Monster_Kill {
                     new Util_Player().addMoneyAndEXP(player, N.RandomNum(Config.getInt("Normal_Monster." + ET.toString() + ".MIN_MONEY"), Config.getInt("Normal_Monster." + ET.toString() + ".MAX_MONEY")) * amount, Config.getLong("Normal_Monster." + ET.toString() + ".EXP"), event.getEntity().getLocation(), true, false);
             }
         }
-        return;
     }
 
     public void Quest(EntityDeathEvent event, Player player) {
@@ -591,6 +589,5 @@ public class Monster_Kill {
                 }
             }
         }
-        return;
     }
 }

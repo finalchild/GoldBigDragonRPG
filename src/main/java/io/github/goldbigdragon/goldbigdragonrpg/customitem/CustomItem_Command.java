@@ -47,12 +47,10 @@ public class CustomItem_Command {
                     CustomItem_GUI IGUI = new CustomItem_GUI();
                     IGUI.ItemListGUI(player, 0);
                 }
-                return;
             }
         } else {
             talker.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
             new Effect_Sound().SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
-            return;
         }
     }
 
@@ -159,12 +157,10 @@ public class CustomItem_Command {
                 default: {
                     HelpMessage(player);
                 }
-                return;
             }
         } else {
             talker.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
             new Effect_Sound().SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
-            return;
         }
     }
 
@@ -202,7 +198,6 @@ public class CustomItem_Command {
                 break;
             }
         }
-        return;
     }
 
     public void SettingItemMeta(Player player, byte type, String value) {
@@ -256,7 +251,6 @@ public class CustomItem_Command {
                 break;
             }
         }
-        return;
     }
 
     public void HelpMessage(Player player) {

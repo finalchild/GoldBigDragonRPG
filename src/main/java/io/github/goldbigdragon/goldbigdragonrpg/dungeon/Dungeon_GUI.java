@@ -185,7 +185,6 @@ public final class Dungeon_GUI extends Util_GUI {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
-        return;
     }
 
     public void DungeonSetUpGUI(Player player, String DungeonName) {
@@ -877,7 +876,6 @@ public final class Dungeon_GUI extends Util_GUI {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + EnterCardName), 53, inv);
         player.openInventory(inv);
-        return;
     }
     //EnterCardGUI//
 
@@ -895,7 +893,6 @@ public final class Dungeon_GUI extends Util_GUI {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
-        return;
     }
 
     public void AltarSettingGUI(Player player, String AltarName) {
@@ -924,7 +921,6 @@ public final class Dungeon_GUI extends Util_GUI {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
 
         player.openInventory(inv);
-        return;
     }
 
     public void AltarDungeonSettingGUI(Player player, int page, String AltarName) {
@@ -961,7 +957,6 @@ public final class Dungeon_GUI extends Util_GUI {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", AltarName), 53, inv);
         player.openInventory(inv);
-        return;
     }
 
     public void AltarEnterCardSettingGUI(Player player, int page, String AltarName) {
@@ -1016,7 +1011,6 @@ public final class Dungeon_GUI extends Util_GUI {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "통행증 등록", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "제단에 통행증을 등록합니다."), 49, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", AltarName), 53, inv);
         player.openInventory(inv);
-        return;
     }
 
     public void AltarEnterCardListGUI(Player player, int page, String AltarName) {
@@ -1061,7 +1055,6 @@ public final class Dungeon_GUI extends Util_GUI {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", AltarName), 53, inv);
         player.openInventory(inv);
-        return;
     }
 
     public void AltarUseGUI(Player player, String AltarName) {
@@ -1077,7 +1070,6 @@ public final class Dungeon_GUI extends Util_GUI {
         Stack2(AltarName, 160, 0, 1, null, 7, inv);
         Stack2(AltarName, 160, 0, 1, null, 8, inv);
         player.openInventory(inv);
-        return;
     }
     //AltarGUI//
 
@@ -1088,7 +1080,6 @@ public final class Dungeon_GUI extends Util_GUI {
         Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[던전 잔류]", 166, 0, 1, null, 3, inv);
         Stack2(ChatColor.BLUE + "" + ChatColor.BOLD + "[던전 퇴장]", 138, 0, 1, null, 5, inv);
         player.openInventory(inv);
-        return;
     }
 
 
@@ -1349,7 +1340,6 @@ public final class Dungeon_GUI extends Util_GUI {
             else if (slot % 9 != 0 && slot <= 44)
                 DungeonMonsterChooseMain(player, DungeonName, slot);
         }
-        return;
     }
 
     public void DungeonMonsterChooseMainClick(InventoryClickEvent event) {
@@ -1550,7 +1540,6 @@ public final class Dungeon_GUI extends Util_GUI {
 
         switch (event.getSlot()) {
             default:
-                return;
         }
     }
     //DungeonGUI Click//
@@ -1801,7 +1790,6 @@ public final class Dungeon_GUI extends Util_GUI {
                 DungeonConfig.removeKey("EnterCard." + ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                 DungeonConfig.saveConfig();
                 AltarEnterCardSettingGUI(player, page, AltarName);
-                return;
             }
         }
     }
@@ -1902,7 +1890,6 @@ public final class Dungeon_GUI extends Util_GUI {
                 }
             }
             new Util_Player().teleportToCurrentArea(player, true);
-            return;
         }
     }
 
@@ -2064,14 +2051,12 @@ public final class Dungeon_GUI extends Util_GUI {
                         new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
                     s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
                     player.sendMessage(ChatColor.WHITE + "(이 물건은 제물로 바칠 수 없는 듯 하다...)");
-                    return;
                 }
             } else {
                 if (!new Util_Player().giveItem(player, item))
                     new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
                 s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
                 player.sendMessage(ChatColor.WHITE + "(이 물건은 제물로 바칠 수 없는 듯 하다...)");
-                return;
             }
         }
     }
@@ -2128,14 +2113,12 @@ public final class Dungeon_GUI extends Util_GUI {
                     if (!new Util_Player().giveItem(player, item))
                         new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
                     s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
-                    return;
                 }
             } else {
                 if (!new Util_Player().giveItem(player, item))
                     new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
                 s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
                 player.sendMessage(ChatColor.RED + "[파티] : 파티의 리더만 제단에 물건을 바칠 수 있습니다!");
-                return;
             }
         } else
             SoloEnterDungeon(player, item, AltarName, capacity, DungeonName, LvDistrict, RealLvDistrict);
@@ -2173,14 +2156,12 @@ public final class Dungeon_GUI extends Util_GUI {
                 if (!new Util_Player().giveItem(player, item))
                     new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
                 s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
-                return;
             }
         } else {
             if (!new Util_Player().giveItem(player, item))
                 new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
             s.SP(player, Sound.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
             player.sendMessage(ChatColor.RED + "[던전] : 던전 입장 인원이 맞지 않습니다! (" + capacity + "명)");
-            return;
         }
     }
     //DungeonGUI Close//

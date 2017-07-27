@@ -74,7 +74,6 @@ public class CreatureCreeper extends EntityCreeper {
         } catch (Exception exc) {
             exc.printStackTrace();
         }
-        return;
     }
 
     public static Object spawn(Location location, String AI) {

@@ -340,7 +340,6 @@ public class Main_ServerOption {
         Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "──────────────────────");
 
         VersionCheck();
-        return;
     }
 
 
@@ -394,7 +393,6 @@ public class Main_ServerOption {
                 new io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain(Main_Main.plugin);
             }
         }
-        return;
     }
 
     public void CitizensCatch() {
@@ -408,7 +406,6 @@ public class Main_ServerOption {
             } else
                 new io.github.goldbigdragon.goldbigdragonrpg.dependency.CitizensMain(Main_Main.plugin);
         }
-        return;
     }
 
     public void ErrorMessage() {

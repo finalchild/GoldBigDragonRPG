@@ -165,7 +165,6 @@ public class Structure_Chat {
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 player.sendMessage(ChatColor.GREEN + "[거래 게시판] : 물품 등록이 취소되었습니다.");
                 u.clearAll(player);
-                return;
             }
         } else if (u.getString(player, (byte) 0).compareTo("SetNeedAmount") == 0) {
             if (isIntMinMax(event.getMessage(), player, 1, 1000)) {
@@ -320,7 +319,6 @@ public class Structure_Chat {
                     s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                     player.sendMessage(ChatColor.GREEN + "[거래 게시판] : 거래가 취소되었습니다.");
                     u.clearAll(player);
-                    return;
                 } else {
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager Board = YC.getNewConfig("Structure/UserShopBoard.yml");
@@ -329,12 +327,10 @@ public class Structure_Chat {
                         s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
                         player.sendMessage(ChatColor.RED + "[거래 게시판] : 거래 정보가 바뀌었습니다! 재 시도 해 주시길 바랍니다!");
                         u.clearAll(player);
-                        return;
                     } else if (ExitAmount < needAmount) {
                         s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
                         player.sendMessage(ChatColor.RED + "[거래 게시판] : 거래 정보가 바뀌었습니다! 재 시도 해 주시길 바랍니다!");
                         u.clearAll(player);
-                        return;
                     } else {
                         int Price = Board.getInt("Buy." + u.getString(player, (byte) 1) + "." + u.getString(player, (byte) 2) + ".Price");
                         if (Price * needAmount <= Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money()) {
@@ -400,7 +396,6 @@ public class Structure_Chat {
                             player.sendMessage(ChatColor.RED + "[소지 금액 : " + Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money() + " " + Main_ServerOption.Money + ChatColor.RED + "]");
                         }
                         u.clearAll(player);
-                        return;
                     }
                 }
             }
@@ -411,7 +406,6 @@ public class Structure_Chat {
                     s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                     player.sendMessage(ChatColor.GREEN + "[거래 게시판] : 거래가 취소되었습니다.");
                     u.clearAll(player);
-                    return;
                 } else {
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager Board = YC.getNewConfig("Structure/UserShopBoard.yml");
@@ -546,7 +540,6 @@ public class Structure_Chat {
                 s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                 u.clearAll(player);
                 player.sendMessage(ChatColor.RED + "[우편] : 자기 자신에게는 보낼 수 없습니다!");
-                return;
             }
         }
     }

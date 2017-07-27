@@ -569,7 +569,6 @@ public class Battle_Calculator {
                     }
             }
         }
-        return;
     }
 
     public void decreaseDurabilityWeapon(Player player) {
@@ -655,6 +654,5 @@ public class Battle_Calculator {
                 }
             }
         }
-        return;
     }
 }

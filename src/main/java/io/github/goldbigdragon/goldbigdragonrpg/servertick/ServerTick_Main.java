@@ -261,7 +261,6 @@ public class ServerTick_Main {
                 YAML.saveConfig();
             }
         }, 0, 1200);//1분마다
-        return;
     }
 
     public void BroadCastMessage() {
@@ -277,7 +276,6 @@ public class ServerTick_Main {
                         Bukkit.broadcastMessage(BroadCast.getString(BroadCast.getConfigurationSection("").getKeys(false).toArray()[new Util_Number().RandomNum(0, BroadCast.getConfigurationSection("").getKeys(false).toArray().length - 1)].toString()));
             } else
                 BroadCastMessageCool++;
-        return;
     }
 
     public void CheckShcedule() {
@@ -304,7 +302,6 @@ public class ServerTick_Main {
                 DungeonSchedule.remove(Long.parseLong(DungeonScheduleList[count].toString()));
             }
         }
-        return;
     }
 
     public void ExcuteSchedule(long UTC) {
@@ -335,7 +332,6 @@ public class ServerTick_Main {
                 new ServerTask_Player().UseTeleportScroll(UTC);
                 return;
             default:
-                return;
         }
     }
 
@@ -349,7 +345,6 @@ public class ServerTick_Main {
                 new Dungeon_ServerTask().CreateKeyRoom(DungeonSchedule.get(UTC));
                 return;
             default:
-                return;
         }
     }
 }

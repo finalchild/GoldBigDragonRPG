@@ -72,7 +72,6 @@ public class CreatureWitch extends EntityWitch {
         } catch (Exception exc) {
             exc.printStackTrace();
         }
-        return;
     }
 
     public static Object spawn(Location location, String AI) {

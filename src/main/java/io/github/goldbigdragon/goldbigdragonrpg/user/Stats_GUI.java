@@ -318,7 +318,6 @@ public class Stats_GUI extends Util_GUI {
             else if (slot == 36)
                 new ETC_GUI().ETCGUI_Main(player);
         }
-        return;
     }
 
 

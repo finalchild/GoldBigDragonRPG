@@ -95,7 +95,6 @@ public class Main_PlayerMove implements Listener {
                 Main_ServerOption.PlayerList.get(event.getPlayer().getUniqueId().toString()).setETC_CurrentArea("null");
                 new io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain().Stop(player);
             }
-            return;
         }
     }
 

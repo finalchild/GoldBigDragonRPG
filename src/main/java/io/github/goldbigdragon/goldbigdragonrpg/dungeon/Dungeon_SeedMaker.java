@@ -723,7 +723,6 @@ public class Dungeon_SeedMaker {
                 whenIChoosed = 'W';
                 DungeonClearSimulation(loc - 1, 'E', false);
             }
-            return;
         } else//길이 하나만 있을 경우
         {
 
@@ -748,7 +747,6 @@ public class Dungeon_SeedMaker {
                     return;
                 DungeonClearSimulation(loc - 1, 'E', NoClear);
             }
-            return;
         }
     }
 

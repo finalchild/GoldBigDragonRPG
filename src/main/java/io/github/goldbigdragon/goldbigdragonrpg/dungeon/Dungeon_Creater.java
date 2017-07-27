@@ -67,7 +67,6 @@ public class Dungeon_Creater {
             DungeonData.set("StartPoint.Z", DungeonData.getLong("StartPoint.Z") + totalSize);
         }
         DungeonData.saveConfig();
-        return;
     }
 
 

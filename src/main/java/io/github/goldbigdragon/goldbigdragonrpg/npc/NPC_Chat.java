@@ -280,7 +280,6 @@ public class NPC_Chat extends Util_Chat {
                 }
                 return;
         }
-        return;
     }
 
 }

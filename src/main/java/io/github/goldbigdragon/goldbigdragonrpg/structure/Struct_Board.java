@@ -138,7 +138,6 @@ public class Struct_Board extends Util_GUI {
 
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 게시글", 386, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "새로운 게시글을 작성합니다."), (byte) 49, inv);
         player.openInventory(inv);
-        return;
     }
 
     public void BoardSettingGUI(Player player, String BoardCode) {

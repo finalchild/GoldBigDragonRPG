@@ -376,7 +376,6 @@ public class Dungeon_Main {
                 new Dungeon_Main().DungeonTrapDoorWorker(loc, false);
             }
         }
-        return;
     }
 
     public void DungeonInteract(PlayerInteractEvent event) {
@@ -600,7 +599,6 @@ public class Dungeon_Main {
                 new Effect_Packet().sendActionBar(player, ChatColor.WHITE + "" + ChatColor.BOLD + "[상자에 맞는 열쇠가 없습니다!]");
             }
         }
-        return;
     }
 
     public boolean TrapChestOpen(Block block) {

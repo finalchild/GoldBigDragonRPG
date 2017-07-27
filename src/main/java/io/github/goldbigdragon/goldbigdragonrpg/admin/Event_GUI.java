@@ -167,7 +167,6 @@ public class Event_GUI extends Util_GUI {
                 player.closeInventory();
             }
         }
-        return;
     }
 
     public void AllPlayerGiveEventGUIclick(InventoryClickEvent event, String SubjectCode) {

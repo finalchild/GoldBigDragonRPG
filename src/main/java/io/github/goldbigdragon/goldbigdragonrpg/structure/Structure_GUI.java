@@ -85,7 +85,6 @@ public class Structure_GUI extends Util_GUI {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
-        return;
     }
 
     public void SelectStructureTypeGUI(Player player, byte page) {
@@ -110,7 +109,6 @@ public class Structure_GUI extends Util_GUI {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
-        return;
     }
 
     public void SelectStructureDirectionGUI(Player player, short StructureID) {
@@ -125,7 +123,6 @@ public class Structure_GUI extends Util_GUI {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + "" + StructureID), 8, inv);
         player.openInventory(inv);
-        return;
     }
 
 

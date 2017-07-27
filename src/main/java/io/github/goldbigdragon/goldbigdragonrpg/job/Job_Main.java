@@ -53,7 +53,6 @@ public class Job_Main {
                 FixPlayerJobList(players[count]);
             }
         }
-        return;
     }
 
     public void PlayerFixAllSkillAndJobYML(Player player) {
@@ -70,7 +69,6 @@ public class Job_Main {
             FixJobList();
             FixPlayerJobList(player);
         }
-        return;
     }
 
     public void AllPlayerSkillRankFix() {
@@ -80,7 +78,6 @@ public class Job_Main {
         FixJobList();
         for (int count = 0; count < players.length; count++)
             SkillRankFix(players[count]);
-        return;
     }
 
     public void FixJobList()
@@ -249,7 +246,6 @@ public class Job_Main {
                 }
             }
         }
-        return;
     }
 
     public void SkillRankFix(Player player) {

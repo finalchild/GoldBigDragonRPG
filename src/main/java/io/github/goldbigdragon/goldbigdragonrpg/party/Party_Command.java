@@ -78,7 +78,6 @@ public class Party_Command {
                 default: {
                     HelpMessage(player);
                 }
-                return;
             }
         } else {
             switch (args[0]) {
@@ -164,7 +163,6 @@ public class Party_Command {
                 default: {
                     HelpMessage(player);
                 }
-                return;
             }
         }
     }

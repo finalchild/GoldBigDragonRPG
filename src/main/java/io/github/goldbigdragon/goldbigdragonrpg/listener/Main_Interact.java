@@ -101,7 +101,6 @@ public class Main_Interact {
                         }
                     }
             }
-            return;
         }
     }
 
@@ -137,7 +136,6 @@ public class Main_Interact {
                     return;
                 }
             }
-            return;
         }
     }
 
@@ -159,7 +157,6 @@ public class Main_Interact {
             else if (u.getType(player).compareTo("Gamble") == 0)
                 OPwork_Gamble(event);
         }
-        return;
     }
 
     private void ItemUse(PlayerInteractEvent event) {
@@ -216,7 +213,6 @@ public class Main_Interact {
                     }
                 }
             }
-        return;
     }
 
     private void SlotMachine(PlayerInteractEvent event) {
@@ -228,7 +224,6 @@ public class Main_Interact {
             event.setCancelled(true);
             new Gamble_GUI().SlotMachine_PlayGUI(event.getPlayer(), BlockLocation);
         }
-        return;
     }
 
 
@@ -272,7 +267,6 @@ public class Main_Interact {
                 player.sendMessage(ChatColor.YELLOW + "(최소 1마리 ~ 최대 100마리)");
             }
         }
-        return;
     }
 
     private void OPwork_Gamble(PlayerInteractEvent event) {
@@ -330,7 +324,6 @@ public class Main_Interact {
                 new Gamble_GUI().SlotMachine_DetailGUI(player, Name);
             }
         }
-        return;
     }
 
     private void AreaChecker(PlayerInteractEvent event) {
@@ -352,7 +345,6 @@ public class Main_Interact {
                 return;
             }
         }
-        return;
     }
 
     public void PlayerGetItem(PlayerPickupItemEvent event) {
@@ -364,7 +356,6 @@ public class Main_Interact {
                 ItemName = SetItemDefaultName((short) event.getItem().getItemStack().getTypeId(), event.getItem().getItemStack().getData().getData());
             new Effect_Packet().sendActionBar(event.getPlayer(), ChatColor.GRAY + "" + ChatColor.BOLD + "(" + "" + ChatColor.BOLD + ItemName + "" + " " + ChatColor.GRAY + "" + ChatColor.BOLD + event.getItem().getItemStack().getAmount() + "개)");
         }
-        return;
     }
 
     public String SetItemDefaultName(short itemCode, byte itemData) {

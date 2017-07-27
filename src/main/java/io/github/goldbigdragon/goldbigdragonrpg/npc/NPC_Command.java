@@ -92,7 +92,6 @@ public class NPC_Command {
         }
         player.sendMessage(ChatColor.RED + "[SYSTEM] : NPC를 찾을 수 없습니다!");
         s.SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
-        return;
     }
 
     private boolean isIntMinMax(String message, Player player, int Min, int Max) {

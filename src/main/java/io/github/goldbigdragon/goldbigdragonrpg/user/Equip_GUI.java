@@ -541,7 +541,6 @@ public class Equip_GUI extends Util_GUI {
             }
             return;
         }
-        return;
     }
 
 

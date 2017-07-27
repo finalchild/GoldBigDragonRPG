@@ -242,7 +242,6 @@ public class Struct_TradeBoard extends Util_GUI {
 
         Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + "[거래 메뉴]", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "거래 물품을 등록하거나", ChatColor.GRAY + "자신이 등록한 물품을 봅니다."), 49, inv);
         player.openInventory(inv);
-        return;
     }
 
     public void TradeBoardSettingGUI(Player player) {
@@ -271,7 +270,6 @@ public class Struct_TradeBoard extends Util_GUI {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 8, inv);
         player.openInventory(inv);
-        return;
     }
 
     public void SelectSellItemGUI(Player player) {
@@ -279,7 +277,6 @@ public class Struct_TradeBoard extends Util_GUI {
         Inventory inv = Bukkit.createInventory(null, 9, UniqueCode + "§0판매할 아이템을 고르세요");
         Stack2(ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.BOLD + "[판매 취소]", 166, 0, 1, Arrays.asList(ChatColor.GRAY + "아이템 판매를 취소합니다."), 4, inv);
         player.openInventory(inv);
-        return;
     }
 
     public void SelectBuyItemGUI(Player player) {
@@ -289,7 +286,6 @@ public class Struct_TradeBoard extends Util_GUI {
         Stack2(ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.BOLD + "[구매 취소]", 166, 0, 1, Arrays.asList(ChatColor.GRAY + "아이템 구매를 취소합니다."), 4, inv);
         //Stack2(ChatColor.RED + "" +ChatColor.RED + "" +ChatColor.AQUA + "" + ChatColor.BOLD + "[특수 아이템]", 384,0,1,Arrays.asList(ChatColor.GRAY + "특수 아이템 중에서 고릅니다."), 6, inv);
         player.openInventory(inv);
-        return;
     }
 
     public void SelectExchangeItem_YouGUI(Player player) {
@@ -298,7 +294,6 @@ public class Struct_TradeBoard extends Util_GUI {
         Stack2(ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.WHITE + "" + ChatColor.BOLD + "[일반 아이템]", 2, 0, 1, Arrays.asList(ChatColor.GRAY + "일반 아이템 중에서 고릅니다."), 2, inv);
         Stack2(ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.BOLD + "[구매 취소]", 166, 0, 1, Arrays.asList(ChatColor.GRAY + "아이템 구매를 취소합니다."), 4, inv);
         player.openInventory(inv);
-        return;
     }
 
     public void SelectExchangeItem_MyGUI(Player player) {
@@ -306,7 +301,6 @@ public class Struct_TradeBoard extends Util_GUI {
         Inventory inv = Bukkit.createInventory(null, 9, UniqueCode + "§0내가 줄 아이템을 고르세요");
         Stack2(ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.BOLD + "[판매 취소]", 166, 0, 1, Arrays.asList(ChatColor.GRAY + "아이템 판매를 취소합니다."), 4, inv);
         player.openInventory(inv);
-        return;
     }
 
     public void SelectNormalItemGUI(Player player, byte page, byte ShopType) {
@@ -455,7 +449,6 @@ public class Struct_TradeBoard extends Util_GUI {
                 } else {
                     s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                     player.sendMessage(ChatColor.RED + "[거래 게시판] : 자신이 등록한 물품만 등록 철회할 수 있습니다!");
-                    return;
                 }
             }
             //물품 구매 모드일 때, 좌클릭
@@ -488,7 +481,6 @@ public class Struct_TradeBoard extends Util_GUI {
                 } else {
                     s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                     player.sendMessage(ChatColor.RED + "[거래 게시판] : 소지금이 부족하여 물품을 구매할 수 없습니다!");
-                    return;
                 }
             }
             //물품 판매 모드일 때, 좌클릭
@@ -548,7 +540,6 @@ public class Struct_TradeBoard extends Util_GUI {
                     s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                     player.sendMessage(ChatColor.RED + "[거래 게시판] : 거래 정보가 바뀌었습니다! 재 시도 해 주시길 바랍니다!");
                     u.clearAll(player);
-                    return;
                 } else {
                     Player Target = Bukkit.getPlayer(Board.getString("Exchange." + ItemName + "." + RegisterUUID + ".Name"));
                     short itemcount = 0;
@@ -675,7 +666,6 @@ public class Struct_TradeBoard extends Util_GUI {
                 player.closeInventory();
                 return;
         }
-        return;
     }
 
     public void SelectTradeTypeGUIClick(InventoryClickEvent event) {
@@ -725,7 +715,6 @@ public class Struct_TradeBoard extends Util_GUI {
             case 8://화면 닫기
                 s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.0F);
                 player.closeInventory();
-                return;
         }
     }
 
@@ -825,7 +814,6 @@ public class Struct_TradeBoard extends Util_GUI {
                     else if (ShopType == 5)
                         player.sendMessage(ChatColor.GREEN + "[거래 게시판] : 해당 아이템이 얼마나 필요한가요? (1 ~ 1000)");
 
-                    return;
             }
     }
 

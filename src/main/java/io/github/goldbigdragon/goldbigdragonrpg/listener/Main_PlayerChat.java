@@ -171,7 +171,6 @@ public class Main_PlayerChat extends Util_Chat implements Listener {
                         }
                         Bukkit.getConsoleSender().sendMessage("[관리자] " + Prefix);
                     }
-                    return;
             }
         } else {
             switch (Main_ServerOption.PlayerList.get(playerUUID).getOption_ChattingType()) {
@@ -207,7 +206,6 @@ public class Main_PlayerChat extends Util_Chat implements Listener {
                         }
                         Bukkit.getConsoleSender().sendMessage("[관리자] " + player.getName() + " : " + event.getMessage());
                     }
-                    return;
             }
         }
     }
@@ -236,7 +234,6 @@ public class Main_PlayerChat extends Util_Chat implements Listener {
             new Structure_Chat().PlayerChatrouter(event);
         else if (Temp.compareTo("Dungeon") == 0)
             new Dungeon_Chat().PlayerChatrouter(event);
-        return;
     }
 
 }

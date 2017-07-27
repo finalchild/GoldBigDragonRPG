@@ -53,12 +53,11 @@ public class MapList extends MapRenderer {
             Xcenter = MapConfig.getInt(Name + ".Xcenter");
             Ycenter = MapConfig.getInt(Name + ".Ycenter");
             new UserData_Object().clearAll(player);
-            if (URL == "null")
-                return;
+            if (URL == "null") {
+            }
             else {
                 try {
                     MC.drawImage(Xcenter, Ycenter, ImageIO.read(new URL(URL)));
-                    return;
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 } catch (IOException e) {

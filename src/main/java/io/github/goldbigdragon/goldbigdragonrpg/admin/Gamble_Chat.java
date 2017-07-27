@@ -56,7 +56,6 @@ public class Gamble_Chat {
                 u.clearAll(player);
                 new Gamble_GUI().GamblePresentGUI(player, (short) 0, (byte) 0, (short) -1, null);
             }
-            return;
         }
     }
 

@@ -654,7 +654,6 @@ public class Gamble_GUI extends Util_GUI {
             }
             s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
             player.sendMessage(ChatColor.RED + "[슬롯 머신] : 코인이 부족합니다!");
-            return;
         }
     }
 

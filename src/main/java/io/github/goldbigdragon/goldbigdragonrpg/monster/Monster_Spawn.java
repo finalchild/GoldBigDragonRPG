@@ -115,7 +115,6 @@ public class Monster_Spawn {
         }
         YamlManager Config = YC.getNewConfig("config.yml");
         new Monster_Spawn().SpawnEffect(event.getEntity(), event.getLocation(), (byte) Config.getInt("Server.MonsterSpawnEffect"));
-        return;
     }
 
     public void CreateMonster(String MonsterName) {
@@ -153,7 +152,6 @@ public class Monster_Spawn {
         Monster.set(MonsterName + ".OffHand.DropChance", 0);
         Monster.set(MonsterName + ".OffHand.Item", Item);
         Monster.saveConfig();
-        return;
     }
 
     public void StayLive(Entity e, boolean isStayLive) {
@@ -240,7 +238,6 @@ public class Monster_Spawn {
             } else
                 CreateCreature(Type, loc, mob, DungeonSpawning, XYZLoc, Group, isStayLive);
         }
-        return;
     }
 
     private void CreateCreature(String Type, Location loc, String mob, byte DungeonSpawning, int[] XYZLoc, char Group, boolean isStayLive) {
@@ -754,7 +751,6 @@ public class Monster_Spawn {
         Icon_Meta.setLore(Lore);
         Icon.setItemMeta(Icon_Meta);
         inventory.setItem(Loc, Icon);
-        return;
     }
 
     public void SpawnEggGive(Player player, String mob) {
@@ -766,7 +762,6 @@ public class Monster_Spawn {
         Icon.setItemMeta(Icon_Meta);
         player.getInventory().addItem(Icon);
         player.sendMessage(ChatColor.YELLOW + "[SYSTEM] : " + ChatColor.GREEN + mob + ChatColor.YELLOW + "스폰 에그를 얻었습니다!");
-        return;
     }
 
     public void SpawnEffect(Entity mob, Location loc, byte type) {
@@ -953,7 +948,6 @@ public class Monster_Spawn {
             }
             return;
         }
-        return;
     }
 
     public short getMonsterID(String MonsterType) {

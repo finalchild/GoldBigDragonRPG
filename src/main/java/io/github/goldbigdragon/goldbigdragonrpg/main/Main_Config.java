@@ -376,6 +376,5 @@ public class Main_Config {
             }
             Config.saveConfig();
         }
-        return;
     }
 }

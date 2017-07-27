@@ -96,7 +96,6 @@ public class Navigation_Chat extends Util_Chat {
                 }
                 return;
         }
-        return;
     }
 
 }

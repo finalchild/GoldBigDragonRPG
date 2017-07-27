@@ -353,7 +353,6 @@ public class Main_ChangeHotBar implements Listener {
             ETC.SlotChangedUpdatePlayerHPMP(player, item);
             HotBarSound(player, (short) -1);
         }
-        return;
     }
 
     public void HotBarSound(Player player, short itemID) {
@@ -398,6 +397,5 @@ public class Main_ChangeHotBar implements Listener {
             else
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
         }
-        return;
     }
 }

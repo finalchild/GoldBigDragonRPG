@@ -386,7 +386,6 @@ public class User_Command {
                         player.sendMessage(ChatColor.AQUA + "/돈 주기 [금액] [플레이어]" + ChatColor.WHITE + " 해당 금액 만큼 플레이어에게 돈을 줍니니다." + ChatColor.AQUA + "" + ChatColor.BOLD + "(관리자)");
                 }
             }
-            return;
         }
     }
 }

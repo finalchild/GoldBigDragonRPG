@@ -116,12 +116,10 @@ public class Quest_Command {
                     default: {
                         HelpMessage(player);
                     }
-                    return;
                 }
             } else {
                 talker.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
                 s.SP((Player) talker, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 2.0F, 1.7F);
-                return;
             }
         }
     }

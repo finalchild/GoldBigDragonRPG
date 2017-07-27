@@ -153,7 +153,6 @@ public class Main_Main extends JavaPlugin implements Listener {
             if (rspE != null)
                 Main_ServerOption.economy = rspE.getProvider();
         }
-        return;
     }
 
     public void onDisable() {
@@ -170,7 +169,6 @@ public class Main_Main extends JavaPlugin implements Listener {
         for (short count = 0; count < players.length; count++)
             Main_ServerOption.PlayerList.get(((Player) players[count]).getUniqueId().toString()).saveAll();
         Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[Clossing GoldBigDragon Advanced...]");
-        return;
     }
 
     @EventHandler
@@ -221,7 +219,6 @@ public class Main_Main extends JavaPlugin implements Listener {
             }
             new Corpse_GUI().OpenReviveSelectGUI(player);
         }
-        return;
     }
 
 
@@ -233,7 +230,6 @@ public class Main_Main extends JavaPlugin implements Listener {
                 if (IT.getItemMeta().getLore().size() == 4)
                     if (IT.getItemMeta().getLore().get(3).equals(ChatColor.YELLOW + "[클릭시 퀵슬롯에서 삭제]"))
                         event.setCancelled(true);
-        return;
     }
 
     @EventHandler
@@ -245,7 +241,6 @@ public class Main_Main extends JavaPlugin implements Listener {
             if (name.charAt(0) == '§' && name.charAt(1) == '0' && name.charAt(2) == '§' && name.charAt(3) == 'l') {
                 event.setCancelled(true);
                 new Structure_Main().StructureUse(player, AS.getCustomName());
-                return;
             } else if (name.charAt(0) == '§' && name.charAt(1) == 'c' && name.charAt(2) == '§' && name.charAt(3) == '0') {
                 event.setCancelled(true);
                 if (player.getInventory().getItemInMainHand() != null) {
@@ -280,11 +275,9 @@ public class Main_Main extends JavaPlugin implements Listener {
                                                 YamlController YC = new YamlController(Main_Main.plugin);
                                                 YamlManager Config = YC.getNewConfig("config.yml");
                                                 new Corpse_GUI().Penalty(target, Config.getString("Death.Spawn_Help.SetHealth"), Config.getString("Death.Spawn_Help.PenaltyEXP"), Config.getString("Death.Spawn_Help.PenaltyMoney"));
-                                                return;
                                             } else {
                                                 s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                                 player.sendMessage(ChatColor.RED + "[SYSTEM] : 부활 아이템이 부족하여 부활시킬 수 없습니다!");
-                                                return;
                                             }
                                         }
                                     } else {
@@ -306,11 +299,9 @@ public class Main_Main extends JavaPlugin implements Listener {
                                                 }
                                             }
                                         }
-                                        return;
                                     }
                                 } else {
                                     AS.remove();
-                                    return;
                                 }
                             }
                         }
@@ -324,7 +315,6 @@ public class Main_Main extends JavaPlugin implements Listener {
                         TargetArea = A.getAreaName((Entity) AS)[0];
                     if (TargetArea != null && !A.getAreaOption(TargetArea, (char) 7)) {
                         event.setCancelled(true);
-                        return;
                     }
                 }
             }
@@ -381,7 +371,6 @@ public class Main_Main extends JavaPlugin implements Listener {
             for (int count = 0; count < Ilist.size(); count++)
                 new Main_ItemDrop().CustomItemDrop(event.getEntity().getLocation(), Ilist.get(count));
         }
-        return;
     }
 
     @EventHandler
@@ -391,13 +380,11 @@ public class Main_Main extends JavaPlugin implements Listener {
             if (item.getItemMeta().hasLore())
                 if (item.getItemMeta().getLore().toString().contains("내구도"))
                     event.setCancelled(true);
-        return;
     }
 
     @EventHandler
     private void EntitySpawn(CreatureSpawnEvent event) {
         new Monster_Spawn().EntitySpawn(event);
-        return;
     }
 
     @EventHandler
@@ -423,7 +410,6 @@ public class Main_Main extends JavaPlugin implements Listener {
         }
         new ETC().UpdatePlayerHPMP(event.getPlayer());
         new Main_Interact().PlayerInteract(event);
-        return;
     }
 
     @EventHandler
@@ -431,7 +417,6 @@ public class Main_Main extends JavaPlugin implements Listener {
         new ETC().UpdatePlayerHPMP(event.getPlayer());
         new Main_ServerOption().CitizensCatch();
         new Main_Interact().PlayerInteractEntity(event);
-        return;
     }
 
     @EventHandler
@@ -442,7 +427,6 @@ public class Main_Main extends JavaPlugin implements Listener {
     @EventHandler
     private void MonsterKill(EntityDeathEvent event) {
         new Monster_Kill().MonsterKilling(event);
-        return;
     }
 
     @EventHandler
@@ -508,7 +492,6 @@ public class Main_Main extends JavaPlugin implements Listener {
             ETC ETC = new ETC();
             ETC.UpdatePlayerHPMP((Player) event.getEntity());
         }
-        return;
     }
 
     @EventHandler
@@ -544,7 +527,6 @@ public class Main_Main extends JavaPlugin implements Listener {
                 event.setCancelled(true);
             new Main_InventoryClick().InventoryClickRouter(event, InventoryCode);
         }
-        return;
     }
 
     @EventHandler
@@ -564,7 +546,6 @@ public class Main_Main extends JavaPlugin implements Listener {
             //6번째 되돌림 색 코드 표 = split을 위한 코드
             new Main_InventoryClose().InventoryCloseRouter(event, InventoryCode);
         }
-        return;
     }
 
     public boolean onCommand(CommandSender talker, org.bukkit.command.Command command, String string, String[] args) {

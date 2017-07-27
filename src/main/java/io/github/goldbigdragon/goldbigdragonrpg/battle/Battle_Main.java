@@ -66,7 +66,6 @@ public class Battle_Main implements Listener {
                 Main_ServerOption.PlayerUseSpell.remove(player);
             }
         }
-        return;
     }
 
     @EventHandler
@@ -102,7 +101,6 @@ public class Battle_Main implements Listener {
             } else if (event.getDamager().getType() == EntityType.SPLASH_POTION)
                 DamageSetter(event, "P", (Entity) ((SplashPotion) event.getDamager()).getShooter(), false);//PotionAttack
         }
-        return;
     }
 
     public void DamageSetter(EntityDamageByEntityEvent event, String AttackType, Entity Attacker, boolean isProjectile) {
@@ -288,7 +286,6 @@ public class Battle_Main implements Listener {
             if (player.isOnline())
                 Alert(player, event.getEntity(), Damage);
         }
-        return;
     }
 
     public int[] getAttackerStats(Entity entity) {
@@ -412,7 +409,6 @@ public class Battle_Main implements Listener {
         else if (a == 3) t.sendActionBar(player, ChatColor.RED + "" + ChatColor.BOLD + "충격이 분산되었다!");
         else if (a == 4) t.sendActionBar(player, ChatColor.RED + "" + ChatColor.BOLD + "이 공격으로는 쓰러뜨릴 수 없을 것 같다!");
         else if (a == 5) t.sendActionBar(player, ChatColor.RED + "" + ChatColor.BOLD + "적의 자세를 흐트릴 수 없다!");
-        return;
     }
 
     public void Alert(Player player, Entity defenser, int Damage) {
@@ -450,6 +446,5 @@ public class Battle_Main implements Listener {
                 t.sendTitleSubTitle(player, HealthBar.toString(), Title, (byte) 0, (byte) 0, (byte) 1);
             }
         }
-        return;
     }
 }

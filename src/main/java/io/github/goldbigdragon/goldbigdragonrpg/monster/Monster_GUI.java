@@ -559,7 +559,6 @@ public class Monster_GUI extends Util_GUI {
         Stack(ChatColor.WHITE + "", 30, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "이곳에는 아이템을", ChatColor.GRAY + "올려두지 마세요."), (byte) 6, inv);
 
         player.openInventory(inv);
-        return;
     }
 
     public void MonsterTypeGUI(Player player, String MonsterName) {
@@ -882,7 +881,6 @@ public class Monster_GUI extends Util_GUI {
             if (event.getCurrentItem().getItemMeta().hasLore())
                 if (event.getCurrentItem().getItemMeta().getLore().get(0).equals(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요."))
                     event.getInventory().remove(event.getCurrentItem());
-        return;
     }
 
     public void ArmorGUIClose(InventoryCloseEvent event) {
@@ -917,7 +915,6 @@ public class Monster_GUI extends Util_GUI {
             Monster.set(MonsterName + ".OffHand.Item", event.getInventory().getItem(5));
         Monster.saveConfig();
         event.getPlayer().sendMessage(ChatColor.GREEN + "[SYSTEM] : 아이템 설정이 저장되었습니다.");
-        return;
     }
 
     public void MonsterTypeGUIClick(InventoryClickEvent event) {

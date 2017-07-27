@@ -100,8 +100,8 @@ public class Corpse_Main {
     }
 
     public void CreateCorpse(Player player) {
-        if (Corpses.containsKey(player.getName()))
-            return;
+        if (Corpses.containsKey(player.getName())) {
+        }
         else {
             RemoveCorpse(player.getName());
             int CorpseStyle = new Random().nextInt((int) (11)); //(0 ~ 10 까지의 수)

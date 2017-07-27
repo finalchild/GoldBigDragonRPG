@@ -489,7 +489,6 @@ public class Quest_Chat extends Util_Chat {
             }
             return;
         }
-        return;
     }
 
 }

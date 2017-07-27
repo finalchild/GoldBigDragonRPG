@@ -411,7 +411,6 @@ public class CustomItem_Chat extends Util_Chat {
         else
             IGUI.NewItemGUI(player, number);
         u.clearAll(player);
-        return;
     }
 
 }

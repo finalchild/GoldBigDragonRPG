@@ -197,7 +197,6 @@ public class Event_Chat extends Util_Chat {
                 }
                 return;
         }
-        return;
     }
 
 }

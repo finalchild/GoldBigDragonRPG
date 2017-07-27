@@ -416,7 +416,6 @@ public class OPboxSkill_GUI extends Util_GUI {
                         JobList.saveConfig();
                         AllSkillsGUI(player, page, isJobGUI, WhatJob);
                     }
-                    return;
                 } else {
                     if (event.isShiftClick() && event.isLeftClick()) {
                         s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);

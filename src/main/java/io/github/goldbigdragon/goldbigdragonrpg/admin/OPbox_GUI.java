@@ -414,7 +414,6 @@ public class OPbox_GUI extends Util_GUI {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 8, inv);
         player.openInventory(inv);
-        return;
     }
 
     public void OPBoxGUI_SettingRescueItem(Player player) {
@@ -439,7 +438,6 @@ public class OPbox_GUI extends Util_GUI {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 8, inv);
         player.openInventory(inv);
-        return;
     }
 
     public void Guide_GUI(Player player) {
@@ -596,7 +594,6 @@ public class OPbox_GUI extends Util_GUI {
             }
 
         }
-        return;
     }
 
     public void OPBoxGUI_SettingInventoryClick(InventoryClickEvent event) {
@@ -694,7 +691,6 @@ public class OPbox_GUI extends Util_GUI {
                 }
             }
         }
-        return;
     }
 
     public void OPBoxGuideInventoryclick(InventoryClickEvent event) {
@@ -894,7 +890,6 @@ public class OPbox_GUI extends Util_GUI {
             }
             player.closeInventory();
         }
-        return;
     }
 
     public void OPBoxGUI_DeathClick(InventoryClickEvent event) {
@@ -1022,6 +1017,5 @@ public class OPbox_GUI extends Util_GUI {
             event.getPlayer().sendMessage(ChatColor.GREEN + "[SYSTEM] : 구조 아이템 설정이 완료되었습니다!");
         Config.saveConfig();
         new Effect_Sound().SP((Player) event.getPlayer(), Sound.BLOCK_ANVIL_USE, 1.0F, 1.0F);
-        return;
     }
 }

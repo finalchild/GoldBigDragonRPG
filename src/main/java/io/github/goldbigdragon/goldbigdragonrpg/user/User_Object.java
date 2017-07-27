@@ -898,7 +898,6 @@ public class User_Object {
             }
         }
         Main_ServerOption.PlayerList.put(player.getUniqueId().toString(), this);
-        return;
     }
 
     public void saveAll() {

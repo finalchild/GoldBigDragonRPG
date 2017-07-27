@@ -202,7 +202,6 @@ public class ETC {
             p.setMaxHealth(MaxHealth);
         else
             p.setMaxHealth(1);
-        return;
     }
 
     public void SlotChangedUpdatePlayerHPMP(Player player, ItemStack newSlot) {
@@ -219,6 +218,5 @@ public class ETC {
             p.setMaxHealth(MaxHealth);
         else
             p.setMaxHealth(1);
-        return;
     }
 }

@@ -38,7 +38,6 @@ public class Warp_Main {
         if (!player.isOp()) {
             s.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
-            return;
         } else {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager TeleportList = YC.getNewConfig("Teleport/TeleportList.yml");
@@ -61,7 +60,6 @@ public class Warp_Main {
             s.SP(player, org.bukkit.Sound.ENTITY_CHICKEN_EGG, 2.0F, 1.7F);
             player.sendMessage(ChatColor.GREEN + "[SYSTEM] : 현재 위치로 워프 지점이 등록되었습니다!");
 
-            return;
         }
     }
 
@@ -84,11 +82,9 @@ public class Warp_Main {
                 new Effect_Sound().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                 player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 이름으로 등록된 워프 지점이 없습니다!");
             }
-            return;
         } else {
             new Effect_Sound().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
-            return;
         }
     }
 
@@ -120,7 +116,6 @@ public class Warp_Main {
                 player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 이름으로 등록된 워프 지점이 없습니다!");
             }
         }
-        return;
     }
 
     public void TeleportUser(Player player, String TeleportSpotName) {
@@ -160,6 +155,5 @@ public class Warp_Main {
         }
         s.SP(player, org.bukkit.Sound.ENTITY_ITEM_BREAK, 0.7F, 1.0F);
         player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 이름으로 등록된 워프 지점이 없습니다!");
-        return;
     }
 }

@@ -1597,7 +1597,6 @@ public class Quest_GUI extends Util_GUI {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.8F);
             player.sendMessage(ChatColor.RED + "[퀘스트] : 해당 항목은 첫 번째 구성 요소로 올 수 없습니다!");
         }
-        return;
     }
 
     public void QuestScriptTypeGUIClick(InventoryClickEvent event) {
@@ -1897,7 +1896,6 @@ public class Quest_GUI extends Util_GUI {
                     player.sendMessage(ChatColor.GREEN + "[퀘스트] : 네비게이션이 성공적으로 등록되었습니다!");
                     FixQuestGUI(player, (short) 0, QuestName);
                 }
-                return;
         }
     }
 
@@ -1915,7 +1913,6 @@ public class Quest_GUI extends Util_GUI {
             case 26://나가기
                 s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
                 player.closeInventory();
-                return;
         }
     }
 
@@ -1925,7 +1922,6 @@ public class Quest_GUI extends Util_GUI {
         if (event.getSlot() == 26) {
             s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
-            return;
         } else {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager QuestList = YC.getNewConfig("Quest/QuestList.yml");
@@ -1983,7 +1979,6 @@ public class Quest_GUI extends Util_GUI {
         s.SP((Player) event.getPlayer(), org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
         event.getPlayer().sendMessage(ChatColor.GREEN + "[SYSTEM] : 성공적으로 등록되었습니다!");
         u.clearAll(player);
-        return;
     }
 
     public void PresentItemSettingGUIClose(InventoryCloseEvent event) {
@@ -2041,7 +2036,6 @@ public class Quest_GUI extends Util_GUI {
             event.getPlayer().sendMessage(ChatColor.GREEN + "[SYSTEM] : 성공적으로 설정되었습니다!");
             u.clearAll(player);
         }
-        return;
     }
 
     public String SkullType(String s) {

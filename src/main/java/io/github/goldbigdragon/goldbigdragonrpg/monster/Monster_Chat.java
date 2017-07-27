@@ -297,7 +297,6 @@ public class Monster_Chat extends Util_Chat {
                 }
                 return;
         }
-        return;
     }
 
 }

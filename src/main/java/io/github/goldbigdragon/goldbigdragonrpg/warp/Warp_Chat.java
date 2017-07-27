@@ -39,6 +39,5 @@ public class Warp_Chat {
                 u.clearAll(player);
                 return;
         }
-        return;
     }
 }

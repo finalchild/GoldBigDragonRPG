@@ -1806,7 +1806,6 @@ public class NPC_GUI extends Util_GUI {
                 if (QuestList.getInt(QuestName + ".Server.Limit") == -1) {
                     s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
                     player.sendMessage(ChatColor.RED + "[퀘스트] : 더이상 이 퀘스트는 수행 할 수 없습니다!");
-                    return;
                 } else {
                     int NeedLevel = QuestList.getInt(QuestName + ".Need.LV");
                     int NeedLove = QuestList.getInt(QuestName + ".Need.Love");
@@ -1854,22 +1853,18 @@ public class NPC_GUI extends Util_GUI {
                                 } else {
                                     s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
                                     player.sendMessage(ChatColor.RED + "[퀘스트] : 이전 퀘스트를 진행하지 않아 퀘스트를 수행할 수 없습니다!");
-                                    return;
                                 }
                             } else {
                                 s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
                                 player.sendMessage(ChatColor.RED + "[퀘스트] : 호감도가 부족하여 퀘스트를 수행할 수 없습니다!");
-                                return;
                             }
                         } else {
                             s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
                             player.sendMessage(ChatColor.RED + "[퀘스트] : 스텟이 부족하여 퀘스트를 수행할 수 없습니다!");
-                            return;
                         }
                     } else {
                         s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
                         player.sendMessage(ChatColor.RED + "[퀘스트] : 수행 가능한 레벨이 아닙니다!");
-                        return;
                     }
                 }
             }
@@ -2168,7 +2163,6 @@ public class NPC_GUI extends Util_GUI {
                     PresentSettingGUI(player, NPCname);
             }
         }
-        return;
     }
 
     public void TalkGUIClick(InventoryClickEvent event, String NPCname) {
@@ -3345,7 +3339,6 @@ public class NPC_GUI extends Util_GUI {
                     if (SkillList.getConfigurationSection("Mabinogi").getKeys(false).toArray().length >= 0) {
                         if (SkillList.getConfigurationSection("Mabinogi.Added").getKeys(false).toArray().length >= 0) {
                             AddAbleSkillsGUI(player, (short) 0, NPCname, number);
-                            return;
                         } else {
                             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                             player.sendMessage(ChatColor.RED + "[SYSTEM] : 등록 가능한 스킬이 없습니다!");
@@ -3882,7 +3875,6 @@ public class NPC_GUI extends Util_GUI {
                     PresentGiveGUI(player, NPCname, true, event.getSlot());
             }
         }
-        return;
     }
 
 
@@ -3890,12 +3882,10 @@ public class NPC_GUI extends Util_GUI {
         if (event.getInventory().getSize() > 9)
             if (event.getInventory().getItem(13) != null)
                 event.getPlayer().getInventory().addItem(event.getInventory().getItem(13));
-        return;
     }
 
     public void PresentInventoryClose(InventoryCloseEvent event) {
         if (event.getInventory().getItem(4) != null)
             event.getPlayer().getInventory().addItem(event.getInventory().getItem(4));
-        return;
     }
 }

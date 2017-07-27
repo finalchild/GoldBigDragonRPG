@@ -70,7 +70,6 @@ public class CreatureSkeleton extends EntitySkeleton {
         } catch (Exception exc) {
             exc.printStackTrace();
         }
-        return;
     }
 
     public static Object spawn(Location location, String AI) {

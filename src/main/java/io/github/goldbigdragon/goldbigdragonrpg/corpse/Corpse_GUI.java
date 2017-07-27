@@ -216,7 +216,6 @@ public class Corpse_GUI extends Util_GUI {
             }
         }
         player.closeInventory();
-        return;
     }
 
 

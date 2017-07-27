@@ -71,7 +71,6 @@ public class WorldCreate_Chat {
                 WorldCreator.name(worldname[count].toString()).createWorld();
         s.SP(player, Sound.ENTITY_WOLF_AMBIENT, 1.0F, 0.8F);
         player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "[월드 생성] : 월드 생성 성공!");
-        return;
     }
 
 }

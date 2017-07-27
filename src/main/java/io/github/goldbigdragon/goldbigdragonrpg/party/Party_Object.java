@@ -364,7 +364,6 @@ public class Party_Object {
                 return;
             case 11:
                 player.sendMessage(ChatColor.RED + "[파티] : 해당 플레이어는 파티원이 아닙니다!");
-                return;
         }
     }
 }

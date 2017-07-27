@@ -60,7 +60,6 @@ public class Effect_Particle {
                 return;
             case 4://대각선 형태의 파티클일 경우 - 360도 회전(시계 방향으로 360도 회전)
                 player.playEffect(player.getLocation().add(-1 * relativeZ, relativeY, -1 * relativeX), effect, Direction);
-                return;
         }
     }
 
@@ -78,7 +77,6 @@ public class Effect_Particle {
                 return;
             case 3://전후 대칭
                 player.playEffect(player.getLocation().add(-1 * relativeZ, relativeY, -1 * relativeX), effect, Direction);
-                return;
         }
     }
 }

@@ -31,6 +31,5 @@ public class Effect_Teleport {
         player.teleport(loc);
         new Effect_Potion().givePotionEffect(player, PotionEffectType.BLINDNESS, 1, 15);
         new Effect_Sound().SL(player.getLocation(), Sound.ENTITY_ENDERMEN_TELEPORT, 0.8F, 1.0F);
-        return;
     }
 }

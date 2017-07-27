@@ -266,7 +266,6 @@ public class Job_Chat extends Util_Chat {
                 }
                 return;
         }
-        return;
     }
 
 }

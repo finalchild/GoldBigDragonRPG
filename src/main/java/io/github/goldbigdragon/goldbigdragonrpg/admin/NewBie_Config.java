@@ -109,6 +109,5 @@ public class NewBie_Config {
         Icon.setItemMeta(Icon_Meta);
         YM.set("Guide.1", Icon);
         YM.saveConfig();
-        return;
     }
 }

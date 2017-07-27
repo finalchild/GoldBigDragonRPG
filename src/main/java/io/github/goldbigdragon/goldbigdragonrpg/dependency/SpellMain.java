@@ -333,7 +333,6 @@ public class SpellMain implements Listener {
                 SkillList.set(SkillName + ".SkillRank." + SkillLevel + ".MagicSpells", ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                 SkillList.saveConfig();
                 new OPboxSkill_GUI().SkillRankOptionGUI(player, SkillName, (short) SkillLevel);
-                return;
         }
     }
 
@@ -373,7 +372,6 @@ public class SpellMain implements Listener {
             } catch (NullPointerException e) {
             }
         }
-        return;
     }
 
     public void setSlotChangePlayerMaxAndNowMana(Player player, ItemStack newSlot) {
@@ -390,7 +388,6 @@ public class SpellMain implements Listener {
             } catch (NullPointerException e) {
             }
         }
-        return;
     }
 
     public void DrinkManaPotion(Player player, int mana) {

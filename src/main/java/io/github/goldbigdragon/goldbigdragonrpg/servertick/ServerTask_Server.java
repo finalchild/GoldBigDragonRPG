@@ -58,7 +58,6 @@ public class ServerTask_Server {
 
 
                 ServerTick_Main.Schedule.remove(UTC);
-                return;
             } else {
                 Location CommandBlockLoc = new Location(Bukkit.getServer().getWorld(STSO.getString((byte) 1)), STSO.getInt((byte) 0), STSO.getInt((byte) 1), STSO.getInt((byte) 2));
                 Block Command = CommandBlockLoc.getBlock();
@@ -101,20 +100,17 @@ public class ServerTask_Server {
         Block Command = loc.getBlock();
         Command.setType(Material.COMMAND);
         Command.setData((byte) 0);
-        return;
     }
 
     public void CreateRedStone(Location loc) {
         Block RedStone = loc.getBlock();
         RedStone.setType(Material.REDSTONE_BLOCK);
         RedStone.setData((byte) 0);
-        return;
     }
 
     public void SetBlock(Location loc, Block OriginalBlock) {
         Block Original = loc.getBlock();
         Original.setType(OriginalBlock.getType());
         Original.setData(OriginalBlock.getData());
-        return;
     }
 }

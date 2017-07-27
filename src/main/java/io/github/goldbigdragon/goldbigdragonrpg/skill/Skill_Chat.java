@@ -257,7 +257,6 @@ public class Skill_Chat extends Util_Chat {
                     SKGUI.SkillRankOptionGUI(player, u.getString(player, (byte) 2), (short) u.getInt(player, (byte) 4));
                     u.clearAll(player);
                 }
-                return;
         }//Main.JobHashMap1를 비교하는 switch의 끝
     }
 

@@ -51,7 +51,6 @@ public class Party_DataManager {
         PartyConfig.saveConfig();
         Main_ServerOption.Party.clear();
         Main_ServerOption.PartyJoiner.clear();
-        return;
     }
 
     public void loadParty() {
@@ -96,6 +95,5 @@ public class Party_DataManager {
         PartyConfig.removeKey("Party");
         PartyConfig.removeKey("PartyJoiner");
         PartyConfig.saveConfig();
-        return;
     }
 }

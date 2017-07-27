@@ -89,7 +89,6 @@ public class Area_GUI extends Util_GUI {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
-        return;
     }
 
     public void AreaSettingGUI(Player player, String AreaName) {
@@ -187,7 +186,6 @@ public class Area_GUI extends Util_GUI {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "현재 창을 닫습니다.", ChatColor.BLACK + AreaName), 44, inv);
 
         player.openInventory(inv);
-        return;
     }
 
     public void AreaMonsterSpawnSettingGUI(Player player, short page, String AreaName) {
@@ -234,7 +232,6 @@ public class Area_GUI extends Util_GUI {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + AreaName), 53, inv);
         player.openInventory(inv);
-        return;
     }
 
     public void AreaMonsterSettingGUI(Player player, short page, String AreaName) {
@@ -275,7 +272,6 @@ public class Area_GUI extends Util_GUI {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + AreaName), 53, inv);
         player.openInventory(inv);
-        return;
     }
 
     public void AreaFishSettingGUI(Player player, String AreaName) {
@@ -419,7 +415,6 @@ public class Area_GUI extends Util_GUI {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다.", ChatColor.BLACK + ItemData), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + AreaName), 53, inv);
         player.openInventory(inv);
-        return;
     }
 
     public void AreaAddMonsterListGUI(Player player, short page, String AreaName) {
@@ -988,7 +983,6 @@ public class Area_GUI extends Util_GUI {
                 player.teleport(new Location(Bukkit.getWorld(AreaConfig.getString(AreaName + ".World")), AreaConfig.getInt(AreaName + ".SpawnLocation.X"), AreaConfig.getInt(AreaName + ".SpawnLocation.Y"), AreaConfig.getInt(AreaName + ".SpawnLocation.Z"), AreaConfig.getInt(AreaName + ".SpawnLocation.Yaw"), AreaConfig.getInt(AreaName + ".SpawnLocation.Pitch")));
             }
         }
-        return;
     }
 
     public void AreaMonsterSettingGUIClick(InventoryClickEvent event) {
@@ -1406,7 +1400,6 @@ public class Area_GUI extends Util_GUI {
             if (AreaConfig.contains(AreaName + ".Fishing.1." + count))
                 AreaConfig.removeKey(AreaName + ".Fishing.1." + count);
         AreaConfig.saveConfig();
-        return;
     }
 
     public void BlockItemSettingInventoryClose(InventoryCloseEvent event) {
@@ -1452,7 +1445,6 @@ public class Area_GUI extends Util_GUI {
             AreaConfig.set(AreaName + ".Mining." + ItemData + ".0", "0:0");
         }
         AreaConfig.saveConfig();
-        return;
     }
 
 }

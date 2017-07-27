@@ -84,6 +84,5 @@ public class Main_Fishing implements Listener {
                 }
             }
         }
-        return;
     }
 }

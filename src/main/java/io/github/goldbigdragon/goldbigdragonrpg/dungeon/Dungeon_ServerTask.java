@@ -698,6 +698,5 @@ public class Dungeon_ServerTask {
                 filePaste(new File("plugins/GoldBigDragonRPG/Dungeon/Schematic/" + DungeonType + "/Closed_Door3.schematic"), new Location(world, Xloc, Yloc, Zloc + 6));
                 break;
         }
-        return;
     }
 }
