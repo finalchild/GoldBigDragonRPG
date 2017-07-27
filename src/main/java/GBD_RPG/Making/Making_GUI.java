@@ -19,7 +19,6 @@
 
 package GBD_RPG.Making;
 
-public class Making_GUI
-{
-	
+public class Making_GUI {
+
 }

@@ -19,161 +19,159 @@
 
 package GBD_RPG.Monster;
 
-public class Monster_Object
-{
-	private String RealName;
-	private String CustomName;
-	private long EXP;
-	private int HP;
-	private int MinMoney;
-	private int MaxMoney;
-	private int STR;
-	private int DEX;
-	private int INT;
-	private int WILL;
-	private int LUK;
-	private int DEF;
-	private int PRO;
-	private int MDEF;
-	private int MPRO;
-	
-	public Monster_Object(String RealName, String CustomName, long EXP, int HP, int MinMoney, int MaxMoney, int STR, int DEX, int INT, int WILL, int LUK,
-			int DEF, int PRO, int MDEF, int MPRO)
-	{
-		this.RealName = RealName;
-		this.CustomName = CustomName;
-		this.EXP = EXP;
-		this.HP = HP;
-		this.MinMoney = MinMoney;
-		this.MaxMoney = MaxMoney;
-		this.STR = STR;
-		this.DEX = DEX;
-		this.INT = INT;
-		this.WILL = WILL;
-		this.LUK = LUK;
-		this.DEF = DEF;
-		this.PRO = PRO;
-		this.MDEF = MDEF;
-		this.MPRO = MPRO;
-	}
+public class Monster_Object {
+    private String RealName;
+    private String CustomName;
+    private long EXP;
+    private int HP;
+    private int MinMoney;
+    private int MaxMoney;
+    private int STR;
+    private int DEX;
+    private int INT;
+    private int WILL;
+    private int LUK;
+    private int DEF;
+    private int PRO;
+    private int MDEF;
+    private int MPRO;
 
-	public String getRealName() {
-		return RealName;
-	}
+    public Monster_Object(String RealName, String CustomName, long EXP, int HP, int MinMoney, int MaxMoney, int STR, int DEX, int INT, int WILL, int LUK,
+                          int DEF, int PRO, int MDEF, int MPRO) {
+        this.RealName = RealName;
+        this.CustomName = CustomName;
+        this.EXP = EXP;
+        this.HP = HP;
+        this.MinMoney = MinMoney;
+        this.MaxMoney = MaxMoney;
+        this.STR = STR;
+        this.DEX = DEX;
+        this.INT = INT;
+        this.WILL = WILL;
+        this.LUK = LUK;
+        this.DEF = DEF;
+        this.PRO = PRO;
+        this.MDEF = MDEF;
+        this.MPRO = MPRO;
+    }
 
-	public String getCustomName() {
-		return CustomName;
-	}
+    public String getRealName() {
+        return RealName;
+    }
 
-	public int getHP() {
-		return HP;
-	}
+    public String getCustomName() {
+        return CustomName;
+    }
 
-	public int getMinMoney() {
-		return MinMoney;
-	}
+    public int getHP() {
+        return HP;
+    }
 
-	public int getMaxMoney() {
-		return MaxMoney;
-	}
+    public int getMinMoney() {
+        return MinMoney;
+    }
 
-	public int getSTR() {
-		return STR;
-	}
+    public int getMaxMoney() {
+        return MaxMoney;
+    }
 
-	public int getDEX() {
-		return DEX;
-	}
+    public int getSTR() {
+        return STR;
+    }
 
-	public int getINT() {
-		return INT;
-	}
+    public int getDEX() {
+        return DEX;
+    }
 
-	public int getWILL() {
-		return WILL;
-	}
+    public int getINT() {
+        return INT;
+    }
 
-	public int getLUK() {
-		return LUK;
-	}
+    public int getWILL() {
+        return WILL;
+    }
 
-	public int getDEF() {
-		return DEF;
-	}
+    public int getLUK() {
+        return LUK;
+    }
 
-	public int getPRO() {
-		return PRO;
-	}
+    public int getDEF() {
+        return DEF;
+    }
 
-	public int getMDEF() {
-		return MDEF;
-	}
+    public int getPRO() {
+        return PRO;
+    }
 
-	public int getMPRO() {
-		return MPRO;
-	}
+    public int getMDEF() {
+        return MDEF;
+    }
 
-	public void setRealName(String realName) {
-		RealName = realName;
-	}
+    public int getMPRO() {
+        return MPRO;
+    }
 
-	public void setCustomName(String customName) {
-		CustomName = customName;
-	}
+    public void setRealName(String realName) {
+        RealName = realName;
+    }
 
-	public void setHP(int hP) {
-		HP = hP;
-	}
+    public void setCustomName(String customName) {
+        CustomName = customName;
+    }
 
-	public void setMinMoney(int minMoney) {
-		MinMoney = minMoney;
-	}
+    public void setHP(int hP) {
+        HP = hP;
+    }
 
-	public void setMaxMoney(int maxMoney) {
-		MaxMoney = maxMoney;
-	}
+    public void setMinMoney(int minMoney) {
+        MinMoney = minMoney;
+    }
 
-	public void setSTR(int sTR) {
-		STR = sTR;
-	}
+    public void setMaxMoney(int maxMoney) {
+        MaxMoney = maxMoney;
+    }
 
-	public void setDEX(int dEX) {
-		DEX = dEX;
-	}
+    public void setSTR(int sTR) {
+        STR = sTR;
+    }
 
-	public void setINT(int iNT) {
-		INT = iNT;
-	}
+    public void setDEX(int dEX) {
+        DEX = dEX;
+    }
 
-	public void setWILL(int wILL) {
-		WILL = wILL;
-	}
+    public void setINT(int iNT) {
+        INT = iNT;
+    }
 
-	public void setLUK(int lUK) {
-		LUK = lUK;
-	}
+    public void setWILL(int wILL) {
+        WILL = wILL;
+    }
 
-	public void setDEF(int dEF) {
-		DEF = dEF;
-	}
+    public void setLUK(int lUK) {
+        LUK = lUK;
+    }
 
-	public void setPRO(int pRO) {
-		PRO = pRO;
-	}
+    public void setDEF(int dEF) {
+        DEF = dEF;
+    }
 
-	public void setMDEF(int mDEF) {
-		MDEF = mDEF;
-	}
+    public void setPRO(int pRO) {
+        PRO = pRO;
+    }
 
-	public void setMPRO(int mPRO) {
-		MPRO = mPRO;
-	}
+    public void setMDEF(int mDEF) {
+        MDEF = mDEF;
+    }
 
-	public long getEXP() {
-		return EXP;
-	}
+    public void setMPRO(int mPRO) {
+        MPRO = mPRO;
+    }
 
-	public void setEXP(long eXP) {
-		EXP = eXP;
-	}
+    public long getEXP() {
+        return EXP;
+    }
+
+    public void setEXP(long eXP) {
+        EXP = eXP;
+    }
 }
