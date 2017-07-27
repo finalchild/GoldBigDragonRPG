@@ -19,6 +19,7 @@
 
 package GBD_RPG.Monster.AI_Monster;
 //https://github.com/sgtcaze/Tutorial/tree/master/Season%203/EP27
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -30,12 +31,9 @@ import org.bukkit.Bukkit;
 import net.minecraft.server.v1_12_R1.EntityInsentient;
 import net.minecraft.server.v1_12_R1.EntityTypes;
 
-public class NMSUtils
-{
-	public void registerEntity(String name, int id, Class<? extends EntityInsentient> customClass)
-	{
-        try
-        {
+public class NMSUtils {
+    public void registerEntity(String name, int id, Class<? extends EntityInsentient> customClass) {
+        try {
             /*
             * 먼저, 엔티티 타입 클래스가 있는 모든 필드들(fields)을
             * HashMap리스트에 저장한다.
@@ -43,10 +41,8 @@ public class NMSUtils
             * 맵들에 리스트들을 등록함으로 써, 우리들은 나중에 매우 쉽게 수정할 수 있게 된다.
             */
             List<Map<?, ?>> dataMaps = new ArrayList<Map<?, ?>>();
-            for(Field f : EntityTypes.class.getDeclaredFields())
-            {
-                if(f.getType().getSimpleName().equals(Map.class.getSimpleName()))
-                {
+            for (Field f : EntityTypes.class.getDeclaredFields()) {
+                if (f.getType().getSimpleName().equals(Map.class.getSimpleName())) {
                     f.setAccessible(true);
                     dataMaps.add((Map<?, ?>) f.get(null));
                 }
@@ -66,28 +62,23 @@ public class NMSUtils
             Method method = EntityTypes.class.getDeclaredMethod("a", Class.class, String.class, int.class);
             method.setAccessible(true);
             method.invoke(null, customClass, name, id);
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-	
+
     public static Object getPrivateField(String fieldName, Class clazz, Object object) {
         Field field;
         Object o = null;
 
-        try
-        {
+        try {
             field = clazz.getDeclaredField(fieldName);
             field.setAccessible(true);
             o = field.get(object);
-        }
-        catch(NoSuchFieldException e)
-        {
+        } catch (NoSuchFieldException e) {
             e.printStackTrace();
-        }
-        catch(IllegalAccessException e)
-        {
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
 
