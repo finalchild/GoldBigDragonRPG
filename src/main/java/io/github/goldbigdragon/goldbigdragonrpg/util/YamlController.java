@@ -46,8 +46,7 @@ public class YamlController {
         if (!file.exists())
             this.prepareFile(fileName);
 
-        YamlManager config = new YamlManager(this.getConfigContent(fileName), file, this.getCommentsNum(file), plugin);
-        return config;
+        return new YamlManager(this.getConfigContent(fileName), file, this.getCommentsNum(file), plugin);
     }
 
     public boolean isExit(String fileName) {
