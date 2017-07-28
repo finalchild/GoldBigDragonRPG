@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.npc;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Chat;
@@ -33,7 +33,7 @@ import org.bukkit.event.player.PlayerChatEvent;
 public class NPC_Chat extends Util_Chat {
     public void NPCTypeChatting(PlayerChatEvent event) {
         UserData_Object u = new UserData_Object();
-        Effect_Sound sound = new Effect_Sound();
+        SoundUtil sound = new SoundUtil();
         Player player = event.getPlayer();
 
         String NPCuuid = u.getString(player, (byte) 3);
@@ -44,7 +44,7 @@ public class NPC_Chat extends Util_Chat {
             NPCC.NPCNPCconfig(NPCuuid);
         }
         YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + NPCuuid + ".yml");
-        NPC_GUI NPGUI = new NPC_GUI();
+        NPC_Gui NPGUI = new NPC_Gui();
         event.setCancelled(true);
         String Message = ChatColor.stripColor(event.getMessage());
         switch (u.getString(player, (byte) 4)) {
@@ -63,7 +63,7 @@ public class NPC_Chat extends Util_Chat {
                     NPCConfig.set("Sale.Minlove", u.getInt(player, (byte) 0));
                     NPCConfig.set("Sale.discount", Integer.parseInt(Message));
                     NPCConfig.saveConfig();
-                    new NPC_GUI().MainGUI(player, u.getString(player, (byte) 2), player.isOp());
+                    new NPC_Gui().MainGUI(player, u.getString(player, (byte) 2), player.isOp());
                     sound.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.8F);
                     u.clearAll(player);
                 }
@@ -73,7 +73,7 @@ public class NPC_Chat extends Util_Chat {
                     YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
                     NPCConfig.set("Present." + u.getInt(player, (byte) 0) + ".love", Integer.parseInt(Message));
                     NPCConfig.saveConfig();
-                    new NPC_GUI().PresentSettingGUI(player, u.getString(player, (byte) 2));
+                    new NPC_Gui().PresentSettingGUI(player, u.getString(player, (byte) 2));
                     sound.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.8F);
                     u.clearAll(player);
                 }
@@ -83,7 +83,7 @@ public class NPC_Chat extends Util_Chat {
                     YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
                     NPCConfig.set("Job.UpgradeRecipe." + u.getString(player, (byte) 6), Integer.parseInt(Message));
                     NPCConfig.saveConfig();
-                    NPC_GUI NGUI = new NPC_GUI();
+                    NPC_Gui NGUI = new NPC_Gui();
                     NGUI.UpgraderGUI(player, (short) 0, u.getString(player, (byte) 8));
                     sound.SP(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
                     u.clearAll(player);

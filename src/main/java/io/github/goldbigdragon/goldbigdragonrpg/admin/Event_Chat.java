@@ -19,8 +19,8 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.admin;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Packet;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.PacketUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
@@ -37,8 +37,8 @@ public class Event_Chat extends Util_Chat {
     public void EventChatting(PlayerChatEvent event) {
         UserData_Object u = new UserData_Object();
         Player player = event.getPlayer();
-        Effect_Sound s = new Effect_Sound();
-        Effect_Packet PS = new Effect_Packet();
+        SoundUtil s = new SoundUtil();
+        PacketUtil PS = new PacketUtil();
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager Config = YC.getNewConfig("config.yml");
         event.setCancelled(true);
@@ -71,7 +71,7 @@ public class Event_Chat extends Util_Chat {
                         }
                     }
                     Config.saveConfig();
-                    new Event_GUI().EventGUI_Main(player);
+                    new Event_Gui().EventGUI_Main(player);
                     u.clearAll(player);
                 }
                 return;
@@ -101,7 +101,7 @@ public class Event_Chat extends Util_Chat {
                         }
                     }
                     Config.saveConfig();
-                    new Event_GUI().EventGUI_Main(player);
+                    new Event_Gui().EventGUI_Main(player);
                     u.clearAll(player);
                 }
                 return;
@@ -132,7 +132,7 @@ public class Event_Chat extends Util_Chat {
                         }
                     }
                     Config.saveConfig();
-                    new Event_GUI().EventGUI_Main(player);
+                    new Event_Gui().EventGUI_Main(player);
                     u.clearAll(player);
                 }
                 return;
@@ -162,7 +162,7 @@ public class Event_Chat extends Util_Chat {
                         }
                     }
                     Config.saveConfig();
-                    new Event_GUI().EventGUI_Main(player);
+                    new Event_Gui().EventGUI_Main(player);
                     u.clearAll(player);
                 }
                 return;
@@ -192,7 +192,7 @@ public class Event_Chat extends Util_Chat {
                         }
                     }
                     Config.saveConfig();
-                    new Event_GUI().EventGUI_Main(player);
+                    new Event_Gui().EventGUI_Main(player);
                     u.clearAll(player);
                 }
                 return;

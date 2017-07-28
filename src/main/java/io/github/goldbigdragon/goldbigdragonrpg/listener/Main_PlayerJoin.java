@@ -21,13 +21,13 @@ package io.github.goldbigdragon.goldbigdragonrpg.listener;
 
 import io.github.goldbigdragon.goldbigdragonrpg.corpse.Corpse_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.dungeon.Dungeon_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Packet;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.PacketUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.job.Job_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_Config;
 import io.github.goldbigdragon.goldbigdragonrpg.skill.Skill_Config;
-import io.github.goldbigdragon.goldbigdragonrpg.user.Equip_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.user.Equip_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
 import io.github.goldbigdragon.goldbigdragonrpg.user.User_Object;
 import io.github.goldbigdragon.goldbigdragonrpg.util.ETC;
@@ -69,7 +69,7 @@ public class Main_PlayerJoin implements Listener {
         new UserData_Object().UserDataInit(player);
 
         if (player.isOp())
-            new Effect_Packet().sendTitleSubTitle(player, "\'§e/오피박스\'", "\'§eGoldBigDragonAdvanced 가이드 및 서버 설정이 가능합니다.\'", (byte) 1, (byte) 10, (byte) 1);
+            new PacketUtil().sendTitleSubTitle(player, "\'§e/오피박스\'", "\'§eGoldBigDragonAdvanced 가이드 및 서버 설정이 가능합니다.\'", (byte) 1, (byte) 10, (byte) 1);
         else {
             YamlManager Config = YC.getNewConfig("config.yml");
             if (Config.getInt("Event.DropChance") >= 2 || Config.getInt("Event.Multiple_EXP_Get") >= 2 || Config.getInt("Event.Multiple_Level_Up_StatPoint") >= 2 || Config.getInt("Event.Multiple_Level_Up_SkillPoint") >= 2) {
@@ -89,7 +89,7 @@ public class Main_PlayerJoin implements Listener {
                 if (Config.getInt("Event.Multiple_Level_Up_SkillPoint") >= 2)
                     alert = alert + "스킬 포인트 " + Config.getInt("Event.Multiple_Level_Up_SkillPoint") + "배 획득";
                 alert = alert + "]";
-                new Effect_Packet().sendTitleSubTitle(player, "\'현재 이벤트가 진행중입니다.\'", "\'" + alert + "\'", (byte) 1, (byte) 10, (byte) 1);
+                new PacketUtil().sendTitleSubTitle(player, "\'현재 이벤트가 진행중입니다.\'", "\'" + alert + "\'", (byte) 1, (byte) 10, (byte) 1);
             }
         }
         if (!YC.isExit("Quest/PlayerData/" + playerUUID + ".yml")) {
@@ -102,7 +102,7 @@ public class Main_PlayerJoin implements Listener {
             player.teleport(new Location(Bukkit.getWorld(NewBieYM.getString("TelePort.World")), NewBieYM.getInt("TelePort.X"), NewBieYM.getInt("TelePort.Y"), NewBieYM.getInt("TelePort.Z"), NewBieYM.getInt("TelePort.Yaw"), NewBieYM.getInt("TelePort.Pitch")));
         }
         new ETC().UpdatePlayerHPMP(event.getPlayer());
-        new Equip_GUI().FriendJoinQuitMessage(player, true);
+        new Equip_Gui().FriendJoinQuitMessage(player, true);
 
         if (YC.getNewConfig("config.yml").getString("Server.JoinMessage") != null)
             event.setJoinMessage(YC.getNewConfig("config.yml").getString("Server.JoinMessage").replace("%player%", event.getPlayer().getName()));

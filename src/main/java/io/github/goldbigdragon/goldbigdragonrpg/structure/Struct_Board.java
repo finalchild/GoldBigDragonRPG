@@ -23,12 +23,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
 import io.github.goldbigdragon.goldbigdragonrpg.util.ETC;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -39,7 +39,7 @@ import org.bukkit.inventory.Inventory;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
-public class Struct_Board extends Util_GUI {
+public class Struct_Board extends GuiUtil {
     public void BoardMainGUI(Player player, String BoardCode, byte page) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager Board = YC.getNewConfig("Structure/" + BoardCode + ".yml");
@@ -188,7 +188,7 @@ public class Struct_Board extends Util_GUI {
     public void BoardMainGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         byte page = (byte) (Byte.parseByte(event.getInventory().getTitle().split(" : ")[1]) - 1);
         String Code = event.getInventory().getItem(0).getItemMeta().getLore().get(0);
@@ -247,7 +247,7 @@ public class Struct_Board extends Util_GUI {
     public void BoardSettingGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 8)//나가기
         {
@@ -257,7 +257,7 @@ public class Struct_Board extends Util_GUI {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             String Code = event.getInventory().getItem(1).getItemMeta().getDisplayName();
             if (slot == 0)//이전 목록
-                new Structure_GUI().StructureListGUI(player, 0);
+                new Structure_Gui().StructureListGUI(player, 0);
             else if (slot == 2)//게시판 알림 설정
             {
                 UserData_Object u = new UserData_Object();

@@ -20,12 +20,12 @@
 package io.github.goldbigdragon.goldbigdragonrpg.listener;
 
 import io.github.goldbigdragon.goldbigdragonrpg.area.Area_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Packet;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.PacketUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_Config;
-import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Object;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
@@ -65,7 +65,7 @@ public class Main_BlockBreak implements Listener {
 
             if (!A.getAreaOption(Area[0], (char) 1) && !event.getPlayer().isOp()) {
                 event.setCancelled(true);
-                new Effect_Sound().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                new SoundUtil().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                 event.getPlayer().sendMessage(ChatColor.RED + "[SYSTEM] : " + ChatColor.YELLOW + Area[1] + ChatColor.RED + " 지역 에서는 블록 채집이 불가능합니다!");
                 return;
             }
@@ -183,7 +183,7 @@ public class Main_BlockBreak implements Listener {
                                     PlayerQuestList.set("Started." + QuestName + ".Flow", PlayerQuestList.getInt("Started." + QuestName + ".Flow") + 1);
                                     PlayerQuestList.removeKey("Started." + QuestName + ".Harvest");
                                     PlayerQuestList.saveConfig();
-                                    Quest_GUI QGUI = new Quest_GUI();
+                                    Quest_Gui QGUI = new Quest_Gui();
                                     QGUI.QuestRouter(player, QuestName);
                                     //퀘스트 완료 메시지//
                                     break;
@@ -231,7 +231,7 @@ public class Main_BlockBreak implements Listener {
                                         PlayerQuestList.set("Started." + QuestName + ".Flow", PlayerQuestList.getInt("Started." + QuestName + ".Flow") + 1);
                                         PlayerQuestList.removeKey("Started." + QuestName + ".Harvest");
                                         PlayerQuestList.saveConfig();
-                                        Quest_GUI QGUI = new Quest_GUI();
+                                        Quest_Gui QGUI = new Quest_Gui();
                                         QGUI.QuestRouter(player, QuestName);
                                         //퀘스트 완료 메시지//
                                         break;
@@ -250,8 +250,8 @@ public class Main_BlockBreak implements Listener {
         if (lucky >= 150) lucky = 150;
         if (lucky <= 0) lucky = 1;
         if (lucky >= new Util_Number().RandomNum(0, 1000)) {
-            Effect_Sound sound = new Effect_Sound();
-            Effect_Packet t = new Effect_Packet();
+            SoundUtil sound = new SoundUtil();
+            PacketUtil t = new PacketUtil();
             byte amount = 0;
             byte luckysize = (byte) new Util_Number().RandomNum(0, 100);
             if (luckysize <= 80) {

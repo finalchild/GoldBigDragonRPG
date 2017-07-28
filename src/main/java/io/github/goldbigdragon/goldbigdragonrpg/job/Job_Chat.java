@@ -19,11 +19,11 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.job;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_Interact;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.skill.OPboxSkill_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.skill.OPboxSkill_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Chat;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
 import org.bukkit.ChatColor;
@@ -38,14 +38,14 @@ public class Job_Chat extends Util_Chat {
     public void JobTypeChatting(PlayerChatEvent event) {
         UserData_Object u = new UserData_Object();
         event.setCancelled(true);
-        Effect_Sound sound = new Effect_Sound();
+        SoundUtil sound = new SoundUtil();
         Player player = event.getPlayer();
-        OPboxSkill_GUI SKGUI = new OPboxSkill_GUI();
+        OPboxSkill_Gui SKGUI = new OPboxSkill_Gui();
         YamlController YC = new YamlController(Main_Main.plugin);
 
         String Message = ChatColor.stripColor(event.getMessage());
         YamlManager JobList = YC.getNewConfig("Skill/JobList.yml");
-        Job_GUI JGUI = new Job_GUI();
+        Job_Gui JGUI = new Job_Gui();
 
         switch (u.getString(player, (byte) 1)) {
             case "CC"://CreateCategory

@@ -21,7 +21,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.user;
 
 import java.util.Arrays;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTask_Player;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Object;
@@ -41,7 +41,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
 public class User_Command {
     public void onCommand(Player player, String[] args, String string) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         switch (string) {
             case "수락": {
                 if (ServerTick_Main.PlayerTaskList.containsKey(player.getName())) {
@@ -55,8 +55,8 @@ public class User_Command {
                             if (STSO.getString((byte) 1).compareTo(player.getName()) == 0) {
                                 s.SP(player, Sound.ENTITY_HORSE_ARMOR, 1.0F, 1.7F);
                                 s.SP(Bukkit.getServer().getPlayer(STSO.getString((byte) 1)), Sound.ENTITY_HORSE_ARMOR, 1.0F, 1.7F);
-                                new Equip_GUI().ExChangeGUI(Bukkit.getServer().getPlayer(STSO.getString((byte) 0)), Bukkit.getServer().getPlayer(STSO.getString((byte) 1)), null, false, false);
-                                new Equip_GUI().ExChangeGUI(Bukkit.getServer().getPlayer(STSO.getString((byte) 1)), Bukkit.getServer().getPlayer(STSO.getString((byte) 0)), null, false, false);
+                                new Equip_Gui().ExChangeGUI(Bukkit.getServer().getPlayer(STSO.getString((byte) 0)), Bukkit.getServer().getPlayer(STSO.getString((byte) 1)), null, false, false);
+                                new Equip_Gui().ExChangeGUI(Bukkit.getServer().getPlayer(STSO.getString((byte) 1)), Bukkit.getServer().getPlayer(STSO.getString((byte) 0)), null, false, false);
                                 ServerTick_Main.PlayerTaskList.remove(ServerTick_Main.Schedule.get(UTC).getString((byte) 0));
                                 ServerTick_Main.PlayerTaskList.remove(ServerTick_Main.Schedule.get(UTC).getString((byte) 1));
                                 ServerTick_Main.Schedule.remove(UTC);

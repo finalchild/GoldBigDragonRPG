@@ -19,9 +19,9 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.servertick;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Packet;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Particle;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.PacketUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.ParticleUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Effect;
 import org.bukkit.Location;
@@ -57,7 +57,7 @@ public class ServerTask_Navigation {
                 Location DestinationLoc = new Location(Bukkit.getServer().getWorld(STSO.getString((byte) 1)), STSO.getInt((byte) 0), STSO.getInt((byte) 1), STSO.getInt((byte) 2));
                 Location SourceLoc = player.getLocation();
                 if (DestinationLoc.getWorld() != SourceLoc.getWorld()) {
-                    Effect_Packet PS = new Effect_Packet();
+                    PacketUtil PS = new PacketUtil();
                     if (DestinationLoc.getWorld().getName().compareTo("world_nether") == 0)
                         PS.sendTitleSubTitle(player, "\'" + ChatColor.YELLOW + "" + "\'", "\'" + ChatColor.YELLOW + "[" + ChatColor.RED + "네더(지옥) 월드" + ChatColor.YELLOW + "로 이동하세요.]" + "\'", (byte) 1, (byte) 1, (byte) 1);
                     else if (DestinationLoc.getWorld().getName().compareTo("world_the_end") == 0)
@@ -155,7 +155,7 @@ public class ServerTask_Navigation {
     }
 
     private void ArrowParticle_0(Player player, byte rotation, short y) {
-        Effect_Particle P = new Effect_Particle();
+        ParticleUtil P = new ParticleUtil();
 
         P.RLPLR(player, 0, 0.4, 0.25, Effect.LAVADRIP, 0, rotation);
         P.RLPLR(player, 0, 0.4, 0.5, Effect.LAVADRIP, 0, rotation);
@@ -185,7 +185,7 @@ public class ServerTask_Navigation {
     }
 
     private void ArrowParticle_45(Player player, byte rotation, short y) {
-        Effect_Particle P = new Effect_Particle();
+        ParticleUtil P = new ParticleUtil();
         P.RLPLR(player, 0.5, 0.4, 0.5, Effect.LAVADRIP, 0, rotation);
         P.RLPLR(player, 0.75, 0.4, 0.75, Effect.LAVADRIP, 0, rotation);
         P.RLPLR(player, 1, 0.4, 1, Effect.LAVADRIP, 0, rotation);
@@ -212,7 +212,7 @@ public class ServerTask_Navigation {
     }
 
     private void UPSign_0(Player player, byte rotation) {
-        Effect_Particle P = new Effect_Particle();
+        ParticleUtil P = new ParticleUtil();
         //U
         P.RLPLRR(player, -0.1, 2, 2.5, Effect.WATERDRIP, 0, rotation);
         P.RLPLRR(player, -0.1, 1.9, 2.5, Effect.WATERDRIP, 0, rotation);
@@ -248,7 +248,7 @@ public class ServerTask_Navigation {
     }
 
     private void UPSign_45(Player player, byte rotation) {
-        Effect_Particle P = new Effect_Particle();
+        ParticleUtil P = new ParticleUtil();
         //U
         P.RLPLRR(player, 2.4, 2, 2.5, Effect.WATERDRIP, 0, rotation);
         P.RLPLRR(player, 2.4, 1.9, 2.5, Effect.WATERDRIP, 0, rotation);
@@ -284,7 +284,7 @@ public class ServerTask_Navigation {
     }
 
     private void DNSign_0(Player player, byte rotation) {
-        Effect_Particle P = new Effect_Particle();
+        ParticleUtil P = new ParticleUtil();
         //D
         P.RLPLRR(player, -0.2, 2, 2.5, Effect.WATERDRIP, 0, rotation);
         P.RLPLRR(player, -0.3, 2, 2.5, Effect.WATERDRIP, 0, rotation);
@@ -328,7 +328,7 @@ public class ServerTask_Navigation {
     }
 
     private void DNSign_45(Player player, byte rotation) {
-        Effect_Particle P = new Effect_Particle();
+        ParticleUtil P = new ParticleUtil();
         //D
         P.RLPLRR(player, 2, 1.4, 2.9, Effect.WATERDRIP, 0, rotation);
         P.RLPLRR(player, 2, 1.5, 2.9, Effect.WATERDRIP, 0, rotation);
@@ -374,8 +374,8 @@ public class ServerTask_Navigation {
     }
 
     public void FindedWay(Player player, Location DestinationLoc) {
-        Effect_Packet PS = new Effect_Packet();
-        new Effect_Sound().SP(player, Sound.BLOCK_NOTE_PLING, 1.0F, 1.0F);
+        PacketUtil PS = new PacketUtil();
+        new SoundUtil().SP(player, Sound.BLOCK_NOTE_PLING, 1.0F, 1.0F);
         PS.sendTitleSubTitle(player, "\'" + ChatColor.YELLOW + "도착하였습니다!" + "\'", "\'" + ChatColor.WHITE + "[네비게이션을 초기화 합니다.]" + "\'", (byte) 1, (byte) 1, (byte) 1);
 
         for (short count = 0; count < ServerTick_Main.NaviUsingList.size(); count++) {

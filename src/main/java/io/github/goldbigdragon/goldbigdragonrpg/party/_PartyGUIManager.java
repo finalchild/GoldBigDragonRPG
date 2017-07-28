@@ -30,10 +30,10 @@ public class _PartyGUIManager {
 
     public void ClickRouting(InventoryClickEvent event, String SubjectCode) {
         if (SubjectCode.compareTo("00") == 0)//파티 메인 GUI
-            new Party_GUI().PartyGUI_MainClick(event);
+            new Party_Gui().PartyGUI_MainClick(event);
         else if (SubjectCode.compareTo("01") == 0)//파티 목록 GUI
-            new Party_GUI().PartyListGUIClick(event);
+            new Party_Gui().PartyListGUIClick(event);
         else if (SubjectCode.compareTo("02") == 0)//파티 멤버 목록 GUI
-            new Party_GUI().PartyMemberInformationGUIClick(event);
+            new Party_Gui().PartyMemberInformationGUIClick(event);
     }
 }

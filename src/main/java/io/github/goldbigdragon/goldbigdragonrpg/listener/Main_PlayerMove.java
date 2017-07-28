@@ -23,7 +23,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.area.Area_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.corpse.Corpse_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -79,7 +79,7 @@ public class Main_PlayerMove implements Listener {
                                     PlayerQuestList.set("Started." + QuestName + ".Flow", PlayerQuestList.getInt("Started." + QuestName + ".Flow") + 1);
                                     PlayerQuestList.removeKey("Started." + QuestName + ".AreaName");
                                     PlayerQuestList.saveConfig();
-                                    Quest_GUI QGUI = new Quest_GUI();
+                                    Quest_Gui QGUI = new Quest_Gui();
                                     QGUI.QuestRouter(player, QuestName);
                                     //퀘스트 완료 메시지//
                                     break;

@@ -19,14 +19,14 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.structure;
 
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 
-public class Struct_Altar extends Util_GUI {
+public class Struct_Altar extends GuiUtil {
 
-    public String CreateTestAltar(int LineNumber, String StructureCode, byte Direction) {
+    public static String CreateTestAltar(int LineNumber, String StructureCode, byte Direction) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager Board = YC.getNewConfig("Schematic/test.yml");
         switch (LineNumber) {
@@ -35,7 +35,7 @@ public class Struct_Altar extends Util_GUI {
         return "null";
     }
 
-    public String CreateMossyAltar(int LineNumber, String StructureCode, byte Direction) {
+    public static String CreateMossyAltar(int LineNumber, String StructureCode, byte Direction) {
         if (LineNumber <= 19) //제단 다리 4개
         {
             if (LineNumber <= 4)
@@ -129,7 +129,7 @@ public class Struct_Altar extends Util_GUI {
         return "null";
     }
 
-    public String CreateGoldBigDragon1(int LineNumber, String StructureCode, byte Direction) {
+    public static String CreateGoldBigDragon1(int LineNumber, String StructureCode, byte Direction) {
         if (LineNumber <= 2250) {
             switch (LineNumber) {
                 case 0:
@@ -4640,7 +4640,7 @@ public class Struct_Altar extends Util_GUI {
             return CreateGoldBigDragon2(LineNumber, StructureCode, Direction);
     }
 
-    public String CreateGoldBigDragon2(int LineNumber, String StructureCode, byte Direction) {
+    public static String CreateGoldBigDragon2(int LineNumber, String StructureCode, byte Direction) {
         switch (LineNumber) {
             case 2251:
                 return "/summon ArmorStand ~9.000000000000002 ~4.732 ~5.5 {CustomName:\"" + StructureCode + "\",ShowArms:1,Invisible:1,NoBasePlate:1,NoGravity:1,HandItems:[{id:stained_hardened_clay,Damage:4,Count:1},{}],Pose:{Body:[0f,0f,0f],LeftArm:[0f,0f,0f],RightArm:[346f,44f,270f],LeftLeg:[0f,0f,0f],RightLeg:[0f,0f,0f],Head:[0f,0f,0f]}}";
@@ -8684,7 +8684,7 @@ public class Struct_Altar extends Util_GUI {
         return "null";
     }
 
-    public String CreateStoneHenge(int LineNumber, String StructureCode, byte Direction) {
+    public static String CreateStoneHenge(int LineNumber, String StructureCode, byte Direction) {
         switch (LineNumber) {
             case 0:
                 return "/summon ArmorStand ~-0.18 ~0.652 ~2.1000000000000005 {CustomName:\"" + StructureCode + "\",ShowArms:1,Invisible:1,NoBasePlate:1,NoGravity:1,HandItems:[{id:stone,Count:1},{}],Pose:{Body:[0f,0f,0f],LeftArm:[0f,0f,0f],RightArm:[346f,44f,270f],LeftLeg:[0f,0f,0f],RightLeg:[0f,0f,0f],Head:[0f,0f,0f]}}";
@@ -9337,7 +9337,7 @@ public class Struct_Altar extends Util_GUI {
         return "null";
     }
 
-    public String CreateAtonomicBoard(int LineNumber, String StructureCode, byte Direction) {
+    public static String CreateAtonomicBoard(int LineNumber, String StructureCode, byte Direction) {
         switch (LineNumber) {
             case 0:
                 return "/summon ArmorStand ~-0.18 ~0.652 ~-0.28 {CustomName:\"" + StructureCode + "\",ShowArms:1,Invisible:1,NoBasePlate:1,NoGravity:1,HandItems:[{id:stone,Damage:5,Count:1},{}],Pose:{Body:[0f,0f,0f],LeftArm:[0f,0f,0f],RightArm:[346f,44f,270f],LeftLeg:[0f,0f,0f],RightLeg:[0f,0f,0f],Head:[0f,0f,0f]}}";

@@ -20,8 +20,8 @@
 package io.github.goldbigdragon.goldbigdragonrpg.battle;
 
 import io.github.goldbigdragon.goldbigdragonrpg.area.Area_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Packet;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.PacketUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.monster.Monster_Object;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
@@ -143,7 +143,7 @@ public class Battle_Main implements Listener {
             }
         }
 
-        Effect_Sound sound = new Effect_Sound();
+        SoundUtil sound = new SoundUtil();
         if (Attacker.getType() == EntityType.PLAYER && event.getEntity().getType() == EntityType.PLAYER) {
             Player player = (Player) Attacker;
             Player target = (Player) event.getEntity();
@@ -176,7 +176,7 @@ public class Battle_Main implements Listener {
             }
         }
         Battle_Calculator damage = new Battle_Calculator();
-        Effect_Packet t = new Effect_Packet();
+        PacketUtil t = new PacketUtil();
 
         int Damage = (int) event.getDamage();
         if (Attacker.getType() == EntityType.PLAYER) {
@@ -401,8 +401,8 @@ public class Battle_Main implements Listener {
     //데미지가 0이 떴을 때 띄우는 랜덤 메시지를 정해주는 메소드//
     public void DamageCancellMessage(Player player, Entity defenser) {
         byte a = (byte) new Util_Number().RandomNum(1, 5);
-        new Effect_Sound().SL(defenser.getLocation(), Sound.ENTITY_ZOMBIE_ATTACK_IRON_DOOR, (float) 1.0, (float) 0.7);
-        Effect_Packet t = new Effect_Packet();
+        new SoundUtil().SL(defenser.getLocation(), Sound.ENTITY_ZOMBIE_ATTACK_IRON_DOOR, (float) 1.0, (float) 0.7);
+        PacketUtil t = new PacketUtil();
 
         if (a == 1) t.sendActionBar(player, ChatColor.RED + "" + ChatColor.BOLD + "이 공격은 전혀 통하지 않는다!");
         else if (a == 2) t.sendActionBar(player, ChatColor.RED + "" + ChatColor.BOLD + "자세를 흐트릴 수 없다!");
@@ -412,7 +412,7 @@ public class Battle_Main implements Listener {
     }
 
     public void Alert(Player player, Entity defenser, int Damage) {
-        Effect_Packet t = new Effect_Packet();
+        PacketUtil t = new PacketUtil();
 
         if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_Damage())
             t.sendActionBar(player, ChatColor.RED + "" + ChatColor.BOLD + Damage + "데미지!");

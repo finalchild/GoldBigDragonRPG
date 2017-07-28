@@ -31,28 +31,28 @@ public class _UserGUIManager {
 
     public void ClickRouting(InventoryClickEvent event, String SubjectCode) {
         if (SubjectCode.compareTo("00") == 0)//스텟
-            new Stats_GUI().StatusInventoryclick(event);
+            new Stats_Gui().StatusInventoryclick(event);
         if (SubjectCode.compareTo("01") == 0)//옵션
-            new Option_GUI().optionInventoryclick(event);
+            new Option_Gui().optionInventoryclick(event);
         if (SubjectCode.compareTo("02") == 0)//기타
-            new ETC_GUI().ETCInventoryclick(event);
+            new ETC_Gui().ETCInventoryclick(event);
         if (SubjectCode.compareTo("03") == 0)//가이드
-            new ETC_GUI().GuideInventoryclick(event);
+            new ETC_Gui().GuideInventoryclick(event);
         if (SubjectCode.compareTo("04") == 0)//친구
-            new ETC_GUI().FriendsGUIclick(event);
+            new ETC_Gui().FriendsGUIclick(event);
         if (SubjectCode.compareTo("05") == 0)//친구 신청 목록
-            new ETC_GUI().WaittingFriendsGUIclick(event);
+            new ETC_Gui().WaittingFriendsGUIclick(event);
         if (SubjectCode.compareTo("06") == 0)//장비 구경
-            new Equip_GUI().EquipSeeInventoryclick(event);
+            new Equip_Gui().EquipSeeInventoryclick(event);
         if (SubjectCode.compareTo("07") == 0)//교환
         {
-            new Equip_GUI().ExchangeInventoryclick(event);
-            new Equip_GUI().ExchangeGUIclick(event);
+            new Equip_Gui().ExchangeInventoryclick(event);
+            new Equip_Gui().ExchangeGUIclick(event);
         }
     }
 
     public void CloseRouting(InventoryCloseEvent event, String SubjectCode) {
         if (SubjectCode.compareTo("07") == 0)//교환
-            new Equip_GUI().ExchangeGUI_Close(event);
+            new Equip_Gui().ExchangeGUI_Close(event);
     }
 }

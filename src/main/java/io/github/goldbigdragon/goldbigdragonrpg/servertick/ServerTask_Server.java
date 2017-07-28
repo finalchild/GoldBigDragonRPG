@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.servertick;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.structure.Structure_Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -66,7 +66,7 @@ public class ServerTask_Server {
                 CB.update();
                 CommandBlockLoc.setY(CommandBlockLoc.getY() - 1);
                 CreateRedStone(CommandBlockLoc);
-                new Effect_Sound().SL(CommandBlockLoc, Sound.BLOCK_STONE_STEP, 1.0F, 1.0F);
+                new SoundUtil().SL(CommandBlockLoc, Sound.BLOCK_STONE_STEP, 1.0F, 1.0F);
 
                 STSO.setInt((byte) 3, 1);
                 ServerTick_Main.Schedule.remove(UTC);

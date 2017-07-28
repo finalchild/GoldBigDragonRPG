@@ -22,8 +22,8 @@ package io.github.goldbigdragon.goldbigdragonrpg.dungeon;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Packet;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.PacketUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.structure.Struct_PostBox;
@@ -65,7 +65,7 @@ public class Dungeon_ScheduleObject {
         ServerTick_Main.DungeonSchedule.remove(this);
         if (leader.isOnline()) {
             if (leader.getInventory().firstEmpty() == -1) {
-                new Effect_Sound().SP(leader, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                new SoundUtil().SP(leader, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                 leader.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[SYSTEM] : 던전 생성 도중 퇴장하여, 제물로 넣은 아이템이 복구되었습니다!");
                 new Struct_PostBox().SendPost_Server(leader.getUniqueId().toString(), "[시스템]", "[던전 생성 취소]", "던전 생성 도중 퇴장하여, 제물로 넣은 아이템이 복구되었습니다.", item);
             } else
@@ -124,7 +124,7 @@ public class Dungeon_ScheduleObject {
                     if (p.getLocation().getWorld().getName().compareTo("Dungeon") == 0) {
                         String Title = "\'" + ChatColor.BLUE + "[던전 생성]\'";
                         String SubTitle = "\'" + ChatColor.DARK_BLUE + "[ " + ChatColor.BLUE + index + ChatColor.DARK_BLUE + " / " + ChatColor.BLUE + total + ChatColor.DARK_BLUE + " ]\'";
-                        new Effect_Packet().sendTitleSubTitle(Bukkit.getServer().getPlayer(DungeonMaker.get(count)), Title, SubTitle, (byte) 0, (byte) 0, (byte) 1);
+                        new PacketUtil().sendTitleSubTitle(Bukkit.getServer().getPlayer(DungeonMaker.get(count)), Title, SubTitle, (byte) 0, (byte) 0, (byte) 1);
                     }
                 }
             }
@@ -136,7 +136,7 @@ public class Dungeon_ScheduleObject {
                     if (p.isOnline()) {
                         if (p.getLocation().getWorld().getName().compareTo("Dungeon") == 0) {
                             String Title = "\'" + ChatColor.WHITE + DungeonName + "\'";
-                            new Effect_Packet().sendTitle(p, Title, (byte) 2, (byte) 3, (byte) 2);
+                            new PacketUtil().sendTitle(p, Title, (byte) 2, (byte) 3, (byte) 2);
                         }
                     }
                 }

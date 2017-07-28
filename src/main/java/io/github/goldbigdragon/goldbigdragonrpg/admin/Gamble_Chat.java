@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.admin;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
@@ -38,7 +38,7 @@ public class Gamble_Chat {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager GambleYML = YC.getNewConfig("Item/GamblePresent.yml");
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         event.setCancelled(true);
         String message = ChatColor.stripColor(event.getMessage().replace(".", ""));
         switch (u.getString(player, (byte) 0)) {
@@ -54,7 +54,7 @@ public class Gamble_Chat {
                 GambleYML.createSection(message + ".Present");
                 GambleYML.saveConfig();
                 u.clearAll(player);
-                new Gamble_GUI().GamblePresentGUI(player, (short) 0, (byte) 0, (short) -1, null);
+                new Gamble_Gui().GamblePresentGUI(player, (short) 0, (byte) 0, (short) -1, null);
             }
         }
     }

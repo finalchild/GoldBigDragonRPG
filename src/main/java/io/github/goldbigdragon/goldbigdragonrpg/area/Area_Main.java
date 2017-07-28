@@ -21,8 +21,8 @@ package io.github.goldbigdragon.goldbigdragonrpg.area;
 
 import java.util.ArrayList;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Packet;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.PacketUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
@@ -70,13 +70,13 @@ public class Area_Main {
         YamlManager AreaList = YC.getNewConfig("Area/AreaList.yml");
 
         if (AreaList.contains(name)) {
-            new Effect_Sound().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 이름은 이미 등록되어 있습니다!");
             return;
         }
 
         if (!loc1.getWorld().equals(loc2.getWorld())) {
-            new Effect_Sound().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 서로 다른 월드간은 영역 지정을 할 수 없습니다!");
             return;
         }
@@ -138,9 +138,9 @@ public class Area_Main {
         AreaList.set(name + ".Restrict.MaxRealLevel", 0);
         AreaList.saveConfig();
 
-        new Effect_Sound().SP(player, org.bukkit.Sound.ENTITY_CHICKEN_EGG, 2.0F, 1.7F);
+        new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_CHICKEN_EGG, 2.0F, 1.7F);
         player.sendMessage(ChatColor.GREEN + "[SYSTEM] : 지정 구역 등록 성공!");
-        Area_GUI AGUI = new Area_GUI();
+        Area_Gui AGUI = new Area_Gui();
         AGUI.AreaSettingGUI(player, name);
 
         Area_Object AO = new Area_Object();
@@ -207,10 +207,10 @@ public class Area_Main {
             AreaList.removeKey(name + ".Restrict.MaxRealLevel");
             AreaList.removeKey(name);
             AreaList.saveConfig();
-            new Effect_Sound().SP(player, org.bukkit.Sound.ENTITY_CHICKEN_EGG, 2.0F, 1.7F);
+            new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_CHICKEN_EGG, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 지정 구역 삭제 성공!");
         } else {
-            new Effect_Sound().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 이름의 구역은 존재하지 않습니다!");
         }
     }
@@ -234,7 +234,7 @@ public class Area_Main {
             }
             AreaList.saveConfig();
         } else {
-            new Effect_Sound().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 이름의 구역은 존재하지 않습니다!");
         }
     }
@@ -329,7 +329,7 @@ public class Area_Main {
         if (getAreaOption(AreaName, (char) 4)) {
             String Title = AreaList.getString(AreaName + ".Name").replace("%player%", player.getName());
             String Description = AreaList.getString(AreaName + ".Description").replace("%player%", player.getName());
-            new Effect_Packet().sendTitleSubTitle(player, "\'" + Title + "\'", "\'" + Description + "\'", (byte) 1, (byte) 10, (byte) 1);
+            new PacketUtil().sendTitleSubTitle(player, "\'" + Title + "\'", "\'" + Description + "\'", (byte) 1, (byte) 10, (byte) 1);
         }
     }
 

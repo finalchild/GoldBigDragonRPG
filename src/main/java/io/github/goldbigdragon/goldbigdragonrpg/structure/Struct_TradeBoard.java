@@ -23,13 +23,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Packet;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.PacketUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_Interact;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -43,7 +43,7 @@ import org.bukkit.material.MaterialData;
 
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 
-public class Struct_TradeBoard extends Util_GUI {
+public class Struct_TradeBoard extends GuiUtil {
 
     public void TradeBoardMainGUI(Player player, byte page, byte ShopType) {
         YamlController YC = new YamlController(Main_Main.plugin);
@@ -327,7 +327,7 @@ public class Struct_TradeBoard extends Util_GUI {
 
 
     public void TradeBoardMainGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
 
 
@@ -602,7 +602,7 @@ public class Struct_TradeBoard extends Util_GUI {
                     if (Target != null)
                         if (Target.isOnline()) {
                             s.SP(Target, Sound.ENTITY_VILLAGER_YES, 1.0F, 1.0F);
-                            new Effect_Packet().sendTitleSubTitle(Target, "\'§3[거래 성사]\'", "\'§3거래 게시판에 의뢰한 물품이 도착하였습니다.\'", (byte) 1, (byte) 3, (byte) 1);
+                            new PacketUtil().sendTitleSubTitle(Target, "\'§3[거래 성사]\'", "\'§3거래 게시판에 의뢰한 물품이 도착하였습니다.\'", (byte) 1, (byte) 3, (byte) 1);
                         }
 
                     BoardAddedItem.setAmount(1);
@@ -632,7 +632,7 @@ public class Struct_TradeBoard extends Util_GUI {
     }
 
     public void TradeBoardSettingGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
 
         if (event.getSlot() >= 1 && event.getSlot() <= 3) {
@@ -659,7 +659,7 @@ public class Struct_TradeBoard extends Util_GUI {
         switch (event.getSlot()) {
             case 0://이전 목록
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
-                new Structure_GUI().StructureListGUI(player, 0);
+                new Structure_Gui().StructureListGUI(player, 0);
                 return;
             case 8://나가기
                 s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
@@ -669,7 +669,7 @@ public class Struct_TradeBoard extends Util_GUI {
     }
 
     public void SelectTradeTypeGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         if (event.getSlot() == 1 || event.getSlot() == 3 || event.getSlot() == 5) {
             YamlController YC = new YamlController(Main_Main.plugin);
@@ -719,7 +719,7 @@ public class Struct_TradeBoard extends Util_GUI {
     }
 
     public void SelectSellItemGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         UserData_Object u = new UserData_Object();
         if (event.getCurrentItem() != null) {
@@ -745,7 +745,7 @@ public class Struct_TradeBoard extends Util_GUI {
     }
 
     public void SelectBuyItemGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         UserData_Object u = new UserData_Object();
         if (event.getCurrentItem() != null) {
@@ -780,7 +780,7 @@ public class Struct_TradeBoard extends Util_GUI {
     }
 
     public void SelectNormalItemGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         byte page = (byte) (Byte.parseByte(event.getInventory().getTitle().split(" : ")[1]) - 1);
         byte ShopType = Byte.parseByte(ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1)));
@@ -818,7 +818,7 @@ public class Struct_TradeBoard extends Util_GUI {
     }
 
     public void SelectExchangeItem_YouGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         UserData_Object u = new UserData_Object();
         if (event.getCurrentItem().getTypeId() != 0) {
@@ -859,7 +859,7 @@ public class Struct_TradeBoard extends Util_GUI {
     }
 
     public void SelectExchangeItem_MyGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         UserData_Object u = new UserData_Object();
         if (event.getCurrentItem().getTypeId() != 0) {

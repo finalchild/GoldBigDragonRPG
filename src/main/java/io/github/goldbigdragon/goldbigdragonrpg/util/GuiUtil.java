@@ -30,17 +30,17 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.material.MaterialData;
 
-public class Util_GUI {
-    public void Stack(String Display, int ID, int DATA, int Stack, List<String> Lore, int Loc, Inventory inventory) {
+public class GuiUtil {
+    public static void Stack(String displayName, int ID, int DATA, int Stack, List<String> Lore, int Loc, Inventory inventory) {
         ItemStack Icon = new MaterialData(ID, (byte) DATA).toItemStack(Stack);
         ItemMeta Icon_Meta = Icon.getItemMeta();
-        Icon_Meta.setDisplayName(Display);
+        Icon_Meta.setDisplayName(displayName);
         Icon_Meta.setLore(Lore);
         Icon.setItemMeta(Icon_Meta);
         inventory.setItem(Loc, Icon);
     }
 
-    public void Stack2(String Display, int ID, int DATA, int Stack, List<String> Lore, int Loc, Inventory inventory) {
+    public static void Stack2(String Display, int ID, int DATA, int Stack, List<String> Lore, int Loc, Inventory inventory) {
         ItemStack Icon = new MaterialData(ID, (byte) DATA).toItemStack(Stack);
         ItemMeta Icon_Meta = Icon.getItemMeta();
         Icon_Meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -57,7 +57,7 @@ public class Util_GUI {
         inventory.setItem(Loc, Icon);
     }
 
-    public ItemStack getPlayerSkull(String Display, int Stack, List<String> Lore, String PlayerName) {
+    public static ItemStack getPlayerSkull(String Display, int Stack, List<String> Lore, String PlayerName) {
         ItemStack i = new ItemStack(Material.SKULL_ITEM, Stack);
         i.setDurability((short) 3);
         SkullMeta meta = (SkullMeta) i.getItemMeta();
@@ -68,11 +68,11 @@ public class Util_GUI {
         return i;
     }
 
-    public void ItemStackStack(ItemStack Item, int Loc, Inventory inventory) {
+    public static void ItemStackStack(ItemStack Item, int Loc, Inventory inventory) {
         inventory.setItem(Loc, Item);
     }
 
-    public ItemStack getItemStack(String Display, int ID, int DATA, int Stack, List<String> Lore) {
+    public static ItemStack getItemStack(String Display, int ID, int DATA, int Stack, List<String> Lore) {
         ItemStack Icon = new MaterialData(ID, (byte) DATA).toItemStack(Stack);
         ItemMeta Icon_Meta = Icon.getItemMeta();
         Icon_Meta.setDisplayName(Display);

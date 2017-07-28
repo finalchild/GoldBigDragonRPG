@@ -23,9 +23,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import io.github.goldbigdragon.goldbigdragonrpg.area.Area_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Particle;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Potion;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.ParticleUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.EffectUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
@@ -599,7 +599,7 @@ public class Monster_Spawn {
                 }
             }
             if (MobList.contains(mob + ".Potion")) {
-                Effect_Potion P = new Effect_Potion();
+                EffectUtil P = new EffectUtil();
                 if (MobList.getInt(mob + ".Potion.Regenerate") != 0)
                     Monster.addPotionEffect(P.getPotionEffect(PotionEffectType.REGENERATION, 50000, MobList.getInt(mob + ".Potion.Regenerate")));
                 if (MobList.getInt(mob + ".Potion.Poison") != 0)
@@ -765,8 +765,8 @@ public class Monster_Spawn {
     }
 
     public void SpawnEffect(Entity mob, Location loc, byte type) {
-        Effect_Sound s = new Effect_Sound();
-        Effect_Particle p = new Effect_Particle();
+        SoundUtil s = new SoundUtil();
+        ParticleUtil p = new ParticleUtil();
         switch (type) {
             case 0:
                 return;

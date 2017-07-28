@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.warp;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
@@ -33,8 +33,8 @@ public class Warp_Command {
             Warp_Main TP = new Warp_Main();
             switch (args[0]) {
                 case "목록": {
-                    new Effect_Sound().SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
-                    new Warp_GUI().WarpListGUI(player, 0);
+                    new SoundUtil().SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                    new Warp_Gui().WarpListGUI(player, 0);
                 }
                 return;
                 case "등록": {

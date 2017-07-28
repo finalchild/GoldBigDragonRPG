@@ -22,7 +22,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.customitem;
 import java.util.Arrays;
 import java.util.List;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -44,13 +44,13 @@ public class CustomItem_Command {
             }
             switch (ChatColor.stripColor(args[0])) {
                 case "목록": {
-                    CustomItem_GUI IGUI = new CustomItem_GUI();
+                    CustomItem_Gui IGUI = new CustomItem_Gui();
                     IGUI.ItemListGUI(player, 0);
                 }
             }
         } else {
             talker.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
-            new Effect_Sound().SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            new SoundUtil().SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
         }
     }
 
@@ -126,7 +126,7 @@ public class CustomItem_Command {
                 return;
                 case "수리": {
                     if (player.getInventory().getItemInMainHand().getType() == Material.AIR) {
-                        Effect_Sound sound = new Effect_Sound();
+                        SoundUtil sound = new SoundUtil();
                         sound.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                         player.sendMessage(ChatColor.RED + "[SYSTEM] : 손에 수리할 아이템을 쥐고 있어야 합니다!");
                         return;
@@ -160,18 +160,18 @@ public class CustomItem_Command {
             }
         } else {
             talker.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
-            new Effect_Sound().SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            new SoundUtil().SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
         }
     }
 
     public void SettingItemMeta(Player player, byte type, int value) {
         if (!player.isOp()) {
-            new Effect_Sound().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
             return;
         }
         if (player.getInventory().getItemInMainHand().getType() == Material.AIR || player.getInventory().getItemInMainHand().getTypeId() == 0) {
-            new Effect_Sound().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 손에 아이템을 들고 있어야 합니다!");
             return;
         } else {
@@ -202,12 +202,12 @@ public class CustomItem_Command {
 
     public void SettingItemMeta(Player player, byte type, String value) {
         if (!player.isOp()) {
-            new Effect_Sound().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
             return;
         }
         if (player.getInventory().getItemInMainHand().getType() == Material.AIR || player.getInventory().getItemInMainHand().getTypeId() == 0) {
-            new Effect_Sound().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 손에 아이템을 들고 있어야 합니다!");
             return;
         } else {

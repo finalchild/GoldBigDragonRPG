@@ -23,13 +23,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class Effect_Potion {
-    public void givePotionEffect(Player player, PotionEffectType type, int duration, int amplifier) {
+public class EffectUtil {
+    public static void givePotionEffect(Player player, PotionEffectType type, int duration, int amplifier) {
         PotionEffect pe = new org.bukkit.potion.PotionEffect(type, duration * 20, amplifier, false, false);
         player.addPotionEffect(pe);
     }
 
-    public PotionEffect getPotionEffect(PotionEffectType type, int duration, int amplifier) {
+    public static PotionEffect getPotionEffect(PotionEffectType type, int duration, int amplifier) {
         return new org.bukkit.potion.PotionEffect(type, duration * 20, amplifier, false, false);
     }
 }

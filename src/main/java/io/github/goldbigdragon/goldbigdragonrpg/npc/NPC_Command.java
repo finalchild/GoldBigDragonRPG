@@ -21,7 +21,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.npc;
 
 import java.util.List;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import org.bukkit.ChatColor;
@@ -38,7 +38,7 @@ import net.citizensnpcs.api.npc.NPC;
 
 public class NPC_Command {
     public void onCommand(CommandSender talker, Command command, String string, String[] args) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) talker;
         if (!player.isOp()) {
             talker.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
@@ -95,7 +95,7 @@ public class NPC_Command {
     }
 
     private boolean isIntMinMax(String message, Player player, int Min, int Max) {
-        Effect_Sound sound = new Effect_Sound();
+        SoundUtil sound = new SoundUtil();
         try {
             if (message.split(" ").length <= 1 && Integer.parseInt(message) >= Min && Integer.parseInt(message) <= Max)
                 return true;

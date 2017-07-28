@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.party;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import org.bukkit.ChatColor;
@@ -34,18 +34,18 @@ import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
 public class Party_Command {
     public void onCommand(CommandSender talker, Command command, String string, String[] args) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) talker;
         if (args.length == 0) {
             s.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
-            new Party_GUI().PartyGUI_Main(player);
+            new Party_Gui().PartyGUI_Main(player);
             return;
         }
         if (args.length <= 1) {
             switch (args[0]) {
                 case "목록": {
                     s.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
-                    new Party_GUI().PartyListGUI(player, (short) 0);
+                    new Party_Gui().PartyListGUI(player, (short) 0);
                 }
                 return;
                 case "탈퇴": {
@@ -97,7 +97,7 @@ public class Party_Command {
                         } else
                             Main_ServerOption.Party.put(nowSec, new Party_Object(nowSec, player, args[1]));
                         s.SP(player, Sound.BLOCK_WOODEN_DOOR_OPEN, 1.0F, 1.1F);
-                        new Party_GUI().PartyGUI_Main(player);
+                        new Party_Gui().PartyGUI_Main(player);
                     } else {
                         s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.RED + "[파티] : 당신은 이미 파티에 참여한 상태입니다!");
@@ -168,7 +168,7 @@ public class Party_Command {
     }
 
     private boolean isIntMinMax(String message, Player player, int Min, int Max) {
-        Effect_Sound sound = new Effect_Sound();
+        SoundUtil sound = new SoundUtil();
         try {
             if (message.split(" ").length <= 1 && Integer.parseInt(message) >= Min && Integer.parseInt(message) <= Max)
                 return true;

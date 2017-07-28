@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.warp;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -29,7 +29,7 @@ public class Warp_Chat {
     public void TeleportTypeChatting(PlayerChatEvent event) {
         UserData_Object u = new UserData_Object();
         Player player = event.getPlayer();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         event.setCancelled(true);
         String message = ChatColor.stripColor(event.getMessage());
         switch (u.getString(player, (byte) 1)) {

@@ -26,10 +26,10 @@ import java.util.List;
 import java.util.Random;
 
 import io.github.goldbigdragon.goldbigdragonrpg.dungeon.Dungeon_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_ItemDrop;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Player;
 import org.bukkit.Bukkit;
@@ -52,7 +52,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Packet;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.PacketUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
@@ -364,7 +364,7 @@ public class Monster_Kill {
                 if (Bukkit.getServer().getPlayer(event.getEntity().getKiller().getName()).isOnline()) {
                     Player player = (Player) Bukkit.getServer().getPlayer(event.getEntity().getKiller().getName());
                     if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_MobHealth())
-                        new Effect_Packet().sendTitleSubTitle(player, "\'" + ChatColor.BLACK + "■■■■■■■■■■" + "\'", "\'" + ChatColor.DARK_RED + "" + ChatColor.BOLD + "[DEAD]" + "\'", (byte) 0, (byte) 0, (byte) 1);
+                        new PacketUtil().sendTitleSubTitle(player, "\'" + ChatColor.BLACK + "■■■■■■■■■■" + "\'", "\'" + ChatColor.DARK_RED + "" + ChatColor.BOLD + "[DEAD]" + "\'", (byte) 0, (byte) 0, (byte) 1);
                     Reward(event, player);
                     Quest(event, player);
                     return;
@@ -406,7 +406,7 @@ public class Monster_Kill {
             if (lucky >= 10) lucky = 10;
             if (lucky <= 0) lucky = 1;
             if (lucky >= N.RandomNum(0, 100)) {
-                Effect_Sound sound = new Effect_Sound();
+                SoundUtil sound = new SoundUtil();
                 int luckysize = N.RandomNum(0, 100);
                 if (luckysize <= 80) {
                     player.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "[SYSTEM] : 럭키 피니시!");
@@ -522,7 +522,7 @@ public class Monster_Kill {
                             PlayerQuestList.set("Started." + QuestName + ".Flow", PlayerQuestList.getInt("Started." + QuestName + ".Flow") + 1);
                             PlayerQuestList.removeKey("Started." + QuestName + ".Hunt");
                             PlayerQuestList.saveConfig();
-                            Quest_GUI QGUI = new Quest_GUI();
+                            Quest_Gui QGUI = new Quest_Gui();
                             QGUI.QuestRouter(player, QuestName);
                             //퀘스트 완료 메시지//
                             break;
@@ -577,7 +577,7 @@ public class Monster_Kill {
                                         PlayerQuestList.set("Started." + QuestName + ".Flow", PlayerQuestList.getInt("Started." + QuestName + ".Flow") + 1);
                                         PlayerQuestList.removeKey("Started." + QuestName + ".Hunt");
                                         PlayerQuestList.saveConfig();
-                                        Quest_GUI QGUI = new Quest_GUI();
+                                        Quest_Gui QGUI = new Quest_Gui();
                                         QGUI.QuestRouter(player, QuestName);
                                         //퀘스트 완료 메시지//
                                         break;

@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.party;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import org.bukkit.Bukkit;
@@ -133,7 +133,7 @@ public class Party_Object {
                             if (this.PartyMember[count] == null) {
                                 if (player.isOnline()) {
                                     player.sendMessage(ChatColor.GREEN + "[파티] : 파티에 가입 하였습니다!");
-                                    new Effect_Sound().SP(player, Sound.BLOCK_WOODEN_DOOR_OPEN, 1.1F, 1.0F);
+                                    new SoundUtil().SP(player, Sound.BLOCK_WOODEN_DOOR_OPEN, 1.1F, 1.0F);
                                 }
                                 this.PartyMember[count] = player.getName();
                                 Main_ServerOption.PartyJoiner.put(player, this.CreateTime);
@@ -156,7 +156,7 @@ public class Party_Object {
         Main_ServerOption.PartyJoiner.remove(player);
         if (player.isOnline()) {
             player.sendMessage(ChatColor.RED + "[파티] : 파티를 탈퇴하였습니다!");
-            new Effect_Sound().SP(player, Sound.BLOCK_WOODEN_DOOR_CLOSE, 1.1F, 1.0F);
+            new SoundUtil().SP(player, Sound.BLOCK_WOODEN_DOOR_CLOSE, 1.1F, 1.0F);
         }
         if (getPartyMembers() == 1) {
             Main_ServerOption.Party.remove(this.CreateTime);
@@ -317,7 +317,7 @@ public class Party_Object {
     }
 
     public void PartyBroadCastSound(Sound s, float volume, float pitch, Player noAlertMember) {
-        Effect_Sound sound = new Effect_Sound();
+        SoundUtil sound = new SoundUtil();
         Player[] p = getMember();
         for (byte count = 0; count < p.length; count++)
             if (p[count] != null && p[count] != noAlertMember)
@@ -326,7 +326,7 @@ public class Party_Object {
     }
 
     public void Message(Player player, byte num) {
-        Effect_Sound sound = new Effect_Sound();
+        SoundUtil sound = new SoundUtil();
         sound.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
         switch (num) {
             case 1:

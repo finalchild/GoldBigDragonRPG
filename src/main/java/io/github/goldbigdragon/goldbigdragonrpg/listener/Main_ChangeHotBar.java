@@ -20,8 +20,8 @@
 package io.github.goldbigdragon.goldbigdragonrpg.listener;
 
 import io.github.goldbigdragon.goldbigdragonrpg.corpse.Corpse_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Packet;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.PacketUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.util.ETC;
 import org.bukkit.Bukkit;
@@ -72,7 +72,7 @@ public class Main_ChangeHotBar implements Listener {
                                 if (nowlore.contains(" + ")) {
                                     YamlController YC = new YamlController(Main_Main.plugin);
                                     YamlManager Config = YC.getNewConfig("config.yml");
-                                    Effect_Sound s = new Effect_Sound();
+                                    SoundUtil s = new SoundUtil();
                                     if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
                                         Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).addStat_RealLevel(1);
                                         Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setStat_Level(1);
@@ -82,7 +82,7 @@ public class Main_ChangeHotBar implements Listener {
                                         s.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 0.5F);
                                         s.SP(player, Sound.ENTITY_FIREWORK_LAUNCH, 1.0F, 1.2F);
                                         s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
-                                        Effect_Packet PS = new Effect_Packet();
+                                        PacketUtil PS = new PacketUtil();
                                         PS.sendTitleSubTitle(player, "\'" + ChatColor.YELLOW + "■ [ Rebirth ] ■" + "\'", "\'" + ChatColor.YELLOW + "[레벨 및 경험치가 초기화 되었습니다!]" + "\'", (byte) 1, (byte) 5, (byte) 1);
                                     } else {
                                         player.sendMessage(ChatColor.RED + "[SYSTEM] : 서버 시스템에 맞지 않아 환생을 할 수 없습니다!");
@@ -91,7 +91,7 @@ public class Main_ChangeHotBar implements Listener {
                                 }
                             }
                         }
-                        Effect_Sound sound = new Effect_Sound();
+                        SoundUtil sound = new SoundUtil();
                         if (Health > 0) {
                             sound.SL(player.getLocation(), Sound.ENTITY_GENERIC_DRINK, 2.0F, 0.8F);
                             Damageable Dp = player;
@@ -119,7 +119,7 @@ public class Main_ChangeHotBar implements Listener {
                         else
                             player.getInventory().setItem(NewSlot, new ItemStack(0));
 
-                        Effect_Packet PS = new Effect_Packet();
+                        PacketUtil PS = new PacketUtil();
                         PS.changeItemSlot(player, PrevSlot);
                     } else if (item.getItemMeta().getLore().size() == 4) {
                         if (item.getItemMeta().getLore().get(3).equals(ChatColor.YELLOW + "[클릭시 퀵슬롯에서 삭제]")) {
@@ -144,7 +144,7 @@ public class Main_ChangeHotBar implements Listener {
                                 player.getInventory().setItem(NewSlot, new ItemStack(0));
                                 return;
                             }
-                            Effect_Packet PS = new Effect_Packet();
+                            PacketUtil PS = new PacketUtil();
                             PS.changeItemSlot(player, PrevSlot);
 
                             String Command = AllSkillList.getString(Skillname + ".SkillRank." + PlayerSkillRank + ".Command");
@@ -321,7 +321,7 @@ public class Main_ChangeHotBar implements Listener {
                                         player.sendMessage(ChatColor.RED + "[스킬] : MagicSpells플러그인에 해당 스펠이 존재하지 않습니다! 관리자에게 문의하세요!");
                                         player.sendMessage(ChatColor.RED + "존재하지 않는 스펠 이름 : " + ChatColor.YELLOW + Spell);
                                         player.sendMessage(ChatColor.RED + "존재하지 않는 스펠이 등록된 스킬 : " + ChatColor.YELLOW + Skillname + " " + PlayerSkillRank + "랭크");
-                                        Effect_Sound s = new Effect_Sound();
+                                        SoundUtil s = new SoundUtil();
                                         s.SP(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.9F);
                                     }
                                 }
@@ -357,7 +357,7 @@ public class Main_ChangeHotBar implements Listener {
 
     public void HotBarSound(Player player, short itemID) {
         if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isOption_HotBarSound()) {
-            Effect_Sound s = new Effect_Sound();
+            SoundUtil s = new SoundUtil();
             if (itemID == -1)
                 s.SP(player, Sound.BLOCK_WOOD_BUTTON_CLICK_ON, 0.8F, 0.5F);
             if (itemID >= 298 && itemID <= 317)

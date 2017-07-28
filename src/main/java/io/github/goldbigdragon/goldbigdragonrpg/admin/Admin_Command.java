@@ -22,7 +22,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.admin;
 import java.util.Arrays;
 import java.util.List;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Player;
@@ -42,7 +42,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 public class Admin_Command {
     public void onCommand(Player player, String[] args, String string) {
         YamlController YC = new YamlController(Main_Main.plugin);
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (player.isOp()) {
             if (string.compareTo("테스트") == 0 || string.compareTo("gbdtest") == 0) {
@@ -52,7 +52,7 @@ public class Admin_Command {
             } else if (string.compareTo("오피박스") == 0 || string.compareTo("opbox") == 0) {
                 new UserData_Object().clearAll(player);
                 s.SP(player, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
-                new OPbox_GUI().OPBoxGUI_Main(player, (byte) 1);
+                new OPbox_Gui().OPBoxGUI_Main(player, (byte) 1);
             } else if (string.compareTo("타입추가") == 0 || string.compareTo("gbdaddtype") == 0) {
                 if (args.length != 1) {
                     player.sendMessage(ChatColor.RED + "[SYSTEM] : /타입추가 [새로운 아이템 타입]");

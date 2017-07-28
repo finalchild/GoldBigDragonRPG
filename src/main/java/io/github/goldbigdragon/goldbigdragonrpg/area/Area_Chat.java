@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.area;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Chat;
@@ -33,12 +33,12 @@ import org.bukkit.event.player.PlayerChatEvent;
 public class Area_Chat extends Util_Chat {
     public void AreaTypeChatting(PlayerChatEvent event) {
         UserData_Object u = new UserData_Object();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = event.getPlayer();
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager AreaConfig = YC.getNewConfig("Area/AreaList.yml");
         event.setCancelled(true);
-        Area_GUI AGUI = new Area_GUI();
+        Area_Gui AGUI = new Area_Gui();
         String Message = ChatColor.stripColor(event.getMessage());
         String subType = u.getString(player, (byte) 2);
         if (subType.compareTo("ARR") == 0)//AreaRegenBlock

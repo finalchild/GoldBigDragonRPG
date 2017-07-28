@@ -19,8 +19,8 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.user;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Packet;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.PacketUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -208,21 +208,21 @@ public class User_Object {
                         Stat_MaxEXP = 100;
 
                     if (Main_ServerOption.MaxLevel <= Stat_Level)
-                        new Effect_Packet().sendActionBar(Bukkit.getPlayer(PlayerName), ChatColor.RED + "" + ChatColor.BOLD + "[최대 레벨에 도달하여 더이상 레벨업 하실 수가 없습니다!]");
+                        new PacketUtil().sendActionBar(Bukkit.getPlayer(PlayerName), ChatColor.RED + "" + ChatColor.BOLD + "[최대 레벨에 도달하여 더이상 레벨업 하실 수가 없습니다!]");
                 }
             }
             if (isLevelUp) {
-                new Effect_Packet().sendTitleSubTitle(Bukkit.getPlayer(PlayerName), "\'" + ChatColor.WHITE + "Level Up!\'", "\'" + ChatColor.WHITE + "레벨 " + ChatColor.YELLOW + Stat_Level + ChatColor.WHITE + "이 되었습니다!\'", (byte) 1, (byte) 3, (byte) 1);
-                new Effect_Sound().SP(Bukkit.getPlayer(PlayerName), org.bukkit.Sound.ENTITY_PLAYER_LEVELUP, 1.5F, 1.8F);
+                new PacketUtil().sendTitleSubTitle(Bukkit.getPlayer(PlayerName), "\'" + ChatColor.WHITE + "Level Up!\'", "\'" + ChatColor.WHITE + "레벨 " + ChatColor.YELLOW + Stat_Level + ChatColor.WHITE + "이 되었습니다!\'", (byte) 1, (byte) 3, (byte) 1);
+                new SoundUtil().SP(Bukkit.getPlayer(PlayerName), org.bukkit.Sound.ENTITY_PLAYER_LEVELUP, 1.5F, 1.8F);
             }
         }
         if (isAlert && Alert_EXPget) {
             if (Money != 0 && EXP != 0)
-                new Effect_Packet().sendActionBar(player, ChatColor.AQUA + "" + ChatColor.BOLD + "[경험치] " + EXP + " " + ChatColor.YELLOW + "" + ChatColor.BOLD + "[" + ChatColor.WHITE + Main_ServerOption.Money + ChatColor.YELLOW + "" + ChatColor.BOLD + "] " + Money);
+                new PacketUtil().sendActionBar(player, ChatColor.AQUA + "" + ChatColor.BOLD + "[경험치] " + EXP + " " + ChatColor.YELLOW + "" + ChatColor.BOLD + "[" + ChatColor.WHITE + Main_ServerOption.Money + ChatColor.YELLOW + "" + ChatColor.BOLD + "] " + Money);
             else if (Money != 0)
-                new Effect_Packet().sendActionBar(player, ChatColor.YELLOW + "" + ChatColor.BOLD + "[" + ChatColor.WHITE + Main_ServerOption.Money + ChatColor.YELLOW + "" + ChatColor.BOLD + "] " + Money);
+                new PacketUtil().sendActionBar(player, ChatColor.YELLOW + "" + ChatColor.BOLD + "[" + ChatColor.WHITE + Main_ServerOption.Money + ChatColor.YELLOW + "" + ChatColor.BOLD + "] " + Money);
             else
-                new Effect_Packet().sendActionBar(player, ChatColor.AQUA + "" + ChatColor.BOLD + "[경험치] " + EXP);
+                new PacketUtil().sendActionBar(player, ChatColor.AQUA + "" + ChatColor.BOLD + "[경험치] " + EXP);
         }
 
         return true;

@@ -88,11 +88,11 @@ public class _StructureGUIManager {
 
     public void ClickRouting(InventoryClickEvent event, String SubjectCode) {
         if (SubjectCode.compareTo("00") == 0)//전체 개체 목록
-            new Structure_GUI().StructureListGUIClick(event);
+            new Structure_Gui().StructureListGUIClick(event);
         else if (SubjectCode.compareTo("01") == 0)//개체 타입 선택
-            new Structure_GUI().SelectStructureTypeGUIClick(event);
+            new Structure_Gui().SelectStructureTypeGUIClick(event);
         else if (SubjectCode.compareTo("02") == 0)//개체 방향 선택
-            new Structure_GUI().SelectStructureDirectionGUIClick(event);
+            new Structure_Gui().SelectStructureDirectionGUIClick(event);
         else if (SubjectCode.compareTo("03") == 0)//우편함 메인
             new Struct_PostBox().PostBoxMainGUIClick(event);
         else if (SubjectCode.compareTo("04") == 0)//우편함 아이템 배송

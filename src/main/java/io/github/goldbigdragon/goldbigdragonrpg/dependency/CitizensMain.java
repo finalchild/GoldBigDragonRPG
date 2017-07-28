@@ -21,12 +21,12 @@ package io.github.goldbigdragon.goldbigdragonrpg.dependency;
 
 import java.io.File;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.npc.NPC_Config;
-import io.github.goldbigdragon.goldbigdragonrpg.npc.NPC_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.npc.NPC_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Player;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -52,7 +52,7 @@ public class CitizensMain implements Listener {
     }
 
     public void NPCquest(NPCRightClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         YamlManager YM;
 
@@ -68,7 +68,7 @@ public class CitizensMain implements Listener {
             for (short count = 0; count < a.length; count++) {
                 String QuestName = a[count].toString();
                 short QuestFlow = (short) PlayerQuestList.getInt("Started." + QuestName + ".Flow");
-                Quest_GUI QGUI = new Quest_GUI();
+                Quest_Gui QGUI = new Quest_Gui();
                 boolean isThatTarget = false;
                 if (QuestList.contains(QuestName + ".FlowChart." + QuestFlow + ".Type"))
                     switch (QuestList.getString(QuestName + ".FlowChart." + QuestFlow + ".Type")) {
@@ -244,13 +244,13 @@ public class CitizensMain implements Listener {
                 DNPC.removeKey(event.getNPC().getUniqueId().toString());
                 DNPC.saveConfig();
                 player.sendMessage(ChatColor.GREEN + "[NPC] : 해당 NPC의 GUI창이 활성화 되었습니다!");
-                new Effect_Sound().SP(player, Sound.ENTITY_VILLAGER_YES, 1.0F, 1.0F);
+                new SoundUtil().SP(player, Sound.ENTITY_VILLAGER_YES, 1.0F, 1.0F);
                 new UserData_Object().setInt(player, (byte) 4, -1);
             }
         }
 
         if (!DNPC.contains(event.getNPC().getUniqueId().toString())) {
-            NPC_GUI NPGUI = new NPC_GUI();
+            NPC_Gui NPGUI = new NPC_Gui();
             NPGUI.MainGUI(event.getClicker(), event.getNPC().getName(), event.getClicker().isOp());
         }
 

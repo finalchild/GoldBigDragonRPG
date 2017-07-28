@@ -31,11 +31,11 @@ import io.github.goldbigdragon.goldbigdragonrpg.area.Area_ServerTask;
 import io.github.goldbigdragon.goldbigdragonrpg.corpse.Corpse_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.dungeon.Dungeon_ScheduleObject;
 import io.github.goldbigdragon.goldbigdragonrpg.dungeon.Dungeon_ServerTask;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Packet;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.PacketUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.user.User_Object;
 import io.github.goldbigdragon.goldbigdragonrpg.util.ETC;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
@@ -102,7 +102,7 @@ public class ServerTick_Main {
             io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain NBAPI = new io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain();
             YamlController YC = new YamlController(Main_Main.plugin);
             Area_Main A = new Area_Main();
-            Quest_GUI QGUI = new Quest_GUI();
+            Quest_Gui QGUI = new Quest_Gui();
             String Area;
             String QuestName;
             User_Object uo;
@@ -175,8 +175,8 @@ public class ServerTick_Main {
                                         zF = calc2;
                                     }
 
-                                    new Effect_Sound().SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
-                                    new Effect_Packet().sendActionBar(player, "§c§l레벨이 맞지 않아 입장할 수 없습니다!");
+                                    new SoundUtil().SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                    new PacketUtil().sendActionBar(player, "§c§l레벨이 맞지 않아 입장할 수 없습니다!");
                                     if (xF < zF)
                                         player.teleport(new Location(player.getWorld(), staticX, playerLoc.getY() + 0.2, playerLoc.getZ(), playerLoc.getYaw(), playerLoc.getPitch()));
                                     else

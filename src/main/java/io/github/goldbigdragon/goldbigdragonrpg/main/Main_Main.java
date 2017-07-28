@@ -26,23 +26,23 @@ import io.github.goldbigdragon.goldbigdragonrpg.admin.Admin_Command;
 import io.github.goldbigdragon.goldbigdragonrpg.area.Area_Command;
 import io.github.goldbigdragon.goldbigdragonrpg.area.Area_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.battle.Battle_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.corpse.Corpse_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.corpse.Corpse_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.corpse.Corpse_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.customitem.CustomItem_Command;
 import io.github.goldbigdragon.goldbigdragonrpg.dungeon.Dungeon_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Particle;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.ParticleUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.listener.*;
 import io.github.goldbigdragon.goldbigdragonrpg.map.Map;
-import io.github.goldbigdragon.goldbigdragonrpg.monster.Monster_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.monster.Monster_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.monster.Monster_Kill;
 import io.github.goldbigdragon.goldbigdragonrpg.monster.Monster_Spawn;
 import io.github.goldbigdragon.goldbigdragonrpg.npc.NPC_Command;
 import io.github.goldbigdragon.goldbigdragonrpg.party.Party_Command;
 import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_Command;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_ScheduleManager;
-import io.github.goldbigdragon.goldbigdragonrpg.skill.OPboxSkill_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.skill.UserSkill_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.skill.OPboxSkill_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.skill.UserSkill_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.structure.Structure_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.user.*;
 import io.github.goldbigdragon.goldbigdragonrpg.util.ETC;
@@ -191,7 +191,7 @@ public class Main_Main extends JavaPlugin implements Listener {
         UserData.removeKey("Data");
         UserData.saveConfig();
         Main_ServerOption.PlayerCurrentArea.remove(player);
-        new Equip_GUI().FriendJoinQuitMessage(player, false);
+        new Equip_Gui().FriendJoinQuitMessage(player, false);
 
         YamlManager Config = YC.getNewConfig("config.yml");
         if (Config.getString("Server.QuitMessage") != null) {
@@ -217,7 +217,7 @@ public class Main_Main extends JavaPlugin implements Listener {
                     if (Config.getInt("Death.Track") != -1)
                         new io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain().Play(player, Config.getInt("Death.Track"));
             }
-            new Corpse_GUI().OpenReviveSelectGUI(player);
+            new Corpse_Gui().OpenReviveSelectGUI(player);
         }
     }
 
@@ -248,7 +248,7 @@ public class Main_Main extends JavaPlugin implements Listener {
                         if (Main_ServerOption.DeathRescue.getTypeId() == player.getInventory().getItemInMainHand().getTypeId()) {
                             ItemStack Pitem = player.getInventory().getItemInMainHand();
                             if (Main_ServerOption.DeathRescue.getAmount() <= Pitem.getAmount()) {
-                                Effect_Sound s = new Effect_Sound();
+                                SoundUtil s = new SoundUtil();
                                 String Name = null;
                                 if (AS.getItemInHand().getType() != Material.AIR)
                                     Name = AS.getItemInHand().getItemMeta().getDisplayName();
@@ -269,12 +269,12 @@ public class Main_Main extends JavaPlugin implements Listener {
                                                 l.add(0, 1, 0);
                                                 target.teleport(l);
                                                 for (short count2 = 0; count2 < 210; count2++)
-                                                    new Effect_Particle().PL(target.getLocation(), org.bukkit.Effect.SMOKE, new Util_Number().RandomNum(0, 14));
+                                                    new ParticleUtil().PL(target.getLocation(), org.bukkit.Effect.SMOKE, new Util_Number().RandomNum(0, 14));
                                                 s.SL(target.getLocation(), Sound.ENTITY_BLAZE_AMBIENT, 0.5F, 1.8F);
                                                 new io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain().Stop(target);
                                                 YamlController YC = new YamlController(Main_Main.plugin);
                                                 YamlManager Config = YC.getNewConfig("config.yml");
-                                                new Corpse_GUI().Penalty(target, Config.getString("Death.Spawn_Help.SetHealth"), Config.getString("Death.Spawn_Help.PenaltyEXP"), Config.getString("Death.Spawn_Help.PenaltyMoney"));
+                                                new Corpse_Gui().Penalty(target, Config.getString("Death.Spawn_Help.SetHealth"), Config.getString("Death.Spawn_Help.PenaltyEXP"), Config.getString("Death.Spawn_Help.PenaltyMoney"));
                                             } else {
                                                 s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                                 player.sendMessage(ChatColor.RED + "[SYSTEM] : 부활 아이템이 부족하여 부활시킬 수 없습니다!");
@@ -399,7 +399,7 @@ public class Main_Main extends JavaPlugin implements Listener {
                         if (!A.getAreaOption(Area[0], (char) 7)) {
                             event.setCancelled(true);
                             if (!event.getPlayer().isOp()) {
-                                new Effect_Sound().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                                new SoundUtil().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                                 event.getPlayer().sendMessage(ChatColor.RED + "[SYSTEM] : " + ChatColor.YELLOW + Area[1] + ChatColor.RED + " 지역에 있는 작물은 손 댈 수없습니다!");
                             }
                             return;
@@ -508,7 +508,7 @@ public class Main_Main extends JavaPlugin implements Listener {
                     if (event.getCurrentItem().getItemMeta().getLore().get(3).equals((ChatColor.YELLOW + "[클릭시 퀵슬롯에서 삭제]"))) {
                         event.setCancelled(true);
                         event.getWhoClicked().getInventory().setItem(event.getSlot(), null);
-                        new Effect_Sound().SP((Player) event.getWhoClicked(), Sound.BLOCK_ANVIL_LAND, 1.0F, 1.9F);
+                        new SoundUtil().SP((Player) event.getWhoClicked(), Sound.BLOCK_ANVIL_LAND, 1.0F, 1.9F);
                         return;
                     }
                 }
@@ -556,7 +556,7 @@ public class Main_Main extends JavaPlugin implements Listener {
 
         if (talker instanceof Player) {
             Player player = (Player) talker;
-            Effect_Sound s = new Effect_Sound();
+            SoundUtil s = new SoundUtil();
 
             switch (string) {
                 case "gui사용":
@@ -573,12 +573,12 @@ public class Main_Main extends JavaPlugin implements Listener {
                 case "친구":
                 case "gbdfriend":
                     s.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
-                    new ETC_GUI().FriendsGUI(player, (short) 0);
+                    new ETC_Gui().FriendsGUI(player, (short) 0);
                     return true;
                 case "스킬":
                 case "gbdskill":
                     s.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
-                    UserSkill_GUI PSKGUI = new UserSkill_GUI();
+                    UserSkill_Gui PSKGUI = new UserSkill_Gui();
                     PSKGUI.MainSkillsListGUI(player, (short) 0);
                     return true;
                 case "아이템":
@@ -638,23 +638,23 @@ public class Main_Main extends JavaPlugin implements Listener {
                 case "스텟":
                 case "gbdstat":
                     s.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
-                    new Stats_GUI().StatusGUI((Player) talker);
+                    new Stats_Gui().StatusGUI((Player) talker);
                     return true;
                 case "옵션":
                 case "gbdoption":
                     s.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
-                    new Option_GUI().optionGUI((Player) talker);
+                    new Option_Gui().optionGUI((Player) talker);
                     return true;
                 case "기타":
                 case "gbdetc":
                     s.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
-                    new ETC_GUI().ETCGUI_Main((Player) talker);
+                    new ETC_Gui().ETCGUI_Main((Player) talker);
                     return true;
                 case "몬스터":
                 case "gbdmobs":
                     if (talker.isOp()) {
                         s.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
-                        new Monster_GUI().MonsterListGUI(player, 0);
+                        new Monster_Gui().MonsterListGUI(player, 0);
                     } else {
                         talker.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
                         s.SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
@@ -699,7 +699,7 @@ public class Main_Main extends JavaPlugin implements Listener {
                                 else
                                     SkillList.set(u.getString(player, (byte) 2) + ".SkillRank." + u.getInt(player, (byte) 4) + ".Command", CommandString);
                                 SkillList.saveConfig();
-                                OPboxSkill_GUI SKGUI = new OPboxSkill_GUI();
+                                OPboxSkill_Gui SKGUI = new OPboxSkill_Gui();
                                 SKGUI.SkillRankOptionGUI(player, u.getString(player, (byte) 2), (short) u.getInt(player, (byte) 4));
                                 u.clearAll(player);
                             }

@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.skill;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_Interact;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Chat;
@@ -35,9 +35,9 @@ import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 public class Skill_Chat extends Util_Chat {
     public void SkillTypeChatting(PlayerChatEvent event) {
         UserData_Object u = new UserData_Object();
-        Effect_Sound sound = new Effect_Sound();
+        SoundUtil sound = new SoundUtil();
         Player player = event.getPlayer();
-        OPboxSkill_GUI SKGUI = new OPboxSkill_GUI();
+        OPboxSkill_Gui SKGUI = new OPboxSkill_Gui();
         YamlController YC = new YamlController(Main_Main.plugin);
 
         YamlManager SkillList = YC.getNewConfig("Skill/SkillList.yml");

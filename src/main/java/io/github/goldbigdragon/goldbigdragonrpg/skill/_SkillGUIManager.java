@@ -30,19 +30,19 @@ public class _SkillGUIManager {
 
     public void ClickRouting(InventoryClickEvent event, String SubjectCode) {
         if (SubjectCode.compareTo("00") == 0)//전체 스킬 목록
-            new OPboxSkill_GUI().AllSkillsGUIClick(event);
+            new OPboxSkill_Gui().AllSkillsGUIClick(event);
         else if (SubjectCode.compareTo("01") == 0)//스킬 관리
-            new OPboxSkill_GUI().IndividualSkillOptionGUIClick(event);
+            new OPboxSkill_Gui().IndividualSkillOptionGUIClick(event);
         else if (SubjectCode.compareTo("02") == 0)//스킬 랭크별 관리
-            new OPboxSkill_GUI().SkillRankOptionGUIClick(event);
+            new OPboxSkill_Gui().SkillRankOptionGUIClick(event);
         else if (SubjectCode.compareTo("03") == 0)//직업군 선택
-            new UserSkill_GUI().MapleStory_MainSkillsListGUIClick(event);
+            new UserSkill_Gui().MapleStory_MainSkillsListGUIClick(event);
         else if (SubjectCode.compareTo("04") == 0)//카테고리 선택
-            new UserSkill_GUI().Mabinogi_MainSkillsListGUIClick(event);
+            new UserSkill_Gui().Mabinogi_MainSkillsListGUIClick(event);
         else if (SubjectCode.compareTo("05") == 0)//보유 스킬 목록
-            new UserSkill_GUI().SkillListGUIClick(event);
+            new UserSkill_Gui().SkillListGUIClick(event);
         else if (SubjectCode.compareTo("06") == 0)//퀵슬롯 등록
-            new UserSkill_GUI().AddQuickBarGUIClick(event);
+            new UserSkill_Gui().AddQuickBarGUIClick(event);
         else if (SubjectCode.compareTo("07") == 0)//모든 매직스펠 보기
             new io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain().ShowAllMaigcGUIClick(event);
     }

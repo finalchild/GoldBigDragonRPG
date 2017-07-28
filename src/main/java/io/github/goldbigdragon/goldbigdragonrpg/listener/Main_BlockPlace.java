@@ -20,7 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.listener;
 
 import io.github.goldbigdragon.goldbigdragonrpg.area.Area_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -55,7 +55,7 @@ public class Main_BlockPlace implements Listener {
         if (Area != null)
             if (!A.getAreaOption(Area[0], (char) 5) && !player.isOp()) {
                 event.setCancelled(true);
-                new Effect_Sound().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                 player.sendMessage(ChatColor.RED + "[SYSTEM] : " + ChatColor.YELLOW + Area[1] + ChatColor.RED + " 지역 에서는 블록 설치가 불가능합니다!");
                 return;
             }

@@ -26,7 +26,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Packet;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.PacketUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
@@ -160,7 +160,7 @@ public class Dungeon_Creater {
             //파티 찾아서 파티원들 모두 등록하기
             for (int count = 0; count < nearPartyMember.size(); count++) {
                 new Dungeon_Main().EraseAllDungeonKey(nearPartyMember.get(count), false);
-                new Effect_Packet().sendTitle(nearPartyMember.get(count), "\'" + ChatColor.WHITE + "대기실\'", (byte) 1, (byte) 0, (byte) 1);
+                new PacketUtil().sendTitle(nearPartyMember.get(count), "\'" + ChatColor.WHITE + "대기실\'", (byte) 1, (byte) 0, (byte) 1);
                 nearPartyMember.get(count).teleport(new Location(Bukkit.getWorld("Dungeon"), -87, 31, -87));
                 DSO.addDungeonMaker(nearPartyMember.get(count).getName());
                 Main_ServerOption.PlayerList.get(nearPartyMember.get(count).getUniqueId().toString()).setDungeon_Enter(DungeonName);
@@ -178,7 +178,7 @@ public class Dungeon_Creater {
         } else {
             new Dungeon_Main().EraseAllDungeonKey(player, false);
             player.teleport(new Location(Bukkit.getWorld("Dungeon"), -87, 31, -87));
-            new Effect_Packet().sendTitle(player, "\'" + ChatColor.WHITE + "대기실\'", (byte) 1, (byte) 0, (byte) 1);
+            new PacketUtil().sendTitle(player, "\'" + ChatColor.WHITE + "대기실\'", (byte) 1, (byte) 0, (byte) 1);
             DSO.addDungeonMaker(player.getName());
             Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setDungeon_Enter(DungeonName);
             Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setDungeon_UTC(UTC);

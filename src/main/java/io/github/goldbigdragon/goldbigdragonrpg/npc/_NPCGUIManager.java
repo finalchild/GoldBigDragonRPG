@@ -32,47 +32,47 @@ public class _NPCGUIManager {
 
     public void ClickRouting(InventoryClickEvent event, String SubjectCode) {
         if (SubjectCode.compareTo("00") == 0)//NPC 메인 GUI
-            new NPC_GUI().MainGUIClick(event, ChatColor.stripColor(event.getInventory().getName()).split("C] ")[1]);
+            new NPC_Gui().MainGUIClick(event, ChatColor.stripColor(event.getInventory().getName()).split("C] ")[1]);
         else if (SubjectCode.compareTo("01") == 0)//NPC 상점 목록 GUI
-            new NPC_GUI().ShopGUIClick(event, ChatColor.stripColor(event.getInventory().getName()).split("C] ")[1]);
+            new NPC_Gui().ShopGUIClick(event, ChatColor.stripColor(event.getInventory().getName()).split("C] ")[1]);
         else if (SubjectCode.compareTo("02") == 0)//NPC 대화 GUI
-            new NPC_GUI().TalkGUIClick(event, ChatColor.stripColor(event.getInventory().getName()).split("C] ")[1]);
+            new NPC_Gui().TalkGUIClick(event, ChatColor.stripColor(event.getInventory().getName()).split("C] ")[1]);
         else if (SubjectCode.compareTo("03") == 0)//NPC 모든 퀘스트 목록 GUI
-            new NPC_GUI().QuestAddGUIClick(event);
+            new NPC_Gui().QuestAddGUIClick(event);
         else if (SubjectCode.compareTo("04") == 0)//진행 가능 퀘스트 목록 GUI
-            new NPC_GUI().QuestListGUIClick(event);
+            new NPC_Gui().QuestListGUIClick(event);
         else if (SubjectCode.compareTo("05") == 0)//NPC 직업 선택 GUI
-            new NPC_GUI().NPCjobGUIClick(event, ChatColor.stripColor(event.getInventory().getItem(18).getItemMeta().getLore().get(1)));
+            new NPC_Gui().NPCjobGUIClick(event, ChatColor.stripColor(event.getInventory().getItem(18).getItemMeta().getLore().get(1)));
         else if (SubjectCode.compareTo("06") == 0)//NPC 워프 목록 GUI
-            new NPC_GUI().WarpMainGUIClick(event);
+            new NPC_Gui().WarpMainGUIClick(event);
         else if (SubjectCode.compareTo("07") == 0)//NPC 워프 등록 GUI
-            new NPC_GUI().WarperGUIClick(event);
+            new NPC_Gui().WarperGUIClick(event);
         else if (SubjectCode.compareTo("08") == 0)//NPC 개조 목록 GUI
-            new NPC_GUI().UpgraderGUIClick(event);
+            new NPC_Gui().UpgraderGUIClick(event);
         else if (SubjectCode.compareTo("09") == 0)//NPC 개조식 등록 GUI
-            new NPC_GUI().SelectUpgradeRecipeGUIClick(event);
+            new NPC_Gui().SelectUpgradeRecipeGUIClick(event);
         else if (SubjectCode.compareTo("0a") == 0)//NPC 룬 세공사 GUI
-            new NPC_GUI().RuneEquipGUIClick(event);
+            new NPC_Gui().RuneEquipGUIClick(event);
         else if (SubjectCode.compareTo("0b") == 0)//NPC 대화 목록 GUI
-            new NPC_GUI().TalkGUIClick(event);
+            new NPC_Gui().TalkGUIClick(event);
         else if (SubjectCode.compareTo("0c") == 0)//NPC 대화 설정 GUI
-            new NPC_GUI().TalkSettingGUIClick(event);
+            new NPC_Gui().TalkSettingGUIClick(event);
         else if (SubjectCode.compareTo("0d") == 0)//NPC 가르칠 스킬 선택 GUI
-            new NPC_GUI().AddAbleSkillsGUIClick(event);
+            new NPC_Gui().AddAbleSkillsGUIClick(event);
         else if (SubjectCode.compareTo("0e") == 0)//NPC 물품 수량 설정 GUI
-            new NPC_GUI().ItemBuyGuiClick(event);
+            new NPC_Gui().ItemBuyGuiClick(event);
         else if (SubjectCode.compareTo("0f") == 0)//NPC 수리 GUI
-            new NPC_GUI().ItemFixGuiClick(event);
+            new NPC_Gui().ItemFixGuiClick(event);
         else if (SubjectCode.compareTo("10") == 0)//NPC 선물 아이템 목록 GUI
-            new NPC_GUI().PresentGuiClick(event);
+            new NPC_Gui().PresentGuiClick(event);
         else if (SubjectCode.compareTo("11") == 0)//NPC 선물 아이템 설정 GUI
-            new NPC_GUI().PresentGuiClick(event);
+            new NPC_Gui().PresentGuiClick(event);
     }
 
     public void CloseRouting(InventoryCloseEvent event, String SubjectCode) {
         if (SubjectCode.compareTo("0a") == 0)//NPC 룬 세공사 GUI
-            new NPC_GUI().RuneEquipGUIClose(event);
+            new NPC_Gui().RuneEquipGUIClose(event);
         else if (SubjectCode.compareTo("11") == 0)//NPC 선물 아이템 설정 GUI
-            new NPC_GUI().PresentInventoryClose(event);
+            new NPC_Gui().PresentInventoryClose(event);
     }
 }

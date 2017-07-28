@@ -23,10 +23,10 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.monster.Monster_Kill;
-import io.github.goldbigdragon.goldbigdragonrpg.skill.OPboxSkill_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.skill.OPboxSkill_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
@@ -298,13 +298,13 @@ public class SpellMain implements Listener {
         int sort = Integer.parseInt(ChatColor.stripColor(event.getInventory().getItem(49).getItemMeta().getLore().get(1)));
 
         Player player = (Player) event.getWhoClicked();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         event.setCancelled(true);
         switch (event.getSlot()) {
             case 45://이전 목록으로
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
-                new OPboxSkill_GUI().SkillRankOptionGUI(player, SkillName, (short) SkillLevel);
+                new OPboxSkill_Gui().SkillRankOptionGUI(player, SkillName, (short) SkillLevel);
                 break;
             case 48://이전 페이지
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
@@ -332,7 +332,7 @@ public class SpellMain implements Listener {
                 YamlManager SkillList = YC.getNewConfig("Skill/SkillList.yml");
                 SkillList.set(SkillName + ".SkillRank." + SkillLevel + ".MagicSpells", ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                 SkillList.saveConfig();
-                new OPboxSkill_GUI().SkillRankOptionGUI(player, SkillName, (short) SkillLevel);
+                new OPboxSkill_Gui().SkillRankOptionGUI(player, SkillName, (short) SkillLevel);
         }
     }
 

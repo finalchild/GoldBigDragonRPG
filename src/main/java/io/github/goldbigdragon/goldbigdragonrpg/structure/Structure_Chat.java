@@ -19,8 +19,8 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.structure;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Packet;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.PacketUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
@@ -52,7 +52,7 @@ public class Structure_Chat {
     }
 
     private void PostChatting(PlayerChatEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = event.getPlayer();
         UserData_Object u = new UserData_Object();
         String Message = ChatColor.stripColor(event.getMessage());
@@ -100,7 +100,7 @@ public class Structure_Chat {
     }
 
     private void BoardChatting(PlayerChatEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = event.getPlayer();
         UserData_Object u = new UserData_Object();
         String Message = ChatColor.stripColor(event.getMessage());
@@ -138,7 +138,7 @@ public class Structure_Chat {
     }
 
     private void TradeBoardChatting(PlayerChatEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = event.getPlayer();
         UserData_Object u = new UserData_Object();
         String Message = ChatColor.stripColor(event.getMessage());
@@ -349,7 +349,7 @@ public class Structure_Chat {
                                         return;
                                     }
                                     s.SP(Target, Sound.ENTITY_VILLAGER_YES, 1.0F, 1.0F);
-                                    new Effect_Packet().sendTitleSubTitle(Target, "\'§3[거래 성사]\'", "\'§3거래 게시판에 등록한 물품이 판매되었습니다.\'", (byte) 1, (byte) 3, (byte) 1);
+                                    new PacketUtil().sendTitleSubTitle(Target, "\'§3[거래 성사]\'", "\'§3거래 게시판에 등록한 물품이 판매되었습니다.\'", (byte) 1, (byte) 3, (byte) 1);
                                     Main_ServerOption.PlayerList.get(u.getString(player, (byte) 2)).addStat_MoneyAndEXP(Price - MinusSellCommission, 0, false);
                                 } else {
                                     YamlManager TargetYML = YC.getNewConfig("Stats/" + u.getString(player, (byte) 2) + ".yml");
@@ -447,7 +447,7 @@ public class Structure_Chat {
                             } else {
                                 s.SP(Target, Sound.ENTITY_VILLAGER_YES, 1.0F, 1.0F);
                                 Main_ServerOption.PlayerList.get(u.getString(player, (byte) 2)).addStat_MoneyAndEXP(-1 * price, 0, false);
-                                new Effect_Packet().sendTitleSubTitle(Target, "\'§3[거래 성사]\'", "\'§3거래 게시판에 의뢰한 물품이 도착하였습니다.\'", (byte) 1, (byte) 3, (byte) 1);
+                                new PacketUtil().sendTitleSubTitle(Target, "\'§3[거래 성사]\'", "\'§3거래 게시판에 의뢰한 물품이 도착하였습니다.\'", (byte) 1, (byte) 3, (byte) 1);
                             }
                         } else {
                             YamlManager TargetYML = YC.getNewConfig("Stats/" + u.getString(player, (byte) 2) + ".yml");
@@ -530,7 +530,7 @@ public class Structure_Chat {
     }
 
     private void CampFireChatting(PlayerChatEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = event.getPlayer();
         UserData_Object u = new UserData_Object();
         String Message = ChatColor.stripColor(event.getMessage());
@@ -545,7 +545,7 @@ public class Structure_Chat {
     }
 
     private boolean isIntMinMax(String message, Player player, int Min, int Max) {
-        Effect_Sound sound = new Effect_Sound();
+        SoundUtil sound = new SoundUtil();
         try {
             if (message.split(" ").length <= 1 && Integer.parseInt(message) >= Min && Integer.parseInt(message) <= Max)
                 return true;
@@ -561,7 +561,7 @@ public class Structure_Chat {
     }
 
     private byte askOX(String message, Player player) {
-        Effect_Sound sound = new Effect_Sound();
+        SoundUtil sound = new SoundUtil();
         if (message.split(" ").length <= 1) {
             if (message.compareTo("x") == 0 || message.compareTo("X") == 0 || message.compareTo("아니오") == 0)
                 return 0;

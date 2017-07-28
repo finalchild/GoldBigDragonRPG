@@ -22,9 +22,9 @@ package io.github.goldbigdragon.goldbigdragonrpg.dungeon;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Packet;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Particle;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.PacketUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.ParticleUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_ItemDrop;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.monster.Monster_Spawn;
@@ -87,14 +87,14 @@ public class Dungeon_Main {
                 Long target = Main_ServerOption.PlayerList.get(partyMember[count].getUniqueId().toString()).getDungeon_UTC();
                 if (target.equals(Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getDungeon_UTC())) {
                     {
-                        new Effect_Sound().SP(partyMember[count], Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.8F);
+                        new SoundUtil().SP(partyMember[count], Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.8F);
                         new Util_Player().giveItemDrop(partyMember[count], item, partyMember[count].getLocation());
                         new Util_Player().DungeonClear(partyMember[count], Reward_M, Reward_E);
                     }
                 }
             }
         } else {
-            new Effect_Sound().SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.8F);
+            new SoundUtil().SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.8F);
             new Util_Player().giveItemDrop(player, item, player.getLocation());
             new Util_Player().DungeonClear(player, Reward_M, Reward_E);
         }
@@ -207,7 +207,7 @@ public class Dungeon_Main {
             DungeonClear(player, BossLoc);
         else {
             Monster_Spawn MC = new Monster_Spawn();
-            Effect_Sound s = new Effect_Sound();
+            SoundUtil s = new SoundUtil();
             for (int count = 0; count < MobList.length; count++) {
                 BossLoc.add(0, 0.2, 0);
                 s.SL(BossLoc, Sound.ENTITY_WITHER_DEATH, 1.3F, 1.8F);
@@ -355,7 +355,7 @@ public class Dungeon_Main {
                         break;
                 }
                 Monster_Spawn MC = new Monster_Spawn();
-                Effect_Sound s = new Effect_Sound();
+                SoundUtil s = new SoundUtil();
                 loc.add(0, 1, 0);
                 for (int count = 0; count < 7; count++) {
                     s.SL(loc, Sound.ENTITY_WITHER_DEATH, 1.3F, 1.8F);
@@ -383,13 +383,13 @@ public class Dungeon_Main {
         if (event.getPlayer().getInventory().getItemInMainHand().getTypeId() >= 325 &&
                 event.getPlayer().getInventory().getItemInMainHand().getTypeId() <= 327) {
             event.setCancelled(true);
-            new Effect_Sound().SP(event.getPlayer(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
-            new Effect_Packet().sendActionBar(event.getPlayer(), ChatColor.RED + "" + ChatColor.BOLD + "[던전에서는 양동이 사용이 불가능합니다!]");
+            new SoundUtil().SP(event.getPlayer(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+            new PacketUtil().sendActionBar(event.getPlayer(), ChatColor.RED + "" + ChatColor.BOLD + "[던전에서는 양동이 사용이 불가능합니다!]");
             return;
         } else if (event.getPlayer().getInventory().getItemInMainHand().getTypeId() == 432) {
             event.setCancelled(true);
-            new Effect_Sound().SP(event.getPlayer(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
-            new Effect_Packet().sendActionBar(event.getPlayer(), ChatColor.RED + "" + ChatColor.BOLD + "[던전에서는 후렴과 사용이 불가능합니다!]");
+            new SoundUtil().SP(event.getPlayer(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+            new PacketUtil().sendActionBar(event.getPlayer(), ChatColor.RED + "" + ChatColor.BOLD + "[던전에서는 후렴과 사용이 불가능합니다!]");
             return;
         }
         Block block = event.getClickedBlock();
@@ -397,7 +397,7 @@ public class Dungeon_Main {
             return;
         if (block.getType() == Material.AIR)
             return;
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (block.getType().getId() == 146)//덫 상자
         {
@@ -412,7 +412,7 @@ public class Dungeon_Main {
         else if (block.getType().getId() == 138)//던전 탈출용 신호기
         {
             event.setCancelled(true);
-            new Dungeon_GUI().DungeonEXIT(event.getPlayer());
+            new Dungeon_Gui().DungeonEXIT(event.getPlayer());
         } else if (block.getType().getId() == 23) //던전 문 열쇠구멍
         {
             event.setCancelled(true);
@@ -434,7 +434,7 @@ public class Dungeon_Main {
                             Location loc = event.getClickedBlock().getLocation();
                             String Title = "\'" + ChatColor.BLUE + "\'";
                             String SubTitle = "\'" + ChatColor.WHITE + "던전 룸 열쇠를 사용하여 문을 열었다.\'";
-                            new Effect_Packet().sendTitleSubTitle(event.getPlayer(), Title, SubTitle, (byte) 1, (byte) 2, (byte) 1);
+                            new PacketUtil().sendTitleSubTitle(event.getPlayer(), Title, SubTitle, (byte) 1, (byte) 2, (byte) 1);
                             IronDoorOpening(loc);
                             switch (GridImage) {
                                 case "▲":
@@ -492,12 +492,12 @@ public class Dungeon_Main {
                         } else {
                             String Title = "\'" + ChatColor.BLUE + "\'";
                             String SubTitle = "\'" + ChatColor.WHITE + "문을 열기 위해서는 열쇠가 필요할 것 같다...\'";
-                            new Effect_Packet().sendTitleSubTitle(event.getPlayer(), Title, SubTitle, (byte) 1, (byte) 2, (byte) 1);
+                            new PacketUtil().sendTitleSubTitle(event.getPlayer(), Title, SubTitle, (byte) 1, (byte) 2, (byte) 1);
                         }
                     } else {
                         String Title = "\'" + ChatColor.BLUE + "\'";
                         String SubTitle = "\'" + ChatColor.WHITE + "열쇠로 열 수 있는 문이 아닌 것 같다...\'";
-                        new Effect_Packet().sendTitleSubTitle(event.getPlayer(), Title, SubTitle, (byte) 1, (byte) 2, (byte) 1);
+                        new PacketUtil().sendTitleSubTitle(event.getPlayer(), Title, SubTitle, (byte) 1, (byte) 2, (byte) 1);
                         return;
                     }
                 }
@@ -593,10 +593,10 @@ public class Dungeon_Main {
                 }
 
                 if (!treasureGet)
-                    new Effect_Packet().sendActionBar(player, ChatColor.RED + "" + ChatColor.BOLD + "[꽝! 다음 기회에...]");
+                    new PacketUtil().sendActionBar(player, ChatColor.RED + "" + ChatColor.BOLD + "[꽝! 다음 기회에...]");
             } else {
                 s.SP(player, Sound.ENTITY_ZOMBIE_ATTACK_IRON_DOOR, 1.0F, 0.5F);
-                new Effect_Packet().sendActionBar(player, ChatColor.WHITE + "" + ChatColor.BOLD + "[상자에 맞는 열쇠가 없습니다!]");
+                new PacketUtil().sendActionBar(player, ChatColor.WHITE + "" + ChatColor.BOLD + "[상자에 맞는 열쇠가 없습니다!]");
             }
         }
     }
@@ -606,7 +606,7 @@ public class Dungeon_Main {
         if (SB.getType() != Material.SIGN_POST)
             return false;
         Monster_Spawn MC = new Monster_Spawn();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         Sign SignBlock = (Sign) SB.getState();
         String GridImage = SignBlock.getLine(1);
@@ -814,8 +814,8 @@ public class Dungeon_Main {
         if (SB.getType() != Material.SIGN_POST)
             return;
         Monster_Spawn MC = new Monster_Spawn();
-        Effect_Sound s = new Effect_Sound();
-        Effect_Particle p = new Effect_Particle();
+        SoundUtil s = new SoundUtil();
+        ParticleUtil p = new ParticleUtil();
         if (block.getData() == 15 || block.getData() == 14 || block.getData() == 13 ||
                 block.getData() == 11 || block.getData() == 8) {
             switch (block.getData()) {
@@ -986,7 +986,7 @@ public class Dungeon_Main {
 
 
     private void DungeonDoorRemover(Player player, char GridImage, int Direction, Location loc) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Location Original = loc.add(0, -12, 0);
         Original.setX(loc.getX());
         Original.setY(loc.getY());

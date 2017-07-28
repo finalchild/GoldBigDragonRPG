@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.quest;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
 import org.bukkit.ChatColor;
@@ -40,7 +40,7 @@ public class Quest_InteractEvent {
         Player player = event.getPlayer();
         event.setCancelled(true);
         if (Type.compareTo("Quest") == 0) {
-            Quest_GUI QGUI = new Quest_GUI();
+            Quest_Gui QGUI = new Quest_Gui();
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager QuestConfig = YC.getNewConfig("Quest/QuestList.yml");
             UserData_Object u = new UserData_Object();
@@ -70,7 +70,7 @@ public class Quest_InteractEvent {
                     else
                         u.setString(player, (byte) 2, target.getCustomName());
                 }
-                new Effect_Sound().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_HORSE_ARMOR, 1.0F, 1.2F);
+                new SoundUtil().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_HORSE_ARMOR, 1.0F, 1.2F);
                 if (u.getString(player, (byte) 1).compareTo("Give") == 0) {
                     player.sendMessage(ChatColor.GREEN + "[SYSTEM] : NPC가 유저에게 받을 물건을 설정하세요!");
                     player.closeInventory();
@@ -102,7 +102,7 @@ public class Quest_InteractEvent {
                                 QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + b + ".NPCname", target.getName());
                             QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + b + ".NPCuuid", target.getUniqueId().toString());
                         }
-                        new Effect_Sound().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
+                        new SoundUtil().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
                         player.sendMessage(ChatColor.GREEN + "[SYSTEM] : 성공적으로 등록되었습니다!");
                         QuestConfig.saveConfig();
                         QGUI.FixQuestGUI(player, (short) 0, u.getString(player, (byte) 2));
@@ -123,7 +123,7 @@ public class Quest_InteractEvent {
                             QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + c + ".TargetNPCname", target.getName());
                         QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + c + ".TargetNPCuuid", target.getUniqueId().toString());
                     }
-                    new Effect_Sound().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
+                    new SoundUtil().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
                     player.sendMessage(ChatColor.GREEN + "[SYSTEM] : 성공적으로 등록되었습니다!");
                     QuestConfig.saveConfig();
                     QGUI.FixQuestGUI(player, (short) 0, u.getString(player, (byte) 2));
@@ -145,7 +145,7 @@ public class Quest_InteractEvent {
         if (event.getAction() == Action.LEFT_CLICK_BLOCK) {
             if (u.getString(player, (byte) 1).compareTo("TelePort") == 0) {
                 String QuestName = u.getString(player, (byte) 3);
-                Quest_GUI QGUI = new Quest_GUI();
+                Quest_Gui QGUI = new Quest_Gui();
 
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager QuestConfig = YC.getNewConfig("Quest/QuestList.yml");
@@ -160,7 +160,7 @@ public class Quest_InteractEvent {
                 QuestConfig.saveConfig();
                 QGUI.FixQuestGUI(player, (short) 0, QuestName);
                 u.clearAll(player);
-                new Effect_Sound().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
+                new SoundUtil().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
                 player.sendMessage(ChatColor.GREEN + "[SYSTEM] : 성공적으로 등록되었습니다!");
                 return;
             }
@@ -191,7 +191,7 @@ public class Quest_InteractEvent {
                     u.setString(player, (byte) 3, null);
                     u.setString(player, (byte) 1, "BPID");
                     u.setInt(player, (byte) 1, size);
-                    new Effect_Sound().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
+                    new SoundUtil().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
                     player.sendMessage(ChatColor.GREEN + "[퀘스트] : 설치 될 블록 ID를 입력 해 주세요!");
                     return;
                 }

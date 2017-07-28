@@ -19,8 +19,8 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.customitem;
 
-import io.github.goldbigdragon.goldbigdragonrpg.admin.Upgrade_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.admin.Upgrade_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_Interact;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
@@ -37,11 +37,11 @@ import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 public class CustomItem_Chat extends Util_Chat {
     public void ItemTypeChatting(PlayerChatEvent event) {
         UserData_Object u = new UserData_Object();
-        Effect_Sound sound = new Effect_Sound();
+        SoundUtil sound = new SoundUtil();
         Player player = event.getPlayer();
-        CustomItem_GUI IGUI = new CustomItem_GUI();
-        Upgrade_GUI UpGUI = new Upgrade_GUI();
-        Effect_Sound s = new Effect_Sound();
+        CustomItem_Gui IGUI = new CustomItem_Gui();
+        Upgrade_Gui UpGUI = new Upgrade_Gui();
+        SoundUtil s = new SoundUtil();
 
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager RecipeList = YC.getNewConfig("Item/Upgrade.yml");
@@ -106,7 +106,7 @@ public class CustomItem_Chat extends Util_Chat {
                 ItemList.saveConfig();
                 if (u.getInt(player, (byte) 4) != -1) {
                     if (u.getInt(player, (byte) 4) == -8) {
-                        UseableItem_GUI UGUI = new UseableItem_GUI();
+                        UseableItem_Gui UGUI = new UseableItem_Gui();
                         UGUI.NewUseableItemGUI(player, number);
                         u.clearAll(player);
                         return;
@@ -131,7 +131,7 @@ public class CustomItem_Chat extends Util_Chat {
                 ItemList.saveConfig();
                 if (u.getInt(player, (byte) 4) != -1) {
                     if (u.getInt(player, (byte) 4) == -8) {
-                        UseableItem_GUI UGUI = new UseableItem_GUI();
+                        UseableItem_Gui UGUI = new UseableItem_Gui();
                         UGUI.NewUseableItemGUI(player, number);
                         u.clearAll(player);
                         return;
@@ -185,7 +185,7 @@ public class CustomItem_Chat extends Util_Chat {
                 ItemList.saveConfig();
                 s.SP(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
                 if (u.getType(player).compareTo("UseableItem") == 0) {
-                    UseableItem_GUI UGUI = new UseableItem_GUI();
+                    UseableItem_Gui UGUI = new UseableItem_Gui();
                     UGUI.NewUseableItemGUI(player, number);
                 } else
                     IGUI.NewItemGUI(player, number);
@@ -407,7 +407,7 @@ public class CustomItem_Chat extends Util_Chat {
         ItemList.saveConfig();
         s.SP(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
         if (u.getType(player).compareTo("UseableItem") == 0)
-            new UseableItem_GUI().NewUseableItemGUI(player, number);
+            new UseableItem_Gui().NewUseableItemGUI(player, number);
         else
             IGUI.NewItemGUI(player, number);
         u.clearAll(player);

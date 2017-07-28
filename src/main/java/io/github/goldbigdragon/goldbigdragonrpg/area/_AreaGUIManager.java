@@ -31,31 +31,31 @@ public class _AreaGUIManager {
 
     public void ClickRouting(InventoryClickEvent event, String SubjectCode) {
         if (SubjectCode.compareTo("00") == 0)//전체 영역 목록
-            new Area_GUI().AreaListGUIClick(event);
+            new Area_Gui().AreaListGUIClick(event);
         else if (SubjectCode.compareTo("01") == 0)//영역 설정
-            new Area_GUI().AreaSettingGUIInventoryclick(event);
+            new Area_Gui().AreaSettingGUIInventoryclick(event);
         else if (SubjectCode.compareTo("02") == 0)//영역 몬스터 스폰 룰 설정
-            new Area_GUI().AreaAddMonsterSpawnRuleGUIClick(event);
+            new Area_Gui().AreaAddMonsterSpawnRuleGUIClick(event);
         else if (SubjectCode.compareTo("03") == 0)//영역 대체 몬스터 설정
-            new Area_GUI().AreaMonsterSettingGUIClick(event);
+            new Area_Gui().AreaMonsterSettingGUIClick(event);
         else if (SubjectCode.compareTo("04") == 0)//영역 낚시 보상 설정
-            new Area_GUI().AreaFishSettingGUIClick(event);
+            new Area_Gui().AreaFishSettingGUIClick(event);
         else if (SubjectCode.compareTo("05") == 0)//영역 특산품 목록
-            new Area_GUI().AreaBlockSettingGUIClick(event);
+            new Area_Gui().AreaBlockSettingGUIClick(event);
         else if (SubjectCode.compareTo("06") == 0)//영역 특산품 설정
-            new Area_GUI().AreaBlockItemSettingGUIClick(event);
+            new Area_Gui().AreaBlockItemSettingGUIClick(event);
         else if (SubjectCode.compareTo("07") == 0)//영역 몬스터 선택
-            new Area_GUI().AreaAddMonsterListGUIClick(event);
+            new Area_Gui().AreaAddMonsterListGUIClick(event);
         else if (SubjectCode.compareTo("08") == 0)//영역 특수 몬스터 선택
-            new Area_GUI().AreaSpawnSpecialMonsterListGUIClick(event);
+            new Area_Gui().AreaSpawnSpecialMonsterListGUIClick(event);
         else if (SubjectCode.compareTo("09") == 0)//영역 배경음 선택
-            new Area_GUI().AreaMusicSettingGUIClick(event);
+            new Area_Gui().AreaMusicSettingGUIClick(event);
     }
 
     public void CloseRouting(InventoryCloseEvent event, String SubjectCode) {
         if (SubjectCode.compareTo("04") == 0)//영역 낚시 보상 설정
-            new Area_GUI().FishingSettingInventoryClose(event);
+            new Area_Gui().FishingSettingInventoryClose(event);
         else if (SubjectCode.compareTo("06") == 0)//영역 특산품 설정
-            new Area_GUI().BlockItemSettingInventoryClose(event);
+            new Area_Gui().BlockItemSettingInventoryClose(event);
     }
 }

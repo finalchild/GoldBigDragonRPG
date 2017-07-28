@@ -26,7 +26,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.admin.*;
 import io.github.goldbigdragon.goldbigdragonrpg.area.Area_Chat;
 import io.github.goldbigdragon.goldbigdragonrpg.customitem.CustomItem_Chat;
 import io.github.goldbigdragon.goldbigdragonrpg.dungeon.Dungeon_Chat;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.job.Job_Chat;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
@@ -35,8 +35,8 @@ import io.github.goldbigdragon.goldbigdragonrpg.npc.NPC_Chat;
 import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_Chat;
 import io.github.goldbigdragon.goldbigdragonrpg.skill.Skill_Chat;
 import io.github.goldbigdragon.goldbigdragonrpg.structure.Structure_Chat;
-import io.github.goldbigdragon.goldbigdragonrpg.user.ETC_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.user.Equip_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.user.ETC_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.user.Equip_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Chat;
 import io.github.goldbigdragon.goldbigdragonrpg.warp.Warp_Chat;
@@ -57,7 +57,7 @@ public class Main_PlayerChat extends Util_Chat implements Listener {
     public void PlayerChatting(PlayerChatEvent event) {
         event.setMessage(ChatColor.translateAlternateColorCodes('&', event.getMessage()));
         UserData_Object u = new UserData_Object();
-        Effect_Sound sound = new Effect_Sound();
+        SoundUtil sound = new SoundUtil();
         Player player = event.getPlayer();
         String playerUUID = event.getPlayer().getUniqueId().toString();
         if (u.getTemp(player) != null) {
@@ -213,7 +213,7 @@ public class Main_PlayerChat extends Util_Chat implements Listener {
     public void TEMProuter(PlayerChatEvent event, String Temp) {
         event.setCancelled(true);
         Player player = event.getPlayer();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         String Message = ChatColor.stripColor(event.getMessage());
         if (Temp.compareTo("FA") == 0) {
             if (Message.compareTo(player.getName()) == 0) {
@@ -222,13 +222,13 @@ public class Main_PlayerChat extends Util_Chat implements Listener {
             } else {
                 Message.replace(".", "");
                 if (Bukkit.getServer().getPlayer(Message) != null)
-                    new Equip_GUI().SetFriends(player, Bukkit.getServer().getPlayer(Message));
+                    new Equip_Gui().SetFriends(player, Bukkit.getServer().getPlayer(Message));
                 else {
                     s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                     player.sendMessage(ChatColor.RED + "[친구] : 해당 플레이어를 찾을 수 없습니다!");
                 }
             }
-            new ETC_GUI().FriendsGUI(player, (short) 0);
+            new ETC_Gui().FriendsGUI(player, (short) 0);
             new UserData_Object().initTemp(player);
         } else if (Temp.compareTo("Structure") == 0)
             new Structure_Chat().PlayerChatrouter(event);

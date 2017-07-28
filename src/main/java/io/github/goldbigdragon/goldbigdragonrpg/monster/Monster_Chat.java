@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.monster;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
@@ -36,12 +36,12 @@ public class Monster_Chat extends Util_Chat {
     public void MonsterTypeChatting(PlayerChatEvent event) {
         UserData_Object u = new UserData_Object();
         Player player = event.getPlayer();
-        Monster_GUI MGUI = new Monster_GUI();
+        Monster_Gui MGUI = new Monster_Gui();
         Monster_Spawn MC = new Monster_Spawn();
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager Monster = YC.getNewConfig("Monster/MonsterList.yml");
         Object[] monsterlist = Monster.getConfigurationSection("").getKeys(false).toArray();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         event.setCancelled(true);
         String message = ChatColor.stripColor(event.getMessage());
         switch (u.getString(player, (byte) 1)) {

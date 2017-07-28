@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.admin;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_Interact;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
@@ -42,7 +42,7 @@ public class OPbox_Chat extends Util_Chat {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager Config = YC.getNewConfig("config.yml");
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         event.setCancelled(true);
         String message = ChatColor.stripColor(event.getMessage());
         switch (u.getString(player, (byte) 1)) {
@@ -138,7 +138,7 @@ public class OPbox_Chat extends Util_Chat {
                     }
                     Config.saveConfig();
                     u.clearAll(player);
-                    new OPbox_GUI().OPBoxGUI_Death(player);
+                    new OPbox_Gui().OPBoxGUI_Death(player);
                 }
                 return;
             case "CCP"://ChangeChatPrefix
@@ -146,14 +146,14 @@ public class OPbox_Chat extends Util_Chat {
                 Config.set("Server.ChatPrefix", event.getMessage());
                 Config.saveConfig();
                 u.clearAll(player);
-                new OPbox_GUI().OPBoxGUI_Setting(player);
+                new OPbox_Gui().OPBoxGUI_Setting(player);
                 return;
             case "BMT"://BroadcastMessageTick
                 if (isIntMinMax(message, player, 1, 3600)) {
                     s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                     Config.set("Server.BroadCastSecond", Integer.parseInt(message));
                     Config.saveConfig();
-                    new OPbox_GUI().OPBoxGUI_BroadCast(player, (byte) 0);
+                    new OPbox_Gui().OPBoxGUI_BroadCast(player, (byte) 0);
                     u.clearAll(player);
                 }
                 return;
@@ -163,7 +163,7 @@ public class OPbox_Chat extends Util_Chat {
                 BroadCast.set(u.getInt(player, (byte) 0) + "", ChatColor.WHITE + event.getMessage());
                 BroadCast.saveConfig();
                 u.clearAll(player);
-                new OPbox_GUI().OPBoxGUI_BroadCast(player, (byte) 0);
+                new OPbox_Gui().OPBoxGUI_BroadCast(player, (byte) 0);
                 return;
             case "JM"://JoinMessage
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
@@ -173,7 +173,7 @@ public class OPbox_Chat extends Util_Chat {
                     Config.set("Server.JoinMessage", ChatColor.WHITE + event.getMessage());
                 Config.saveConfig();
                 u.clearAll(player);
-                new OPbox_GUI().OPBoxGUI_Setting(player);
+                new OPbox_Gui().OPBoxGUI_Setting(player);
                 return;
             case "QM"://QuitMessage
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
@@ -183,7 +183,7 @@ public class OPbox_Chat extends Util_Chat {
                     Config.set("Server.QuitMessage", ChatColor.WHITE + event.getMessage());
                 Config.saveConfig();
                 u.clearAll(player);
-                new OPbox_GUI().OPBoxGUI_Setting(player);
+                new OPbox_Gui().OPBoxGUI_Setting(player);
                 return;
             case "CSN"://ChangeStatName
             {
@@ -240,13 +240,13 @@ public class OPbox_Chat extends Util_Chat {
                         Config.saveConfig();
                         u.clearAll(player);
                         Main_ServerOption.Money = Pa;
-                        new OPbox_GUI().OPBoxGUI_Money(player);
+                        new OPbox_Gui().OPBoxGUI_Money(player);
                         return;
                 }
                 Config.saveConfig();
                 u.clearAll(player);
                 player.sendMessage(ChatColor.GREEN + "[System] : 변경된 내용은 서버 안전을 위해, 서버 리로드 이후 일괄 적용됩니다.");
-                new OPbox_GUI().OPBoxGUI_StatChange(player);
+                new OPbox_Gui().OPBoxGUI_StatChange(player);
             }
             return;
 
@@ -258,7 +258,7 @@ public class OPbox_Chat extends Util_Chat {
                     Config.set("Server.Max_Drop_Money", value);
                     Config.saveConfig();
                     u.clearAll(player);
-                    new OPbox_GUI().OPBoxGUI_Money(player);
+                    new OPbox_Gui().OPBoxGUI_Money(player);
                 }
             }
             return;
@@ -335,7 +335,7 @@ public class OPbox_Chat extends Util_Chat {
                     }
                     Config.saveConfig();
                     u.clearAll(player);
-                    new OPbox_GUI().OPBoxGUI_Money(player);
+                    new OPbox_Gui().OPBoxGUI_Money(player);
                 }
             }
             return;

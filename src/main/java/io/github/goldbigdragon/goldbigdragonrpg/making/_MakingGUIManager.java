@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.making;
 
-import io.github.goldbigdragon.goldbigdragonrpg.area.Area_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.area.Area_Gui;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 
@@ -32,11 +32,11 @@ public class _MakingGUIManager {
 
     public void ClickRouting(InventoryClickEvent event, String SubjectCode) {
         if (SubjectCode.compareTo("00") == 0)//전체 영역 목록
-            new Area_GUI().AreaListGUIClick(event);
+            new Area_Gui().AreaListGUIClick(event);
     }
 
     public void CloseRouting(InventoryCloseEvent event, String SubjectCode) {
         if (SubjectCode.compareTo("04") == 0)//영역 낚시 보상 설정
-            new Area_GUI().FishingSettingInventoryClose(event);
+            new Area_Gui().FishingSettingInventoryClose(event);
     }
 }

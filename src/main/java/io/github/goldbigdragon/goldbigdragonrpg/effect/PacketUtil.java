@@ -42,8 +42,8 @@ import net.minecraft.server.v1_12_R1.PacketPlayOutTitle;
 import net.minecraft.server.v1_12_R1.PacketPlayOutTitle.EnumTitleAction;
 import net.minecraft.server.v1_12_R1.PlayerConnection;
 
-public class Effect_Packet {
-    public void sendTitleSubTitle(Player player, String title, String subtitle, byte FadeInTime, byte ShowTime, byte FadeOutTime) {
+public class PacketUtil {
+    public static void sendTitleSubTitle(Player player, String title, String subtitle, byte FadeInTime, byte ShowTime, byte FadeOutTime) {
         CraftPlayer p = (CraftPlayer) player;
         PlayerConnection c = p.getHandle().playerConnection;
         IChatBaseComponent TitleText = ChatSerializer.b(title);
@@ -57,7 +57,7 @@ public class Effect_Packet {
         c.sendPacket(SubtitlePacket);
     }
 
-    public void sendTitle(Player player, String title, byte FadeInTime, byte ShowTime, byte FadeOutTime) {
+    public static void sendTitle(Player player, String title, byte FadeInTime, byte ShowTime, byte FadeOutTime) {
         CraftPlayer p = (CraftPlayer) player;
         PlayerConnection c = p.getHandle().playerConnection;
         IChatBaseComponent TitleText = ChatSerializer.b(title);
@@ -67,14 +67,14 @@ public class Effect_Packet {
         c.sendPacket(Length);
     }
 
-    public void sendTitleAllPlayers(String message) {
+    public static void sendTitleAllPlayers(String message) {
         Object[] PlayerList = Bukkit.getServer().getOnlinePlayers().toArray();
         for (int count = 0; count < PlayerList.length; count++)
             if (((Player) PlayerList[count]).isOnline())
                 sendTitle(((Player) PlayerList[count]), message, (byte) 1, (byte) 5, (byte) 1);
     }
 
-    public void sendActionBarAllPlayers(String message) {
+    public static void sendActionBarAllPlayers(String message) {
         Collection<? extends Player> playerlist = Bukkit.getServer().getOnlinePlayers();
         Player[] player = new Player[playerlist.size()];
         playerlist.toArray(player);
@@ -82,7 +82,7 @@ public class Effect_Packet {
             sendActionBar(player[count], message);
     }
 
-    public void sendActionBar(Player player, String message) {
+    public static void sendActionBar(Player player, String message) {
         PacketContainer packet = new PacketContainer(PacketType.Play.Server.CHAT);
         packet.getChatComponents().write(0, WrappedChatComponent.fromText(message));
         packet.getChatTypes().write(0, EnumWrappers.ChatType.GAME_INFO);
@@ -93,17 +93,17 @@ public class Effect_Packet {
         }
     }
 
-    public void switchHotbarSlot(Player p, int slot) {
+    public static void switchHotbarSlot(Player p, int slot) {
         PacketPlayOutHeldItemSlot ppoc = new PacketPlayOutHeldItemSlot(slot);
         ((CraftPlayer) p).getHandle().playerConnection.sendPacket(ppoc);
     }
 
-    public void changeItemSlot(Player p, int slot) {
+    public static void changeItemSlot(Player p, int slot) {
         Packet slotChange = new PacketPlayOutHeldItemSlot(slot);
         ((CraftPlayer) p).getHandle().playerConnection.sendPacket(slotChange);
     }
 
-    public void openOwnInventory(Player p) {
+    public static void openOwnInventory(Player p) {
         /*
 			minecraft:chest
 			minecraft:crafting_table
@@ -122,7 +122,7 @@ public class Effect_Packet {
         ((CraftPlayer) p).getHandle().playerConnection.sendPacket(slotChange);
     }
 
-    public void SpawnHallucinations(Player player, Player Hallucination) {
+    public static void SpawnHallucinations(Player player, Player Hallucination) {
         PacketPlayOutNamedEntitySpawn spawn = new PacketPlayOutNamedEntitySpawn(((CraftPlayer) Hallucination).getHandle());
         ((CraftPlayer) player).getHandle().playerConnection.sendPacket(spawn);
     }

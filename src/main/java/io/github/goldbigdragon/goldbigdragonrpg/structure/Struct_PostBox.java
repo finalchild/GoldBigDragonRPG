@@ -23,12 +23,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Player;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
@@ -44,7 +44,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 
-public class Struct_PostBox extends Util_GUI {
+public class Struct_PostBox extends GuiUtil {
     public void PostBoxMainGUI(Player player, byte Type) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager PlayerPost = YC.getNewConfig("Post/" + player.getUniqueId().toString() + ".yml");
@@ -222,7 +222,7 @@ public class Struct_PostBox extends Util_GUI {
     public void PostBoxMainGUIClick(InventoryClickEvent event) {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         if (slot == 26)//나가기
         {
             s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
@@ -393,7 +393,7 @@ public class Struct_PostBox extends Util_GUI {
     public void ItemPutterGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot != 4 && event.getCurrentItem().getTypeId() == 166) {
             if (event.getClickedInventory().getTitle().compareTo("container.inventory") != 0) {
@@ -408,7 +408,7 @@ public class Struct_PostBox extends Util_GUI {
         ItemStack item = event.getInventory().getItem(4);
         Player player = (Player) event.getPlayer();
         if (item != null) {
-            Effect_Sound s = new Effect_Sound();
+            SoundUtil s = new SoundUtil();
             UserData_Object u = new UserData_Object();
             u.setItemStack(player, item);
             s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.0F);
@@ -421,7 +421,7 @@ public class Struct_PostBox extends Util_GUI {
 
 
     public void SendPost(Player player) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         UserData_Object u = new UserData_Object();
         String targetUID = Bukkit.getPlayer(u.getString(player, (byte) 1)).getUniqueId().toString();
         YamlController YC = new YamlController(Main_Main.plugin);

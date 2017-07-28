@@ -19,8 +19,8 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.structure;
 
-import io.github.goldbigdragon.goldbigdragonrpg.dungeon.Dungeon_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.dungeon.Dungeon_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Object;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -55,7 +55,7 @@ public class Structure_Main {
 
      */
     public void CreateSturcture(Player player, String StructureCode, short StructureID, int Direction) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         ServerTick_Main.ServerTask = "[구조물 설치]";
         Long UTC = ServerTick_Main.nowUTC;
 
@@ -160,7 +160,7 @@ public class Structure_Main {
     }
 
     public void StructureUse(Player player, String StructureName) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         String Structrue = ChatColor.stripColor(StructureName);
         if (Structrue.compareTo("[우편함]") == 0) {
@@ -177,7 +177,7 @@ public class Structure_Main {
             new Struct_CampFire().CampFireMainGUI(player, StructureName);
         } else if (Structrue.compareTo("[제단]") == 0) {
             s.SP(player, Sound.AMBIENT_CAVE, 1.2F, 1.2F);
-            new Dungeon_GUI().AltarUseGUI(player, StructureName);
+            new Dungeon_Gui().AltarUseGUI(player, StructureName);
         }
     }
 

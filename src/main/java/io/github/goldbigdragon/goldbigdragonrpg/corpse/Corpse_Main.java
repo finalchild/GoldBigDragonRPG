@@ -52,7 +52,7 @@ public class Corpse_Main {
                 if (l.getBlockX() != player.getLocation().getBlockX() || l.getBlockY() != player.getLocation().getBlockY() || l.getBlockZ() != player.getLocation().getBlockZ())
                     player.teleport(l);
                 if (!isJoin)
-                    new Corpse_GUI().OpenReviveSelectGUI(player);
+                    new Corpse_Gui().OpenReviveSelectGUI(player);
                 else if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isBgmOn()) {
                     new io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain().Stop(player);
                     YamlController YC = new YamlController(Main_Main.plugin);
@@ -86,7 +86,7 @@ public class Corpse_Main {
                         }
                     }, 0);
                 }
-                new Corpse_GUI().OpenReviveSelectGUI(player);
+                new Corpse_Gui().OpenReviveSelectGUI(player);
                 if (!Corpses.containsKey(player.getName())) {
                     Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main_Main.plugin, new Runnable() {
                         @Override

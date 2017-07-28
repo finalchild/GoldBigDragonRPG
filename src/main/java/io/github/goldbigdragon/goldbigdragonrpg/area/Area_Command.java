@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.area;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_Interact;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
@@ -34,7 +34,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
 public class Area_Command {
     public void onCommand(CommandSender talker, Command command, String string, String[] args) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) talker;
         if (!player.isOp()) {
             talker.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
@@ -43,7 +43,7 @@ public class Area_Command {
         }
         if (args.length == 1) {
             if (args[0].equalsIgnoreCase("목록")) {
-                Area_GUI AGUI = new Area_GUI();
+                Area_Gui AGUI = new Area_Gui();
                 s.SP(player, org.bukkit.Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
                 AGUI.AreaListGUI(player, (short) 0);
                 return;
@@ -53,7 +53,7 @@ public class Area_Command {
 
                 if (AreaList.contains(args[0])) {
                     s.SP(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
-                    Area_GUI AGUI = new Area_GUI();
+                    Area_Gui AGUI = new Area_Gui();
                     AGUI.AreaSettingGUI(player, args[0]);
                 } else {
                     s.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);

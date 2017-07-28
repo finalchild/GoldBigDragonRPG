@@ -42,7 +42,7 @@ public class NewBie_Chat extends Util_Chat {
                     YamlManager NewBieYM = YC.getNewConfig("ETC/NewBie.yml");
                     NewBieYM.set("SupportMoney", Integer.parseInt(Message));
                     NewBieYM.saveConfig();
-                    NewBie_GUI NGUI = new NewBie_GUI();
+                    NewBie_Gui NGUI = new NewBie_Gui();
                     NGUI.NewBieSupportItemGUI(player);
                     u.clearAll(player);
                 }

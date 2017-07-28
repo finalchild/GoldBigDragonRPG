@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.npc;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
@@ -94,7 +94,7 @@ public class NPC_Main {
                 YamlManager PlayerSkill = YC.getNewConfig("Skill/PlayerData/" + player.getUniqueId() + ".yml");
                 String Categori = JobList.getString("Mabinogi.Added." + NPCscript.getString(TalkSubject + "." + randomScript + ".giveSkill"));
                 if (!PlayerSkill.contains("Mabinogi." + Categori + "." + NPCscript.getString(TalkSubject + "." + randomScript + ".giveSkill"))) {
-                    Effect_Sound s = new Effect_Sound();
+                    SoundUtil s = new SoundUtil();
                     PlayerSkill.set("Mabinogi." + Categori + "." + Skillname, 1);
                     PlayerSkill.saveConfig();
                     s.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.8F);

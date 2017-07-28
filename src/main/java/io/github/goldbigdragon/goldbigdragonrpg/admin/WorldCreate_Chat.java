@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.admin;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
@@ -38,7 +38,7 @@ public class WorldCreate_Chat {
         UserData_Object u = new UserData_Object();
         event.setCancelled(true);
         Player player = event.getPlayer();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         String Message = ChatColor.stripColor(event.getMessage());
         s.SP(player, Sound.BLOCK_ANVIL_USE, 1.0F, 0.8F);
         player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "[월드 생성] : 월드 생성 중...");

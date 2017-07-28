@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.quest;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 import org.bukkit.ChatColor;
@@ -32,11 +32,11 @@ import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 
 public class Quest_Command {
     public void onCommand(CommandSender talker, Command command, String string, String[] args) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) talker;
         if (args.length == 0) {
             s.SP(player, Sound.ENTITY_HORSE_ARMOR, 1.0F, 0.8F);
-            new Quest_GUI().MyQuestListGUI(player, (short) 0);
+            new Quest_Gui().MyQuestListGUI(player, (short) 0);
             return;
         }
         if (talker.isOp()) {
@@ -52,7 +52,7 @@ public class Quest_Command {
                 switch (ChatColor.stripColor(args[0])) {
                     case "구성": {
                         s.SP(player, Sound.ENTITY_HORSE_ARMOR, 1.0F, 0.8F);
-                        new Quest_GUI().AllOfQuestListGUI(player, (short) 0, false);
+                        new Quest_Gui().AllOfQuestListGUI(player, (short) 0, false);
                     }
                     break;
                     case "생성": {
@@ -108,7 +108,7 @@ public class Quest_Command {
                             QuestConfig.saveConfig();
                             player.sendMessage(ChatColor.GREEN + "[SYSTEM] : " + ChatColor.YELLOW + QuestNameString + ChatColor.DARK_AQUA + " 퀘스트가 생성되었습니다!");
                             s.SP(player, Sound.ENTITY_HORSE_ARMOR, 1.0F, 0.8F);
-                            new Quest_GUI().FixQuestGUI(player, (short) 0, QuestNameString);
+                            new Quest_Gui().FixQuestGUI(player, (short) 0, QuestNameString);
                         } else
                             HelpMessage(player);
                     }

@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.dungeon;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
@@ -46,7 +46,7 @@ public class Dungeon_Chat {
 
 
     private void DungeonMainChatting(PlayerChatEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = event.getPlayer();
         UserData_Object u = new UserData_Object();
         String Message = ChatColor.stripColor(event.getMessage());
@@ -99,14 +99,14 @@ public class Dungeon_Chat {
                 player.sendMessage(ChatColor.GREEN + "[던전] : 던전 추가 완료!");
             }
             u.clearAll(player);
-            new Dungeon_GUI().DungeonListMainGUI(player, 0, 52);
+            new Dungeon_Gui().DungeonListMainGUI(player, 0, 52);
         } else if (u.getString(player, (byte) 0).compareTo("DS") == 0) {
             if (isIntMinMax(event.getMessage(), player, 5, 50)) {
                 YamlManager DungeonList = YC.getNewConfig("Dungeon/Dungeon/" + u.getString(player, (byte) 1) + "/Option.yml");
                 DungeonList.set("Size", Integer.parseInt(event.getMessage()));
                 DungeonList.saveConfig();
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
-                new Dungeon_GUI().DungeonSetUpGUI(player, u.getString(player, (byte) 1));
+                new Dungeon_Gui().DungeonSetUpGUI(player, u.getString(player, (byte) 1));
                 u.clearAll(player);
             }
         } else if (u.getString(player, (byte) 0).compareTo("DML") == 0) {
@@ -115,7 +115,7 @@ public class Dungeon_Chat {
                 DungeonList.set("Maze_Level", Integer.parseInt(event.getMessage()));
                 DungeonList.saveConfig();
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
-                new Dungeon_GUI().DungeonSetUpGUI(player, u.getString(player, (byte) 1));
+                new Dungeon_Gui().DungeonSetUpGUI(player, u.getString(player, (byte) 1));
                 u.clearAll(player);
             }
         } else if (u.getString(player, (byte) 0).compareTo("DDL") == 0) {
@@ -133,7 +133,7 @@ public class Dungeon_Chat {
                 DungeonList.set("District.RealLevel", Integer.parseInt(event.getMessage()));
                 DungeonList.saveConfig();
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
-                new Dungeon_GUI().DungeonSetUpGUI(player, u.getString(player, (byte) 1));
+                new Dungeon_Gui().DungeonSetUpGUI(player, u.getString(player, (byte) 1));
                 u.clearAll(player);
             }
         } else if (u.getString(player, (byte) 0).compareTo("DRM") == 0) {
@@ -151,14 +151,14 @@ public class Dungeon_Chat {
                 DungeonList.set("Reward.EXP", Integer.parseInt(event.getMessage()));
                 DungeonList.saveConfig();
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
-                new Dungeon_GUI().DungeonSetUpGUI(player, u.getString(player, (byte) 1));
+                new Dungeon_Gui().DungeonSetUpGUI(player, u.getString(player, (byte) 1));
                 u.clearAll(player);
             }
         }
     }
 
     private void EnterCardChatting(PlayerChatEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = event.getPlayer();
         UserData_Object u = new UserData_Object();
         String Message = ChatColor.stripColor(event.getMessage());
@@ -187,7 +187,7 @@ public class Dungeon_Chat {
                 player.sendMessage(ChatColor.GREEN + "[던전] : 통행증 추가 완료!");
             }
             u.clearAll(player);
-            new Dungeon_GUI().DungeonListMainGUI(player, 0, 358);
+            new Dungeon_Gui().DungeonListMainGUI(player, 0, 358);
         } else if (u.getString(player, (byte) 0).compareTo("ECID") == 0) {
             if (isIntMinMax(event.getMessage(), player, 1, 2267)) {
                 YamlManager EnterCardConfig = YC.getNewConfig("Dungeon/EnterCardList.yml");
@@ -203,7 +203,7 @@ public class Dungeon_Chat {
                 EnterCardConfig.set(u.getString(player, (byte) 1) + ".DATA", Integer.parseInt(event.getMessage()));
                 EnterCardConfig.saveConfig();
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
-                new Dungeon_GUI().EnterCardSetUpGUI(player, u.getString(player, (byte) 1));
+                new Dungeon_Gui().EnterCardSetUpGUI(player, u.getString(player, (byte) 1));
                 u.clearAll(player);
             }
         } else if (u.getString(player, (byte) 0).compareTo("ECC") == 0) {
@@ -212,7 +212,7 @@ public class Dungeon_Chat {
                 EnterCardConfig.set(u.getString(player, (byte) 1) + ".Capacity", Integer.parseInt(event.getMessage()));
                 EnterCardConfig.saveConfig();
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
-                new Dungeon_GUI().EnterCardSetUpGUI(player, u.getString(player, (byte) 1));
+                new Dungeon_Gui().EnterCardSetUpGUI(player, u.getString(player, (byte) 1));
                 u.clearAll(player);
             }
         } else if (u.getString(player, (byte) 0).compareTo("ECUH") == 0) {
@@ -222,7 +222,7 @@ public class Dungeon_Chat {
                     EnterCardConfig.set(u.getString(player, (byte) 1) + ".Hour", -1);
                     EnterCardConfig.saveConfig();
                     s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
-                    new Dungeon_GUI().EnterCardSetUpGUI(player, u.getString(player, (byte) 1));
+                    new Dungeon_Gui().EnterCardSetUpGUI(player, u.getString(player, (byte) 1));
                     u.clearAll(player);
                 } else {
                     EnterCardConfig.set(u.getString(player, (byte) 1) + ".Hour", Integer.parseInt(event.getMessage()));
@@ -247,14 +247,14 @@ public class Dungeon_Chat {
                 EnterCardConfig.set(u.getString(player, (byte) 1) + ".Sec", Integer.parseInt(event.getMessage()));
                 EnterCardConfig.saveConfig();
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
-                new Dungeon_GUI().EnterCardSetUpGUI(player, u.getString(player, (byte) 1));
+                new Dungeon_Gui().EnterCardSetUpGUI(player, u.getString(player, (byte) 1));
                 u.clearAll(player);
             }
         }
     }
 
     private void AltarChatting(PlayerChatEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = event.getPlayer();
         UserData_Object u = new UserData_Object();
         String Message = ChatColor.stripColor(event.getMessage());
@@ -263,13 +263,13 @@ public class Dungeon_Chat {
             if (askOX(Message, player) == 1) {
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.2F);
                 u.clearAll(player);
-                new Dungeon_GUI().AltarShapeListGUI(player);
+                new Dungeon_Gui().AltarShapeListGUI(player);
             } else if (Message.compareTo("아니오") == 0 || Message.compareTo("x") == 0
                     || Message.compareTo("X") == 0) {
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 player.sendMessage(ChatColor.GREEN + "[던전] : 제단 설치가 취소되었습니다.");
                 u.clearAll(player);
-                new Dungeon_GUI().DungeonListMainGUI(player, 0, 120);
+                new Dungeon_Gui().DungeonListMainGUI(player, 0, 120);
             }
         } else if (u.getString(player, (byte) 0).compareTo("EAN") == 0) {
             YamlManager AltarConfig = YC.getNewConfig("Dungeon/AltarList.yml");
@@ -277,14 +277,14 @@ public class Dungeon_Chat {
             AltarConfig.set(AltarName + ".Name", event.getMessage());
             AltarConfig.saveConfig();
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
-            new Dungeon_GUI().AltarSettingGUI(player, AltarName);
+            new Dungeon_Gui().AltarSettingGUI(player, AltarName);
             u.clearAll(player);
         }
     }
 
 
     private byte askOX(String message, Player player) {
-        Effect_Sound sound = new Effect_Sound();
+        SoundUtil sound = new SoundUtil();
         if (message.split(" ").length <= 1) {
             if (message.compareTo("x") == 0 || message.compareTo("X") == 0 || message.compareTo("아니오") == 0)
                 return 0;
@@ -303,7 +303,7 @@ public class Dungeon_Chat {
     }
 
     private boolean isIntMinMax(String message, Player player, int Min, int Max) {
-        Effect_Sound sound = new Effect_Sound();
+        SoundUtil sound = new SoundUtil();
         try {
             if (message.split(" ").length <= 1 && Integer.parseInt(message) >= Min && Integer.parseInt(message) <= Max)
                 return true;

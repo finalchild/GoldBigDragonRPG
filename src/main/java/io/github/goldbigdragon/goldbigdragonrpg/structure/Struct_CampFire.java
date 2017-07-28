@@ -21,8 +21,8 @@ package io.github.goldbigdragon.goldbigdragonrpg.structure;
 
 import java.util.Arrays;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Player;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -35,7 +35,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.MaterialData;
 
-public class Struct_CampFire extends Util_GUI {
+public class Struct_CampFire extends GuiUtil {
 
     public void CampFireMainGUI(Player player, String BoardCode) {
         String UniqueCode = "§0§0§d§0§f§r";
@@ -58,7 +58,7 @@ public class Struct_CampFire extends Util_GUI {
     }
 
     public void CampFireGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         String CampFireName = ChatColor.stripColor(event.getInventory().getItem(5).getItemMeta().getLore().get(3)).replace("&", "§");
 

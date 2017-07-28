@@ -23,28 +23,28 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
-public class Effect_Particle {
-    public void PL(Location loc, org.bukkit.Effect effect, int Direction) {
+public class ParticleUtil {
+    public static void PL(Location loc, org.bukkit.Effect effect, int Direction) {
         World world = loc.getWorld();
         world.playEffect(loc.add(0.5, 0.5, 0.5), effect, Direction);
     }
 
-    public void PLC(Location loc, org.bukkit.Effect effect, int Direction) {
+    public static void PLC(Location loc, org.bukkit.Effect effect, int Direction) {
         World world = loc.getWorld();
         world.playEffect(loc, effect, Direction);
     }
 
-    public void PPL(Player player, Location loc, org.bukkit.Effect effect, int Direction) {
+    public static void PPL(Player player, Location loc, org.bukkit.Effect effect, int Direction) {
         player.playEffect(loc, effect, Direction);
     }
 
     //relativeLocation - Player Location
-    public void RLPL(Player player, double relativeX, double relativeY, double relativeZ, org.bukkit.Effect effect, int Direction) {
+    public static void RLPL(Player player, double relativeX, double relativeY, double relativeZ, org.bukkit.Effect effect, int Direction) {
         player.playEffect(player.getLocation().add(relativeX, relativeY, relativeZ), effect, Direction);
     }
 
     //RelativeLocation - Player Location Rotate
-    public void RLPLR(Player player, double relativeX, double relativeY, double relativeZ, org.bukkit.Effect effect, int Direction, int Rotate) {
+    public static void RLPLR(Player player, double relativeX, double relativeY, double relativeZ, org.bukkit.Effect effect, int Direction, int Rotate) {
         switch (Rotate) {
             case 0://0도 회전(있는 그대로)
                 player.playEffect(player.getLocation().add(relativeX, relativeY, relativeZ), effect, Direction);
@@ -64,7 +64,7 @@ public class Effect_Particle {
     }
 
     //RelativeLocation - Player Location Reflect
-    public void RLPLRR(Player player, double relativeX, double relativeY, double relativeZ, org.bukkit.Effect effect, int Direction, int Reflect) {
+    public static void RLPLRR(Player player, double relativeX, double relativeY, double relativeZ, org.bukkit.Effect effect, int Direction, int Reflect) {
         switch (Reflect) {
             case 0://비대칭
                 player.playEffect(player.getLocation().add(-1 * relativeX, relativeY, relativeZ), effect, Direction);

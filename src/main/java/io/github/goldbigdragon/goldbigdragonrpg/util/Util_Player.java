@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.util;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_ItemDrop;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
@@ -34,7 +34,7 @@ import org.bukkit.inventory.ItemStack;
 public class Util_Player {
     public void DungeonClear(Player player, long Money, long EXP) {
         Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).addStat_MoneyAndEXP(Money, EXP, false);
-        new Effect_Sound().SP(player, org.bukkit.Sound.ENTITY_PLAYER_LEVELUP, 1.5F, 1.8F);
+        new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_PLAYER_LEVELUP, 1.5F, 1.8F);
         player.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "[던전 클리어 보상] : " + ChatColor.AQUA + "" + ChatColor.BOLD + "[경험치] " + EXP + " " + ChatColor.YELLOW + "" + ChatColor.BOLD + "[" + ChatColor.WHITE + Main_ServerOption.Money + ChatColor.YELLOW + "" + ChatColor.BOLD + "] " + Money);
     }
 
@@ -81,7 +81,7 @@ public class Util_Player {
     public void giveItemForce(Player player, ItemStack item) {
         if (player.isOnline()) {
             if (player.getInventory().firstEmpty() == -1) {
-                new Effect_Sound().SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                new SoundUtil().SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                 player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[SYSTEM] : 인벤토리가 부족하여 우편함으로 아이템을 발송하였습니다!");
                 new Struct_PostBox().SendPost_Server(player.getUniqueId().toString(), "[시스템]", "[인벤토리 부족]", "인벤토리가 부족하여 우편으로 아이템이 배송되었습니다.", item);
             } else
@@ -183,9 +183,9 @@ public class Util_Player {
                 if (attatchedItem.equals(originalItem)) {
                     new Main_ItemDrop().CustomItemDrop(player.getLocation().add(0, 2, 0), player.getInventory().getItem(count));
                     if (isKeyDrop)
-                        new Effect_Sound().SL(player.getLocation().add(0, 2, 0), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.5F, 1.8F);
+                        new SoundUtil().SL(player.getLocation().add(0, 2, 0), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.5F, 1.8F);
                     else
-                        new Effect_Sound().SL(player.getLocation().add(0, 2, 0), Sound.BLOCK_LAVA_POP, 1.5F, 1.8F);
+                        new SoundUtil().SL(player.getLocation().add(0, 2, 0), Sound.BLOCK_LAVA_POP, 1.5F, 1.8F);
                     player.getInventory().setItem(count, null);
                 }
             }

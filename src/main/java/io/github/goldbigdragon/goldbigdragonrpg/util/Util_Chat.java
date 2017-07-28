@@ -19,13 +19,13 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.util;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class Util_Chat {
     public boolean isIntMinMax(String message, Player player, int Min, int Max) {
-        Effect_Sound sound = new Effect_Sound();
+        SoundUtil sound = new SoundUtil();
         try {
             if (message.split(" ").length <= 1 && Integer.parseInt(message) >= Min && Integer.parseInt(message) <= Max)
                 return true;
@@ -41,7 +41,7 @@ public class Util_Chat {
     }
 
     public byte askOX(String message, Player player) {
-        Effect_Sound sound = new Effect_Sound();
+        SoundUtil sound = new SoundUtil();
         if (message.split(" ").length <= 1) {
             if (message.compareTo("x") == 0 || message.compareTo("X") == 0 || message.compareTo("아니오") == 0)
                 return 0;

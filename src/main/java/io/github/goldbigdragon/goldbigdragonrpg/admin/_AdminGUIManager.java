@@ -31,69 +31,69 @@ public class _AdminGUIManager {
 
     public void ClickRouting(InventoryClickEvent event, String SubjectCode) {
         if (SubjectCode.compareTo("00") == 0)//오피박스
-            new OPbox_GUI().OPBoxGUIInventoryclick(event);
+            new OPbox_Gui().OPBoxGUIInventoryclick(event);
         else if (SubjectCode.compareTo("01") == 0)//관리자 옵션
-            new OPbox_GUI().OPBoxGUI_SettingInventoryClick(event);
+            new OPbox_Gui().OPBoxGUI_SettingInventoryClick(event);
         else if (SubjectCode.compareTo("02") == 0)//관리자 공지사항
-            new OPbox_GUI().OPBoxGUI_BroadCastClick(event);
+            new OPbox_Gui().OPBoxGUI_BroadCastClick(event);
         else if (SubjectCode.compareTo("03") == 0)//관리자 스텟 설정
-            new OPbox_GUI().OPBoxGUI_StatChangeClick(event);
+            new OPbox_Gui().OPBoxGUI_StatChangeClick(event);
         else if (SubjectCode.compareTo("04") == 0)//관리자 화폐 설정
-            new OPbox_GUI().OPBoxGUI_MoneyClick(event);
+            new OPbox_Gui().OPBoxGUI_MoneyClick(event);
         else if (SubjectCode.compareTo("05") == 0)//관리자 사망 설정
-            new OPbox_GUI().OPBoxGUI_DeathClick(event);
+            new OPbox_Gui().OPBoxGUI_DeathClick(event);
         else if (SubjectCode.compareTo("06") == 0 || SubjectCode.compareTo("07") == 0)//관리자 부활 설정
-            new OPbox_GUI().OPBoxGUI_RescueOrReviveClick(event);
+            new OPbox_Gui().OPBoxGUI_RescueOrReviveClick(event);
         else if (SubjectCode.compareTo("08") == 0)//관리자 가이드
-            new OPbox_GUI().OPBoxGuideInventoryclick(event);
+            new OPbox_Gui().OPBoxGuideInventoryclick(event);
         else if (SubjectCode.compareTo("09") == 0)//이벤트 메인
-            new Event_GUI().EventGUIInventoryclick(event);
+            new Event_Gui().EventGUIInventoryclick(event);
         else if (SubjectCode.compareTo("0a") == 0 || SubjectCode.compareTo("0b") == 0)//이벤트 아이템 지급
-            new Event_GUI().AllPlayerGiveEventGUIclick(event, SubjectCode);
+            new Event_Gui().AllPlayerGiveEventGUIclick(event, SubjectCode);
         else if (SubjectCode.compareTo("0c") == 0)//도박 메인
-            new Gamble_GUI().GambleMainGUI_Click(event);
+            new Gamble_Gui().GambleMainGUI_Click(event);
         else if (SubjectCode.compareTo("0d") == 0)//도박 상품 목록
-            new Gamble_GUI().GamblePresentGUI_Click(event);
+            new Gamble_Gui().GamblePresentGUI_Click(event);
         else if (SubjectCode.compareTo("0e") == 0)//도박 상품 정보
-            new Gamble_GUI().GambleDetailViewPackageGUI_Click(event);
+            new Gamble_Gui().GambleDetailViewPackageGUI_Click(event);
         else if (SubjectCode.compareTo("0f") == 0)//도박 기계 목록
-            new Gamble_GUI().SlotMachine_MainGUI_Click(event);
+            new Gamble_Gui().SlotMachine_MainGUI_Click(event);
         else if (SubjectCode.compareTo("10") == 0)//도박 기계 설정
-            new Gamble_GUI().SlotMachine_DetailGUI_Click(event);
+            new Gamble_Gui().SlotMachine_DetailGUI_Click(event);
         else if (SubjectCode.compareTo("11") == 0)//도박 기계 코인
-            new Gamble_GUI().SlotMachineCoinGUI_Click(event);
+            new Gamble_Gui().SlotMachineCoinGUI_Click(event);
         else if (SubjectCode.compareTo("12") == 0)//슬롯 머신
-            new Gamble_GUI().SlotMachine_PlayGUI_Click(event);
+            new Gamble_Gui().SlotMachine_PlayGUI_Click(event);
         else if (SubjectCode.compareTo("13") == 0)//슬롯 머신 (회전 화면)
             event.setCancelled(true);
         else if (SubjectCode.compareTo("14") == 0)//네비게이션 목록
-            new Navigation_GUI().NavigationListGUIClick(event);
+            new Navigation_Gui().NavigationListGUIClick(event);
         else if (SubjectCode.compareTo("15") == 0)//네비게이션 설정
-            new Navigation_GUI().NavigationOptionGUIClick(event);
+            new Navigation_Gui().NavigationOptionGUIClick(event);
         else if (SubjectCode.compareTo("16") == 0)//네비게이션 사용
-            new Navigation_GUI().UseNavigationGUIClick(event);
+            new Navigation_Gui().UseNavigationGUIClick(event);
         else if (SubjectCode.compareTo("17") == 0)//초심자 옵션 메인
-            new NewBie_GUI().NewBieGUIMainInventoryclick(event);
+            new NewBie_Gui().NewBieGUIMainInventoryclick(event);
         else if (SubjectCode.compareTo("18") == 0 || SubjectCode.compareTo("1a") == 0)//초심자 지원 및 초심자 가이드
-            new NewBie_GUI().NewBieSupportItemGUIInventoryclick(event, SubjectCode);
+            new NewBie_Gui().NewBieSupportItemGUIInventoryclick(event, SubjectCode);
         else if (SubjectCode.compareTo("19") == 0)//초심자 기본 퀘스트
-            new NewBie_GUI().NewBieQuestGUIInventoryclick(event);
+            new NewBie_Gui().NewBieQuestGUIInventoryclick(event);
         else if (SubjectCode.compareTo("1b") == 0)//월드 생성 메인
-            new WorldCreate_GUI().WorldCreateGUIClick(event);
+            new WorldCreate_Gui().WorldCreateGUIClick(event);
         else if (SubjectCode.compareTo("1c") == 0)//개조식 목록
-            new Upgrade_GUI().UpgradeRecipeGUIClick(event);
+            new Upgrade_Gui().UpgradeRecipeGUIClick(event);
         else if (SubjectCode.compareTo("1d") == 0)//개조식 설정
-            new Upgrade_GUI().UpgradeRecipeSettingGUIClick(event);
+            new Upgrade_Gui().UpgradeRecipeSettingGUIClick(event);
     }
 
     public void CloseRouting(InventoryCloseEvent event, String SubjectCode) {
         if (SubjectCode.compareTo("06") == 0 || SubjectCode.compareTo("07") == 0)//부활 아이템 설정
-            new OPbox_GUI().OPBoxGUI_RescueOrReviveClose(event, SubjectCode);
+            new OPbox_Gui().OPBoxGUI_RescueOrReviveClose(event, SubjectCode);
         else if (SubjectCode.compareTo("0e") == 0)//도박 상품 정보
-            new Gamble_GUI().GambleDetailViewPackageGUI_Close(event);
+            new Gamble_Gui().GambleDetailViewPackageGUI_Close(event);
         else if (SubjectCode.compareTo("11") == 0)//도박 코인 설정
-            new Gamble_GUI().SlotMachineCoinGUI_Close(event);
+            new Gamble_Gui().SlotMachineCoinGUI_Close(event);
         else if (SubjectCode.compareTo("18") == 0 || SubjectCode.compareTo("1a") == 0)//초심자 지원 및 초심자 가이드
-            new NewBie_GUI().InventoryClose_NewBie(event, SubjectCode);
+            new NewBie_Gui().InventoryClose_NewBie(event, SubjectCode);
     }
 }

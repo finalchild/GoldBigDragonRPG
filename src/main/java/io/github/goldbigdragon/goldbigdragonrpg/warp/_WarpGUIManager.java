@@ -30,6 +30,6 @@ public class _WarpGUIManager {
 
     public void ClickRouting(InventoryClickEvent event, String SubjectCode) {
         if (SubjectCode.compareTo("00") == 0)//워프 목록GUI
-            new Warp_GUI().WarpListGUIInventoryclick(event);
+            new Warp_Gui().WarpListGUIInventoryclick(event);
     }
 }

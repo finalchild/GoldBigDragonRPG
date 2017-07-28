@@ -21,7 +21,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.admin;
 
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Chat;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.util.ETC;
 import org.bukkit.ChatColor;
@@ -41,7 +41,7 @@ public class Navigation_Chat extends Util_Chat {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager NavigationConfig = YC.getNewConfig("Navigation/NavigationList.yml");
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         event.setCancelled(true);
         String message = ChatColor.stripColor(event.getMessage());
         switch (u.getString(player, (byte) 0)) {
@@ -59,13 +59,13 @@ public class Navigation_Chat extends Util_Chat {
                 NavigationConfig.set(UTC + ".ShowArrow", 0);
                 NavigationConfig.saveConfig();
                 u.clearAll(player);
-                new Navigation_GUI().NavigationOptionGUI(player, UTC + "");
+                new Navigation_Gui().NavigationOptionGUI(player, UTC + "");
                 return;
             case "CNN"://ChangeNavigationName이름 변경
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 NavigationConfig.set(u.getString(player, (byte) 1) + ".Name", event.getMessage());
                 NavigationConfig.saveConfig();
-                new Navigation_GUI().NavigationOptionGUI(player, u.getString(player, (byte) 1));
+                new Navigation_Gui().NavigationOptionGUI(player, u.getString(player, (byte) 1));
                 u.clearAll(player);
                 return;
             case "CNT"://ChangeNavigationTimer지속 시간
@@ -73,7 +73,7 @@ public class Navigation_Chat extends Util_Chat {
                     s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                     NavigationConfig.set(u.getString(player, (byte) 1) + ".time", Integer.parseInt(message));
                     NavigationConfig.saveConfig();
-                    new Navigation_GUI().NavigationOptionGUI(player, u.getString(player, (byte) 1));
+                    new Navigation_Gui().NavigationOptionGUI(player, u.getString(player, (byte) 1));
                     u.clearAll(player);
                 }
                 return;
@@ -82,7 +82,7 @@ public class Navigation_Chat extends Util_Chat {
                     s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                     NavigationConfig.set(u.getString(player, (byte) 1) + ".sensitive", Integer.parseInt(message));
                     NavigationConfig.saveConfig();
-                    new Navigation_GUI().NavigationOptionGUI(player, u.getString(player, (byte) 1));
+                    new Navigation_Gui().NavigationOptionGUI(player, u.getString(player, (byte) 1));
                     u.clearAll(player);
                 }
                 return;
@@ -91,7 +91,7 @@ public class Navigation_Chat extends Util_Chat {
                     s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                     NavigationConfig.set(u.getString(player, (byte) 1) + ".ShowArrow", Integer.parseInt(message));
                     NavigationConfig.saveConfig();
-                    new Navigation_GUI().NavigationOptionGUI(player, u.getString(player, (byte) 1));
+                    new Navigation_Gui().NavigationOptionGUI(player, u.getString(player, (byte) 1));
                     u.clearAll(player);
                 }
                 return;

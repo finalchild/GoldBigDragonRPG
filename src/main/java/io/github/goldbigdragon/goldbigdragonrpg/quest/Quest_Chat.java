@@ -21,7 +21,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.quest;
 
 import java.util.Set;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_Interact;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
@@ -38,9 +38,9 @@ public class Quest_Chat extends Util_Chat {
 
     public void QuestTypeChatting(PlayerChatEvent event) {
         UserData_Object u = new UserData_Object();
-        Effect_Sound sound = new Effect_Sound();
+        SoundUtil sound = new SoundUtil();
         Player player = event.getPlayer();
-        Quest_GUI QGUI = new Quest_GUI();
+        Quest_Gui QGUI = new Quest_Gui();
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager QuestConfig = YC.getNewConfig("Quest/QuestList.yml");
 
@@ -308,7 +308,7 @@ public class Quest_Chat extends Util_Chat {
                 Object[] arealist = AreaList.getConfigurationSection("").getKeys(false).toArray();
 
                 if (arealist.length <= 0) {
-                    Effect_Sound s = new Effect_Sound();
+                    SoundUtil s = new SoundUtil();
                     s.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     player.sendMessage(ChatColor.RED + "[SYSTEM] : 생성된 영역이 없습니다!");
                     u.clearAll(player);

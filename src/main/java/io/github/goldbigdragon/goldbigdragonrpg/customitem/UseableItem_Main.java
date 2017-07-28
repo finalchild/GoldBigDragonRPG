@@ -19,9 +19,9 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.customitem;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Packet;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Potion;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.PacketUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.EffectUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Object;
@@ -40,12 +40,12 @@ import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
 
 public class UseableItem_Main {
     public void UseAbleItemUse(Player player, String type) {
-        Effect_Sound sound = new Effect_Sound();
+        SoundUtil sound = new SoundUtil();
         ItemStack item = player.getInventory().getItemInMainHand();
         if (type.compareTo("귀환서") == 0) {
             if (ServerTick_Main.PlayerTaskList.containsKey(player.getName())) {
                 sound.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
-                new Effect_Packet().sendActionBar(player, "§c§l[현재 텔레포트를 할 수 없는 상태입니다!]");
+                new PacketUtil().sendActionBar(player, "§c§l[현재 텔레포트를 할 수 없는 상태입니다!]");
                 return;
             }
             ETC ETC = new ETC();
@@ -86,7 +86,7 @@ public class UseableItem_Main {
             STSO.setString((byte) 2, player.getName());//플레이어 이름 저장
             ServerTick_Main.Schedule.put(UTC, STSO);
             ServerTick_Main.PlayerTaskList.put(player.getName(), "" + UTC);
-            new Effect_Potion().givePotionEffect(player, PotionEffectType.CONFUSION, 8, 255);
+            new EffectUtil().givePotionEffect(player, PotionEffectType.CONFUSION, 8, 255);
             sound.SP(player, Sound.BLOCK_CLOTH_BREAK, 0.7F, 0.5F);
             sound.SP(player, Sound.BLOCK_PORTAL_TRAVEL, 0.6F, 1.4F);
         } else if (type.compareTo("주문서") == 0) {
