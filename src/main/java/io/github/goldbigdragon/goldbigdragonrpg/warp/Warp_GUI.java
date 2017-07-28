@@ -20,6 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.warp;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
@@ -118,14 +119,14 @@ public class Warp_Gui extends GuiUtil {
         }
 
         if (TelePortList.length - (page * 44) > 45)
-            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
         if (player.isOp())
-            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "새 워프", 339, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 워프 지점을 생성합니다."), 49, inv);
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "새 워프", 339, 0, 1, Collections.singletonList(ChatColor.GRAY + "새로운 워프 지점을 생성합니다."), 49, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 

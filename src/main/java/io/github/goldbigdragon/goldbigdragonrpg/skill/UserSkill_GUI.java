@@ -20,6 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.skill;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
@@ -55,13 +56,13 @@ public class UserSkill_Gui extends GuiUtil {
                 short SkillAmount = (short) PlayerSkillList.getConfigurationSection("MapleStory." + a[count].toString() + ".Skill").getKeys(false).size();
                 if (count > a.length || loc >= 45) break;
 
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + JobName, 340, 0, 1, Arrays.asList(ChatColor.DARK_AQUA + "스킬 개수 : " + ChatColor.WHITE + SkillAmount + ChatColor.DARK_AQUA + " 개"), loc, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + JobName, 340, 0, 1, Collections.singletonList(ChatColor.DARK_AQUA + "스킬 개수 : " + ChatColor.WHITE + SkillAmount + ChatColor.DARK_AQUA + " 개"), loc, inv);
                 loc++;
             }
             if (a.length - (page * 44) > 45)
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
             if (page != 0)
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
         } else {
             String UniqueCode = "§0§0§b§0§4§r";
             inv = Bukkit.createInventory(null, 54, UniqueCode + "§0카테고리 선택 : " + (page + 1));
@@ -73,17 +74,17 @@ public class UserSkill_Gui extends GuiUtil {
                 short SkillAmount = (short) PlayerSkillList.getConfigurationSection("Mabinogi." + Categori[count].toString()).getKeys(false).size();
                 if (count > Categori.length || loc >= 45) break;
 
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + CategoriName, 340, 0, 1, Arrays.asList(ChatColor.DARK_AQUA + "스킬 개수 : " + ChatColor.WHITE + SkillAmount + ChatColor.DARK_AQUA + " 개"), loc, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + CategoriName, 340, 0, 1, Collections.singletonList(ChatColor.DARK_AQUA + "스킬 개수 : " + ChatColor.WHITE + SkillAmount + ChatColor.DARK_AQUA + " 개"), loc, inv);
                 loc++;
             }
             if (Categori.length - (page * 44) > 45)
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
             if (page != 0)
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
         }
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 
@@ -145,9 +146,9 @@ public class UserSkill_Gui extends GuiUtil {
                 loc++;
             }
             if (a.length - (page * 44) > 45)
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
             if (page != 0)
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
         } else {
             inv = Bukkit.createInventory(null, 54, UniqueCode + "§0보유 스킬 목록 : " + (page + 1));
@@ -199,9 +200,9 @@ public class UserSkill_Gui extends GuiUtil {
                 loc++;
             }
             if (a.length - (page * 44) > 45)
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
             if (page != 0)
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
         }
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다.", ChatColor.BLACK + CategoriName), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + "" + isMabinogi), 53, inv);
@@ -386,7 +387,7 @@ public class UserSkill_Gui extends GuiUtil {
                     for (byte counter = 0; counter < scriptA.length; counter++)
                         scriptA[counter] = scriptA[counter];
 
-                    ItemStack Icon = new MaterialData(IconID, (byte) IconDATA).toItemStack(IconAmount);
+                    ItemStack Icon = new MaterialData(IconID, IconDATA).toItemStack(IconAmount);
                     ItemMeta Icon_Meta = Icon.getItemMeta();
                     Icon_Meta.setDisplayName(ChatColor.GREEN + "     [스킬 단축키]     ");
                     Icon_Meta.setLore(Arrays.asList(scriptA));

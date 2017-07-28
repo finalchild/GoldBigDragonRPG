@@ -21,6 +21,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.structure;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.Collections;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
@@ -77,13 +78,13 @@ public class Structure_Gui extends GuiUtil {
         }
 
         if (StructureList.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 개체", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "현재 서 있는 위치에", ChatColor.GRAY + "새로운 개체를 생성합니다."), 49, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 
@@ -106,8 +107,8 @@ public class Structure_Gui extends GuiUtil {
 		if(page!=최소 페이지)
 		Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323,0,1,Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 		 */
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 
@@ -115,12 +116,12 @@ public class Structure_Gui extends GuiUtil {
         String UniqueCode = "§0§0§d§0§2§r";
         Inventory inv = Bukkit.createInventory(null, 9, UniqueCode + "§0개체 방향");
 
-        Stack2(ChatColor.BLUE + "" + ChatColor.BOLD + "[동]", 345, 0, 1, Arrays.asList(ChatColor.GRAY + "개체가 동쪽 방향을 바라봅니다."), 1, inv);
-        Stack2(ChatColor.BLUE + "" + ChatColor.BOLD + "[서]", 345, 0, 1, Arrays.asList(ChatColor.GRAY + "개체가 서쪽 방향을 바라봅니다."), 3, inv);
-        Stack2(ChatColor.BLUE + "" + ChatColor.BOLD + "[남]", 345, 0, 1, Arrays.asList(ChatColor.GRAY + "개체가 남쪽 방향을 바라봅니다."), 5, inv);
-        Stack2(ChatColor.BLUE + "" + ChatColor.BOLD + "[북]", 345, 0, 1, Arrays.asList(ChatColor.GRAY + "개체가 북쪽 방향을 바라봅니다."), 7, inv);
+        Stack2(ChatColor.BLUE + "" + ChatColor.BOLD + "[동]", 345, 0, 1, Collections.singletonList(ChatColor.GRAY + "개체가 동쪽 방향을 바라봅니다."), 1, inv);
+        Stack2(ChatColor.BLUE + "" + ChatColor.BOLD + "[서]", 345, 0, 1, Collections.singletonList(ChatColor.GRAY + "개체가 서쪽 방향을 바라봅니다."), 3, inv);
+        Stack2(ChatColor.BLUE + "" + ChatColor.BOLD + "[남]", 345, 0, 1, Collections.singletonList(ChatColor.GRAY + "개체가 남쪽 방향을 바라봅니다."), 5, inv);
+        Stack2(ChatColor.BLUE + "" + ChatColor.BOLD + "[북]", 345, 0, 1, Collections.singletonList(ChatColor.GRAY + "개체가 북쪽 방향을 바라봅니다."), 7, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + "" + StructureID), 8, inv);
         player.openInventory(inv);
     }
@@ -240,7 +241,7 @@ public class Structure_Gui extends GuiUtil {
             if (slot == 0)//이전 목록
                 SelectStructureTypeGUI(player, (byte) 0);
             else if (slot == 1 || slot == 3 || slot == 5 || slot == 7) {
-                short StructureID = (short) (Short.parseShort(ChatColor.stripColor(event.getInventory().getItem(8).getItemMeta().getLore().get(1))));
+                short StructureID = Short.parseShort(ChatColor.stripColor(event.getInventory().getItem(8).getItemMeta().getLore().get(1)));
                 String Code = ChatColor.BLACK + "" + ChatColor.BOLD;
                 switch (StructureID) {
                     case 0:

@@ -20,6 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.admin;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Set;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
@@ -45,14 +46,14 @@ public class NewBie_Gui extends GuiUtil {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager NewBieYM = YC.getNewConfig("ETC/NewBie.yml");
 
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "기본 아이템", 54, 0, 1, Arrays.asList(ChatColor.GRAY + "첫 접속시 아이템을 지급합니다."), 2, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "기본 아이템", 54, 0, 1, Collections.singletonList(ChatColor.GRAY + "첫 접속시 아이템을 지급합니다."), 2, inv);
         Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "기본 퀘스트", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "접속 하자마자 퀘스트를 줍니다.", ChatColor.GRAY + "(일종의 튜토리얼 입니다.)", "", ChatColor.DARK_AQUA + "[   기본 퀘스트   ]", ChatColor.WHITE + "" + ChatColor.BOLD + NewBieYM.getString("FirstQuest"), "", ChatColor.YELLOW + "[클릭시 퀘스트를 변경합니다.]", ChatColor.RED + "[Shift + 우 클릭시 퀘스트를 삭제합니다.]"), 3, inv);
         Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "기본 시작 위치", 368, 0, 1, Arrays.asList(ChatColor.GRAY + "접속 하자마자 이동 시킵니다.", "", ChatColor.DARK_AQUA + "[   시작 위치   ]", ChatColor.DARK_AQUA + " - 월드 : " + ChatColor.WHITE + "" + ChatColor.BOLD + NewBieYM.getString("TelePort.World")
                 , ChatColor.DARK_AQUA + " - 좌표 : " + ChatColor.WHITE + "" + ChatColor.BOLD + NewBieYM.getInt("TelePort.X") + "," + NewBieYM.getInt("TelePort.Y") + "," + NewBieYM.getInt("TelePort.Z"), "", ChatColor.YELLOW + "[클릭시 현재 위치로 등록 됩니다.]"), 4, inv);
         Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "가이드", 340, 0, 1, Arrays.asList(ChatColor.GRAY + "가이드창을 설정합니다.", "", ChatColor.GRAY + "/기타", ChatColor.DARK_GRAY + "명령어를 통해 설정한", ChatColor.DARK_GRAY + "가이드를 확인하실 수 있습니다."), 5, inv);
 
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 8, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 8, inv);
         player.openInventory(inv);
     }
 
@@ -80,8 +81,8 @@ public class NewBie_Gui extends GuiUtil {
         Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "-", 166, 0, 1, null, 51, inv);
         Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "-", 166, 0, 1, null, 52, inv);
 
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
 
         player.openInventory(inv);
     }
@@ -121,12 +122,12 @@ public class NewBie_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 
@@ -160,8 +161,8 @@ public class NewBie_Gui extends GuiUtil {
         Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "-", 166, 0, 1, null, 51, inv);
         Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "-", 166, 0, 1, null, 52, inv);
 
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
 
         player.openInventory(inv);
     }
@@ -257,7 +258,7 @@ public class NewBie_Gui extends GuiUtil {
             else if (slot == 48)//이전 페이지
                 NewBieQuestGUI(player, (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 2));
             else if (slot == 50)//다음 페이지
-                NewBieQuestGUI(player, (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1])));
+                NewBieQuestGUI(player, Short.parseShort(event.getInventory().getTitle().split(" : ")[1]));
             else {
                 String QuestName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
                 YamlController YC = new YamlController(Main_Main.plugin);

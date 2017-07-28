@@ -20,6 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.admin;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
@@ -85,12 +86,12 @@ public class Navigation_Gui extends GuiUtil {
         }
 
         if (Navi.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 네비", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "새 네비를 생성합니다."), 49, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 네비", 386, 0, 1, Collections.singletonList(ChatColor.GRAY + "새 네비를 생성합니다."), 49, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 
@@ -132,7 +133,7 @@ public class Navigation_Gui extends GuiUtil {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "사용 권한", 137, 0, 1, Arrays.asList(ChatColor.GRAY + "네비게이션 사용 권한을 설정합니다.", "", PermitionS, ""), 14, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "네비 타입", 381, 0, 1, Arrays.asList(ChatColor.GRAY + "네비게이션 타입을 설정합니다.", "", ShowArrowS, ""), 15, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 27, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 27, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + NaviUTC), 35, inv);
         player.openInventory(inv);
     }
@@ -190,11 +191,11 @@ public class Navigation_Gui extends GuiUtil {
         }
 
         if (Navi.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 

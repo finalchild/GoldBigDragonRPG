@@ -20,6 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.area;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import io.github.goldbigdragon.goldbigdragonrpg.battle.Battle_Calculator;
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
@@ -81,13 +82,13 @@ public class Area_Gui extends GuiUtil {
         }
 
         if (AreaList.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 영역", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 영역을 생성합니다."), 49, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 영역", 386, 0, 1, Collections.singletonList(ChatColor.GRAY + "새로운 영역을 생성합니다."), 49, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 
@@ -181,8 +182,8 @@ public class Area_Gui extends GuiUtil {
 
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[영역 배경음]", 2263, 0, 1, Arrays.asList(lore.split("%enter%")), 25, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "영역 이동", 368, 0, 1, Arrays.asList(ChatColor.GRAY + "현재 영역으로 빠르게 이동합니다."), 40, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "영역 목록으로 돌아갑니다."), 36, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "영역 이동", 368, 0, 1, Collections.singletonList(ChatColor.GRAY + "현재 영역으로 빠르게 이동합니다."), 40, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "영역 목록으로 돌아갑니다."), 36, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "현재 창을 닫습니다.", ChatColor.BLACK + AreaName), 44, inv);
 
         player.openInventory(inv);
@@ -224,12 +225,12 @@ public class Area_Gui extends GuiUtil {
         }
 
         if (RuleList.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 규칙 추가", 52, 0, 1, Arrays.asList(ChatColor.GRAY + "새 스폰 규칙을 추가합니다."), 49, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 규칙 추가", 52, 0, 1, Collections.singletonList(ChatColor.GRAY + "새 스폰 규칙을 추가합니다."), 49, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + AreaName), 53, inv);
         player.openInventory(inv);
     }
@@ -264,12 +265,12 @@ public class Area_Gui extends GuiUtil {
         }
 
         if (MobNameListLength - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "몬스터 추가", 52, 0, 1, Arrays.asList(ChatColor.GRAY + "새 커스텀 몬스터를 추가합니다."), 49, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "몬스터 추가", 52, 0, 1, Collections.singletonList(ChatColor.GRAY + "새 커스텀 몬스터를 추가합니다."), 49, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + AreaName), 53, inv);
         player.openInventory(inv);
     }
@@ -281,11 +282,11 @@ public class Area_Gui extends GuiUtil {
         String UniqueCode = "§1§0§2§0§4§r";
         Inventory inv = Bukkit.createInventory(null, 54, UniqueCode + "§0영역 추가 어류");
 
-        Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "[     54%     ]", 160, 5, 1, Arrays.asList(ChatColor.GRAY + "이 줄에는 54% 확률로 낚일 아이템을 올리세요."), 0, inv);
-        Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + "[     30%     ]", 160, 4, 1, Arrays.asList(ChatColor.GRAY + "이 줄에는 30% 확률로 낚일 아이템을 올리세요."), 9, inv);
-        Stack2(ChatColor.GOLD + "" + ChatColor.BOLD + "[     10%     ]", 160, 1, 1, Arrays.asList(ChatColor.GRAY + "이 줄에는 10% 확률로 낚일 아이템을 올리세요."), 18, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[      5%      ]", 160, 14, 1, Arrays.asList(ChatColor.GRAY + "이 줄에는 5% 확률로 낚일 아이템을 올리세요."), 27, inv);
-        Stack2(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "[      1%      ]", 160, 10, 1, Arrays.asList(ChatColor.GRAY + "이 줄에는 1% 확률로 낚일 아이템을 올리세요."), 36, inv);
+        Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "[     54%     ]", 160, 5, 1, Collections.singletonList(ChatColor.GRAY + "이 줄에는 54% 확률로 낚일 아이템을 올리세요."), 0, inv);
+        Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + "[     30%     ]", 160, 4, 1, Collections.singletonList(ChatColor.GRAY + "이 줄에는 30% 확률로 낚일 아이템을 올리세요."), 9, inv);
+        Stack2(ChatColor.GOLD + "" + ChatColor.BOLD + "[     10%     ]", 160, 1, 1, Collections.singletonList(ChatColor.GRAY + "이 줄에는 10% 확률로 낚일 아이템을 올리세요."), 18, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[      5%      ]", 160, 14, 1, Collections.singletonList(ChatColor.GRAY + "이 줄에는 5% 확률로 낚일 아이템을 올리세요."), 27, inv);
+        Stack2(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "[      1%      ]", 160, 10, 1, Collections.singletonList(ChatColor.GRAY + "이 줄에는 1% 확률로 낚일 아이템을 올리세요."), 36, inv);
 
         Object[] FishingItemList = AreaConfig.getConfigurationSection(AreaName + ".Fishing.54").getKeys(false).toArray();
         for (short count = 0; count < FishingItemList.length; count++)
@@ -303,7 +304,7 @@ public class Area_Gui extends GuiUtil {
         for (short count = 0; count < FishingItemList.length; count++)
             ItemStackStack(AreaConfig.getItemStack(AreaName + ".Fishing.1." + FishingItemList[count]), count + 37, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + AreaName), 53, inv);
         player.openInventory(inv);
     }
@@ -323,18 +324,18 @@ public class Area_Gui extends GuiUtil {
             short ID = Short.parseShort(BlockIdDataList[count].toString().split(":")[0]);
             byte Data = Byte.parseByte(BlockIdDataList[count].toString().split(":")[1]);
 
-            Stack2(I.SetItemDefaultName(ID, (byte) Data), ID, Data, 1, Arrays.asList(
+            Stack2(I.SetItemDefaultName(ID, Data), ID, Data, 1, Arrays.asList(
                     "", ChatColor.RED + "[Shift + 우클릭시 등록 해제]"), loc, inv);
             loc++;
         }
 
         if (BlockIdDataList.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "특산물 추가", 52, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 블록을 설정합니다."), 49, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "특산물 추가", 52, 0, 1, Collections.singletonList(ChatColor.GRAY + "새로운 블록을 설정합니다."), 49, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + AreaName), 53, inv);
         player.openInventory(inv);
     }
@@ -350,67 +351,67 @@ public class Area_Gui extends GuiUtil {
 
         ItemStackStack(item, 4, inv);
 
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 11, 1, Arrays.asList(ChatColor.GRAY + "[100% 확률로 나올 아이템]"), 0, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 11, 1, Arrays.asList(ChatColor.GRAY + "[100% 확률로 나올 아이템]"), 1, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 11, 1, Arrays.asList(ChatColor.GRAY + "[100% 확률로 나올 아이템]"), 2, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 11, 1, Arrays.asList(ChatColor.GRAY + "[100% 확률로 나올 아이템]"), 3, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 11, 1, Arrays.asList(ChatColor.GRAY + "[100% 확률로 나올 아이템]"), 5, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 11, 1, Arrays.asList(ChatColor.GRAY + "[100% 확률로 나올 아이템]"), 6, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 11, 1, Arrays.asList(ChatColor.GRAY + "[100% 확률로 나올 아이템]"), 7, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 11, 1, Arrays.asList(ChatColor.GRAY + "[100% 확률로 나올 아이템]"), 8, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 11, 1, Collections.singletonList(ChatColor.GRAY + "[100% 확률로 나올 아이템]"), 0, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 11, 1, Collections.singletonList(ChatColor.GRAY + "[100% 확률로 나올 아이템]"), 1, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 11, 1, Collections.singletonList(ChatColor.GRAY + "[100% 확률로 나올 아이템]"), 2, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 11, 1, Collections.singletonList(ChatColor.GRAY + "[100% 확률로 나올 아이템]"), 3, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 11, 1, Collections.singletonList(ChatColor.GRAY + "[100% 확률로 나올 아이템]"), 5, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 11, 1, Collections.singletonList(ChatColor.GRAY + "[100% 확률로 나올 아이템]"), 6, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 11, 1, Collections.singletonList(ChatColor.GRAY + "[100% 확률로 나올 아이템]"), 7, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 11, 1, Collections.singletonList(ChatColor.GRAY + "[100% 확률로 나올 아이템]"), 8, inv);
 
         item = AreaConfig.getItemStack(AreaName + ".Mining." + ItemData + ".90");
         ItemStackStack(item, 13, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 9, 1, Arrays.asList(ChatColor.GRAY + "[90% 확률로 나올 아이템]"), 9, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 9, 1, Arrays.asList(ChatColor.GRAY + "[90% 확률로 나올 아이템]"), 10, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 9, 1, Arrays.asList(ChatColor.GRAY + "[90% 확률로 나올 아이템]"), 11, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 9, 1, Arrays.asList(ChatColor.GRAY + "[90% 확률로 나올 아이템]"), 12, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 9, 1, Arrays.asList(ChatColor.GRAY + "[90% 확률로 나올 아이템]"), 14, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 9, 1, Arrays.asList(ChatColor.GRAY + "[90% 확률로 나올 아이템]"), 15, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 9, 1, Arrays.asList(ChatColor.GRAY + "[90% 확률로 나올 아이템]"), 16, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 9, 1, Arrays.asList(ChatColor.GRAY + "[90% 확률로 나올 아이템]"), 17, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 9, 1, Collections.singletonList(ChatColor.GRAY + "[90% 확률로 나올 아이템]"), 9, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 9, 1, Collections.singletonList(ChatColor.GRAY + "[90% 확률로 나올 아이템]"), 10, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 9, 1, Collections.singletonList(ChatColor.GRAY + "[90% 확률로 나올 아이템]"), 11, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 9, 1, Collections.singletonList(ChatColor.GRAY + "[90% 확률로 나올 아이템]"), 12, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 9, 1, Collections.singletonList(ChatColor.GRAY + "[90% 확률로 나올 아이템]"), 14, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 9, 1, Collections.singletonList(ChatColor.GRAY + "[90% 확률로 나올 아이템]"), 15, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 9, 1, Collections.singletonList(ChatColor.GRAY + "[90% 확률로 나올 아이템]"), 16, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 9, 1, Collections.singletonList(ChatColor.GRAY + "[90% 확률로 나올 아이템]"), 17, inv);
 
         item = AreaConfig.getItemStack(AreaName + ".Mining." + ItemData + ".50");
         ItemStackStack(item, 22, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 4, 1, Arrays.asList(ChatColor.GRAY + "[50% 확률로 나올 아이템]"), 18, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 4, 1, Arrays.asList(ChatColor.GRAY + "[50% 확률로 나올 아이템]"), 19, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 4, 1, Arrays.asList(ChatColor.GRAY + "[50% 확률로 나올 아이템]"), 20, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 4, 1, Arrays.asList(ChatColor.GRAY + "[50% 확률로 나올 아이템]"), 21, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 4, 1, Arrays.asList(ChatColor.GRAY + "[50% 확률로 나올 아이템]"), 23, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 4, 1, Arrays.asList(ChatColor.GRAY + "[50% 확률로 나올 아이템]"), 24, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 4, 1, Arrays.asList(ChatColor.GRAY + "[50% 확률로 나올 아이템]"), 25, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 4, 1, Arrays.asList(ChatColor.GRAY + "[50% 확률로 나올 아이템]"), 26, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 4, 1, Collections.singletonList(ChatColor.GRAY + "[50% 확률로 나올 아이템]"), 18, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 4, 1, Collections.singletonList(ChatColor.GRAY + "[50% 확률로 나올 아이템]"), 19, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 4, 1, Collections.singletonList(ChatColor.GRAY + "[50% 확률로 나올 아이템]"), 20, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 4, 1, Collections.singletonList(ChatColor.GRAY + "[50% 확률로 나올 아이템]"), 21, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 4, 1, Collections.singletonList(ChatColor.GRAY + "[50% 확률로 나올 아이템]"), 23, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 4, 1, Collections.singletonList(ChatColor.GRAY + "[50% 확률로 나올 아이템]"), 24, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 4, 1, Collections.singletonList(ChatColor.GRAY + "[50% 확률로 나올 아이템]"), 25, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 4, 1, Collections.singletonList(ChatColor.GRAY + "[50% 확률로 나올 아이템]"), 26, inv);
 
         item = AreaConfig.getItemStack(AreaName + ".Mining." + ItemData + ".10");
         ItemStackStack(item, 31, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 1, 1, Arrays.asList(ChatColor.GRAY + "[10% 확률로 나올 아이템]"), 27, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 1, 1, Arrays.asList(ChatColor.GRAY + "[10% 확률로 나올 아이템]"), 28, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 1, 1, Arrays.asList(ChatColor.GRAY + "[10% 확률로 나올 아이템]"), 29, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 1, 1, Arrays.asList(ChatColor.GRAY + "[10% 확률로 나올 아이템]"), 30, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 1, 1, Arrays.asList(ChatColor.GRAY + "[10% 확률로 나올 아이템]"), 32, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 1, 1, Arrays.asList(ChatColor.GRAY + "[10% 확률로 나올 아이템]"), 33, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 1, 1, Arrays.asList(ChatColor.GRAY + "[10% 확률로 나올 아이템]"), 34, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 1, 1, Arrays.asList(ChatColor.GRAY + "[10% 확률로 나올 아이템]"), 35, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 1, 1, Collections.singletonList(ChatColor.GRAY + "[10% 확률로 나올 아이템]"), 27, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 1, 1, Collections.singletonList(ChatColor.GRAY + "[10% 확률로 나올 아이템]"), 28, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 1, 1, Collections.singletonList(ChatColor.GRAY + "[10% 확률로 나올 아이템]"), 29, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 1, 1, Collections.singletonList(ChatColor.GRAY + "[10% 확률로 나올 아이템]"), 30, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 1, 1, Collections.singletonList(ChatColor.GRAY + "[10% 확률로 나올 아이템]"), 32, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 1, 1, Collections.singletonList(ChatColor.GRAY + "[10% 확률로 나올 아이템]"), 33, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 1, 1, Collections.singletonList(ChatColor.GRAY + "[10% 확률로 나올 아이템]"), 34, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 1, 1, Collections.singletonList(ChatColor.GRAY + "[10% 확률로 나올 아이템]"), 35, inv);
 
         item = AreaConfig.getItemStack(AreaName + ".Mining." + ItemData + ".1");
         ItemStackStack(item, 40, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 14, 1, Arrays.asList(ChatColor.GRAY + "[1% 확률로 나올 아이템]"), 36, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 14, 1, Arrays.asList(ChatColor.GRAY + "[1% 확률로 나올 아이템]"), 37, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 14, 1, Arrays.asList(ChatColor.GRAY + "[1% 확률로 나올 아이템]"), 38, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 14, 1, Arrays.asList(ChatColor.GRAY + "[1% 확률로 나올 아이템]"), 39, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 14, 1, Arrays.asList(ChatColor.GRAY + "[1% 확률로 나올 아이템]"), 41, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 14, 1, Arrays.asList(ChatColor.GRAY + "[1% 확률로 나올 아이템]"), 42, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 14, 1, Arrays.asList(ChatColor.GRAY + "[1% 확률로 나올 아이템]"), 43, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 14, 1, Arrays.asList(ChatColor.GRAY + "[1% 확률로 나올 아이템]"), 44, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 14, 1, Collections.singletonList(ChatColor.GRAY + "[1% 확률로 나올 아이템]"), 36, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 14, 1, Collections.singletonList(ChatColor.GRAY + "[1% 확률로 나올 아이템]"), 37, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 14, 1, Collections.singletonList(ChatColor.GRAY + "[1% 확률로 나올 아이템]"), 38, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 14, 1, Collections.singletonList(ChatColor.GRAY + "[1% 확률로 나올 아이템]"), 39, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 14, 1, Collections.singletonList(ChatColor.GRAY + "[1% 확률로 나올 아이템]"), 41, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 14, 1, Collections.singletonList(ChatColor.GRAY + "[1% 확률로 나올 아이템]"), 42, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 14, 1, Collections.singletonList(ChatColor.GRAY + "[1% 확률로 나올 아이템]"), 43, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 14, 1, Collections.singletonList(ChatColor.GRAY + "[1% 확률로 나올 아이템]"), 44, inv);
 
         item = AreaConfig.getItemStack(AreaName + ".Mining." + ItemData + ".0");
         ItemStackStack(item, 49, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 15, 1, Arrays.asList(ChatColor.GRAY + "[0.1% 확률로 나올 아이템]"), 46, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 15, 1, Arrays.asList(ChatColor.GRAY + "[0.1% 확률로 나올 아이템]"), 47, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 15, 1, Arrays.asList(ChatColor.GRAY + "[0.1% 확률로 나올 아이템]"), 48, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 15, 1, Arrays.asList(ChatColor.GRAY + "[0.1% 확률로 나올 아이템]"), 50, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 15, 1, Arrays.asList(ChatColor.GRAY + "[0.1% 확률로 나올 아이템]"), 51, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 15, 1, Arrays.asList(ChatColor.GRAY + "[0.1% 확률로 나올 아이템]"), 52, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 15, 1, Collections.singletonList(ChatColor.GRAY + "[0.1% 확률로 나올 아이템]"), 46, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 15, 1, Collections.singletonList(ChatColor.GRAY + "[0.1% 확률로 나올 아이템]"), 47, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[아이템 넣기>", 160, 15, 1, Collections.singletonList(ChatColor.GRAY + "[0.1% 확률로 나올 아이템]"), 48, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 15, 1, Collections.singletonList(ChatColor.GRAY + "[0.1% 확률로 나올 아이템]"), 50, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 15, 1, Collections.singletonList(ChatColor.GRAY + "[0.1% 확률로 나올 아이템]"), 51, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 160, 15, 1, Collections.singletonList(ChatColor.GRAY + "[0.1% 확률로 나올 아이템]"), 52, inv);
 
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다.", ChatColor.BLACK + ItemData), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + AreaName), 53, inv);
@@ -457,9 +458,9 @@ public class Area_Gui extends GuiUtil {
                 Lore = Lore + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " " + Main_ServerOption.INT + " : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".INT")
                         + ChatColor.GRAY + " [폭공 : " + (MobList.getInt(MonsterName + ".INT") / 4) + " ~ " + (int) (MobList.getInt(MonsterName + ".INT") / 2.5) + "]%enter%";
                 Lore = Lore + ChatColor.GRAY + "" + ChatColor.BOLD + " " + Main_ServerOption.WILL + " : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".WILL")
-                        + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MobList.getInt(MonsterName + ".LUK"), (int) MobList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
+                        + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MobList.getInt(MonsterName + ".LUK"), MobList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
                 Lore = Lore + ChatColor.YELLOW + "" + ChatColor.BOLD + " " + Main_ServerOption.LUK + " : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".LUK")
-                        + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MobList.getInt(MonsterName + ".LUK"), (int) MobList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
+                        + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MobList.getInt(MonsterName + ".LUK"), MobList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
                 Lore = Lore + ChatColor.GRAY + "" + ChatColor.BOLD + " 방어 : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".DEF") + "%enter%";
                 Lore = Lore + ChatColor.AQUA + "" + ChatColor.BOLD + " 보호 : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".Protect") + "%enter%";
                 Lore = Lore + ChatColor.BLUE + "" + ChatColor.BOLD + " 마법 방어 : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".Magic_DEF") + "%enter%";
@@ -581,11 +582,11 @@ public class Area_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + AreaName), 53, inv);
         player.openInventory(inv);
     }
@@ -618,9 +619,9 @@ public class Area_Gui extends GuiUtil {
             Lore = Lore + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " " + Main_ServerOption.INT + " : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".INT")
                     + ChatColor.GRAY + " [폭공 : " + (MobList.getInt(MonsterName + ".INT") / 4) + " ~ " + (int) (MobList.getInt(MonsterName + ".INT") / 2.5) + "]%enter%";
             Lore = Lore + ChatColor.GRAY + "" + ChatColor.BOLD + " " + Main_ServerOption.WILL + " : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".WILL")
-                    + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MobList.getInt(MonsterName + ".LUK"), (int) MobList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
+                    + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MobList.getInt(MonsterName + ".LUK"), MobList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
             Lore = Lore + ChatColor.YELLOW + "" + ChatColor.BOLD + " " + Main_ServerOption.LUK + " : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".LUK")
-                    + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MobList.getInt(MonsterName + ".LUK"), (int) MobList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
+                    + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MobList.getInt(MonsterName + ".LUK"), MobList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
             Lore = Lore + ChatColor.GRAY + "" + ChatColor.BOLD + " 방어 : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".DEF") + "%enter%";
             Lore = Lore + ChatColor.AQUA + "" + ChatColor.BOLD + " 보호 : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".Protect") + "%enter%";
             Lore = Lore + ChatColor.BLUE + "" + ChatColor.BOLD + " 마법 방어 : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".Magic_DEF") + "%enter%";
@@ -741,9 +742,9 @@ public class Area_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
         Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "취소", 166, 0, 1, Arrays.asList(ChatColor.GRAY + "지정 몬스터 스폰대신", ChatColor.GRAY + "영역에 등록 된 몬스터를", ChatColor.GRAY + "랜덤하게 스폰 합니다.", ChatColor.BLACK + AreaName, ChatColor.BLACK + "" + RuleCount), 49, inv);
         player.openInventory(inv);
@@ -782,11 +783,11 @@ public class Area_Gui extends GuiUtil {
         }
 
         if (new io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain().Musics.size() - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + AreaName), 53, inv);
         player.openInventory(inv);
     }
@@ -818,7 +819,7 @@ public class Area_Gui extends GuiUtil {
                 Main_Interact IT = new Main_Interact();
                 player.sendMessage(ChatColor.DARK_AQUA + "[영역] : " + IT.SetItemDefaultName((short) Config.getInt("Server.AreaSettingWand"), (byte) 0) + ChatColor.DARK_AQUA + " 아이템으로 구역을 설정을 한 뒤,");
                 player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + " /영역 <영역이름> 생성 " + ChatColor.DARK_AQUA + "명령어를 입력해 주세요!");
-                SoundUtil.playSound((Player) player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             } else if (slot == 50)//다음 페이지
                 AreaListGUI(player, (short) (page + 1));
             else {

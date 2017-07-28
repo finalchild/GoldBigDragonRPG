@@ -20,6 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.customitem;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Set;
 
 import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_Gui;
@@ -61,14 +62,14 @@ public class CustomItem_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 아이템", 145, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 아이템을 생성합니다."), 49, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 아이템", 145, 0, 1, Collections.singletonList(ChatColor.GRAY + "새로운 아이템을 생성합니다."), 49, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 
@@ -119,7 +120,7 @@ public class CustomItem_Gui extends GuiUtil {
         Stack2(ChatColor.DARK_AQUA + "[      스텟 제한      ]", 166, 0, 1, Arrays.asList(ChatColor.WHITE + "아이템 장착에 제한을", ChatColor.WHITE + "걸어둡니다.", ""), 49, inv);
         Stack2(ChatColor.DARK_AQUA + "[      직업 제한      ]", 397, 3, 1, Arrays.asList(ChatColor.WHITE + "아이템 장착에 제한을", ChatColor.WHITE + "걸어둡니다.", ChatColor.RED + "[우 클릭시 해제]", ""), 50, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + "" + number), 53, inv);
         player.openInventory(inv);
     }
@@ -150,11 +151,11 @@ public class CustomItem_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + "" + number), 53, inv);
         player.openInventory(inv);
     }

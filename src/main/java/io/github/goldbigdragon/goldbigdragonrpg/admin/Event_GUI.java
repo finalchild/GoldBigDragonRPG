@@ -21,6 +21,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.admin;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_Interact;
@@ -92,9 +93,9 @@ public class Event_Gui extends GuiUtil {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "랜덤 주기", 130, 0, 1, Arrays.asList(ChatColor.GRAY + "현재 접속한 유저들 중,", ChatColor.GRAY + "한 사람에게만 지정된", ChatColor.GRAY + "아이템을 선물합니다."), 30, inv);
 
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "작업 관리자 메뉴로 돌아갑니다."), 36, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "작업 관리자 메뉴로 돌아갑니다."), 36, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "작업 관리자 창을 닫습니다."), 44, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "작업 관리자 창을 닫습니다."), 44, inv);
 
         player.openInventory(inv);
     }
@@ -119,8 +120,8 @@ public class Event_Gui extends GuiUtil {
         else
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[지급 개시!]", 130, 0, 1, Arrays.asList(ChatColor.GRAY + "노란 테두리 속의 아이템을", ChatColor.GRAY + "누가 받을지 모릅니다!"), 40, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이벤트 메뉴로 돌아갑니다."), 36, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "작업 관리자 창을 닫습니다."), 44, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이벤트 메뉴로 돌아갑니다."), 36, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "작업 관리자 창을 닫습니다."), 44, inv);
         player.openInventory(inv);
     }
 

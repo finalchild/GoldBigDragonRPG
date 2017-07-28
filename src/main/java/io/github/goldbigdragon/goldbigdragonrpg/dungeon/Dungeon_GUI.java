@@ -23,6 +23,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 
 import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.battle.Battle_Calculator;
@@ -172,18 +173,18 @@ public final class Dungeon_Gui extends GuiUtil {
 
 
         if (DungeonList.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
         if (Type == 52)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "던전 제작", 383, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 던전을 생성합니다."), 49, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "던전 제작", 383, 0, 1, Collections.singletonList(ChatColor.GRAY + "새로운 던전을 생성합니다."), 49, inv);
         if (Type == 358)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "통행증 제작", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 통행증을 생성합니다."), 49, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "통행증 제작", 386, 0, 1, Collections.singletonList(ChatColor.GRAY + "새로운 통행증을 생성합니다."), 49, inv);
         if (Type == 120)
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "제단 건설", 381, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 제단을 생성합니다.", "", ChatColor.RED + "" + ChatColor.BOLD + "[제단은 무조건 남쪽을 바라봅니다.]"), 49, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 
@@ -193,15 +194,15 @@ public final class Dungeon_Gui extends GuiUtil {
 
         String UniqueCode = "§0§0§a§0§1§r";
         Inventory inv = Bukkit.createInventory(null, 45, UniqueCode + "§0던전 설정 : " + DungeonName);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "던전 타입", DungeonConfig.getInt("Type.ID"), DungeonConfig.getInt("Type.DATA"), 1, Arrays.asList(ChatColor.GRAY + "현재 던전 타입 : " + DungeonConfig.getString("Type.Name")), 11, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "던전 타입", DungeonConfig.getInt("Type.ID"), DungeonConfig.getInt("Type.DATA"), 1, Collections.singletonList(ChatColor.GRAY + "현재 던전 타입 : " + DungeonConfig.getString("Type.Name")), 11, inv);
 
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "던전 크기", 395, 0, 1, Arrays.asList(ChatColor.GRAY + "현재 던전 크기 : " + DungeonConfig.getInt("Size"), ChatColor.DARK_GRAY + "최소 : 5", ChatColor.DARK_GRAY + "최대 : 30"), 13, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "던전 길이", 53, 0, 1, Arrays.asList(ChatColor.GRAY + "현재 미로 레벨 : " + DungeonConfig.getInt("Maze_Level"), "", ChatColor.YELLOW + "[영향 받는 항목]", ChatColor.YELLOW + " - 구슬방 출현 빈도", ChatColor.YELLOW + " - 던전 갈림길 개수", ChatColor.YELLOW + " - 던전 밀집도"), 15, inv);
 
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "던전 제한", 101, 0, 1, Arrays.asList(ChatColor.GRAY + "던전 입장 제한을 설정합니다.", ChatColor.RED + "레벨 제한 : " + ChatColor.GRAY + DungeonConfig.getInt("District.Level"), ChatColor.RED + "누적 레벨 제한 : " + ChatColor.GRAY + DungeonConfig.getInt("District.RealLevel")), 20, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "던전 보상", 266, 0, 1, Arrays.asList(ChatColor.GRAY + "던전 기본 보상을 설정합니다.", ChatColor.YELLOW + "보상 금액 : " + ChatColor.GRAY + DungeonConfig.getInt("Reward.Money"), ChatColor.AQUA + "보상 경험치 : " + ChatColor.GRAY + DungeonConfig.getInt("Reward.EXP")), 22, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "던전 보상 상자", 54, 0, 1, Arrays.asList(ChatColor.GRAY + "던전 추가 보상을 설정합니다."), 24, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "던전 몬스터", 383, 0, 1, Arrays.asList(ChatColor.GRAY + "던전 몬스터를 설정합니다."), 29, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "던전 보상 상자", 54, 0, 1, Collections.singletonList(ChatColor.GRAY + "던전 추가 보상을 설정합니다."), 24, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "던전 몬스터", 383, 0, 1, Collections.singletonList(ChatColor.GRAY + "던전 몬스터를 설정합니다."), 29, inv);
 
         String lore = "";
         io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain NBAPI = new io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain();
@@ -243,8 +244,8 @@ public final class Dungeon_Gui extends GuiUtil {
         }
         lore = lore + lore2;
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[보스 배경음]", 2259, 0, 1, Arrays.asList(lore.split("%enter%")), 33, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 44, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 36, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 44, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 36, inv);
 
         player.openInventory(inv);
     }
@@ -293,8 +294,8 @@ public final class Dungeon_Gui extends GuiUtil {
         Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "[중급 몬스터]", 160, 5, 1, Arrays.asList("", ChatColor.WHITE + "일반 방에서 나올 강한 몬스터는", ChatColor.WHITE + "이 줄에서 설정합니다.", ""), 27, inv);
         Stack2(ChatColor.BLUE + "" + ChatColor.BOLD + "[하급 몬스터]", 160, 11, 1, Arrays.asList("", ChatColor.WHITE + "일반 방에서 나올 일반 몬스터는", ChatColor.WHITE + "이 줄에서 설정합니다.", ""), 36, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
 
         String Type = "Boss";
         for (int count2 = 0; count2 < 5; count2++) {
@@ -421,9 +422,9 @@ public final class Dungeon_Gui extends GuiUtil {
                                     Lore = Lore + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " " + Main_ServerOption.INT + " : " + ChatColor.WHITE + MonsterList.getInt(MonsterName + ".INT")
                                             + ChatColor.GRAY + " [폭공 : " + (MonsterList.getInt(MonsterName + ".INT") / 4) + " ~ " + (int) (MonsterList.getInt(MonsterName + ".INT") / 2.5) + "]%enter%";
                                     Lore = Lore + ChatColor.GRAY + "" + ChatColor.BOLD + " " + Main_ServerOption.WILL + " : " + ChatColor.WHITE + MonsterList.getInt(MonsterName + ".WILL")
-                                            + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MonsterList.getInt(MonsterName + ".LUK"), (int) MonsterList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
+                                            + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MonsterList.getInt(MonsterName + ".LUK"), MonsterList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
                                     Lore = Lore + ChatColor.YELLOW + "" + ChatColor.BOLD + " " + Main_ServerOption.LUK + " : " + ChatColor.WHITE + MonsterList.getInt(MonsterName + ".LUK")
-                                            + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MonsterList.getInt(MonsterName + ".LUK"), (int) MonsterList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
+                                            + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MonsterList.getInt(MonsterName + ".LUK"), MonsterList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
                                     Lore = Lore + ChatColor.GRAY + "" + ChatColor.BOLD + " 방어 : " + ChatColor.WHITE + MonsterList.getInt(MonsterName + ".DEF") + "%enter%";
                                     Lore = Lore + ChatColor.AQUA + "" + ChatColor.BOLD + " 보호 : " + ChatColor.WHITE + MonsterList.getInt(MonsterName + ".Protect") + "%enter%";
                                     Lore = Lore + ChatColor.BLUE + "" + ChatColor.BOLD + " 마법 방어 : " + ChatColor.WHITE + MonsterList.getInt(MonsterName + ".Magic_DEF") + "%enter%";
@@ -561,12 +562,12 @@ public final class Dungeon_Gui extends GuiUtil {
     public void DungeonMonsterChooseMain(Player player, String DungeonName, int slot) {
         String UniqueCode = "§0§0§a§0§4§r";
         Inventory inv = Bukkit.createInventory(null, 9, UniqueCode + "§0던전 몬스터 : " + DungeonName);
-        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[없음]", 166, 0, 1, Arrays.asList(ChatColor.GRAY + "몬스터 설정을 하지 않습니다."), 2, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[일반]", 383, 0, 1, Arrays.asList(ChatColor.GRAY + "일반적인 몬스터 중 하나로 고릅니다."), 4, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[없음]", 166, 0, 1, Collections.singletonList(ChatColor.GRAY + "몬스터 설정을 하지 않습니다."), 2, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[일반]", 383, 0, 1, Collections.singletonList(ChatColor.GRAY + "일반적인 몬스터 중 하나로 고릅니다."), 4, inv);
         Stack2(ChatColor.AQUA + "" + ChatColor.BOLD + "[커스텀]", 52, 0, 1, Arrays.asList(ChatColor.GRAY + "커스텀 몬스터 중 하나로 고릅니다.", "", ChatColor.RED + "[엔더 크리스탈 형태의 몬스터를", ChatColor.RED + "선택할 경우, 고장의 원인이 됩니다.]"), 6, inv);
 
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + "" + slot), 8, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
         player.openInventory(inv);
     }
 
@@ -634,9 +635,9 @@ public final class Dungeon_Gui extends GuiUtil {
             Lore = Lore + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " " + Main_ServerOption.INT + " : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".INT")
                     + ChatColor.GRAY + " [폭공 : " + (MobList.getInt(MonsterName + ".INT") / 4) + " ~ " + (int) (MobList.getInt(MonsterName + ".INT") / 2.5) + "]%enter%";
             Lore = Lore + ChatColor.GRAY + "" + ChatColor.BOLD + " " + Main_ServerOption.WILL + " : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".WILL")
-                    + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MobList.getInt(MonsterName + ".LUK"), (int) MobList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
+                    + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MobList.getInt(MonsterName + ".LUK"), MobList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
             Lore = Lore + ChatColor.YELLOW + "" + ChatColor.BOLD + " " + Main_ServerOption.LUK + " : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".LUK")
-                    + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MobList.getInt(MonsterName + ".LUK"), (int) MobList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
+                    + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MobList.getInt(MonsterName + ".LUK"), MobList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
             Lore = Lore + ChatColor.GRAY + "" + ChatColor.BOLD + " 방어 : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".DEF") + "%enter%";
             Lore = Lore + ChatColor.AQUA + "" + ChatColor.BOLD + " 보호 : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".Protect") + "%enter%";
             Lore = Lore + ChatColor.BLUE + "" + ChatColor.BOLD + " 마법 방어 : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".Magic_DEF") + "%enter%";
@@ -756,9 +757,9 @@ public final class Dungeon_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
         Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다.", ChatColor.BLACK + Type), 45, inv);
         Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + "" + slot, ChatColor.BLACK + DungeonName), 53, inv);
@@ -799,9 +800,9 @@ public final class Dungeon_Gui extends GuiUtil {
         }
 
         if (io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain.Musics.size() - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다.", ChatColor.BLACK + "" + isBOSS), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + DungeonName), 53, inv);
@@ -838,7 +839,7 @@ public final class Dungeon_Gui extends GuiUtil {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[통행증 유효 시간]", 347, 0, 1, Arrays.asList("", ChatColor.WHITE + Time), 6, inv);
 
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + EnterCardName), 8, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
 
         player.openInventory(inv);
     }
@@ -870,11 +871,11 @@ public final class Dungeon_Gui extends GuiUtil {
         }
 
         if (DungeonList.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + EnterCardName), 53, inv);
         player.openInventory(inv);
     }
@@ -891,8 +892,8 @@ public final class Dungeon_Gui extends GuiUtil {
         Stack2(ChatColor.GRAY + "" + ChatColor.BOLD + "[테스트용 제단]", 48, 0, 1, null, 44, inv);
 
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 
@@ -919,7 +920,7 @@ public final class Dungeon_Gui extends GuiUtil {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[통행증 등록]", 358, 0, 1, Arrays.asList(ChatColor.GRAY + "제단에서 사용 가능한", ChatColor.GRAY + "통행증을 등록합니다.", "", ChatColor.YELLOW + "[좌 클릭시 통행증 등록]"), 6, inv);
 
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + AltarName), 8, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
 
         player.openInventory(inv);
     }
@@ -951,11 +952,11 @@ public final class Dungeon_Gui extends GuiUtil {
         }
 
         if (DungeonList.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", AltarName), 53, inv);
         player.openInventory(inv);
     }
@@ -1003,13 +1004,13 @@ public final class Dungeon_Gui extends GuiUtil {
                 }
             }
             if (EnterCardList.length - (page * 44) > 45)
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
             if (page != 0)
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
         }
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "통행증 등록", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "제단에 통행증을 등록합니다."), 49, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "통행증 등록", 386, 0, 1, Collections.singletonList(ChatColor.GRAY + "제단에 통행증을 등록합니다."), 49, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", AltarName), 53, inv);
         player.openInventory(inv);
     }
@@ -1049,11 +1050,11 @@ public final class Dungeon_Gui extends GuiUtil {
         }
 
         if (DungeonList.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", AltarName), 53, inv);
         player.openInventory(inv);
     }

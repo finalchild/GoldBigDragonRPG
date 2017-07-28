@@ -20,6 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.user;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.PacketUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
@@ -52,27 +53,27 @@ public class Stats_Gui extends GuiUtil {
 
         Inventory inv = Bukkit.createInventory(null, 45, UniqueCode + "§0스텟");
 
-        Stack2(ChatColor.WHITE + "스텟", 160, 4, 1, Arrays.asList(ChatColor.GRAY + "스텟을 확인합니다."), 0, inv);
-        Stack2(ChatColor.WHITE + "스킬", 403, 0, 1, Arrays.asList(ChatColor.GRAY + "스킬을 확인합니다."), 9, inv);
-        Stack2(ChatColor.WHITE + "퀘스트", 358, 0, 1, Arrays.asList(ChatColor.GRAY + "현재 진행중인 퀘스트를 확인합니다."), 18, inv);
-        Stack2(ChatColor.WHITE + "옵션", 145, 0, 1, Arrays.asList(ChatColor.GRAY + "기타 설정을 합니다."), 27, inv);
-        Stack2(ChatColor.WHITE + "기타", 354, 0, 1, Arrays.asList(ChatColor.GRAY + "기타 내용을 확인합니다."), 36, inv);
+        Stack2(ChatColor.WHITE + "스텟", 160, 4, 1, Collections.singletonList(ChatColor.GRAY + "스텟을 확인합니다."), 0, inv);
+        Stack2(ChatColor.WHITE + "스킬", 403, 0, 1, Collections.singletonList(ChatColor.GRAY + "스킬을 확인합니다."), 9, inv);
+        Stack2(ChatColor.WHITE + "퀘스트", 358, 0, 1, Collections.singletonList(ChatColor.GRAY + "현재 진행중인 퀘스트를 확인합니다."), 18, inv);
+        Stack2(ChatColor.WHITE + "옵션", 145, 0, 1, Collections.singletonList(ChatColor.GRAY + "기타 설정을 합니다."), 27, inv);
+        Stack2(ChatColor.WHITE + "기타", 354, 0, 1, Collections.singletonList(ChatColor.GRAY + "기타 내용을 확인합니다."), 36, inv);
 
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 1, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 7, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 10, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 16, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 19, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 25, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 28, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 34, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 37, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 43, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 1, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 7, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 10, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 16, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 19, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 25, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 28, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 34, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 37, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 43, inv);
 
         ItemStack EXIT = new ItemStack(Material.WOOD_DOOR, 1);
         ItemMeta EXIT_BUTTON = EXIT.getItemMeta();
         EXIT_BUTTON.setDisplayName(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기");
-        EXIT_BUTTON.setLore(Arrays.asList(ChatColor.GRAY + "창을 닫습니다."));
+        EXIT_BUTTON.setLore(Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."));
         EXIT.setItemMeta(EXIT_BUTTON);
         inv.setItem(26, EXIT);
 

@@ -20,10 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.npc;
 
 import java.text.DecimalFormat;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.EffectUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
@@ -348,7 +345,7 @@ public class NPC_Gui extends GuiUtil {
             if (!isEditMode)
                 Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, null, 0, inv);
             else
-                Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, Arrays.asList(ChatColor.BLACK + "-1"), 0, inv);
+                Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, Collections.singletonList(ChatColor.BLACK + "-1"), 0, inv);
 
             Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, null, 1, inv);
             Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, null, 2, inv);
@@ -357,7 +354,7 @@ public class NPC_Gui extends GuiUtil {
             Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, null, 5, inv);
             Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, null, 6, inv);
             Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, null, 7, inv);
-            Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, Arrays.asList(ChatColor.BLACK + "" + page), 8, inv);
+            Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, Collections.singletonList(ChatColor.BLACK + "" + page), 8, inv);
             Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, null, 9, inv);
             Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, null, 18, inv);
             Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, null, 17, inv);
@@ -467,7 +464,7 @@ public class NPC_Gui extends GuiUtil {
             if (!isEditMode)
                 Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, null, 0, inv);
             else
-                Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, Arrays.asList(ChatColor.BLACK + "-1"), 0, inv);
+                Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, Collections.singletonList(ChatColor.BLACK + "-1"), 0, inv);
             Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, null, 1, inv);
             Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, null, 2, inv);
             Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, null, 3, inv);
@@ -475,7 +472,7 @@ public class NPC_Gui extends GuiUtil {
             Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, null, 5, inv);
             Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, null, 6, inv);
             Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, null, 7, inv);
-            Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, Arrays.asList(ChatColor.BLACK + "" + page), 8, inv);
+            Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, Collections.singletonList(ChatColor.BLACK + "" + page), 8, inv);
             Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, null, 9, inv);
             Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, null, 18, inv);
             Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, null, 17, inv);
@@ -553,7 +550,7 @@ public class NPC_Gui extends GuiUtil {
         }
 
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + u.getNPCuuid(player)), 53, inv);
 
         player.openInventory(inv);
@@ -564,13 +561,13 @@ public class NPC_Gui extends GuiUtil {
         String UniqueCode = "§0§0§7§0§2§r";
         Inventory inv = Bukkit.createInventory(null, 9, UniqueCode + "§0[NPC] " + ChatColor.stripColor(NPCname));
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "개인적인 대화", 340, 0, 1, Arrays.asList(ChatColor.GRAY + "사소한 이야깃 거리를 물어봅니다."), 2, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "근처의 소문", 340, 0, 1, Arrays.asList(ChatColor.GRAY + "최근 들리는 소문에 대해 물어봅니다."), 4, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "스킬에 대하여", 340, 0, 1, Arrays.asList(ChatColor.GRAY + "스킬에 대하여 물어봅니다."), 6, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "개인적인 대화", 340, 0, 1, Collections.singletonList(ChatColor.GRAY + "사소한 이야깃 거리를 물어봅니다."), 2, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "근처의 소문", 340, 0, 1, Collections.singletonList(ChatColor.GRAY + "최근 들리는 소문에 대해 물어봅니다."), 4, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "스킬에 대하여", 340, 0, 1, Collections.singletonList(ChatColor.GRAY + "스킬에 대하여 물어봅니다."), 6, inv);
         if (TalkType != -1)
             if (strings != null)
                 Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " " + NPCname, 386, 0, 1, Arrays.asList(new NPC_Main().getScript(player, TalkType)), (int) TalkType, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 메뉴", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 메뉴로 돌아갑니다."), 0, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 메뉴", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 메뉴로 돌아갑니다."), 0, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "나가기", 324, 0, 1, Arrays.asList(ChatColor.YELLOW + "" + ChatColor.stripColor(NPCname) + ChatColor.GRAY + "와의", ChatColor.GRAY + "대화를 종료합니다.", ChatColor.BLACK + u.getNPCuuid(player)), 8, inv);
 
         player.openInventory(inv);
@@ -701,9 +698,9 @@ public class NPC_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
         //Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323,0,1,Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + u.getNPCuuid(player)), 53, inv);
@@ -1033,9 +1030,9 @@ public class NPC_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
         //Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323,0,1,Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + u.getNPCuuid(player)), 53, inv);
@@ -1047,14 +1044,14 @@ public class NPC_Gui extends GuiUtil {
         String UniqueCode = "§0§0§7§0§5§r";
         Inventory inv = Bukkit.createInventory(null, 27, UniqueCode + "§0NPC 직업 선택");
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "직업 없음", 397, 3, 1, Arrays.asList(ChatColor.GRAY + "NPC의 직업을 없앱니다."), 1, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "직업 없음", 397, 3, 1, Collections.singletonList(ChatColor.GRAY + "NPC의 직업을 없앱니다."), 1, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "대장장이", 145, 0, 1, Arrays.asList(ChatColor.GRAY + "무기, 도구, 방어구 등등", ChatColor.GRAY + "금속으로 제작된 물건을 고칩니다."), 2, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "주술사", 116, 0, 1, Arrays.asList(ChatColor.GRAY + "플레이어에게 랜덤 버프를 겁니다."), 3, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "힐러", 373, 8261, 1, Arrays.asList(ChatColor.GRAY + "플레이어를 빠르게 치료해 줍니다."), 4, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "주술사", 116, 0, 1, Collections.singletonList(ChatColor.GRAY + "플레이어에게 랜덤 버프를 겁니다."), 3, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "힐러", 373, 8261, 1, Collections.singletonList(ChatColor.GRAY + "플레이어를 빠르게 치료해 줍니다."), 4, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "전직 교관", 314, 0, 1, Arrays.asList(ChatColor.GRAY + "플레이어가 전직 조건에 부합할 경우", ChatColor.GRAY + "플레이어를 특정 직업으로 전직 시켜줍니다.", "", ChatColor.RED + "이 기능은 서버 시스템이", ChatColor.RED + "메이플 스토리일 경우만 사용 가능합니다."), 5, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "공간 이동술사", 368, 0, 1, Arrays.asList(ChatColor.GRAY + "특정 위치로 텔레포트 시켜줍니다."), 6, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "개조 장인", 417, 0, 1, Arrays.asList(ChatColor.GRAY + "아이템을 개조 해 줍니다."), 7, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "룬 세공사", 351, 10, 1, Arrays.asList(ChatColor.GRAY + "아이템에 룬을 장착 시켜줍니다."), 10, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "공간 이동술사", 368, 0, 1, Collections.singletonList(ChatColor.GRAY + "특정 위치로 텔레포트 시켜줍니다."), 6, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "개조 장인", 417, 0, 1, Collections.singletonList(ChatColor.GRAY + "아이템을 개조 해 줍니다."), 7, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "룬 세공사", 351, 10, 1, Collections.singletonList(ChatColor.GRAY + "아이템에 룬을 장착 시켜줍니다."), 10, inv);
 
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 메뉴", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 메뉴로 돌아갑니다.", ChatColor.BLACK + NPCname), 18, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "나가기", 324, 0, 1, Arrays.asList(ChatColor.YELLOW + "" + ChatColor.stripColor(NPCname) + ChatColor.GRAY + "와의", ChatColor.GRAY + "대화를 종료합니다.", ChatColor.BLACK + u.getNPCuuid(player)), 26, inv);
@@ -1109,13 +1106,13 @@ public class NPC_Gui extends GuiUtil {
         }
 
         if (WarpList.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
         if (player.isOp())
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 워프", 381, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 워프 지점을 생성합니다.", "", ChatColor.YELLOW + "[영역을 설정한 지역만 등록 가능합니다.]"), 49, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + NPCname), 53, inv);
         player.openInventory(inv);
     }
@@ -1151,11 +1148,11 @@ public class NPC_Gui extends GuiUtil {
         }
 
         if (AreaList.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + NPCname), 53, inv);
         player.openInventory(inv);
     }
@@ -1253,13 +1250,13 @@ public class NPC_Gui extends GuiUtil {
         }
 
         if (UpgradeAbleList.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
         if (player.isOp())
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "개조식 추가", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "현재 개조 장인이 새로운", ChatColor.GRAY + "개조 레시피를 알게 합니다."), 49, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + NPCname), 53, inv);
         player.openInventory(inv);
     }
@@ -1344,11 +1341,11 @@ public class NPC_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + NPCname), 53, inv);
         player.openInventory(inv);
     }
@@ -1364,7 +1361,7 @@ public class NPC_Gui extends GuiUtil {
         Stack2(ChatColor.BLUE + "", 160, 7, 1, null, 1, inv);
         Stack2(ChatColor.BLUE + "", 160, 7, 1, null, 2, inv);
         Stack2(ChatColor.BLUE + "", 160, 7, 1, null, 9, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 10, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 10, inv);
         Stack2(ChatColor.BLUE + "", 160, 7, 1, null, 11, inv);
         Stack2(ChatColor.BLUE + "", 160, 7, 1, null, 18, inv);
         Stack2(ChatColor.BLUE + "", 160, 7, 1, null, 19, inv);
@@ -1387,7 +1384,7 @@ public class NPC_Gui extends GuiUtil {
         Stack2(ChatColor.BLUE + "", 160, 7, 1, null, 17, inv);
         Stack2(ChatColor.BLUE + "", 160, 7, 1, null, 24, inv);
         Stack2(ChatColor.BLUE + "", 160, 7, 1, null, 25, inv);
-        Stack2(ChatColor.BLUE + "", 160, 7, 1, Arrays.asList(ChatColor.BLACK + NPCname), 26, inv);
+        Stack2(ChatColor.BLUE + "", 160, 7, 1, Collections.singletonList(ChatColor.BLACK + NPCname), 26, inv);
         player.openInventory(inv);
     }
 
@@ -1447,23 +1444,23 @@ public class NPC_Gui extends GuiUtil {
         }
 
         if (TalkList.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[대사 추가]", 403, 0, 1, Arrays.asList(ChatColor.GRAY + "대사를 추가 시킵니다."), 49, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[대사 추가]", 403, 0, 1, Collections.singletonList(ChatColor.GRAY + "대사를 추가 시킵니다."), 49, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
         switch (TalkType) {
             case "NT"://NatureTalk
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[근처의 소문]", 340, 0, 1, Arrays.asList(ChatColor.GRAY + "다른 주제의 대사를 설정합니다."), 46, inv);
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[스킬에 관하여]", 340, 0, 1, Arrays.asList(ChatColor.GRAY + "다른 주제의 대사를 설정합니다."), 52, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[근처의 소문]", 340, 0, 1, Collections.singletonList(ChatColor.GRAY + "다른 주제의 대사를 설정합니다."), 46, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[스킬에 관하여]", 340, 0, 1, Collections.singletonList(ChatColor.GRAY + "다른 주제의 대사를 설정합니다."), 52, inv);
                 break;
             case "NN"://NearbyNews
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[스킬에 관하여]", 340, 0, 1, Arrays.asList(ChatColor.GRAY + "다른 주제의 대사를 설정합니다."), 46, inv);
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[개인적인 대화]", 340, 0, 1, Arrays.asList(ChatColor.GRAY + "다른 주제의 대사를 설정합니다."), 52, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[스킬에 관하여]", 340, 0, 1, Collections.singletonList(ChatColor.GRAY + "다른 주제의 대사를 설정합니다."), 46, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[개인적인 대화]", 340, 0, 1, Collections.singletonList(ChatColor.GRAY + "다른 주제의 대사를 설정합니다."), 52, inv);
                 break;
             case "AS"://AboutSkill
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[개인적인 대화]", 340, 0, 1, Arrays.asList(ChatColor.GRAY + "다른 주제의 대사를 설정합니다."), 46, inv);
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[근처의 소문]", 340, 0, 1, Arrays.asList(ChatColor.GRAY + "다른 주제의 대사를 설정합니다."), 52, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[개인적인 대화]", 340, 0, 1, Collections.singletonList(ChatColor.GRAY + "다른 주제의 대사를 설정합니다."), 46, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[근처의 소문]", 340, 0, 1, Collections.singletonList(ChatColor.GRAY + "다른 주제의 대사를 설정합니다."), 52, inv);
                 break;
         }
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다.", ChatColor.BLACK + TalkType), 45, inv);
@@ -1559,9 +1556,9 @@ public class NPC_Gui extends GuiUtil {
         }
 
         if (Skills.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다.", ChatColor.BLACK + "" + TalkNumber), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + NPCname), 53, inv);
@@ -1578,8 +1575,8 @@ public class NPC_Gui extends GuiUtil {
             itemName = new Main_Interact().SetItemDefaultName((short) item.getTypeId(), item.getData().getData());
         if (isItemBuy) {
             inv = Bukkit.createInventory(null, 54, UniqueCode + "§0[NPC]" + ChatColor.BLUE + ChatColor.BOLD + " 물품 구매");
-            Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, Arrays.asList(ChatColor.BLACK + "" + value), 0, inv);
-            Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, Arrays.asList(ChatColor.BLACK + "" + count), 1, inv);
+            Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, Collections.singletonList(ChatColor.BLACK + "" + value), 0, inv);
+            Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, Collections.singletonList(ChatColor.BLACK + "" + count), 1, inv);
             Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, null, 2, inv);
             Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, null, 3, inv);
             Stack2(ChatColor.AQUA + "     [구입]     ", 160, 11, 1, null, 4, inv);
@@ -1607,8 +1604,8 @@ public class NPC_Gui extends GuiUtil {
                     , "", ChatColor.WHITE + "가격 : " + ChatColor.YELLOW + value * count + " " + ChatColor.GOLD + Main_ServerOption.Money, ChatColor.WHITE + "소지금 : " + ChatColor.WHITE + ChatColor.BOLD + Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money() + " " + Main_ServerOption.Money), 49, inv);
         } else {
             inv = Bukkit.createInventory(null, 54, UniqueCode + "§0[NPC]" + ChatColor.RED + ChatColor.BOLD + " 물품 판매");
-            Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, Arrays.asList(ChatColor.BLACK + "" + value), 0, inv);
-            Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, Arrays.asList(ChatColor.BLACK + "" + count), 1, inv);
+            Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, Collections.singletonList(ChatColor.BLACK + "" + value), 0, inv);
+            Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, Collections.singletonList(ChatColor.BLACK + "" + count), 1, inv);
             Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, null, 2, inv);
             Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, null, 3, inv);
             Stack2(ChatColor.RED + "     [판매]     ", 160, 14, 1, null, 4, inv);
@@ -1647,7 +1644,7 @@ public class NPC_Gui extends GuiUtil {
         Stack2(ChatColor.AQUA + "" + ChatColor.BOLD + "     [개수 + 10]     ", 373, 0, 10, Arrays.asList("", ChatColor.WHITE + "현재 총 " + ChatColor.YELLOW + ChatColor.BOLD + count + ChatColor.WHITE + " 개"), 24, inv);
         Stack2(ChatColor.AQUA + "" + ChatColor.BOLD + "     [개수 + 64]     ", 373, 0, 64, Arrays.asList("", ChatColor.WHITE + "현재 총 " + ChatColor.YELLOW + ChatColor.BOLD + count + ChatColor.WHITE + " 개"), 25, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + NPCname), 53, inv);
         player.openInventory(inv);
     }
@@ -1671,7 +1668,7 @@ public class NPC_Gui extends GuiUtil {
     public void PresentSettingGUI(Player player, String NPCname) {
         String UniqueCode = "§0§0§7§1§0§r";
         Inventory inv = Bukkit.createInventory(null, 9, UniqueCode + "§0[NPC] 선물 가능 아이템 목록");
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록" + ChatColor.BLACK + ChatColor.YELLOW + ChatColor.RED, 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록" + ChatColor.BLACK + ChatColor.YELLOW + ChatColor.RED, 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기" + ChatColor.BLACK + ChatColor.YELLOW + ChatColor.RED, 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + NPCname), 8, inv);
 
         YamlController YC = new YamlController(Main_Main.plugin);
@@ -1681,7 +1678,7 @@ public class NPC_Gui extends GuiUtil {
 
         for (int count = 2; count < 8; count++) {
             if (NPCConfig.getItemStack("Present." + count + ".item") == null)
-                Stack2(ChatColor.RED + "[정해지지 않은 선물]", 166, 0, 1, Arrays.asList(ChatColor.YELLOW + "" + ChatColor.BOLD + "[클릭시 선물 지정]"), count, inv);
+                Stack2(ChatColor.RED + "[정해지지 않은 선물]", 166, 0, 1, Collections.singletonList(ChatColor.YELLOW + "" + ChatColor.BOLD + "[클릭시 선물 지정]"), count, inv);
             else {
                 ItemStack item = NPCConfig.getItemStack("Present." + count + ".item");
                 ItemMeta im = item.getItemMeta();
@@ -1716,7 +1713,7 @@ public class NPC_Gui extends GuiUtil {
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록" + ChatColor.BLACK + ChatColor.YELLOW + ChatColor.RED, 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다.", ChatColor.BLACK + "" + isSettingMode), 0, inv);
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "선물 주기" + ChatColor.BLACK + ChatColor.YELLOW + ChatColor.RED, 54, 0, 1, Arrays.asList(ChatColor.GRAY + "올려둔 아이템을 선물합니다.", ChatColor.BLACK + NPCname), 8, inv);
         }
-        Stack2("" + ChatColor.BLACK + ChatColor.YELLOW + ChatColor.RED, 160, 5, 1, Arrays.asList(ChatColor.BLACK + "" + number), 1, inv);
+        Stack2("" + ChatColor.BLACK + ChatColor.YELLOW + ChatColor.RED, 160, 5, 1, Collections.singletonList(ChatColor.BLACK + "" + number), 1, inv);
         Stack2("" + ChatColor.BLACK + ChatColor.YELLOW + ChatColor.RED, 160, 5, 1, null, 2, inv);
         Stack2("" + ChatColor.BLACK + ChatColor.YELLOW + ChatColor.RED, 160, 5, 1, null, 3, inv);
         Stack2("" + ChatColor.BLACK + ChatColor.YELLOW + ChatColor.RED, 160, 5, 1, null, 5, inv);
@@ -2032,7 +2029,7 @@ public class NPC_Gui extends GuiUtil {
                         NPCscript.set("Job.BuffTime", 60);
                         NPCscript.set("Job.Deal", 500);
                     } else if (Case.compareTo("힐러") == 0) {
-                        Damageable getouter = (Damageable) player;
+                        Damageable getouter = player;
                         int a = (int) getouter.getHealth();
                         if (player.getHealthScale() == a && !(player.hasPotionEffect(PotionEffectType.BLINDNESS) ||
                                 player.hasPotionEffect(PotionEffectType.CONFUSION) || player.hasPotionEffect(PotionEffectType.HARM) ||
@@ -3572,7 +3569,7 @@ public class NPC_Gui extends GuiUtil {
                 long FixPrice = Long.parseLong(ChatColor.stripColor(event.getInventory().getItem(0).getItemMeta().getLore().get(2)));
                 byte FixRate = (byte) Integer.parseInt(ChatColor.stripColor(event.getInventory().getItem(0).getItemMeta().getLore().get(1)));
                 if (!HasCustomDurability) {
-                    short nowDurability = (short) (clickedItem.getDurability());
+                    short nowDurability = clickedItem.getDurability();
 
                     if (nowDurability == 0) {
                         SoundUtil.playSound(player, Sound.BLOCK_ANVIL_LAND, 0.8F, 1.6F);

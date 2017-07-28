@@ -20,6 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.party;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
@@ -40,24 +41,24 @@ public final class Party_Gui extends GuiUtil {
     public void PartyGUI_Main(Player player) {
         String UniqueCode = "§0§0§4§0§0§r";
         Inventory inv = Bukkit.createInventory(null, 45, UniqueCode + "§0파티");
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "파티 목록", 340, 0, 1, Arrays.asList(ChatColor.GRAY + "현재 개설된 파티 목록을 봅니다."), 12, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "파티 목록", 340, 0, 1, Collections.singletonList(ChatColor.GRAY + "현재 개설된 파티 목록을 봅니다."), 12, inv);
         if (!Main_ServerOption.PartyJoiner.containsKey(player)) {
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "파티 개설", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 파티를 개설합니다."), 10, inv);
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "파티 참여", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "생성되어 있는 파티에 참여합니다."), 12, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "파티 개설", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "새로운 파티를 개설합니다."), 10, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "파티 참여", 386, 0, 1, Collections.singletonList(ChatColor.GRAY + "생성되어 있는 파티에 참여합니다."), 12, inv);
         } else {
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "파티 정보", 397, 3, 1, Arrays.asList(ChatColor.GRAY + "현재 파티의 정보를 알아봅니다.", ChatColor.GRAY + "리더의 경우, 파티 멤버를", ChatColor.GRAY + "강퇴 시킬 수도 있습니다."), 10, inv);
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "파티 탈퇴", 52, 0, 1, Arrays.asList(ChatColor.GRAY + "파티에서 탈퇴합니다."), 14, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "파티 탈퇴", 52, 0, 1, Collections.singletonList(ChatColor.GRAY + "파티에서 탈퇴합니다."), 14, inv);
             if (Main_ServerOption.Party.get(Main_ServerOption.PartyJoiner.get(player)).getLeader().equalsIgnoreCase(player.getName())) {
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "리더 변경", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "파티의 리더를 변경합니다."), 28, inv);
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "인원 변경", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "제한 인원을 변경합니다."), 30, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "리더 변경", 386, 0, 1, Collections.singletonList(ChatColor.GRAY + "파티의 리더를 변경합니다."), 28, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "인원 변경", 386, 0, 1, Collections.singletonList(ChatColor.GRAY + "제한 인원을 변경합니다."), 30, inv);
                 if (!Main_ServerOption.Party.get(Main_ServerOption.PartyJoiner.get(player)).getLock())
-                    Stack2(ChatColor.BLUE + "" + ChatColor.BOLD + "파티 개방", 54, 0, 1, Arrays.asList(ChatColor.GRAY + "파티 가입 신청을 받습니다."), 34, inv);
+                    Stack2(ChatColor.BLUE + "" + ChatColor.BOLD + "파티 개방", 54, 0, 1, Collections.singletonList(ChatColor.GRAY + "파티 가입 신청을 받습니다."), 34, inv);
                 else
-                    Stack2(ChatColor.RED + "" + ChatColor.BOLD + "파티 잠금", 130, 0, 1, Arrays.asList(ChatColor.GRAY + "파티 가입 신청을 받지 않습니다."), 34, inv);
+                    Stack2(ChatColor.RED + "" + ChatColor.BOLD + "파티 잠금", 130, 0, 1, Collections.singletonList(ChatColor.GRAY + "파티 가입 신청을 받지 않습니다."), 34, inv);
             }
         }
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "기타 창으로 돌아갑니다."), 36, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "작업 관리자 창을 닫습니다."), 44, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "기타 창으로 돌아갑니다."), 36, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "작업 관리자 창을 닫습니다."), 44, inv);
         player.openInventory(inv);
     }
 
@@ -84,12 +85,12 @@ public final class Party_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 
@@ -136,12 +137,12 @@ public final class Party_Gui extends GuiUtil {
             loc++;
         }
         if (Member.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 

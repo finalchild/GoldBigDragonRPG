@@ -20,6 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.admin;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
@@ -36,12 +37,12 @@ public class WorldCreate_Gui extends GuiUtil {
         String UniqueCode = "§0§0§1§1§b§r";
         Inventory inv = Bukkit.createInventory(null, 9, UniqueCode + "§0월드 선택");
 
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "일반 월드", 6, 0, 1, Arrays.asList(ChatColor.GRAY + "일반적인 월드를 생성합니다."), 2, inv);
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "완전한 평지", 2, 0, 1, Arrays.asList(ChatColor.GRAY + "완전한 평지를 가진 월드를 생성합니다."), 4, inv);
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "넓은 바이옴", 175, 4, 1, Arrays.asList(ChatColor.GRAY + "바이옴이 넓은 월드를 생성합니다."), 6, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "일반 월드", 6, 0, 1, Collections.singletonList(ChatColor.GRAY + "일반적인 월드를 생성합니다."), 2, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "완전한 평지", 2, 0, 1, Collections.singletonList(ChatColor.GRAY + "완전한 평지를 가진 월드를 생성합니다."), 4, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "넓은 바이옴", 175, 4, 1, Collections.singletonList(ChatColor.GRAY + "바이옴이 넓은 월드를 생성합니다."), 6, inv);
 
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 8, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 8, inv);
         player.openInventory(inv);
     }
 

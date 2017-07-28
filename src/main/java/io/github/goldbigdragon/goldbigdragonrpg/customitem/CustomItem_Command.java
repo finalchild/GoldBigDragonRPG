@@ -20,6 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.customitem;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
@@ -213,7 +214,7 @@ public class CustomItem_Command {
         } else {
             ItemStack item = player.getInventory().getItemInMainHand();
             ItemMeta itemMeta = item.getItemMeta();
-            List<String> Lore = Arrays.asList();
+            List<String> Lore = Collections.emptyList();
             switch (type) {
                 case 0: {
                     value = ChatColor.WHITE + value;
@@ -225,7 +226,7 @@ public class CustomItem_Command {
                 case 1: {
                     value = ChatColor.WHITE + value;
                     if (!itemMeta.hasLore())
-                        itemMeta.setLore(Arrays.asList(value));
+                        itemMeta.setLore(Collections.singletonList(value));
                     else {
                         Lore = itemMeta.getLore();
                         Lore.add(Lore.size(), value);

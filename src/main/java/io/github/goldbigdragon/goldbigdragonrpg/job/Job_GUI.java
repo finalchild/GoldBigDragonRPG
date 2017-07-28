@@ -20,6 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.job;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Set;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
@@ -49,8 +50,8 @@ public class Job_Gui extends GuiUtil {
         Stack2(ChatColor.GOLD + "" + ChatColor.BOLD + "마비노기", 346, 0, 1, Arrays.asList(ChatColor.GRAY + "메이플 스토리와는 다르게", ChatColor.GRAY + "자유롭게 스킬을 습득 할 수 있습니다.", ChatColor.GRAY + "직업 개념이 없기 때문에", ChatColor.GRAY + "카테고리별로 스킬을 나눕니다.", "", ChatColor.GREEN + "자유도 : " + ChatColor.YELLOW + "||||||||||||||||||||", ChatColor.GREEN + "노가다 : " + ChatColor.YELLOW + "||||||||||||||||||||", "", ChatColor.RED + "[게임 성향이 마비노기일 경우만 적용]"), 12, inv);
         Stack2(ChatColor.RED + "" + ChatColor.BOLD + "메이플 스토리", 40, 0, 1, Arrays.asList(ChatColor.GRAY + "마비노기와는 다르게", ChatColor.GRAY + "직업별로 스킬이 고정되어 있습니다.", ChatColor.GRAY + "직업 개념이 존재하기 때문에", ChatColor.GRAY + "직업별 및 승급별로 스킬을 나눕니다.", "", ChatColor.GREEN + "자유도 : " + ChatColor.YELLOW + "||||||" + ChatColor.GRAY + "||||||||||||||", ChatColor.GREEN + "노가다 : " + ChatColor.YELLOW + "|||||||||||" + ChatColor.GRAY + "|||||||||", "", ChatColor.RED + "[게임 성향이 메이플 스토리일 경우만 적용]"), 14, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 18, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "작업 관리자 창을 닫습니다."), 26, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 18, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "작업 관리자 창을 닫습니다."), 26, inv);
         player.openInventory(inv);
     }
 
@@ -80,13 +81,13 @@ public class Job_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 직업", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 직업을 생성합니다."), 49, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 직업", 386, 0, 1, Collections.singletonList(ChatColor.GRAY + "새로운 직업을 생성합니다."), 49, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 
@@ -122,8 +123,8 @@ public class Job_Gui extends GuiUtil {
                 Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + JobNick, IconID, IconData, IconAmount, Arrays.asList(ChatColor.DARK_AQUA + "등록된 스킬 수 : " + ChatColor.WHITE + JobSkillList + ChatColor.DARK_AQUA + "개", ChatColor.GREEN + "승급 필요 레벨 : " + ChatColor.WHITE + NeedLevel + ChatColor.GREEN + " 이상", ChatColor.GREEN + "승급 필요 " + Main_ServerOption.STR + " : " + ChatColor.WHITE + NeedSTR + ChatColor.GREEN + " 이상", ChatColor.GREEN + "승급 필요 " + Main_ServerOption.DEX + " : " + ChatColor.WHITE + NeedDEX + ChatColor.GREEN + " 이상", ChatColor.GREEN + "승급 필요 " + Main_ServerOption.INT + " : " + ChatColor.WHITE + NeedINT + ChatColor.GREEN + " 이상", ChatColor.GREEN + "승급 필요 " + Main_ServerOption.WILL + " : " + ChatColor.WHITE + NeedWILL + ChatColor.GREEN + " 이상", ChatColor.GREEN + "승급 필요 " + Main_ServerOption.LUK + " : " + ChatColor.WHITE + NeedLUK + ChatColor.GREEN + " 이상", ChatColor.GREEN + "이전 승급 단계 : " + ChatColor.WHITE + PrevJob, "", ChatColor.YELLOW + "[좌 클릭시 직업 스킬 등록]", ChatColor.YELLOW + "[우 클릭시 직업 스킬 확인]", ChatColor.YELLOW + "[Shift + 좌 클릭시 승급 제한 설정]", ChatColor.RED + "[Shift + 우클릭시 승급 삭제]", ChatColor.RED + "플레이어가 많을수록 렉이 심해집니다."), count, inv);
         }
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 승급", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 승급 클래스를 만듭니다."), 22, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 18, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 승급", 386, 0, 1, Collections.singletonList(ChatColor.GRAY + "새로운 승급 클래스를 만듭니다."), 22, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 18, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + JobName), 26, inv);
         player.openInventory(inv);
     }
@@ -149,13 +150,13 @@ public class Job_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 카테고리", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 카테고리를 생성합니다."), 49, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 카테고리", 386, 0, 1, Collections.singletonList(ChatColor.GRAY + "새로운 카테고리를 생성합니다."), 49, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 
@@ -188,11 +189,11 @@ public class Job_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + CategoriName), 53, inv);
         player.openInventory(inv);
     }
@@ -216,9 +217,9 @@ public class Job_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다.", ChatColor.BLACK + JobNick), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + JobName), 53, inv);

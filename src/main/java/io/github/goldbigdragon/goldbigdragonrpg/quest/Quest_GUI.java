@@ -21,6 +21,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.quest;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
 import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.effect.EffectUtil;
@@ -105,10 +106,10 @@ public class Quest_Gui extends GuiUtil {
                         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + a[count].toString(), ItemID, 0, ItemAmount, Arrays.asList(ChatColor.WHITE + "하고싶은 말을 선택하자.", "", ChatColor.YELLOW + "[좌클릭시 선택지 확인.]"), loc, inv);
                         break;
                     case "Script":
-                        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + a[count].toString(), ItemID, 0, ItemAmount, Arrays.asList(ChatColor.YELLOW + QuestList.getString(a[count].toString() + ".FlowChart." + PlayerQuestList.getInt("Started." + a[count].toString() + ".Flow") + ".NPCname") + ChatColor.WHITE + "와 대화를 해 보자."), loc, inv);
+                        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + a[count].toString(), ItemID, 0, ItemAmount, Collections.singletonList(ChatColor.YELLOW + QuestList.getString(a[count].toString() + ".FlowChart." + PlayerQuestList.getInt("Started." + a[count].toString() + ".Flow") + ".NPCname") + ChatColor.WHITE + "와 대화를 해 보자."), loc, inv);
                         break;
                     case "PScript":
-                        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + a[count].toString(), ItemID, 0, ItemAmount, Arrays.asList(ChatColor.YELLOW + "[좌클릭시 독백 확인]"), loc, inv);
+                        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + a[count].toString(), ItemID, 0, ItemAmount, Collections.singletonList(ChatColor.YELLOW + "[좌클릭시 독백 확인]"), loc, inv);
                         break;
                     case "Visit":
                         YamlManager AreaList = YC.getNewConfig("Area/AreaList.yml");
@@ -121,7 +122,7 @@ public class Quest_Gui extends GuiUtil {
                                 , ChatColor.YELLOW + "월드 : " + ChatColor.WHITE + AreaWorld, ChatColor.YELLOW + "X 좌표 : " + ChatColor.WHITE + "" + AreaX, ChatColor.YELLOW + "Y 좌표 : " + ChatColor.WHITE + "" + AreaY, ChatColor.YELLOW + "Z 좌표 : " + ChatColor.WHITE + "" + AreaZ), loc, inv);
                         break;
                     case "Talk":
-                        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + a[count].toString(), ItemID, 0, ItemAmount, Arrays.asList(ChatColor.YELLOW + QuestList.getString(a[count].toString() + ".FlowChart." + PlayerQuestList.getInt("Started." + a[count].toString() + ".Flow") + ".TargetNPCname") + ChatColor.WHITE + "에게 말을 걸어 보자."), loc, inv);
+                        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + a[count].toString(), ItemID, 0, ItemAmount, Collections.singletonList(ChatColor.YELLOW + QuestList.getString(a[count].toString() + ".FlowChart." + PlayerQuestList.getInt("Started." + a[count].toString() + ".Flow") + ".TargetNPCname") + ChatColor.WHITE + "에게 말을 걸어 보자."), loc, inv);
                         break;
                     case "Give":
                         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + a[count].toString(), ItemID, 0, ItemAmount, Arrays.asList(ChatColor.YELLOW + QuestList.getString(a[count].toString() + ".FlowChart." + PlayerQuestList.getInt("Started." + a[count].toString() + ".Flow") + ".TargetNPCname") + ChatColor.WHITE + "가 부탁한", ChatColor.WHITE + "물품을 전달하자.", "", ChatColor.YELLOW + "[좌클릭시 전달 품목 확인.]"), loc, inv);
@@ -141,12 +142,12 @@ public class Quest_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 
@@ -205,13 +206,13 @@ public class Quest_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
         if (!ChoosePrevQuest)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 퀘스트", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 퀘스트를 생성합니다."), 49, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 퀘스트", 386, 0, 1, Collections.singletonList(ChatColor.GRAY + "새로운 퀘스트를 생성합니다."), 49, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + "" + ChoosePrevQuest), 53, inv);
         player.openInventory(inv);
     }
@@ -387,12 +388,12 @@ public class Quest_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 오브젝트 추가", 2, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 오브젝트를 추가합니다."), 49, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 오브젝트 추가", 2, 0, 1, Collections.singletonList(ChatColor.GRAY + "새로운 오브젝트를 추가합니다."), 49, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + ChatColor.stripColor(QuestName)), 53, inv);
         player.openInventory(inv);
     }
@@ -407,18 +408,18 @@ public class Quest_Gui extends GuiUtil {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "전달", 388, 0, 1, Arrays.asList(ChatColor.GRAY + "플레이어가 특정 아이템을", ChatColor.GRAY + "NPC에게 줘야하는 퀘스트를 줍니다."), 3, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "사냥", 267, 0, 1, Arrays.asList(ChatColor.GRAY + "플레이어에게 특정 몬스터를", ChatColor.GRAY + "사냥하는 퀘스트를 줍니다."), 4, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "대화", 397, 3, 1, Arrays.asList(ChatColor.GRAY + "플레이어에게 특정 NPC에게", ChatColor.GRAY + "말을 거는 퀘스트를 줍니다."), 5, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "보상", 54, 0, 1, Arrays.asList(ChatColor.GRAY + "플레이어에게 보상을 줍니다."), 6, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "보상", 54, 0, 1, Collections.singletonList(ChatColor.GRAY + "플레이어에게 보상을 줍니다."), 6, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이동", 368, 0, 1, Arrays.asList(ChatColor.GRAY + "플레이어를 특정 위치로", ChatColor.GRAY + "이동 시킵니다."), 7, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "채집", 56, 0, 1, Arrays.asList(ChatColor.GRAY + "플레이어에게 특정 블록을", ChatColor.GRAY + "채취하는 퀘스트를 줍니다."), 8, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "블록", 152, 0, 1, Arrays.asList(ChatColor.GRAY + "특정 위치에 정해진", ChatColor.GRAY + "블록을 생성합니다."), 9, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "소리" + ChatColor.RED + "[사용 불가]", 84, 0, 1, Arrays.asList(ChatColor.GRAY + "특정 위치에 소리가 나게 합니다."), 10, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "귓말", 421, 0, 1, Arrays.asList(ChatColor.GRAY + "플레이어의 채팅창에 메시지가 나타납니다."), 11, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "전체", 138, 0, 1, Arrays.asList(ChatColor.GRAY + "서버 전체에 메시지가 나타납니다."), 12, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "네비", 358, 0, 1, Arrays.asList(ChatColor.GRAY + "플레이어에게 네비게이션을 작동 시킵니다."), 13, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "소리" + ChatColor.RED + "[사용 불가]", 84, 0, 1, Collections.singletonList(ChatColor.GRAY + "특정 위치에 소리가 나게 합니다."), 10, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "귓말", 421, 0, 1, Collections.singletonList(ChatColor.GRAY + "플레이어의 채팅창에 메시지가 나타납니다."), 11, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "전체", 138, 0, 1, Collections.singletonList(ChatColor.GRAY + "서버 전체에 메시지가 나타납니다."), 12, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "네비", 358, 0, 1, Collections.singletonList(ChatColor.GRAY + "플레이어에게 네비게이션을 작동 시킵니다."), 13, inv);
 
 
         Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + "선택", 72, 0, 1, Arrays.asList(ChatColor.GRAY + "플레이어가 원하는 대답을", ChatColor.GRAY + "선택 하도록 합니다.", ChatColor.GRAY + "선택한 대답에 따라", ChatColor.GRAY + "다른 변수값을 가질 수 있습니다."), 36, inv);
-        Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + "변수", 143, 0, 1, Arrays.asList(ChatColor.GRAY + "플레이어의 변수를 강제로 수정합니다."), 37, inv);
+        Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + "변수", 143, 0, 1, Collections.singletonList(ChatColor.GRAY + "플레이어의 변수를 강제로 수정합니다."), 37, inv);
         Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + "계산", 137, 0, 1, Arrays.asList(ChatColor.GRAY + "플레이어의 변수를 계산식을", ChatColor.GRAY + "사용하여 수정합니다."), 38, inv);
         Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + "IF", 184, 0, 1, Arrays.asList(ChatColor.GRAY + "플레이어의 현재 변수값을 확인하여", ChatColor.GRAY + "비교한 값과 동일할 경우", ChatColor.GRAY + "IF와 ENDIF혹은 IF와 ELSE", ChatColor.GRAY + "사이의 구문을 실행하게 됩니다.", "", ChatColor.RED + "[반드시 IF의 개수 = ENDIF의 개수]"), 39, inv);
         Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + "ELSE", 167, 0, 1, Arrays.asList(ChatColor.GRAY + "플레이어의 현재 변수값이", ChatColor.GRAY + "IF 논리에 맞지 않을 경우", ChatColor.GRAY + "ELSE와 ENDIF 사이의 구문을", ChatColor.GRAY + "실행하게 됩니다.", ""), 40, inv);
@@ -427,7 +428,7 @@ public class Quest_Gui extends GuiUtil {
         Stack2(ChatColor.RED + "" + ChatColor.BOLD + "퀘스트 초기화", 395, 0, 1, Arrays.asList(ChatColor.GRAY + "퀘스트를 중간에 포기 합니다.", ChatColor.GREEN + "퀘스트를 다시 받을 수 있습니다."), 43, inv);
         Stack2(ChatColor.RED + "" + ChatColor.BOLD + "퀘스트 실패", 166, 0, 1, Arrays.asList(ChatColor.GRAY + "퀘스트를 중간에 포기 합니다.", ChatColor.GRAY + "일반 퀘스트일 경우 플레이어는", ChatColor.RED + "퀘스트를 다시 받을 수 없습니다."), 44, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + ChatColor.stripColor(QuestName)), 53, inv);
         player.openInventory(inv);
     }
@@ -456,19 +457,19 @@ public class Quest_Gui extends GuiUtil {
 
         switch (QuestList.getString(QuestName + ".Type")) {
             case "N":
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "퀘스트 타입", 340, 0, 1, Arrays.asList(ChatColor.WHITE + "일반 퀘스트"), 4, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "퀘스트 타입", 340, 0, 1, Collections.singletonList(ChatColor.WHITE + "일반 퀘스트"), 4, inv);
                 break;
             case "R":
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "퀘스트 타입", 386, 0, 1, Arrays.asList(ChatColor.WHITE + "반복 퀘스트"), 4, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "퀘스트 타입", 386, 0, 1, Collections.singletonList(ChatColor.WHITE + "반복 퀘스트"), 4, inv);
                 break;
             case "D":
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "퀘스트 타입", 403, 0, 1, Arrays.asList(ChatColor.WHITE + "일일 퀘스트"), 4, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "퀘스트 타입", 403, 0, 1, Collections.singletonList(ChatColor.WHITE + "일일 퀘스트"), 4, inv);
                 break;
             case "W":
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "퀘스트 타입", 403, 0, 7, Arrays.asList(ChatColor.WHITE + "주간 퀘스트"), 4, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "퀘스트 타입", 403, 0, 7, Collections.singletonList(ChatColor.WHITE + "주간 퀘스트"), 4, inv);
                 break;
             case "M":
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "퀘스트 타입", 403, 0, 31, Arrays.asList(ChatColor.WHITE + "월간 퀘스트"), 4, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "퀘스트 타입", 403, 0, 31, Collections.singletonList(ChatColor.WHITE + "월간 퀘스트"), 4, inv);
                 break;
         }
 
@@ -496,7 +497,7 @@ public class Quest_Gui extends GuiUtil {
                 break;
         }
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 36, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 36, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + ChatColor.stripColor(QuestName)), 44, inv);
         player.openInventory(inv);
     }
@@ -526,9 +527,9 @@ public class Quest_Gui extends GuiUtil {
         if (u.getInt(player, (byte) 3) == -1)
             u.setInt(player, (byte) 3, 0);
 
-        Stack2(ChatColor.WHITE + "[보상금 설정하기]", 266, 0, 1, Arrays.asList(ChatColor.WHITE + "" + ChatColor.BOLD + "" + u.getInt(player, (byte) 1) + " " + Main_ServerOption.Money), 0, inv);
-        Stack2(ChatColor.WHITE + "[경험치 설정하기]", 384, 0, 1, Arrays.asList(ChatColor.WHITE + "" + ChatColor.BOLD + "" + u.getInt(player, (byte) 2) + ChatColor.AQUA + "" + ChatColor.BOLD + " EXP"), 1, inv);
-        Stack2(ChatColor.WHITE + "[NPC 호감도 설정하기]", 38, 0, 1, Arrays.asList(ChatColor.WHITE + "" + ChatColor.BOLD + "" + u.getInt(player, (byte) 3) + ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + " Love"), 2, inv);
+        Stack2(ChatColor.WHITE + "[보상금 설정하기]", 266, 0, 1, Collections.singletonList(ChatColor.WHITE + "" + ChatColor.BOLD + "" + u.getInt(player, (byte) 1) + " " + Main_ServerOption.Money), 0, inv);
+        Stack2(ChatColor.WHITE + "[경험치 설정하기]", 384, 0, 1, Collections.singletonList(ChatColor.WHITE + "" + ChatColor.BOLD + "" + u.getInt(player, (byte) 2) + ChatColor.AQUA + "" + ChatColor.BOLD + " EXP"), 1, inv);
+        Stack2(ChatColor.WHITE + "[NPC 호감도 설정하기]", 38, 0, 1, Collections.singletonList(ChatColor.WHITE + "" + ChatColor.BOLD + "" + u.getInt(player, (byte) 3) + ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + " Love"), 2, inv);
         int ifItemExit = 0;
         for (int count = 3; count < 8; count++) {
             if (QuestConfig.getItemStack(QuestName + ".FlowChart." + u.getInt(player, (byte) 5) + ".Item." + ifItemExit) != null) {
@@ -614,7 +615,7 @@ public class Quest_Gui extends GuiUtil {
             SkullMeta meta = (SkullMeta) skull.getItemMeta();
             meta.setOwner(MobName);
             meta.setDisplayName(ChatColor.GOLD + SkullType(MobName));
-            meta.setLore(Arrays.asList(ChatColor.WHITE + "[" + PlayerKillAmount + "/" + Amount + "]"));
+            meta.setLore(Collections.singletonList(ChatColor.WHITE + "[" + PlayerKillAmount + "/" + Amount + "]"));
             skull.setItemMeta(meta);
             ItemStackStack(skull, counter, inv);
             //Stack2(ChatColor.GOLD+ MobName, 266,0,1,Arrays.asList(ChatColor.WHITE + "[" +PlayerKillAmount+"/"+ Amount + "]"), counter, inv);
@@ -644,9 +645,9 @@ public class Quest_Gui extends GuiUtil {
             Main_Interact IT = new Main_Interact();
 
             if (DataEquals)
-                Stack(ChatColor.YELLOW + IT.SetItemDefaultName((short) BlockID, (byte) BlockData), BlockID, BlockData, 1, Arrays.asList(ChatColor.WHITE + "[" + PlayerHarvestAmount + "/" + Amount + "]", "", ChatColor.GRAY + "아이템 ID : " + BlockID, ChatColor.GRAY + "아이템 Data : " + BlockData), counter, inv);
+                Stack(ChatColor.YELLOW + IT.SetItemDefaultName((short) BlockID, BlockData), BlockID, BlockData, 1, Arrays.asList(ChatColor.WHITE + "[" + PlayerHarvestAmount + "/" + Amount + "]", "", ChatColor.GRAY + "아이템 ID : " + BlockID, ChatColor.GRAY + "아이템 Data : " + BlockData), counter, inv);
             else
-                Stack(ChatColor.YELLOW + "아무런 " + IT.SetItemDefaultName((short) BlockID, (byte) BlockData) + ChatColor.YELLOW + " 종류", BlockID, 0, 1, Arrays.asList(ChatColor.WHITE + "[" + PlayerHarvestAmount + "/" + Amount + "]", "", ChatColor.GRAY + "아이템 ID : " + BlockID), counter, inv);
+                Stack(ChatColor.YELLOW + "아무런 " + IT.SetItemDefaultName((short) BlockID, BlockData) + ChatColor.YELLOW + " 종류", BlockID, 0, 1, Arrays.asList(ChatColor.WHITE + "[" + PlayerHarvestAmount + "/" + Amount + "]", "", ChatColor.GRAY + "아이템 ID : " + BlockID), counter, inv);
         }
 
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다.", ChatColor.BLACK + "" + isOP), 18, inv);
@@ -714,10 +715,10 @@ public class Quest_Gui extends GuiUtil {
         }
 
         if (Navi.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + QuestName), 53, inv);
         player.openInventory(inv);
     }
@@ -1273,21 +1274,21 @@ public class Quest_Gui extends GuiUtil {
                     if (event.getCurrentItem().getItemMeta().getLore().get(0).contains(" : "))
                         switch (event.getCurrentItem().getItemMeta().getLore().get(0).split(" : ")[1]) {
                             case "전달":
-                                ShowItemGUI(player, QuestName, (short) Flow, true, false);
+                                ShowItemGUI(player, QuestName, Flow, true, false);
                                 break;
                             case "보상": {
                                 new UserData_Object().setInt(player, (byte) 1, -9);
-                                ShowItemGUI(player, QuestName, (short) Flow, true, true);
+                                ShowItemGUI(player, QuestName, Flow, true, true);
                             }
                             break;
                             case "사냥":
-                                KillMonsterGUI(player, QuestName, (short) Flow, player.isOp());
+                                KillMonsterGUI(player, QuestName, Flow, player.isOp());
                                 break;
                             case "채집":
-                                HarvestGUI(player, QuestName, (short) Flow, player.isOp());
+                                HarvestGUI(player, QuestName, Flow, player.isOp());
                                 break;
                             case "선택":
-                                Quest_OPChoice(player, QuestName, (short) Flow, (short) page);
+                                Quest_OPChoice(player, QuestName, Flow, (short) page);
                                 break;
                         }
                 } else if (event.getClick().isRightClick() && event.isShiftClick()) {

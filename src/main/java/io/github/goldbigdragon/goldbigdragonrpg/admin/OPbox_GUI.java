@@ -20,6 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.admin;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import io.github.goldbigdragon.goldbigdragonrpg.area.Area_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.customitem.UseableItem_Gui;
@@ -88,7 +89,7 @@ public class OPbox_Gui extends GuiUtil {
         switch (page) {
             case 1:
                 ItemStackStack(getPlayerSkull(ChatColor.WHITE + "" + ChatColor.BOLD + "GoldBigDragonRPG", 1, Arrays.asList("", ChatColor.YELLOW + "[버전]", ChatColor.WHITE + "" + ChatColor.BOLD + Main_ServerOption.serverVersion, "", ChatColor.YELLOW + "[패치]", ChatColor.WHITE + "" + ChatColor.BOLD + Main_ServerOption.serverUpdate), "GoldBigDragon"), 10, inv);
-                Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "서버 설정", 137, 0, 1, Arrays.asList(ChatColor.GRAY + "서버에 대한 전반적인 설정을 합니다."), 12, inv);
+                Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "서버 설정", 137, 0, 1, Collections.singletonList(ChatColor.GRAY + "서버에 대한 전반적인 설정을 합니다."), 12, inv);
                 Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "몬스터", 397, 4, 1, Arrays.asList(ChatColor.GRAY + "커스텀 몬스터를 생성하거나", ChatColor.GRAY + "스폰 에그를 얻습니다."), 14, inv);
                 Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이벤트", 401, 0, 1, Arrays.asList(ChatColor.GRAY + "이벤트 개최시 접속된 모든", ChatColor.GRAY + "플레이어들에게 알려지며,", ChatColor.GRAY + "이후 입장하는 모든 플레이어에게", ChatColor.GRAY + "이벤트 진행을 알려줍니다."), 16, inv);
                 if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
@@ -99,36 +100,36 @@ public class OPbox_Gui extends GuiUtil {
                     }
                 }
                 Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "커스텀 아이템", 389, 0, 1, Arrays.asList(ChatColor.WHITE + "커스텀 아이템을 생성하거나", ChatColor.WHITE + "클릭하여 지급 받습니다.", "", ChatColor.YELLOW + "[좌 클릭시 아이템 받기]", ChatColor.YELLOW + "[Shift + 좌 클릭시 아이템 수정]", ChatColor.RED + "[Shift + 우 클릭시 아이템 삭제]"), 30, inv);
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "네비게이션", 358, 120, 1, Arrays.asList(ChatColor.WHITE + "길찾기 시스템을 관리합니다."), 32, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "네비게이션", 358, 120, 1, Collections.singletonList(ChatColor.WHITE + "길찾기 시스템을 관리합니다."), 32, inv);
                 Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "퀘스트", 403, 0, 1, Arrays.asList(ChatColor.WHITE + "퀘스트를 새로 만들거나", ChatColor.WHITE + "수정하거나 삭제합니다."), 34, inv);
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
                 break;
 
             case 2:
                 Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "스킬", 403, 0, 1, Arrays.asList(ChatColor.GRAY + "직업 혹은 카테고리에 등록 가능한", ChatColor.GRAY + "스킬들을 등록합니다."), 10, inv);
-                Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "카테고리 및 직업", 397, 3, 1, Arrays.asList(ChatColor.GRAY + "스킬과 직업에 관한 설정을 합니다."), 12, inv);
+                Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "카테고리 및 직업", 397, 3, 1, Collections.singletonList(ChatColor.GRAY + "스킬과 직업에 관한 설정을 합니다."), 12, inv);
                 Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "소비 아이템", 260, 0, 1, Arrays.asList(ChatColor.GRAY + "우 클릭 혹은 단축키를 통해", ChatColor.GRAY + "사용 가능한 아이템을 관리합니다."), 14, inv);
                 Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "영역", 395, 0, 1, Arrays.asList(ChatColor.GRAY + "영역 지정을 통하여 구역마다", ChatColor.GRAY + "특수한 옵션을 설정할 수 있습니다."), 16, inv);
                 Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "개조식", 145, 2, 1, Arrays.asList(ChatColor.GRAY + "무기의 개조 방식을 새로 만들거나", ChatColor.GRAY + "삭제할 수 있습니다."), 28, inv);
                 Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "초심자", 54, 0, 1, Arrays.asList(ChatColor.GRAY + "서버에 처음 들어온 플레이어에", ChatColor.GRAY + "대하여 설정을 합니다."), 30, inv);
-                Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "월드 생성", 2, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 월드를 생성합니다."), 32, inv);
-                Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "워프", 345, 0, 1, Arrays.asList(ChatColor.GRAY + "워프 지점을 생성하거나, 이동합니다."), 34, inv);
+                Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "월드 생성", 2, 0, 1, Collections.singletonList(ChatColor.GRAY + "새로운 월드를 생성합니다."), 32, inv);
+                Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "워프", 345, 0, 1, Collections.singletonList(ChatColor.GRAY + "워프 지점을 생성하거나, 이동합니다."), 34, inv);
 
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
                 break;
             case 3:
-                Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "도박", 266, 0, 1, Arrays.asList(ChatColor.GRAY + "도박 관련 기능을 봅니다."), 10, inv);
+                Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "도박", 266, 0, 1, Collections.singletonList(ChatColor.GRAY + "도박 관련 기능을 봅니다."), 10, inv);
                 Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "기능성 개체", 130, 0, 1, Arrays.asList(ChatColor.GRAY + "각종 기능을 가진 개체들을", ChatColor.GRAY + "설치하거나 제거합니다."), 12, inv);
-                Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "던전", 52, 0, 1, Arrays.asList(ChatColor.GRAY + "인스 턴스 던전에 대한 설정을 합니다."), 14, inv);
-                Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "제작", 58, 0, 1, Arrays.asList(ChatColor.GRAY + "제작에 대한 설정을 합니다."), 16, inv);
+                Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "던전", 52, 0, 1, Collections.singletonList(ChatColor.GRAY + "인스 턴스 던전에 대한 설정을 합니다."), 14, inv);
+                Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "제작", 58, 0, 1, Collections.singletonList(ChatColor.GRAY + "제작에 대한 설정을 합니다."), 16, inv);
 
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
                 break;
 
         }
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "작업 관리자 창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "작업 관리자 창을 닫습니다."), 53, inv);
 
         player.openInventory(inv);
     }
@@ -182,7 +183,7 @@ public class OPbox_Gui extends GuiUtil {
         }
         switch (Config.getInt("Server.MonsterSpawnEffect")) {
             case 0:
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "몬스터 스폰 효과", 383, 0, 1, Arrays.asList(ChatColor.WHITE + "[없음]"), 12, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "몬스터 스폰 효과", 383, 0, 1, Collections.singletonList(ChatColor.WHITE + "[없음]"), 12, inv);
                 break;
             case 1:
                 Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "몬스터 스폰 효과", 383, 66, 1, Arrays.asList(ChatColor.BLUE + "[마법]", ChatColor.RED + "※ 서버 렉 유발의 원인이 됩니다!"), 12, inv);
@@ -263,8 +264,8 @@ public class OPbox_Gui extends GuiUtil {
             Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "왼손 무기 데미지 적용", 166, 0, 1, Arrays.asList(ChatColor.RED + "[비 활성화]", ChatColor.GRAY + "왼손에 장착된 무기는", ChatColor.GRAY + "없는 것으로 간주합니다."), 25, inv);
 
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "작업 관리자 창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "작업 관리자 창을 닫습니다."), 53, inv);
 
         player.openInventory(inv);
     }
@@ -287,17 +288,17 @@ public class OPbox_Gui extends GuiUtil {
             }
 
             if (BroadCastList.length - (page * 44) > 45)
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
             if (page != 0)
-                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+                Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
         }
         YamlManager Config = YC.getNewConfig("config.yml");
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "공지 간격", 152, 0, 1, Arrays.asList(ChatColor.GRAY + "매 " + ChatColor.GOLD + Config.getInt("Server.BroadCastSecond") + ChatColor.GRAY + "초마다 공지"), 46, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "공지 간격", 152, 0, 1, Collections.singletonList(ChatColor.GRAY + "매 " + ChatColor.GOLD + Config.getInt("Server.BroadCastSecond") + ChatColor.GRAY + "초마다 공지"), 46, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 공지", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 공지사항을 생성합니다."), 49, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 공지", 386, 0, 1, Collections.singletonList(ChatColor.GRAY + "새로운 공지사항을 생성합니다."), 49, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 
@@ -331,8 +332,8 @@ public class OPbox_Gui extends GuiUtil {
         lore = lore.replace("%stat%", Main_ServerOption.LUK);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "행운 설명", 323, 0, 1, Arrays.asList(lore.split("%enter%")), 13, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 
@@ -355,8 +356,8 @@ public class OPbox_Gui extends GuiUtil {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "화폐 모양 변경", Main_ServerOption.Money6ID, Main_ServerOption.Money6DATA, 1, Arrays.asList(ChatColor.GRAY + "   [50000원 초과]  ", ""), 33, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "화폐 모양 초기화", 325, 0, 1, Arrays.asList(ChatColor.GRAY + "   [ 초기화 시킵니다 ]  ", ""), 34, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 
@@ -374,7 +375,7 @@ public class OPbox_Gui extends GuiUtil {
         if (Config.getInt("Death.Track") == -1 || !Config.contains("Death.Track"))
             Stack2(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "[사망 BGM]", 166, 0, 1, Arrays.asList(ChatColor.RED + "[없음]", ChatColor.GRAY + "사망 BGM을 설정하지 않았습니다."), 19, inv);
         else
-            Stack2(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "[사망 BGM]", 2264, 0, 1, Arrays.asList(ChatColor.GREEN + "" + Config.getInt("Death.Track") + "번 트랙 재생"), 19, inv);
+            Stack2(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "[사망 BGM]", 2264, 0, 1, Collections.singletonList(ChatColor.GREEN + "" + Config.getInt("Death.Track") + "번 트랙 재생"), 19, inv);
 
         if (Config.getBoolean("Death.DistrictDirectRevive"))
             Stack2(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "[다시 일어서기]", 166, 0, 1, Arrays.asList(ChatColor.RED + "[불가능]", ChatColor.GRAY + "제자리 부활 옵션을 사용하지 않습니다."), 21, inv);
@@ -387,8 +388,8 @@ public class OPbox_Gui extends GuiUtil {
         Stack2(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "[구조 아이템]", 288, 0, 1, Arrays.asList(ChatColor.GRAY + "행동 불능된 플레이어를", ChatColor.GRAY + "다시 일으켜 세워주는", ChatColor.GRAY + "치료 아이템을 설정합니다.", "", ChatColor.YELLOW + "[좌 클릭시 확인 및 변경]"), 23, inv);
         Stack2(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "[부활 아이템]", 399, 0, 1, Arrays.asList(ChatColor.GRAY + "행동 불능이 되었을 경우", ChatColor.GRAY + "제자리에서 부활 할 수 있는", ChatColor.GRAY + "제자리 부활 아이템을 설정합니다.", "", ChatColor.YELLOW + "[좌 클릭시 확인 및 변경]"), 25, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 
@@ -411,8 +412,8 @@ public class OPbox_Gui extends GuiUtil {
         Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 166, 0, 1, null, 6, inv);
         Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 166, 0, 1, null, 7, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 8, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 8, inv);
         player.openInventory(inv);
     }
 
@@ -435,8 +436,8 @@ public class OPbox_Gui extends GuiUtil {
         Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 166, 0, 1, null, 6, inv);
         Stack2(ChatColor.RED + "" + ChatColor.BOLD + "<아이템 넣기]", 166, 0, 1, null, 7, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 8, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 8, inv);
         player.openInventory(inv);
     }
 
@@ -470,8 +471,8 @@ public class OPbox_Gui extends GuiUtil {
 
         Stack2(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[동영상 가이드]", 389, 0, 1, Arrays.asList("", ChatColor.AQUA + "[클릭시 동영상 URL이 보여집니다.]"), 36, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "작업 관리자 창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "작업 관리자 창을 닫습니다."), 53, inv);
 
         player.openInventory(inv);
     }

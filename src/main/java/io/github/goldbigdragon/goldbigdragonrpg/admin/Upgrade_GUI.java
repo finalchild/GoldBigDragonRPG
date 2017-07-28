@@ -20,6 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.admin;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
@@ -117,13 +118,13 @@ public class Upgrade_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 개조식", 339, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 개조식을 만듭니다."), 49, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 개조식", 339, 0, 1, Collections.singletonList(ChatColor.GRAY + "새로운 개조식을 만듭니다."), 49, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 
@@ -205,7 +206,7 @@ public class Upgrade_Gui extends GuiUtil {
         Stack2(ChatColor.DARK_AQUA + "[    결과물    ]", 265, 0, 1, null, 29, inv);
 
         Stack2(ChatColor.WHITE + RecipeName, 395, 0, 1, Arrays.asList(scriptA), 19, inv);
-        Stack2(ChatColor.WHITE + "[   설명 변경   ]", 421, 0, 1, Arrays.asList(ChatColor.WHITE + "개조식의 설명을 변경합니다."), 37, inv);
+        Stack2(ChatColor.WHITE + "[   설명 변경   ]", 421, 0, 1, Collections.singletonList(ChatColor.WHITE + "개조식의 설명을 변경합니다."), 37, inv);
 
         Stack2(ChatColor.DARK_AQUA + "[    타입 변경    ]", 61, 0, 1, Arrays.asList(ChatColor.WHITE + "개조 가능한 타입을", ChatColor.WHITE + "변경합니다.", "", ChatColor.WHITE + "[    현재 타입    ]", RecipeList.getString(RecipeName + ".Only"), ""), 13, inv);
         Stack2(ChatColor.DARK_AQUA + "[       " + Main_ServerOption.Damage + "       ]", 267, 0, 1, Arrays.asList(ChatColor.WHITE + "개조시 " + Main_ServerOption.Damage + "를", ChatColor.WHITE + "상승 시킵니다.", ""), 14, inv);
@@ -220,7 +221,7 @@ public class Upgrade_Gui extends GuiUtil {
         Stack2(ChatColor.DARK_AQUA + "[        개조        ]", 145, 0, 1, Arrays.asList(ChatColor.WHITE + "개조 가능한 개조 레벨을", ChatColor.WHITE + "설정 합니다.", ""), 33, inv);
         Stack2(ChatColor.DARK_AQUA + "[       숙련도       ]", 416, 0, 1, Arrays.asList(ChatColor.WHITE + "개조에 필요한 숙련도를", ChatColor.WHITE + "설정 합니다.", ""), 34, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + RecipeName), 53, inv);
         player.openInventory(inv);
     }

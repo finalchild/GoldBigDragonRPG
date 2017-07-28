@@ -20,6 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.corpse;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.ParticleUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
@@ -97,7 +98,7 @@ public class Corpse_Gui extends GuiUtil {
             if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_EXP() < 0)
                 Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[다시 일어선다]", 166, 0, 1, Arrays.asList(ChatColor.GRAY + "경험치가 부족하여 제자리", ChatColor.GRAY + "부활이 불가능 합니다."), 12, inv);
             else if (Config.getBoolean("Death.DistrictDirectRevive"))
-                Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[다시 일어선다]", 166, 0, 1, Arrays.asList(ChatColor.GRAY + "제자리 부활이 불가능합니다."), 12, inv);
+                Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[다시 일어선다]", 166, 0, 1, Collections.singletonList(ChatColor.GRAY + "제자리 부활이 불가능합니다."), 12, inv);
             else
                 Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[다시 일어선다]", 2266, 0, 1, Arrays.asList(ChatColor.GRAY + "아픔을 참고 다시 일어섭니다.", ChatColor.GRAY + "좋은 상태는 기대하기 힘듭니다.", "", ChatColor.GREEN + " + " + Config.getString("Death.Spawn_Here.SetHealth") + " 생명력", ChatColor.RED + " - 경험치 " + Config.getString("Death.Spawn_Here.PenaltyEXP") + " 감소", ChatColor.RED + " - 소지금 " + Config.getString("Death.Spawn_Here.PenaltyMoney") + " 감소"), 12, inv);
 

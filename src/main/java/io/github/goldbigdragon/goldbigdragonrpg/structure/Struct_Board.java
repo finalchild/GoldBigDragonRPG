@@ -21,6 +21,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.structure;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
@@ -83,7 +84,7 @@ public class Struct_Board extends GuiUtil {
                 String PostMemo = Board.getString("User." + Post + ".Memo");
                 long PostUTC = Board.getLong("User." + Post + ".UTC");
 
-                String PostedTime = new ETC().getFrom(new ServerTick_Main().nowUTC, PostUTC);
+                String PostedTime = new ETC().getFrom(ServerTick_Main.nowUTC, PostUTC);
 
                 List<String> Memo = new ArrayList<>();
                 Memo.add("");
@@ -91,9 +92,9 @@ public class Struct_Board extends GuiUtil {
                 Memo.add("");
                 for (int count2 = 0; count2 < (PostMemo.length() / 20) + 1; count2++) {
                     if ((count2 + 1) * 20 < PostMemo.length())
-                        Memo.add(ChatColor.WHITE + PostMemo.substring(0 + (count2 * 20), ((count2 + 1) * 20)));
+                        Memo.add(ChatColor.WHITE + PostMemo.substring((count2 * 20), ((count2 + 1) * 20)));
                     else
-                        Memo.add(ChatColor.WHITE + PostMemo.substring(0 + (count2 * 20), PostMemo.length()));
+                        Memo.add(ChatColor.WHITE + PostMemo.substring((count2 * 20), PostMemo.length()));
                 }
                 Memo.add("");
                 Memo.add(ChatColor.BLUE + "작성자 : " + ChatColor.WHITE + PostUser);
@@ -101,7 +102,7 @@ public class Struct_Board extends GuiUtil {
                 Memo.add("");
                 Memo.add(ChatColor.YELLOW + "[Shift 우 클릭시 떼어내기]");
                 Memo.add(ChatColor.BLACK + "" + Post);
-                Stack2(ChatColor.GOLD + "" + ChatColor.BOLD + PostedTime + "전 작성된 게시글", 358, (byte) 0, (byte) 1, Memo, (byte) loc, inv);
+                Stack2(ChatColor.GOLD + "" + ChatColor.BOLD + PostedTime + "전 작성된 게시글", 358, (byte) 0, (byte) 1, Memo, loc, inv);
                 if (loc == 16 || loc == 25 || loc == 34 || loc == 43)
                     loc = (byte) (loc + 3);
                 else
@@ -109,34 +110,34 @@ public class Struct_Board extends GuiUtil {
                 count = (short) (count + 1);
             }
         }
-        Stack2(ChatColor.RED + " ", 160, (byte) 12, (byte) 1, Arrays.asList(BoardCode), (byte) 0, inv);
+        Stack2(ChatColor.RED + " ", 160, (byte) 12, (byte) 1, Collections.singletonList(BoardCode), (byte) 0, inv);
 
         for (byte count2 = 1; count2 < 9; count2++)
-            Stack2(ChatColor.RED + " ", 160, (byte) 12, (byte) 1, Arrays.asList(""), (byte) count2, inv);
+            Stack2(ChatColor.RED + " ", 160, (byte) 12, (byte) 1, Collections.singletonList(""), count2, inv);
         for (byte count2 = 44; count2 < 54; count2++)
-            Stack2(ChatColor.RED + " ", 160, (byte) 12, (byte) 1, Arrays.asList(""), (byte) count2, inv);
+            Stack2(ChatColor.RED + " ", 160, (byte) 12, (byte) 1, Collections.singletonList(""), count2, inv);
         for (byte count2 = 9; count2 < 45; count2 = (byte) (count2 + 9))
-            Stack2(ChatColor.RED + " ", 160, (byte) 12, (byte) 1, Arrays.asList(""), (byte) count2, inv);
+            Stack2(ChatColor.RED + " ", 160, (byte) 12, (byte) 1, Collections.singletonList(""), count2, inv);
         for (byte count2 = 17; count2 < 54; count2 = (byte) (count2 + 9))
-            Stack2(ChatColor.RED + " ", 160, (byte) 12, (byte) 1, Arrays.asList(""), (byte) count2, inv);
+            Stack2(ChatColor.RED + " ", 160, (byte) 12, (byte) 1, Collections.singletonList(""), count2, inv);
 
         if (Board.getString("Notice").compareTo("null") != 0) {
             List<String> Memo = new ArrayList<>();
             for (short count2 = 0; count2 < (Board.getString("Notice").length() / 20) + 1; count2++) {
                 if ((count2 + 1) * 20 < Board.getString("Notice").length())
-                    Memo.add(ChatColor.WHITE + Board.getString("Notice").substring(0 + (count2 * 20), ((count2 + 1) * 20)));
+                    Memo.add(ChatColor.WHITE + Board.getString("Notice").substring((count2 * 20), ((count2 + 1) * 20)));
                 else
-                    Memo.add(ChatColor.WHITE + Board.getString("Notice").substring(0 + (count2 * 20), Board.getString("Notice").length()));
+                    Memo.add(ChatColor.WHITE + Board.getString("Notice").substring((count2 * 20), Board.getString("Notice").length()));
             }
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[게시판 알림]", 321, (byte) 0, (byte) 1, Memo, (byte) 4, inv);
         }
 
         if (AllPost > (28 * page) + 28)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), (byte) 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, (byte) 0, (byte) 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), (byte) 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), (byte) 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, (byte) 0, (byte) 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), (byte) 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 게시글", 386, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "새로운 게시글을 작성합니다."), (byte) 49, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 게시글", 386, (byte) 0, (byte) 1, Collections.singletonList(ChatColor.GRAY + "새로운 게시글을 작성합니다."), (byte) 49, inv);
         player.openInventory(inv);
     }
 
@@ -155,22 +156,22 @@ public class Struct_Board extends GuiUtil {
             Board.saveConfig();
         }
         if (Board.getString("Notice").compareTo("null") == 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[게시판 알림]", 166, (byte) 0, (byte) 1, Arrays.asList(ChatColor.RED + "[게시판 알림 없음]"), (byte) 2, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[게시판 알림]", 166, (byte) 0, (byte) 1, Collections.singletonList(ChatColor.RED + "[게시판 알림 없음]"), (byte) 2, inv);
         else {
             List<String> Memo = new ArrayList<>();
             for (short count2 = 0; count2 < (Board.getString("Notice").length() / 20) + 1; count2++) {
                 if ((count2 + 1) * 20 < Board.getString("Notice").length())
-                    Memo.add(ChatColor.WHITE + Board.getString("Notice").substring(0 + (count2 * 20), ((count2 + 1) * 20)));
+                    Memo.add(ChatColor.WHITE + Board.getString("Notice").substring((count2 * 20), ((count2 + 1) * 20)));
                 else
-                    Memo.add(ChatColor.WHITE + Board.getString("Notice").substring(0 + (count2 * 20), Board.getString("Notice").length()));
+                    Memo.add(ChatColor.WHITE + Board.getString("Notice").substring((count2 * 20), Board.getString("Notice").length()));
             }
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[게시판 알림]", 321, (byte) 0, (byte) 1, Memo, (byte) 2, inv);
         }
 
         if (Board.getBoolean("OnlyUseOP"))
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[사용 권한]", 137, (byte) 0, (byte) 1, Arrays.asList(ChatColor.BLUE + "[관리자 전용]"), (byte) 4, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[사용 권한]", 137, (byte) 0, (byte) 1, Collections.singletonList(ChatColor.BLUE + "[관리자 전용]"), (byte) 4, inv);
         else
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[사용 권한]", 397, (byte) 3, (byte) 1, Arrays.asList(ChatColor.GREEN + "[전체 이용]"), (byte) 4, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[사용 권한]", 397, (byte) 3, (byte) 1, Collections.singletonList(ChatColor.GREEN + "[전체 이용]"), (byte) 4, inv);
 
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[게시글 전체 삭제]", 325, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "게시판에 붙여진 모든 게시글을", ChatColor.GRAY + "삭제합니다."), (byte) 6, inv);
 
@@ -179,8 +180,8 @@ public class Struct_Board extends GuiUtil {
         Stack2(BoardCode, 160, (byte) 8, (byte) 1, null, (byte) 5, inv);
         Stack2(BoardCode, 160, (byte) 8, (byte) 1, null, (byte) 7, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), (byte) 0, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), (byte) 8, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, (byte) 0, (byte) 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), (byte) 0, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, (byte) 0, (byte) 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), (byte) 8, inv);
         player.openInventory(inv);
     }
 

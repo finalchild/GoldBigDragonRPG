@@ -20,6 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.user;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
@@ -46,30 +47,30 @@ public final class ETC_Gui extends GuiUtil {
         String UniqueCode = "§0§0§0§0§2§r";
         Inventory inv = Bukkit.createInventory(null, 45, UniqueCode + "§0기타");
 
-        Stack2(ChatColor.WHITE + "스텟", 397, 3, 1, Arrays.asList(ChatColor.GRAY + "스텟을 확인합니다."), 0, inv);
-        Stack2(ChatColor.WHITE + "스킬", 403, 0, 1, Arrays.asList(ChatColor.GRAY + "스킬을 확인합니다."), 9, inv);
-        Stack2(ChatColor.WHITE + "퀘스트", 358, 0, 1, Arrays.asList(ChatColor.GRAY + "현재 진행중인 퀘스트를 확인합니다."), 18, inv);
-        Stack2(ChatColor.WHITE + "옵션", 145, 0, 1, Arrays.asList(ChatColor.GRAY + "기타 설정을 합니다."), 27, inv);
-        Stack2(ChatColor.WHITE + "기타", 160, 4, 1, Arrays.asList(ChatColor.GRAY + "기타 내용을 확인합니다."), 36, inv);
+        Stack2(ChatColor.WHITE + "스텟", 397, 3, 1, Collections.singletonList(ChatColor.GRAY + "스텟을 확인합니다."), 0, inv);
+        Stack2(ChatColor.WHITE + "스킬", 403, 0, 1, Collections.singletonList(ChatColor.GRAY + "스킬을 확인합니다."), 9, inv);
+        Stack2(ChatColor.WHITE + "퀘스트", 358, 0, 1, Collections.singletonList(ChatColor.GRAY + "현재 진행중인 퀘스트를 확인합니다."), 18, inv);
+        Stack2(ChatColor.WHITE + "옵션", 145, 0, 1, Collections.singletonList(ChatColor.GRAY + "기타 설정을 합니다."), 27, inv);
+        Stack2(ChatColor.WHITE + "기타", 160, 4, 1, Collections.singletonList(ChatColor.GRAY + "기타 내용을 확인합니다."), 36, inv);
 
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 1, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 7, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 10, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 16, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 19, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 25, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 28, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 34, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 37, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 43, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 1, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 7, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 10, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 16, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 19, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 25, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 28, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 34, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 37, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 43, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "가이드", 340, 0, 1, Arrays.asList(ChatColor.GRAY + "서버에 대한 내용을 알아봅니다."), 2, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "파티", 389, 0, 1, Arrays.asList(ChatColor.GRAY + "파티에 대한 내용을 확인합니다."), 3, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "워프", 345, 0, 1, Arrays.asList(ChatColor.GRAY + "워프 가능한 지역을 확인합니다."), 4, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "친구", 397, 3, 1, Arrays.asList(ChatColor.GRAY + "친구 목록을 확인합니다."), 5, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "가이드", 340, 0, 1, Collections.singletonList(ChatColor.GRAY + "서버에 대한 내용을 알아봅니다."), 2, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "파티", 389, 0, 1, Collections.singletonList(ChatColor.GRAY + "파티에 대한 내용을 확인합니다."), 3, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "워프", 345, 0, 1, Collections.singletonList(ChatColor.GRAY + "워프 가능한 지역을 확인합니다."), 4, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "친구", 397, 3, 1, Collections.singletonList(ChatColor.GRAY + "친구 목록을 확인합니다."), 5, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "네비게이션", 358, 3, 1, Arrays.asList(ChatColor.GRAY + "서버에 설정된 네비게이션을", ChatColor.GRAY + "동작 시킵니다."), 6, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 26, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 26, inv);
 
         player.openInventory(inv);
     }
@@ -92,8 +93,8 @@ public final class ETC_Gui extends GuiUtil {
                 ItemStackStack(NewBieYM.getItemStack("Guide." + count), loc, inv);
                 loc++;
             }
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "작업 관리자 창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "작업 관리자 창을 닫습니다."), 53, inv);
 
         player.openInventory(inv);
     }
@@ -120,7 +121,7 @@ public final class ETC_Gui extends GuiUtil {
         Long nowTime = new ETC().getNowUTC();
         for (int count = page * 45; count < Friends.length; count++) {
             if (loc >= 45) break;
-            Player target = (Player) Bukkit.getServer().getPlayer(Friends[count].toString());
+            Player target = Bukkit.getServer().getPlayer(Friends[count].toString());
             Long AcceptedTime = FriendsList.getLong("Friends." + Friends[count].toString());
             Long WaitingTime = (nowTime - AcceptedTime) / 1000;
             byte day = 0;
@@ -150,12 +151,12 @@ public final class ETC_Gui extends GuiUtil {
         }
 
         if (Friends.length - (page * 44) > 45)
-            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "새 친구", 397, 3, 1, Arrays.asList(ChatColor.GRAY + "새로운 친구를 추가합니다."), 49, inv);
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "새 친구", 397, 3, 1, Collections.singletonList(ChatColor.GRAY + "새로운 친구를 추가합니다."), 49, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 
@@ -176,7 +177,7 @@ public final class ETC_Gui extends GuiUtil {
         Long nowTime = new ETC().getNowUTC();
         for (int count = page * 45; count < Friends.length; count++) {
             if (loc >= 45) break;
-            Player target = (Player) Bukkit.getServer().getPlayer(Friends[count].toString());
+            Player target = Bukkit.getServer().getPlayer(Friends[count].toString());
             Long AcceptedTime = FriendsList.getLong("Waitting." + Friends[count].toString());
             Long WaitingTime = (nowTime - AcceptedTime) / 1000;
             byte day = 0;
@@ -216,11 +217,11 @@ public final class ETC_Gui extends GuiUtil {
         }
 
         if (Friends.length - (page * 44) > 45)
-            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 

@@ -21,6 +21,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.dependency;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
@@ -248,9 +249,9 @@ public class SpellMain implements Listener {
         }
 
         if (counter > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, (byte) 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), (byte) 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, (byte) 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), (byte) 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, (byte) 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), (byte) 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, (byte) 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), (byte) 48, inv);
         switch (sort) {
             case 0:
                 Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "클래스별 정렬", 154, (byte) 0, 1, Arrays.asList(ChatColor.GRAY + "[모두 보기]", ChatColor.BLACK + "" + sort), (byte) 49, inv);
@@ -277,7 +278,7 @@ public class SpellMain implements Listener {
     }
 
     public void Stack2(String Display, int ID, byte DATA, int Stack, List<String> Lore, byte Loc, Inventory inventory) {
-        ItemStack Icon = new MaterialData(ID, (byte) DATA).toItemStack(Stack);
+        ItemStack Icon = new MaterialData(ID, DATA).toItemStack(Stack);
         ItemMeta Icon_Meta = Icon.getItemMeta();
         Icon_Meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         Icon_Meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);

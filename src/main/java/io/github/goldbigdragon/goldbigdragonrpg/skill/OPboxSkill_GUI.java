@@ -20,6 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.skill;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Set;
 
 import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_Gui;
@@ -79,12 +80,12 @@ public class OPboxSkill_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
         if (!isJobGUI)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 스킬", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 스킬을 생성합니다."), 49, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 스킬", 386, 0, 1, Collections.singletonList(ChatColor.GRAY + "새로운 스킬을 생성합니다."), 49, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다.", ChatColor.BLACK + WhatJob), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + "" + isJobGUI), 53, inv);
         player.openInventory(inv);
@@ -207,11 +208,11 @@ public class OPboxSkill_Gui extends GuiUtil {
         }
 
         if (b.size() - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 랭크", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 스킬 랭크를 생성 합니다."), 49, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 랭크", 386, 0, 1, Collections.singletonList(ChatColor.GRAY + "새로운 스킬 랭크를 생성 합니다."), 49, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + SkillName), 53, inv);
         player.openInventory(inv);
     }

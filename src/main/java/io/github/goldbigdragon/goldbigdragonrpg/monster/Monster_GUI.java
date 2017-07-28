@@ -20,6 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.monster;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import io.github.goldbigdragon.goldbigdragonrpg.battle.Battle_Calculator;
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
@@ -70,9 +71,9 @@ public class Monster_Gui extends GuiUtil {
             Lore = Lore + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " " + Main_ServerOption.INT + " : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".INT")
                     + ChatColor.GRAY + " [폭공 : " + (MobList.getInt(MonsterName + ".INT") / 4) + " ~ " + (int) (MobList.getInt(MonsterName + ".INT") / 2.5) + "]%enter%";
             Lore = Lore + ChatColor.GRAY + "" + ChatColor.BOLD + " " + Main_ServerOption.WILL + " : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".WILL")
-                    + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MobList.getInt(MonsterName + ".LUK"), (int) MobList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
+                    + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MobList.getInt(MonsterName + ".LUK"), MobList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
             Lore = Lore + ChatColor.YELLOW + "" + ChatColor.BOLD + " " + Main_ServerOption.LUK + " : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".LUK")
-                    + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MobList.getInt(MonsterName + ".LUK"), (int) MobList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
+                    + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MobList.getInt(MonsterName + ".LUK"), MobList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
             Lore = Lore + ChatColor.GRAY + "" + ChatColor.BOLD + " 방어 : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".DEF") + "%enter%";
             Lore = Lore + ChatColor.AQUA + "" + ChatColor.BOLD + " 보호 : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".Protect") + "%enter%";
             Lore = Lore + ChatColor.BLUE + "" + ChatColor.BOLD + " 마법 방어 : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".Magic_DEF") + "%enter%";
@@ -194,13 +195,13 @@ public class Monster_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "새 몬스터", 339, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 몬스터를 생성합니다."), 49, inv);
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "새 몬스터", 339, 0, 1, Collections.singletonList(ChatColor.GRAY + "새로운 몬스터를 생성합니다."), 49, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 
@@ -226,9 +227,9 @@ public class Monster_Gui extends GuiUtil {
         Lore = Lore + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " " + Main_ServerOption.INT + " : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".INT")
                 + ChatColor.GRAY + " [폭공 : " + (MobList.getInt(MonsterName + ".INT") / 4) + " ~ " + (int) (MobList.getInt(MonsterName + ".INT") / 2.5) + "]%enter%";
         Lore = Lore + ChatColor.GRAY + "" + ChatColor.BOLD + " " + Main_ServerOption.WILL + " : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".WILL")
-                + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MobList.getInt(MonsterName + ".LUK"), (int) MobList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
+                + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MobList.getInt(MonsterName + ".LUK"), MobList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
         Lore = Lore + ChatColor.YELLOW + "" + ChatColor.BOLD + " " + Main_ServerOption.LUK + " : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".LUK")
-                + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MobList.getInt(MonsterName + ".LUK"), (int) MobList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
+                + ChatColor.GRAY + " [크리 : " + d.getCritical(null, MobList.getInt(MonsterName + ".LUK"), MobList.getInt(MonsterName + ".WILL"), 0) + " %]%enter%";
         Lore = Lore + ChatColor.GRAY + "" + ChatColor.BOLD + " 방어 : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".DEF") + "%enter%";
         Lore = Lore + ChatColor.AQUA + "" + ChatColor.BOLD + " 보호 : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".Protect") + "%enter%";
         Lore = Lore + ChatColor.BLUE + "" + ChatColor.BOLD + " 마법 방어 : " + ChatColor.WHITE + MobList.getInt(MonsterName + ".Magic_DEF") + "%enter%";
@@ -474,7 +475,7 @@ public class Monster_Gui extends GuiUtil {
         Stack2(ChatColor.DARK_AQUA + "[  몬스터 AI 변경  ]", 137, 0, 1, Arrays.asList(scriptA), 33, inv);
         Stack2(ChatColor.DARK_AQUA + "[    포션 효과    ]", 373, 0, 1, Arrays.asList(ChatColor.WHITE + "몬스터에게 포션 효과를", ChatColor.WHITE + "부여합니다.", ""), 34, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + MonsterName), 53, inv);
         player.openInventory(inv);
     }
@@ -494,20 +495,20 @@ public class Monster_Gui extends GuiUtil {
         Stack2(ChatColor.DARK_AQUA + "[  도약  ]", 373, 8267, 1, Arrays.asList(ChatColor.WHITE + "[  포션 농도  ]", ChatColor.YELLOW + " " + MobList.getInt(MonsterName + ".Potion.JumpBoost")), 16, inv);
 
         if (MobList.getInt(MonsterName + ".Potion.FireRegistance") != 0)
-            Stack2(ChatColor.DARK_AQUA + "[  화염 저항  ]", 373, 8227, 1, Arrays.asList(ChatColor.GREEN + "[  포션 적용  ]"), 19, inv);
+            Stack2(ChatColor.DARK_AQUA + "[  화염 저항  ]", 373, 8227, 1, Collections.singletonList(ChatColor.GREEN + "[  포션 적용  ]"), 19, inv);
         else
-            Stack2(ChatColor.DARK_AQUA + "[  화염 저항  ]", 166, 0, 1, Arrays.asList(ChatColor.RED + "[  포션 미적용  ]"), 19, inv);
+            Stack2(ChatColor.DARK_AQUA + "[  화염 저항  ]", 166, 0, 1, Collections.singletonList(ChatColor.RED + "[  포션 미적용  ]"), 19, inv);
         if (MobList.getInt(MonsterName + ".Potion.WaterBreath") != 0)
-            Stack2(ChatColor.DARK_AQUA + "[  수중 호홉  ]", 373, 8237, 1, Arrays.asList(ChatColor.GREEN + "[  포션 적용  ]"), 20, inv);
+            Stack2(ChatColor.DARK_AQUA + "[  수중 호홉  ]", 373, 8237, 1, Collections.singletonList(ChatColor.GREEN + "[  포션 적용  ]"), 20, inv);
         else
-            Stack2(ChatColor.DARK_AQUA + "[  수중 호홉  ]", 166, 0, 1, Arrays.asList(ChatColor.RED + "[  포션 미적용  ]"), 20, inv);
+            Stack2(ChatColor.DARK_AQUA + "[  수중 호홉  ]", 166, 0, 1, Collections.singletonList(ChatColor.RED + "[  포션 미적용  ]"), 20, inv);
         if (MobList.getInt(MonsterName + ".Potion.Invisible") != 0)
-            Stack2(ChatColor.DARK_AQUA + "[  투명  ]", 373, 8238, 1, Arrays.asList(ChatColor.GREEN + "[  포션 적용  ]"), 21, inv);
+            Stack2(ChatColor.DARK_AQUA + "[  투명  ]", 373, 8238, 1, Collections.singletonList(ChatColor.GREEN + "[  포션 적용  ]"), 21, inv);
         else
-            Stack2(ChatColor.DARK_AQUA + "[  투명  ]", 166, 0, 1, Arrays.asList(ChatColor.RED + "[  포션 미적용  ]"), 21, inv);
+            Stack2(ChatColor.DARK_AQUA + "[  투명  ]", 166, 0, 1, Collections.singletonList(ChatColor.RED + "[  포션 미적용  ]"), 21, inv);
 
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + MonsterName), 53, inv);
         player.openInventory(inv);
     }
@@ -522,39 +523,39 @@ public class Monster_Gui extends GuiUtil {
                 !MobList.getItemStack(mob + ".Head.Item").equals(new ItemStack(Material.AIR)))
             inv.setItem(0, MobList.getItemStack(mob + ".Head.Item"));
         else
-            Stack(ChatColor.WHITE + "머리", 302, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요."), (byte) 0, inv);
+            Stack(ChatColor.WHITE + "머리", 302, (byte) 0, (byte) 1, Collections.singletonList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요."), (byte) 0, inv);
 
         if (MobList.contains(mob + ".Chest.Item") &&
                 !MobList.getItemStack(mob + ".Chest.Item").equals(new ItemStack(Material.AIR)))
             inv.setItem(1, MobList.getItemStack(mob + ".Chest.Item"));
         else
-            Stack(ChatColor.WHITE + "갑옷", 303, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요."), (byte) 1, inv);
+            Stack(ChatColor.WHITE + "갑옷", 303, (byte) 0, (byte) 1, Collections.singletonList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요."), (byte) 1, inv);
 
         if (MobList.contains(mob + ".Leggings.Item") &&
                 !MobList.getItemStack(mob + ".Leggings.Item").equals(new ItemStack(Material.AIR)))
             inv.setItem(2, MobList.getItemStack(mob + ".Leggings.Item"));
         else
-            Stack(ChatColor.WHITE + "바지", 304, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요."), (byte) 2, inv);
+            Stack(ChatColor.WHITE + "바지", 304, (byte) 0, (byte) 1, Collections.singletonList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요."), (byte) 2, inv);
 
         if (MobList.contains(mob + ".Boots.Item") &&
                 !MobList.getItemStack(mob + ".Boots.Item").equals(new ItemStack(Material.AIR)))
             inv.setItem(3, MobList.getItemStack(mob + ".Boots.Item"));
         else
-            Stack(ChatColor.WHITE + "부츠", 305, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요."), (byte) 3, inv);
+            Stack(ChatColor.WHITE + "부츠", 305, (byte) 0, (byte) 1, Collections.singletonList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요."), (byte) 3, inv);
 
         if (MobList.contains(mob + ".Hand.Item") &&
                 !MobList.getItemStack(mob + ".Hand.Item").equals(new ItemStack(Material.AIR)))
             inv.setItem(4, MobList.getItemStack(mob + ".Hand.Item"));
         else
-            Stack(ChatColor.WHITE + "오른손", 267, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요."), (byte) 4, inv);
+            Stack(ChatColor.WHITE + "오른손", 267, (byte) 0, (byte) 1, Collections.singletonList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요."), (byte) 4, inv);
 
         if (MobList.contains(mob + ".OffHand.Item") &&
                 !MobList.getItemStack(mob + ".OffHand.Item").equals(new ItemStack(Material.AIR)))
             inv.setItem(5, MobList.getItemStack(mob + ".OffHand.Item"));
         else
-            Stack(ChatColor.WHITE + "왼손", 267, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요."), (byte) 5, inv);
+            Stack(ChatColor.WHITE + "왼손", 267, (byte) 0, (byte) 1, Collections.singletonList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요."), (byte) 5, inv);
 
-        Stack(ChatColor.WHITE + mob, 416, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + mob + "의 현재 장비입니다."), (byte) 8, inv);
+        Stack(ChatColor.WHITE + mob, 416, (byte) 0, (byte) 1, Collections.singletonList(ChatColor.GRAY + mob + "의 현재 장비입니다."), (byte) 8, inv);
         Stack(ChatColor.WHITE + "", 30, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "이곳에는 아이템을", ChatColor.GRAY + "올려두지 마세요."), (byte) 7, inv);
         Stack(ChatColor.WHITE + "", 30, (byte) 0, (byte) 1, Arrays.asList(ChatColor.GRAY + "이곳에는 아이템을", ChatColor.GRAY + "올려두지 마세요."), (byte) 6, inv);
 
@@ -611,7 +612,7 @@ public class Monster_Gui extends GuiUtil {
         Stack2("§6§l[말]", 417, 0, 1, null, 43, inv);
         Stack2("§5§l[엔더 크리스탈]", 426, 0, 1, null, 44, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + MonsterName), 53, inv);
         player.openInventory(inv);
     }
@@ -885,28 +886,28 @@ public class Monster_Gui extends GuiUtil {
 
         YamlManager Monster = YC.getNewConfig("Monster/MonsterList.yml");
         String MonsterName = ChatColor.stripColor(event.getInventory().getItem(8).getItemMeta().getDisplayName().toString());
-        if (event.getInventory().getItem(0) == new GuiUtil().getItemStack(ChatColor.WHITE + "머리", 302, 0, 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
+        if (event.getInventory().getItem(0) == new GuiUtil().getItemStack(ChatColor.WHITE + "머리", 302, 0, 1, Collections.singletonList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
             Monster.set(MonsterName + ".Head.Item", null);
         else
             Monster.set(MonsterName + ".Head.Item", event.getInventory().getItem(0));
 
-        if (event.getInventory().getItem(1) == new GuiUtil().getItemStack(ChatColor.WHITE + "갑옷", 303, 0, 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
+        if (event.getInventory().getItem(1) == new GuiUtil().getItemStack(ChatColor.WHITE + "갑옷", 303, 0, 1, Collections.singletonList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
             Monster.set(MonsterName + ".Chest.Item", null);
         else
             Monster.set(MonsterName + ".Chest.Item", event.getInventory().getItem(1));
-        if (event.getInventory().getItem(2) == new GuiUtil().getItemStack(ChatColor.WHITE + "바지", 304, 0, 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
+        if (event.getInventory().getItem(2) == new GuiUtil().getItemStack(ChatColor.WHITE + "바지", 304, 0, 1, Collections.singletonList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
             Monster.set(MonsterName + ".Leggings.Item", null);
         else
             Monster.set(MonsterName + ".Leggings.Item", event.getInventory().getItem(2));
-        if (event.getInventory().getItem(1) == new GuiUtil().getItemStack(ChatColor.WHITE + "부츠", 305, 0, 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
+        if (event.getInventory().getItem(1) == new GuiUtil().getItemStack(ChatColor.WHITE + "부츠", 305, 0, 1, Collections.singletonList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
             Monster.set(MonsterName + ".Boots.Item", null);
         else
             Monster.set(MonsterName + ".Boots.Item", event.getInventory().getItem(3));
-        if (event.getInventory().getItem(4) == new GuiUtil().getItemStack(ChatColor.WHITE + "무기", 267, 0, 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
+        if (event.getInventory().getItem(4) == new GuiUtil().getItemStack(ChatColor.WHITE + "무기", 267, 0, 1, Collections.singletonList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
             Monster.set(MonsterName + ".Hand.Item", null);
         else
             Monster.set(MonsterName + ".Hand.Item", event.getInventory().getItem(4));
-        if (event.getInventory().getItem(5) == new GuiUtil().getItemStack(ChatColor.WHITE + "무기", 267, 0, 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
+        if (event.getInventory().getItem(5) == new GuiUtil().getItemStack(ChatColor.WHITE + "무기", 267, 0, 1, Collections.singletonList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
             Monster.set(MonsterName + ".OffHand.Item", null);
         else
             Monster.set(MonsterName + ".OffHand.Item", event.getInventory().getItem(5));

@@ -20,6 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.user;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
@@ -39,22 +40,22 @@ public class Option_Gui extends GuiUtil {
         String UniqueCode = "§0§0§0§0§1§r";
         Inventory inv = Bukkit.createInventory(null, 45, UniqueCode + "§0옵션");
 
-        Stack2(ChatColor.WHITE + "스텟", 397, 3, 1, Arrays.asList(ChatColor.GRAY + "스텟을 확인합니다."), 0, inv);
-        Stack2(ChatColor.WHITE + "스킬", 403, 0, 1, Arrays.asList(ChatColor.GRAY + "스킬을 확인합니다."), 9, inv);
-        Stack2(ChatColor.WHITE + "퀘스트", 358, 0, 1, Arrays.asList(ChatColor.GRAY + "현재 진행중인 퀘스트를 확인합니다."), 18, inv);
-        Stack2(ChatColor.WHITE + "옵션", 160, 4, 1, Arrays.asList(ChatColor.GRAY + "기타 설정을 합니다."), 27, inv);
-        Stack2(ChatColor.WHITE + "기타", 354, 0, 1, Arrays.asList(ChatColor.GRAY + "기타 내용을 확인합니다."), 36, inv);
+        Stack2(ChatColor.WHITE + "스텟", 397, 3, 1, Collections.singletonList(ChatColor.GRAY + "스텟을 확인합니다."), 0, inv);
+        Stack2(ChatColor.WHITE + "스킬", 403, 0, 1, Collections.singletonList(ChatColor.GRAY + "스킬을 확인합니다."), 9, inv);
+        Stack2(ChatColor.WHITE + "퀘스트", 358, 0, 1, Collections.singletonList(ChatColor.GRAY + "현재 진행중인 퀘스트를 확인합니다."), 18, inv);
+        Stack2(ChatColor.WHITE + "옵션", 160, 4, 1, Collections.singletonList(ChatColor.GRAY + "기타 설정을 합니다."), 27, inv);
+        Stack2(ChatColor.WHITE + "기타", 354, 0, 1, Collections.singletonList(ChatColor.GRAY + "기타 내용을 확인합니다."), 36, inv);
 
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 1, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 7, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 10, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 16, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 19, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 25, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 28, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 34, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 37, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 43, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 1, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 7, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 10, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 16, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 19, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 25, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 28, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 34, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 37, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 43, inv);
 
         if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_EXPget()) {
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "돈, 경험치 획득 알림", 384, 0, 1, Arrays.asList(ChatColor.GREEN + "[활성화]", ChatColor.GRAY + "돈과 경험치 획득을 알립니다."), 2, inv);
@@ -120,7 +121,7 @@ public class Option_Gui extends GuiUtil {
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "우 클릭시 상대방 정보 보기", 166, 0, 1, Arrays.asList(ChatColor.RED + "[비허용]", ChatColor.GRAY + "대상을 우 클릭하여도 정보창이 뜨지 않습니다."), 15, inv);
         }
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 26, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 26, inv);
 
         player.openInventory(inv);
     }

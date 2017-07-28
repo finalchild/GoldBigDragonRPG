@@ -20,6 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.admin;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
@@ -49,11 +50,11 @@ public class Gamble_Gui extends GuiUtil {
 
         Stack2(ChatColor.WHITE + "상품 관리", 54, 0, 1, Arrays.asList(ChatColor.GRAY + "상품 패키지를 만들거나", ChatColor.GRAY + "삭제/확인 합니다."), 10, inv);
 
-        Stack2(ChatColor.WHITE + "슬롯 게임", 137, 0, 1, Arrays.asList(ChatColor.GRAY + "슬롯 게임에 대한 설정을 합니다."), 12, inv);
+        Stack2(ChatColor.WHITE + "슬롯 게임", 137, 0, 1, Collections.singletonList(ChatColor.GRAY + "슬롯 게임에 대한 설정을 합니다."), 12, inv);
         Stack2(ChatColor.WHITE + "랜덤 블록", 137, 0, 1, Arrays.asList(ChatColor.GRAY + "랜덤 블록에 대한 설정을 합니다.", ChatColor.RED + "" + ChatColor.BOLD + "[업데이트가 필요합니다!]"), 14, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "작업 관리자 메뉴로 돌아갑니다."), 36, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "작업 관리자 창을 닫습니다."), 44, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "작업 관리자 메뉴로 돌아갑니다."), 36, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "작업 관리자 창을 닫습니다."), 44, inv);
         player.openInventory(inv);
     }
 
@@ -101,9 +102,9 @@ public class Gamble_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
         if (isChoose == 1)
             Stack2(ChatColor.RED + "" + ChatColor.BOLD + "꽝", 166, 0, 1, Arrays.asList(ChatColor.GRAY + "아무것도 주지 않습니다.", ChatColor.BLACK + DeDetailChoose), 49, inv);
@@ -207,7 +208,7 @@ public class Gamble_Gui extends GuiUtil {
         Stack(ChatColor.WHITE + "" + ChatColor.BOLD + "↑↑↑ [상품 넣기] ↑↑↑", 160, 8, 1, null, 34, inv);
 
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다.", ChatColor.BLACK + Package), 27, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 35, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 35, inv);
         player.openInventory(inv);
     }
 
@@ -315,13 +316,13 @@ public class Gamble_Gui extends GuiUtil {
         }
 
         if (a.length - (page * 44) > 45)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 기계", 130, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 기계를 배치합니다."), 49, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "새 기계", 130, 0, 1, Collections.singletonList(ChatColor.GRAY + "새로운 기계를 배치합니다."), 49, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 53, inv);
         player.openInventory(inv);
     }
 
@@ -418,7 +419,7 @@ public class Gamble_Gui extends GuiUtil {
         Stack2(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "[도박 코인 설정]", 341, 0, 1, Arrays.asList("", ChatColor.GRAY + "슬롯 머신 1회 이용을 위해", ChatColor.GRAY + "필요한 코인을 설정합니다.", "", ChatColor.YELLOW + "[좌 클릭시 코인 설정]", ""), 8, inv);
 
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다.", ChatColor.BLACK + MachineNumber), 27, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 35, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 35, inv);
         player.openInventory(inv);
     }
 
@@ -462,7 +463,7 @@ public class Gamble_Gui extends GuiUtil {
         Stack(ChatColor.LIGHT_PURPLE + "←←←[코인 넣기]", 166, 0, 1, null, 7, inv);
 
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다.", ChatColor.BLACK + MachineNumber), 0, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 8, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 8, inv);
         player.openInventory(inv);
     }
 
@@ -513,19 +514,19 @@ public class Gamble_Gui extends GuiUtil {
         Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + "[운명의 여신이시여!]", 76, 0, 1, Arrays.asList("", ChatColor.GRAY + "슬롯 머신에 코인을 넣고", ChatColor.GRAY + "힘차게 돌립니다!", "", ChatColor.GREEN + "[우측 아이템이 코인입니다.]"), 15, inv);
 
         for (byte count = 0; count < 5; count++)
-            Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 4, 1, Arrays.asList(""), count, inv);
+            Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 4, 1, Collections.singletonList(""), count, inv);
         for (byte count = 5; count < 9; count++)
-            Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 11, 1, Arrays.asList(""), count, inv);
+            Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 11, 1, Collections.singletonList(""), count, inv);
 
-        Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 4, 1, Arrays.asList(""), 9, inv);
-        Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 4, 1, Arrays.asList(""), 13, inv);
-        Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 11, 1, Arrays.asList(""), 14, inv);
-        Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 11, 1, Arrays.asList(ChatColor.BLACK + MachineNumber), 17, inv);
+        Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 4, 1, Collections.singletonList(""), 9, inv);
+        Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 4, 1, Collections.singletonList(""), 13, inv);
+        Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 11, 1, Collections.singletonList(""), 14, inv);
+        Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 11, 1, Collections.singletonList(ChatColor.BLACK + MachineNumber), 17, inv);
 
         for (byte count = 18; count < 23; count++)
-            Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 4, 1, Arrays.asList(""), count, inv);
+            Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 4, 1, Collections.singletonList(""), count, inv);
         for (byte count = 23; count < 27; count++)
-            Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 11, 1, Arrays.asList(""), count, inv);
+            Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 11, 1, Collections.singletonList(""), count, inv);
 
         for (byte count = 1; count < 4; count++) {
             byte randomnum = (byte) new Util_Number().RandomNum(0, 5);
@@ -550,7 +551,7 @@ public class Gamble_Gui extends GuiUtil {
                     ItemID = 399;
                     break;
             }
-            Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + "" + count + " 번째 슬롯", ItemID, 0, 1, Arrays.asList(""), count + 9, inv);
+            Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + "" + count + " 번째 슬롯", ItemID, 0, 1, Collections.singletonList(""), count + 9, inv);
 
         }
         player.openInventory(inv);
@@ -669,22 +670,22 @@ public class Gamble_Gui extends GuiUtil {
                     Stack2(ChatColor.RED + "" + ChatColor.BOLD + "[지금은 돌릴 수 없다!]", 69, 0, 1, Arrays.asList("", ChatColor.GRAY + "결과를 기다리세요!"), 15, inv);
                 }
                 for (byte count = 0; count < 5; count++)
-                    Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 4, 1, Arrays.asList(""), count, inv);
+                    Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 4, 1, Collections.singletonList(""), count, inv);
                 for (byte count = 5; count < 9; count++)
-                    Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 11, 1, Arrays.asList(""), count, inv);
+                    Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 11, 1, Collections.singletonList(""), count, inv);
 
-                Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 4, 1, Arrays.asList(""), 9, inv);
-                Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 4, 1, Arrays.asList(""), 13, inv);
-                Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 11, 1, Arrays.asList(""), 14, inv);
-                Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 11, 1, Arrays.asList(ChatColor.BLACK + MachineNumber), 17, inv);
+                Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 4, 1, Collections.singletonList(""), 9, inv);
+                Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 4, 1, Collections.singletonList(""), 13, inv);
+                Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 11, 1, Collections.singletonList(""), 14, inv);
+                Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 11, 1, Collections.singletonList(ChatColor.BLACK + MachineNumber), 17, inv);
 
                 for (byte count = 18; count < 23; count++)
-                    Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 4, 1, Arrays.asList(""), count, inv);
+                    Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 4, 1, Collections.singletonList(""), count, inv);
                 for (byte count = 23; count < 27; count++)
-                    Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 11, 1, Arrays.asList(""), count, inv);
+                    Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " ", 160, 11, 1, Collections.singletonList(""), count, inv);
 
                 for (byte count = 0; count < 3; count++)
-                    Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + "" + (count + 1) + " 번째 슬롯", itemID[count], 0, 1, Arrays.asList(""), count + 10, inv);
+                    Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + "" + (count + 1) + " 번째 슬롯", itemID[count], 0, 1, Collections.singletonList(""), count + 10, inv);
                 Bukkit.getServer().getPlayer(player).openInventory(inv);
                 SoundUtil.playSound(Bukkit.getServer().getPlayer(player), Sound.BLOCK_STONE_STEP, 1.0F, 1.0F);
             }

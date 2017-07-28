@@ -20,6 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.monster;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import io.github.goldbigdragon.goldbigdragonrpg.area.Area_Main;
@@ -243,61 +244,61 @@ public class Monster_Spawn {
     private void CreateCreature(String Type, Location loc, String mob, byte DungeonSpawning, int[] XYZLoc, char Group, boolean isStayLive) {
         switch (Type) {
             case "좀비": {
-                Zombie zombie = (Zombie) loc.getWorld().spawn(loc, Zombie.class);
+                Zombie zombie = loc.getWorld().spawn(loc, Zombie.class);
                 zombie = (Zombie) getEntity(zombie, mob, DungeonSpawning, XYZLoc, Group);
             }
             break;
             case "자이언트": {
-                Giant giant = (Giant) loc.getWorld().spawn(loc, Giant.class);
+                Giant giant = loc.getWorld().spawn(loc, Giant.class);
                 giant = (Giant) getEntity(giant, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(giant, isStayLive);
             }
             break;
             case "스켈레톤":
             case "네더스켈레톤": {
-                Skeleton skeleton = (Skeleton) loc.getWorld().spawn(loc, Skeleton.class);
+                Skeleton skeleton = loc.getWorld().spawn(loc, Skeleton.class);
                 skeleton = (Skeleton) getEntity(skeleton, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(skeleton, isStayLive);
             }
             break;
             case "엔더맨": {
-                Enderman enderman = (Enderman) loc.getWorld().spawn(loc, Enderman.class);
+                Enderman enderman = loc.getWorld().spawn(loc, Enderman.class);
                 enderman = (Enderman) getEntity(enderman, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(enderman, isStayLive);
             }
             break;
             case "크리퍼": {
-                Creeper creeper = (Creeper) loc.getWorld().spawn(loc, Creeper.class);
+                Creeper creeper = loc.getWorld().spawn(loc, Creeper.class);
                 creeper = (Creeper) getEntity(creeper, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(creeper, isStayLive);
             }
             break;
             case "번개크리퍼": {
-                Creeper Lcreeper = (Creeper) loc.getWorld().spawn(loc, Creeper.class);
+                Creeper Lcreeper = loc.getWorld().spawn(loc, Creeper.class);
                 Lcreeper = (Creeper) getEntity(Lcreeper, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(Lcreeper, isStayLive);
             }
             break;
             case "거미": {
-                Spider spider = (Spider) loc.getWorld().spawn(loc, Spider.class);
+                Spider spider = loc.getWorld().spawn(loc, Spider.class);
                 spider = (Spider) getEntity(spider, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(spider, isStayLive);
             }
             break;
             case "동굴거미": {
-                CaveSpider cavespider = (CaveSpider) loc.getWorld().spawn(loc, CaveSpider.class);
+                CaveSpider cavespider = loc.getWorld().spawn(loc, CaveSpider.class);
                 cavespider = (CaveSpider) getEntity(cavespider, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(cavespider, isStayLive);
             }
             break;
             case "좀벌레": {
-                Silverfish silverfish = (Silverfish) loc.getWorld().spawn(loc, Silverfish.class);
+                Silverfish silverfish = loc.getWorld().spawn(loc, Silverfish.class);
                 silverfish = (Silverfish) getEntity(silverfish, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(silverfish, isStayLive);
             }
             break;
             case "엔더진드기": {
-                Endermite endermite = (Endermite) loc.getWorld().spawn(loc, Endermite.class);
+                Endermite endermite = loc.getWorld().spawn(loc, Endermite.class);
                 endermite = (Endermite) getEntity(endermite, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(endermite, isStayLive);
             }
@@ -308,7 +309,7 @@ public class Monster_Spawn {
             case "큰슬라임":
             case "보통슬라임":
             case "작은슬라임": {
-                Slime Sslime = (Slime) loc.getWorld().spawn(loc, Slime.class);
+                Slime Sslime = loc.getWorld().spawn(loc, Slime.class);
                 Sslime = (Slime) getEntity(Sslime, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(Sslime, isStayLive);
             }
@@ -319,151 +320,151 @@ public class Monster_Spawn {
             case "큰마그마큐브":
             case "보통마그마큐브":
             case "작은마그마큐브": {
-                MagmaCube Smagmacube = (MagmaCube) loc.getWorld().spawn(loc, MagmaCube.class);
+                MagmaCube Smagmacube = loc.getWorld().spawn(loc, MagmaCube.class);
                 Smagmacube = (MagmaCube) getEntity(Smagmacube, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(Smagmacube, isStayLive);
             }
             break;
             case "블레이즈": {
-                Blaze blaze = (Blaze) loc.getWorld().spawn(loc, Blaze.class);
+                Blaze blaze = loc.getWorld().spawn(loc, Blaze.class);
                 blaze = (Blaze) getEntity(blaze, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(blaze, isStayLive);
             }
             break;
             case "가스트": {
-                Ghast ghast = (Ghast) loc.getWorld().spawn(loc, Ghast.class);
+                Ghast ghast = loc.getWorld().spawn(loc, Ghast.class);
                 ghast = (Ghast) getEntity(ghast, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(ghast, isStayLive);
             }
             break;
             case "좀비피그맨": {
-                PigZombie pigzombie = (PigZombie) loc.getWorld().spawn(loc, PigZombie.class);
+                PigZombie pigzombie = loc.getWorld().spawn(loc, PigZombie.class);
                 pigzombie = (PigZombie) getEntity(pigzombie, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(pigzombie, isStayLive);
             }
             break;
             case "마녀": {
-                Witch witch = (Witch) loc.getWorld().spawn(loc, Witch.class);
+                Witch witch = loc.getWorld().spawn(loc, Witch.class);
                 witch = (Witch) getEntity(witch, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(witch, isStayLive);
             }
             break;
             case "위더": {
-                Wither wither = (Wither) loc.getWorld().spawn(loc, Wither.class);
+                Wither wither = loc.getWorld().spawn(loc, Wither.class);
                 wither = (Wither) getEntity(wither, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(wither, isStayLive);
             }
             break;
             case "엔더드래곤": {
-                EnderDragon ED = (EnderDragon) loc.getWorld().spawn(loc, EnderDragon.class);
+                EnderDragon ED = loc.getWorld().spawn(loc, EnderDragon.class);
                 ED = (EnderDragon) getEntity(ED, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(ED, isStayLive);
             }
             break;
             case "엔더크리스탈": {
-                EnderCrystal EC = (EnderCrystal) loc.getWorld().spawn(loc, EnderCrystal.class);
+                EnderCrystal EC = loc.getWorld().spawn(loc, EnderCrystal.class);
                 EC = getEnderCrystal(EC, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(EC, isStayLive);
             }
             break;
             case "수호자": {
-                Guardian guardian = (Guardian) loc.getWorld().spawn(loc, Guardian.class);
+                Guardian guardian = loc.getWorld().spawn(loc, Guardian.class);
                 guardian = (Guardian) getEntity(guardian, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(guardian, isStayLive);
             }
             break;
             case "양": {
-                Sheep sheep = (Sheep) loc.getWorld().spawn(loc, Sheep.class);
+                Sheep sheep = loc.getWorld().spawn(loc, Sheep.class);
                 sheep = (Sheep) getEntity(sheep, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(sheep, isStayLive);
             }
             break;
             case "소": {
-                Cow cow = (Cow) loc.getWorld().spawn(loc, Cow.class);
+                Cow cow = loc.getWorld().spawn(loc, Cow.class);
                 cow = (Cow) getEntity(cow, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(cow, isStayLive);
             }
             break;
             case "돼지": {
-                Pig pig = (Pig) loc.getWorld().spawn(loc, Pig.class);
+                Pig pig = loc.getWorld().spawn(loc, Pig.class);
                 pig = (Pig) getEntity(pig, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(pig, isStayLive);
             }
             break;
             case "말": {
-                Horse horse = (Horse) loc.getWorld().spawn(loc, Horse.class);
+                Horse horse = loc.getWorld().spawn(loc, Horse.class);
                 horse = (Horse) getEntity(horse, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(horse, isStayLive);
             }
             break;
             case "토끼": {
-                Rabbit rabbit = (Rabbit) loc.getWorld().spawn(loc, Rabbit.class);
+                Rabbit rabbit = loc.getWorld().spawn(loc, Rabbit.class);
                 rabbit = (Rabbit) getEntity(rabbit, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(rabbit, isStayLive);
             }
             break;
             case "오셀롯": {
-                Ocelot oceleot = (Ocelot) loc.getWorld().spawn(loc, Ocelot.class);
+                Ocelot oceleot = loc.getWorld().spawn(loc, Ocelot.class);
                 oceleot = (Ocelot) getEntity(oceleot, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(oceleot, isStayLive);
             }
             break;
             case "늑대": {
-                Wolf wolf = (Wolf) loc.getWorld().spawn(loc, Wolf.class);
+                Wolf wolf = loc.getWorld().spawn(loc, Wolf.class);
                 wolf = (Wolf) getEntity(wolf, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(wolf, isStayLive);
             }
             break;
             case "닭": {
-                Chicken chicken = (Chicken) loc.getWorld().spawn(loc, Chicken.class);
+                Chicken chicken = loc.getWorld().spawn(loc, Chicken.class);
                 chicken = (Chicken) getEntity(chicken, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(chicken, isStayLive);
             }
             break;
             case "버섯소": {
-                MushroomCow Mcow = (MushroomCow) loc.getWorld().spawn(loc, MushroomCow.class);
+                MushroomCow Mcow = loc.getWorld().spawn(loc, MushroomCow.class);
                 Mcow = (MushroomCow) getEntity(Mcow, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(Mcow, isStayLive);
             }
             break;
             case "박쥐": {
-                Bat bat = (Bat) loc.getWorld().spawn(loc, Bat.class);
+                Bat bat = loc.getWorld().spawn(loc, Bat.class);
                 bat = (Bat) getEntity(bat, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(bat, isStayLive);
             }
             break;
             case "오징어": {
-                Squid squid = (Squid) loc.getWorld().spawn(loc, Squid.class);
+                Squid squid = loc.getWorld().spawn(loc, Squid.class);
                 squid = (Squid) getEntity(squid, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(squid, isStayLive);
             }
             break;
             case "주민": {
-                Villager villager = (Villager) loc.getWorld().spawn(loc, Villager.class);
+                Villager villager = loc.getWorld().spawn(loc, Villager.class);
                 villager = (Villager) getEntity(villager, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(villager, isStayLive);
             }
             break;
             case "눈사람": {
-                Snowman snowman = (Snowman) loc.getWorld().spawn(loc, Snowman.class);
+                Snowman snowman = loc.getWorld().spawn(loc, Snowman.class);
                 snowman = (Snowman) getEntity(snowman, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(snowman, isStayLive);
             }
             break;
             case "골렘": {
-                IronGolem golem = (IronGolem) loc.getWorld().spawn(loc, IronGolem.class);
+                IronGolem golem = loc.getWorld().spawn(loc, IronGolem.class);
                 golem = (IronGolem) getEntity(golem, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(golem, isStayLive);
             }
             break;
             case "셜커": {
-                Shulker shulker = (Shulker) loc.getWorld().spawn(loc, Shulker.class);
+                Shulker shulker = loc.getWorld().spawn(loc, Shulker.class);
                 shulker = (Shulker) getEntity(shulker, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(shulker, isStayLive);
             }
             break;
             case "북극곰": {
-                PolarBear polarBear = (PolarBear) loc.getWorld().spawn(loc, PolarBear.class);
+                PolarBear polarBear = loc.getWorld().spawn(loc, PolarBear.class);
                 polarBear = (PolarBear) getEntity(polarBear, mob, DungeonSpawning, XYZLoc, Group);
                 StayLive(polarBear, isStayLive);
             }
@@ -673,13 +674,13 @@ public class Monster_Spawn {
             if (Equip != null && Equip.getType() != Material.AIR) {
                 if (Equip.hasItemMeta()) {
                     ItemMeta im = Equip.getItemMeta();
-                    im.setLore(Arrays.asList("xyz:" + XYZloc[0] + "," + XYZloc[1] + "," + XYZloc[2]));
+                    im.setLore(Collections.singletonList("xyz:" + XYZloc[0] + "," + XYZloc[1] + "," + XYZloc[2]));
                     Equip.setItemMeta(im);
                     Monster.getEquipment().setHelmet(Equip);
                 } else {
                     ItemStack Icon = new MaterialData(267, (byte) 0).toItemStack(1);
                     ItemMeta Icon_Meta = Icon.getItemMeta();
-                    Icon_Meta.setLore(Arrays.asList("xyz:" + XYZloc[0] + "," + XYZloc[1] + "," + XYZloc[2]));
+                    Icon_Meta.setLore(Collections.singletonList("xyz:" + XYZloc[0] + "," + XYZloc[1] + "," + XYZloc[2]));
                     Equip.setItemMeta(Icon_Meta);
                     Monster.getEquipment().setHelmet(Equip);
                 }
@@ -687,7 +688,7 @@ public class Monster_Spawn {
                 ItemStack i = new ItemStack(itemnumber);
                 i.setAmount(1);
                 ItemMeta im = i.getItemMeta();
-                im.setLore(Arrays.asList("xyz:" + XYZloc[0] + "," + XYZloc[1] + "," + XYZloc[2]));
+                im.setLore(Collections.singletonList("xyz:" + XYZloc[0] + "," + XYZloc[1] + "," + XYZloc[2]));
                 i.setItemMeta(im);
                 Monster.getEquipment().setHelmet(i);
             }
@@ -745,7 +746,7 @@ public class Monster_Spawn {
 
 
     private static void Stack(String Display, int ID, byte DATA, byte STACK, List<String> Lore, byte Loc, Inventory inventory) {
-        ItemStack Icon = new MaterialData(ID, (byte) DATA).toItemStack(STACK);
+        ItemStack Icon = new MaterialData(ID, DATA).toItemStack(STACK);
         ItemMeta Icon_Meta = Icon.getItemMeta();
         Icon_Meta.setDisplayName(Display);
         Icon_Meta.setLore(Lore);
@@ -758,7 +759,7 @@ public class Monster_Spawn {
         ItemMeta Icon_Meta = Icon.getItemMeta();
         Icon_Meta.setDisplayName(ChatColor.RED + mob);
         Icon_Meta.addEnchant(Enchantment.DURABILITY, 1, true);
-        Icon_Meta.setLore(Arrays.asList(ChatColor.GRAY + mob + "스폰 에그"));
+        Icon_Meta.setLore(Collections.singletonList(ChatColor.GRAY + mob + "스폰 에그"));
         Icon.setItemMeta(Icon_Meta);
         player.getInventory().addItem(Icon);
         player.sendMessage(ChatColor.YELLOW + "[SYSTEM] : " + ChatColor.GREEN + mob + ChatColor.YELLOW + "스폰 에그를 얻었습니다!");
@@ -812,14 +813,14 @@ public class Monster_Spawn {
                 ParticleUtil.PLC(loc, Effect.CRIT, 0);
                 for (int counter = 0; counter < 400; counter++)
                     ParticleUtil.PLC(loc, Effect.SPELL, 4);
-                loc.setY((double) (loc.getBlockY() + 1.5));
+                loc.setY(loc.getBlockY() + 1.5);
                 for (int counter = 0; counter < 1; counter++)
                     ParticleUtil.PLC(loc, Effect.VILLAGER_THUNDERCLOUD, counter);
             }
             return;
             case 6: {
                 SoundUtil.playSound(loc, org.bukkit.Sound.BLOCK_CHEST_OPEN, 1.0F, 0.5F);
-                loc.setY((double) (loc.getBlockY() + 1.8));
+                loc.setY(loc.getBlockY() + 1.8);
                 ParticleUtil.PLC(loc, Effect.HEART, 0);
             }
             return;
@@ -828,7 +829,7 @@ public class Monster_Spawn {
                     case ZOMBIE:
                     case GIANT: {
                         SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_ZOMBIE_AMBIENT, 1.0F, 0.5F);
-                        loc.setY((double) (loc.getBlockY() + 1.8));
+                        loc.setY(loc.getBlockY() + 1.8);
                         ParticleUtil.PLC(loc, Effect.VILLAGER_THUNDERCLOUD, 0);
                         for (int counter = 0; counter < 50; counter++)
                             ParticleUtil.PLC(loc, Effect.MAGIC_CRIT, counter);
@@ -836,7 +837,7 @@ public class Monster_Spawn {
                     break;
                     case SKELETON: {
                         SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_SKELETON_DEATH, 1.0F, 0.5F);
-                        loc.setY((double) (loc.getBlockY() + 1.8));
+                        loc.setY(loc.getBlockY() + 1.8);
                         ParticleUtil.PLC(loc, Effect.VILLAGER_THUNDERCLOUD, 0);
                         for (int counter = 0; counter < 50; counter++)
                             ParticleUtil.PLC(loc, Effect.MAGIC_CRIT, counter);

@@ -21,6 +21,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.structure;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.PacketUtil;
@@ -87,13 +88,13 @@ public class Struct_TradeBoard extends GuiUtil {
 
 
         for (byte count2 = 0; count2 < 9; count2++)
-            Stack2(ChatColor.RED + " ", 160, data, 1, Arrays.asList(""), count2, inv);
+            Stack2(ChatColor.RED + " ", 160, data, 1, Collections.singletonList(""), count2, inv);
         for (byte count2 = 35; count2 < 45; count2++)
-            Stack2(ChatColor.RED + " ", 160, data, 1, Arrays.asList(""), count2, inv);
+            Stack2(ChatColor.RED + " ", 160, data, 1, Collections.singletonList(""), count2, inv);
         for (byte count2 = 9; count2 < 45; count2 = (byte) (count2 + 9))
-            Stack2(ChatColor.RED + " ", 160, data, 1, Arrays.asList(""), count2, inv);
+            Stack2(ChatColor.RED + " ", 160, data, 1, Collections.singletonList(""), count2, inv);
         for (byte count2 = 17; count2 < 53; count2 = (byte) (count2 + 9))
-            Stack2(ChatColor.RED + " ", 160, data, 1, Arrays.asList(""), count2, inv);
+            Stack2(ChatColor.RED + " ", 160, data, 1, Collections.singletonList(""), count2, inv);
 
         byte loc = 10;
 
@@ -236,9 +237,9 @@ public class Struct_TradeBoard extends GuiUtil {
             if (Board.getInt("ExchangeRegistered") > (21 * page) + 21)
                 showNextPage = true;
         if (showNextPage)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
         Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + "[거래 메뉴]", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "거래 물품을 등록하거나", ChatColor.GRAY + "자신이 등록한 물품을 봅니다."), 49, inv);
         player.openInventory(inv);
@@ -253,8 +254,8 @@ public class Struct_TradeBoard extends GuiUtil {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[등록 수수료]", 54, 0, 1, Arrays.asList(ChatColor.GRAY + "물품 등록 수수료를 설정합니다.", "", ChatColor.BLUE + "[현재 수수료]", ChatColor.WHITE + "등록시 " + Board.getInt("RegisterCommission") + " " + Main_ServerOption.Money + ChatColor.WHITE + " 필요"), 2, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[등록 물품 제한]", 397, 3, 1, Arrays.asList(ChatColor.GRAY + "1인당 등록 가능한 물품 수를 제한합니다.", "", ChatColor.BLUE + "[현재 최대 개수]", ChatColor.WHITE + "" + Board.getInt("LimitPerPlayer") + " 개"), 3, inv);
         //
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 8, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 8, inv);
         player.openInventory(inv);
     }
 
@@ -267,23 +268,23 @@ public class Struct_TradeBoard extends GuiUtil {
         Stack2(ChatColor.GREEN + "" + ChatColor.BOLD + "[물품 교환]", 388, 0, 1, Arrays.asList(ChatColor.GRAY + "자신이 원하는 아이템과 자신의", ChatColor.GRAY + "아이템을 등록하여 교환합니다."), 5, inv);
         Stack2(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "[등록 확인]", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "거래 게시판에 등록한 아이템을", ChatColor.GRAY + "확인하거나 등록을 취소합니다.", "", ChatColor.RED + "" + ChatColor.BOLD + "[GoldBigDragonRPG 버전 업 필요]"), 7, inv);
 
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다."), 8, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 0, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Collections.singletonList(ChatColor.GRAY + "창을 닫습니다."), 8, inv);
         player.openInventory(inv);
     }
 
     public void SelectSellItemGUI(Player player) {
         String UniqueCode = "§0§0§d§0§a§r";
         Inventory inv = Bukkit.createInventory(null, 9, UniqueCode + "§0판매할 아이템을 고르세요");
-        Stack2(ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.BOLD + "[판매 취소]", 166, 0, 1, Arrays.asList(ChatColor.GRAY + "아이템 판매를 취소합니다."), 4, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.BOLD + "[판매 취소]", 166, 0, 1, Collections.singletonList(ChatColor.GRAY + "아이템 판매를 취소합니다."), 4, inv);
         player.openInventory(inv);
     }
 
     public void SelectBuyItemGUI(Player player) {
         String UniqueCode = "§0§0§d§0§b§r";
         Inventory inv = Bukkit.createInventory(null, 9, UniqueCode + "§0구매할 아이템을 고르세요");
-        Stack2(ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.WHITE + "" + ChatColor.BOLD + "[일반 아이템]", 2, 0, 1, Arrays.asList(ChatColor.GRAY + "일반 아이템 중에서 고릅니다."), 2, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.BOLD + "[구매 취소]", 166, 0, 1, Arrays.asList(ChatColor.GRAY + "아이템 구매를 취소합니다."), 4, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.WHITE + "" + ChatColor.BOLD + "[일반 아이템]", 2, 0, 1, Collections.singletonList(ChatColor.GRAY + "일반 아이템 중에서 고릅니다."), 2, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.BOLD + "[구매 취소]", 166, 0, 1, Collections.singletonList(ChatColor.GRAY + "아이템 구매를 취소합니다."), 4, inv);
         //Stack2(ChatColor.RED + "" +ChatColor.RED + "" +ChatColor.AQUA + "" + ChatColor.BOLD + "[특수 아이템]", 384,0,1,Arrays.asList(ChatColor.GRAY + "특수 아이템 중에서 고릅니다."), 6, inv);
         player.openInventory(inv);
     }
@@ -291,15 +292,15 @@ public class Struct_TradeBoard extends GuiUtil {
     public void SelectExchangeItem_YouGUI(Player player) {
         String UniqueCode = "§0§0§d§0§c§r";
         Inventory inv = Bukkit.createInventory(null, 9, UniqueCode + "§0받고싶은 아이템을 고르세요");
-        Stack2(ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.WHITE + "" + ChatColor.BOLD + "[일반 아이템]", 2, 0, 1, Arrays.asList(ChatColor.GRAY + "일반 아이템 중에서 고릅니다."), 2, inv);
-        Stack2(ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.BOLD + "[구매 취소]", 166, 0, 1, Arrays.asList(ChatColor.GRAY + "아이템 구매를 취소합니다."), 4, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.WHITE + "" + ChatColor.BOLD + "[일반 아이템]", 2, 0, 1, Collections.singletonList(ChatColor.GRAY + "일반 아이템 중에서 고릅니다."), 2, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.BOLD + "[구매 취소]", 166, 0, 1, Collections.singletonList(ChatColor.GRAY + "아이템 구매를 취소합니다."), 4, inv);
         player.openInventory(inv);
     }
 
     public void SelectExchangeItem_MyGUI(Player player) {
         String UniqueCode = "§0§0§d§0§d§r";
         Inventory inv = Bukkit.createInventory(null, 9, UniqueCode + "§0내가 줄 아이템을 고르세요");
-        Stack2(ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.BOLD + "[판매 취소]", 166, 0, 1, Arrays.asList(ChatColor.GRAY + "아이템 판매를 취소합니다."), 4, inv);
+        Stack2(ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.RED + "" + ChatColor.BOLD + "[판매 취소]", 166, 0, 1, Collections.singletonList(ChatColor.GRAY + "아이템 판매를 취소합니다."), 4, inv);
         player.openInventory(inv);
     }
 
@@ -318,9 +319,9 @@ public class Struct_TradeBoard extends GuiUtil {
         }
 
         if (getNormalItem(count + 1) != null)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
         if (page != 0)
-            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
+            Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + "" + ShopType), 53, inv);
         player.openInventory(inv);
     }
@@ -356,7 +357,7 @@ public class Struct_TradeBoard extends GuiUtil {
             case 48://이전 페이지
                 if (event.getCurrentItem().getTypeId() == 323) {
                     SoundUtil.playSound(player, Sound.BLOCK_WOOD_BUTTON_CLICK_ON, 0.8F, 1.0F);
-                    TradeBoardMainGUI(player, (byte) (page - 1), (byte) ShopType);
+                    TradeBoardMainGUI(player, (byte) (page - 1), ShopType);
                 }
                 return;
             case 49://물품 등록
@@ -366,7 +367,7 @@ public class Struct_TradeBoard extends GuiUtil {
             case 50://다음 페이지
                 if (event.getCurrentItem().getTypeId() == 323) {
                     SoundUtil.playSound(player, Sound.BLOCK_WOOD_BUTTON_CLICK_ON, 0.8F, 1.0F);
-                    TradeBoardMainGUI(player, (byte) (page + 1), (byte) ShopType);
+                    TradeBoardMainGUI(player, (byte) (page + 1), ShopType);
                 }
                 return;
             case 52://물품 검색
@@ -443,7 +444,7 @@ public class Struct_TradeBoard extends GuiUtil {
                         Board.set(ShopTypeString + "Registered", Board.getInt(ShopTypeString + "Registered") - 1);
                         Board.saveConfig();
                         SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.8F);
-                        TradeBoardMainGUI(player, (byte) page, (byte) ShopType);
+                        TradeBoardMainGUI(player, (byte) page, ShopType);
                     }
                 } else {
                     SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
@@ -2832,7 +2833,7 @@ public class Struct_TradeBoard extends GuiUtil {
         if (ID == -1)
             return null;
 
-        ItemStack Icon = new MaterialData(ID, (byte) DATA).toItemStack(1);
+        ItemStack Icon = new MaterialData(ID, DATA).toItemStack(1);
 
         return Icon;
     }

@@ -20,6 +20,7 @@
 package io.github.goldbigdragon.goldbigdragonrpg.area;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.PacketUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
@@ -53,7 +54,7 @@ public class Area_Main {
             AO.minZ = AreaList.getInt(arealist[count].toString() + ".Z.Min");
             AO.maxZ = AreaList.getInt(arealist[count].toString() + ".Z.Max");
             if (Main_ServerOption.AreaList.containsKey(AreaList.getString(arealist[count].toString() + ".World"))) {
-                ArrayList<Area_Object> areaList = Main_ServerOption.AreaList.get(AreaList.getString(arealist[count].toString() + ".World"));
+                List<Area_Object> areaList = Main_ServerOption.AreaList.get(AreaList.getString(arealist[count].toString() + ".World"));
                 areaList.add(AO);
                 Main_ServerOption.AreaList.remove(AreaList.getString(arealist[count].toString() + ".World"));
                 Main_ServerOption.AreaList.put(AreaList.getString(arealist[count].toString() + ".World"), areaList);
@@ -152,7 +153,7 @@ public class Area_Main {
         AO.minZ = AreaList.getInt(name + ".Z.Min");
         AO.maxZ = AreaList.getInt(name + ".Z.Max");
         if (Main_ServerOption.AreaList.containsKey(AreaList.getString(name + ".World"))) {
-            ArrayList<Area_Object> areaList = Main_ServerOption.AreaList.get(AreaList.getString(name + ".World"));
+            List<Area_Object> areaList = Main_ServerOption.AreaList.get(AreaList.getString(name + ".World"));
             areaList.add(AO);
             Main_ServerOption.AreaList.remove(AreaList.getString(name + ".World"));
             Main_ServerOption.AreaList.put(AreaList.getString(name + ".World"), areaList);
@@ -170,7 +171,7 @@ public class Area_Main {
         if (Main_ServerOption.AreaList.get(AreaList.getString(name + ".World")).size() == 1)
             Main_ServerOption.AreaList.remove(AreaList.getString(name + ".World"));
         else {
-            ArrayList<Area_Object> areaList = Main_ServerOption.AreaList.get(AreaList.getString(name + ".World"));
+            List<Area_Object> areaList = Main_ServerOption.AreaList.get(AreaList.getString(name + ".World"));
             for (short count = 0; count < areaList.size(); count++) {
                 if (areaList.get(count).toString().compareTo(name) == 0) {
                     areaList.remove(count);
@@ -241,8 +242,8 @@ public class Area_Main {
 
     public String[] SearchAreaName(Location loc) {
         if (Main_ServerOption.AreaList.containsKey(loc.getWorld().getName())) {
-            ArrayList<String> AreaName = new ArrayList<>();
-            ArrayList<Area_Object> AreaList = Main_ServerOption.AreaList.get(loc.getWorld().getName());
+            List<String> AreaName = new ArrayList<>();
+            List<Area_Object> AreaList = Main_ServerOption.AreaList.get(loc.getWorld().getName());
             for (short count = 0; count < AreaList.size(); count++) {
                 if (AreaList.get(count).minX <= loc.getX() && AreaList.get(count).maxX >= loc.getX())
                     if (AreaList.get(count).minY <= loc.getY() && AreaList.get(count).maxY >= loc.getY())

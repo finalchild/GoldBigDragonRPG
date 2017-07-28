@@ -21,6 +21,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.structure;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
@@ -72,9 +73,9 @@ public class Struct_PostBox extends GuiUtil {
                 Memo.add("");
                 for (byte count2 = 0; count2 < (PostMemo.length() / 20) + 1; count2++) {
                     if ((count2 + 1) * 20 < PostMemo.length())
-                        Memo.add(ChatColor.WHITE + PostMemo.substring(0 + (count2 * 20), ((count2 + 1) * 20)));
+                        Memo.add(ChatColor.WHITE + PostMemo.substring((count2 * 20), ((count2 + 1) * 20)));
                     else
-                        Memo.add(ChatColor.WHITE + PostMemo.substring(0 + (count2 * 20), PostMemo.length()));
+                        Memo.add(ChatColor.WHITE + PostMemo.substring((count2 * 20), PostMemo.length()));
                 }
                 Memo.add("");
                 Memo.add(ChatColor.BLUE + "보낸 이 : " + ChatColor.WHITE + PostFrom);
@@ -138,9 +139,9 @@ public class Struct_PostBox extends GuiUtil {
                 Memo.add("");
                 for (int count2 = 0; count2 < (PostMemo.length() / 20) + 1; count2++) {
                     if ((count2 + 1) * 20 < PostMemo.length())
-                        Memo.add(ChatColor.WHITE + PostMemo.substring(0 + (count2 * 20), ((count2 + 1) * 20)));
+                        Memo.add(ChatColor.WHITE + PostMemo.substring((count2 * 20), ((count2 + 1) * 20)));
                     else
-                        Memo.add(ChatColor.WHITE + PostMemo.substring(0 + (count2 * 20), PostMemo.length()));
+                        Memo.add(ChatColor.WHITE + PostMemo.substring((count2 * 20), PostMemo.length()));
                 }
                 Memo.add("");
                 Memo.add(ChatColor.BLUE + "받는이 : " + ChatColor.WHITE + PostTo);
@@ -176,31 +177,31 @@ public class Struct_PostBox extends GuiUtil {
             }
         }
 
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 1, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 7, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 10, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 16, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 19, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 25, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 28, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 34, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 37, inv);
-        Stack2(ChatColor.RED + " ", 66, 0, 1, Arrays.asList(""), 43, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 1, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 7, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 10, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 16, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 19, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 25, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 28, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 34, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 37, inv);
+        Stack2(ChatColor.RED + " ", 66, 0, 1, Collections.singletonList(""), 43, inv);
 
         int id = 166;
         if (Type == 0)//받은 우편
             id = 166;
         else
             id = 54;
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[받은 우편]", id, 0, 1, Arrays.asList(ChatColor.GRAY + "받은 우편을 확인합니다."), 0, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[받은 우편]", id, 0, 1, Collections.singletonList(ChatColor.GRAY + "받은 우편을 확인합니다."), 0, inv);
 
         if (Type == 0)//받은 우편
             id = 333;
         else
             id = 166;
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[보낸 우편]", id, 0, 1, Arrays.asList(ChatColor.GRAY + "보낸 우편을 확인합니다."), 9, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[보낸 우편]", id, 0, 1, Collections.singletonList(ChatColor.GRAY + "보낸 우편을 확인합니다."), 9, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[닫기]", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + "" + Type), 26, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[우편 쓰기]", 386, 0, 1, Arrays.asList(ChatColor.GRAY + "새로운 우편을 보냅니다."), 36, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[우편 쓰기]", 386, 0, 1, Collections.singletonList(ChatColor.GRAY + "새로운 우편을 보냅니다."), 36, inv);
         player.openInventory(inv);
     }
 

@@ -120,7 +120,7 @@ public class Main_ServerOption {
     public static Map<Player, String> PlayerUseSpell = new HashMap<>();
     public static Map<Player, ItemStack> PlayerlastItem = new HashMap<>();
 
-    public static Map<String, ? extends List<Area_Object>> AreaList = new HashMap<>();
+    public static Map<String, List<Area_Object>> AreaList = new HashMap<>();
     public static Map<Player, String> PlayerCurrentArea = new HashMap<>();
     public static Map<String, User_Object> PlayerList = new HashMap<>();
     public static Map<String, Monster_Object> MonsterList = new HashMap<>();
