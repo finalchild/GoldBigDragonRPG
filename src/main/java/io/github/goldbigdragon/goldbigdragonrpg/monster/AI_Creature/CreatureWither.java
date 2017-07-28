@@ -75,7 +75,7 @@ public class CreatureWither extends EntityWither {
     }
 
     public static Object spawn(Location location, String AI) {
-        World mcWorld = (World) ((CraftWorld) location.getWorld()).getHandle();
+        World mcWorld = ((CraftWorld) location.getWorld()).getHandle();
         final CreatureWither customEntity = new CreatureWither(mcWorld, AI);
         customEntity.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
         if (location.getWorld().getName().compareTo("Dungeon") == 0)

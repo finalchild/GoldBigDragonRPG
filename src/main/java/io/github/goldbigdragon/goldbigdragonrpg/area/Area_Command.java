@@ -73,7 +73,7 @@ public class Area_Command {
                         YamlController YC = new YamlController(Main_Main.plugin);
                         YamlManager Config = YC.getNewConfig("config.yml");
                         player.sendMessage(ChatColor.RED + "[SYSTEM] : 먼저 " + IT.SetItemDefaultName((short) Config.getInt("Server.AreaSettingWand"), (byte) 0) + ChatColor.RED + " 아이템을 손에 든 채로 블록을 좌/우 클릭하여 구역을 설정해 주세요!");
-                        SoundUtil.playSound((Player) player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                        SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     }
                     return;
                 case "삭제":

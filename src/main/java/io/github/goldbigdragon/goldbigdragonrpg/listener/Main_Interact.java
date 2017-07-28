@@ -240,7 +240,7 @@ public class Main_Interact {
         if (event.getAction() == Action.LEFT_CLICK_BLOCK) {
             if (u.getString(player, (byte) 3).compareTo("ANBI") == 0) {
                 String BlockData = block.getTypeId() + ":" + block.getData();
-                ItemStack item = new MaterialData(block.getTypeId(), (byte) block.getData()).toItemStack(1);
+                ItemStack item = new MaterialData(block.getTypeId(), block.getData()).toItemStack(1);
                 AreaConfig.set(AreaName + ".Mining." + BlockData + ".100", item);
                 AreaConfig.saveConfig();
                 Area_Gui AGUI = new Area_Gui();

@@ -99,7 +99,7 @@ public class Schematic {
                     if (blockid <= -1)
                         blockid = 1;
                     Block block = new Location(loc.getWorld(), x + loc.getX(), y + loc.getY(), z + loc.getZ()).getBlock();
-                    block.setTypeIdAndData(blockid, (byte) blockData[index], true);
+                    block.setTypeIdAndData(blockid, blockData[index], true);
                 }
             }
         }

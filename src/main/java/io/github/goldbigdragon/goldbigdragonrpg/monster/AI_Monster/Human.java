@@ -125,9 +125,9 @@ public class Human {
         try {
             PacketPlayOutEntityTeleport tp = new PacketPlayOutEntityTeleport();
             setPrivateField(PacketPlayOutEntityTeleport.class, tp, "a", id);
-            setPrivateField(PacketPlayOutEntityTeleport.class, tp, "b", (double) l.getX());
-            setPrivateField(PacketPlayOutEntityTeleport.class, tp, "c", (double) l.getY());
-            setPrivateField(PacketPlayOutEntityTeleport.class, tp, "d", (double) l.getZ());
+            setPrivateField(PacketPlayOutEntityTeleport.class, tp, "b", l.getX());
+            setPrivateField(PacketPlayOutEntityTeleport.class, tp, "c", l.getY());
+            setPrivateField(PacketPlayOutEntityTeleport.class, tp, "d", l.getZ());
             setPrivateField(PacketPlayOutEntityTeleport.class, tp, "e", (byte) 0);
             setPrivateField(PacketPlayOutEntityTeleport.class, tp, "f", (byte) 0);
             setPrivateField(PacketPlayOutEntityTeleport.class, tp, "g", true);
@@ -199,7 +199,7 @@ public class Human {
         d.register(new DataWatcherObject<>(0, DataWatcherRegistry.a), (byte) 0);
         d.register(new DataWatcherObject<>(1, DataWatcherRegistry.a), (short) 0);
         d.register(new DataWatcherObject<>(8, DataWatcherRegistry.a), (byte) 0);
-        d.register(new DataWatcherObject<>(10, DataWatcherRegistry.a), (String) s);
+        d.register(new DataWatcherObject<>(10, DataWatcherRegistry.a), s);
         // d.a(11, (Object) (byte) 0);
         PacketPlayOutEntityMetadata packet40 = new PacketPlayOutEntityMetadata(id, d, true);
         for (Player p : Bukkit.getOnlinePlayers()) {

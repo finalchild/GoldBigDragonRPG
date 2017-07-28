@@ -36,9 +36,9 @@ public class Util_Number {
     //최소 ~ 최대 값 중, 랜덤한 값을 추출하는 메소드//
     public int RandomNum(int min, int max) {
         if (min <= max)
-            return new Random().nextInt((int) (max - min + 1)) + min;
+            return new Random().nextInt(max - min + 1) + min;
         else
-            return new Random().nextInt((int) (min - max + 1)) + max;
+            return new Random().nextInt(min - max + 1) + max;
     }
 
     public boolean RandomPercent(double percent) {

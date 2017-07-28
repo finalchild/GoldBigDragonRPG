@@ -73,12 +73,12 @@ public class Skill_Config {
         SkillList.set("CloudKill.ID", 151);
         SkillList.set("CloudKill.DATA", 0);
         SkillList.set("CloudKill.Amount", 1);
-        SkillList.set("CloudKill.SkillRank." + (int) 1 + ".Command", "/weather clear 9999");
-        SkillList.set("CloudKill.SkillRank." + (int) 1 + ".BukkitPermission", true);
-        SkillList.set("CloudKill.SkillRank." + (int) 1 + ".MagicSpells", "null");
-        SkillList.set("CloudKill.SkillRank." + (int) 1 + ".Lore", ChatColor.GRAY + "     [설명 없음]     ");
-        SkillList.set("CloudKill.SkillRank." + (int) 1 + ".AffectStat", "없음");
-        SkillList.set("CloudKill.SkillRank." + (int) 1 + ".DistrictWeapon", "없음");
+        SkillList.set("CloudKill.SkillRank." + 1 + ".Command", "/weather clear 9999");
+        SkillList.set("CloudKill.SkillRank." + 1 + ".BukkitPermission", true);
+        SkillList.set("CloudKill.SkillRank." + 1 + ".MagicSpells", "null");
+        SkillList.set("CloudKill.SkillRank." + 1 + ".Lore", ChatColor.GRAY + "     [설명 없음]     ");
+        SkillList.set("CloudKill.SkillRank." + 1 + ".AffectStat", "없음");
+        SkillList.set("CloudKill.SkillRank." + 1 + ".DistrictWeapon", "없음");
         SkillList.saveConfig();
     }
 }

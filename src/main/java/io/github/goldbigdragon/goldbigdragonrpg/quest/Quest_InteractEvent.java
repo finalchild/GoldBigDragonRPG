@@ -94,7 +94,7 @@ public class Quest_InteractEvent {
 
                         if (target.getType() == EntityType.PLAYER) {
                             QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + b + ".NPCname", target.getName());
-                            QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + b + ".NPCuuid", ((Player) target).getUniqueId().toString());
+                            QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + b + ".NPCuuid", target.getUniqueId().toString());
                         } else {
                             if (target.isCustomNameVisible())
                                 QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + b + ".NPCname", target.getCustomName());
@@ -114,7 +114,7 @@ public class Quest_InteractEvent {
                     short c = (short) QuestConfig.getConfigurationSection(u.getString(player, (byte) 2) + ".FlowChart").getKeys(false).size();
                     QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + c + ".Type", "Talk");
                     if (target.getType() == EntityType.PLAYER) {
-                        QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + c + ".TargetNPCuuid", ((Player) target).getUniqueId().toString());
+                        QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + c + ".TargetNPCuuid", target.getUniqueId().toString());
                         QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + c + ".TargetNPCname", target.getName());
                     } else {
                         if (target.isCustomNameVisible())

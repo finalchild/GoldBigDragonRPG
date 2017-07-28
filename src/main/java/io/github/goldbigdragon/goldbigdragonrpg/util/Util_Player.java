@@ -169,7 +169,7 @@ public class Util_Player {
                     totalItemAmount = totalItemAmount + attatchedItemAmount;
             }
         }
-        return (int) (totalItemAmount / originalItemAmount);
+        return totalItemAmount / originalItemAmount;
     }
 
     public void dropItem(Player player, ItemStack item, boolean isKeyDrop) {

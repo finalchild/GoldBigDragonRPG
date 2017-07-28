@@ -200,7 +200,7 @@ public class Main_PlayerChat extends Util_Chat implements Listener {
                         playerlist.toArray(a);
                         for (short count = 0; count < a.length; count++) {
                             if (a[count].isOnline()) {
-                                Player send = (Player) Bukkit.getOfflinePlayer(((Player) a[count]).getName());
+                                Player send = (Player) Bukkit.getOfflinePlayer(a[count].getName());
                                 send.sendMessage(ChatColor.LIGHT_PURPLE + "[관리자] " + player.getName() + " : " + event.getMessage());
                             }
                         }

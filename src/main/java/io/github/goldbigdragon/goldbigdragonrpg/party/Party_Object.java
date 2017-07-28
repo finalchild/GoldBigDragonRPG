@@ -244,7 +244,7 @@ public class Party_Object {
                 if (Bukkit.getServer().getOfflinePlayer(target).isOnline())
                     for (byte count = 0; count < this.PartyCapacity; count++) {
                         if (this.PartyMember[count].equals(target)) {
-                            QuitParty((Player) Bukkit.getServer().getPlayer(target));
+                            QuitParty(Bukkit.getServer().getPlayer(target));
                             return;
                         }
                     }

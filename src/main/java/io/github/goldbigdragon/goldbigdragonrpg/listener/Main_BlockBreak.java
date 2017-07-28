@@ -284,7 +284,7 @@ public class Main_BlockBreak implements Listener {
             else if (id == 21)
                 new Main_ItemDrop().PureItemNaturalDrop(block.getLocation(), (short) 351, (byte) 4, amount);
             else if (id == 17 || id == 162)
-                new Main_ItemDrop().PureItemNaturalDrop(block.getLocation(), (short) block.getTypeId(), (byte) block.getData(), amount);
+                new Main_ItemDrop().PureItemNaturalDrop(block.getLocation(), (short) block.getTypeId(), block.getData(), amount);
             else if (id == 153)
                 new Main_ItemDrop().PureItemNaturalDrop(block.getLocation(), (short) 406, (byte) 0, amount);
             else if (id == 89)

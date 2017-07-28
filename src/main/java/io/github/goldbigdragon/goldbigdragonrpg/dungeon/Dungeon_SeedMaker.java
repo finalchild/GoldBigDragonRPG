@@ -654,7 +654,7 @@ public class Dungeon_SeedMaker {
             RightPass.add(0, loc);
         PassedRoom.add(0, loc);
         if (Grid[loc] == "◇" || Grid[loc] == "□" || Grid[loc] == "＠") {
-            whenIChoosed = (char) 'V';
+            whenIChoosed = 'V';
             whenIsaved = loc;
             if (!NoClear)
                 isNoExit = false;

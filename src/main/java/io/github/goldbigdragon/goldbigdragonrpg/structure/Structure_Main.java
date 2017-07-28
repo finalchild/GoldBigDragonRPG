@@ -103,12 +103,12 @@ public class Structure_Main {
         STSO.setInt((byte) 0, (int) CMLock.getX());//커맨드 블록X 위치저장
         STSO.setInt((byte) 1, (int) CMLock.getY());//커맨드 블록Y 위치저장
         STSO.setInt((byte) 2, (int) CMLock.getZ());//커맨드 블록Z 위치저장
-        STSO.setInt((byte) 3, (int) 0);//현재 해야 할 일 0이면 레드스톤 블록 생성, 1이면 제거
+        STSO.setInt((byte) 3, 0);//현재 해야 할 일 0이면 레드스톤 블록 생성, 1이면 제거
 
-        STSO.setInt((byte) 4, (int) CMLock.getBlock().getTypeId());//커맨드 블록 위치의 원래 블록 ID
+        STSO.setInt((byte) 4, CMLock.getBlock().getTypeId());//커맨드 블록 위치의 원래 블록 ID
         STSO.setInt((byte) 5, (int) CMLock.getBlock().getData());//커맨드 블록 위치의 원래 블록 DATA
 
-        STSO.setInt((byte) 6, (int) RSLock.getBlock().getTypeId());//레드 스톤 블록 위치의 원래 블록 ID
+        STSO.setInt((byte) 6, RSLock.getBlock().getTypeId());//레드 스톤 블록 위치의 원래 블록 ID
         STSO.setInt((byte) 7, (int) RSLock.getBlock().getData());//레드 스톤 블록 위치의 원래 블록 DATA
 
 
@@ -118,24 +118,24 @@ public class Structure_Main {
 
     public String getCMD(String StructureName, int LineNumber, String StructureCode, String Direction) {
         if (StructureName.compareTo("PB") == 0)
-            return new Struct_PostBox().CreatePostBox(LineNumber, StructureCode, (byte) Byte.parseByte(Direction));
+            return new Struct_PostBox().CreatePostBox(LineNumber, StructureCode, Byte.parseByte(Direction));
         else if (StructureName.compareTo("B") == 0)
-            return new Struct_Board().CreateBoard(LineNumber, StructureCode, (byte) Byte.parseByte(Direction));
+            return new Struct_Board().CreateBoard(LineNumber, StructureCode, Byte.parseByte(Direction));
         else if (StructureName.compareTo("TB") == 0)
-            return new Struct_TradeBoard().CreateTradeBoard(LineNumber, StructureCode, (byte) Byte.parseByte(Direction));
+            return new Struct_TradeBoard().CreateTradeBoard(LineNumber, StructureCode, Byte.parseByte(Direction));
         else if (StructureName.compareTo("CF") == 0)
-            return new Struct_CampFire().CreateCampFire(LineNumber, StructureCode, (byte) Byte.parseByte(Direction));
+            return new Struct_CampFire().CreateCampFire(LineNumber, StructureCode, Byte.parseByte(Direction));
 
         else if (StructureName.compareTo("A_M") == 0)
-            return new Struct_Altar().CreateMossyAltar(LineNumber, StructureCode, (byte) Byte.parseByte(Direction));
+            return new Struct_Altar().CreateMossyAltar(LineNumber, StructureCode, Byte.parseByte(Direction));
         else if (StructureName.compareTo("A_GoldBigDragon") == 0)
-            return new Struct_Altar().CreateGoldBigDragon1(LineNumber, StructureCode, (byte) Byte.parseByte(Direction));
+            return new Struct_Altar().CreateGoldBigDragon1(LineNumber, StructureCode, Byte.parseByte(Direction));
         else if (StructureName.compareTo("A_SH") == 0)
-            return new Struct_Altar().CreateStoneHenge(LineNumber, StructureCode, (byte) Byte.parseByte(Direction));
+            return new Struct_Altar().CreateStoneHenge(LineNumber, StructureCode, Byte.parseByte(Direction));
         else if (StructureName.compareTo("A_AB") == 0)
-            return new Struct_Altar().CreateAtonomicBoard(LineNumber, StructureCode, (byte) Byte.parseByte(Direction));
+            return new Struct_Altar().CreateAtonomicBoard(LineNumber, StructureCode, Byte.parseByte(Direction));
         else if (StructureName.compareTo("A_TEST") == 0)
-            return new Struct_Altar().CreateTestAltar(LineNumber, StructureCode, (byte) Byte.parseByte(Direction));
+            return new Struct_Altar().CreateTestAltar(LineNumber, StructureCode, Byte.parseByte(Direction));
         return "null";
     }
 
@@ -152,7 +152,7 @@ public class Structure_Main {
                 for (int z = 0; z < length; ++z) {
                     int index = y * width * length + z * width + x;
                     Block block = new Location(loc.getWorld(), x + loc.getX(), y + loc.getY(), z + loc.getZ()).getBlock();
-                    block.setTypeIdAndData(blocks[index], (byte) blockData[index], true);
+                    block.setTypeIdAndData(blocks[index], blockData[index], true);
                 }
             }
         }

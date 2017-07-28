@@ -219,7 +219,7 @@ public class Equip_Gui extends GuiUtil {
 
     public void EquipSeeInventoryclick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
-        Player target = (Player) Bukkit.getServer().getPlayer(ChatColor.stripColor(event.getInventory().getItem(16).getItemMeta().getLore().get(3)));
+        Player target = Bukkit.getServer().getPlayer(ChatColor.stripColor(event.getInventory().getItem(16).getItemMeta().getLore().get(3)));
 
         int slot = event.getSlot();
 

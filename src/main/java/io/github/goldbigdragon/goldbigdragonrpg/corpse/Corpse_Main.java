@@ -103,11 +103,11 @@ public class Corpse_Main {
         if (Corpses.containsKey(player.getName())) {
         } else {
             RemoveCorpse(player.getName());
-            int CorpseStyle = new Random().nextInt((int) (11)); //(0 ~ 10 까지의 수)
+            int CorpseStyle = new Random().nextInt(11); //(0 ~ 10 까지의 수)
             String name = player.getName();
             ArrayList<ArmorStand> AL = new ArrayList<>();
             player.setGameMode(GameMode.SPECTATOR);
-            int playerRandom = new Random().nextInt((int) (91)) - 45;
+            int playerRandom = new Random().nextInt(91) - 45;
             Location playerLoc = player.getLocation();
             //if(CorpseStyle == 0)
             {

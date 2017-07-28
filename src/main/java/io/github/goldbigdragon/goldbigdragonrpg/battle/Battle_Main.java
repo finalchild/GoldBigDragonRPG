@@ -117,7 +117,7 @@ public class Battle_Main implements Listener {
                     return;
                 } else {
                     if (Attacker.getType() == EntityType.PLAYER)
-                        if (!((Player) Attacker).isOp()) {
+                        if (!Attacker.isOp()) {
                             String TargetArea = null;
                             Area_Main A = new Area_Main();
                             if (A.getAreaName(event.getEntity()) != null)
@@ -130,7 +130,7 @@ public class Battle_Main implements Listener {
                 }
             } else {
                 if (Attacker.getType() == EntityType.PLAYER)
-                    if (!((Player) Attacker).isOp()) {
+                    if (!Attacker.isOp()) {
                         String TargetArea = null;
                         Area_Main A = new Area_Main();
                         if (A.getAreaName(event.getEntity()) != null)
@@ -210,12 +210,12 @@ public class Battle_Main implements Listener {
                 if (Attacker instanceof Player) {
                     Player player = (Player) Attacker;
                     if (player.isOnline())
-                        Damage = (int) ((Damage * Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_BowPull()) / 110);
+                        Damage = (Damage * Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_BowPull()) / 110;
                 }
             }
         } else if (AttackType.charAt(0) == 'M') {
-            Damage = damage.damagerand(Attacker, damage.CombatDamageGet(Attacker, (int) Damage, Attacker_Stat[0], true),
-                    damage.CombatDamageGet(Attacker, (int) Damage, Attacker_Stat[0], false), Attacker_Stat[8]);
+            Damage = damage.damagerand(Attacker, damage.CombatDamageGet(Attacker, Damage, Attacker_Stat[0], true),
+                    damage.CombatDamageGet(Attacker, Damage, Attacker_Stat[0], false), Attacker_Stat[8]);
 
             if (Attacker.getType() == EntityType.PLAYER) {
                 Player player = (Player) Attacker;
@@ -251,11 +251,11 @@ public class Battle_Main implements Listener {
             Defender_Stat[1] = 0;
 
         if (Damage >= 100)
-            Damage = (int) (Damage * (100 - Defender_Stat[1]) / 100);
+            Damage = Damage * (100 - Defender_Stat[1]) / 100;
         else if (Damage >= 10)
-            Damage = (int) (Damage * ((100 - Defender_Stat[1]) / 10) / 10);
+            Damage = Damage * ((100 - Defender_Stat[1]) / 10) / 10;
         else
-            Damage = (int) (Damage - Defender_Stat[1]);
+            Damage = Damage - Defender_Stat[1];
         if (Damage <= 0 || (100 - Defender_Stat[1]) <= 0/*보호가 100 이상일 경우*/) {
             if (AttackType.compareTo("R_S") != 0)//눈덩이
             {
@@ -420,7 +420,7 @@ public class Battle_Main implements Listener {
         if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_MobHealth()) {
             if (defenser instanceof LivingEntity) {
                 LivingEntity defenser2 = (LivingEntity) defenser;
-                Damageable getouter = (Damageable) defenser2;
+                Damageable getouter = defenser2;
                 int health = (int) getouter.getHealth() - Damage;
                 int Mahealth = (int) getouter.getMaxHealth();
                 StringBuffer HealthBar = new StringBuffer(ChatColor.RED + "");
@@ -428,7 +428,7 @@ public class Battle_Main implements Listener {
                 if (health <= 0)
                     health = 1;
 
-                int Percent = (int) (Mahealth / 10);
+                int Percent = Mahealth / 10;
                 int healthCount = 0;
                 if (Percent <= 0)
                     healthCount = 2;

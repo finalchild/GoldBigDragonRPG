@@ -41,7 +41,7 @@ public class NPC {
     GameProfile gameprofile;
 
     public NPC(Player player, Location loc) {
-        entityID = (int) 8759;
+        entityID = 8759;
         gameprofile = new GameProfile(player.getUniqueId(), player.getName());
         new NMSUtils().registerEntity(player.getName(), 49 + (Byte.MAX_VALUE + 1) * 2, CreatureMonster.class);
         this.loc = loc;

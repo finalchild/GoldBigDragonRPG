@@ -320,7 +320,7 @@ public class Quest_Chat extends Util_Chat {
                         Set<String> b4 = QuestConfig.getConfigurationSection(u.getString(player, (byte) 2) + ".FlowChart").getKeys(false);
 
                         QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + b4.size() + ".Type", "Visit");
-                        QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + b4.size() + ".AreaName", (String) arealist[count]);
+                        QuestConfig.set(u.getString(player, (byte) 2) + ".FlowChart." + b4.size() + ".AreaName", arealist[count]);
                         QuestConfig.saveConfig();
 
                         QGUI.FixQuestGUI(player, (short) 0, u.getString(player, (byte) 2));
@@ -360,7 +360,7 @@ public class Quest_Chat extends Util_Chat {
                     player.sendMessage(ChatColor.GREEN + "[퀘스트] : " + ChatColor.YELLOW + QGUI.SkullType(u.getString(player, (byte) 3)) + ChatColor.GREEN + " (을)를 " + ChatColor.YELLOW + Integer.parseInt(event.getMessage()) + ChatColor.GREEN + " 마리 사냥하도록 설정되었습니다!");
 
                     if (u.getInt(player, (byte) 2) < 17)
-                        QGUI.KeepGoing(player, u.getString(player, (byte) 2), (short) Flownumber, (short) Monsternumber, false);
+                        QGUI.KeepGoing(player, u.getString(player, (byte) 2), Flownumber, Monsternumber, false);
                     else
                         QGUI.FixQuestGUI(player, (short) 0, u.getString(player, (byte) 2));
                     u.clearAll(player);
@@ -412,7 +412,7 @@ public class Quest_Chat extends Util_Chat {
                             player.sendMessage(ChatColor.GREEN + "[퀘스트] : 아이템 코드 " + ChatColor.YELLOW + u.getInt(player, (byte) 1) + ":" + u.getInt(player, (byte) 2) + ChatColor.GREEN + " 인 블록을 " + ChatColor.YELLOW + Integer.parseInt(event.getMessage()) + ChatColor.GREEN + " 개 채집하도록 설정되었습니다!");
 
                         if (u.getInt(player, (byte) 2) < 17)
-                            QGUI.KeepGoing(player, u.getString(player, (byte) 2), (short) Flownumber, (short) BlockNumber, true);
+                            QGUI.KeepGoing(player, u.getString(player, (byte) 2), Flownumber, BlockNumber, true);
                         else
                             QGUI.FixQuestGUI(player, (short) 0, u.getString(player, (byte) 2));
                         u.clearAll(player);

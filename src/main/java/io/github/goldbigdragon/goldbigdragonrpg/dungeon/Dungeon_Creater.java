@@ -60,8 +60,8 @@ public class Dungeon_Creater {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager DungeonData = YC.getNewConfig("Dungeon/DungeonData.yml");
         if (!DungeonData.contains("StartPoint.X")) {
-            DungeonData.set("StartPoint.X", 0 + totalSize);
-            DungeonData.set("StartPoint.Z", 0 + totalSize);
+            DungeonData.set("StartPoint.X", totalSize);
+            DungeonData.set("StartPoint.Z", totalSize);
         } else {
             DungeonData.set("StartPoint.X", DungeonData.getLong("StartPoint.X") + totalSize);
             DungeonData.set("StartPoint.Z", DungeonData.getLong("StartPoint.Z") + totalSize);

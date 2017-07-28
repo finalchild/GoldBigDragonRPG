@@ -310,8 +310,8 @@ public class Main_Main extends JavaPlugin implements Listener {
                 if (!event.getPlayer().isOp()) {
                     String TargetArea = null;
                     Area_Main A = new Area_Main();
-                    if (A.getAreaName((Entity) AS) != null)
-                        TargetArea = A.getAreaName((Entity) AS)[0];
+                    if (A.getAreaName(AS) != null)
+                        TargetArea = A.getAreaName(AS)[0];
                     if (TargetArea != null && !A.getAreaOption(TargetArea, (char) 7)) {
                         event.setCancelled(true);
                     }

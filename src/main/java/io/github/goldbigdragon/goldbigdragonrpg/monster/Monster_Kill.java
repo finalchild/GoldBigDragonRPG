@@ -184,11 +184,11 @@ public class Monster_Kill {
             else if (entity.getType() == EntityType.PRIMED_TNT || entity.getType() == EntityType.MINECART_TNT)
                 MonsterINT = 90;
         }
-        int MinPower = (int) (MonsterINT / 4);
+        int MinPower = MonsterINT / 4;
         int MaxPower = (int) (MonsterINT / 2.5);
 
-        int Power = new Random().nextInt((int) (MaxPower - MinPower + 1)) + MinPower;
-        radius = (int) ((Power / 3) * 2);
+        int Power = new Random().nextInt(MaxPower - MinPower + 1) + MinPower;
+        radius = (Power / 3) * 2;
         if (radius < 3)
             radius = 3;
         else if (radius > 8)
@@ -229,11 +229,11 @@ public class Monster_Kill {
                     }
 
                     if (Power >= 100)
-                        Temp = (int) (Power * (100 - PRO) / 100);
+                        Temp = Power * (100 - PRO) / 100;
                     else if (Power >= 10)
-                        Temp = (int) (Power * ((100 - PRO) / 10) / 10);
+                        Temp = Power * ((100 - PRO) / 10) / 10;
                     else
-                        Temp = (int) (Power - PRO);
+                        Temp = Power - PRO;
                     Temp = Temp - DEF;
                     if (Choosedentity.getType() != EntityType.DROPPED_ITEM && Choosedentity.getType() != EntityType.ARMOR_STAND &&
                             Choosedentity.getType() != EntityType.ARROW && Choosedentity.getType() != EntityType.BOAT &&
@@ -362,7 +362,7 @@ public class Monster_Kill {
             if (event.getEntity().getLastDamageCause().getCause() == DamageCause.ENTITY_ATTACK || event.getEntity().getLastDamageCause().getCause() == DamageCause.PROJECTILE
                     || event.getEntity().getLastDamageCause().getCause() == DamageCause.MAGIC) {
                 if (Bukkit.getServer().getPlayer(event.getEntity().getKiller().getName()).isOnline()) {
-                    Player player = (Player) Bukkit.getServer().getPlayer(event.getEntity().getKiller().getName());
+                    Player player = Bukkit.getServer().getPlayer(event.getEntity().getKiller().getName());
                     if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_MobHealth())
                         new PacketUtil().sendTitleSubTitle(player, "\'" + ChatColor.BLACK + "■■■■■■■■■■" + "\'", "\'" + ChatColor.DARK_RED + "" + ChatColor.BOLD + "[DEAD]" + "\'", (byte) 0, (byte) 0, (byte) 1);
                     Reward(event, player);

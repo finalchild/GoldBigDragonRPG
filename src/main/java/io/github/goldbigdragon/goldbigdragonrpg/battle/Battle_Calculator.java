@@ -165,7 +165,7 @@ public class Battle_Calculator {
         if (num.RandomNum(1, 100) <= player_balance)
             return num.RandomNum(num.RandomNum(min, max), max);
         else {
-            max = (int) (max / 2);
+            max = max / 2;
             if (max <= min)
                 max = min;
             return num.RandomNum(min, max);
@@ -176,17 +176,17 @@ public class Battle_Calculator {
     public int criticalrend(Entity entity, int attacker_luk, int attacker_will, int attacker_damage, int defenser_protect, int attacker_critical) {
         Util_Number num = new Util_Number();
         int critical;
-        if ((int) defenser_protect / 2 <= 1)
+        if (defenser_protect / 2 <= 1)
             critical = getCritical(entity, attacker_luk, attacker_will, attacker_critical);
         else
-            critical = (int) (getCritical(entity, attacker_luk, attacker_will, attacker_critical) / 100) * (100 - (defenser_protect / 2));
+            critical = getCritical(entity, attacker_luk, attacker_will, attacker_critical) / 100 * (100 - (defenser_protect / 2));
         if (critical > 90)
             critical = 90;
         if (critical < 2)
             critical = 2;
-        int getcritical = (int) num.RandomNum(0, 100);
+        int getcritical = num.RandomNum(0, 100);
         if (getcritical <= critical)
-            return (int) (attacker_damage / 2);
+            return attacker_damage / 2;
         else
             return 0;
     }
@@ -199,7 +199,7 @@ public class Battle_Calculator {
                 DEX = DEX + getPlayerEquipmentStat((Player) entity, "DEX", false, null)[0];
                 balance = balance + getPlayerEquipmentStat((Player) entity, "Balance", false, null)[0];
             }
-        balance = balance + (int) DEX / 20;
+        balance = balance + DEX / 20;
         if (balance > 80) balance = 80;
         if (balance < 0) balance = 1;
         return balance;
@@ -211,7 +211,7 @@ public class Battle_Calculator {
         if (entity != null)
             if (entity.getType() == EntityType.PLAYER)
                 critical = critical + getPlayerEquipmentStat((Player) entity, "Critical", false, null)[0];
-        critical = critical + (int) (player_luk / 5 + player_will / 10);
+        critical = critical + player_luk / 5 + player_will / 10;
         return critical;
     }
 
@@ -222,7 +222,7 @@ public class Battle_Calculator {
             player_int = player_int + getPlayerEquipmentStat((Player) entity, "INT", false, null)[0];
             Magic_DEF = Magic_DEF + getPlayerEquipmentStat((Player) entity, "Magic_DEF", false, null)[0];
         }
-        Magic_DEF = Magic_DEF + (int) (player_int / 20);
+        Magic_DEF = Magic_DEF + player_int / 20;
         return Magic_DEF;
     }
 
@@ -233,7 +233,7 @@ public class Battle_Calculator {
             player_int = player_int + getPlayerEquipmentStat((Player) entity, "INT", false, null)[0];
             Magic_Protect = Magic_Protect + getPlayerEquipmentStat((Player) entity, "Magic_Protect", false, null)[0];
         }
-        Magic_Protect = Magic_Protect + (int) (player_int / 100);
+        Magic_Protect = Magic_Protect + player_int / 100;
         return Magic_Protect;
     }
 
@@ -244,7 +244,7 @@ public class Battle_Calculator {
             player_dex = player_dex + getPlayerEquipmentStat((Player) entity, "DEX", false, null)[0];
             DEFcrash = DEFcrash + getPlayerEquipmentStat((Player) entity, "DEFcrash", false, null)[0];
         }
-        DEFcrash = DEFcrash + (int) (player_dex / 40);
+        DEFcrash = DEFcrash + player_dex / 40;
         return DEFcrash;
     }
 
@@ -255,7 +255,7 @@ public class Battle_Calculator {
             player_int = player_int + getPlayerEquipmentStat((Player) entity, "INT", false, null)[0];
             MagicDEFcrash = MagicDEFcrash + getPlayerEquipmentStat((Player) entity, "MagicDEFcrash", false, null)[0];
         }
-        MagicDEFcrash = MagicDEFcrash + (int) (player_int / 40);
+        MagicDEFcrash = MagicDEFcrash + player_int / 40;
         return MagicDEFcrash;
     }
 

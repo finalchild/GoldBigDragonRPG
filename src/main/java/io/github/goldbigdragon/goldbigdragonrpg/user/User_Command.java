@@ -102,17 +102,17 @@ public class User_Command {
                                         Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).addStat_MoneyAndEXP(-1 * money, 0, false);
                                         ItemStack Icon;
                                         if (money <= 50)
-                                            Icon = new MaterialData(Main_ServerOption.Money1ID, (byte) Main_ServerOption.Money1DATA).toItemStack();
+                                            Icon = new MaterialData(Main_ServerOption.Money1ID, Main_ServerOption.Money1DATA).toItemStack();
                                         else if (money <= 100)
-                                            Icon = new MaterialData(Main_ServerOption.Money2ID, (byte) Main_ServerOption.Money2DATA).toItemStack();
+                                            Icon = new MaterialData(Main_ServerOption.Money2ID, Main_ServerOption.Money2DATA).toItemStack();
                                         else if (money <= 1000)
-                                            Icon = new MaterialData(Main_ServerOption.Money3ID, (byte) Main_ServerOption.Money3DATA).toItemStack();
+                                            Icon = new MaterialData(Main_ServerOption.Money3ID, Main_ServerOption.Money3DATA).toItemStack();
                                         else if (money <= 10000)
-                                            Icon = new MaterialData(Main_ServerOption.Money4ID, (byte) Main_ServerOption.Money4DATA).toItemStack();
+                                            Icon = new MaterialData(Main_ServerOption.Money4ID, Main_ServerOption.Money4DATA).toItemStack();
                                         else if (money <= 50000)
-                                            Icon = new MaterialData(Main_ServerOption.Money5ID, (byte) Main_ServerOption.Money5DATA).toItemStack();
+                                            Icon = new MaterialData(Main_ServerOption.Money5ID, Main_ServerOption.Money5DATA).toItemStack();
                                         else
-                                            Icon = new MaterialData(Main_ServerOption.Money6ID, (byte) Main_ServerOption.Money6DATA).toItemStack();
+                                            Icon = new MaterialData(Main_ServerOption.Money6ID, Main_ServerOption.Money6DATA).toItemStack();
                                         Icon.setAmount(1);
                                         ItemMeta Icon_Meta = Icon.getItemMeta();
                                         Icon_Meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -192,7 +192,7 @@ public class User_Command {
                                                 money = money - (Mok * 10);
                                             }
                                             if (money >= 1) {
-                                                Mok = (short) (money / 1);
+                                                Mok = (short) (money);
                                                 MoneyString.append(Mok);
                                             }
                                         }
@@ -229,17 +229,17 @@ public class User_Command {
                                             int money = Integer.parseInt(args[1]);
                                             ItemStack Icon;
                                             if (money <= 50)
-                                                Icon = new MaterialData(Main_ServerOption.Money1ID, (byte) Main_ServerOption.Money1DATA).toItemStack();
+                                                Icon = new MaterialData(Main_ServerOption.Money1ID, Main_ServerOption.Money1DATA).toItemStack();
                                             else if (money <= 100)
-                                                Icon = new MaterialData(Main_ServerOption.Money2ID, (byte) Main_ServerOption.Money2DATA).toItemStack();
+                                                Icon = new MaterialData(Main_ServerOption.Money2ID, Main_ServerOption.Money2DATA).toItemStack();
                                             else if (money <= 1000)
-                                                Icon = new MaterialData(Main_ServerOption.Money3ID, (byte) Main_ServerOption.Money3DATA).toItemStack();
+                                                Icon = new MaterialData(Main_ServerOption.Money3ID, Main_ServerOption.Money3DATA).toItemStack();
                                             else if (money <= 10000)
-                                                Icon = new MaterialData(Main_ServerOption.Money4ID, (byte) Main_ServerOption.Money4DATA).toItemStack();
+                                                Icon = new MaterialData(Main_ServerOption.Money4ID, Main_ServerOption.Money4DATA).toItemStack();
                                             else if (money <= 50000)
-                                                Icon = new MaterialData(Main_ServerOption.Money5ID, (byte) Main_ServerOption.Money5DATA).toItemStack();
+                                                Icon = new MaterialData(Main_ServerOption.Money5ID, Main_ServerOption.Money5DATA).toItemStack();
                                             else
-                                                Icon = new MaterialData(Main_ServerOption.Money6ID, (byte) Main_ServerOption.Money6DATA).toItemStack();
+                                                Icon = new MaterialData(Main_ServerOption.Money6ID, Main_ServerOption.Money6DATA).toItemStack();
                                             Icon.setAmount(1);
                                             ItemMeta Icon_Meta = Icon.getItemMeta();
                                             Icon_Meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
@@ -319,7 +319,7 @@ public class User_Command {
                                                     money = money - (Mok * 10);
                                                 }
                                                 if (money >= 1) {
-                                                    Mok = (short) (money / 1);
+                                                    Mok = (short) (money);
                                                     MoneyString.append(Mok);
                                                 }
                                             }
