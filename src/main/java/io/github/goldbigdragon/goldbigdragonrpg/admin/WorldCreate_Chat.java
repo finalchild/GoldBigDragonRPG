@@ -38,7 +38,7 @@ public class WorldCreate_Chat {
         UserData_Object u = new UserData_Object();
         event.setCancelled(true);
         Player player = event.getPlayer();
-                String Message = ChatColor.stripColor(event.getMessage());
+        String Message = ChatColor.stripColor(event.getMessage());
         SoundUtil.playSound(player, Sound.BLOCK_ANVIL_USE, 1.0F, 0.8F);
         player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "[월드 생성] : 월드 생성 중...");
         WorldType TYPE = WorldType.FLAT;

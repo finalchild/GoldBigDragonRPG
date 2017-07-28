@@ -216,7 +216,7 @@ public final class Party_Gui extends GuiUtil {
     public void PartyMemberInformationGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-                if (slot == 53)//닫기
+        if (slot == 53)//닫기
         {
             SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();

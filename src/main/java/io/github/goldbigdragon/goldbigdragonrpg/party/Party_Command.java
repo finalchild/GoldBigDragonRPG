@@ -34,7 +34,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
 public class Party_Command {
     public void onCommand(CommandSender talker, Command command, String string, String[] args) {
-                Player player = (Player) talker;
+        Player player = (Player) talker;
         if (args.length == 0) {
             SoundUtil.playSound((Player) talker, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
             new Party_Gui().PartyGUI_Main(player);

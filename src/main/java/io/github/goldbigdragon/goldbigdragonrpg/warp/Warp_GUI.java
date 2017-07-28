@@ -132,7 +132,7 @@ public class Warp_Gui extends GuiUtil {
     public void WarpListGUIInventoryclick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-                if (slot == 53)//닫기
+        if (slot == 53)//닫기
         {
             SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.0F);
             player.closeInventory();

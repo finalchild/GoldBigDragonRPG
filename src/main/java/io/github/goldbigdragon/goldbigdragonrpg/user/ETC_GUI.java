@@ -41,7 +41,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.skill.UserSkill_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 
 public final class ETC_Gui extends GuiUtil {
-    private
+
     public void ETCGUI_Main(Player player) {
         String UniqueCode = "§0§0§0§0§2§r";
         Inventory inv = Bukkit.createInventory(null, 45, UniqueCode + "§0기타");
@@ -281,7 +281,7 @@ public final class ETC_Gui extends GuiUtil {
     }
 
     public void FriendsGUIclick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int page = Integer.parseInt(event.getInventory().getTitle().split(" : ")[1]) - 1;
         int slot = event.getSlot();
 
@@ -318,7 +318,7 @@ public final class ETC_Gui extends GuiUtil {
     }
 
     public void WaittingFriendsGUIclick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
 
         int page = Integer.parseInt(event.getInventory().getTitle().split(" : ")[1]) - 1;
         int slot = event.getSlot();

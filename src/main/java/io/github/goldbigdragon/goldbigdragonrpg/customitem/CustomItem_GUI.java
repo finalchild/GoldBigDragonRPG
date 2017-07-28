@@ -161,7 +161,7 @@ public class CustomItem_Gui extends GuiUtil {
 
 
     public void ItemListInventoryclick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 53)//나가기
@@ -244,7 +244,7 @@ public class CustomItem_Gui extends GuiUtil {
     }
 
     public void NewItemGUIclick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 53)//나가기

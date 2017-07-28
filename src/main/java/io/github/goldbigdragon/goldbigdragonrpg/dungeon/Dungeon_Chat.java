@@ -46,7 +46,7 @@ public class Dungeon_Chat {
 
 
     private void DungeonMainChatting(PlayerChatEvent event) {
-                Player player = event.getPlayer();
+        Player player = event.getPlayer();
         UserData_Object u = new UserData_Object();
         String Message = ChatColor.stripColor(event.getMessage());
         YamlController YC = new YamlController(Main_Main.plugin);
@@ -157,7 +157,7 @@ public class Dungeon_Chat {
     }
 
     private void EnterCardChatting(PlayerChatEvent event) {
-                Player player = event.getPlayer();
+        Player player = event.getPlayer();
         UserData_Object u = new UserData_Object();
         String Message = ChatColor.stripColor(event.getMessage());
         YamlController YC = new YamlController(Main_Main.plugin);
@@ -252,7 +252,7 @@ public class Dungeon_Chat {
     }
 
     private void AltarChatting(PlayerChatEvent event) {
-                Player player = event.getPlayer();
+        Player player = event.getPlayer();
         UserData_Object u = new UserData_Object();
         String Message = ChatColor.stripColor(event.getMessage());
         YamlController YC = new YamlController(Main_Main.plugin);

@@ -72,7 +72,7 @@ public class Main_ChangeHotBar implements Listener {
                                 if (nowlore.contains(" + ")) {
                                     YamlController YC = new YamlController(Main_Main.plugin);
                                     YamlManager Config = YC.getNewConfig("config.yml");
-                                                                        if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
+                                    if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
                                         Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).addStat_RealLevel(1);
                                         Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setStat_Level(1);
                                         Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setStat_EXP(0);
@@ -320,7 +320,7 @@ public class Main_ChangeHotBar implements Listener {
                                         player.sendMessage(ChatColor.RED + "[스킬] : MagicSpells플러그인에 해당 스펠이 존재하지 않습니다! 관리자에게 문의하세요!");
                                         player.sendMessage(ChatColor.RED + "존재하지 않는 스펠 이름 : " + ChatColor.YELLOW + Spell);
                                         player.sendMessage(ChatColor.RED + "존재하지 않는 스펠이 등록된 스킬 : " + ChatColor.YELLOW + Skillname + " " + PlayerSkillRank + "랭크");
-                                                                                SoundUtil.playSound(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.9F);
+                                        SoundUtil.playSound(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.9F);
                                     }
                                 }
                             }
@@ -355,7 +355,7 @@ public class Main_ChangeHotBar implements Listener {
 
     public void HotBarSound(Player player, short itemID) {
         if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isOption_HotBarSound()) {
-                        if (itemID == -1)
+            if (itemID == -1)
                 SoundUtil.playSound(player, Sound.BLOCK_WOOD_BUTTON_CLICK_ON, 0.8F, 0.5F);
             if (itemID >= 298 && itemID <= 317)
                 SoundUtil.playSound(player, Sound.ENTITY_HORSE_ARMOR, 0.9F, 0.5F);

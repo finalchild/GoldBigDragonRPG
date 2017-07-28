@@ -327,7 +327,7 @@ public class Struct_TradeBoard extends GuiUtil {
 
 
     public void TradeBoardMainGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
 
 
         short page = (short) (Integer.parseInt(event.getInventory().getTitle().split(" : ")[1]) - 1);
@@ -631,7 +631,7 @@ public class Struct_TradeBoard extends GuiUtil {
     }
 
     public void TradeBoardSettingGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
 
         if (event.getSlot() >= 1 && event.getSlot() <= 3) {
             SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
@@ -667,7 +667,7 @@ public class Struct_TradeBoard extends GuiUtil {
     }
 
     public void SelectTradeTypeGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         if (event.getSlot() == 1 || event.getSlot() == 3 || event.getSlot() == 5) {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager USRL = YC.getNewConfig("Structure/UserShopRegisterList.yml");
@@ -716,7 +716,7 @@ public class Struct_TradeBoard extends GuiUtil {
     }
 
     public void SelectSellItemGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         UserData_Object u = new UserData_Object();
         if (event.getCurrentItem() != null) {
             if (event.getCurrentItem().getTypeId() != 0) {
@@ -741,7 +741,7 @@ public class Struct_TradeBoard extends GuiUtil {
     }
 
     public void SelectBuyItemGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         UserData_Object u = new UserData_Object();
         if (event.getCurrentItem() != null) {
             if (event.getCurrentItem().getTypeId() != 0) {
@@ -775,7 +775,7 @@ public class Struct_TradeBoard extends GuiUtil {
     }
 
     public void SelectNormalItemGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         byte page = (byte) (Byte.parseByte(event.getInventory().getTitle().split(" : ")[1]) - 1);
         byte ShopType = Byte.parseByte(ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1)));
 
@@ -812,7 +812,7 @@ public class Struct_TradeBoard extends GuiUtil {
     }
 
     public void SelectExchangeItem_YouGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         UserData_Object u = new UserData_Object();
         if (event.getCurrentItem().getTypeId() != 0) {
             ItemStack item = event.getCurrentItem();
@@ -852,7 +852,7 @@ public class Struct_TradeBoard extends GuiUtil {
     }
 
     public void SelectExchangeItem_MyGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         UserData_Object u = new UserData_Object();
         if (event.getCurrentItem().getTypeId() != 0) {
             ItemStack item = event.getCurrentItem();

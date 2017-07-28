@@ -226,7 +226,7 @@ public class UserSkill_Gui extends GuiUtil {
 
 
     public void MapleStory_MainSkillsListGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 53)//나가기
@@ -249,7 +249,7 @@ public class UserSkill_Gui extends GuiUtil {
 
     public void Mabinogi_MainSkillsListGUIClick(InventoryClickEvent event) {
         int slot = event.getSlot();
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
 
         if (slot == 53)//나가기
         {
@@ -360,7 +360,7 @@ public class UserSkill_Gui extends GuiUtil {
     }
 
     public void AddQuickBarGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 17)//나가기

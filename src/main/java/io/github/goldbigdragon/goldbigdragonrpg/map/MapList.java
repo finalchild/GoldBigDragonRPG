@@ -54,8 +54,7 @@ public class MapList extends MapRenderer {
             Ycenter = MapConfig.getInt(Name + ".Ycenter");
             new UserData_Object().clearAll(player);
             if (URL == "null") {
-            }
-            else {
+            } else {
                 try {
                     MC.drawImage(Xcenter, Ycenter, ImageIO.read(new URL(URL)));
                 } catch (MalformedURLException e) {

@@ -558,7 +558,7 @@ public class Gamble_Gui extends GuiUtil {
 
     public void SlotMachine_PlayGUI_Click(InventoryClickEvent event) {
         if (event.getSlot() == 15) {
-                        ItemStack Coin = event.getInventory().getItem(16);
+            ItemStack Coin = event.getInventory().getItem(16);
             Player player = (Player) event.getWhoClicked();
             if (event.getCurrentItem().getTypeId() == 69)
                 return;
@@ -686,7 +686,7 @@ public class Gamble_Gui extends GuiUtil {
                 for (byte count = 0; count < 3; count++)
                     Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + "" + (count + 1) + " 번째 슬롯", itemID[count], 0, 1, Arrays.asList(""), count + 10, inv);
                 Bukkit.getServer().getPlayer(player).openInventory(inv);
-                                SoundUtil.playSound(Bukkit.getServer().getPlayer(player), Sound.BLOCK_STONE_STEP, 1.0F, 1.0F);
+                SoundUtil.playSound(Bukkit.getServer().getPlayer(player), Sound.BLOCK_STONE_STEP, 1.0F, 1.0F);
             }
         }
     }

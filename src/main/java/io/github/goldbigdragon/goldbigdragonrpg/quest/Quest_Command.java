@@ -32,7 +32,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 
 public class Quest_Command {
     public void onCommand(CommandSender talker, Command command, String string, String[] args) {
-                Player player = (Player) talker;
+        Player player = (Player) talker;
         if (args.length == 0) {
             SoundUtil.playSound(player, Sound.ENTITY_HORSE_ARMOR, 1.0F, 0.8F);
             new Quest_Gui().MyQuestListGUI(player, (short) 0);

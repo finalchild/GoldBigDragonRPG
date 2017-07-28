@@ -207,7 +207,7 @@ public class Dungeon_Main {
             DungeonClear(player, BossLoc);
         else {
             Monster_Spawn MC = new Monster_Spawn();
-                        for (int count = 0; count < MobList.length; count++) {
+            for (int count = 0; count < MobList.length; count++) {
                 BossLoc.add(0, 0.2, 0);
                 SoundUtil.playSound(BossLoc, Sound.ENTITY_WITHER_DEATH, 1.3F, 1.8F);
                 MC.SpawnMob(BossLoc, MonsterConfig.getString("Boss." + MobList[count].toString()), (byte) 4, XYZloc, Group, true);
@@ -354,7 +354,7 @@ public class Dungeon_Main {
                         break;
                 }
                 Monster_Spawn MC = new Monster_Spawn();
-                                loc.add(0, 1, 0);
+                loc.add(0, 1, 0);
                 for (int count = 0; count < 7; count++) {
                     SoundUtil.playSound(loc, Sound.ENTITY_WITHER_DEATH, 1.3F, 1.8F);
                     MC.SpawnMob(loc, MonsterConfig.getString(ListName + "." + Mob), (byte) 1, XYZLoc, Group, true);
@@ -754,7 +754,7 @@ public class Dungeon_Main {
                         MC.SpawnMob(loc, MonsterConfig.getString(ListName + "." + Mob.get(7)), (byte) 3, XYZLoc, Group, true);
                     }
                     /*
-            		일반 방 열면 몹 스폰되고 문 닫히게 하기
+                    일반 방 열면 몹 스폰되고 문 닫히게 하기
             		열쇠 가지고 있는 몬스터에게는 이름 앞에 칼라 코드를 붙여 표시한다.
             		칼라코드 순서 배열은 녹-검-녹 으로 통일한다.
             		녹-검-녹-빨 = 열쇠 가진 녀석
@@ -810,7 +810,7 @@ public class Dungeon_Main {
         if (SB.getType() != Material.SIGN_POST)
             return;
         Monster_Spawn MC = new Monster_Spawn();
-                ParticleUtil p = new ParticleUtil();
+        ParticleUtil p = new ParticleUtil();
         if (block.getData() == 15 || block.getData() == 14 || block.getData() == 13 ||
                 block.getData() == 11 || block.getData() == 8) {
             switch (block.getData()) {
@@ -981,7 +981,7 @@ public class Dungeon_Main {
 
 
     private void DungeonDoorRemover(Player player, char GridImage, int Direction, Location loc) {
-                Location Original = loc.add(0, -12, 0);
+        Location Original = loc.add(0, -12, 0);
         Original.setX(loc.getX());
         Original.setY(loc.getY());
         Original.setZ(loc.getZ());

@@ -38,7 +38,7 @@ import org.bukkit.Location;
 
 public class ServerTask_Player {
     public void UseTeleportScroll(long UTC) {
-                Player user = Bukkit.getServer().getPlayer(ServerTick_Main.Schedule.get(UTC).getString((byte) 2));
+        Player user = Bukkit.getServer().getPlayer(ServerTick_Main.Schedule.get(UTC).getString((byte) 2));
         if (user == null) {
             ServerTick_Main.Schedule.remove(UTC);
             ServerTick_Main.PlayerTaskList.remove(ServerTick_Main.Schedule.get(UTC).getString((byte) 2));
@@ -74,7 +74,7 @@ public class ServerTask_Player {
     }
 
     public void ExChangeTimer(long UTC) {
-                Player caller = Bukkit.getServer().getPlayer(ServerTick_Main.Schedule.get(UTC).getString((byte) 0));
+        Player caller = Bukkit.getServer().getPlayer(ServerTick_Main.Schedule.get(UTC).getString((byte) 0));
         Player target = Bukkit.getServer().getPlayer(ServerTick_Main.Schedule.get(UTC).getString((byte) 1));
         if (caller == null) {
             Cancel(UTC, (short) 0);
@@ -121,7 +121,7 @@ public class ServerTask_Player {
     }
 
     public void SendMessage(Player Receiver, short message) {
-                switch (message) {
+        switch (message) {
             case 0://교환 신청자 - 교환 취소 메시지
             {
                 Receiver.sendMessage(ChatColor.RED + "[교환] : 상대가 교환을 취소하였습니다.");

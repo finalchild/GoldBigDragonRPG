@@ -171,7 +171,7 @@ public class NewBie_Gui extends GuiUtil {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
-                if (slot == 8)//닫기
+        if (slot == 8)//닫기
         {
             SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.0F);
             player.closeInventory();
@@ -214,7 +214,7 @@ public class NewBie_Gui extends GuiUtil {
     }
 
     public void NewBieSupportItemGUIInventoryclick(InventoryClickEvent event, String SubjectCode) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
         if (slot >= 45)
             event.setCancelled(true);

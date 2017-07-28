@@ -118,7 +118,7 @@ public class Warp_Main {
     }
 
     public void TeleportUser(Player player, String TeleportSpotName) {
-                EffectUtil p = new EffectUtil();
+        EffectUtil p = new EffectUtil();
 
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager TeleportList = YC.getNewConfig("Teleport/TeleportList.yml");

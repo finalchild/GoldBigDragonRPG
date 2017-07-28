@@ -281,7 +281,7 @@ public class Main_Interact {
         String AreaName = u.getString(player, (byte) 2);
         if (event.getAction() == Action.LEFT_CLICK_BLOCK) {
             /*
-			if(u.getString(player, (byte)3).compareTo("ANBI") == 0)
+            if(u.getString(player, (byte)3).compareTo("ANBI") == 0)
 			{
 				String BlockData = block.getTypeId()+":"+block.getData();
 				ItemStack item = new MaterialData(block.getTypeId(), (byte) block.getData()).toItemStack(1);

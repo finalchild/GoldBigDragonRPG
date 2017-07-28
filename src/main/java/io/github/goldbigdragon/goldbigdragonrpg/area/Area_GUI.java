@@ -774,7 +774,8 @@ public class Area_Gui extends GuiUtil {
                 }
             }
             lore = lore + lore2 + "%enter% %enter%" + ChatColor.YELLOW + "[좌 클릭시 배경음 설정]";
-            if (count > new io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain().Musics.size() || loc >= 45) break;
+            if (count > new io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain().Musics.size() || loc >= 45)
+                break;
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + count, 2256 + model, 0, 1, Arrays.asList(lore.split("%enter%")), loc, inv);
 
             loc++;
@@ -792,7 +793,7 @@ public class Area_Gui extends GuiUtil {
 
 
     public void AreaListGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
 
         int slot = event.getSlot();
 
@@ -839,7 +840,7 @@ public class Area_Gui extends GuiUtil {
     }
 
     public void AreaSettingGUIInventoryclick(InventoryClickEvent event) {
-                int slot = event.getSlot();
+        int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
 
         if (slot == 44)//창닫기
@@ -984,7 +985,7 @@ public class Area_Gui extends GuiUtil {
     }
 
     public void AreaMonsterSettingGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 53)//창닫기
@@ -1026,7 +1027,7 @@ public class Area_Gui extends GuiUtil {
     }
 
     public void AreaFishSettingGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
         String AreaName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
         if (slot == 0 || slot == 9 || slot == 18 || slot == 27 || slot == 36 || slot >= 45)
@@ -1043,7 +1044,7 @@ public class Area_Gui extends GuiUtil {
     }
 
     public void AreaBlockSettingGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 53)//나가기
@@ -1086,7 +1087,7 @@ public class Area_Gui extends GuiUtil {
     }
 
     public void AreaBlockItemSettingGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
         String AreaName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
 
@@ -1106,7 +1107,7 @@ public class Area_Gui extends GuiUtil {
     }
 
     public void AreaAddMonsterSpawnRuleGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 53)//나가기
@@ -1152,7 +1153,7 @@ public class Area_Gui extends GuiUtil {
     }
 
     public void AreaAddMonsterListGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         String AreaName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
@@ -1183,7 +1184,7 @@ public class Area_Gui extends GuiUtil {
     }
 
     public void AreaSpawnSpecialMonsterListGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         String AreaName = ChatColor.stripColor(event.getInventory().getItem(49).getItemMeta().getLore().get(3));
@@ -1212,7 +1213,7 @@ public class Area_Gui extends GuiUtil {
     }
 
     public void AreaMusicSettingGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
 
         String AreaName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
 

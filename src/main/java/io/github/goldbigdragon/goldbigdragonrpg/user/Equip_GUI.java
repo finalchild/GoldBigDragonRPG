@@ -383,7 +383,7 @@ public class Equip_Gui extends GuiUtil {
     public void ExchangeGUIclick(InventoryClickEvent event) {
         Player player = Bukkit.getServer().getPlayer(ChatColor.stripColor(event.getInventory().getItem(0).getItemMeta().getDisplayName()));
         Player target = Bukkit.getServer().getPlayer(ChatColor.stripColor(event.getInventory().getItem(8).getItemMeta().getDisplayName()));
-                if ((event.getSlot() >= 0 && event.getSlot() <= 9) ||
+        if ((event.getSlot() >= 0 && event.getSlot() <= 9) ||
                 (event.getSlot() >= 13 && event.getSlot() <= 18) ||
                 (event.getSlot() >= 22 && event.getSlot() <= 27) ||
                 (event.getSlot() >= 31 && event.getSlot() <= 36) ||
@@ -543,7 +543,7 @@ public class Equip_Gui extends GuiUtil {
 
 
     public void ExchangeGUI_Close(InventoryCloseEvent event) {
-                if (event.getInventory().getItem(0).getTypeId() == 138) {
+        if (event.getInventory().getItem(0).getTypeId() == 138) {
             SoundUtil.playSound((Player) event.getPlayer(), Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.8F);
             event.getPlayer().sendMessage(ChatColor.RED + "[교환] : 교환을 취소하였습니다!");
         } else if (event.getInventory().getItem(0).getTypeId() == 397) {
@@ -593,7 +593,7 @@ public class Equip_Gui extends GuiUtil {
             SideFriendsList.saveConfig();
         }
 
-                Long AddTime = new ETC().getSec();
+        Long AddTime = new ETC().getSec();
         Object[] Friend = FriendsList.getConfigurationSection("Waitting").getKeys(false).toArray();
         Object[] SideFriend = SideFriendsList.getConfigurationSection("Waitting").getKeys(false).toArray();
 
@@ -654,7 +654,7 @@ public class Equip_Gui extends GuiUtil {
         }
         Player target = null;
         YamlManager SideFriendsList = null;
-                Object[] Friend = FriendsList.getConfigurationSection("Friends").getKeys(false).toArray();
+        Object[] Friend = FriendsList.getConfigurationSection("Friends").getKeys(false).toArray();
         for (short counter = 0; counter < Friend.length; counter++) {
             target = Bukkit.getServer().getPlayer(Friend[counter].toString());
             if (target != null)
@@ -677,7 +677,7 @@ public class Equip_Gui extends GuiUtil {
     }
 
     public void AddExchangeTarget(Player player, Player target) {
-                if (ServerTick_Main.PlayerTaskList.containsKey(target.getName())) {
+        if (ServerTick_Main.PlayerTaskList.containsKey(target.getName())) {
             SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
             player.sendMessage(ChatColor.RED + "[교환] : 해당 플레이어는 현재 다른 요청을 처리하고 있습니다.");
             player.sendMessage(ChatColor.GRAY + "(잠시 후 다시 시도 해 보세요.)");

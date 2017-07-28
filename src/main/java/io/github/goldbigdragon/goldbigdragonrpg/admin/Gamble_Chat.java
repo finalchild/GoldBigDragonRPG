@@ -38,7 +38,7 @@ public class Gamble_Chat {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager GambleYML = YC.getNewConfig("Item/GamblePresent.yml");
 
-                event.setCancelled(true);
+        event.setCancelled(true);
         String message = ChatColor.stripColor(event.getMessage().replace(".", ""));
         switch (u.getString(player, (byte) 0)) {
             case "NP"://New Package

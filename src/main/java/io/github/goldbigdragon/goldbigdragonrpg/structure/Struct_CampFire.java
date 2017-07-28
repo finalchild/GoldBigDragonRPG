@@ -58,7 +58,7 @@ public class Struct_CampFire extends GuiUtil {
     }
 
     public void CampFireGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         String CampFireName = ChatColor.stripColor(event.getInventory().getItem(5).getItemMeta().getLore().get(3)).replace("&", "§");
 
         if (event.getSlot() == 3 || event.getSlot() == 5) {

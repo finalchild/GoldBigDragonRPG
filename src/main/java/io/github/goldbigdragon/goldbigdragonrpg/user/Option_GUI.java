@@ -126,7 +126,7 @@ public class Option_Gui extends GuiUtil {
     }
 
     public void optionInventoryclick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
 
         int slot = event.getSlot();
 

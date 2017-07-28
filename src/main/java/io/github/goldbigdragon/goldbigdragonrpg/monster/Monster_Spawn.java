@@ -631,7 +631,7 @@ public class Monster_Spawn {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager MobList = YC.getNewConfig("Monster/MonsterList.yml");
             /*
-    		몬스터 식별 코드 이후 오는 GroupNumber 코드는 각각의 몬스터 그룹을 설정하기 위함으로,
+            몬스터 식별 코드 이후 오는 GroupNumber 코드는 각각의 몬스터 그룹을 설정하기 위함으로,
     		방 내에 그룹 코드가 붙은 몬스터가 반경 20 이내에 없을 경우, 다음 웨이브가 나오거나
     		문이 열리게 된다. 몬스터 그룹 코드는 0 ~ f 까지 존재한다.
 			 */
@@ -765,7 +765,7 @@ public class Monster_Spawn {
     }
 
     public void SpawnEffect(Entity mob, Location loc, byte type) {
-                ParticleUtil p = new ParticleUtil();
+        ParticleUtil p = new ParticleUtil();
         switch (type) {
             case 0:
                 return;

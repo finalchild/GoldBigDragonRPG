@@ -197,7 +197,7 @@ public class UseableItem_Gui extends GuiUtil {
 
 
     public void UseableItemListGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 53)//나가기
@@ -239,7 +239,7 @@ public class UseableItem_Gui extends GuiUtil {
     }
 
     public void ChooseUseableItemTypeGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 8) {
@@ -355,7 +355,7 @@ public class UseableItem_Gui extends GuiUtil {
     }
 
     public void NewUseableItemGUIclick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         String IconName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
 
         int itemnumber = Integer.parseInt(ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1)));
@@ -518,7 +518,7 @@ public class UseableItem_Gui extends GuiUtil {
     }
 
     public void SelectSkillGUIClick(InventoryClickEvent event) {
-                int slot = event.getSlot();
+        int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
 
         if (slot == 53)//나가기

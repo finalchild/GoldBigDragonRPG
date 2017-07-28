@@ -621,7 +621,7 @@ public class Monster_Gui extends GuiUtil {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
-                if (slot == 53)//나가기
+        if (slot == 53)//나가기
         {
             SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
@@ -662,7 +662,7 @@ public class Monster_Gui extends GuiUtil {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
 
-                if (slot == 53)//나가기
+        if (slot == 53)//나가기
         {
             SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
@@ -919,7 +919,7 @@ public class Monster_Gui extends GuiUtil {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
 
-                if (slot == 53)//나가기
+        if (slot == 53)//나가기
         {
             SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();

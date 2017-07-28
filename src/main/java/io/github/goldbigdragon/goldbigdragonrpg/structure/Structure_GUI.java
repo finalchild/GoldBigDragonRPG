@@ -101,7 +101,7 @@ public class Structure_Gui extends GuiUtil {
         }
 
 		/*
-		if(page!=최대 페이지)
+        if(page!=최대 페이지)
 		Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "다음 페이지", 323,0,1,Arrays.asList(ChatColor.GRAY + "다음 페이지로 이동 합니다."), 50, inv);
 		if(page!=최소 페이지)
 		Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323,0,1,Arrays.asList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);

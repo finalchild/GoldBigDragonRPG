@@ -52,7 +52,7 @@ public class Structure_Chat {
     }
 
     private void PostChatting(PlayerChatEvent event) {
-                Player player = event.getPlayer();
+        Player player = event.getPlayer();
         UserData_Object u = new UserData_Object();
         String Message = ChatColor.stripColor(event.getMessage());
         //Reciever NickName
@@ -99,7 +99,7 @@ public class Structure_Chat {
     }
 
     private void BoardChatting(PlayerChatEvent event) {
-                Player player = event.getPlayer();
+        Player player = event.getPlayer();
         UserData_Object u = new UserData_Object();
         String Message = ChatColor.stripColor(event.getMessage());
 
@@ -136,7 +136,7 @@ public class Structure_Chat {
     }
 
     private void TradeBoardChatting(PlayerChatEvent event) {
-                Player player = event.getPlayer();
+        Player player = event.getPlayer();
         UserData_Object u = new UserData_Object();
         String Message = ChatColor.stripColor(event.getMessage());
 
@@ -527,7 +527,7 @@ public class Structure_Chat {
     }
 
     private void CampFireChatting(PlayerChatEvent event) {
-                Player player = event.getPlayer();
+        Player player = event.getPlayer();
         UserData_Object u = new UserData_Object();
         String Message = ChatColor.stripColor(event.getMessage());
         //Reciever NickName

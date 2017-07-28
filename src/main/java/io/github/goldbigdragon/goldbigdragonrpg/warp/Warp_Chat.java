@@ -29,7 +29,6 @@ public class Warp_Chat {
     public void TeleportTypeChatting(PlayerChatEvent event) {
         UserData_Object u = new UserData_Object();
         Player player = event.getPlayer();
-        SoundUtil s = new SoundUtil();
         event.setCancelled(true);
         String message = ChatColor.stripColor(event.getMessage());
         switch (u.getString(player, (byte) 1)) {

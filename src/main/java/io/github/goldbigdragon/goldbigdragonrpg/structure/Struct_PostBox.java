@@ -222,7 +222,7 @@ public class Struct_PostBox extends GuiUtil {
     public void PostBoxMainGUIClick(InventoryClickEvent event) {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
-                if (slot == 26)//나가기
+        if (slot == 26)//나가기
         {
             SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
@@ -406,7 +406,7 @@ public class Struct_PostBox extends GuiUtil {
         ItemStack item = event.getInventory().getItem(4);
         Player player = (Player) event.getPlayer();
         if (item != null) {
-                        UserData_Object u = new UserData_Object();
+            UserData_Object u = new UserData_Object();
             u.setItemStack(player, item);
             SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.0F);
             u.setString(player, (byte) 0, "Value");
@@ -418,7 +418,7 @@ public class Struct_PostBox extends GuiUtil {
 
 
     public void SendPost(Player player) {
-                UserData_Object u = new UserData_Object();
+        UserData_Object u = new UserData_Object();
         String targetUID = Bukkit.getPlayer(u.getString(player, (byte) 1)).getUniqueId().toString();
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager TargetPost = YC.getNewConfig("Post/" + targetUID + ".yml");

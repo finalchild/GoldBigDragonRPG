@@ -1729,7 +1729,7 @@ public class NPC_Gui extends GuiUtil {
     public void QuestAddGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-                if (slot == 53)//나가기
+        if (slot == 53)//나가기
         {
             SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
@@ -2163,7 +2163,7 @@ public class NPC_Gui extends GuiUtil {
     }
 
     public void TalkGUIClick(InventoryClickEvent event, String NPCname) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
         if (slot > 0 && slot < 8) {
             SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
@@ -2180,7 +2180,7 @@ public class NPC_Gui extends GuiUtil {
     }
 
     public void ShopGUIClick(InventoryClickEvent event, String NPCname) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         if (event.getClickedInventory().getType() == InventoryType.PLAYER)
             return;
         switch (event.getSlot()) {
@@ -2341,7 +2341,7 @@ public class NPC_Gui extends GuiUtil {
     }
 
     public void NPCjobGUIClick(InventoryClickEvent event, String NPCname) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 26)//닫기
@@ -2508,7 +2508,7 @@ public class NPC_Gui extends GuiUtil {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
 
-                if (slot == 53)//나가기
+        if (slot == 53)//나가기
         {
             SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
@@ -3305,7 +3305,7 @@ public class NPC_Gui extends GuiUtil {
     public void TalkSettingGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-                if (slot == 35)//나가기
+        if (slot == 35)//나가기
         {
             SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.8F);
             player.closeInventory();
@@ -3407,7 +3407,7 @@ public class NPC_Gui extends GuiUtil {
     }
 
     public void ItemBuyGuiClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 53)//나가기
@@ -3550,7 +3550,7 @@ public class NPC_Gui extends GuiUtil {
     }
 
     public void ItemFixGuiClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
 
         if (event.getClickedInventory().getTitle().compareTo("container.inventory") == 0) {
             ItemStack clickedItem = event.getCurrentItem();

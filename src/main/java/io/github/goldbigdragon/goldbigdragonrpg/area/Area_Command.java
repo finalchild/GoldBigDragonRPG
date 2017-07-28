@@ -34,7 +34,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
 public class Area_Command {
     public void onCommand(CommandSender talker, Command command, String string, String[] args) {
-                Player player = (Player) talker;
+        Player player = (Player) talker;
         if (!player.isOp()) {
             talker.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
             SoundUtil.playSound((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);

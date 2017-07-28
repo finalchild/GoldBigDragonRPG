@@ -227,7 +227,7 @@ public class Job_Gui extends GuiUtil {
 
 
     public void ChooseSystemGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 26)//나가기
@@ -246,7 +246,7 @@ public class Job_Gui extends GuiUtil {
     }
 
     public void MapleStory_ChooseJobClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 53) {
@@ -300,7 +300,7 @@ public class Job_Gui extends GuiUtil {
     }
 
     public void MapleStory_JobSettingClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 26)//나가기
@@ -370,7 +370,7 @@ public class Job_Gui extends GuiUtil {
     }
 
     public void AddedSkillsListGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 53)//나가기
@@ -407,7 +407,7 @@ public class Job_Gui extends GuiUtil {
     }
 
     public void Mabinogi_ChooseCategoryClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 53)//나가기
@@ -459,7 +459,7 @@ public class Job_Gui extends GuiUtil {
     }
 
     public void Mabinogi_SkillSettingClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
 
         int slot = event.getSlot();
 

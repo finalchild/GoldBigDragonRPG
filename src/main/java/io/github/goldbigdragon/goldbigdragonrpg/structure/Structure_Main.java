@@ -55,7 +55,7 @@ public class Structure_Main {
 
      */
     public void CreateSturcture(Player player, String StructureCode, short StructureID, int Direction) {
-                ServerTick_Main.ServerTask = "[구조물 설치]";
+        ServerTick_Main.ServerTask = "[구조물 설치]";
         Long UTC = ServerTick_Main.nowUTC;
 
         ServerTick_Object STSO = new ServerTick_Object(UTC, "C_S");

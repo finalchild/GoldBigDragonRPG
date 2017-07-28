@@ -227,7 +227,7 @@ public class Upgrade_Gui extends GuiUtil {
 
 
     public void UpgradeRecipeGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
         short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
         if (slot == 53)//나가기

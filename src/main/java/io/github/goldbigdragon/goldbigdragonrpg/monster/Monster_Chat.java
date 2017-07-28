@@ -41,7 +41,7 @@ public class Monster_Chat extends Util_Chat {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager Monster = YC.getNewConfig("Monster/MonsterList.yml");
         Object[] monsterlist = Monster.getConfigurationSection("").getKeys(false).toArray();
-                event.setCancelled(true);
+        event.setCancelled(true);
         String message = ChatColor.stripColor(event.getMessage());
         switch (u.getString(player, (byte) 1)) {
             case "Potion":

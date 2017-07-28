@@ -407,7 +407,8 @@ public class Battle_Main implements Listener {
         if (a == 1) PacketUtil.sendActionBar(player, ChatColor.RED + "" + ChatColor.BOLD + "이 공격은 전혀 통하지 않는다!");
         else if (a == 2) PacketUtil.sendActionBar(player, ChatColor.RED + "" + ChatColor.BOLD + "자세를 흐트릴 수 없다!");
         else if (a == 3) PacketUtil.sendActionBar(player, ChatColor.RED + "" + ChatColor.BOLD + "충격이 분산되었다!");
-        else if (a == 4) PacketUtil.sendActionBar(player, ChatColor.RED + "" + ChatColor.BOLD + "이 공격으로는 쓰러뜨릴 수 없을 것 같다!");
+        else if (a == 4)
+            PacketUtil.sendActionBar(player, ChatColor.RED + "" + ChatColor.BOLD + "이 공격으로는 쓰러뜨릴 수 없을 것 같다!");
         else if (a == 5) PacketUtil.sendActionBar(player, ChatColor.RED + "" + ChatColor.BOLD + "적의 자세를 흐트릴 수 없다!");
     }
 

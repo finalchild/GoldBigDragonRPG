@@ -124,7 +124,7 @@ public class NPC {
 
     public void destroy() {
         PacketContainer packet = new PacketContainer(PacketType.Play.Server.ENTITY_DESTROY);
-        packet.getIntegerArrays().write(0, new int[] {entityId});
+        packet.getIntegerArrays().write(0, new int[]{entityId});
         rmvFromTablist();
         sendPacket(packet);
     }

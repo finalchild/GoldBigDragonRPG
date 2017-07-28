@@ -105,7 +105,7 @@ public class PacketUtil {
 
     public static void openOwnInventory(Player p) {
         /*
-			minecraft:chest
+            minecraft:chest
 			minecraft:crafting_table
 			minecraft:furnace
 			minecraft:dispenser

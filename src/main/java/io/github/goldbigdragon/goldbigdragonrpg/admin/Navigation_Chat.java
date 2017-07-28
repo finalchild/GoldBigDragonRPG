@@ -41,7 +41,7 @@ public class Navigation_Chat extends Util_Chat {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager NavigationConfig = YC.getNewConfig("Navigation/NavigationList.yml");
 
-                event.setCancelled(true);
+        event.setCancelled(true);
         String message = ChatColor.stripColor(event.getMessage());
         switch (u.getString(player, (byte) 0)) {
             case "NN"://NewNavigation

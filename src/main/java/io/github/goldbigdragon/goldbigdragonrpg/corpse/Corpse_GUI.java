@@ -122,7 +122,7 @@ public class Corpse_Gui extends GuiUtil {
     }
 
     public void ReviveSelectClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
         if (slot == 10)//마을에서 부활
         {

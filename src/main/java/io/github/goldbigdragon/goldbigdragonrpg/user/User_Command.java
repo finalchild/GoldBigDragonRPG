@@ -41,7 +41,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
 public class User_Command {
     public void onCommand(Player player, String[] args, String string) {
-                switch (string) {
+        switch (string) {
             case "수락": {
                 if (ServerTick_Main.PlayerTaskList.containsKey(player.getName())) {
                     long UTC = Long.parseLong(ServerTick_Main.PlayerTaskList.get(player.getName()));

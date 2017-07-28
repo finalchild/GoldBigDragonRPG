@@ -33,7 +33,7 @@ import org.bukkit.event.player.PlayerChatEvent;
 public class Area_Chat extends Util_Chat {
     public void AreaTypeChatting(PlayerChatEvent event) {
         UserData_Object u = new UserData_Object();
-                Player player = event.getPlayer();
+        Player player = event.getPlayer();
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager AreaConfig = YC.getNewConfig("Area/AreaList.yml");
         event.setCancelled(true);

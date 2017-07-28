@@ -213,7 +213,7 @@ public class Main_PlayerChat extends Util_Chat implements Listener {
     public void TEMProuter(PlayerChatEvent event, String Temp) {
         event.setCancelled(true);
         Player player = event.getPlayer();
-                String Message = ChatColor.stripColor(event.getMessage());
+        String Message = ChatColor.stripColor(event.getMessage());
         if (Temp.compareTo("FA") == 0) {
             if (Message.compareTo(player.getName()) == 0) {
                 SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);

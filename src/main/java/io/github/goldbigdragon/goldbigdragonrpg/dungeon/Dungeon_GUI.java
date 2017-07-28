@@ -55,7 +55,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 
 public final class Dungeon_Gui extends GuiUtil {
     /*
-	던전 만듬.
+    던전 만듬.
 	통행증 만듬.
 	제단 만듬.
 	각 통행증 마다 던전을 연결.
@@ -791,7 +791,8 @@ public final class Dungeon_Gui extends GuiUtil {
                 }
             }
             lore = lore + lore2 + "%enter% %enter%" + ChatColor.YELLOW + "[좌 클릭시 배경음 설정]";
-            if (count > io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain.Musics.size() || loc >= 45) break;
+            if (count > io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain.Musics.size() || loc >= 45)
+                break;
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + count, 2256 + model, 0, 1, Arrays.asList(lore.split("%enter%")), loc, inv);
 
             loc = loc + 1;
@@ -1085,7 +1086,7 @@ public final class Dungeon_Gui extends GuiUtil {
 
     //DungeonGUI Click//
     public void DungeonListMainGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 53)//나가기
@@ -1238,7 +1239,7 @@ public final class Dungeon_Gui extends GuiUtil {
     }
 
     public void DungeonSetUpGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 44)//나가기
@@ -1322,7 +1323,7 @@ public final class Dungeon_Gui extends GuiUtil {
     }
 
     public void DungeonMonsterGUIMainClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 53)//나가기
@@ -1340,7 +1341,7 @@ public final class Dungeon_Gui extends GuiUtil {
     }
 
     public void DungeonMonsterChooseMainClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 8)//나가기
@@ -1388,7 +1389,7 @@ public final class Dungeon_Gui extends GuiUtil {
     }
 
     public void DungeonSelectNormalMonsterChooseClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
 
         int slot = event.getSlot();
 
@@ -1465,7 +1466,7 @@ public final class Dungeon_Gui extends GuiUtil {
     }
 
     public void DungeonSelectCustomMonsterChooseClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 53)//나가기
@@ -1496,7 +1497,7 @@ public final class Dungeon_Gui extends GuiUtil {
     }
 
     public void DungeonMusicSettingGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
 
         int slot = event.getSlot();
 
@@ -1540,7 +1541,7 @@ public final class Dungeon_Gui extends GuiUtil {
 
     //EnterCardGUI Click//
     public void EnterCardSetUpGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 8)//나가기
@@ -1594,7 +1595,7 @@ public final class Dungeon_Gui extends GuiUtil {
     }
 
     public void EnterCardDungeonSettingGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
 
         int slot = event.getSlot();
 
@@ -1621,7 +1622,7 @@ public final class Dungeon_Gui extends GuiUtil {
 
     //AltarGUI Click//
     public void AltarShapeListGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 53)//나가기
@@ -1729,7 +1730,7 @@ public final class Dungeon_Gui extends GuiUtil {
     }
 
     public void AltarDungeonSettingGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         String AltarName = event.getInventory().getItem(53).getItemMeta().getLore().get(1).substring(2, event.getInventory().getItem(53).getItemMeta().getLore().get(1).length());
         int slot = event.getSlot();
 
@@ -1751,7 +1752,7 @@ public final class Dungeon_Gui extends GuiUtil {
     }
 
     public void AltarEnterCardSettingGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         String AltarName = event.getInventory().getItem(53).getItemMeta().getLore().get(1);
         int slot = event.getSlot();
 
@@ -1782,7 +1783,7 @@ public final class Dungeon_Gui extends GuiUtil {
     }
 
     public void AltarEnterCardListGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
 
         String AltarName = event.getInventory().getItem(53).getItemMeta().getLore().get(1);
         int slot = event.getSlot();
@@ -1851,7 +1852,7 @@ public final class Dungeon_Gui extends GuiUtil {
     //AltarGUI Click//
 
     public void DungeonEXITClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
 
         int slot = event.getSlot();
         player.closeInventory();
@@ -1925,7 +1926,7 @@ public final class Dungeon_Gui extends GuiUtil {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager AltarConfig = YC.getNewConfig("Dungeon/Altar/" + AltarName + ".yml");
             event.getInventory().setItem(4, null);
-                        int LvDistrict = -1;
+            int LvDistrict = -1;
             int RealLvDistrict = -1;
             if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getDungeon_Enter() != null) {
                 if (!new Util_Player().giveItem(player, item))
@@ -2047,7 +2048,7 @@ public final class Dungeon_Gui extends GuiUtil {
 
     private void PartyEnterDungeon(Player player, ItemStack item, String AltarName, int capacity, String DungeonName, int LvDistrict, int RealLvDistrict) {
         if (Main_ServerOption.PartyJoiner.containsKey(player)) {
-                        if (capacity != -1)
+            if (capacity != -1)
                 if (Main_ServerOption.Party.get(Main_ServerOption.PartyJoiner.get(player)).getPartyMembers() != capacity) {
                     if (!new Util_Player().giveItem(player, item))
                         new Main_ItemDrop().CustomItemDrop(player.getLocation(), item);
@@ -2108,7 +2109,7 @@ public final class Dungeon_Gui extends GuiUtil {
     }
 
     private void SoloEnterDungeon(Player player, ItemStack item, String AltarName, int capacity, String DungeonName, int LvDistrict, int RealLvDistrict) {
-                if (capacity == -1 || capacity == 1) {
+        if (capacity == -1 || capacity == 1) {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager AltarConfig = YC.getNewConfig("Dungeon/Altar/" + AltarName + ".yml");
             YamlManager DungeonConfig = YC.getNewConfig("Dungeon/Dungeon/" + AltarConfig.getString("NormalDungeon") + "/Option.yml");

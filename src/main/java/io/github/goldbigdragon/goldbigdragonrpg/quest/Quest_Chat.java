@@ -308,7 +308,7 @@ public class Quest_Chat extends Util_Chat {
                 Object[] arealist = AreaList.getConfigurationSection("").getKeys(false).toArray();
 
                 if (arealist.length <= 0) {
-                                        SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                    SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     player.sendMessage(ChatColor.RED + "[SYSTEM] : 생성된 영역이 없습니다!");
                     u.clearAll(player);
                     return;

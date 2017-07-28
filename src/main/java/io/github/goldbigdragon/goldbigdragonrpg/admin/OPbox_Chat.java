@@ -42,7 +42,7 @@ public class OPbox_Chat extends Util_Chat {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager Config = YC.getNewConfig("config.yml");
 
-                event.setCancelled(true);
+        event.setCancelled(true);
         String message = ChatColor.stripColor(event.getMessage());
         switch (u.getString(player, (byte) 1)) {
             case "RO_S_H"://RespawnOption_SpawnPoint_Health

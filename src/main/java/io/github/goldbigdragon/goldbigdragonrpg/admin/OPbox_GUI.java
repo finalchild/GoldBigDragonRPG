@@ -771,7 +771,7 @@ public class OPbox_Gui extends GuiUtil {
     }
 
     public void OPBoxGUI_StatChangeClick(InventoryClickEvent event) {
-                event.setCancelled(true);
+        event.setCancelled(true);
         Player player = (Player) event.getWhoClicked();
 
         int slot = event.getSlot();
@@ -803,7 +803,7 @@ public class OPbox_Gui extends GuiUtil {
     }
 
     public void OPBoxGUI_MoneyClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
 
         int slot = event.getSlot();
 

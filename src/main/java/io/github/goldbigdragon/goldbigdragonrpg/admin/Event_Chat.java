@@ -37,7 +37,7 @@ public class Event_Chat extends Util_Chat {
     public void EventChatting(PlayerChatEvent event) {
         UserData_Object u = new UserData_Object();
         Player player = event.getPlayer();
-                PacketUtil PS = new PacketUtil();
+        PacketUtil PS = new PacketUtil();
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager Config = YC.getNewConfig("config.yml");
         event.setCancelled(true);

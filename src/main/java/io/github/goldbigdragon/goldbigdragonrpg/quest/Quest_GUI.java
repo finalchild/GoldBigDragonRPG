@@ -1177,7 +1177,7 @@ public class Quest_Gui extends GuiUtil {
 
 
     public void AllOfQuestListGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         UserData_Object u = new UserData_Object();
@@ -1306,7 +1306,7 @@ public class Quest_Gui extends GuiUtil {
     }
 
     public void MyQuestListGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 53) {
@@ -1342,7 +1342,7 @@ public class Quest_Gui extends GuiUtil {
     }
 
     public void SelectObjectPageClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
 
         UserData_Object u = new UserData_Object();
 
@@ -1595,7 +1595,7 @@ public class Quest_Gui extends GuiUtil {
     }
 
     public void QuestScriptTypeGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 26) {
@@ -1620,7 +1620,7 @@ public class Quest_Gui extends GuiUtil {
     }
 
     public void ShowNeedGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 26) {
@@ -1690,7 +1690,7 @@ public class Quest_Gui extends GuiUtil {
     }
 
     public void PresentItemSettingGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot <= 2 || slot == 8) {
@@ -1853,7 +1853,7 @@ public class Quest_Gui extends GuiUtil {
     }
 
     public void Quest_NavigationListGUIClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
         String QuestName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
         switch (event.getSlot()) {
@@ -1889,7 +1889,7 @@ public class Quest_Gui extends GuiUtil {
     }
 
     public void Quest_OPChoiceClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
 
         short page = Short.parseShort(ChatColor.stripColor(event.getInventory().getItem(18).getItemMeta().getLore().get(1)));
         String QuestName = ChatColor.stripColor(event.getInventory().getItem(26).getItemMeta().getLore().get(1));
@@ -1905,7 +1905,7 @@ public class Quest_Gui extends GuiUtil {
     }
 
     public void Quest_UserChoiceClick(InventoryClickEvent event) {
-                Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         if (event.getSlot() == 26) {
             SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
@@ -1944,7 +1944,7 @@ public class Quest_Gui extends GuiUtil {
         Player player = (Player) event.getPlayer();
         UserData_Object u = new UserData_Object();
         u.setBoolean(player, (byte) 1, false);
-                YamlController YC = new YamlController(Main_Main.plugin);
+        YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager QuestConfig = YC.getNewConfig("Quest/QuestList.yml");
 
         String QuestName = u.getString(player, (byte) 3);
@@ -1968,7 +1968,7 @@ public class Quest_Gui extends GuiUtil {
     }
 
     public void PresentItemSettingGUIClose(InventoryCloseEvent event) {
-                Player player = (Player) event.getPlayer();
+        Player player = (Player) event.getPlayer();
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager QuestConfig = YC.getNewConfig("Quest/QuestList.yml");
         UserData_Object u = new UserData_Object();

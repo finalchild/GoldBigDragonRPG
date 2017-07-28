@@ -248,7 +248,7 @@ public class Main_Main extends JavaPlugin implements Listener {
                         if (Main_ServerOption.DeathRescue.getTypeId() == player.getInventory().getItemInMainHand().getTypeId()) {
                             ItemStack Pitem = player.getInventory().getItemInMainHand();
                             if (Main_ServerOption.DeathRescue.getAmount() <= Pitem.getAmount()) {
-                                                                String Name = null;
+                                String Name = null;
                                 if (AS.getItemInHand().getType() != Material.AIR)
                                     Name = AS.getItemInHand().getItemMeta().getDisplayName();
                                 else if (AS.getHelmet().getType() != Material.AIR)
@@ -360,7 +360,7 @@ public class Main_Main extends JavaPlugin implements Listener {
                 }
 
 				/*
-				else if(IT.hasItemMeta() == true)
+                else if(IT.hasItemMeta() == true)
 					if(IT.getItemMeta().hasLore() == true)
 						if(IT.getItemMeta().getLore().size() >= 4)
 							if(IT.getItemMeta().getLore().get(3).equals(ChatColor.YELLOW+"[클릭시 퀵슬롯에서 삭제]")==true)
