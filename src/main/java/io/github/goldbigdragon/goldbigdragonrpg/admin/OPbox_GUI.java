@@ -21,22 +21,22 @@ package io.github.goldbigdragon.goldbigdragonrpg.admin;
 
 import java.util.Arrays;
 
-import io.github.goldbigdragon.goldbigdragonrpg.area.Area_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.customitem.UseableItem_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.dungeon.Dungeon_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
-import io.github.goldbigdragon.goldbigdragonrpg.job.Job_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.area.Area_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.customitem.UseableItem_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.dungeon.Dungeon_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.job.Job_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.job.Job_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.monster.Monster_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.structure.Structure_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.monster.Monster_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.structure.Structure_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
-import io.github.goldbigdragon.goldbigdragonrpg.warp.Warp_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.warp.Warp_Gui;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -46,11 +46,11 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.goldbigdragon.goldbigdragonrpg.customitem.CustomItem_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.skill.OPboxSkill_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.customitem.CustomItem_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.skill.OPboxSkill_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 
-public class OPbox_GUI extends Util_GUI {
+public class OPbox_Gui extends GuiUtil {
     public void OPBoxGUI_Main(Player player, byte page) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager Config = YC.getNewConfig("config.yml");
@@ -480,7 +480,7 @@ public class OPbox_GUI extends Util_GUI {
     //각종 GUI창 속의 아이콘을 눌렸을 때, 해당 아이콘에 기능을 넣는 메소드1   -스텟 GUI, 오피박스, 커스텀 몬스터GUI-//
     public void OPBoxGUIInventoryclick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         int slot = event.getSlot();
 
@@ -526,41 +526,41 @@ public class OPbox_GUI extends Util_GUI {
 
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (DisplayName.compareTo("커스텀 아이템") == 0)
-                new CustomItem_GUI().ItemListGUI(player, 0);
+                new CustomItem_Gui().ItemListGUI(player, 0);
             else if (DisplayName.compareTo("몬스터") == 0)
-                new Monster_GUI().MonsterListGUI(player, 0);
+                new Monster_Gui().MonsterListGUI(player, 0);
             else if (DisplayName.compareTo("서버 설정") == 0)
                 OPBoxGUI_Setting(player);
             else if (DisplayName.compareTo("퀘스트") == 0)
-                new Quest_GUI().AllOfQuestListGUI(player, (short) 0, false);
+                new Quest_Gui().AllOfQuestListGUI(player, (short) 0, false);
             else if (DisplayName.compareTo("스킬") == 0)
-                new OPboxSkill_GUI().AllSkillsGUI(player, (short) 0, false, null);
+                new OPboxSkill_Gui().AllSkillsGUI(player, (short) 0, false, null);
             else if (DisplayName.compareTo("카테고리 및 직업") == 0)
-                new Job_GUI().ChooseSystemGUI(player);
+                new Job_Gui().ChooseSystemGUI(player);
             else if (DisplayName.compareTo("소비 아이템") == 0)
-                new UseableItem_GUI().UseableItemListGUI(player, 0);
+                new UseableItem_Gui().UseableItemListGUI(player, 0);
             else if (DisplayName.compareTo("영역") == 0)
-                new Area_GUI().AreaListGUI(player, (short) 0);
+                new Area_Gui().AreaListGUI(player, (short) 0);
             else if (DisplayName.compareTo("던전") == 0)
-                new Dungeon_GUI().DungeonListMainGUI(player, 0, 52);
+                new Dungeon_Gui().DungeonListMainGUI(player, 0, 52);
             else if (DisplayName.compareTo("기능성 개체") == 0)
-                new Structure_GUI().StructureListGUI(player, 0);
+                new Structure_Gui().StructureListGUI(player, 0);
             else if (DisplayName.compareTo("도박") == 0)
-                new Gamble_GUI().GambleMainGUI(player);
+                new Gamble_Gui().GambleMainGUI(player);
             else if (DisplayName.compareTo("네비게이션") == 0)
-                new Navigation_GUI().NavigationListGUI(player, (short) 0);
+                new Navigation_Gui().NavigationListGUI(player, (short) 0);
             else if (DisplayName.compareTo("워프") == 0)
-                new Warp_GUI().WarpListGUI(player, 0);
+                new Warp_Gui().WarpListGUI(player, 0);
             else if (DisplayName.compareTo("월드 생성") == 0)
-                new WorldCreate_GUI().WorldCreateGUIMain(player);
+                new WorldCreate_Gui().WorldCreateGUIMain(player);
             else if (DisplayName.compareTo("몬스터") == 0)
-                new Monster_GUI().MonsterListGUI(player, 0);
+                new Monster_Gui().MonsterListGUI(player, 0);
             else if (DisplayName.compareTo("초심자") == 0)
-                new NewBie_GUI().NewBieGUIMain(player);
+                new NewBie_Gui().NewBieGUIMain(player);
             else if (DisplayName.compareTo("개조식") == 0)
-                new Upgrade_GUI().UpgradeRecipeGUI(player, 0);
+                new Upgrade_Gui().UpgradeRecipeGUI(player, 0);
             else if (DisplayName.compareTo("이벤트") == 0)
-                new Event_GUI().EventGUI_Main(player);
+                new Event_Gui().EventGUI_Main(player);
             else if (DisplayName.compareTo("게임 성향") == 0) {
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager Config = YC.getNewConfig("config.yml");
@@ -597,7 +597,7 @@ public class OPbox_GUI extends Util_GUI {
     }
 
     public void OPBoxGUI_SettingInventoryClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
@@ -695,7 +695,7 @@ public class OPbox_GUI extends Util_GUI {
 
     public void OPBoxGuideInventoryclick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         int slot = event.getSlot();
 
@@ -716,7 +716,7 @@ public class OPbox_GUI extends Util_GUI {
     }
 
     public void OPBoxGUI_BroadCastClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
@@ -775,7 +775,7 @@ public class OPbox_GUI extends Util_GUI {
     }
 
     public void OPBoxGUI_StatChangeClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         event.setCancelled(true);
         Player player = (Player) event.getWhoClicked();
 
@@ -808,7 +808,7 @@ public class OPbox_GUI extends Util_GUI {
     }
 
     public void OPBoxGUI_MoneyClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
 
         int slot = event.getSlot();
@@ -896,7 +896,7 @@ public class OPbox_GUI extends Util_GUI {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 53)//나가기
         {
@@ -909,7 +909,7 @@ public class OPbox_GUI extends Util_GUI {
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager Config = YC.getNewConfig("config.yml");
                 if (Config.getInt("Death.Track") == -1 || !Config.contains("Death.Track"))
-                    new Area_GUI().AreaMusicSettingGUI(player, 0, "DeathBGM¡");
+                    new Area_Gui().AreaMusicSettingGUI(player, 0, "DeathBGM¡");
                 else {
                     Config.set("Death.Track", -1);
                     Config.saveConfig();
@@ -971,7 +971,7 @@ public class OPbox_GUI extends Util_GUI {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (event.getClickedInventory().getTitle().compareTo("container.inventory") != 0) {
             if (slot != 4)
@@ -1016,6 +1016,6 @@ public class OPbox_GUI extends Util_GUI {
         else
             event.getPlayer().sendMessage(ChatColor.GREEN + "[SYSTEM] : 구조 아이템 설정이 완료되었습니다!");
         Config.saveConfig();
-        new Effect_Sound().SP((Player) event.getPlayer(), Sound.BLOCK_ANVIL_USE, 1.0F, 1.0F);
+        new SoundUtil().SP((Player) event.getPlayer(), Sound.BLOCK_ANVIL_USE, 1.0F, 1.0F);
     }
 }

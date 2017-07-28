@@ -21,11 +21,11 @@ package io.github.goldbigdragon.goldbigdragonrpg.skill;
 
 import java.util.Arrays;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.user.Stats_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.user.Stats_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 import org.bukkit.Bukkit;
@@ -38,7 +38,7 @@ import org.bukkit.material.*;
 import org.bukkit.entity.*;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-public class UserSkill_GUI extends Util_GUI {
+public class UserSkill_Gui extends GuiUtil {
     public void MainSkillsListGUI(Player player, short page) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager Config = YC.getNewConfig("config.yml");
@@ -226,7 +226,7 @@ public class UserSkill_GUI extends Util_GUI {
 
 
     public void MapleStory_MainSkillsListGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -238,7 +238,7 @@ public class UserSkill_GUI extends Util_GUI {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             if (slot == 45)//이전 목록
-                new Stats_GUI().StatusGUI(player);
+                new Stats_Gui().StatusGUI(player);
             else if (slot == 48)//이전 페이지
                 MainSkillsListGUI(player, (short) (page - 1));
             else if (slot == 50)//다음 페이지
@@ -250,7 +250,7 @@ public class UserSkill_GUI extends Util_GUI {
 
     public void Mabinogi_MainSkillsListGUIClick(InventoryClickEvent event) {
         int slot = event.getSlot();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
 
         if (slot == 53)//나가기
@@ -261,7 +261,7 @@ public class UserSkill_GUI extends Util_GUI {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             if (slot == 45)//이전 목록
-                new Stats_GUI().StatusGUI(player);
+                new Stats_Gui().StatusGUI(player);
             else if (slot == 48)//이전 페이지
                 MainSkillsListGUI(player, (short) (page - 1));
             else if (slot == 50)//다음 페이지
@@ -275,7 +275,7 @@ public class UserSkill_GUI extends Util_GUI {
     public void SkillListGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 53) {
             s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
@@ -363,7 +363,7 @@ public class UserSkill_GUI extends Util_GUI {
     }
 
     public void AddQuickBarGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 

@@ -21,11 +21,11 @@ package io.github.goldbigdragon.goldbigdragonrpg.user;
 
 import java.util.Arrays;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Packet;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.PacketUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_Gui;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -37,12 +37,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.goldbigdragon.goldbigdragonrpg.battle.Battle_Calculator;
-import io.github.goldbigdragon.goldbigdragonrpg.skill.UserSkill_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.skill.UserSkill_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
-public class Stats_GUI extends Util_GUI {
+public class Stats_Gui extends GuiUtil {
     //스텟 GUI창의 1 페이지를 구성해 주는 메소드//
     public void StatusGUI(Player player) {
         String UniqueCode = "§0§0§0§0§0§r";
@@ -264,7 +264,7 @@ public class Stats_GUI extends Util_GUI {
     //각종 GUI창 속의 아이콘을 눌렸을 때, 해당 아이콘에 기능을 넣는 메소드1   -스텟 GUI, 오피박스, 커스텀 몬스터GUI-//
     public void StatusInventoryclick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         int slot = event.getSlot();
 
@@ -305,18 +305,18 @@ public class Stats_GUI extends Util_GUI {
                             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                         } else {
                             s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
-                            new Effect_Packet().sendActionBar(player, ChatColor.RED + "" + ChatColor.BOLD + "[해당 능력은 더 이상 상승시킬 수 없습니다!]");
+                            new PacketUtil().sendActionBar(player, ChatColor.RED + "" + ChatColor.BOLD + "[해당 능력은 더 이상 상승시킬 수 없습니다!]");
                         }
                     }
                 StatusGUI(player);
             } else if (slot == 9)
-                new UserSkill_GUI().MainSkillsListGUI(player, (short) 0);
+                new UserSkill_Gui().MainSkillsListGUI(player, (short) 0);
             else if (slot == 18)
-                new Quest_GUI().MyQuestListGUI(player, (short) 0);
+                new Quest_Gui().MyQuestListGUI(player, (short) 0);
             else if (slot == 27)
-                new Option_GUI().optionGUI(player);
+                new Option_Gui().optionGUI(player);
             else if (slot == 36)
-                new ETC_GUI().ETCGUI_Main(player);
+                new ETC_Gui().ETCGUI_Main(player);
         }
     }
 

@@ -21,10 +21,10 @@ package io.github.goldbigdragon.goldbigdragonrpg.user;
 
 import java.util.Arrays;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -32,9 +32,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 
-import io.github.goldbigdragon.goldbigdragonrpg.skill.UserSkill_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.skill.UserSkill_Gui;
 
-public class Option_GUI extends Util_GUI {
+public class Option_Gui extends GuiUtil {
     public void optionGUI(Player player) {
         String UniqueCode = "§0§0§0§0§1§r";
         Inventory inv = Bukkit.createInventory(null, 45, UniqueCode + "§0옵션");
@@ -126,7 +126,7 @@ public class Option_GUI extends Util_GUI {
     }
 
     public void optionInventoryclick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
 
         int slot = event.getSlot();
@@ -137,13 +137,13 @@ public class Option_GUI extends Util_GUI {
         } else {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 0)
-                new Stats_GUI().StatusGUI(player);
+                new Stats_Gui().StatusGUI(player);
             else if (slot == 9)
-                new UserSkill_GUI().MainSkillsListGUI(player, (short) 0);
+                new UserSkill_Gui().MainSkillsListGUI(player, (short) 0);
             else if (slot == 18)
-                new Quest_GUI().MyQuestListGUI(player, (short) 0);
+                new Quest_Gui().MyQuestListGUI(player, (short) 0);
             else if (slot == 36)
-                new ETC_GUI().ETCGUI_Main(player);
+                new ETC_Gui().ETCGUI_Main(player);
             else {
                 if (slot == 2)//경험치 획득 알림
                     Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setAlert_EXPget(!Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_EXPget());

@@ -22,7 +22,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.structure;
 import java.io.File;
 import java.util.Arrays;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
 import org.bukkit.Bukkit;
@@ -36,12 +36,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 
-import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
-public class Structure_GUI extends Util_GUI {
+public class Structure_Gui extends GuiUtil {
     public void StructureListGUI(Player player, int page) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager StructureConfig = YC.getNewConfig("Structure/StructureList.yml");
@@ -129,7 +129,7 @@ public class Structure_GUI extends Util_GUI {
     public void StructureListGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 53)//닫기
         {
@@ -139,7 +139,7 @@ public class Structure_GUI extends Util_GUI {
             byte page = (byte) (Byte.parseByte(event.getInventory().getTitle().split(" : ")[1]) - 1);
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
-                new OPbox_GUI().OPBoxGUI_Main(player, (byte) 3);
+                new OPbox_Gui().OPBoxGUI_Main(player, (byte) 3);
             else if (slot == 48)//이전 페이지
                 StructureListGUI(player, page - 1);
             else if (slot == 50)//다음 페이지
@@ -207,7 +207,7 @@ public class Structure_GUI extends Util_GUI {
     public void SelectStructureTypeGUIClick(InventoryClickEvent event) {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 53)//나가기
         {
@@ -232,7 +232,7 @@ public class Structure_GUI extends Util_GUI {
     public void SelectStructureDirectionGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 8)//나가기
         {

@@ -21,9 +21,9 @@ package io.github.goldbigdragon.goldbigdragonrpg.party;
 
 import java.util.Arrays;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.user.ETC_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.user.ETC_Gui;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -33,10 +33,10 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.goldbigdragon.goldbigdragonrpg.user.Equip_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.user.Equip_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 
-public final class Party_GUI extends Util_GUI {
+public final class Party_Gui extends GuiUtil {
     public void PartyGUI_Main(Player player) {
         String UniqueCode = "§0§0§4§0§0§r";
         Inventory inv = Bukkit.createInventory(null, 45, UniqueCode + "§0파티");
@@ -67,7 +67,7 @@ public final class Party_GUI extends Util_GUI {
 
         Object[] a = Main_ServerOption.Party.keySet().toArray();
         if (Main_ServerOption.Party.size() <= 0) {
-            new Effect_Sound().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[파티] : 생성된 파티가 없습니다!");
             player.sendMessage(ChatColor.GOLD + "/파티 생성 <이름>");
             return;
@@ -149,7 +149,7 @@ public final class Party_GUI extends Util_GUI {
     public void PartyGUI_MainClick(InventoryClickEvent event) {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 44)//나가기
         {
@@ -158,7 +158,7 @@ public final class Party_GUI extends Util_GUI {
         } else {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 36)//이전 목록
-                new ETC_GUI().ETCGUI_Main(player);
+                new ETC_Gui().ETCGUI_Main(player);
             else if (slot == 10)//파티 개설 / 파티 정보
             {
                 if (ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()).compareTo("파티 개설") == 0) {
@@ -189,7 +189,7 @@ public final class Party_GUI extends Util_GUI {
     public void PartyListGUIClick(InventoryClickEvent event) {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 53)//닫기
         {
@@ -218,7 +218,7 @@ public final class Party_GUI extends Util_GUI {
     public void PartyMemberInformationGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         if (slot == 53)//닫기
         {
             s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
@@ -235,7 +235,7 @@ public final class Party_GUI extends Util_GUI {
             else {
                 if (event.isLeftClick()) {
                     if (!isLeaderChange)
-                        new Equip_GUI().EquipWatchGUI(player, Bukkit.getServer().getPlayer(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName())));
+                        new Equip_Gui().EquipWatchGUI(player, Bukkit.getServer().getPlayer(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName())));
                     else
                         Main_ServerOption.Party.get(Main_ServerOption.PartyJoiner.get(player)).ChangeLeader(player, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                 } else if (event.isRightClick() && event.isShiftClick()) {

@@ -21,9 +21,9 @@ package io.github.goldbigdragon.goldbigdragonrpg.corpse;
 
 import java.util.Arrays;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Particle;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Teleport;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.ParticleUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.TeleportUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.util.*;
 import org.bukkit.Bukkit;
@@ -38,7 +38,7 @@ import org.bukkit.inventory.ItemStack;
 
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 
-public class Corpse_GUI extends Util_GUI {
+public class Corpse_Gui extends GuiUtil {
     public void SetNormal(String path, String normalValue) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager Config = YC.getNewConfig("config.yml");
@@ -122,7 +122,7 @@ public class Corpse_GUI extends Util_GUI {
     }
 
     public void ReviveSelectClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
         if (slot == 10)//마을에서 부활
@@ -203,7 +203,7 @@ public class Corpse_GUI extends Util_GUI {
                     l.add(0, 1, 0);
                     player.teleport(l);
                     for (short countta = 0; countta < 210; countta++)
-                        new Effect_Particle().PL(player.getLocation(), org.bukkit.Effect.SMOKE, new Util_Number().RandomNum(0, 14));
+                        new ParticleUtil().PL(player.getLocation(), org.bukkit.Effect.SMOKE, new Util_Number().RandomNum(0, 14));
                     s.SL(player.getLocation(), Sound.ENTITY_BLAZE_AMBIENT, 0.5F, 1.8F);
                     new io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain().Stop(player);
                     Penalty(player, Config.getString("Death.Spawn_Item.SetHealth"), Config.getString("Death.Spawn_Item.PenaltyEXP"), Config.getString("Death.Spawn_Item.PenaltyMoney"));
@@ -243,7 +243,7 @@ public class Corpse_GUI extends Util_GUI {
 
                             YamlManager Config = YC.getNewConfig("config.yml");
                             Penalty(player, Config.getString("Death.Spawn_Home.SetHealth"), Config.getString("Death.Spawn_Home.PenaltyEXP"), Config.getString("Death.Spawn_Home.PenaltyMoney"));
-                            new Effect_Teleport().TeleportPlayer(player, world, X, Y, Z, (float) Yaw, (float) Pitch);
+                            new TeleportUtil().TeleportPlayer(player, world, X, Y, Z, (float) Yaw, (float) Pitch);
                             return;
                         }
                     }

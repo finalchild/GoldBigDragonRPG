@@ -22,14 +22,14 @@ package io.github.goldbigdragon.goldbigdragonrpg.quest;
 import java.util.Arrays;
 import java.util.Collection;
 
-import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Potion;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.EffectUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_Interact;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Object;
-import io.github.goldbigdragon.goldbigdragonrpg.user.Stats_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.user.Stats_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
 import io.github.goldbigdragon.goldbigdragonrpg.util.ETC;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Player;
@@ -48,11 +48,11 @@ import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.potion.PotionEffectType;
 
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
-public class Quest_GUI extends Util_GUI {
+public class Quest_Gui extends GuiUtil {
     public void MyQuestListGUI(Player player, short page) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager QuestList = YC.getNewConfig("Quest/QuestList.yml");
@@ -810,8 +810,8 @@ public class Quest_GUI extends Util_GUI {
 
 
     public void QuestRouter(Player player, String QuestName) {
-        Effect_Potion p = new Effect_Potion();
-        Effect_Sound s = new Effect_Sound();
+        EffectUtil p = new EffectUtil();
+        SoundUtil s = new SoundUtil();
 
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager QuestList = YC.getNewConfig("Quest/QuestList.yml");
@@ -1178,7 +1178,7 @@ public class Quest_GUI extends Util_GUI {
 
 
     public void AllOfQuestListGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -1198,7 +1198,7 @@ public class Quest_GUI extends Util_GUI {
                     QuestOptionGUI(player, u.getString(player, (byte) 1));
                     u.clearAll(player);
                 } else
-                    new OPbox_GUI().OPBoxGUI_Main(player, (byte) 1);
+                    new OPbox_Gui().OPBoxGUI_Main(player, (byte) 1);
             } else if (slot == 48)//이전 페이지
                 AllOfQuestListGUI(player, (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 2), ChooseQuestGUI);
             else if (slot == 50)//다음 페이지
@@ -1253,7 +1253,7 @@ public class Quest_GUI extends Util_GUI {
     public void FixQuestGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 53) {
             s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
@@ -1309,7 +1309,7 @@ public class Quest_GUI extends Util_GUI {
     }
 
     public void MyQuestListGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -1319,7 +1319,7 @@ public class Quest_GUI extends Util_GUI {
         } else {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
-                new Stats_GUI().StatusGUI(player);
+                new Stats_Gui().StatusGUI(player);
             else if (slot == 48)//이전 페이지
                 MyQuestListGUI(player, (short) (Integer.parseInt(event.getInventory().getTitle().split(" : ")[1]) - 2));
             else if (slot == 50)//다음 페이지
@@ -1346,7 +1346,7 @@ public class Quest_GUI extends Util_GUI {
     }
 
     public void SelectObjectPageClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
 
         UserData_Object u = new UserData_Object();
@@ -1600,7 +1600,7 @@ public class Quest_GUI extends Util_GUI {
     }
 
     public void QuestScriptTypeGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -1626,7 +1626,7 @@ public class Quest_GUI extends Util_GUI {
     }
 
     public void ShowNeedGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -1697,7 +1697,7 @@ public class Quest_GUI extends Util_GUI {
     }
 
     public void PresentItemSettingGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -1732,7 +1732,7 @@ public class Quest_GUI extends Util_GUI {
     public void KeepGoingClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 16) {
             s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
@@ -1769,7 +1769,7 @@ public class Quest_GUI extends Util_GUI {
     public void QuestOptionGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 44) {
 
@@ -1863,7 +1863,7 @@ public class Quest_GUI extends Util_GUI {
     }
 
     public void Quest_NavigationListGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
         String QuestName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
@@ -1900,7 +1900,7 @@ public class Quest_GUI extends Util_GUI {
     }
 
     public void Quest_OPChoiceClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
 
         short page = Short.parseShort(ChatColor.stripColor(event.getInventory().getItem(18).getItemMeta().getLore().get(1)));
@@ -1917,7 +1917,7 @@ public class Quest_GUI extends Util_GUI {
     }
 
     public void Quest_UserChoiceClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         if (event.getSlot() == 26) {
             s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
@@ -1957,7 +1957,7 @@ public class Quest_GUI extends Util_GUI {
         Player player = (Player) event.getPlayer();
         UserData_Object u = new UserData_Object();
         u.setBoolean(player, (byte) 1, false);
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager QuestConfig = YC.getNewConfig("Quest/QuestList.yml");
 
@@ -1982,7 +1982,7 @@ public class Quest_GUI extends Util_GUI {
     }
 
     public void PresentItemSettingGUIClose(InventoryCloseEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getPlayer();
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager QuestConfig = YC.getNewConfig("Quest/QuestList.yml");

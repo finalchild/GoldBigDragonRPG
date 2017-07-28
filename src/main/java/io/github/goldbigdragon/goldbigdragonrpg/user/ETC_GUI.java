@@ -21,14 +21,14 @@ package io.github.goldbigdragon.goldbigdragonrpg.user;
 
 import java.util.Arrays;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.party.Party_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.party.Party_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.util.ETC;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
-import io.github.goldbigdragon.goldbigdragonrpg.warp.Warp_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.warp.Warp_Gui;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -36,12 +36,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 
-import io.github.goldbigdragon.goldbigdragonrpg.admin.Navigation_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.skill.UserSkill_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.admin.Navigation_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.skill.UserSkill_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 
-public final class ETC_GUI extends Util_GUI {
-    private Effect_Sound s = new Effect_Sound();
+public final class ETC_Gui extends GuiUtil {
+    private SoundUtil s = new SoundUtil();
 
     public void ETCGUI_Main(Player player) {
         String UniqueCode = "§0§0§0§0§2§r";
@@ -237,26 +237,26 @@ public final class ETC_GUI extends Util_GUI {
         } else {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 0)
-                new Stats_GUI().StatusGUI(player);
+                new Stats_Gui().StatusGUI(player);
             else if (slot == 9)
-                new UserSkill_GUI().MainSkillsListGUI(player, (short) 0);
+                new UserSkill_Gui().MainSkillsListGUI(player, (short) 0);
             else if (slot == 18)
-                new Quest_GUI().MyQuestListGUI(player, (short) 0);
+                new Quest_Gui().MyQuestListGUI(player, (short) 0);
             else if (slot == 27)
-                new Option_GUI().optionGUI(player);
+                new Option_Gui().optionGUI(player);
             else if (slot == 36)
-                new ETC_GUI().ETCGUI_Main(player);
+                new ETC_Gui().ETCGUI_Main(player);
             else {
                 if (slot == 2)//가이드
                     Information(player);
                 else if (slot == 3)//파티
-                    new Party_GUI().PartyGUI_Main(player);
+                    new Party_Gui().PartyGUI_Main(player);
                 else if (slot == 4)//워프
-                    new Warp_GUI().WarpListGUI(player, 0);
+                    new Warp_Gui().WarpListGUI(player, 0);
                 else if (slot == 5)//친구
                     FriendsGUI(player, (short) 0);
                 else if (slot == 6)//네비게이션
-                    new Navigation_GUI().UseNavigationGUI(player, (short) 0);
+                    new Navigation_Gui().UseNavigationGUI(player, (short) 0);
             }
         }
     }
@@ -282,7 +282,7 @@ public final class ETC_GUI extends Util_GUI {
     }
 
     public void FriendsGUIclick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int page = Integer.parseInt(event.getInventory().getTitle().split(" : ")[1]) - 1;
         int slot = event.getSlot();
@@ -320,7 +320,7 @@ public final class ETC_GUI extends Util_GUI {
     }
 
     public void WaittingFriendsGUIclick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
 
         int page = Integer.parseInt(event.getInventory().getTitle().split(" : ")[1]) - 1;
@@ -347,7 +347,7 @@ public final class ETC_GUI extends Util_GUI {
                     FriendsList.saveConfig();
                     s.SP(player, Sound.BLOCK_LAVA_POP, 1.0F, 0.7F);
                 } else if (event.isLeftClick() && !event.isShiftClick())
-                    new Equip_GUI().SetFriends(player, Bukkit.getPlayer(FName));
+                    new Equip_Gui().SetFriends(player, Bukkit.getPlayer(FName));
                 FriendsList = YC.getNewConfig("Friend/" + player.getUniqueId().toString() + ".yml");
                 if (FriendsList.getConfigurationSection("Waitting").getKeys(false).toArray().length == 0)
                     FriendsGUI(player, (short) 0);

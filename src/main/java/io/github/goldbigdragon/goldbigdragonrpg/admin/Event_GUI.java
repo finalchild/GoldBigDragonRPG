@@ -22,7 +22,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.admin;
 import java.util.Arrays;
 import java.util.Collection;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_Interact;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
@@ -35,11 +35,11 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
-public class Event_GUI extends Util_GUI {
+public class Event_Gui extends GuiUtil {
     public void EventGUI_Main(Player player) {
         YamlController YC = new YamlController(Main_Main.plugin);
 
@@ -130,7 +130,7 @@ public class Event_GUI extends Util_GUI {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 44)//닫기
         {
@@ -139,7 +139,7 @@ public class Event_GUI extends Util_GUI {
         } else {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 36)//이전 목록
-                new OPbox_GUI().OPBoxGUI_Main(player, (byte) 1);
+                new OPbox_Gui().OPBoxGUI_Main(player, (byte) 1);
             else if (slot == 28)//전체 주기
                 AllPlayerGiveEventGUI(player, true);
             else if (slot == 30)//랜덤 주기
@@ -173,7 +173,7 @@ public class Event_GUI extends Util_GUI {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (event.getClickedInventory().getTitle().compareTo("container.inventory") != 0) {
             if ((slot >= 0 && slot <= 9) || slot == 17 || slot == 18 || slot >= 26)

@@ -22,26 +22,26 @@ package io.github.goldbigdragon.goldbigdragonrpg.job;
 import java.util.Arrays;
 import java.util.Set;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.skill.OPboxSkill_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.skill.OPboxSkill_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.inventory.Inventory;
 
-import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-public class Job_GUI extends Util_GUI {
+public class Job_Gui extends GuiUtil {
     public void ChooseSystemGUI(Player player) {
         String UniqueCode = "§0§0§6§0§0§r";
         Inventory inv = Bukkit.createInventory(null, 27, UniqueCode + "§0시스템 선택");
@@ -227,7 +227,7 @@ public class Job_GUI extends Util_GUI {
 
 
     public void ChooseSystemGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -238,7 +238,7 @@ public class Job_GUI extends Util_GUI {
         } else {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 18)//이전 목록
-                new OPbox_GUI().OPBoxGUI_Main(player, (byte) 2);
+                new OPbox_Gui().OPBoxGUI_Main(player, (byte) 2);
             else if (slot == 12)//마비노기 타입 카테고리 목록
                 Mabinogi_ChooseCategory(player, (short) 0);
             else if (slot == 14)//메이플스토리 타입 직업 목록
@@ -247,7 +247,7 @@ public class Job_GUI extends Util_GUI {
     }
 
     public void MapleStory_ChooseJobClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -302,7 +302,7 @@ public class Job_GUI extends Util_GUI {
     }
 
     public void MapleStory_JobSettingClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -339,7 +339,7 @@ public class Job_GUI extends Util_GUI {
                     u.setType(player, "Job");
                     u.setString(player, (byte) 2, JobNick);
                     u.setString(player, (byte) 3, JobName);
-                    new OPboxSkill_GUI().AllSkillsGUI(player, (short) 0, true, "Maple");
+                    new OPboxSkill_Gui().AllSkillsGUI(player, (short) 0, true, "Maple");
                 } else if (event.isShiftClick() && event.isLeftClick()) {
                     player.closeInventory();
                     player.sendMessage(ChatColor.LIGHT_PURPLE + "[직업] : " + ChatColor.YELLOW + JobNick + ChatColor.LIGHT_PURPLE + "의 승급 필요 레벨을 입력 하세요!");
@@ -373,7 +373,7 @@ public class Job_GUI extends Util_GUI {
     }
 
     public void AddedSkillsListGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -411,7 +411,7 @@ public class Job_GUI extends Util_GUI {
     }
 
     public void Mabinogi_ChooseCategoryClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -438,7 +438,7 @@ public class Job_GUI extends Util_GUI {
                 String CategoriName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
                 if (event.isLeftClick()) {
                     if (!event.isShiftClick()) {
-                        OPboxSkill_GUI OGUI = new OPboxSkill_GUI();
+                        OPboxSkill_Gui OGUI = new OPboxSkill_Gui();
                         OGUI.AllSkillsGUI(player, (short) 0, true, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                     } else
                         Mabinogi_SkillSetting(player, (short) 0, CategoriName);
@@ -464,7 +464,7 @@ public class Job_GUI extends Util_GUI {
     }
 
     public void Mabinogi_SkillSettingClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
 
         int slot = event.getSlot();

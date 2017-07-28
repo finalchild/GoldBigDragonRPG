@@ -21,7 +21,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.customitem;
 
 import java.util.Arrays;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
@@ -30,15 +30,15 @@ import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.inventory.Inventory;
 
-import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-public class UseableItem_GUI extends Util_GUI {
+public class UseableItem_Gui extends GuiUtil {
     public void UseableItemListGUI(Player player, int page) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager ItemList = YC.getNewConfig("Item/Consume.yml");
@@ -197,7 +197,7 @@ public class UseableItem_GUI extends Util_GUI {
 
 
     public void UseableItemListGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -209,7 +209,7 @@ public class UseableItem_GUI extends Util_GUI {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             if (slot == 45)//이전 목록
-                new OPbox_GUI().OPBoxGUI_Main(player, (byte) 2);
+                new OPbox_Gui().OPBoxGUI_Main(player, (byte) 2);
             else if (slot == 48)//이전 페이지
                 UseableItemListGUI(player, page - 1);
             else if (slot == 49)//새 아이템
@@ -240,7 +240,7 @@ public class UseableItem_GUI extends Util_GUI {
     }
 
     public void ChooseUseableItemTypeGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -357,7 +357,7 @@ public class UseableItem_GUI extends Util_GUI {
     }
 
     public void NewUseableItemGUIclick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         String IconName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
 
@@ -521,7 +521,7 @@ public class UseableItem_GUI extends Util_GUI {
     }
 
     public void SelectSkillGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
 

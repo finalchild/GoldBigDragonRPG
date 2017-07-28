@@ -22,10 +22,10 @@ package io.github.goldbigdragon.goldbigdragonrpg.admin;
 import java.util.Arrays;
 import java.util.Set;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -37,7 +37,7 @@ import org.bukkit.inventory.Inventory;
 
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 
-public class NewBie_GUI extends Util_GUI {
+public class NewBie_Gui extends GuiUtil {
     public void NewBieGUIMain(Player player) {
         String UniqueCode = "§0§0§1§1§7§r";
         Inventory inv = Bukkit.createInventory(null, 9, UniqueCode + "§0초심자 옵션");
@@ -171,7 +171,7 @@ public class NewBie_GUI extends Util_GUI {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         if (slot == 8)//닫기
         {
             s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.0F);
@@ -192,7 +192,7 @@ public class NewBie_GUI extends Util_GUI {
             } else {
                 s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 if (slot == 0)//이전 목록
-                    new OPbox_GUI().OPBoxGUI_Main(player, (byte) 2);
+                    new OPbox_Gui().OPBoxGUI_Main(player, (byte) 2);
                 else if (slot == 2)//기본 아이템
                     NewBieSupportItemGUI(player);
                 else if (slot == 4)//기본 시작 위치
@@ -215,7 +215,7 @@ public class NewBie_GUI extends Util_GUI {
     }
 
     public void NewBieSupportItemGUIInventoryclick(InventoryClickEvent event, String SubjectCode) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
         if (slot >= 45)
@@ -245,7 +245,7 @@ public class NewBie_GUI extends Util_GUI {
     }
 
     public void NewBieQuestGUIInventoryclick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
@@ -302,7 +302,7 @@ public class NewBie_GUI extends Util_GUI {
         }
         NewBieYM.saveConfig();
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (SubjectCode.compareTo("1a") == 0)//가이드
             event.getPlayer().sendMessage(ChatColor.GREEN + "[뉴비 가이드] : 성공적으로 저장 되었습니다!");

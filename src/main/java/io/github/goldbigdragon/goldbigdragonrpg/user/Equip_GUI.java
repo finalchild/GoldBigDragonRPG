@@ -21,12 +21,12 @@ package io.github.goldbigdragon.goldbigdragonrpg.user;
 
 import java.util.Arrays;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Object;
 import io.github.goldbigdragon.goldbigdragonrpg.util.ETC;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 import org.bukkit.Bukkit;
@@ -44,7 +44,7 @@ import org.bukkit.material.MaterialData;
 
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
 
-public class Equip_GUI extends Util_GUI {
+public class Equip_Gui extends GuiUtil {
     public void EquipWatchGUI(Player player, Player target) {
         String UniqueCode = "§0§0§0§0§6§r";
         Inventory inv = Bukkit.createInventory(null, 54, UniqueCode + "§0장비 구경");
@@ -232,7 +232,7 @@ public class Equip_GUI extends Util_GUI {
     public void ExchangeInventoryclick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         Player target = Bukkit.getServer().getPlayer(ChatColor.stripColor(event.getInventory().getItem(8).getItemMeta().getDisplayName()));
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if ((event.getAction() == InventoryAction.PICKUP_ALL ||
                 event.getAction() == InventoryAction.PICKUP_HALF ||
@@ -384,7 +384,7 @@ public class Equip_GUI extends Util_GUI {
     public void ExchangeGUIclick(InventoryClickEvent event) {
         Player player = Bukkit.getServer().getPlayer(ChatColor.stripColor(event.getInventory().getItem(0).getItemMeta().getDisplayName()));
         Player target = Bukkit.getServer().getPlayer(ChatColor.stripColor(event.getInventory().getItem(8).getItemMeta().getDisplayName()));
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         if ((event.getSlot() >= 0 && event.getSlot() <= 9) ||
                 (event.getSlot() >= 13 && event.getSlot() <= 18) ||
                 (event.getSlot() >= 22 && event.getSlot() <= 27) ||
@@ -545,7 +545,7 @@ public class Equip_GUI extends Util_GUI {
 
 
     public void ExchangeGUI_Close(InventoryCloseEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         if (event.getInventory().getItem(0).getTypeId() == 138) {
             s.SP((Player) event.getPlayer(), Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.8F);
             event.getPlayer().sendMessage(ChatColor.RED + "[교환] : 교환을 취소하였습니다!");
@@ -596,7 +596,7 @@ public class Equip_GUI extends Util_GUI {
             SideFriendsList.saveConfig();
         }
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Long AddTime = new ETC().getSec();
         Object[] Friend = FriendsList.getConfigurationSection("Waitting").getKeys(false).toArray();
         Object[] SideFriend = SideFriendsList.getConfigurationSection("Waitting").getKeys(false).toArray();
@@ -658,7 +658,7 @@ public class Equip_GUI extends Util_GUI {
         }
         Player target = null;
         YamlManager SideFriendsList = null;
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Object[] Friend = FriendsList.getConfigurationSection("Friends").getKeys(false).toArray();
         for (short counter = 0; counter < Friend.length; counter++) {
             target = Bukkit.getServer().getPlayer(Friend[counter].toString());
@@ -682,7 +682,7 @@ public class Equip_GUI extends Util_GUI {
     }
 
     public void AddExchangeTarget(Player player, Player target) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         if (ServerTick_Main.PlayerTaskList.containsKey(target.getName())) {
             s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
             player.sendMessage(ChatColor.RED + "[교환] : 해당 플레이어는 현재 다른 요청을 처리하고 있습니다.");

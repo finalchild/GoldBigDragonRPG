@@ -21,12 +21,12 @@ package io.github.goldbigdragon.goldbigdragonrpg.admin;
 
 import java.util.Arrays;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Object;
-import io.github.goldbigdragon.goldbigdragonrpg.user.ETC_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.user.ETC_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -38,7 +38,7 @@ import org.bukkit.inventory.Inventory;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 
-public class Navigation_GUI extends Util_GUI {
+public class Navigation_Gui extends GuiUtil {
     public void NavigationListGUI(Player player, short page) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager NavigationConfig = YC.getNewConfig("Navigation/NavigationList.yml");
@@ -204,7 +204,7 @@ public class Navigation_GUI extends Util_GUI {
         short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
         int slot = event.getSlot();
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 53)//나가기
         {
@@ -213,7 +213,7 @@ public class Navigation_GUI extends Util_GUI {
         } else {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
-                new OPbox_GUI().OPBoxGUI_Main(player, (byte) 1);
+                new OPbox_Gui().OPBoxGUI_Main(player, (byte) 1);
             else if (slot == 48)//이전 페이지
                 NavigationListGUI(player, (short) (page - 1));
             else if (slot == 49)//새 네비
@@ -245,7 +245,7 @@ public class Navigation_GUI extends Util_GUI {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 35)//나가기
         {
@@ -311,7 +311,7 @@ public class Navigation_GUI extends Util_GUI {
         short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
         int slot = event.getSlot();
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 53)//나가기
         {
@@ -320,7 +320,7 @@ public class Navigation_GUI extends Util_GUI {
         } else {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
-                new ETC_GUI().ETCGUI_Main(player);
+                new ETC_Gui().ETCGUI_Main(player);
             else if (slot == 48)//이전 페이지
                 UseNavigationGUI(player, (short) (page - 1));
             else if (slot == 50)//다음 페이지

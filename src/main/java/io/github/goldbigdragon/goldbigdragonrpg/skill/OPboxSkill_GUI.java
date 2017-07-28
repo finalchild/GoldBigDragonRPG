@@ -22,14 +22,14 @@ package io.github.goldbigdragon.goldbigdragonrpg.skill;
 import java.util.Arrays;
 import java.util.Set;
 
-import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
-import io.github.goldbigdragon.goldbigdragonrpg.job.Job_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.job.Job_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.job.Job_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
@@ -41,7 +41,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-public class OPboxSkill_GUI extends Util_GUI {
+public class OPboxSkill_Gui extends GuiUtil {
     public void AllSkillsGUI(Player player, short page, boolean isJobGUI, String WhatJob) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager SkillList = YC.getNewConfig("Skill/SkillList.yml");
@@ -353,7 +353,7 @@ public class OPboxSkill_GUI extends Util_GUI {
     public void AllSkillsGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         boolean isJobGUI = Boolean.parseBoolean(ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1)));
         String WhatJob = ChatColor.stripColor(event.getInventory().getItem(45).getItemMeta().getLore().get(1));
@@ -371,14 +371,14 @@ public class OPboxSkill_GUI extends Util_GUI {
             {
                 if (isJobGUI) {
                     if (WhatJob.compareTo("Maple") == 0) {
-                        new Job_GUI().MapleStory_JobSetting(player, u.getString(player, (byte) 3));
+                        new Job_Gui().MapleStory_JobSetting(player, u.getString(player, (byte) 3));
                         u.clearAll(player);
                     } else {
-                        new Job_GUI().Mabinogi_ChooseCategory(player, (short) 0);
+                        new Job_Gui().Mabinogi_ChooseCategory(player, (short) 0);
                         u.clearAll(player);
                     }
                 } else {
-                    new OPbox_GUI().OPBoxGUI_Main(player, (byte) 2);
+                    new OPbox_Gui().OPBoxGUI_Main(player, (byte) 2);
                     u.clearAll(player);
                 }
             } else if (slot == 48)//이전 페이지
@@ -400,7 +400,7 @@ public class OPboxSkill_GUI extends Util_GUI {
                         YamlManager JobList = YC.getNewConfig("Skill/JobList.yml");
                         JobList.createSection("MapleStory." + u.getString(player, (byte) 3) + "." + u.getString(player, (byte) 2) + ".Skill." + SkillName);
                         JobList.saveConfig();
-                        Job_GUI JGUI = new Job_GUI();
+                        Job_Gui JGUI = new Job_Gui();
                         JGUI.MapleStory_JobSetting(player, u.getString(player, (byte) 3));
                         u.clearAll(player);
                         YamlManager Config = YC.getNewConfig("Config.yml");
@@ -448,7 +448,7 @@ public class OPboxSkill_GUI extends Util_GUI {
     public void IndividualSkillOptionGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 53)//나가기
         {
@@ -503,7 +503,7 @@ public class OPboxSkill_GUI extends Util_GUI {
 
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager SkillList = YC.getNewConfig("Skill/SkillList.yml");
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         UserData_Object u = new UserData_Object();
 

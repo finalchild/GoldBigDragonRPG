@@ -25,13 +25,13 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Potion;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.EffectUtil;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.job.Job_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_Interact;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
 import io.github.goldbigdragon.goldbigdragonrpg.util.ETC;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
@@ -50,11 +50,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffectType;
 
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
-public class NPC_GUI extends Util_GUI {
+public class NPC_Gui extends GuiUtil {
     public void MainGUI(Player player, String NPCname, boolean isOP) {
         String UniqueCode = "§0§0§7§0§0§r";
         Inventory inv = Bukkit.createInventory(null, 27, UniqueCode + "§0[NPC] " + ChatColor.stripColor(NPCname));
@@ -1729,7 +1729,7 @@ public class NPC_GUI extends Util_GUI {
     public void QuestAddGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         if (slot == 53)//나가기
         {
             s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
@@ -1778,7 +1778,7 @@ public class NPC_GUI extends Util_GUI {
     public void QuestListGUIClick(InventoryClickEvent event) {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 53)//나가기
         {
@@ -1849,7 +1849,7 @@ public class NPC_GUI extends Util_GUI {
 
                                     PlayerQuest.saveConfig();
 
-                                    new Quest_GUI().QuestRouter(player, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
+                                    new Quest_Gui().QuestRouter(player, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                                 } else {
                                     s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
                                     player.sendMessage(ChatColor.RED + "[퀘스트] : 이전 퀘스트를 진행하지 않아 퀘스트를 수행할 수 없습니다!");
@@ -1874,7 +1874,7 @@ public class NPC_GUI extends Util_GUI {
     public void MainGUIClick(InventoryClickEvent event, String NPCname) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 26)//나가기
         {
@@ -1934,7 +1934,7 @@ public class NPC_GUI extends Util_GUI {
                             player.sendMessage(ChatColor.RED + "[SYSTEM] : 복채 비용이 부족합니다!");
                             return;
                         } else {
-                            Effect_Potion P = new Effect_Potion();
+                            EffectUtil P = new EffectUtil();
                             Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setETC_BuffCoolTime(ETC.getNowUTC());
                             if (n.RandomNum(0, 100) <= NPCscript.getInt("Job.GoodRate")) {
                                 switch (n.RandomNum(1, 8)) {
@@ -2166,7 +2166,7 @@ public class NPC_GUI extends Util_GUI {
     }
 
     public void TalkGUIClick(InventoryClickEvent event, String NPCname) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
         if (slot > 0 && slot < 8) {
@@ -2184,7 +2184,7 @@ public class NPC_GUI extends Util_GUI {
     }
 
     public void ShopGUIClick(InventoryClickEvent event, String NPCname) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         if (event.getClickedInventory().getType() == InventoryType.PLAYER)
             return;
@@ -2346,7 +2346,7 @@ public class NPC_GUI extends Util_GUI {
     }
 
     public void NPCjobGUIClick(InventoryClickEvent event, String NPCname) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -2454,7 +2454,7 @@ public class NPC_GUI extends Util_GUI {
     public void WarpMainGUIClick(InventoryClickEvent event) {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 53)//나가기
         {
@@ -2515,7 +2515,7 @@ public class NPC_GUI extends Util_GUI {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         if (slot == 53)//나가기
         {
             s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
@@ -2554,7 +2554,7 @@ public class NPC_GUI extends Util_GUI {
     public void UpgraderGUIClick(InventoryClickEvent event) {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 53) {
             s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
@@ -2753,7 +2753,7 @@ public class NPC_GUI extends Util_GUI {
     public void SelectUpgradeRecipeGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 53)//나가기
         {
@@ -2965,7 +2965,7 @@ public class NPC_GUI extends Util_GUI {
     public void RuneEquipGUIClick(InventoryClickEvent event) {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (event.getClickedInventory().getTitle().compareTo("container.inventory") != 0) {
             if (slot != 13)
@@ -3210,7 +3210,7 @@ public class NPC_GUI extends Util_GUI {
     public void TalkGUIClick(InventoryClickEvent event) {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 53)//닫기
         {
@@ -3317,7 +3317,7 @@ public class NPC_GUI extends Util_GUI {
     public void TalkSettingGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         if (slot == 35)//나가기
         {
             s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.8F);
@@ -3390,7 +3390,7 @@ public class NPC_GUI extends Util_GUI {
     public void AddAbleSkillsGUIClick(InventoryClickEvent event) {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 53)//나가기
         {
@@ -3421,7 +3421,7 @@ public class NPC_GUI extends Util_GUI {
     }
 
     public void ItemBuyGuiClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -3565,7 +3565,7 @@ public class NPC_GUI extends Util_GUI {
     }
 
     public void ItemFixGuiClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
 
         if (event.getClickedInventory().getTitle().compareTo("container.inventory") == 0) {
@@ -3715,7 +3715,7 @@ public class NPC_GUI extends Util_GUI {
 
     public void PresentGuiClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         String NPCname = ChatColor.stripColor(event.getInventory().getItem(8).getItemMeta().getLore().get(1));
         if (ChatColor.stripColor(event.getInventory().getName()).compareTo("[NPC] 선물 아이템을 올려 주세요") == 0) {

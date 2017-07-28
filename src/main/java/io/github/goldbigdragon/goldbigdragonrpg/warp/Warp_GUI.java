@@ -21,10 +21,10 @@ package io.github.goldbigdragon.goldbigdragonrpg.warp;
 
 import java.util.Arrays;
 
-import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.user.ETC_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.user.ETC_Gui;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -33,11 +33,11 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
-public class Warp_GUI extends Util_GUI {
+public class Warp_Gui extends GuiUtil {
     public void WarpListGUI(Player player, int page) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager TelePort = YC.getNewConfig("Teleport/TeleportList.yml");
@@ -132,7 +132,7 @@ public class Warp_GUI extends Util_GUI {
     public void WarpListGUIInventoryclick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         if (slot == 53)//닫기
         {
             s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.0F);
@@ -142,9 +142,9 @@ public class Warp_GUI extends Util_GUI {
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             if (slot == 45) {
                 if (player.isOp())
-                    new OPbox_GUI().OPBoxGUI_Main(player, (byte) 2);
+                    new OPbox_Gui().OPBoxGUI_Main(player, (byte) 2);
                 else
-                    new ETC_GUI().ETCGUI_Main(player);
+                    new ETC_Gui().ETCGUI_Main(player);
             } else if (slot == 48)//이전 페이지
                 WarpListGUI(player, page - 1);
             else if (slot == 50)//다음 페이지

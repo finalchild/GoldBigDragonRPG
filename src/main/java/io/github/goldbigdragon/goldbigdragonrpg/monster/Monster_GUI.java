@@ -22,7 +22,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.monster;
 import java.util.Arrays;
 
 import io.github.goldbigdragon.goldbigdragonrpg.battle.Battle_Calculator;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -34,14 +34,14 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
-public class Monster_GUI extends Util_GUI {
+public class Monster_Gui extends GuiUtil {
     public void MonsterListGUI(Player player, int page) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager MobList = YC.getNewConfig("Monster/MonsterList.yml");
@@ -621,7 +621,7 @@ public class Monster_GUI extends Util_GUI {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         if (slot == 53)//나가기
         {
             s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
@@ -630,7 +630,7 @@ public class Monster_GUI extends Util_GUI {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             if (slot == 45)//이전 목록
-                new OPbox_GUI().OPBoxGUI_Main(player, (byte) 1);
+                new OPbox_Gui().OPBoxGUI_Main(player, (byte) 1);
             else if (slot == 48)//이전 페이지
                 MonsterListGUI(player, page - 1);
             else if (slot == 49)//새 몬스터
@@ -663,7 +663,7 @@ public class Monster_GUI extends Util_GUI {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         if (slot == 53)//나가기
         {
             s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
@@ -797,7 +797,7 @@ public class Monster_GUI extends Util_GUI {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 53)//나가기
         {
@@ -888,28 +888,28 @@ public class Monster_GUI extends Util_GUI {
 
         YamlManager Monster = YC.getNewConfig("Monster/MonsterList.yml");
         String MonsterName = ChatColor.stripColor(event.getInventory().getItem(8).getItemMeta().getDisplayName().toString());
-        if (event.getInventory().getItem(0) == new Util_GUI().getItemStack(ChatColor.WHITE + "머리", 302, 0, 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
+        if (event.getInventory().getItem(0) == new GuiUtil().getItemStack(ChatColor.WHITE + "머리", 302, 0, 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
             Monster.set(MonsterName + ".Head.Item", null);
         else
             Monster.set(MonsterName + ".Head.Item", event.getInventory().getItem(0));
 
-        if (event.getInventory().getItem(1) == new Util_GUI().getItemStack(ChatColor.WHITE + "갑옷", 303, 0, 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
+        if (event.getInventory().getItem(1) == new GuiUtil().getItemStack(ChatColor.WHITE + "갑옷", 303, 0, 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
             Monster.set(MonsterName + ".Chest.Item", null);
         else
             Monster.set(MonsterName + ".Chest.Item", event.getInventory().getItem(1));
-        if (event.getInventory().getItem(2) == new Util_GUI().getItemStack(ChatColor.WHITE + "바지", 304, 0, 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
+        if (event.getInventory().getItem(2) == new GuiUtil().getItemStack(ChatColor.WHITE + "바지", 304, 0, 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
             Monster.set(MonsterName + ".Leggings.Item", null);
         else
             Monster.set(MonsterName + ".Leggings.Item", event.getInventory().getItem(2));
-        if (event.getInventory().getItem(1) == new Util_GUI().getItemStack(ChatColor.WHITE + "부츠", 305, 0, 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
+        if (event.getInventory().getItem(1) == new GuiUtil().getItemStack(ChatColor.WHITE + "부츠", 305, 0, 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
             Monster.set(MonsterName + ".Boots.Item", null);
         else
             Monster.set(MonsterName + ".Boots.Item", event.getInventory().getItem(3));
-        if (event.getInventory().getItem(4) == new Util_GUI().getItemStack(ChatColor.WHITE + "무기", 267, 0, 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
+        if (event.getInventory().getItem(4) == new GuiUtil().getItemStack(ChatColor.WHITE + "무기", 267, 0, 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
             Monster.set(MonsterName + ".Hand.Item", null);
         else
             Monster.set(MonsterName + ".Hand.Item", event.getInventory().getItem(4));
-        if (event.getInventory().getItem(5) == new Util_GUI().getItemStack(ChatColor.WHITE + "무기", 267, 0, 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
+        if (event.getInventory().getItem(5) == new GuiUtil().getItemStack(ChatColor.WHITE + "무기", 267, 0, 1, Arrays.asList(ChatColor.GRAY + "이곳에 아이템을 넣어 주세요.")))
             Monster.set(MonsterName + ".OffHand.Item", null);
         else
             Monster.set(MonsterName + ".OffHand.Item", event.getInventory().getItem(5));
@@ -922,7 +922,7 @@ public class Monster_GUI extends Util_GUI {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         if (slot == 53)//나가기
         {
             s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);

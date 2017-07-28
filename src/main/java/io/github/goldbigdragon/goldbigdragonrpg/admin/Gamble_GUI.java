@@ -21,12 +21,12 @@ package io.github.goldbigdragon.goldbigdragonrpg.admin;
 
 import java.util.Arrays;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Object;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 import org.bukkit.Bukkit;
@@ -42,7 +42,7 @@ import org.bukkit.material.MaterialData;
 
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 
-public class Gamble_GUI extends Util_GUI {
+public class Gamble_Gui extends GuiUtil {
     public void GambleMainGUI(Player player) {
         String UniqueCode = "§0§0§1§0§c§r";
         Inventory inv = Bukkit.createInventory(null, 45, UniqueCode + "§0도박 메인");
@@ -61,7 +61,7 @@ public class Gamble_GUI extends Util_GUI {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 44)//나가기
         {
@@ -70,7 +70,7 @@ public class Gamble_GUI extends Util_GUI {
         } else {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 36)//이전 목록
-                new OPbox_GUI().OPBoxGUI_Main(player, (byte) 3);
+                new OPbox_Gui().OPBoxGUI_Main(player, (byte) 3);
             else if (slot == 10)//상품 관리
                 GamblePresentGUI(player, (short) 0, (byte) 0, (short) -1, null);
             else if (slot == 12)//슬롯 머신
@@ -119,7 +119,7 @@ public class Gamble_GUI extends Util_GUI {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 53)//나가기
         {
@@ -217,7 +217,7 @@ public class Gamble_GUI extends Util_GUI {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot >= 27)
             event.setCancelled(true);
@@ -333,7 +333,7 @@ public class Gamble_GUI extends Util_GUI {
         int slot = event.getSlot();
         short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 53)//나가기
         {
@@ -431,7 +431,7 @@ public class Gamble_GUI extends Util_GUI {
         String MachineNumber = ChatColor.stripColor(event.getInventory().getItem(27).getItemMeta().getLore().get(1));
         int slot = event.getSlot();
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 35)//나가기
         {
@@ -476,7 +476,7 @@ public class Gamble_GUI extends Util_GUI {
         int slot = event.getSlot();
         String MachineNumber = ChatColor.stripColor(event.getInventory().getItem(0).getItemMeta().getLore().get(1));
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (event.getClickedInventory().getTitle().compareTo("container.inventory") != 0) {
             if (slot != 4)
@@ -564,7 +564,7 @@ public class Gamble_GUI extends Util_GUI {
 
     public void SlotMachine_PlayGUI_Click(InventoryClickEvent event) {
         if (event.getSlot() == 15) {
-            Effect_Sound s = new Effect_Sound();
+            SoundUtil s = new SoundUtil();
             ItemStack Coin = event.getInventory().getItem(16);
             Player player = (Player) event.getWhoClicked();
             if (event.getCurrentItem().getTypeId() == 69)
@@ -693,7 +693,7 @@ public class Gamble_GUI extends Util_GUI {
                 for (byte count = 0; count < 3; count++)
                     Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + "" + (count + 1) + " 번째 슬롯", itemID[count], 0, 1, Arrays.asList(""), count + 10, inv);
                 Bukkit.getServer().getPlayer(player).openInventory(inv);
-                Effect_Sound s = new Effect_Sound();
+                SoundUtil s = new SoundUtil();
                 s.SP(Bukkit.getServer().getPlayer(player), Sound.BLOCK_STONE_STEP, 1.0F, 1.0F);
             }
         }

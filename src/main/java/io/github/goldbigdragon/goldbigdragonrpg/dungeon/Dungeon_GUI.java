@@ -24,15 +24,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 
-import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.battle.Battle_Calculator;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_ItemDrop;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.structure.Structure_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Player;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
@@ -53,7 +53,7 @@ import org.bukkit.material.MaterialData;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 
-public final class Dungeon_GUI extends Util_GUI {
+public final class Dungeon_Gui extends GuiUtil {
     /*
 	던전 만듬.
 	통행증 만듬.
@@ -1085,7 +1085,7 @@ public final class Dungeon_GUI extends Util_GUI {
 
     //DungeonGUI Click//
     public void DungeonListMainGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -1099,7 +1099,7 @@ public final class Dungeon_GUI extends Util_GUI {
             int page = Integer.parseInt(event.getInventory().getTitle().split(" : ")[1]) - 1;
 
             if (slot == 45)//이전 목록
-                new OPbox_GUI().OPBoxGUI_Main(player, (byte) 3);
+                new OPbox_Gui().OPBoxGUI_Main(player, (byte) 3);
             else if (slot == 47)//타입 변경
             {
                 if (event.isLeftClick()) {
@@ -1239,7 +1239,7 @@ public final class Dungeon_GUI extends Util_GUI {
     }
 
     public void DungeonSetUpGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -1324,7 +1324,7 @@ public final class Dungeon_GUI extends Util_GUI {
     }
 
     public void DungeonMonsterGUIMainClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -1343,7 +1343,7 @@ public final class Dungeon_GUI extends Util_GUI {
     }
 
     public void DungeonMonsterChooseMainClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -1392,7 +1392,7 @@ public final class Dungeon_GUI extends Util_GUI {
     }
 
     public void DungeonSelectNormalMonsterChooseClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
 
         int slot = event.getSlot();
@@ -1470,7 +1470,7 @@ public final class Dungeon_GUI extends Util_GUI {
     }
 
     public void DungeonSelectCustomMonsterChooseClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -1502,7 +1502,7 @@ public final class Dungeon_GUI extends Util_GUI {
     }
 
     public void DungeonMusicSettingGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
 
         int slot = event.getSlot();
@@ -1547,7 +1547,7 @@ public final class Dungeon_GUI extends Util_GUI {
 
     //EnterCardGUI Click//
     public void EnterCardSetUpGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -1602,7 +1602,7 @@ public final class Dungeon_GUI extends Util_GUI {
     }
 
     public void EnterCardDungeonSettingGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
 
         int slot = event.getSlot();
@@ -1630,7 +1630,7 @@ public final class Dungeon_GUI extends Util_GUI {
 
     //AltarGUI Click//
     public void AltarShapeListGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -1706,7 +1706,7 @@ public final class Dungeon_GUI extends Util_GUI {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
         String AltarName = event.getInventory().getItem(8).getItemMeta().getLore().get(1);
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 8)//나가기
         {
@@ -1740,7 +1740,7 @@ public final class Dungeon_GUI extends Util_GUI {
     }
 
     public void AltarDungeonSettingGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         String AltarName = event.getInventory().getItem(53).getItemMeta().getLore().get(1).substring(2, event.getInventory().getItem(53).getItemMeta().getLore().get(1).length());
         int slot = event.getSlot();
@@ -1763,7 +1763,7 @@ public final class Dungeon_GUI extends Util_GUI {
     }
 
     public void AltarEnterCardSettingGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         String AltarName = event.getInventory().getItem(53).getItemMeta().getLore().get(1);
         int slot = event.getSlot();
@@ -1795,7 +1795,7 @@ public final class Dungeon_GUI extends Util_GUI {
     }
 
     public void AltarEnterCardListGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
 
         String AltarName = event.getInventory().getItem(53).getItemMeta().getLore().get(1);
@@ -1865,7 +1865,7 @@ public final class Dungeon_GUI extends Util_GUI {
     //AltarGUI Click//
 
     public void DungeonEXITClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
 
         int slot = event.getSlot();
@@ -1928,7 +1928,7 @@ public final class Dungeon_GUI extends Util_GUI {
         }
         DungeonConfig.saveConfig();
 
-        new Effect_Sound().SP((Player) event.getPlayer(), Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.8F);
+        new SoundUtil().SP((Player) event.getPlayer(), Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.8F);
         event.getPlayer().sendMessage(ChatColor.GREEN + "[던전] : 보상 설정 완료!");
     }
 
@@ -1940,7 +1940,7 @@ public final class Dungeon_GUI extends Util_GUI {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager AltarConfig = YC.getNewConfig("Dungeon/Altar/" + AltarName + ".yml");
             event.getInventory().setItem(4, null);
-            Effect_Sound s = new Effect_Sound();
+            SoundUtil s = new SoundUtil();
             int LvDistrict = -1;
             int RealLvDistrict = -1;
             if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getDungeon_Enter() != null) {
@@ -2063,7 +2063,7 @@ public final class Dungeon_GUI extends Util_GUI {
 
     private void PartyEnterDungeon(Player player, ItemStack item, String AltarName, int capacity, String DungeonName, int LvDistrict, int RealLvDistrict) {
         if (Main_ServerOption.PartyJoiner.containsKey(player)) {
-            Effect_Sound s = new Effect_Sound();
+            SoundUtil s = new SoundUtil();
             if (capacity != -1)
                 if (Main_ServerOption.Party.get(Main_ServerOption.PartyJoiner.get(player)).getPartyMembers() != capacity) {
                     if (!new Util_Player().giveItem(player, item))
@@ -2125,7 +2125,7 @@ public final class Dungeon_GUI extends Util_GUI {
     }
 
     private void SoloEnterDungeon(Player player, ItemStack item, String AltarName, int capacity, String DungeonName, int LvDistrict, int RealLvDistrict) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         if (capacity == -1 || capacity == 1) {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager AltarConfig = YC.getNewConfig("Dungeon/Altar/" + AltarName + ".yml");

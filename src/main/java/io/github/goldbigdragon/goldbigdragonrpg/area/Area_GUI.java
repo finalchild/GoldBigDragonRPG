@@ -22,7 +22,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.area;
 import java.util.Arrays;
 
 import io.github.goldbigdragon.goldbigdragonrpg.battle.Battle_Calculator;
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_Interact;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
@@ -39,12 +39,12 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_GUI;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_Gui;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
-public class Area_GUI extends Util_GUI {
+public class Area_Gui extends GuiUtil {
     public void AreaListGUI(Player player, short page) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager AreaConfig = YC.getNewConfig("Area/AreaList.yml");
@@ -792,7 +792,7 @@ public class Area_GUI extends Util_GUI {
 
 
     public void AreaListGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
 
         int slot = event.getSlot();
@@ -807,7 +807,7 @@ public class Area_GUI extends Util_GUI {
             String AreaName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
 
             if (slot == 45)//이전 목록
-                new OPbox_GUI().OPBoxGUI_Main(player, (byte) 2);
+                new OPbox_Gui().OPBoxGUI_Main(player, (byte) 2);
             else if (slot == 48)//이전 페이지
                 AreaListGUI(player, (short) (page - 1));
             else if (slot == 49)//영역 추가
@@ -840,7 +840,7 @@ public class Area_GUI extends Util_GUI {
     }
 
     public void AreaSettingGUIInventoryclick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
 
@@ -986,7 +986,7 @@ public class Area_GUI extends Util_GUI {
     }
 
     public void AreaMonsterSettingGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -1029,7 +1029,7 @@ public class Area_GUI extends Util_GUI {
     }
 
     public void AreaFishSettingGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
         String AreaName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
@@ -1047,7 +1047,7 @@ public class Area_GUI extends Util_GUI {
     }
 
     public void AreaBlockSettingGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -1091,7 +1091,7 @@ public class Area_GUI extends Util_GUI {
     }
 
     public void AreaBlockItemSettingGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
         String AreaName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
@@ -1112,7 +1112,7 @@ public class Area_GUI extends Util_GUI {
     }
 
     public void AreaAddMonsterSpawnRuleGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -1159,7 +1159,7 @@ public class Area_GUI extends Util_GUI {
     }
 
     public void AreaAddMonsterListGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -1191,7 +1191,7 @@ public class Area_GUI extends Util_GUI {
     }
 
     public void AreaSpawnSpecialMonsterListGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
@@ -1221,7 +1221,7 @@ public class Area_GUI extends Util_GUI {
     }
 
     public void AreaMusicSettingGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
 
         String AreaName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
@@ -1236,7 +1236,7 @@ public class Area_GUI extends Util_GUI {
         } else if (AreaName.compareTo("DeathBGM¡") == 0) {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)
-                new OPbox_GUI().OPBoxGUI_Death(player);
+                new OPbox_Gui().OPBoxGUI_Death(player);
             else if (slot == 48)
                 AreaMusicSettingGUI(player, page - 1, AreaName);
             else if (slot == 50)
@@ -1246,7 +1246,7 @@ public class Area_GUI extends Util_GUI {
                 YamlManager Config = YC.getNewConfig("config.yml");
                 Config.set("Death.Track", Integer.parseInt(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName())));
                 Config.saveConfig();
-                new OPbox_GUI().OPBoxGUI_Death(player);
+                new OPbox_Gui().OPBoxGUI_Death(player);
             }
         } else {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);

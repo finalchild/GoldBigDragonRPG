@@ -21,7 +21,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.admin;
 
 import java.util.Arrays;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
 import org.bukkit.Bukkit;
@@ -32,11 +32,11 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
-public class Upgrade_GUI extends Util_GUI {
+public class Upgrade_Gui extends GuiUtil {
     public void UpgradeRecipeGUI(Player player, int page) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager RecipeList = YC.getNewConfig("Item/Upgrade.yml");
@@ -227,7 +227,7 @@ public class Upgrade_GUI extends Util_GUI {
 
 
     public void UpgradeRecipeGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
         short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
@@ -238,7 +238,7 @@ public class Upgrade_GUI extends Util_GUI {
         } else {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
-                new OPbox_GUI().OPBoxGUI_Main(player, (byte) 2);
+                new OPbox_Gui().OPBoxGUI_Main(player, (byte) 2);
             else if (slot == 48)//이전 페이지
                 UpgradeRecipeGUI(player, page - 1);
             else if (slot == 49)//새 개조식
@@ -266,7 +266,7 @@ public class Upgrade_GUI extends Util_GUI {
     }
 
     public void UpgradeRecipeSettingGUIClick(InventoryClickEvent event) {
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();

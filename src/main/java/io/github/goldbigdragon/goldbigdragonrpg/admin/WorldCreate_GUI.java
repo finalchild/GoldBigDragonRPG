@@ -21,9 +21,9 @@ package io.github.goldbigdragon.goldbigdragonrpg.admin;
 
 import java.util.Arrays;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.Effect_Sound;
+import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_GUI;
+import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -31,7 +31,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 
-public class WorldCreate_GUI extends Util_GUI {
+public class WorldCreate_Gui extends GuiUtil {
     public void WorldCreateGUIMain(Player player) {
         String UniqueCode = "§0§0§1§1§b§r";
         Inventory inv = Bukkit.createInventory(null, 9, UniqueCode + "§0월드 선택");
@@ -49,7 +49,7 @@ public class WorldCreate_GUI extends Util_GUI {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
-        Effect_Sound s = new Effect_Sound();
+        SoundUtil s = new SoundUtil();
 
         if (slot == 8)//나가기
         {
@@ -58,7 +58,7 @@ public class WorldCreate_GUI extends Util_GUI {
         } else {
             s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 0)//이전 목록
-                new OPbox_GUI().OPBoxGUI_Main(player, (byte) 2);
+                new OPbox_Gui().OPBoxGUI_Main(player, (byte) 2);
             else {
                 UserData_Object u = new UserData_Object();
                 u.setType(player, "WorldCreater");
