@@ -624,10 +624,10 @@ public class Monster_Gui extends GuiUtil {
         SoundUtil s = new SoundUtil();
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             if (slot == 45)//이전 목록
                 new OPbox_Gui().OPBoxGUI_Main(player, (byte) 1);
@@ -648,7 +648,7 @@ public class Monster_Gui extends GuiUtil {
                 else if (event.isLeftClick() && event.isShiftClick())
                     new Monster_Spawn().SpawnEggGive(player, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                 else if (event.isRightClick() && event.isShiftClick()) {
-                    s.SP(player, Sound.BLOCK_LAVA_POP, 1.0F, 1.0F);
+                    SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 1.0F, 1.0F);
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager MobList = YC.getNewConfig("Monster/MonsterList.yml");
                     MobList.removeKey(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
@@ -666,12 +666,12 @@ public class Monster_Gui extends GuiUtil {
         SoundUtil s = new SoundUtil();
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
             String MonsterName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
 
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
                 MonsterListGUI(player, 0);
             else if (slot == 14)//몹 타입 변경
@@ -737,7 +737,7 @@ public class Monster_Gui extends GuiUtil {
                 MonsterOptionSettingGUI(player, MonsterName);
             } else if (slot == 24)//장비 변경
             {
-                s.SP(player, Sound.ENTITY_HORSE_ARMOR, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_HORSE_ARMOR, 1.0F, 1.0F);
                 ArmorGUI(player, MonsterName);
             } else if (slot == 34)//몬스터 포션 효과
                 MonsterPotionGUI(player, MonsterName);
@@ -801,17 +801,17 @@ public class Monster_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
             String MonsterName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
 
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
                 MonsterOptionSettingGUI(player, MonsterName);
             else if (slot >= 10 && slot <= 16) {
                 UserData_Object u = new UserData_Object();
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 player.closeInventory();
                 u.setType(player, "Monster");
                 u.setString(player, (byte) 1, "Potion");
@@ -868,7 +868,7 @@ public class Monster_Gui extends GuiUtil {
                         MobList.set(MonsterName + ".Potion.Invisible", 0);
                 }
                 MobList.saveConfig();
-                s.SP(player, Sound.ENTITY_GENERIC_DRINK, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_GENERIC_DRINK, 1.0F, 1.0F);
                 MonsterPotionGUI(player, MonsterName);
             }
         }
@@ -925,12 +925,12 @@ public class Monster_Gui extends GuiUtil {
         SoundUtil s = new SoundUtil();
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
             String MonsterName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
 
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
                 MonsterOptionSettingGUI(player, MonsterName);
             else {

@@ -601,25 +601,25 @@ public class Monster_Spawn {
             if (MobList.contains(mob + ".Potion")) {
                 EffectUtil P = new EffectUtil();
                 if (MobList.getInt(mob + ".Potion.Regenerate") != 0)
-                    Monster.addPotionEffect(P.getPotionEffect(PotionEffectType.REGENERATION, 50000, MobList.getInt(mob + ".Potion.Regenerate")));
+                    Monster.addPotionEffect(EffectUtil.getPotionEffect(PotionEffectType.REGENERATION, 50000, MobList.getInt(mob + ".Potion.Regenerate")));
                 if (MobList.getInt(mob + ".Potion.Poison") != 0)
-                    Monster.addPotionEffect(P.getPotionEffect(PotionEffectType.POISON, 50000, MobList.getInt(mob + ".Potion.Poison")));
+                    Monster.addPotionEffect(EffectUtil.getPotionEffect(PotionEffectType.POISON, 50000, MobList.getInt(mob + ".Potion.Poison")));
                 if (MobList.getInt(mob + ".Potion.Speed") != 0)
-                    Monster.addPotionEffect(P.getPotionEffect(PotionEffectType.SPEED, 50000, MobList.getInt(mob + ".Potion.Speed")));
+                    Monster.addPotionEffect(EffectUtil.getPotionEffect(PotionEffectType.SPEED, 50000, MobList.getInt(mob + ".Potion.Speed")));
                 if (MobList.getInt(mob + ".Potion.Slow") != 0)
-                    Monster.addPotionEffect(P.getPotionEffect(PotionEffectType.SLOW, 50000, MobList.getInt(mob + ".Potion.Slow")));
+                    Monster.addPotionEffect(EffectUtil.getPotionEffect(PotionEffectType.SLOW, 50000, MobList.getInt(mob + ".Potion.Slow")));
                 if (MobList.getInt(mob + ".Potion.Strength") != 0)
-                    Monster.addPotionEffect(P.getPotionEffect(PotionEffectType.INCREASE_DAMAGE, 50000, MobList.getInt(mob + ".Potion.Strength")));
+                    Monster.addPotionEffect(EffectUtil.getPotionEffect(PotionEffectType.INCREASE_DAMAGE, 50000, MobList.getInt(mob + ".Potion.Strength")));
                 if (MobList.getInt(mob + ".Potion.Weak") != 0)
-                    Monster.addPotionEffect(P.getPotionEffect(PotionEffectType.WEAKNESS, 50000, MobList.getInt(mob + ".Potion.Weak")));
+                    Monster.addPotionEffect(EffectUtil.getPotionEffect(PotionEffectType.WEAKNESS, 50000, MobList.getInt(mob + ".Potion.Weak")));
                 if (MobList.getInt(mob + ".Potion.JumpBoost") != 0)
-                    Monster.addPotionEffect(P.getPotionEffect(PotionEffectType.JUMP, 50000, MobList.getInt(mob + ".Potion.JumpBoost")));
+                    Monster.addPotionEffect(EffectUtil.getPotionEffect(PotionEffectType.JUMP, 50000, MobList.getInt(mob + ".Potion.JumpBoost")));
                 if (MobList.getInt(mob + ".Potion.FireRegistance") != 0)
-                    Monster.addPotionEffect(P.getPotionEffect(PotionEffectType.FIRE_RESISTANCE, 50000, MobList.getInt(mob + ".Potion.FireRegistance")));
+                    Monster.addPotionEffect(EffectUtil.getPotionEffect(PotionEffectType.FIRE_RESISTANCE, 50000, MobList.getInt(mob + ".Potion.FireRegistance")));
                 if (MobList.getInt(mob + ".Potion.WaterBreath") != 0)
-                    Monster.addPotionEffect(P.getPotionEffect(PotionEffectType.WATER_BREATHING, 50000, MobList.getInt(mob + ".Potion.WaterBreath")));
+                    Monster.addPotionEffect(EffectUtil.getPotionEffect(PotionEffectType.WATER_BREATHING, 50000, MobList.getInt(mob + ".Potion.WaterBreath")));
                 if (MobList.getInt(mob + ".Potion.Invisible") != 0)
-                    Monster.addPotionEffect(P.getPotionEffect(PotionEffectType.INVISIBILITY, 50000, MobList.getInt(mob + ".Potion.Invisible")));
+                    Monster.addPotionEffect(EffectUtil.getPotionEffect(PotionEffectType.INVISIBILITY, 50000, MobList.getInt(mob + ".Potion.Invisible")));
             }
             Damageable m = Monster;
             m.setMaxHealth(MobList.getInt(mob + ".HP") + 0.5);
@@ -771,177 +771,177 @@ public class Monster_Spawn {
             case 0:
                 return;
             case 1: {
-                s.SL(loc, org.bukkit.Sound.ENTITY_ENDERDRAGON_GROWL, 1.0F, 0.5F);
+                SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_ENDERDRAGON_GROWL, 1.0F, 0.5F);
                 for (int counter = 0; counter < 400; counter++)
-                    p.PLC(loc, Effect.SPELL, 4);
+                    ParticleUtil.PLC(loc, Effect.SPELL, 4);
                 for (int counter = 0; counter < 300; counter++)
-                    p.PLC(loc, Effect.FLYING_GLYPH, 0);
+                    ParticleUtil.PLC(loc, Effect.FLYING_GLYPH, 0);
                 for (int counter = 0; counter < 200; counter++)
-                    p.PLC(loc, Effect.SMOKE, 4);
+                    ParticleUtil.PLC(loc, Effect.SMOKE, 4);
             }
             return;
             case 2: {
                 loc.setY((double) (loc.getBlockY() + 1));
-                s.SL(loc, org.bukkit.Sound.ENTITY_ENDERMEN_TELEPORT, 1.0F, 0.5F);
-                p.PLC(loc, Effect.ENDER_SIGNAL, 0);
+                SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_ENDERMEN_TELEPORT, 1.0F, 0.5F);
+                ParticleUtil.PLC(loc, Effect.ENDER_SIGNAL, 0);
                 for (int counter = 0; counter < 100; counter++)
-                    p.PLC(loc, Effect.ENDER_SIGNAL, 0);
+                    ParticleUtil.PLC(loc, Effect.ENDER_SIGNAL, 0);
                 for (int counter = 0; counter < 50; counter++)
-                    p.PLC(loc, Effect.MAGIC_CRIT, 4);
+                    ParticleUtil.PLC(loc, Effect.MAGIC_CRIT, 4);
             }
             return;
             case 3: {
-                s.SL(loc, org.bukkit.Sound.ENTITY_GENERIC_EXPLODE, 1.0F, 0.5F);
-                p.PLC(loc, Effect.EXPLOSION_LARGE, 0);
+                SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_GENERIC_EXPLODE, 1.0F, 0.5F);
+                ParticleUtil.PLC(loc, Effect.EXPLOSION_LARGE, 0);
                 for (int counter = 0; counter < 3; counter++)
-                    p.PLC(loc, Effect.EXPLOSION_HUGE, 0);
+                    ParticleUtil.PLC(loc, Effect.EXPLOSION_HUGE, 0);
                 for (int counter = 0; counter < 10; counter++)
-                    p.PLC(loc, Effect.EXPLOSION, 4);
+                    ParticleUtil.PLC(loc, Effect.EXPLOSION, 4);
             }
             return;
             case 4: {
-                s.SL(loc, org.bukkit.Sound.ENTITY_GHAST_SHOOT, 1.0F, 0.5F);
-                p.PLC(loc, Effect.FLAME, 0);
+                SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_GHAST_SHOOT, 1.0F, 0.5F);
+                ParticleUtil.PLC(loc, Effect.FLAME, 0);
                 for (int counter = 0; counter < 200; counter++)
-                    p.PLC(loc, Effect.SMOKE, 9);
+                    ParticleUtil.PLC(loc, Effect.SMOKE, 9);
                 for (int counter = 0; counter < 200; counter++)
-                    p.PLC(loc, Effect.FLAME, 0);
+                    ParticleUtil.PLC(loc, Effect.FLAME, 0);
             }
             return;
             case 5: {
-                s.SL(loc, org.bukkit.Sound.ENTITY_ZOMBIE_ATTACK_IRON_DOOR, 1.0F, 0.6F);
-                p.PLC(loc, Effect.CRIT, 0);
+                SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_ZOMBIE_ATTACK_IRON_DOOR, 1.0F, 0.6F);
+                ParticleUtil.PLC(loc, Effect.CRIT, 0);
                 for (int counter = 0; counter < 400; counter++)
-                    p.PLC(loc, Effect.SPELL, 4);
+                    ParticleUtil.PLC(loc, Effect.SPELL, 4);
                 loc.setY((double) (loc.getBlockY() + 1.5));
                 for (int counter = 0; counter < 1; counter++)
-                    p.PLC(loc, Effect.VILLAGER_THUNDERCLOUD, counter);
+                    ParticleUtil.PLC(loc, Effect.VILLAGER_THUNDERCLOUD, counter);
             }
             return;
             case 6: {
-                s.SL(loc, org.bukkit.Sound.BLOCK_CHEST_OPEN, 1.0F, 0.5F);
+                SoundUtil.SL(loc, org.bukkit.Sound.BLOCK_CHEST_OPEN, 1.0F, 0.5F);
                 loc.setY((double) (loc.getBlockY() + 1.8));
-                p.PLC(loc, Effect.HEART, 0);
+                ParticleUtil.PLC(loc, Effect.HEART, 0);
             }
             return;
             case 7: {
                 switch (mob.getType()) {
                     case ZOMBIE:
                     case GIANT: {
-                        s.SL(loc, org.bukkit.Sound.ENTITY_ZOMBIE_AMBIENT, 1.0F, 0.5F);
+                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_ZOMBIE_AMBIENT, 1.0F, 0.5F);
                         loc.setY((double) (loc.getBlockY() + 1.8));
-                        p.PLC(loc, Effect.VILLAGER_THUNDERCLOUD, 0);
+                        ParticleUtil.PLC(loc, Effect.VILLAGER_THUNDERCLOUD, 0);
                         for (int counter = 0; counter < 50; counter++)
-                            p.PLC(loc, Effect.MAGIC_CRIT, counter);
+                            ParticleUtil.PLC(loc, Effect.MAGIC_CRIT, counter);
                     }
                     break;
                     case SKELETON: {
-                        s.SL(loc, org.bukkit.Sound.ENTITY_SKELETON_DEATH, 1.0F, 0.5F);
+                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_SKELETON_DEATH, 1.0F, 0.5F);
                         loc.setY((double) (loc.getBlockY() + 1.8));
-                        p.PLC(loc, Effect.VILLAGER_THUNDERCLOUD, 0);
+                        ParticleUtil.PLC(loc, Effect.VILLAGER_THUNDERCLOUD, 0);
                         for (int counter = 0; counter < 50; counter++)
-                            p.PLC(loc, Effect.MAGIC_CRIT, counter);
+                            ParticleUtil.PLC(loc, Effect.MAGIC_CRIT, counter);
                     }
                     break;
                     case ENDERMAN:
                     case ENDERMITE: {
-                        s.SL(loc, org.bukkit.Sound.ENTITY_ENDERMEN_TELEPORT, 1.0F, 0.5F);
+                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_ENDERMEN_TELEPORT, 1.0F, 0.5F);
                         loc.setY((double) (loc.getBlockY() + 1));
                         for (int counter = 0; counter < 100; counter++)
-                            p.PLC(loc, Effect.ENDER_SIGNAL, 0);
+                            ParticleUtil.PLC(loc, Effect.ENDER_SIGNAL, 0);
                     }
                     break;
                     case CREEPER: {
-                        s.SL(loc, org.bukkit.Sound.ENTITY_GENERIC_EXPLODE, 1.0F, 0.5F);
+                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_GENERIC_EXPLODE, 1.0F, 0.5F);
                         loc.setY((double) (loc.getBlockY() + 1));
-                        p.PLC(loc, Effect.EXPLOSION_LARGE, 0);
+                        ParticleUtil.PLC(loc, Effect.EXPLOSION_LARGE, 0);
                         for (int counter = 0; counter < 3; counter++)
-                            p.PLC(loc, Effect.EXPLOSION_HUGE, counter);
+                            ParticleUtil.PLC(loc, Effect.EXPLOSION_HUGE, counter);
                         for (int counter = 0; counter < 5; counter++)
-                            p.PLC(loc, Effect.EXPLOSION, counter);
+                            ParticleUtil.PLC(loc, Effect.EXPLOSION, counter);
                     }
                     break;
                     case SPIDER:
                     case CAVE_SPIDER:
                     case SILVERFISH: {
-                        s.SL(loc, org.bukkit.Sound.ENTITY_SPIDER_AMBIENT, 1.0F, 0.5F);
+                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_SPIDER_AMBIENT, 1.0F, 0.5F);
                         for (int counter = 0; counter < 10; counter++)
-                            p.PLC(loc, Effect.LARGE_SMOKE, counter);
+                            ParticleUtil.PLC(loc, Effect.LARGE_SMOKE, counter);
                         loc.setY((double) (loc.getBlockY() + 1));
-                        p.PLC(loc, Effect.SMOKE, 0);
+                        ParticleUtil.PLC(loc, Effect.SMOKE, 0);
                     }
                     break;
                     case SLIME: {
-                        s.SL(loc, org.bukkit.Sound.ENTITY_SLIME_JUMP, 1.0F, 0.5F);
+                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_SLIME_JUMP, 1.0F, 0.5F);
                         loc.setY((double) (loc.getBlockY() + 1));
                         for (int counter = 0; counter < 20; counter++)
-                            p.PLC(loc, Effect.SLIME, counter);
+                            ParticleUtil.PLC(loc, Effect.SLIME, counter);
                     }
                     break;
                     case MAGMA_CUBE: {
                         loc.setY((double) (loc.getBlockY() + 1));
-                        s.SL(loc, org.bukkit.Sound.ENTITY_SLIME_JUMP, 1.0F, 0.5F);
+                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_SLIME_JUMP, 1.0F, 0.5F);
                         for (int counter = 0; counter < 40; counter++)
-                            p.PLC(loc, Effect.MOBSPAWNER_FLAMES, counter);
+                            ParticleUtil.PLC(loc, Effect.MOBSPAWNER_FLAMES, counter);
                     }
                     break;
                     case BLAZE: {
-                        s.SL(loc, org.bukkit.Sound.ENTITY_BLAZE_AMBIENT, 1.0F, 0.5F);
+                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_BLAZE_AMBIENT, 1.0F, 0.5F);
                         for (int counter = 0; counter < 200; counter++)
-                            p.PLC(loc, Effect.SMOKE, 9);
+                            ParticleUtil.PLC(loc, Effect.SMOKE, 9);
                         for (int counter = 0; counter < 200; counter++)
-                            p.PLC(loc, Effect.FLAME, 0);
+                            ParticleUtil.PLC(loc, Effect.FLAME, 0);
                     }
                     break;
                     case GHAST: {
-                        s.SL(loc, org.bukkit.Sound.ENTITY_GHAST_AMBIENT, 1.0F, 0.5F);
-                        p.PLC(loc, Effect.FLAME, 0);
+                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_GHAST_AMBIENT, 1.0F, 0.5F);
+                        ParticleUtil.PLC(loc, Effect.FLAME, 0);
                         for (int counter = 0; counter < 100; counter++)
-                            p.PLC(loc, Effect.SMOKE, 4);
+                            ParticleUtil.PLC(loc, Effect.SMOKE, 4);
                         for (int counter = 0; counter < 40; counter++)
-                            p.PLC(loc, Effect.MOBSPAWNER_FLAMES, counter);
+                            ParticleUtil.PLC(loc, Effect.MOBSPAWNER_FLAMES, counter);
                     }
                     break;
                     case PIG_ZOMBIE: {
-                        s.SL(loc, org.bukkit.Sound.ENTITY_ZOMBIE_AMBIENT, 1.0F, 0.5F);
+                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_ZOMBIE_AMBIENT, 1.0F, 0.5F);
                         for (int counter = 0; counter < 100; counter++)
-                            p.PLC(loc, Effect.SMOKE, 4);
+                            ParticleUtil.PLC(loc, Effect.SMOKE, 4);
                         for (int counter = 0; counter < 40; counter++)
-                            p.PLC(loc, Effect.MOBSPAWNER_FLAMES, counter);
+                            ParticleUtil.PLC(loc, Effect.MOBSPAWNER_FLAMES, counter);
                     }
                     break;
                     case WITCH: {
-                        s.SL(loc, org.bukkit.Sound.ENTITY_WITCH_AMBIENT, 1.0F, 0.5F);
+                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_WITCH_AMBIENT, 1.0F, 0.5F);
                         for (int counter = 0; counter < 400; counter++)
-                            p.PLC(loc, Effect.SPELL, 4);
+                            ParticleUtil.PLC(loc, Effect.SPELL, 4);
                         for (int counter = 0; counter < 300; counter++)
-                            p.PLC(loc, Effect.FLYING_GLYPH, 0);
+                            ParticleUtil.PLC(loc, Effect.FLYING_GLYPH, 0);
                         for (int counter = 0; counter < 200; counter++)
-                            p.PLC(loc, Effect.SMOKE, 4);
+                            ParticleUtil.PLC(loc, Effect.SMOKE, 4);
                     }
                     break;
                     case GUARDIAN: {
-                        s.SL(loc, org.bukkit.Sound.ENTITY_GUARDIAN_AMBIENT, 1.0F, 0.5F);
+                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_GUARDIAN_AMBIENT, 1.0F, 0.5F);
                         for (int counter = 0; counter < 400; counter++)
-                            p.PLC(loc, Effect.WATERDRIP, counter);
+                            ParticleUtil.PLC(loc, Effect.WATERDRIP, counter);
                     }
                     break;
                     case SNOWMAN: {
-                        s.SL(loc, org.bukkit.Sound.ENTITY_SNOWMAN_AMBIENT, 1.0F, 0.5F);
+                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_SNOWMAN_AMBIENT, 1.0F, 0.5F);
                         for (int counter = 0; counter < 200; counter++)
-                            p.PLC(loc, Effect.SNOWBALL_BREAK, counter);
+                            ParticleUtil.PLC(loc, Effect.SNOWBALL_BREAK, counter);
                     }
                     break;
                     case SHULKER: {
-                        s.SL(loc, org.bukkit.Sound.ENTITY_SHULKER_AMBIENT, 1.0F, 0.5F);
+                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_SHULKER_AMBIENT, 1.0F, 0.5F);
                         for (int counter = 0; counter < 400; counter++)
-                            p.PLC(loc, Effect.ENDER_SIGNAL, counter);
+                            ParticleUtil.PLC(loc, Effect.ENDER_SIGNAL, counter);
                     }
                     break;
                     case POLAR_BEAR: {
-                        s.SL(loc, org.bukkit.Sound.ENTITY_POLAR_BEAR_AMBIENT, 1.0F, 0.5F);
+                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_POLAR_BEAR_AMBIENT, 1.0F, 0.5F);
                         for (int counter = 0; counter < 200; counter++)
-                            p.PLC(loc, Effect.VILLAGER_THUNDERCLOUD, counter);
+                            ParticleUtil.PLC(loc, Effect.VILLAGER_THUNDERCLOUD, counter);
                     }
                     break;
                 }

@@ -303,15 +303,15 @@ public class SpellMain implements Listener {
         event.setCancelled(true);
         switch (event.getSlot()) {
             case 45://이전 목록으로
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
                 new OPboxSkill_Gui().SkillRankOptionGUI(player, SkillName, (short) SkillLevel);
                 break;
             case 48://이전 페이지
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
                 ShowAllMaigcGUI(player, (byte) (page - 1), SkillName, (short) SkillLevel, (byte) sort);
                 break;
             case 49://정렬 방식 변경
-                s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 0.8F);
+                SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 0.8F);
                 if (sort <= 4)
                     sort = sort + 1;
                 else
@@ -319,15 +319,15 @@ public class SpellMain implements Listener {
                 ShowAllMaigcGUI(player, (byte) 0, SkillName, (short) SkillLevel, (byte) sort);
                 break;
             case 50://다음 페이지
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
                 ShowAllMaigcGUI(player, (byte) (page + 1), SkillName, (short) SkillLevel, (byte) sort);
                 break;
             case 53://나가기
-                s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+                SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
                 player.closeInventory();
                 return;
             default:
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager SkillList = YC.getNewConfig("Skill/SkillList.yml");
                 SkillList.set(SkillName + ".SkillRank." + SkillLevel + ".MagicSpells", ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));

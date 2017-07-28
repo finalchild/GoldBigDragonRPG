@@ -79,21 +79,21 @@ public class Main_ChangeHotBar implements Listener {
                                         Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setStat_EXP(0);
                                         Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setStat_MaxEXP(100);
 
-                                        s.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 0.5F);
-                                        s.SP(player, Sound.ENTITY_FIREWORK_LAUNCH, 1.0F, 1.2F);
-                                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
+                                        SoundUtil.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 0.5F);
+                                        SoundUtil.SP(player, Sound.ENTITY_FIREWORK_LAUNCH, 1.0F, 1.2F);
+                                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
                                         PacketUtil PS = new PacketUtil();
-                                        PS.sendTitleSubTitle(player, "\'" + ChatColor.YELLOW + "■ [ Rebirth ] ■" + "\'", "\'" + ChatColor.YELLOW + "[레벨 및 경험치가 초기화 되었습니다!]" + "\'", (byte) 1, (byte) 5, (byte) 1);
+                                        PacketUtil.sendTitleSubTitle(player, "\'" + ChatColor.YELLOW + "■ [ Rebirth ] ■" + "\'", "\'" + ChatColor.YELLOW + "[레벨 및 경험치가 초기화 되었습니다!]" + "\'", (byte) 1, (byte) 5, (byte) 1);
                                     } else {
                                         player.sendMessage(ChatColor.RED + "[SYSTEM] : 서버 시스템에 맞지 않아 환생을 할 수 없습니다!");
-                                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                     }
                                 }
                             }
                         }
                         SoundUtil sound = new SoundUtil();
                         if (Health > 0) {
-                            sound.SL(player.getLocation(), Sound.ENTITY_GENERIC_DRINK, 2.0F, 0.8F);
+                            SoundUtil.SL(player.getLocation(), Sound.ENTITY_GENERIC_DRINK, 2.0F, 0.8F);
                             Damageable Dp = player;
                             if (Dp.getMaxHealth() < Dp.getHealth() + Health)
                                 Dp.setHealth(Dp.getMaxHealth());
@@ -104,11 +104,11 @@ public class Main_ChangeHotBar implements Listener {
                             if (Main_ServerOption.MagicSpellsCatched) {
                                 io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain MS = new io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain();
                                 MS.DrinkManaPotion(player, Mana);
-                                sound.SL(player.getLocation(), Sound.BLOCK_WATER_AMBIENT, 2.0F, 1.9F);
+                                SoundUtil.SL(player.getLocation(), Sound.BLOCK_WATER_AMBIENT, 2.0F, 1.9F);
                             }
                         }
                         if (Food > 0) {
-                            sound.SL(player.getLocation(), Sound.ENTITY_GENERIC_EAT, 2.0F, 1.2F);
+                            SoundUtil.SL(player.getLocation(), Sound.ENTITY_GENERIC_EAT, 2.0F, 1.2F);
                             if (player.getFoodLevel() + Food > 40)
                                 player.setFoodLevel(40);
                             else
@@ -120,7 +120,7 @@ public class Main_ChangeHotBar implements Listener {
                             player.getInventory().setItem(NewSlot, new ItemStack(0));
 
                         PacketUtil PS = new PacketUtil();
-                        PS.changeItemSlot(player, PrevSlot);
+                        PacketUtil.changeItemSlot(player, PrevSlot);
                     } else if (item.getItemMeta().getLore().size() == 4) {
                         if (item.getItemMeta().getLore().get(3).equals(ChatColor.YELLOW + "[클릭시 퀵슬롯에서 삭제]")) {
                             byte PrevSlot = (byte) event.getPreviousSlot();
@@ -145,7 +145,7 @@ public class Main_ChangeHotBar implements Listener {
                                 return;
                             }
                             PacketUtil PS = new PacketUtil();
-                            PS.changeItemSlot(player, PrevSlot);
+                            PacketUtil.changeItemSlot(player, PrevSlot);
 
                             String Command = AllSkillList.getString(Skillname + ".SkillRank." + PlayerSkillRank + ".Command");
                             String Spell = AllSkillList.getString(Skillname + ".SkillRank." + PlayerSkillRank + ".MagicSpells");
@@ -322,7 +322,7 @@ public class Main_ChangeHotBar implements Listener {
                                         player.sendMessage(ChatColor.RED + "존재하지 않는 스펠 이름 : " + ChatColor.YELLOW + Spell);
                                         player.sendMessage(ChatColor.RED + "존재하지 않는 스펠이 등록된 스킬 : " + ChatColor.YELLOW + Skillname + " " + PlayerSkillRank + "랭크");
                                         SoundUtil s = new SoundUtil();
-                                        s.SP(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.9F);
+                                        SoundUtil.SP(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.9F);
                                     }
                                 }
                             }
@@ -359,43 +359,43 @@ public class Main_ChangeHotBar implements Listener {
         if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isOption_HotBarSound()) {
             SoundUtil s = new SoundUtil();
             if (itemID == -1)
-                s.SP(player, Sound.BLOCK_WOOD_BUTTON_CLICK_ON, 0.8F, 0.5F);
+                SoundUtil.SP(player, Sound.BLOCK_WOOD_BUTTON_CLICK_ON, 0.8F, 0.5F);
             if (itemID >= 298 && itemID <= 317)
-                s.SP(player, Sound.ENTITY_HORSE_ARMOR, 0.9F, 0.5F);
+                SoundUtil.SP(player, Sound.ENTITY_HORSE_ARMOR, 0.9F, 0.5F);
             else if (itemID >= 290 && itemID <= 294)
-                s.SP(player, Sound.ITEM_HOE_TILL, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ITEM_HOE_TILL, 0.8F, 1.0F);
             else if (itemID == 46)
-                s.SP(player, Sound.ENTITY_TNT_PRIMED, 1.5F, 0.8F);
+                SoundUtil.SP(player, Sound.ENTITY_TNT_PRIMED, 1.5F, 0.8F);
             else if (itemID == 261)
-                s.SP(player, Sound.ENTITY_ARROW_HIT, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ARROW_HIT, 1.0F, 1.0F);
             else if (itemID == 259)
-                s.SP(player, Sound.ITEM_FLINTANDSTEEL_USE, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ITEM_FLINTANDSTEEL_USE, 1.0F, 1.0F);
             else if (itemID == 256 || itemID == 269 || itemID == 273 || itemID == 277 || itemID == 284)
-                s.SP(player, Sound.ITEM_SHOVEL_FLATTEN, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ITEM_SHOVEL_FLATTEN, 0.8F, 1.0F);
             else if (itemID == 257 || itemID == 270 || itemID == 274 || itemID == 278 || itemID == 285)
-                s.SP(player, Sound.BLOCK_STONE_BREAK, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.BLOCK_STONE_BREAK, 0.8F, 1.0F);
             else if (itemID == 258 || itemID == 271 || itemID == 275 || itemID == 279 || itemID == 286)
-                s.SP(player, Sound.BLOCK_WOOD_BREAK, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.BLOCK_WOOD_BREAK, 0.8F, 1.0F);
             else if (itemID == 267 || itemID == 268 || itemID == 272 || itemID == 276 || itemID == 283)
-                s.SP(player, Sound.ENTITY_HORSE_ARMOR, 1.0F, 2.0F);
+                SoundUtil.SP(player, Sound.ENTITY_HORSE_ARMOR, 1.0F, 2.0F);
             else if (itemID == 346)
-                s.SP(player, Sound.ENTITY_GENERIC_SWIM, 1.5F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_GENERIC_SWIM, 1.5F, 1.0F);
             else if (itemID == 359)
-                s.SP(player, Sound.ENTITY_SHEEP_SHEAR, 1.5F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_SHEEP_SHEAR, 1.5F, 1.0F);
             else if (itemID == 368)
-                s.SP(player, Sound.ENTITY_ENDERMEN_TELEPORT, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ENDERMEN_TELEPORT, 1.0F, 1.0F);
             else if (itemID == 373)
-                s.SP(player, Sound.ENTITY_GENERIC_DRINK, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_GENERIC_DRINK, 1.0F, 1.0F);
             else if (itemID == 374)
-                s.SP(player, Sound.ITEM_BOTTLE_FILL, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ITEM_BOTTLE_FILL, 1.0F, 1.0F);
             else if (itemID == 437)
-                s.SP(player, Sound.ITEM_BOTTLE_FILL_DRAGONBREATH, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ITEM_BOTTLE_FILL_DRAGONBREATH, 1.0F, 1.0F);
             else if (itemID == 438)
-                s.SP(player, Sound.ENTITY_SPLASH_POTION_BREAK, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_SPLASH_POTION_BREAK, 1.0F, 1.0F);
             else if (itemID == 441)
-                s.SP(player, Sound.ENTITY_WITCH_DRINK, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_WITCH_DRINK, 1.0F, 1.0F);
             else
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
         }
     }
 }

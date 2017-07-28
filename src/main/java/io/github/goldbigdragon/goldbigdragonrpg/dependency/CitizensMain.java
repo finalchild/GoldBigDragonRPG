@@ -220,7 +220,7 @@ public class CitizensMain implements Listener {
                                         QGUI.QuestRouter(player, QuestName);
                                         return;
                                     } else {
-                                        s.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                                        SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                                         player.sendMessage(ChatColor.YELLOW + "[퀘스트] : 현재 플레이어의 인벤토리 공간이 충분하지 않아 보상을 받을 수 없습니다!");
                                         return;
                                     }

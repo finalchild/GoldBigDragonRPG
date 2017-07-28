@@ -133,11 +133,11 @@ public class Structure_Gui extends GuiUtil {
 
         if (slot == 53)//닫기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
             byte page = (byte) (Byte.parseByte(event.getInventory().getTitle().split(" : ")[1]) - 1);
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
                 new OPbox_Gui().OPBoxGUI_Main(player, (byte) 3);
             else if (slot == 48)//이전 페이지
@@ -158,7 +158,7 @@ public class Structure_Gui extends GuiUtil {
                     }
                     //기능 개체 세부내용(player, StructureName);
                 } else if (event.isShiftClick() && event.isRightClick()) {
-                    s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
+                    SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager StructureConfig = YC.getNewConfig("Structure/StructureList.yml");
 
@@ -211,10 +211,10 @@ public class Structure_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             byte page = (byte) (Byte.parseByte(event.getInventory().getTitle().split(" : ")[1]) - 1);
             if (slot == 45)//이전 목록
                 StructureListGUI(player, 0);
@@ -236,10 +236,10 @@ public class Structure_Gui extends GuiUtil {
 
         if (slot == 8)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 0)//이전 목록
                 SelectStructureTypeGUI(player, (byte) 0);
             else if (slot == 1 || slot == 3 || slot == 5 || slot == 7) {

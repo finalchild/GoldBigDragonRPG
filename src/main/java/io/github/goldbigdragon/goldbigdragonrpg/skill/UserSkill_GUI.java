@@ -232,10 +232,10 @@ public class UserSkill_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             if (slot == 45)//이전 목록
                 new Stats_Gui().StatusGUI(player);
@@ -255,10 +255,10 @@ public class UserSkill_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             if (slot == 45)//이전 목록
                 new Stats_Gui().StatusGUI(player);
@@ -278,13 +278,13 @@ public class UserSkill_Gui extends GuiUtil {
         SoundUtil s = new SoundUtil();
 
         if (slot == 53) {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
             boolean isMabinogi = Boolean.parseBoolean(ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1)));
             String CategoriName = ChatColor.stripColor(event.getInventory().getItem(45).getItemMeta().getLore().get(1));
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
                 MainSkillsListGUI(player, (short) 0);
             else if (slot == 48)//이전 페이지
@@ -307,10 +307,10 @@ public class UserSkill_Gui extends GuiUtil {
                         SkillRank = (short) PlayerSkillList.getInt("Mabinogi." + CategoriName + "." + SkillName);
                     if (SkillRank < SkillMaxRank) {
                         if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Level() < AllSkillList.getInt(SkillName + ".SkillRank." + (SkillRank + 1) + ".NeedLevel")) {
-                            s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                             player.sendMessage(ChatColor.RED + "[스킬] : 레벨이 부족합니다!");
                         } else if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_RealLevel() < AllSkillList.getInt(SkillName + ".SkillRank." + (SkillRank + 1) + ".NeedRealLevel")) {
-                            s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                             player.sendMessage(ChatColor.RED + "[스킬] : 누적 레벨이 부족합니다!");
                         } else if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_SkillPoint() >= AllSkillList.getInt(SkillName + ".SkillRank." + (SkillRank + 1) + ".SkillPoint")) {
                             if (!isMabinogi)
@@ -335,7 +335,7 @@ public class UserSkill_Gui extends GuiUtil {
                             Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).addStat_Magic_DEF(AllSkillList.getInt(SkillName + ".SkillRank." + (SkillRank + 1) + ".BonusMDEF"));
                             Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).addStat_Magic_Protect(AllSkillList.getInt(SkillName + ".SkillRank." + (SkillRank + 1) + ".BonusMPRO"));
                             PlayerSkillList.saveConfig();
-                            s.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 0.8F, 1.7F);
+                            SoundUtil.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 0.8F, 1.7F);
 
                             if (Main_ServerOption.MagicSpellsCatched) {
                                 io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain MS = new io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain();
@@ -352,11 +352,11 @@ public class UserSkill_Gui extends GuiUtil {
 
                             SkillListGUI(player, page, isMabinogi, CategoriName);
                         } else {
-                            s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                             player.sendMessage(ChatColor.RED + "[스킬] : 스텟 포인트가 부족합니다!");
                         }
                     } else
-                        s.SP(player, Sound.BLOCK_ANVIL_LAND, 0.8F, 1.7F);
+                        SoundUtil.SP(player, Sound.BLOCK_ANVIL_LAND, 0.8F, 1.7F);
                 }
             }
         }
@@ -369,12 +369,12 @@ public class UserSkill_Gui extends GuiUtil {
 
         if (slot == 17)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
             boolean isMabinogi = Boolean.parseBoolean(ChatColor.stripColor(event.getInventory().getItem(9).getItemMeta().getLore().get(1)));
             String CategoriName = ChatColor.stripColor(event.getInventory().getItem(17).getItemMeta().getLore().get(2));
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 9)//이전 목록
                 SkillListGUI(player, (short) 0, isMabinogi, CategoriName);
             else {

@@ -132,10 +132,10 @@ public class Option_Gui extends GuiUtil {
         int slot = event.getSlot();
 
         if (event.getSlot() == 26) {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 0)
                 new Stats_Gui().StatusGUI(player);
             else if (slot == 9)

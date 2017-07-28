@@ -194,7 +194,7 @@ public class Struct_Board extends GuiUtil {
         String Code = event.getInventory().getItem(0).getItemMeta().getLore().get(0);
         if (slot == 48 || slot == 50) {
             if (event.getCurrentItem().getTypeId() == 323) {
-                s.SP(player, Sound.BLOCK_WOOD_BUTTON_CLICK_ON, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.BLOCK_WOOD_BUTTON_CLICK_ON, 0.8F, 1.0F);
                 if (slot == 48)//이전 페이지
                     BoardMainGUI(player, Code, (byte) (page - 1));
                 else if (slot == 50)//다음 페이지
@@ -205,12 +205,12 @@ public class Struct_Board extends GuiUtil {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager Board = YC.getNewConfig("Structure/" + Code + ".yml");
             if (Board.getBoolean("OnlyUseOP") && !player.isOp()) {
-                s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                 player.sendMessage(ChatColor.RED + "[게시판] : 게시글 작성 권한이 없습니다!");
                 return;
             }
             UserData_Object u = new UserData_Object();
-            s.SP(player, Sound.BLOCK_CLOTH_STEP, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_CLOTH_STEP, 0.8F, 1.8F);
             u.setTemp(player, "Structure");
             u.setType(player, "Board");
             u.setString(player, (byte) 0, "Title");
@@ -230,12 +230,12 @@ public class Struct_Board extends GuiUtil {
                 if (Board.contains("User." + PostNumber)) {
                     if (Board.getString("User." + PostNumber + ".User").compareTo(player.getName()) == 0
                             || player.isOp()) {
-                        s.SP(player, Sound.ENTITY_SHEEP_SHEAR, 1.0F, 1.5F);
+                        SoundUtil.SP(player, Sound.ENTITY_SHEEP_SHEAR, 1.0F, 1.5F);
                         Board.removeKey("User." + PostNumber);
                         Board.saveConfig();
                         BoardMainGUI(player, Code, page);
                     } else {
-                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.RED + "[게시판] : 자신이 작성한 게시글만 삭제할 수 있습니다.");
                     }
                 } else
@@ -251,10 +251,10 @@ public class Struct_Board extends GuiUtil {
 
         if (slot == 8)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             String Code = event.getInventory().getItem(1).getItemMeta().getDisplayName();
             if (slot == 0)//이전 목록
                 new Structure_Gui().StructureListGUI(player, 0);

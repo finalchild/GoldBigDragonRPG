@@ -127,7 +127,7 @@ public class CustomItem_Command {
                 case "수리": {
                     if (player.getInventory().getItemInMainHand().getType() == Material.AIR) {
                         SoundUtil sound = new SoundUtil();
-                        sound.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                        SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                         player.sendMessage(ChatColor.RED + "[SYSTEM] : 손에 수리할 아이템을 쥐고 있어야 합니다!");
                         return;
                     }

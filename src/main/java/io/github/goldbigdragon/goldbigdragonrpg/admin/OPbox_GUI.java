@@ -487,25 +487,25 @@ public class OPbox_Gui extends GuiUtil {
         if ((slot >= 0 && slot <= 8) || (slot >= 45 && slot <= 53)) {
             if (slot == 2)//월드 시간 낮으로
             {
-                s.SP(player, Sound.ENTITY_CHICKEN_AMBIENT, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_CHICKEN_AMBIENT, 0.8F, 1.0F);
                 Bukkit.getServer().getWorld(player.getLocation().getWorld().getName()).setTime(0);
                 player.sendMessage(ChatColor.GOLD + "[System] : " + player.getLocation().getWorld().getName() + " 월드 시간을 낮으로 변경하였습니다!");
             } else if (slot == 3)//월드 시간 밤으로
             {
-                s.SP(player, Sound.ENTITY_WOLF_HOWL, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_WOLF_HOWL, 0.8F, 1.0F);
                 Bukkit.getServer().getWorld(player.getLocation().getWorld().getName()).setTime(14000);
                 player.sendMessage(ChatColor.GOLD + "[System] : " + player.getLocation().getWorld().getName() + " 월드 시간을 밤으로 변경하였습니다!");
             } else if (slot == 4)//월드 스폰 지점 변경
             {
-                s.SP(player, Sound.ENTITY_VILLAGER_YES, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_VILLAGER_YES, 0.8F, 1.0F);
                 Bukkit.getServer().getWorld(player.getLocation().getWorld().getName()).setSpawnLocation((int) player.getLocation().getX(), (int) player.getLocation().getY(), (int) player.getLocation().getZ());
                 player.sendMessage(ChatColor.GOLD + "[System] : " + player.getLocation().getWorld().getName() + " 월드의 스폰 지점을 " + (int) player.getLocation().getX() + "," + (int) player.getLocation().getY() + "," + (int) player.getLocation().getZ() + " 로 변경하였습니다!");
             } else if (slot == 53)//닫기
             {
-                s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+                SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
                 player.closeInventory();
             } else {
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 if (slot == 5)//월드 날씨 맑음
                 {
                     Bukkit.getServer().getWorld(player.getLocation().getWorld().getName()).setStorm(false);
@@ -524,7 +524,7 @@ public class OPbox_Gui extends GuiUtil {
         } else {
             String DisplayName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
 
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (DisplayName.compareTo("커스텀 아이템") == 0)
                 new CustomItem_Gui().ItemListGUI(player, 0);
             else if (DisplayName.compareTo("몬스터") == 0)
@@ -564,7 +564,7 @@ public class OPbox_Gui extends GuiUtil {
             else if (DisplayName.compareTo("게임 성향") == 0) {
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager Config = YC.getNewConfig("config.yml");
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 Config.set("Time.LastSkillChanged", new Util_Number().RandomNum(0, 100000) - new Util_Number().RandomNum(0, 100000));
                 if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
                     Config.set("Server.Like_The_Mabinogi_Online_Stat_System", false);
@@ -578,10 +578,10 @@ public class OPbox_Gui extends GuiUtil {
                 Guide_GUI(player);
             else if (DisplayName.compareTo("GoldBigDragonRPG") == 0) {
                 if (Main_ServerOption.serverVersion.compareTo(Main_ServerOption.currentServerVersion) == 0 && Main_ServerOption.serverUpdate.compareTo(Main_ServerOption.currentServerUpdate) == 0) {
-                    s.SP(player, Sound.BLOCK_ANVIL_USE, 0.8F, 1.0F);
+                    SoundUtil.SP(player, Sound.BLOCK_ANVIL_USE, 0.8F, 1.0F);
                     player.sendMessage(ChatColor.YELLOW + "[버전 체크] : 현재 GoldBigDragonRPG는 최신 버전입니다!");
                 } else {
-                    s.SP(player, Sound.BLOCK_ANVIL_USE, 0.8F, 1.0F);
+                    SoundUtil.SP(player, Sound.BLOCK_ANVIL_USE, 0.8F, 1.0F);
                     player.sendMessage(ChatColor.RED + "[버전 체크] : 현재 GoldBigDragonRPG는 업데이트가 필요합니다!");
                     player.sendMessage(ChatColor.RED + "[현재 버전] : " + Main_ServerOption.serverVersion);
                     player.sendMessage(ChatColor.RED + "[최신 버전] : " + Main_ServerOption.currentServerVersion);
@@ -589,7 +589,7 @@ public class OPbox_Gui extends GuiUtil {
                     player.sendMessage(ChatColor.RED + "[최신 패치] : " + Main_ServerOption.currentServerUpdate);
                 }
             } else if (DisplayName.compareTo("제작") == 0) {
-                s.SP(player, Sound.BLOCK_ANVIL_USE, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.BLOCK_ANVIL_USE, 0.8F, 1.0F);
                 player.sendMessage(ChatColor.RED + "[버전 체크] : 다음 업데이트 때 공개됩니다!");
             }
 
@@ -607,10 +607,10 @@ public class OPbox_Gui extends GuiUtil {
 
         if (slot == 53)//닫기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if ((slot >= 10 && slot <= 13) || slot == 20 || slot == 24 || slot == 25) {
                 if (slot == 10)//엔티티 스폰
                     Config.set("Server.EntitySpawn", !Config.getBoolean("Server.EntitySpawn"));
@@ -664,7 +664,7 @@ public class OPbox_Gui extends GuiUtil {
                     } else if (slot == 19)//채팅 형태 변경
                     {
                         if (event.isRightClick()) {
-                            s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
+                            SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                             Config.removeKey("Server.ChatPrefix");
                             Config.saveConfig();
                             player.sendMessage(ChatColor.RED + "[SYSTEM] : 접두사를 삭제하였습니다!");
@@ -701,10 +701,10 @@ public class OPbox_Gui extends GuiUtil {
 
         if (slot == 53)//닫기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 36)//동영상 가이드
             {
                 player.closeInventory();
@@ -723,10 +723,10 @@ public class OPbox_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
                 OPBoxGUI_Setting(player);
             else if (slot == 46)//공지 간격
@@ -760,7 +760,7 @@ public class OPbox_Gui extends GuiUtil {
             } else if (slot == 50)//다음 페이지
                 OPBoxGUI_BroadCast(player, (byte) (Integer.parseInt(event.getInventory().getTitle().split(" : ")[1])));
             else if (event.isShiftClick() && event.isRightClick()) {
-                s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager BroadCast = YC.getNewConfig("BroadCast.yml");
                 int Acount = BroadCast.getConfigurationSection("").getKeys(false).toArray().length - 1;
@@ -782,10 +782,10 @@ public class OPbox_Gui extends GuiUtil {
         int slot = event.getSlot();
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
                 OPBoxGUI_Setting(player);
             else {
@@ -815,18 +815,18 @@ public class OPbox_Gui extends GuiUtil {
 
         if (slot == 45)//이전 목록
         {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             OPBoxGUI_Setting(player);
         } else if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else if (slot == 34)//화폐 모양 초기화
         {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager Config = YC.getNewConfig("config.yml");
 
-            s.SP(player, Sound.ENTITY_IRONGOLEM_ATTACK, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_IRONGOLEM_ATTACK, 0.8F, 1.0F);
             player.sendMessage(ChatColor.DARK_AQUA + "[System] : 화폐 모양이 초기화 되었습니다!");
 
             Config.set("Server.Money.1.ID", 348);
@@ -857,7 +857,7 @@ public class OPbox_Gui extends GuiUtil {
             Config.saveConfig();
             OPBoxGUI_Money(player);
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             UserData_Object u = new UserData_Object();
             u.setType(player, "System");
             if (slot >= 28 && slot <= 33) {
@@ -900,10 +900,10 @@ public class OPbox_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 19)//사망 BGM
             {
                 YamlController YC = new YamlController(Main_Main.plugin);
@@ -978,10 +978,10 @@ public class OPbox_Gui extends GuiUtil {
                 event.setCancelled(true);
             if (slot == 8)//나가기
             {
-                s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+                SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
                 player.closeInventory();
             } else {
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 if (slot == 0)//이전 목록
                     OPBoxGUI_Death(player);
             }

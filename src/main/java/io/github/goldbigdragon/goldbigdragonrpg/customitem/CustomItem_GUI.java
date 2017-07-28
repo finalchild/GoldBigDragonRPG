@@ -167,10 +167,10 @@ public class CustomItem_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             if (slot == 45)//이전 목록
                 new OPbox_Gui().OPBoxGUI_Main(player, (byte) 1);
@@ -251,10 +251,10 @@ public class CustomItem_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 화면
                 ItemListGUI(player, 0);
             else if (!((event.getSlot() >= 9 && event.getSlot() <= 11) || (event.getSlot() >= 18 && event.getSlot() <= 20) || (event.getSlot() >= 27 && event.getSlot() <= 29))) {
@@ -263,7 +263,7 @@ public class CustomItem_Gui extends GuiUtil {
                 YamlManager ItemList = YC.getNewConfig("Item/ItemList.yml");
                 if (ItemList.getString(itemnumber + "") == null) {
                     player.sendMessage(ChatColor.RED + "[SYSTEM] : 다른 OP가 아이템을 삭제하여 반영되지 않았습니다!");
-                    s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+                    SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
                     player.closeInventory();
                     return;
                 }
@@ -283,7 +283,7 @@ public class CustomItem_Gui extends GuiUtil {
                 {
                     YamlManager Target = YC.getNewConfig("Item/CustomType.yml");
                     Object[] Type = Target.getKeys().toArray();
-                    s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                     if (Type.length == 0) {
                         if (ItemList.getString(itemnumber + ".Type").contains("[근접 무기]"))
                             ItemList.set(itemnumber + ".Type", ChatColor.RED + "[한손 검]");
@@ -385,7 +385,7 @@ public class CustomItem_Gui extends GuiUtil {
                     if (event.isLeftClick())
                         JobListGUI(player, (short) 0, itemnumber);
                     else if (event.isRightClick()) {
-                        s.SP(player, Sound.ITEM_SHIELD_BREAK, 0.8F, 1.0F);
+                        SoundUtil.SP(player, Sound.ITEM_SHIELD_BREAK, 0.8F, 1.0F);
                         ItemList.set(itemnumber + ".JOB", "공용");
                         ItemList.saveConfig();
                         NewItemGUI(player, itemnumber);
@@ -480,10 +480,10 @@ public class CustomItem_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             int itemnumber = Integer.parseInt(ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1)));
             if (slot == 45)//이전 목록
                 NewItemGUI(player, itemnumber);
@@ -492,7 +492,7 @@ public class CustomItem_Gui extends GuiUtil {
                 YamlManager ItemList = YC.getNewConfig("Item/ItemList.yml");
                 ItemList.set(itemnumber + ".JOB", ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                 ItemList.saveConfig();
-                s.SP(player, Sound.ITEM_SHIELD_BREAK, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ITEM_SHIELD_BREAK, 0.8F, 1.0F);
                 NewItemGUI(player, itemnumber);
             }
         }

@@ -97,7 +97,7 @@ public class NPC_Main {
                     SoundUtil s = new SoundUtil();
                     PlayerSkill.set("Mabinogi." + Categori + "." + Skillname, 1);
                     PlayerSkill.saveConfig();
-                    s.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.8F);
+                    SoundUtil.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.8F);
                     player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[새로운 스킬을 획득 하였습니다!] " + ChatColor.YELLOW + "" + ChatColor.BOLD + "" + ChatColor.UNDERLINE + Skillname);
                 } else {
                     scriptString = NPCscript.getString(TalkSubject + "." + randomScript + ".AlreadyGetScript");

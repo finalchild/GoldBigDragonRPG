@@ -94,17 +94,17 @@ public class Main_ItemDrop {
         Main_ServerOption SO = new Main_ServerOption();
         ItemStack Item;
         if (money <= 50)
-            Item = new MaterialData(SO.Money1ID, (byte) SO.Money1DATA).toItemStack(1);
+            Item = new MaterialData(Main_ServerOption.Money1ID, (byte) Main_ServerOption.Money1DATA).toItemStack(1);
         else if (money <= 100)
-            Item = new MaterialData(SO.Money2ID, (byte) SO.Money2DATA).toItemStack(1);
+            Item = new MaterialData(Main_ServerOption.Money2ID, (byte) Main_ServerOption.Money2DATA).toItemStack(1);
         else if (money <= 1000)
-            Item = new MaterialData(SO.Money3ID, (byte) SO.Money3DATA).toItemStack(1);
+            Item = new MaterialData(Main_ServerOption.Money3ID, (byte) Main_ServerOption.Money3DATA).toItemStack(1);
         else if (money <= 10000)
-            Item = new MaterialData(SO.Money4ID, (byte) SO.Money4DATA).toItemStack(1);
+            Item = new MaterialData(Main_ServerOption.Money4ID, (byte) Main_ServerOption.Money4DATA).toItemStack(1);
         else if (money <= 50000)
-            Item = new MaterialData(SO.Money5ID, (byte) SO.Money5DATA).toItemStack(1);
+            Item = new MaterialData(Main_ServerOption.Money5ID, (byte) Main_ServerOption.Money5DATA).toItemStack(1);
         else
-            Item = new MaterialData(SO.Money6ID, (byte) SO.Money6DATA).toItemStack(1);
+            Item = new MaterialData(Main_ServerOption.Money6ID, (byte) Main_ServerOption.Money6DATA).toItemStack(1);
         ItemMeta Item_Meta = Item.getItemMeta();
         Item_Meta.setDisplayName(Main_ServerOption.Money + " §f§f§f§l" + money);
         Item_Meta.setLore(Arrays.asList(ChatColor.YELLOW + "" + money + " " + Main_ServerOption.Money, passmoney + ""));

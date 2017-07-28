@@ -411,15 +411,15 @@ public class Monster_Kill {
                 if (luckysize <= 80) {
                     player.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "[SYSTEM] : 럭키 피니시!");
                     amount = 2;
-                    sound.SP(player, org.bukkit.Sound.ENTITY_PLAYER_LEVELUP, 0.5F, 0.9F);
+                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_PLAYER_LEVELUP, 0.5F, 0.9F);
                 } else if (luckysize <= 95) {
                     player.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "[SYSTEM] : 빅 럭키 피니시!");
                     amount = 5;
-                    sound.SP(player, org.bukkit.Sound.ENTITY_PLAYER_LEVELUP, 0.7F, 1.0F);
+                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_PLAYER_LEVELUP, 0.7F, 1.0F);
                 } else {
                     player.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "[SYSTEM] : 휴즈 럭키 피니시!");
                     amount = 20;
-                    sound.SP(player, org.bukkit.Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.1F);
+                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.1F);
                 }
             }
         } else

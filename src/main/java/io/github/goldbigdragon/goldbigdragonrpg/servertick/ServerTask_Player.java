@@ -93,10 +93,10 @@ public class ServerTask_Player {
                 fast = (float) 0.5;
             else
                 fast = (float) (ServerTick_Main.Schedule.get(UTC).getCount() / 10.0);
-            s.SP(caller, Sound.BLOCK_NOTE_PLING, 0.8F, fast);
-            s.SP(target, Sound.BLOCK_NOTE_PLING, 0.8F, fast);
-            PS.sendTitleSubTitle(caller, "\'" + ChatColor.YELLOW + "[교환 신청]" + "\'", "\'" + TimerBar(ServerTick_Main.Schedule.get(UTC).getCount(), 10) + "\'", (byte) 1, (byte) 0, (byte) 1);
-            PS.sendTitleSubTitle(target, "\'" + ChatColor.YELLOW + "[교환 신청]" + "\'", "\'" + TimerBar(ServerTick_Main.Schedule.get(UTC).getCount(), 10) + "\'", (byte) 1, (byte) 0, (byte) 1);
+            SoundUtil.SP(caller, Sound.BLOCK_NOTE_PLING, 0.8F, fast);
+            SoundUtil.SP(target, Sound.BLOCK_NOTE_PLING, 0.8F, fast);
+            PacketUtil.sendTitleSubTitle(caller, "\'" + ChatColor.YELLOW + "[교환 신청]" + "\'", "\'" + TimerBar(ServerTick_Main.Schedule.get(UTC).getCount(), 10) + "\'", (byte) 1, (byte) 0, (byte) 1);
+            PacketUtil.sendTitleSubTitle(target, "\'" + ChatColor.YELLOW + "[교환 신청]" + "\'", "\'" + TimerBar(ServerTick_Main.Schedule.get(UTC).getCount(), 10) + "\'", (byte) 1, (byte) 0, (byte) 1);
             long tick = ServerTick_Main.Schedule.get(UTC).getTick() + 1500;
             ServerTick_Main.Schedule.get(UTC).setCount(ServerTick_Main.Schedule.get(UTC).getCount() + 1);
             ServerTick_Main.Schedule.get(UTC).setTick(tick);
@@ -128,13 +128,13 @@ public class ServerTask_Player {
             case 0://교환 신청자 - 교환 취소 메시지
             {
                 Receiver.sendMessage(ChatColor.RED + "[교환] : 상대가 교환을 취소하였습니다.");
-                s.SP(Receiver, Sound.ENTITY_VILLAGER_NO, 1.2F, 1.1F);
+                SoundUtil.SP(Receiver, Sound.ENTITY_VILLAGER_NO, 1.2F, 1.1F);
             }
             break;
             case 1://교환 상대 - 교환 취소 메시지
             {
                 Receiver.sendMessage(ChatColor.RED + "[교환] : 교환이 취소되었습니다.");
-                s.SP(Receiver, Sound.ENTITY_VILLAGER_NO, 1.2F, 1.1F);
+                SoundUtil.SP(Receiver, Sound.ENTITY_VILLAGER_NO, 1.2F, 1.1F);
             }
             break;
         }

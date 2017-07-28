@@ -255,17 +255,17 @@ public class Main_BlockBreak implements Listener {
             byte amount = 0;
             byte luckysize = (byte) new Util_Number().RandomNum(0, 100);
             if (luckysize <= 80) {
-                t.sendActionBar(player, ChatColor.YELLOW + "" + ChatColor.BOLD + "럭키 보너스!");
+                PacketUtil.sendActionBar(player, ChatColor.YELLOW + "" + ChatColor.BOLD + "럭키 보너스!");
                 amount = 1;
-                sound.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 0.5F, 0.9F);
+                SoundUtil.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 0.5F, 0.9F);
             } else if (luckysize <= 95) {
-                t.sendActionBar(player, ChatColor.YELLOW + "" + ChatColor.BOLD + "빅 럭키 보너스!");
+                PacketUtil.sendActionBar(player, ChatColor.YELLOW + "" + ChatColor.BOLD + "빅 럭키 보너스!");
                 amount = 5;
-                sound.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 0.7F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 0.7F, 1.0F);
             } else {
-                t.sendActionBar(player, ChatColor.YELLOW + "" + ChatColor.BOLD + "휴즈 럭키 보너스!");
+                PacketUtil.sendActionBar(player, ChatColor.YELLOW + "" + ChatColor.BOLD + "휴즈 럭키 보너스!");
                 amount = 20;
-                sound.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.1F);
+                SoundUtil.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.1F);
             }
 
             int id = block.getTypeId();

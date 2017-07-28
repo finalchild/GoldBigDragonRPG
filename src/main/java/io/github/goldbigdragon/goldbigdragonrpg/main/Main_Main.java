@@ -270,13 +270,13 @@ public class Main_Main extends JavaPlugin implements Listener {
                                                 target.teleport(l);
                                                 for (short count2 = 0; count2 < 210; count2++)
                                                     new ParticleUtil().PL(target.getLocation(), org.bukkit.Effect.SMOKE, new Util_Number().RandomNum(0, 14));
-                                                s.SL(target.getLocation(), Sound.ENTITY_BLAZE_AMBIENT, 0.5F, 1.8F);
+                                                SoundUtil.SL(target.getLocation(), Sound.ENTITY_BLAZE_AMBIENT, 0.5F, 1.8F);
                                                 new io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain().Stop(target);
                                                 YamlController YC = new YamlController(Main_Main.plugin);
                                                 YamlManager Config = YC.getNewConfig("config.yml");
                                                 new Corpse_Gui().Penalty(target, Config.getString("Death.Spawn_Help.SetHealth"), Config.getString("Death.Spawn_Help.PenaltyEXP"), Config.getString("Death.Spawn_Help.PenaltyMoney"));
                                             } else {
-                                                s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                                SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                                 player.sendMessage(ChatColor.RED + "[SYSTEM] : 부활 아이템이 부족하여 부활시킬 수 없습니다!");
                                             }
                                         }
@@ -562,22 +562,22 @@ public class Main_Main extends JavaPlugin implements Listener {
                 case "gui사용":
                 case "gbdenablegui":
                     if (player.isOp()) {
-                        s.SP((Player) talker, org.bukkit.Sound.ENTITY_VILLAGER_YES, 1.0F, 1.8F);
+                        SoundUtil.SP((Player) talker, org.bukkit.Sound.ENTITY_VILLAGER_YES, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.GREEN + "[NPC] : GUI를 활성화 시킬 NPC를 우클릭 하세요!");
                         new UserData_Object().setInt(player, (byte) 4, 114);
                     } else {
                         talker.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
-                        s.SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                        SoundUtil.SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     }
                     return true;
                 case "친구":
                 case "gbdfriend":
-                    s.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
+                    SoundUtil.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
                     new ETC_Gui().FriendsGUI(player, (short) 0);
                     return true;
                 case "스킬":
                 case "gbdskill":
-                    s.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
+                    SoundUtil.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
                     UserSkill_Gui PSKGUI = new UserSkill_Gui();
                     PSKGUI.MainSkillsListGUI(player, (short) 0);
                     return true;
@@ -637,27 +637,27 @@ public class Main_Main extends JavaPlugin implements Listener {
                     return true;
                 case "스텟":
                 case "gbdstat":
-                    s.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
+                    SoundUtil.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
                     new Stats_Gui().StatusGUI((Player) talker);
                     return true;
                 case "옵션":
                 case "gbdoption":
-                    s.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
+                    SoundUtil.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
                     new Option_Gui().optionGUI((Player) talker);
                     return true;
                 case "기타":
                 case "gbdetc":
-                    s.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
+                    SoundUtil.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
                     new ETC_Gui().ETCGUI_Main((Player) talker);
                     return true;
                 case "몬스터":
                 case "gbdmobs":
                     if (talker.isOp()) {
-                        s.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
+                        SoundUtil.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
                         new Monster_Gui().MonsterListGUI(player, 0);
                     } else {
                         talker.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
-                        s.SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                        SoundUtil.SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     }
                     return true;
                 case "워프":
@@ -705,12 +705,12 @@ public class Main_Main extends JavaPlugin implements Listener {
                             }
                         } else {
                             player.sendMessage(ChatColor.RED + "[스킬 설정] : 이 명령어는 스킬 설정시 사용됩니다!");
-                            s.SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                            SoundUtil.SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                             return true;
                         }
                     } else {
                         talker.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
-                        s.SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                        SoundUtil.SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     }
                     return true;
             }

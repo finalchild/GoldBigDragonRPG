@@ -37,14 +37,14 @@ public class Party_Command {
         SoundUtil s = new SoundUtil();
         Player player = (Player) talker;
         if (args.length == 0) {
-            s.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
+            SoundUtil.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
             new Party_Gui().PartyGUI_Main(player);
             return;
         }
         if (args.length <= 1) {
             switch (args[0]) {
                 case "목록": {
-                    s.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
+                    SoundUtil.SP((Player) talker, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
                     new Party_Gui().PartyListGUI(player, (short) 0);
                 }
                 return;
@@ -52,7 +52,7 @@ public class Party_Command {
                     if (Main_ServerOption.PartyJoiner.containsKey(player))
                         Main_ServerOption.Party.get(Main_ServerOption.PartyJoiner.get(player)).QuitParty(player);
                     else {
-                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.RED + "[파티] : 당신은 파티에 참여하지 않은 상태입니다!");
                     }
                 }
@@ -61,7 +61,7 @@ public class Party_Command {
                     if (Main_ServerOption.PartyJoiner.containsKey(player))
                         Main_ServerOption.Party.get(Main_ServerOption.PartyJoiner.get(player)).getPartyInformation();
                     else {
-                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.RED + "[파티] : 당신은 파티에 참여하지 않은 상태입니다!");
                     }
                 }
@@ -70,7 +70,7 @@ public class Party_Command {
                     if (Main_ServerOption.PartyJoiner.containsKey(player))
                         Main_ServerOption.Party.get(Main_ServerOption.PartyJoiner.get(player)).ChangeLock(player);
                     else {
-                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.RED + "[파티] : 당신은 파티에 참여하지 않은 상태입니다!");
                     }
                 }
@@ -96,10 +96,10 @@ public class Party_Command {
                             Main_ServerOption.Party.put(nowSec, new Party_Object(nowSec, player, SB.toString()));
                         } else
                             Main_ServerOption.Party.put(nowSec, new Party_Object(nowSec, player, args[1]));
-                        s.SP(player, Sound.BLOCK_WOODEN_DOOR_OPEN, 1.0F, 1.1F);
+                        SoundUtil.SP(player, Sound.BLOCK_WOODEN_DOOR_OPEN, 1.0F, 1.1F);
                         new Party_Gui().PartyGUI_Main(player);
                     } else {
-                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.RED + "[파티] : 당신은 이미 파티에 참여한 상태입니다!");
                     }
                 }
@@ -126,7 +126,7 @@ public class Party_Command {
                         }
                         Main_ServerOption.Party.get(Main_ServerOption.PartyJoiner.get(player)).ChangeLeader(player, args[1]);
                     } else {
-                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.RED + "[파티] : 당신은 파티에 참여하지 않은 상태입니다!");
                     }
                 }
@@ -142,7 +142,7 @@ public class Party_Command {
                                 Main_ServerOption.Party.get(Main_ServerOption.PartyJoiner.get(player)).ChangeMaxCpacity(player, (byte) Integer.parseInt(args[1]));
                         }
                     } else {
-                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.RED + "[파티] : 당신은 파티에 참여하지 않은 상태입니다!");
                     }
                 }
@@ -155,7 +155,7 @@ public class Party_Command {
                         }
                         Main_ServerOption.Party.get(Main_ServerOption.PartyJoiner.get(player)).KickPartyMember(player, args[1]);
                     } else {
-                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.RED + "[파티] : 당신은 파티에 참여하지 않은 상태입니다!");
                     }
                 }
@@ -174,11 +174,11 @@ public class Party_Command {
                 return true;
             else {
                 player.sendMessage(ChatColor.RED + "[SYSTEM] : 최소 " + ChatColor.YELLOW + "" + Min + ChatColor.RED + ", 최대 " + ChatColor.YELLOW + "" + Max + ChatColor.RED + " 이하의 숫자를 입력하세요!");
-                sound.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             }
         } catch (NumberFormatException e) {
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 정수 형태의 값(숫자)을 입력하세요. (" + ChatColor.YELLOW + "" + Min + ChatColor.RED + " ~ " + ChatColor.YELLOW + "" + Max + ChatColor.RED + ")");
-            sound.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
         }
         return false;
     }

@@ -135,10 +135,10 @@ public class Warp_Gui extends GuiUtil {
         SoundUtil s = new SoundUtil();
         if (slot == 53)//닫기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.0F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.0F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             if (slot == 45) {
                 if (player.isOp())
@@ -166,7 +166,7 @@ public class Warp_Gui extends GuiUtil {
                         new Warp_Main().setTeleportPermission(player, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                         WarpListGUI(player, page);
                     } else if (event.isShiftClick() && event.isRightClick() && player.isOp()) {
-                        s.SP(player, Sound.BLOCK_LAVA_POP, 1.0F, 1.0F);
+                        SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 1.0F, 1.0F);
                         new Warp_Main().RemoveTeleportList(player, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                         WarpListGUI(player, page);
                     }

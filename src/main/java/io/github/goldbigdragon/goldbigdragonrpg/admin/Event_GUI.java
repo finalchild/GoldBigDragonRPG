@@ -134,10 +134,10 @@ public class Event_Gui extends GuiUtil {
 
         if (slot == 44)//닫기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 36)//이전 목록
                 new OPbox_Gui().OPBoxGUI_Main(player, (byte) 1);
             else if (slot == 28)//전체 주기
@@ -180,7 +180,7 @@ public class Event_Gui extends GuiUtil {
                 event.setCancelled(true);
             if (slot == 36)//이전 화면
             {
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 EventGUI_Main(player);
             } else if (slot == 40)//지급 시작
             {
@@ -207,7 +207,7 @@ public class Event_Gui extends GuiUtil {
                         }
                     }
                     if (ItemExit) {
-                        s.SP(a[LuckyGuy], Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.9F);
+                        SoundUtil.SP(a[LuckyGuy], Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.9F);
                         Bukkit.broadcastMessage(ChatColor.YELLOW + "[이벤트] : " + ChatColor.GOLD + "" + ChatColor.BOLD + a[LuckyGuy].getName() + ChatColor.YELLOW + "님께서 랜덤 아이템 지급에 당첨 되셨습니다!");
                         EventGUI_Main(player);
                     }
@@ -227,7 +227,7 @@ public class Event_Gui extends GuiUtil {
                                         a[counter].sendMessage(ChatColor.YELLOW + "[이벤트] : " + item.getItemMeta().getDisplayName() + ChatColor.YELLOW + " 아이템을 " + item.getAmount() + "개 지급 받았습니다!");
                                 } else
                                     a[counter].sendMessage(ChatColor.YELLOW + "[이벤트] : " + IT.SetItemDefaultName((short) item.getTypeId(), item.getData().getData()) + ChatColor.YELLOW + " 아이템을 " + item.getAmount() + "개 지급 받았습니다!");
-                                s.SP(a[counter], Sound.ENTITY_ITEM_PICKUP, 0.7F, 1.8F);
+                                SoundUtil.SP(a[counter], Sound.ENTITY_ITEM_PICKUP, 0.7F, 1.8F);
                             }
                         }
                     }
@@ -245,7 +245,7 @@ public class Event_Gui extends GuiUtil {
                                         a[counter].sendMessage(ChatColor.YELLOW + "[이벤트] : " + item.getItemMeta().getDisplayName() + ChatColor.YELLOW + " 아이템을 " + item.getAmount() + "개 지급 받았습니다!");
                                 } else
                                     a[counter].sendMessage(ChatColor.YELLOW + "[이벤트] : " + IT.SetItemDefaultName((short) item.getTypeId(), item.getData().getData()) + ChatColor.YELLOW + " 아이템을 " + item.getAmount() + "개 지급 받았습니다!");
-                                s.SP(a[counter], Sound.ENTITY_ITEM_PICKUP, 0.7F, 1.8F);
+                                SoundUtil.SP(a[counter], Sound.ENTITY_ITEM_PICKUP, 0.7F, 1.8F);
                             }
                         }
                     }
@@ -254,7 +254,7 @@ public class Event_Gui extends GuiUtil {
                 }
             } else if (slot == 44)//나가기
             {
-                s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+                SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
                 player.closeInventory();
             }
         }

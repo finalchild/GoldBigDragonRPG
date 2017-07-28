@@ -263,8 +263,8 @@ public class Equip_Gui extends GuiUtil {
                 }
             }
             if (emptySlot != -1) {
-                s.SP(player, Sound.BLOCK_STONE_STEP, 1.0F, 1.0F);
-                s.SP(target, Sound.BLOCK_STONE_STEP, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.BLOCK_STONE_STEP, 1.0F, 1.0F);
+                SoundUtil.SP(target, Sound.BLOCK_STONE_STEP, 1.0F, 1.0F);
                 switch (emptySlot) {
                     case 0:
                         player.getOpenInventory().setItem(10, event.getCurrentItem());
@@ -330,7 +330,7 @@ public class Equip_Gui extends GuiUtil {
                 target.getOpenInventory().setItem(53, Icon);
                 event.getInventory().setItem(53, Icon);
             } else {
-                s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                 player.sendMessage(ChatColor.RED + "[교환] : 더 이상 물건을 올릴 수 없습니다!");
             }
         } else if ((event.getAction() == InventoryAction.PICKUP_ALL ||
@@ -375,8 +375,8 @@ public class Equip_Gui extends GuiUtil {
 
                 target.getOpenInventory().setItem(53, Icon);
                 event.getClickedInventory().setItem(53, Icon);
-                s.SP(player, Sound.BLOCK_CLOTH_STEP, 1.0F, 1.0F);
-                s.SP(target, Sound.BLOCK_CLOTH_STEP, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.BLOCK_CLOTH_STEP, 1.0F, 1.0F);
+                SoundUtil.SP(target, Sound.BLOCK_CLOTH_STEP, 1.0F, 1.0F);
             }
         }
     }
@@ -502,8 +502,8 @@ public class Equip_Gui extends GuiUtil {
                         Icon.setItemMeta(Icon_Meta);
                         event.getInventory().setItem(45, Icon);
                         target.getOpenInventory().setItem(53, Icon);
-                        s.SP(player, Sound.ENTITY_VILLAGER_AMBIENT, 1.0F, 1.0F);
-                        s.SP(target, Sound.ENTITY_VILLAGER_AMBIENT, 1.0F, 1.0F);
+                        SoundUtil.SP(player, Sound.ENTITY_VILLAGER_AMBIENT, 1.0F, 1.0F);
+                        SoundUtil.SP(target, Sound.ENTITY_VILLAGER_AMBIENT, 1.0F, 1.0F);
                     }
                 } else {
                     ItemStack Icon = new MaterialData(35, (byte) 14).toItemStack();
@@ -513,8 +513,8 @@ public class Equip_Gui extends GuiUtil {
                     Icon.setItemMeta(Icon_Meta);
                     event.getInventory().setItem(45, Icon);
                     target.getOpenInventory().setItem(53, Icon);
-                    s.SP(player, Sound.ENTITY_VILLAGER_AMBIENT, 1.0F, 1.0F);
-                    s.SP(target, Sound.ENTITY_VILLAGER_AMBIENT, 1.0F, 1.0F);
+                    SoundUtil.SP(player, Sound.ENTITY_VILLAGER_AMBIENT, 1.0F, 1.0F);
+                    SoundUtil.SP(target, Sound.ENTITY_VILLAGER_AMBIENT, 1.0F, 1.0F);
                 }
             }
             return;
@@ -547,12 +547,12 @@ public class Equip_Gui extends GuiUtil {
     public void ExchangeGUI_Close(InventoryCloseEvent event) {
         SoundUtil s = new SoundUtil();
         if (event.getInventory().getItem(0).getTypeId() == 138) {
-            s.SP((Player) event.getPlayer(), Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.8F);
+            SoundUtil.SP((Player) event.getPlayer(), Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.8F);
             event.getPlayer().sendMessage(ChatColor.RED + "[교환] : 교환을 취소하였습니다!");
         } else if (event.getInventory().getItem(0).getTypeId() == 397) {
             Player target = Bukkit.getServer().getPlayer(ChatColor.stripColor(event.getInventory().getItem(8).getItemMeta().getDisplayName()));
             Player player = (Player) event.getPlayer();
-            s.SP((Player) event.getPlayer(), Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.8F);
+            SoundUtil.SP((Player) event.getPlayer(), Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.8F);
             event.getPlayer().sendMessage(ChatColor.RED + "[교환] : 교환이 취소되었습니다!");
             for (byte count = 0; count < 4; count++) {
                 for (byte count2 = 10; count2 < 13; count2++) {
@@ -573,7 +573,7 @@ public class Equip_Gui extends GuiUtil {
             event.getInventory().setItem(0, new ItemStack(166, 1));
             target.closeInventory();
         } else if (event.getInventory().getItem(0).getTypeId() == 2) {
-            s.SP((Player) event.getPlayer(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.8F);
+            SoundUtil.SP((Player) event.getPlayer(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.8F);
             event.getPlayer().sendMessage(ChatColor.GREEN + "[교환] : 교환이 성사되었습니다!");
         }
     }
@@ -603,7 +603,7 @@ public class Equip_Gui extends GuiUtil {
 
         for (short counter = 0; counter < SideFriend.length; counter++) {
             if (SideFriend[counter].toString().equals(player.getName())) {
-                s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                 player.sendMessage(ChatColor.RED + "[친구] : 이미 상대방에게 친구 요청을 한 상태입니다!");
                 return;
             }
@@ -617,10 +617,10 @@ public class Equip_Gui extends GuiUtil {
                 FriendsList.removeKey("Waitting." + target.getName());
                 FriendsList.set("Friends." + target.getName(), AddTime);
                 FriendsList.saveConfig();
-                s.SP(player, Sound.BLOCK_LAVA_POP, 1.0F, 1.2F);
+                SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 1.0F, 1.2F);
                 player.sendMessage(ChatColor.AQUA + "[친구] : " + ChatColor.YELLOW + target.getName() + ChatColor.AQUA + "님께서 친구로 등록되었습니다!");
                 if (target.isOnline()) {
-                    s.SP(target, Sound.BLOCK_LAVA_POP, 1.0F, 1.2F);
+                    SoundUtil.SP(target, Sound.BLOCK_LAVA_POP, 1.0F, 1.2F);
                     target.sendMessage(ChatColor.AQUA + "[친구] : " + ChatColor.YELLOW + player.getName() + ChatColor.AQUA + "님께서 친구로 등록되었습니다!");
                 }
                 return;
@@ -629,7 +629,7 @@ public class Equip_Gui extends GuiUtil {
         Friend = FriendsList.getConfigurationSection("Friends").getKeys(false).toArray();
         for (short counter = 0; counter < Friend.length; counter++) {
             if (Friend[counter].toString().equals(target.getName())) {
-                s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                 player.sendMessage(ChatColor.RED + "[친구] : 이미 친구로 등록된 플레이어 입니다!");
                 return;
             }
@@ -637,10 +637,10 @@ public class Equip_Gui extends GuiUtil {
         SideFriendsList.removeKey("Friends." + player.getName());
         SideFriendsList.set("Waitting." + player.getName(), AddTime);
         SideFriendsList.saveConfig();
-        s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.8F);
+        SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.8F);
         player.sendMessage(ChatColor.YELLOW + "[친구] : 상대방에게 친구 신청을 하였습니다!");
         if (target.isOnline()) {
-            s.SP(target, Sound.ENTITY_WOLF_AMBIENT, 1.0F, 1.0F);
+            SoundUtil.SP(target, Sound.ENTITY_WOLF_AMBIENT, 1.0F, 1.0F);
             target.sendMessage(ChatColor.YELLOW + "[친구] : " + ChatColor.WHITE + player.getName() + ChatColor.YELLOW + "님께서 친구 요청을 하셨습니다!");
             target.sendMessage(ChatColor.GOLD + "/친구" + ChatColor.WHITE + " 명령어를 입력하여 친구 신청을 확인 해 주세요!");
         }
@@ -668,10 +668,10 @@ public class Equip_Gui extends GuiUtil {
                     if (SideFriendsList.contains("Name")) {
                         if (SideFriendsList.contains("Friends." + player.getName())) {
                             if (isJoinMessage) {
-                                s.SP(target, Sound.BLOCK_WOODEN_DOOR_OPEN, 0.5F, 1.0F);
+                                SoundUtil.SP(target, Sound.BLOCK_WOODEN_DOOR_OPEN, 0.5F, 1.0F);
                                 target.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "[접속] " + ChatColor.WHITE + "" + ChatColor.BOLD + player.getName());
                             } else {
-                                s.SP(target, Sound.BLOCK_WOODEN_DOOR_CLOSE, 0.5F, 1.0F);
+                                SoundUtil.SP(target, Sound.BLOCK_WOODEN_DOOR_CLOSE, 0.5F, 1.0F);
                                 target.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[퇴장] " + ChatColor.GRAY + "" + ChatColor.BOLD + player.getName());
                             }
                             break;
@@ -684,13 +684,13 @@ public class Equip_Gui extends GuiUtil {
     public void AddExchangeTarget(Player player, Player target) {
         SoundUtil s = new SoundUtil();
         if (ServerTick_Main.PlayerTaskList.containsKey(target.getName())) {
-            s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
             player.sendMessage(ChatColor.RED + "[교환] : 해당 플레이어는 현재 다른 요청을 처리하고 있습니다.");
             player.sendMessage(ChatColor.GRAY + "(잠시 후 다시 시도 해 보세요.)");
             return;
         }
         if (ServerTick_Main.PlayerTaskList.containsKey(player.getName())) {
-            s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
             player.sendMessage(ChatColor.RED + "[교환] : 당신은 먼저 요청받은 일을 처리해야 합니다.");
             return;
         }
@@ -704,7 +704,7 @@ public class Equip_Gui extends GuiUtil {
         STSO.setString((byte) 0, player.getName());//교환 요청 한 플레이어 이름 저장(플레이어가 오프라인인지 확인해야 하므로)
         STSO.setString((byte) 1, target.getName());//교환 요청 받은 플레이어 이름 저장(플레이어가 오프라인인지 확인해야 하므로)
         ServerTick_Main.Schedule.put(UTC, STSO);
-        s.SP(player, Sound.BLOCK_NOTE_PLING, 1.0F, 1.0F);
+        SoundUtil.SP(player, Sound.BLOCK_NOTE_PLING, 1.0F, 1.0F);
         player.sendMessage(ChatColor.YELLOW + "[교환] : 상대방에게 교환 신청을 하였습니다!");
         target.sendMessage(ChatColor.YELLOW + "[교환] : " + ChatColor.WHITE + ChatColor.BOLD + player.getName() + ChatColor.GREEN + " 님께서 교환 요청을 하였습니다!");
         target.sendMessage(ChatColor.GOLD + "/수락" + ChatColor.WHITE + " 상대의 요청에 수락합니다.");

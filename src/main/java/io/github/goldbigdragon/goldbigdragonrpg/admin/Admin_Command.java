@@ -51,23 +51,23 @@ public class Admin_Command {
                 player.sendMessage("테스트2");
             } else if (string.compareTo("오피박스") == 0 || string.compareTo("opbox") == 0) {
                 new UserData_Object().clearAll(player);
-                s.SP(player, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
+                SoundUtil.SP(player, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
                 new OPbox_Gui().OPBoxGUI_Main(player, (byte) 1);
             } else if (string.compareTo("타입추가") == 0 || string.compareTo("gbdaddtype") == 0) {
                 if (args.length != 1) {
                     player.sendMessage(ChatColor.RED + "[SYSTEM] : /타입추가 [새로운 아이템 타입]");
-                    s.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.7F);
+                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.7F);
                 } else {
                     YamlManager Target = YC.getNewConfig("Item/CustomType.yml");
                     Target.set("[" + args[0] + "]", 0);
                     Target.saveConfig();
                     player.sendMessage(ChatColor.GREEN + "[SYSTEM] : 새로운 아이템 타입 추가 완료!  " + ChatColor.WHITE + args[0]);
-                    s.SP(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.7F);
+                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.7F);
                 }
             } else if (string.compareTo("엔티티제거") == 0 || string.compareTo("gbdremoveentity") == 0) {
                 if (args.length != 1 || Integer.parseInt(args[0]) > 10000) {
                     player.sendMessage(ChatColor.RED + "[SYSTEM] : /엔티티제거 [1~10000]");
-                    s.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     return;
                 }
                 List<Entity> entities = player.getNearbyEntities(Integer.parseInt(args[0]), Integer.parseInt(args[0]), Integer.parseInt(args[0]));
@@ -82,7 +82,7 @@ public class Admin_Command {
             } else if (string.compareTo("아이템제거") == 0 || string.compareTo("gbdremoveitem") == 0) {
                 if (args.length != 1 || Integer.parseInt(args[0]) > 10000) {
                     player.sendMessage(ChatColor.RED + "[SYSTEM] : /아이템제거 [1~10000]");
-                    s.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     return;
                 }
                 List<Entity> entities = player.getNearbyEntities(Integer.parseInt(args[0]), Integer.parseInt(args[0]), Integer.parseInt(args[0]));
@@ -97,7 +97,7 @@ public class Admin_Command {
             } else if (string.compareTo("강제철거") == 0 || string.compareTo("gbdforceremove") == 0) {
                 if (args.length != 1 || Integer.parseInt(args[0]) > 10000) {
                     player.sendMessage(ChatColor.RED + "[SYSTEM] : /강제철거 [1~10000]");
-                    s.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     return;
                 }
                 List<Entity> entities = player.getNearbyEntities(Integer.parseInt(args[0]), Integer.parseInt(args[0]), Integer.parseInt(args[0]));
@@ -122,7 +122,7 @@ public class Admin_Command {
                             new Util_Player().giveItemForce(target, Icon);
                         else {
                             player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 플레이어는 접속중이 아닙니다!");
-                            s.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                            SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                         }
                     }
                 } else
@@ -136,23 +136,23 @@ public class Admin_Command {
                             EXP = Integer.parseInt(args[1]);
                         } catch (NumberFormatException e) {
                             player.sendMessage(ChatColor.RED + "[SYSTEM] : 정수 형태의 값(숫자)을 입력하세요!");
-                            s.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                            SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                             return;
                         }
                         Main_ServerOption.PlayerList.get(target.getUniqueId().toString()).addStat_MoneyAndEXP(0, EXP, true);
                         player.sendMessage(ChatColor.GREEN + "[SYSTEM] : " + args[0] + "님에게 경험치 " + EXP + "을 지급하였습니다!");
                     } else {
                         player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 플레이어는 접속중이 아닙니다!");
-                        s.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                        SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     }
                 } else {
                     player.sendMessage(ChatColor.RED + "[SYSTEM] : /경주 [닉네임] [경험치]");
-                    s.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                 }
             }
         } else {
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
-            s.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
         }
     }
 }

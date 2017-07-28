@@ -233,10 +233,10 @@ public class Job_Gui extends GuiUtil {
 
         if (slot == 26)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 18)//이전 목록
                 new OPbox_Gui().OPBoxGUI_Main(player, (byte) 2);
             else if (slot == 12)//마비노기 타입 카테고리 목록
@@ -252,10 +252,10 @@ public class Job_Gui extends GuiUtil {
         int slot = event.getSlot();
 
         if (slot == 53) {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
                 ChooseSystemGUI(player);
             else if (slot == 48)//이전 페이지
@@ -284,10 +284,10 @@ public class Job_Gui extends GuiUtil {
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager Config = YC.getNewConfig("config.yml");
                     if (Config.getString("Server.DefaultJob").equalsIgnoreCase(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()))) {
-                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.RED + "[직업] : 서버 기본 직업은 삭제할 수 없습니다!");
                     } else {
-                        s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
+                        SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                         YamlManager SkillList = YC.getNewConfig("Skill/JobList.yml");
                         SkillList.removeKey("MapleStory." + ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                         SkillList.saveConfig();
@@ -308,10 +308,10 @@ public class Job_Gui extends GuiUtil {
 
         if (slot == 26)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             String JobName = ChatColor.stripColor(event.getInventory().getItem(26).getItemMeta().getLore().get(1));
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager SkillList = YC.getNewConfig("Skill/JobList.yml");
@@ -322,7 +322,7 @@ public class Job_Gui extends GuiUtil {
             {
                 short NowJobLV = (short) SkillList.getConfigurationSection("MapleStory." + JobName).getKeys(false).size();
                 if (NowJobLV == 18) {
-                    s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                    SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                     player.sendMessage(ChatColor.RED + "[직업] : 최대 승급은 18차 까지 입니다!");
                 } else {
                     player.closeInventory();
@@ -351,14 +351,14 @@ public class Job_Gui extends GuiUtil {
                     u.setString(player, (byte) 3, JobNick);
 
                 } else if (!event.isShiftClick() && event.isRightClick()) {
-                    s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                     AddedSkillsListGUI(player, 0, JobName, JobNick);
                 } else if (event.isShiftClick() && event.isRightClick()) {
                     if (event.getSlot() == 0) {
-                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.RED + "[직업] : 기본 클래스는 삭제할 수 없습니다!");
                     } else {
-                        s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
+                        SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                         SkillList.removeKey("MapleStory." + JobName + "." + ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                         SkillList.saveConfig();
                         MapleStory_JobSetting(player, JobName);
@@ -379,10 +379,10 @@ public class Job_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             String JobName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
             String JobNick = ChatColor.stripColor(event.getInventory().getItem(45).getItemMeta().getLore().get(1));
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
@@ -397,7 +397,7 @@ public class Job_Gui extends GuiUtil {
                 if (event.isShiftClick() && event.isRightClick()) {
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager JobList = YC.getNewConfig("Skill/JobList.yml");
-                    s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
+                    SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                     JobList.removeKey("MapleStory." + JobName + "." + JobNick + ".Skill." + ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                     JobList.saveConfig();
                     AddedSkillsListGUI(player, page, JobName, JobNick);
@@ -417,10 +417,10 @@ public class Job_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             if (slot == 45)//이전 목록
                 ChooseSystemGUI(player);
@@ -443,7 +443,7 @@ public class Job_Gui extends GuiUtil {
                     } else
                         Mabinogi_SkillSetting(player, (short) 0, CategoriName);
                 } else if (event.isShiftClick() && event.isRightClick()) {
-                    s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
+                    SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager SkillList = YC.getNewConfig("Skill/JobList.yml");
                     Object[] AddedSkillList = SkillList.getConfigurationSection("Mabinogi.Added").getKeys(false).toArray();
@@ -471,10 +471,10 @@ public class Job_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             String CategoriName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
             int page = Integer.parseInt(event.getInventory().getTitle().split(" : ")[1]) - 1;
             if (slot == 45)//이전 목록
@@ -502,7 +502,7 @@ public class Job_Gui extends GuiUtil {
                         new Job_Main().AllPlayerFixAllSkillAndJobYML();
                     }
                 } else if (event.isShiftClick() && event.isRightClick()) {
-                    s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
+                    SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                     SkillList.removeKey("Mabinogi.Added." + SkillName);
                     SkillList.removeKey("Mabinogi." + CategoriName + "." + SkillName);
                     SkillList.saveConfig();

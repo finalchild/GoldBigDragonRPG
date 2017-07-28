@@ -45,11 +45,11 @@ public class Gamble_Chat {
             case "NP"://New Package
             {
                 if (GambleYML.contains(message)) {
-                    s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                    SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                     player.sendMessage(ChatColor.RED + "[도박] : 해당 이름의 상품은 이미 존재합니다!");
                     return;
                 }
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 GambleYML.set(message + ".Grade", ChatColor.WHITE + "[일반]");
                 GambleYML.createSection(message + ".Present");
                 GambleYML.saveConfig();

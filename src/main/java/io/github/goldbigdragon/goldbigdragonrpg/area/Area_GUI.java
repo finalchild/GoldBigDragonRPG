@@ -799,10 +799,10 @@ public class Area_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             String AreaName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
 
@@ -818,14 +818,14 @@ public class Area_Gui extends GuiUtil {
                 Main_Interact IT = new Main_Interact();
                 player.sendMessage(ChatColor.DARK_AQUA + "[영역] : " + IT.SetItemDefaultName((short) Config.getInt("Server.AreaSettingWand"), (byte) 0) + ChatColor.DARK_AQUA + " 아이템으로 구역을 설정을 한 뒤,");
                 player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + " /영역 <영역이름> 생성 " + ChatColor.DARK_AQUA + "명령어를 입력해 주세요!");
-                s.SP((Player) player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                SoundUtil.SP((Player) player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             } else if (slot == 50)//다음 페이지
                 AreaListGUI(player, (short) (page + 1));
             else {
                 if (event.isLeftClick())
                     AreaSettingGUI(player, AreaName);
                 else if (event.isShiftClick() && event.isRightClick()) {
-                    s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
+                    SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager AreaConfig = YC.getNewConfig("Area/AreaList.yml");
                     for (int count = 0; count < Main_ServerOption.AreaList.get(AreaConfig.getString(AreaName + ".World")).size(); count++)
@@ -846,10 +846,10 @@ public class Area_Gui extends GuiUtil {
 
         if (slot == 44)//창닫기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager AreaConfig = YC.getNewConfig("Area/AreaList.yml");
             String AreaName = ChatColor.stripColor(event.getInventory().getItem(44).getItemMeta().getLore().get(1));
@@ -918,7 +918,7 @@ public class Area_Gui extends GuiUtil {
                 player.sendMessage(ChatColor.GRAY + "(최소 0 ~ 최대 100)");
             } else if (slot == 23)//메시지 변경
             {
-                s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+                SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
                 player.sendMessage(ChatColor.GOLD + "/영역 " + AreaName + " 이름 <문자열>" + ChatColor.YELLOW + "\n - " + AreaName + " 구역의 알림 메시지에 보일 이름을 정합니다.");
                 player.sendMessage(ChatColor.GOLD + "/영역 " + AreaName + " 설명 <문자열>" + ChatColor.YELLOW + "\n - " + AreaName + " 구역의 알림 메시지에 보일 부가 설명을 정합니다.");
                 player.sendMessage(ChatColor.GOLD + "%player%" + ChatColor.WHITE + " - 플레이어 지칭하기 -");
@@ -943,7 +943,7 @@ public class Area_Gui extends GuiUtil {
                 if (new io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain().SoundList(player, true))
                     AreaMusicSettingGUI(player, 0, AreaName);
                 else
-                    s.SP(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.9F);
+                    SoundUtil.SP(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.9F);
             } else if (slot == 28)//블록 리젠
             {
                 if (AreaConfig.getInt(AreaName + ".RegenBlock") == 0) {
@@ -992,10 +992,10 @@ public class Area_Gui extends GuiUtil {
 
         if (slot == 53)//창닫기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             String AreaName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             if (slot == 45)//이전 화면
@@ -1007,7 +1007,7 @@ public class Area_Gui extends GuiUtil {
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager MonsterConfig = YC.getNewConfig("Monster/MonsterList.yml");
                 if (MonsterConfig.getConfigurationSection("").getKeys(false).size() == 0) {
-                    s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                    SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                     player.sendMessage(ChatColor.RED + "[영역] : 현재 등록된 커스텀 몬스터가 존재하지 않습니다!");
                     player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "/몬스터 <이름> 생성 " + ChatColor.YELLOW + "해당 이름을 가진 몬스터를 생성합니다.");
                 } else
@@ -1019,7 +1019,7 @@ public class Area_Gui extends GuiUtil {
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager AreaConfig = YC.getNewConfig("Area/AreaList.yml");
                     String MonsterName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
-                    s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
+                    SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                     AreaConfig.removeKey(AreaName + ".Monster." + MonsterName);
                     AreaConfig.saveConfig();
                     AreaMonsterSettingGUI(player, page, AreaName);
@@ -1037,11 +1037,11 @@ public class Area_Gui extends GuiUtil {
             event.setCancelled(true);
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else if (slot == 45)//이전 목록
         {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             AreaSettingGUI(player, AreaName);
         }
     }
@@ -1053,10 +1053,10 @@ public class Area_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             String AreaName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             if (slot == 45)//이전 목록
@@ -1079,7 +1079,7 @@ public class Area_Gui extends GuiUtil {
                 if (!event.isShiftClick() && event.isLeftClick())
                     AreaBlockItemSettingGUI(player, AreaName, BlockName);
                 else if (event.isShiftClick() && event.isRightClick()) {
-                    s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
+                    SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager AreaConfig = YC.getNewConfig("Area/AreaList.yml");
                     AreaConfig.removeKey(AreaName + ".Mining." + BlockName);
@@ -1101,11 +1101,11 @@ public class Area_Gui extends GuiUtil {
                 event.setCancelled(false);
             else if (slot == 53)//나가기
             {
-                s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+                SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
                 player.closeInventory();
             } else if (slot == 45)//이전 목록
             {
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 AreaBlockSettingGUI(player, (short) 0, AreaName);
             }
         }
@@ -1118,10 +1118,10 @@ public class Area_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             int page = Integer.parseInt(event.getInventory().getTitle().split(" : ")[1]) - 1;
             String AreaName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
             if (slot == 45)//이전 목록
@@ -1150,7 +1150,7 @@ public class Area_Gui extends GuiUtil {
             else if (event.isRightClick() && event.isShiftClick()) {
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager AreaConfig = YC.getNewConfig("Area/AreaList.yml");
-                s.SP(player, Sound.BLOCK_LAVA_POP, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 1.0F, 1.0F);
                 AreaConfig.removeKey(AreaName + ".MonsterSpawnRule." + ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                 AreaConfig.saveConfig();
                 AreaMonsterSpawnSettingGUI(player, (short) page, AreaName);
@@ -1168,10 +1168,10 @@ public class Area_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
                 AreaMonsterSettingGUI(player, (short) 0, AreaName);
             else if (slot == 45)//이전 페이지
@@ -1180,7 +1180,7 @@ public class Area_Gui extends GuiUtil {
                 AreaAddMonsterListGUI(player, (short) (page + 1), AreaName);
             else {
                 String MobName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
-                s.SP(player, Sound.ENTITY_WOLF_AMBIENT, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_WOLF_AMBIENT, 0.8F, 1.0F);
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager AreaConfig = YC.getNewConfig("Area/AreaList.yml");
                 AreaConfig.createSection(AreaName + ".Monster." + MobName);
@@ -1200,7 +1200,7 @@ public class Area_Gui extends GuiUtil {
         short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
         if (slot == 49)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             AreaMonsterSpawnSettingGUI(player, (short) 0, AreaName);
             new Area_Main().AreaMonsterSpawnAdd(AreaName, RuleCounter);
         } else if (slot == 48)//이전 페이지
@@ -1209,7 +1209,7 @@ public class Area_Gui extends GuiUtil {
             AreaAddMonsterListGUI(player, (short) (page + 1), AreaName);
         else {
             String MobName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
-            s.SP(player, Sound.BLOCK_ANVIL_LAND, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.BLOCK_ANVIL_LAND, 0.8F, 1.0F);
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager AreaConfig = YC.getNewConfig("Area/AreaList.yml");
             AreaConfig.set(AreaName + ".MonsterSpawnRule." + RuleCounter + ".Monster", MobName);
@@ -1231,10 +1231,10 @@ public class Area_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else if (AreaName.compareTo("DeathBGM¡") == 0) {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)
                 new OPbox_Gui().OPBoxGUI_Death(player);
             else if (slot == 48)
@@ -1249,7 +1249,7 @@ public class Area_Gui extends GuiUtil {
                 new OPbox_Gui().OPBoxGUI_Death(player);
             }
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
                 AreaSettingGUI(player, AreaName);
             else if (slot == 48)//이전 페이지

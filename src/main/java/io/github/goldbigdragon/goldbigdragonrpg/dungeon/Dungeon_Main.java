@@ -210,7 +210,7 @@ public class Dungeon_Main {
             SoundUtil s = new SoundUtil();
             for (int count = 0; count < MobList.length; count++) {
                 BossLoc.add(0, 0.2, 0);
-                s.SL(BossLoc, Sound.ENTITY_WITHER_DEATH, 1.3F, 1.8F);
+                SoundUtil.SL(BossLoc, Sound.ENTITY_WITHER_DEATH, 1.3F, 1.8F);
                 MC.SpawnMob(BossLoc, MonsterConfig.getString("Boss." + MobList[count].toString()), (byte) 4, XYZloc, Group, true);
             }
         }
@@ -358,11 +358,11 @@ public class Dungeon_Main {
                 SoundUtil s = new SoundUtil();
                 loc.add(0, 1, 0);
                 for (int count = 0; count < 7; count++) {
-                    s.SL(loc, Sound.ENTITY_WITHER_DEATH, 1.3F, 1.8F);
+                    SoundUtil.SL(loc, Sound.ENTITY_WITHER_DEATH, 1.3F, 1.8F);
                     MC.SpawnMob(loc, MonsterConfig.getString(ListName + "." + Mob), (byte) 1, XYZLoc, Group, true);
                     loc.add(0, 0.2, 0);
                 }
-                s.SL(loc, Sound.ENTITY_WITHER_DEATH, 1.3F, 1.8F);
+                SoundUtil.SL(loc, Sound.ENTITY_WITHER_DEATH, 1.3F, 1.8F);
                 MC.SpawnMob(loc, MonsterConfig.getString(ListName + "." + Mob), (byte) 3, XYZLoc, Group, true);
             } else {
                 Location blockLoc = new Location(loc.getWorld(), loc.getX(), loc.getY() + 1, loc.getZ());
@@ -504,7 +504,7 @@ public class Dungeon_Main {
             }
         } else if (block.getType().getId() == 54) //미믹 방 일반 상자
         {
-            s.SL(block.getLocation().add(0, 2, 0), Sound.BLOCK_CHEST_OPEN, 0.5F, 1.8F);
+            SoundUtil.SL(block.getLocation().add(0, 2, 0), Sound.BLOCK_CHEST_OPEN, 0.5F, 1.8F);
             event.setCancelled(true);
             block.setType(Material.AIR);
             ItemStack item = new ItemStack(292);
@@ -513,7 +513,7 @@ public class Dungeon_Main {
             im.setLore(Arrays.asList("", ChatColor.WHITE + "던전 룸을 열 수 있는", ChatColor.WHITE + "낡은 열쇠이다."));
             im.addEnchant(Enchantment.DURABILITY, 6000, true);
             item.setItemMeta(im);
-            s.SL(block.getLocation().add(0, 2, 0), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.5F, 1.8F);
+            SoundUtil.SL(block.getLocation().add(0, 2, 0), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.5F, 1.8F);
             new Main_ItemDrop().CustomItemDrop(block.getLocation().add(0.5, 1, 0.5), item);
             byte howMuch = (byte) new Util_Number().RandomNum(0, 4);
             for (byte count = 0; count < howMuch; count++)
@@ -533,7 +533,7 @@ public class Dungeon_Main {
             item.setItemMeta(im);
             if (new Util_Player().deleteItem(player, item, 1)) {
                 event.getClickedBlock().setType(Material.AIR, true);
-                s.SL(event.getClickedBlock().getLocation(), Sound.BLOCK_CHEST_OPEN, 1.0F, 1.0F);
+                SoundUtil.SL(event.getClickedBlock().getLocation(), Sound.BLOCK_CHEST_OPEN, 1.0F, 1.0F);
                 Sign SignBlock = (Sign) SB.getState();
                 String DungeonName = SignBlock.getLine(2);
                 YamlController YC = new YamlController(Main_Main.plugin);
@@ -595,7 +595,7 @@ public class Dungeon_Main {
                 if (!treasureGet)
                     new PacketUtil().sendActionBar(player, ChatColor.RED + "" + ChatColor.BOLD + "[꽝! 다음 기회에...]");
             } else {
-                s.SP(player, Sound.ENTITY_ZOMBIE_ATTACK_IRON_DOOR, 1.0F, 0.5F);
+                SoundUtil.SP(player, Sound.ENTITY_ZOMBIE_ATTACK_IRON_DOOR, 1.0F, 0.5F);
                 new PacketUtil().sendActionBar(player, ChatColor.WHITE + "" + ChatColor.BOLD + "[상자에 맞는 열쇠가 없습니다!]");
             }
         }
@@ -673,7 +673,7 @@ public class Dungeon_Main {
                 Mob.add(MobList[new Util_Number().RandomNum(0, MobList.length - 1)].toString());
             if (MobList.length > 0) {
                 if (GridImage.compareTo("◇") == 0) {
-                    s.SL(loc, Sound.BLOCK_CHEST_OPEN, 1.3F, 1.8F);
+                    SoundUtil.SL(loc, Sound.BLOCK_CHEST_OPEN, 1.3F, 1.8F);
                     MC.SpawnMob(loc, MonsterConfig.getString(ListName + "." + Mob.get(0)), (byte) -1, null, (char) -1, false);
                 } else {
                     randomLevel = (byte) new Util_Number().RandomNum(0, 5);
@@ -745,14 +745,14 @@ public class Dungeon_Main {
                     loc.add(0, 1, 0);
                     if (RoomChallenge <= 2) {
                         for (int count = 0; count < 8; count++) {
-                            s.SL(loc, Sound.ENTITY_WITHER_DEATH, 1.3F, 1.8F);
+                            SoundUtil.SL(loc, Sound.ENTITY_WITHER_DEATH, 1.3F, 1.8F);
                             loc.add(0, 0.2, 0);
                             MC.SpawnMob(loc, MonsterConfig.getString(ListName + "." + Mob.get(count)), (byte) 2, XYZLoc, Group, true);
                         }
                     } else {
                         for (int count = 0; count < 7; count++) {
                             loc.add(0, 0.2, 0);
-                            s.SL(loc, Sound.ENTITY_WITHER_DEATH, 1.3F, 1.8F);
+                            SoundUtil.SL(loc, Sound.ENTITY_WITHER_DEATH, 1.3F, 1.8F);
                             MC.SpawnMob(loc, MonsterConfig.getString(ListName + "." + Mob.get(count)), (byte) 1, XYZLoc, Group, true);
                         }
                         MC.SpawnMob(loc, MonsterConfig.getString(ListName + "." + Mob.get(7)), (byte) 3, XYZLoc, Group, true);
@@ -804,7 +804,7 @@ public class Dungeon_Main {
             item.setItemMeta(im);
             new Main_ItemDrop().CustomItemDrop(blockLoc, item);
         }
-        s.SL(block.getLocation(), org.bukkit.Sound.BLOCK_CHEST_OPEN, 1.0F, 0.5F);
+        SoundUtil.SL(block.getLocation(), org.bukkit.Sound.BLOCK_CHEST_OPEN, 1.0F, 0.5F);
         block.setTypeIdAndData(0, (byte) 0, true);
         return true;
     }
@@ -836,12 +836,12 @@ public class Dungeon_Main {
                     break;
             }
             for (int counter = 0; counter < 50; counter++)
-                p.PL(block.getLocation(), org.bukkit.Effect.MAGIC_CRIT, 0);
-            s.SL(block.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.5F);
+                ParticleUtil.PL(block.getLocation(), org.bukkit.Effect.MAGIC_CRIT, 0);
+            SoundUtil.SL(block.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.5F);
         } else if (block.getData() == 0 || block.getData() == 3 || block.getData() == 5 || block.getData() == 6 || block.getData() == 7) {
             for (int counter = 0; counter < 31; counter++)
-                p.PL(block.getLocation(), org.bukkit.Effect.CRIT, 0);
-            s.SL(block.getLocation(), org.bukkit.Sound.ENTITY_GENERIC_HURT, 0.5F, 0.5F);
+                ParticleUtil.PL(block.getLocation(), org.bukkit.Effect.CRIT, 0);
+            SoundUtil.SL(block.getLocation(), org.bukkit.Sound.ENTITY_GENERIC_HURT, 0.5F, 0.5F);
             return;
         }
         block = new Location(block.getWorld(), block.getX(), block.getY() - 2, block.getZ()).getBlock();
@@ -977,7 +977,7 @@ public class Dungeon_Main {
                 loc.add(0, 1, 0);
                 for (int count = 0; count < 4; count++) {
                     loc.add(new Util_Number().RandomNum(-2, 2), 0.1 * count, new Util_Number().RandomNum(-2, 2));
-                    s.SL(loc, Sound.ENTITY_WITHER_DEATH, 1.3F, 1.8F);
+                    SoundUtil.SL(loc, Sound.ENTITY_WITHER_DEATH, 1.3F, 1.8F);
                     MC.SpawnMob(loc, MonsterConfig.getString(ListName + "." + MobList[new Util_Number().RandomNum(0, MobList.length - 1)].toString()), (byte) -1, null, (char) -1, false);
                 }
             }

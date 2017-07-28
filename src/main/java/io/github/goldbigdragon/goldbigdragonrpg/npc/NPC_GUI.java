@@ -1732,10 +1732,10 @@ public class NPC_Gui extends GuiUtil {
         SoundUtil s = new SoundUtil();
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
             if (slot == 48)//이전 페이지
                 QuestAddGUI(player, (short) (Integer.parseInt(event.getInventory().getTitle().split(" : ")[1]) - 2));
             else if (slot == 50)//다음 페이지
@@ -1762,10 +1762,10 @@ public class NPC_Gui extends GuiUtil {
                 }
                 if (isExit) {
                     NPCscript.removeKey("Quest." + (a.length - 1));
-                    s.SP(player, Sound.BLOCK_LAVA_POP, 1.0F, 0.8F);
+                    SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 1.0F, 0.8F);
                     player.sendMessage(ChatColor.RED + "[SYSTEM] : 퀘스트 제거 완료!");
                 } else {
-                    s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
+                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
                     player.sendMessage(ChatColor.GREEN + "[SYSTEM] : 퀘스트 등록 완료!");
                     NPCscript.set("Quest." + a.length, QuestName);
                 }
@@ -1782,10 +1782,10 @@ public class NPC_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
             if (slot == 48)//이전 페이지
                 QuestListGUI(player, (short) (Integer.parseInt(event.getInventory().getTitle().split(" : ")[1]) - 2));
             else if (slot == 50)//다음 페이지
@@ -1798,13 +1798,13 @@ public class NPC_Gui extends GuiUtil {
                 YamlManager Config = YC.getNewConfig("config.yml");
                 for (byte counter = 0; counter < event.getCurrentItem().getItemMeta().getLore().size(); counter++) {
                     if (event.getCurrentItem().getItemMeta().getLore().get(counter).contains("대기")) {
-                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
+                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
                         player.sendMessage(ChatColor.RED + "[퀘스트] : 오늘은 더이상 퀘스트를 진행할 수 없습니다!");
                         return;
                     }
                 }
                 if (QuestList.getInt(QuestName + ".Server.Limit") == -1) {
-                    s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
+                    SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
                     player.sendMessage(ChatColor.RED + "[퀘스트] : 더이상 이 퀘스트는 수행 할 수 없습니다!");
                 } else {
                     int NeedLevel = QuestList.getInt(QuestName + ".Need.LV");
@@ -1840,7 +1840,7 @@ public class NPC_Gui extends GuiUtil {
                                         QuestList.saveConfig();
                                     }
                                     player.closeInventory();
-                                    s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
+                                    SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
                                     String message = Config.getString("Quest.AcceptMessage").replace("%QuestName%", QuestName);
                                     player.sendMessage(message);
 
@@ -1851,19 +1851,19 @@ public class NPC_Gui extends GuiUtil {
 
                                     new Quest_Gui().QuestRouter(player, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                                 } else {
-                                    s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
+                                    SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
                                     player.sendMessage(ChatColor.RED + "[퀘스트] : 이전 퀘스트를 진행하지 않아 퀘스트를 수행할 수 없습니다!");
                                 }
                             } else {
-                                s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
+                                SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
                                 player.sendMessage(ChatColor.RED + "[퀘스트] : 호감도가 부족하여 퀘스트를 수행할 수 없습니다!");
                             }
                         } else {
-                            s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
+                            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
                             player.sendMessage(ChatColor.RED + "[퀘스트] : 스텟이 부족하여 퀘스트를 수행할 수 없습니다!");
                         }
                     } else {
-                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
+                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
                         player.sendMessage(ChatColor.RED + "[퀘스트] : 수행 가능한 레벨이 아닙니다!");
                     }
                 }
@@ -1878,11 +1878,11 @@ public class NPC_Gui extends GuiUtil {
 
         if (slot == 26)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else if (slot == 8 && player.isOp())//GUI 비 활성화
         {
-            s.SP(player, Sound.ENTITY_VILLAGER_HURT, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_VILLAGER_HURT, 0.8F, 1.0F);
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager DNPC = YC.getNewConfig("NPC/DistrictNPC.yml");
 
@@ -1894,7 +1894,7 @@ public class NPC_Gui extends GuiUtil {
             player.sendMessage(ChatColor.GOLD + "/gui사용" + ChatColor.WHITE + " 명령어 입력 후, NPC 클릭시, 다시 활성화 됩니다.");
         } else if (slot == 4)//직업 아이콘
         {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             String Case = (ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
             if (Case.compareTo("대장장이") == 0 || Case.compareTo("룬 세공사") == 0 || Case.compareTo("주술사") == 0 ||
                     Case.compareTo("힐러") == 0 || Case.compareTo("전직 교관") == 0 || Case.compareTo("공간 이동술사") == 0 ||
@@ -1909,7 +1909,7 @@ public class NPC_Gui extends GuiUtil {
                     YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
                     Util_Number n = new Util_Number();
 
-                    s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                     if (Case.compareTo("룬 세공사") == 0)
                         RuneEquipGUI(player, NPCname);
                     else if (Case.compareTo("개조 장인") == 0)
@@ -1925,12 +1925,12 @@ public class NPC_Gui extends GuiUtil {
                         YamlManager Config = YC.getNewConfig("config.yml");
 
                         if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getETC_BuffCoolTime() + (Config.getInt("NPC.Shaman.BuffCoolTime") * 1000) > ETC.getNowUTC()) {
-                            s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                             player.sendMessage(ChatColor.RED + "[SYSTEM] : " + ChatColor.WHITE + ((Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getETC_BuffCoolTime() + (Config.getInt("NPC.Shaman.BuffCoolTime") * 1000) - ETC.getNowUTC()) / 1000) + ChatColor.RED + "초 후 이용 가능합니다!");
                             return;
                         }
                         if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money() < NPCscript.getInt("Job.Deal")) {
-                            s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                             player.sendMessage(ChatColor.RED + "[SYSTEM] : 복채 비용이 부족합니다!");
                             return;
                         } else {
@@ -1939,91 +1939,91 @@ public class NPC_Gui extends GuiUtil {
                             if (n.RandomNum(0, 100) <= NPCscript.getInt("Job.GoodRate")) {
                                 switch (n.RandomNum(1, 8)) {
                                     case 1:
-                                        s.SP(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.0F);
+                                        SoundUtil.SP(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.0F);
                                         player.sendMessage(ChatColor.WHITE + "" + ChatColor.BOLD + "[居安思危] 준비된 자의 견고함은 몸을 단단하게 할지니...");
-                                        P.givePotionEffect(player, PotionEffectType.DAMAGE_RESISTANCE, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
+                                        EffectUtil.givePotionEffect(player, PotionEffectType.DAMAGE_RESISTANCE, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
                                         break;
                                     case 2:
-                                        s.SP(player, Sound.BLOCK_GRAVEL_HIT, 1.5F, 1.0F);
+                                        SoundUtil.SP(player, Sound.BLOCK_GRAVEL_HIT, 1.5F, 1.0F);
                                         player.sendMessage(ChatColor.WHITE + "" + ChatColor.BOLD + "[能小能大] 장인의 손은 작은 일과 큰 일을 가리지 않을지니...");
-                                        P.givePotionEffect(player, PotionEffectType.FAST_DIGGING, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
+                                        EffectUtil.givePotionEffect(player, PotionEffectType.FAST_DIGGING, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
                                         break;
                                     case 3:
-                                        s.SP(player, Sound.BLOCK_FIRE_EXTINGUISH, 1.5F, 1.0F);
+                                        SoundUtil.SP(player, Sound.BLOCK_FIRE_EXTINGUISH, 1.5F, 1.0F);
                                         player.sendMessage(ChatColor.WHITE + "" + ChatColor.BOLD + "[明若觀火] 불을 꿰뚫어 본다면 더이상 불이 두렵지 않으리니...");
-                                        P.givePotionEffect(player, PotionEffectType.FIRE_RESISTANCE, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
+                                        EffectUtil.givePotionEffect(player, PotionEffectType.FIRE_RESISTANCE, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
                                         break;
                                     case 4:
-                                        s.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.5F, 0.8F);
+                                        SoundUtil.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.5F, 0.8F);
                                         player.sendMessage(ChatColor.WHITE + "" + ChatColor.BOLD + "[鼓腹擊壤] 몸도 마음도 모두 풍요로우니 이 어찌 기쁘지 아니한가...");
-                                        P.givePotionEffect(player, PotionEffectType.HEAL, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
-                                        P.givePotionEffect(player, PotionEffectType.SATURATION, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
-                                        P.givePotionEffect(player, PotionEffectType.REGENERATION, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
-                                        P.givePotionEffect(player, PotionEffectType.HEALTH_BOOST, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
+                                        EffectUtil.givePotionEffect(player, PotionEffectType.HEAL, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
+                                        EffectUtil.givePotionEffect(player, PotionEffectType.SATURATION, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
+                                        EffectUtil.givePotionEffect(player, PotionEffectType.REGENERATION, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
+                                        EffectUtil.givePotionEffect(player, PotionEffectType.HEALTH_BOOST, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
                                         break;
                                     case 5:
-                                        s.SP(player, Sound.ENTITY_MINECART_INSIDE, 1.0F, 1.0F);
+                                        SoundUtil.SP(player, Sound.ENTITY_MINECART_INSIDE, 1.0F, 1.0F);
                                         player.sendMessage(ChatColor.WHITE + "" + ChatColor.BOLD + "[東奔西走] 내 원래 이리 저리 돌아다니길 좋아하니, 역마가 낀들 어떠하리...");
-                                        P.givePotionEffect(player, PotionEffectType.SPEED, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
-                                        P.givePotionEffect(player, PotionEffectType.JUMP, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
+                                        EffectUtil.givePotionEffect(player, PotionEffectType.SPEED, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
+                                        EffectUtil.givePotionEffect(player, PotionEffectType.JUMP, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
                                         break;
                                     case 6:
-                                        s.SP(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.8F);
+                                        SoundUtil.SP(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.8F);
                                         player.sendMessage(ChatColor.WHITE + "" + ChatColor.BOLD + "[單刀直入] 흔들리지 않는 신념은 적의 살을 베어내고, 철근같은 " + Main_ServerOption.WILL + "는 적의 뼈를 바스러 뜨리리...");
-                                        P.givePotionEffect(player, PotionEffectType.INCREASE_DAMAGE, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
+                                        EffectUtil.givePotionEffect(player, PotionEffectType.INCREASE_DAMAGE, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
                                         break;
                                     case 7:
-                                        s.SP(player, Sound.ENTITY_ENDERDRAGON_GROWL, 1.0F, 1.0F);
+                                        SoundUtil.SP(player, Sound.ENTITY_ENDERDRAGON_GROWL, 1.0F, 1.0F);
                                         player.sendMessage(ChatColor.WHITE + "" + ChatColor.BOLD + "[康衢煙月] 내 눈은 밝은 달빛이요, 내 발길 닿는 곳이 길이니...");
-                                        P.givePotionEffect(player, PotionEffectType.NIGHT_VISION, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
+                                        EffectUtil.givePotionEffect(player, PotionEffectType.NIGHT_VISION, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
                                         break;
                                     case 8:
-                                        s.SP(player, Sound.BLOCK_WATER_AMBIENT, 1.5F, 1.0F);
+                                        SoundUtil.SP(player, Sound.BLOCK_WATER_AMBIENT, 1.5F, 1.0F);
                                         player.sendMessage(ChatColor.WHITE + "" + ChatColor.BOLD + "[明鏡止水] 거울만치 물이 맑으니 누가 들어가기를 마다하리오...");
-                                        P.givePotionEffect(player, PotionEffectType.WATER_BREATHING, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
+                                        EffectUtil.givePotionEffect(player, PotionEffectType.WATER_BREATHING, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog")));
                                         break;
                                 }
                             } else {
                                 switch (n.RandomNum(1, 8)) {
                                     case 1:
-                                        s.SP(player, Sound.ENTITY_BLAZE_AMBIENT, 1.0F, 1.0F);
+                                        SoundUtil.SP(player, Sound.ENTITY_BLAZE_AMBIENT, 1.0F, 1.0F);
                                         player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[螳螂拒轍] 거만이 몸에 베어 적장을 한낱 개미로 바라보리니...");
-                                        P.givePotionEffect(player, PotionEffectType.WEAKNESS, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog") + 1));
+                                        EffectUtil.givePotionEffect(player, PotionEffectType.WEAKNESS, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog") + 1));
                                         break;
                                     case 2:
-                                        s.SP(player, Sound.AMBIENT_CAVE, 1.0F, 1.0F);
+                                        SoundUtil.SP(player, Sound.AMBIENT_CAVE, 1.0F, 1.0F);
                                         player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[群盲撫象] 한치 앞도 보이지 않거늘...");
-                                        P.givePotionEffect(player, PotionEffectType.BLINDNESS, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog") + 1));
+                                        EffectUtil.givePotionEffect(player, PotionEffectType.BLINDNESS, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog") + 1));
                                         break;
                                     case 3:
-                                        s.SP(player, Sound.ENTITY_ENDERDRAGON_GROWL, 0.8F, 0.5F);
+                                        SoundUtil.SP(player, Sound.ENTITY_ENDERDRAGON_GROWL, 0.8F, 0.5F);
                                         player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[竿頭之勢] 절벽 끝에 선 자의 느낌이란...");
-                                        P.givePotionEffect(player, PotionEffectType.CONFUSION, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog") + 1));
+                                        EffectUtil.givePotionEffect(player, PotionEffectType.CONFUSION, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog") + 1));
                                         break;
                                     case 4:
-                                        s.SP(player, Sound.ENTITY_ZOMBIE_DEATH, 0.8F, 0.5F);
+                                        SoundUtil.SP(player, Sound.ENTITY_ZOMBIE_DEATH, 0.8F, 0.5F);
                                         player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[簞食豆羹] 내 모습이 마치 아귀와 같이 앙상하니...");
-                                        P.givePotionEffect(player, PotionEffectType.HUNGER, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog") + 1));
+                                        EffectUtil.givePotionEffect(player, PotionEffectType.HUNGER, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog") + 1));
                                         break;
                                     case 5:
-                                        s.SP(player, Sound.ENTITY_ZOMBIE_HORSE_DEATH, 0.8F, 0.5F);
+                                        SoundUtil.SP(player, Sound.ENTITY_ZOMBIE_HORSE_DEATH, 0.8F, 0.5F);
                                         player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[累卵之勢] 흐트러진 기가 몸 전체를 감싸 돌아 안으니 위태롭기가 짝이 없도다...");
-                                        P.givePotionEffect(player, PotionEffectType.POISON, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog") + 1));
+                                        EffectUtil.givePotionEffect(player, PotionEffectType.POISON, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog") + 1));
                                         break;
                                     case 6:
-                                        s.SP(player, Sound.ENTITY_ITEM_BREAK, 0.8F, 0.5F);
+                                        SoundUtil.SP(player, Sound.ENTITY_ITEM_BREAK, 0.8F, 0.5F);
                                         player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[曠日彌久] 쓸데없는 잡상을 하여도, 시간은 기다려 주지 않을지니...");
-                                        P.givePotionEffect(player, PotionEffectType.SLOW_DIGGING, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog") + 1));
+                                        EffectUtil.givePotionEffect(player, PotionEffectType.SLOW_DIGGING, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog") + 1));
                                         break;
                                     case 7:
-                                        s.SP(player, Sound.ENTITY_SPIDER_AMBIENT, 0.8F, 0.5F);
+                                        SoundUtil.SP(player, Sound.ENTITY_SPIDER_AMBIENT, 0.8F, 0.5F);
                                         player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[姑息之計] 오늘 걸으니 내일은 뛰어야 할지니...");
-                                        P.givePotionEffect(player, PotionEffectType.SLOW, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog") + 1));
+                                        EffectUtil.givePotionEffect(player, PotionEffectType.SLOW, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog") + 1));
                                         break;
                                     case 8:
-                                        s.SP(player, Sound.ENTITY_WITHER_HURT, 0.8F, 0.5F);
+                                        SoundUtil.SP(player, Sound.ENTITY_WITHER_HURT, 0.8F, 0.5F);
                                         player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[骨肉相爭] 뼈와 살이 서로 곪아가니 악취가 나는구나...");
-                                        P.givePotionEffect(player, PotionEffectType.WITHER, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog") + 1));
+                                        EffectUtil.givePotionEffect(player, PotionEffectType.WITHER, NPCscript.getInt("Job.BuffTime"), n.RandomNum(1, NPCscript.getInt("Job.BuffMaxStrog") + 1));
                                         break;
                                 }
                             }
@@ -2042,15 +2042,15 @@ public class NPC_Gui extends GuiUtil {
                                 player.hasPotionEffect(PotionEffectType.HUNGER) || player.hasPotionEffect(PotionEffectType.POISON) ||
                                 player.hasPotionEffect(PotionEffectType.SLOW) || player.hasPotionEffect(PotionEffectType.SLOW_DIGGING) ||
                                 player.hasPotionEffect(PotionEffectType.WEAKNESS) || player.hasPotionEffect(PotionEffectType.WITHER))) {
-                            s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                             player.sendMessage(ChatColor.DARK_AQUA + "[SYSTEM] : 당신은 치료받을 필요가 없습니다!");
                             return;
                         }
                         if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money() < NPCscript.getInt("Job.Deal")) {
-                            s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                             player.sendMessage(ChatColor.RED + "[SYSTEM] : 치료 비용이 부족합니다!");
                         } else {
-                            s.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 0.5F);
+                            SoundUtil.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 0.5F);
                             Damageable p = player;
                             p.setHealth(p.getMaxHealth());
                             player.removePotionEffect(PotionEffectType.BLINDNESS);
@@ -2090,7 +2090,7 @@ public class NPC_Gui extends GuiUtil {
                                         if (PrevJob.compareTo("null") != 0) {
                                             if (PlayerJob.getString("Job.Type").compareTo(PrevJob) != 0) {
                                                 player.sendMessage(ChatColor.RED + "[전직] : 당신의 직업으로는 전직 할 수 없는 대상입니다.");
-                                                s.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                                                SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                                                 return;
                                             }
                                         }
@@ -2107,24 +2107,24 @@ public class NPC_Gui extends GuiUtil {
                                             Bukkit.broadcastMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "[" + ChatColor.YELLOW + "" + ChatColor.BOLD + player.getName() + ChatColor.GREEN + "" + ChatColor.BOLD + "님께서 " + ChatColor.YELLOW + "" + ChatColor.BOLD + NPCscript.getString("Job.Job") + ChatColor.GREEN + "" + ChatColor.BOLD + " 승급에 성공 하셨습니다!]");
                                         } else {
                                             player.sendMessage(ChatColor.RED + "[전직] : 현재 직업으로 전직 할 수 없습니다!");
-                                            s.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                                            SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                                         }
                                     } else {
                                         player.sendMessage(ChatColor.RED + "[전직] : 당신의 스텟은 전직 요건에 맞지 않습니다.");
-                                        s.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                                        SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                                     }
                                 }
                             }
                         }
                     }
                 } else if (event.getClick().isRightClick() && player.isOp()) {
-                    s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                     NPCjobGUI(player, NPCname);
                 }
             } else//직업 설정
                 NPCjobGUI(player, NPCname);
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 7 && player.isOp())//세일 설정
             {
                 UserData_Object u = new UserData_Object();
@@ -2133,10 +2133,10 @@ public class NPC_Gui extends GuiUtil {
                 if (event.isShiftClick() && event.isRightClick()) {
                     NPCConfig.set("Sale.Enable", false);
                     NPCConfig.saveConfig();
-                    s.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
+                    SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                     MainGUI(player, NPCname, player.isOp());
                 } else {
-                    s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                     u.setType(player, "NPC");
                     u.setString(player, (byte) 2, NPCname);
                     u.setString(player, (byte) 3, u.getNPCuuid(player));
@@ -2170,14 +2170,14 @@ public class NPC_Gui extends GuiUtil {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
         if (slot > 0 && slot < 8) {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             TalkGUI(player, NPCname, new NPC_Main().getScript(player, (char) -1), (char) slot);
         } else {
             if (slot == 0) {
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 MainGUI(player, NPCname, player.isOp());
             } else {
-                s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+                SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
                 player.closeInventory();
             }
         }
@@ -2216,11 +2216,11 @@ public class NPC_Gui extends GuiUtil {
                 return;
             case 45:
                 MainGUI(player, NPCname, player.isOp());
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 break;
             case 48: {
                 int showingPage = Integer.parseInt(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getLore().get(1).split("페이지 : ")[1]));
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 if (!event.getInventory().getItem(0).getItemMeta().hasLore()) {
                     if (event.getInventory().getItem(0).getData().getData() == (byte) 14)
                         ShopGUI(player, NPCname, (short) (showingPage - 1), false, false);
@@ -2235,7 +2235,7 @@ public class NPC_Gui extends GuiUtil {
                 break;
             }
             case 49:
-                s.SP(player, Sound.BLOCK_CHEST_OPEN, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.BLOCK_CHEST_OPEN, 0.8F, 1.0F);
                 if (!event.getInventory().getItem(0).getItemMeta().hasLore()) {
                     if (event.getCurrentItem().getData().getData() == (byte) 14)
                         ShopGUI(player, NPCname, (short) 0, false, false);
@@ -2249,7 +2249,7 @@ public class NPC_Gui extends GuiUtil {
                 }
                 break;
             case 50:
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 int showingPage2 = Integer.parseInt(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getLore().get(1).split("페이지 : ")[1]));
                 if (!event.getInventory().getItem(0).getItemMeta().hasLore()) {
                     if (event.getInventory().getItem(0).getData().getData() == (byte) 14)
@@ -2264,7 +2264,7 @@ public class NPC_Gui extends GuiUtil {
                 }
                 break;
             case 53:
-                s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+                SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
                 player.closeInventory();
                 break;
             default: {
@@ -2315,7 +2315,7 @@ public class NPC_Gui extends GuiUtil {
                             player.getInventory().addItem(item);
                         }
                     }
-                    s.SP(player, org.bukkit.Sound.BLOCK_LAVA_POP, 2.0F, 1.7F);
+                    SoundUtil.SP(player, org.bukkit.Sound.BLOCK_LAVA_POP, 2.0F, 1.7F);
                     int showingPage3 = Integer.parseInt(ChatColor.stripColor(event.getInventory().getItem(8).getItemMeta().getLore().get(0)));
                     if (isBuy)
                         ShopGUI(player, NPCname, (short) showingPage3, true, true);
@@ -2335,7 +2335,7 @@ public class NPC_Gui extends GuiUtil {
                         Icon_Meta.setLore(Arrays.asList(l));
                         item.setItemMeta(Icon_Meta);
                     }
-                    s.SP(player, Sound.BLOCK_IRON_TRAPDOOR_OPEN, 0.8F, 0.5F);
+                    SoundUtil.SP(player, Sound.BLOCK_IRON_TRAPDOOR_OPEN, 0.8F, 0.5F);
                     if (event.getInventory().getItem(0).getData().getData() == (byte) 14)
                         ItemBuy(player, item, value, NPCname, isBuy, 0);
                     else
@@ -2352,10 +2352,10 @@ public class NPC_Gui extends GuiUtil {
 
         if (slot == 26)//닫기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
             UserData_Object u = new UserData_Object();
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
@@ -2418,7 +2418,7 @@ public class NPC_Gui extends GuiUtil {
                             Object[] Job = JobList.getConfigurationSection("MapleStory").getKeys(false).toArray();
                             if (Job.length == 1) {
                                 u.clearAll(player);
-                                s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                 player.sendMessage(ChatColor.RED + "[NPC] : 전직 가능한 직업이 없습니다! " + ChatColor.YELLOW + "/오피박스" + ChatColor.RED + " 명령어를 사용하여 직업군을 만드십시요!");
                                 return;
                             }
@@ -2434,7 +2434,7 @@ public class NPC_Gui extends GuiUtil {
                             }
                         } else {
                             u.clearAll(player);
-                            s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                             player.sendMessage(ChatColor.RED + "[NPC] : 직업 기능을 사용하시려면" + ChatColor.YELLOW + " /오피박스" + ChatColor.RED + " 에서 게임 시스템을 '메이플 스토리'로 변경해 주시길 바랍니다.");
                         }
                     } else if (slot == 10)//룬 세공사
@@ -2458,10 +2458,10 @@ public class NPC_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             String NPCname = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
             if (slot == 45)//이전 목록으로
@@ -2477,7 +2477,7 @@ public class NPC_Gui extends GuiUtil {
                     ETC ETC = new ETC();
                     if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_AttackTime() + 15000 >= ETC.getSec()) {
                         player.sendMessage(ChatColor.RED + "[이동 불가] : " + ChatColor.YELLOW + ((Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_AttackTime() + 15000 - ETC.getSec()) / 1000) + ChatColor.RED + " 초 후에 이동 가능합니다!");
-                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         return;
                     }
                     UserData_Object u = new UserData_Object();
@@ -2487,11 +2487,11 @@ public class NPC_Gui extends GuiUtil {
                         Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).addStat_MoneyAndEXP(-1 * NPCConfig.getInt("Job.WarpList." + ((page * 45) + event.getSlot()) + ".Cost"), 0, false);
                         String AreaName = NPCConfig.getString("Job.WarpList." + ((page * 45) + event.getSlot()) + ".Area");
                         YamlManager AreaConfig = YC.getNewConfig("Area/AreaList.yml");
-                        s.SL(player.getLocation(), Sound.ENTITY_ENDERMEN_TELEPORT, 1.0F, 1.0F);
+                        SoundUtil.SL(player.getLocation(), Sound.ENTITY_ENDERMEN_TELEPORT, 1.0F, 1.0F);
                         player.teleport(new Location(Bukkit.getWorld(AreaConfig.getString(AreaName + ".World")), AreaConfig.getInt(AreaName + ".SpawnLocation.X"), AreaConfig.getInt(AreaName + ".SpawnLocation.Y"), AreaConfig.getInt(AreaName + ".SpawnLocation.Z")));
-                        s.SL(player.getLocation(), Sound.ENTITY_ENDERMEN_TELEPORT, 1.0F, 1.0F);
+                        SoundUtil.SL(player.getLocation(), Sound.ENTITY_ENDERMEN_TELEPORT, 1.0F, 1.0F);
                     } else {
-                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.RED + "[워프] : 텔레포트 비용이 부족합니다!");
                     }
                 } else if (event.isRightClick() && event.isShiftClick() && player.isOp()) {
@@ -2518,10 +2518,10 @@ public class NPC_Gui extends GuiUtil {
         SoundUtil s = new SoundUtil();
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
             int page = Integer.parseInt(event.getInventory().getTitle().split(" : ")[1]) - 1;
             String NPCname = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
 
@@ -2557,10 +2557,10 @@ public class NPC_Gui extends GuiUtil {
         SoundUtil s = new SoundUtil();
 
         if (slot == 53) {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             String NPCname = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
 
@@ -2706,42 +2706,42 @@ public class NPC_Gui extends GuiUtil {
 
                                                     player.getInventory().setItemInMainHand(item);
                                                     player.closeInventory();
-                                                    s.SP(player, Sound.BLOCK_ANVIL_USE, 1.0F, 0.8F);
+                                                    SoundUtil.SP(player, Sound.BLOCK_ANVIL_USE, 1.0F, 0.8F);
                                                     player.sendMessage(ChatColor.DARK_AQUA + "[개조] : 개조가 완료되었습니다!");
                                                 } else {
-                                                    s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                                    SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                                     player.sendMessage(ChatColor.RED + "[개조] : 숙련도가 부족합니다!");
                                                 }
                                             } else {
-                                                s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                                SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                                 player.sendMessage(ChatColor.RED + "[개조] : 더이상 개조할 수 없습니다!");
                                             }
                                         } else {
-                                            s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                             player.sendMessage(ChatColor.RED + "[개조] : 개조 레벨이 맞지 않습니다!");
                                         }
                                     } else {
-                                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                         player.sendMessage(ChatColor.RED + "[개조] : 개조 가능한 무기 타입이 아닙니다!");
                                     }
                                 } else {
-                                    s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                    SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                     player.sendMessage(ChatColor.RED + "[개조] : 개조 비용이 부족합니다!");
                                 }
                             } else {
-                                s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                 player.sendMessage(ChatColor.RED + "[개조] : 현재 손에 들고 있는 아이템은  개조가 불가능 합니다!");
                             }
                         } else {
-                            s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                             player.sendMessage(ChatColor.RED + "[개조] : 현재 손에 들고 있는 아이템은  개조가 불가능 합니다!");
                         }
                     } else {
-                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.RED + "[개조] : 아이템을 손에 장착하고 있어야 합니다!");
                     }
                 } else if (event.isRightClick() && event.isShiftClick() && player.isOp()) {
-                    s.SP(player, Sound.BLOCK_LAVA_POP, 1.2F, 1.0F);
+                    SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 1.2F, 1.0F);
                     NPCConfig.removeKey("Job.UpgradeRecipe." + ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                     NPCConfig.saveConfig();
                     UpgraderGUI(player, page, NPCname);
@@ -2757,12 +2757,12 @@ public class NPC_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             String NPCname = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
             if (slot == 45)//이전 목록
                 UpgraderGUI(player, (short) 0, NPCname);
             else if (slot == 48)//이전 페이지
@@ -2972,7 +2972,7 @@ public class NPC_Gui extends GuiUtil {
                 event.setCancelled(true);
             if (slot == 10)//이전 목록으로
             {
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
                 String NPCname = ChatColor.stripColor(event.getInventory().getItem(26).getItemMeta().getLore().get(0));
                 MainGUI(player, NPCname, player.isOp());
             } else if (slot == 16)//룬 장착
@@ -3085,7 +3085,7 @@ public class NPC_Gui extends GuiUtil {
                                                                     }
                                                                     Lore = item.getItemMeta().getLore().get(count).split(" : ")[0] + " : " + Circle;
                                                                     player.sendMessage(ChatColor.BLUE + "[룬 세공] : 아이템에 룬을 장착하였습니다!");
-                                                                    s.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 0.5F);
+                                                                    SoundUtil.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 0.5F);
                                                                     Success = true;
                                                                 } else {
                                                                     for (short k = 0; k < Lore.split(" ").length; k++) {
@@ -3097,7 +3097,7 @@ public class NPC_Gui extends GuiUtil {
                                                                     Lore = item.getItemMeta().getLore().get(count).split(" : ")[0] + " : " + Circle;
                                                                     player.sendMessage(ChatColor.RED + "[룬 세공] : 룬 세공 실패!!!");
                                                                     player.sendMessage(ChatColor.RED + "[아이템의 룬 슬롯이 파괴되었습니다!]");
-                                                                    s.SP(player, Sound.BLOCK_ANVIL_BREAK, 1.0F, 1.1F);
+                                                                    SoundUtil.SP(player, Sound.BLOCK_ANVIL_BREAK, 1.0F, 1.1F);
                                                                 }
                                                                 if (event.getInventory().getItem(13).getAmount() == 1)
                                                                     event.getInventory().setItem(13, new ItemStack(0));
@@ -3169,39 +3169,39 @@ public class NPC_Gui extends GuiUtil {
                                                     }
                                                 }
                                                 player.sendMessage(ChatColor.RED + "[룬 세공] : 룬을 장착 시킬 수 있는 여유 슬롯이 없습니다!");
-                                                s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                                SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                             } else {
                                                 player.sendMessage(ChatColor.RED + "[룬 세공] : 소지금이 부족합니다!");
-                                                s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                                SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                             }
                                         } else {
                                             player.sendMessage(ChatColor.RED + "[룬 세공] : 룬을 장착시킬 수 없는 아이템 입니다!");
-                                            s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                         }
 
                                     } else {
                                         player.sendMessage(ChatColor.RED + "[룬 세공] : 룬을 장착시킬 수 없는 아이템 입니다!");
-                                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                     }
                                 } else {
                                     player.sendMessage(ChatColor.RED + "[룬 세공] : 손에 아이템을 장착하고 있어야 합니다!");
-                                    s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                    SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                 }
                             } else {
                                 player.sendMessage(ChatColor.RED + "[룬 세공] : 재료로 올린 아이템은 룬이 아닙니다!");
-                                s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                             }
                         } else {
                             player.sendMessage(ChatColor.RED + "[룬 세공] : 재료로 올린 아이템은 룬이 아닙니다!");
-                            s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         }
                     } else {
                         player.sendMessage(ChatColor.RED + "[룬 세공] : 재료로 올린 아이템은 룬이 아닙니다!");
-                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                     }
                 } else {
                     player.sendMessage(ChatColor.RED + "[룬 세공] : 장착 시킬 룬을 올려 주세요!");
-                    s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                    SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                 }
             }
         }
@@ -3214,13 +3214,13 @@ public class NPC_Gui extends GuiUtil {
 
         if (slot == 53)//닫기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.8F);
             player.closeInventory();
         } else {
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             String NPCname = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
             String TalkType = ChatColor.stripColor(event.getInventory().getItem(45).getItemMeta().getLore().get(1));
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
             if (slot == 45)//이전 목록
                 MainGUI(player, NPCname, player.isOp());
             else if (slot == 46)//대화 타입 변경
@@ -3272,7 +3272,7 @@ public class NPC_Gui extends GuiUtil {
                 YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
                 short Number = Short.parseShort(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                 if (event.isRightClick() && event.isShiftClick()) {
-                    s.SP(player, Sound.BLOCK_LAVA_POP, 1.0F, 1.0F);
+                    SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 1.0F, 1.0F);
                     Short Acount = 0;
                     switch (TalkType) {
                         case "NT"://NatureTalk
@@ -3320,13 +3320,13 @@ public class NPC_Gui extends GuiUtil {
         SoundUtil s = new SoundUtil();
         if (slot == 35)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.8F);
             player.closeInventory();
         } else {
             String TalkType = ChatColor.stripColor(event.getInventory().getItem(27).getItemMeta().getLore().get(1));
             String NPCname = ChatColor.stripColor(event.getInventory().getItem(35).getItemMeta().getLore().get(1));
             short number = Short.parseShort(ChatColor.stripColor(event.getInventory().getItem(10).getItemMeta().getDisplayName()));
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
 
             if (slot == 27)
                 NPCTalkGUI(player, (short) (number / 45), NPCname, TalkType);
@@ -3340,15 +3340,15 @@ public class NPC_Gui extends GuiUtil {
                         if (SkillList.getConfigurationSection("Mabinogi.Added").getKeys(false).toArray().length >= 0) {
                             AddAbleSkillsGUI(player, (short) 0, NPCname, number);
                         } else {
-                            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                             player.sendMessage(ChatColor.RED + "[SYSTEM] : 등록 가능한 스킬이 없습니다!");
                         }
                     } else {
-                        s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                        SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                         player.sendMessage(ChatColor.RED + "[SYSTEM] : 등록 가능한 스킬이 없습니다!");
                     }
                 } else {
-                    s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                     player.sendMessage(ChatColor.RED + "[SYSTEM] : 서버 시스템이 마비노기 형식이 아닙니다!");
                 }
             } else {
@@ -3394,14 +3394,14 @@ public class NPC_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.8F);
             player.closeInventory();
         } else {
             String NPCname = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
             String TalkType = "AS";
             short number = Short.parseShort(ChatColor.stripColor(event.getInventory().getItem(45).getItemMeta().getLore().get(1)));
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
 
             if (slot == 45)//이전 메뉴
                 TalkSettingGUI(player, NPCname, TalkType, number);
@@ -3427,13 +3427,13 @@ public class NPC_Gui extends GuiUtil {
 
         if (slot == 53)//나가기
         {
-            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
             boolean isBuy = false;
             isBuy = event.getInventory().getName().contains("구매");
             String NPCname = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
                 ShopGUI(player, NPCname, (short) 0, isBuy, false);
             else {
@@ -3446,52 +3446,52 @@ public class NPC_Gui extends GuiUtil {
                         if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money() >= value * count) {
                             for (int counter = 0; counter < count; counter++) {
                                 if (!new Util_Player().giveItem(player, item)) {
-                                    s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.8F, 1.8F);
+                                    SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.8F, 1.8F);
                                     player.sendMessage(ChatColor.RED + "[구매 실패] : 인벤토리가 부족하여 " + (count - counter) + "개를 구매하지 못하였습니다!");
                                     Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setStat_Money(Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money() - (counter * value));
                                     return;
                                 }
                             }
-                            s.SP(player, Sound.ENTITY_SHULKER_OPEN, 0.8F, 1.0F);
+                            SoundUtil.SP(player, Sound.ENTITY_SHULKER_OPEN, 0.8F, 1.0F);
                             Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setStat_Money(Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money() - (count * value));
                         } else {
-                            s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.8F, 1.8F);
+                            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.8F, 1.8F);
                             player.sendMessage(ChatColor.RED + "[구매 실패] : " + Main_ServerOption.Money + ChatColor.RED + "가 부족하여 구매할 수 없습니다!");
                         }
                     } else if (slot == 31) {
-                        s.SP(player, Sound.ITEM_ARMOR_EQUIP_DIAMOND, 0.8F, 0.5F);
+                        SoundUtil.SP(player, Sound.ITEM_ARMOR_EQUIP_DIAMOND, 0.8F, 0.5F);
                         count = (int) (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money() / value);
                     } else if (slot == 13) {
-                        s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.6F, 1.8F);
+                        SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.6F, 1.8F);
                         count = 1;
                     } else if (slot >= 19 && slot <= 21) {
                         if (slot == 19) {
-                            s.SP(player, Sound.ENTITY_SHULKER_CLOSE, 0.8F, 1.6F);
+                            SoundUtil.SP(player, Sound.ENTITY_SHULKER_CLOSE, 0.8F, 1.6F);
                             if (count - 64 > 0)
                                 count -= 64;
                             else
                                 count = 1;
                         } else if (slot == 20) {
-                            s.SP(player, Sound.ENTITY_ITEMFRAME_REMOVE_ITEM, 0.8F, 1.4F);
+                            SoundUtil.SP(player, Sound.ENTITY_ITEMFRAME_REMOVE_ITEM, 0.8F, 1.4F);
                             if (count - 10 > 0)
                                 count -= 10;
                             else
                                 count = 1;
                         } else if (slot == 21) {
-                            s.SP(player, Sound.ENTITY_ITEMFRAME_ROTATE_ITEM, 0.8F, 1.4F);
+                            SoundUtil.SP(player, Sound.ENTITY_ITEMFRAME_ROTATE_ITEM, 0.8F, 1.4F);
                             if (count - 1 > 0)
                                 count -= 1;
                         }
                     } else if (slot >= 23 && slot <= 25) {
                         int TempCount = count;
                         if (slot == 23) {
-                            s.SP(player, Sound.ITEM_ARMOR_EQUIP_IRON, 0.8F, 1.8F);
+                            SoundUtil.SP(player, Sound.ITEM_ARMOR_EQUIP_IRON, 0.8F, 1.8F);
                             TempCount += 1;
                         } else if (slot == 24) {
-                            s.SP(player, Sound.ITEM_ARMOR_EQUIP_CHAIN, 0.8F, 1.2F);
+                            SoundUtil.SP(player, Sound.ITEM_ARMOR_EQUIP_CHAIN, 0.8F, 1.2F);
                             TempCount += 10;
                         } else if (slot == 25) {
-                            s.SP(player, Sound.ITEM_ARMOR_EQUIP_GOLD, 0.8F, 0.5F);
+                            SoundUtil.SP(player, Sound.ITEM_ARMOR_EQUIP_GOLD, 0.8F, 0.5F);
                             TempCount += 64;
                         }
                         if (value * TempCount <= Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money())
@@ -3505,52 +3505,52 @@ public class NPC_Gui extends GuiUtil {
 
                     if (slot == 49 && count != 0) {
                         if (!new Util_Player().deleteItem(player, item, count)) {
-                            s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.8F, 1.8F);
+                            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.8F, 1.8F);
                             player.sendMessage(ChatColor.RED + "[판매 실패] : 물품이 부족하여 판매하지 못하였습니다!");
                             return;
                         } else {
-                            s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.8F, 1.0F);
+                            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.8F, 1.0F);
                             Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).addStat_MoneyAndEXP(value * count, 0, false);
                         }
                     }
 
                     if (slot == 31) {
-                        s.SP(player, Sound.ITEM_ARMOR_EQUIP_DIAMOND, 0.8F, 0.5F);
+                        SoundUtil.SP(player, Sound.ITEM_ARMOR_EQUIP_DIAMOND, 0.8F, 0.5F);
                         count = ItemHave;
                     } else if (slot == 13) {
-                        s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.6F, 1.8F);
+                        SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.6F, 1.8F);
                         if (ItemHave > 0)
                             count = 1;
                         else
                             count = 0;
                     } else if (slot >= 19 && slot <= 21) {
                         if (slot == 19) {
-                            s.SP(player, Sound.ENTITY_SHULKER_CLOSE, 0.8F, 1.6F);
+                            SoundUtil.SP(player, Sound.ENTITY_SHULKER_CLOSE, 0.8F, 1.6F);
                             if (count - 64 > 0)
                                 count -= 64;
                             else
                                 count = 1;
                         } else if (slot == 20) {
-                            s.SP(player, Sound.ENTITY_ITEMFRAME_REMOVE_ITEM, 0.8F, 1.4F);
+                            SoundUtil.SP(player, Sound.ENTITY_ITEMFRAME_REMOVE_ITEM, 0.8F, 1.4F);
                             if (count - 10 > 0)
                                 count -= 10;
                             else
                                 count = 1;
                         } else if (slot == 21) {
-                            s.SP(player, Sound.ENTITY_ITEMFRAME_ROTATE_ITEM, 0.8F, 1.4F);
+                            SoundUtil.SP(player, Sound.ENTITY_ITEMFRAME_ROTATE_ITEM, 0.8F, 1.4F);
                             if (count - 1 > 0)
                                 count -= 1;
                         }
                     } else if (slot >= 23 && slot <= 25) {
                         int TempCount = count;
                         if (slot == 23) {
-                            s.SP(player, Sound.ITEM_ARMOR_EQUIP_IRON, 0.8F, 1.8F);
+                            SoundUtil.SP(player, Sound.ITEM_ARMOR_EQUIP_IRON, 0.8F, 1.8F);
                             TempCount += 1;
                         } else if (slot == 24) {
-                            s.SP(player, Sound.ITEM_ARMOR_EQUIP_CHAIN, 0.8F, 1.2F);
+                            SoundUtil.SP(player, Sound.ITEM_ARMOR_EQUIP_CHAIN, 0.8F, 1.2F);
                             TempCount += 10;
                         } else if (slot == 25) {
-                            s.SP(player, Sound.ITEM_ARMOR_EQUIP_GOLD, 0.8F, 0.5F);
+                            SoundUtil.SP(player, Sound.ITEM_ARMOR_EQUIP_GOLD, 0.8F, 0.5F);
                             TempCount += 64;
                         }
                         if (TempCount <= ItemHave)
@@ -3591,7 +3591,7 @@ public class NPC_Gui extends GuiUtil {
                     short nowDurability = (short) (clickedItem.getDurability());
 
                     if (nowDurability == 0) {
-                        s.SP(player, Sound.BLOCK_ANVIL_LAND, 0.8F, 1.6F);
+                        SoundUtil.SP(player, Sound.BLOCK_ANVIL_LAND, 0.8F, 1.6F);
                         player.sendMessage(ChatColor.DARK_AQUA + "[수리] : 해당 무기는 수리받을 필요가 없습니다.");
                         return;
                     }
@@ -3603,7 +3603,7 @@ public class NPC_Gui extends GuiUtil {
                     int point1success = 0;
 
                     if (playerMoney < point10need * FixPrice || playerMoney < ((point1success * FixPrice) / 10)) {
-                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.RED + "[SYSTEM] : 수리 비용이 부족합니다!");
                         return;
                     }
@@ -3618,10 +3618,10 @@ public class NPC_Gui extends GuiUtil {
                     }
                     if (point10success == 0 && point1success == 0) {
                         player.sendMessage(ChatColor.RED + "[수리] : 완전 수리 실패!");
-                        s.SP(player, Sound.BLOCK_ANVIL_BREAK, 1.2F, 1.0F);
+                        SoundUtil.SP(player, Sound.BLOCK_ANVIL_BREAK, 1.2F, 1.0F);
                         return;
                     }
-                    s.SP(player, Sound.BLOCK_ANVIL_USE, 1.0F, 1.0F);
+                    SoundUtil.SP(player, Sound.BLOCK_ANVIL_USE, 1.0F, 1.0F);
                     if (point10success == point10need && point1success == point1need)
                         player.sendMessage(ChatColor.DARK_AQUA + "[수리] : 수리 대성공!");
                     if (point10success != point10need || point1success != point1need)
@@ -3642,7 +3642,7 @@ public class NPC_Gui extends GuiUtil {
                     }
 
                     if (nowDurability == Maxdurability) {
-                        s.SP(player, Sound.BLOCK_ANVIL_LAND, 0.8F, 1.6F);
+                        SoundUtil.SP(player, Sound.BLOCK_ANVIL_LAND, 0.8F, 1.6F);
                         player.sendMessage(ChatColor.DARK_AQUA + "[수리] : 해당 무기는 수리받을 필요가 없습니다.");
                         return;
                     }
@@ -3654,7 +3654,7 @@ public class NPC_Gui extends GuiUtil {
                     int point1success = 0;
 
                     if (playerMoney < point10need * FixPrice || playerMoney < ((point1success * FixPrice) / 10)) {
-                        s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.RED + "[SYSTEM] : 수리 비용이 부족합니다!");
                         return;
                     }
@@ -3669,9 +3669,9 @@ public class NPC_Gui extends GuiUtil {
                     }
                     if (point10success == 0 && point1success == 0) {
                         player.sendMessage(ChatColor.RED + "[수리] : 완전 수리 실패!");
-                        s.SP(player, Sound.BLOCK_ANVIL_BREAK, 1.2F, 1.0F);
+                        SoundUtil.SP(player, Sound.BLOCK_ANVIL_BREAK, 1.2F, 1.0F);
                     }
-                    s.SP(player, Sound.BLOCK_ANVIL_USE, 1.0F, 1.0F);
+                    SoundUtil.SP(player, Sound.BLOCK_ANVIL_USE, 1.0F, 1.0F);
                     if (point10success == point10need && point1success == point1need)
                         player.sendMessage(ChatColor.DARK_AQUA + "[수리] : 수리 대성공!");
                     if ((point10success != point10need || point1success != point1need) && (point10success != 0 || point1success != 0))
@@ -3695,16 +3695,16 @@ public class NPC_Gui extends GuiUtil {
                     Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).addStat_MoneyAndEXP(-1 * ((point10need * FixPrice) + ((point1need * FixPrice) / 10)), 0, false);
                 }
             } else {
-                s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.8F, 1.0F);
                 player.sendMessage(ChatColor.RED + "[SYSTEM] : 수리 할 수 없는 물건입니다!");
             }
         } else {
             int slot = event.getSlot();
             if (slot == 8) {
-                s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+                SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
                 player.closeInventory();
             } else {
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 if (slot == 0) {
                     String NPCname = ChatColor.stripColor(event.getInventory().getItem(8).getItemMeta().getLore().get(1));
                     MainGUI(player, NPCname, player.isOp());
@@ -3743,13 +3743,13 @@ public class NPC_Gui extends GuiUtil {
                             else {
                                 NPCConfig.set("Present." + number + ".item", null);
                                 NPCConfig.saveConfig();
-                                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                                 PresentSettingGUI(player, NPCname);
                                 return;
                             }
                             NPCConfig.set("Present." + number + ".love", 0);
                             NPCConfig.saveConfig();
-                            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                             UserData_Object u = new UserData_Object();
                             u.setType(player, "NPC");
                             u.setString(player, (byte) 2, NPCname);
@@ -3759,13 +3759,13 @@ public class NPC_Gui extends GuiUtil {
                             player.sendMessage(ChatColor.DARK_AQUA + "[NPC] : 해당 아이템을 줄 때 상승하는 호감도 수치를 입력 해 주세요! (-1000 ~ 1000 사이 값)");
                             player.closeInventory();
                         } else {
-                            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                             MainGUI(player, NPCname, player.isOp());
                         }
                     } else if (event.getSlot() == 8)//닫닫(선물 주기)
                     {
                         if (isSettingMode) {
-                            s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+                            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
                             player.closeInventory();
                             return;
                         }
@@ -3808,10 +3808,10 @@ public class NPC_Gui extends GuiUtil {
                                             PlayerNPC.set(u.getNPCuuid(player) + ".love", PlayerNPC.getInt(u.getNPCuuid(player) + ".love") + love);
                                         PlayerNPC.saveConfig();
                                         if (love >= 0) {
-                                            s.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.8F);
+                                            SoundUtil.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.8F);
                                             player.sendMessage(ChatColor.GREEN + "[SYSTEM] : " + ChatColor.YELLOW + NPCname + ChatColor.GREEN + "의 호감도가 " + ChatColor.YELLOW + love + ChatColor.GREEN + " 상승하였습니다!");
                                         } else {
-                                            s.SP(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.8F);
+                                            SoundUtil.SP(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.8F);
                                             player.sendMessage(ChatColor.RED + "[SYSTEM] : " + ChatColor.YELLOW + NPCname + ChatColor.RED + "의 호감도가 " + ChatColor.YELLOW + (love * -1) + ChatColor.RED + " 하락 하였습니다!");
                                         }
                                         return;
@@ -3834,34 +3834,34 @@ public class NPC_Gui extends GuiUtil {
                                     PlayerNPC.set(u.getNPCuuid(player) + ".love", PlayerNPC.getInt(u.getNPCuuid(player) + ".love") + love);
                                 PlayerNPC.saveConfig();
                                 if (love >= 0) {
-                                    s.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.8F);
+                                    SoundUtil.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.8F);
                                     player.sendMessage(ChatColor.GREEN + "[SYSTEM] : " + ChatColor.YELLOW + NPCname + ChatColor.GREEN + "의 호감도가 " + ChatColor.YELLOW + love + ChatColor.GREEN + " 상승하였습니다!");
                                 } else {
-                                    s.SP(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.8F);
+                                    SoundUtil.SP(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.8F);
                                     player.sendMessage(ChatColor.RED + "[SYSTEM] : " + ChatColor.YELLOW + NPCname + ChatColor.RED + "의 호감도가 " + ChatColor.YELLOW + (love * -1) + ChatColor.RED + " 하락 하였습니다!");
                                 }
                                 return;
                             } else {
-                                s.SP(player, Sound.ENTITY_ITEMFRAME_REMOVE_ITEM, 1.0F, 1.8F);
+                                SoundUtil.SP(player, Sound.ENTITY_ITEMFRAME_REMOVE_ITEM, 1.0F, 1.8F);
                                 player.sendMessage(ChatColor.YELLOW + "[SYSTEM] : " + ChatColor.GOLD + NPCname + ChatColor.YELLOW + "는 선물을 사양하였다.");
                             }
                         } else
-                            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                     } else
-                        s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                        SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                     return;
                 }
             }
         } else//[NPC] 선물 가능 아이템 목록
         {
             if (event.getSlot() == 0) {
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 MainGUI(player, NPCname, player.isOp());
             } else if (event.getSlot() == 8) {
-                s.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+                SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
                 player.closeInventory();
             } else {
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 if (event.getSlot() == 1) {
                     UserData_Object u = new UserData_Object();
                     u.setType(player, "NPC");

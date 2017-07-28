@@ -46,7 +46,7 @@ public class Area_Chat extends Util_Chat {
             if (isIntMinMax(Message, player, 1, 3600)) {
                 AreaConfig.set(u.getString(player, (byte) 3) + ".RegenBlock", Integer.parseInt(Message));
                 AreaConfig.saveConfig();
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 AGUI.AreaSettingGUI(player, u.getString(player, (byte) 3));
                 u.clearAll(player);
             }
@@ -55,7 +55,7 @@ public class Area_Chat extends Util_Chat {
             if (isIntMinMax(Message, player, 1, 100)) {
                 AreaConfig.set(u.getString(player, (byte) 3) + ".MonsterSpawnRule." + u.getString(player, (byte) 1) + ".count", Integer.parseInt(Message));
                 AreaConfig.saveConfig();
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 u.setString(player, (byte) 2, "AMSMC");
                 player.sendMessage(ChatColor.GREEN + "[영역] : 반경 20블록 이내 엔티티가 몇 마리 미만일 동안 스폰 할까요?");
                 player.sendMessage(ChatColor.YELLOW + "(최소 1마리 ~ 최대 300마리)");
@@ -65,7 +65,7 @@ public class Area_Chat extends Util_Chat {
             if (isIntMinMax(Message, player, 1, 300)) {
                 AreaConfig.set(u.getString(player, (byte) 3) + ".MonsterSpawnRule." + u.getString(player, (byte) 1) + ".max", Integer.parseInt(Message));
                 AreaConfig.saveConfig();
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 u.setString(player, (byte) 2, "AMST");
                 player.sendMessage(ChatColor.GREEN + "[영역] : 몇 초마다 스폰되게 할까요?");
                 player.sendMessage(ChatColor.YELLOW + "(최소 1초 ~ 최대 7200초(2시간))");
@@ -75,7 +75,7 @@ public class Area_Chat extends Util_Chat {
             if (isIntMinMax(Message, player, 1, 7200)) {
                 AreaConfig.set(u.getString(player, (byte) 3) + ".MonsterSpawnRule." + u.getString(player, (byte) 1) + ".timer", Integer.parseInt(Message));
                 AreaConfig.saveConfig();
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 u.setString(player, (byte) 2, "AMSM");
                 player.sendMessage(ChatColor.GREEN + "[영역] : 특별히 스폰 하고 싶은 몬스터가 있나요?");
                 player.sendMessage(ChatColor.YELLOW + "(O 혹은 X로 대답하세요!)");
@@ -85,12 +85,12 @@ public class Area_Chat extends Util_Chat {
             byte answer = askOX(Message, player);
             if (answer != -1) {
                 if (answer == 0) {
-                    s.SP(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.0F);
+                    SoundUtil.SP(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.0F);
                     AGUI.AreaMonsterSpawnSettingGUI(player, (short) 0, u.getString(player, (byte) 3));
                     String AreaName = u.getString(player, (byte) 3);
                     new Area_Main().AreaMonsterSpawnAdd(AreaName, u.getString(player, (byte) 1));
                 } else {
-                    s.SP(player, Sound.ENTITY_HORSE_ARMOR, 1.0F, 1.7F);
+                    SoundUtil.SP(player, Sound.ENTITY_HORSE_ARMOR, 1.0F, 1.7F);
                     AGUI.AreaSpawnSpecialMonsterListGUI(player, (short) 0, u.getString(player, (byte) 3), u.getString(player, (byte) 1));
                 }
                 u.clearAll(player);
@@ -100,7 +100,7 @@ public class Area_Chat extends Util_Chat {
             if (isIntMinMax(Message, player, 0, 100)) {
                 AreaConfig.set(u.getString(player, (byte) 3) + ".Priority", Integer.parseInt(Message));
                 AreaConfig.saveConfig();
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 AGUI.AreaSettingGUI(player, u.getString(player, (byte) 3));
                 u.clearAll(player);
             }
@@ -109,7 +109,7 @@ public class Area_Chat extends Util_Chat {
             if (isIntMinMax(Message, player, 0, Integer.MAX_VALUE)) {
                 AreaConfig.set(u.getString(player, (byte) 3) + ".Restrict.MinNowLevel", Integer.parseInt(Message));
                 AreaConfig.saveConfig();
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 if (Integer.parseInt(Message) == 0) {
                     AreaConfig = YC.getNewConfig("config.yml");
                     if (AreaConfig.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
@@ -132,7 +132,7 @@ public class Area_Chat extends Util_Chat {
                 AreaConfig.set(u.getString(player, (byte) 3) + ".Restrict.MaxNowLevel", Integer.parseInt(Message));
                 AreaConfig.saveConfig();
                 AreaConfig = YC.getNewConfig("config.yml");
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 if (AreaConfig.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
                     u.setString(player, (byte) 2, "MinRLR");
                     player.sendMessage(ChatColor.GREEN + "[영역] : " + ChatColor.YELLOW + u.getString(player, (byte) 3) + ChatColor.GREEN + " 영역의 입장에 필요한 최소 누적 레벨을 입력 하세요!" + ChatColor.GRAY + " (0 입력시 제한 없음)");
@@ -146,7 +146,7 @@ public class Area_Chat extends Util_Chat {
             if (isIntMinMax(Message, player, 0, Integer.MAX_VALUE)) {
                 AreaConfig.set(u.getString(player, (byte) 3) + ".Restrict.MinRealLevel", Integer.parseInt(Message));
                 AreaConfig.saveConfig();
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 if (Integer.parseInt(Message) == 0) {
                     AreaConfig.set(u.getString(player, (byte) 3) + ".Restrict.MaxRealLevel", 0);
                     AreaConfig.saveConfig();
@@ -162,7 +162,7 @@ public class Area_Chat extends Util_Chat {
             if (isIntMinMax(Message, player, AreaConfig.getInt(u.getString(player, (byte) 3) + ".Restrict.MinRealLevel"), Integer.MAX_VALUE)) {
                 AreaConfig.set(u.getString(player, (byte) 3) + ".Restrict.MaxRealLevel", Integer.parseInt(Message));
                 AreaConfig.saveConfig();
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 AGUI.AreaSettingGUI(player, u.getString(player, (byte) 3));
                 u.clearAll(player);
             }

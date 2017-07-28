@@ -89,7 +89,7 @@ public class ETC {
     }
 
     public long getNowUTC() {
-        return date.UTC(date.getYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds());
+        return Date.UTC(date.getYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds());
     }
 
     public long getSec() {

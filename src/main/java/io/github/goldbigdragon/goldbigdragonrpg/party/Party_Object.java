@@ -322,12 +322,12 @@ public class Party_Object {
         for (byte count = 0; count < p.length; count++)
             if (p[count] != null && p[count] != noAlertMember)
                 if (Bukkit.getServer().getOfflinePlayer(p[count].getName()).isOnline())
-                    sound.SP(p[count], s, volume, pitch);
+                    SoundUtil.SP(p[count], s, volume, pitch);
     }
 
     public void Message(Player player, byte num) {
         SoundUtil sound = new SoundUtil();
-        sound.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
         switch (num) {
             case 1:
                 player.sendMessage(ChatColor.RED + "[파티] : 당신은 파티 리더가 아닙니다!");

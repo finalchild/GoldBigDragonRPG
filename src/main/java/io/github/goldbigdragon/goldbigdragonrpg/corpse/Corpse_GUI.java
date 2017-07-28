@@ -127,17 +127,17 @@ public class Corpse_Gui extends GuiUtil {
         int slot = event.getSlot();
         if (slot == 10)//마을에서 부활
         {
-            s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
             ReviveAtLastVisitedArea(player);
             new Corpse_Main().RemoveCorpse(player.getName());
             new io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain().Stop(player);
         } else if (slot == 12)//제자리에서 부활
         {
             if (event.getCurrentItem().getTypeId() == 166) {
-                s.SP(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.0F);
                 return;
             } else {
-                s.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 new Corpse_Main().RemoveCorpse(player.getName());
                 ReviveAtDeadPoint(player);
                 new io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain().Stop(player);
@@ -148,21 +148,21 @@ public class Corpse_Gui extends GuiUtil {
                 Player[] partyMember = Main_ServerOption.Party.get(Main_ServerOption.PartyJoiner.get(player)).getMember();
                 for (int count = 0; count < partyMember.length; count++)
                     if (player != partyMember[count]) {
-                        s.SP(partyMember[count], Sound.ENTITY_VILLAGER_DEATH, 0.4F, 0.5F);
+                        SoundUtil.SP(partyMember[count], Sound.ENTITY_VILLAGER_DEATH, 0.4F, 0.5F);
                         partyMember[count].sendMessage(ChatColor.LIGHT_PURPLE + "[구조 요청] : " + ChatColor.YELLOW + player.getName() + ChatColor.LIGHT_PURPLE + "님으로 부터 구조 요청이 들어왔습니다! (월드 : " + player.getLocation().getWorld().getName() + ", XYZ : " + (int) (player.getLocation().getX()) + "," + (int) (player.getLocation().getY()) + "," + (int) (player.getLocation().getZ()) + ")");
                     }
-                s.SP(player, Sound.ENTITY_WITHER_SKELETON_STEP, 1.0F, 1.0F);
+                SoundUtil.SP(player, Sound.ENTITY_WITHER_SKELETON_STEP, 1.0F, 1.0F);
                 player.sendMessage(ChatColor.LIGHT_PURPLE + "[구조 요청] : 파티 멤버들에게 구조 요청 신호를 보냈습니다!");
             } else {
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager FriendsList = YC.getNewConfig("Friend/" + player.getUniqueId().toString() + ".yml");
                 if (!FriendsList.contains("Name")) {
-                    s.SP(player, Sound.ENTITY_VILLAGER_NO, 1.0F, 1.0F);
+                    SoundUtil.SP(player, Sound.ENTITY_VILLAGER_NO, 1.0F, 1.0F);
                     player.sendMessage(ChatColor.LIGHT_PURPLE + "[구조 요청] : 구조 요청 신호를 보낼 수 있는 친구가 없습니다!");
                 } else {
                     Object[] FList = FriendsList.getConfigurationSection("Friends").getKeys(false).toArray();
                     if (FList.length == 0) {
-                        s.SP(player, Sound.ENTITY_VILLAGER_NO, 1.0F, 1.0F);
+                        SoundUtil.SP(player, Sound.ENTITY_VILLAGER_NO, 1.0F, 1.0F);
                         player.sendMessage(ChatColor.LIGHT_PURPLE + "[구조 요청] : 구조 요청 신호를 보낼 수 있는 친구가 없습니다!");
                     } else {
                         boolean exitFriend = false;
@@ -170,16 +170,16 @@ public class Corpse_Gui extends GuiUtil {
                             Player friend = Bukkit.getPlayer(FList[count].toString());
                             if (friend != null)
                                 if (friend.isOnline()) {
-                                    s.SP(friend, Sound.ENTITY_VILLAGER_DEATH, 0.4F, 0.5F);
+                                    SoundUtil.SP(friend, Sound.ENTITY_VILLAGER_DEATH, 0.4F, 0.5F);
                                     friend.sendMessage(ChatColor.LIGHT_PURPLE + "[구조 요청] : " + ChatColor.YELLOW + player.getName() + ChatColor.LIGHT_PURPLE + "님으로 부터 구조 요청이 들어왔습니다! (월드 : " + player.getLocation().getWorld().getName() + ", XYZ : " + (int) (player.getLocation().getX()) + "," + (int) (player.getLocation().getY()) + "," + (int) (player.getLocation().getZ()) + ")");
                                     exitFriend = true;
                                 }
                         }
                         if (exitFriend) {
-                            s.SP(player, Sound.ENTITY_SKELETON_STEP, 1.0F, 1.0F);
+                            SoundUtil.SP(player, Sound.ENTITY_SKELETON_STEP, 1.0F, 1.0F);
                             player.sendMessage(ChatColor.LIGHT_PURPLE + "[구조 요청] : 접속한 친구들에게 구조 요청 신호를 보냈습니다!");
                         } else {
-                            s.SP(player, Sound.ENTITY_VILLAGER_NO, 1.0F, 1.0F);
+                            SoundUtil.SP(player, Sound.ENTITY_VILLAGER_NO, 1.0F, 1.0F);
                             player.sendMessage(ChatColor.LIGHT_PURPLE + "[구조 요청] : 구조 요청 신호를 보낼 수 있는 친구가 없습니다!");
                         }
                     }
@@ -191,7 +191,7 @@ public class Corpse_Gui extends GuiUtil {
             YamlManager Config = YC.getNewConfig("config.yml");
             ItemStack item = Config.getItemStack("Death.ReviveItem");
             if (item == null) {
-                s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                 player.sendMessage(ChatColor.RED + "[SYSTEM] : 부활 아이템이 없어 부활할 수 없습니다!");
                 OpenReviveSelectGUI(player);
             } else {
@@ -204,12 +204,12 @@ public class Corpse_Gui extends GuiUtil {
                     player.teleport(l);
                     for (short countta = 0; countta < 210; countta++)
                         new ParticleUtil().PL(player.getLocation(), org.bukkit.Effect.SMOKE, new Util_Number().RandomNum(0, 14));
-                    s.SL(player.getLocation(), Sound.ENTITY_BLAZE_AMBIENT, 0.5F, 1.8F);
+                    SoundUtil.SL(player.getLocation(), Sound.ENTITY_BLAZE_AMBIENT, 0.5F, 1.8F);
                     new io.github.goldbigdragon.goldbigdragonrpg.dependency.NoteBlockAPIMain().Stop(player);
                     Penalty(player, Config.getString("Death.Spawn_Item.SetHealth"), Config.getString("Death.Spawn_Item.PenaltyEXP"), Config.getString("Death.Spawn_Item.PenaltyMoney"));
                     return;
                 } else {
-                    s.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                    SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                     player.sendMessage(ChatColor.RED + "[SYSTEM] : 부활 아이템이 부족하여 부활할 수 없습니다!");
                     return;
                 }
