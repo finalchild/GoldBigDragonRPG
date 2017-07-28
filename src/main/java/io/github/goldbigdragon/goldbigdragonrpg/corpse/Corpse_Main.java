@@ -41,7 +41,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.util.EulerAngle;
 
 public class Corpse_Main {
-    public static HashMap<String, ArrayList<ArmorStand>> Corpses = new HashMap<String, ArrayList<ArmorStand>>();
+    public static HashMap<String, ArrayList<ArmorStand>> Corpses = new HashMap<>();
 
     public boolean DeathCapture(Player player, boolean isJoin) {
         if (player.getGameMode() == GameMode.SPECTATOR) {
@@ -105,7 +105,7 @@ public class Corpse_Main {
             RemoveCorpse(player.getName());
             int CorpseStyle = new Random().nextInt((int) (11)); //(0 ~ 10 까지의 수)
             String name = player.getName();
-            ArrayList<ArmorStand> AL = new ArrayList<ArmorStand>();
+            ArrayList<ArmorStand> AL = new ArrayList<>();
             player.setGameMode(GameMode.SPECTATOR);
             int playerRandom = new Random().nextInt((int) (91)) - 45;
             Location playerLoc = player.getLocation();

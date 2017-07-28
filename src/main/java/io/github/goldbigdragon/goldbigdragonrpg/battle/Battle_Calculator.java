@@ -320,7 +320,7 @@ public class Battle_Calculator {
             default:
                 break;
         }
-        ArrayList<ItemStack> item = new ArrayList<ItemStack>();
+        ArrayList<ItemStack> item = new ArrayList<>();
         item.add(player.getInventory().getHelmet());
         item.add(player.getInventory().getChestplate());
         item.add(player.getInventory().getLeggings());
@@ -438,7 +438,7 @@ public class Battle_Calculator {
 
     public void decreaseDurabilityArmor(Player player) {
         boolean DurabilityExit = false;
-        ArrayList<ItemStack> item = new ArrayList<ItemStack>();
+        ArrayList<ItemStack> item = new ArrayList<>();
         item.add(player.getInventory().getHelmet());
         item.add(player.getInventory().getChestplate());
         item.add(player.getInventory().getLeggings());
@@ -573,7 +573,7 @@ public class Battle_Calculator {
 
     public void decreaseDurabilityWeapon(Player player) {
         boolean DurabilityExit = false;
-        ArrayList<ItemStack> item = new ArrayList<ItemStack>();
+        ArrayList<ItemStack> item = new ArrayList<>();
         item.add(player.getInventory().getItemInMainHand());
         if (Main_ServerOption.dualWeapon)
             item.add(player.getInventory().getItemInOffHand());

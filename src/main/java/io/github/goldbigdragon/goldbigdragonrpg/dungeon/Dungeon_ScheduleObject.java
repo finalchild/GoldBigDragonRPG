@@ -44,11 +44,11 @@ public class Dungeon_ScheduleObject {
     private int count = 0;
     private Player leader;
     private String Type = "D_RC";//Dungeon_RoomCreate
-    private List<Character> Grid = new ArrayList<Character>();
-    private List<Integer> GridLoc = new ArrayList<Integer>();
-    private List<Character> KeyGrid = new ArrayList<Character>();
-    private List<Integer> KeyGridLoc = new ArrayList<Integer>();
-    private List<String> DungeonMaker = new ArrayList<String>();
+    private List<Character> Grid = new ArrayList<>();
+    private List<Integer> GridLoc = new ArrayList<>();
+    private List<Character> KeyGrid = new ArrayList<>();
+    private List<Integer> KeyGridLoc = new ArrayList<>();
+    private List<String> DungeonMaker = new ArrayList<>();
     private byte size = 5;
     private String DungeonType = "Stone";
     private String DungeonName = null;

@@ -129,8 +129,8 @@ public class Job_Main {
         YamlManager SkillList = YC.getNewConfig("Skill/SkillList.yml");
 
         if (YC.getNewConfig("config.yml").getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
-            ArrayList<String> Categori = new ArrayList<String>();
-            ArrayList<String> PlayerCategori = new ArrayList<String>();
+            ArrayList<String> Categori = new ArrayList<>();
+            ArrayList<String> PlayerCategori = new ArrayList<>();
             for (short count = 0; count < PlayerList.getConfigurationSection("Mabinogi").getKeys(false).toArray().length; count++)
                 PlayerCategori.add(PlayerList.getConfigurationSection("Mabinogi").getKeys(false).toArray()[count].toString());
             for (short count = 0; count < JobList.getConfigurationSection("Mabinogi").getKeys(false).toArray().length; count++)
@@ -152,8 +152,8 @@ public class Job_Main {
             //만일 카테고리에는 없지만 플레이어에게 스킬이 있다면 삭제해 주는 구문.
             for (short count = 0; count < Categori.size(); count++) {
                 if (Categori.get(count).compareTo("Added") != 0) {
-                    ArrayList<String> JobSkillList = new ArrayList<String>();
-                    ArrayList<String> PlayerSkillList = new ArrayList<String>();
+                    ArrayList<String> JobSkillList = new ArrayList<>();
+                    ArrayList<String> PlayerSkillList = new ArrayList<>();
                     for (short countta = 0; countta < JobList.getConfigurationSection("Mabinogi." + Categori.get(count)).getKeys(false).toArray().length; countta++)
                         JobSkillList.add(JobList.getConfigurationSection("Mabinogi." + Categori.get(count)).getKeys(false).toArray()[countta].toString());
                     for (short countta = 0; countta < PlayerList.getConfigurationSection("Mabinogi." + Categori.get(count)).getKeys(false).toArray().length; countta++)
@@ -214,8 +214,8 @@ public class Job_Main {
                     }
                     for (short countta = 0; countta < SubJobs.length; countta++) {
                         if (SubJobs[countta].toString().compareTo(PlayerJob[count].toString()) == 0) {
-                            ArrayList<String> SubJobSkills = new ArrayList<String>();
-                            ArrayList<String> PlayerJobSkills = new ArrayList<String>();
+                            ArrayList<String> SubJobSkills = new ArrayList<>();
+                            ArrayList<String> PlayerJobSkills = new ArrayList<>();
 
                             for (short count1 = 0; count1 < JobList.getConfigurationSection("MapleStory." + Jobs[counter].toString() + "." + SubJobs[countta] + ".Skill").getKeys(false).toArray().length; count1++)
                                 SubJobSkills.add(JobList.getConfigurationSection("MapleStory." + Jobs[counter].toString() + "." + SubJobs[countta] + ".Skill").getKeys(false).toArray()[count1].toString());

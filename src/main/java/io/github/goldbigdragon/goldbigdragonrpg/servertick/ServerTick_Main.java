@@ -69,12 +69,12 @@ class Descending_longValue implements Comparator<Object_RankingSet> {
 }
 
 public class ServerTick_Main {
-    public static ArrayList<String> MobSpawningAreaList = new ArrayList<String>();
-    public static ArrayList<String> NaviUsingList = new ArrayList<String>();
-    public static HashMap<String, String> PlayerTaskList = new HashMap<String, String>();
+    public static ArrayList<String> MobSpawningAreaList = new ArrayList<>();
+    public static ArrayList<String> NaviUsingList = new ArrayList<>();
+    public static HashMap<String, String> PlayerTaskList = new HashMap<>();
     public static String ServerTask = "null";
-    public static HashMap<Long, ServerTick_Object> Schedule = new HashMap<Long, ServerTick_Object>();
-    public static HashMap<Long, Dungeon_ScheduleObject> DungeonSchedule = new HashMap<Long, Dungeon_ScheduleObject>();
+    public static HashMap<Long, ServerTick_Object> Schedule = new HashMap<>();
+    public static HashMap<Long, Dungeon_ScheduleObject> DungeonSchedule = new HashMap<>();
     public static long nowUTC = 0;
     int BroadCastMessageTime = 0;
     int BroadCastMessageCool = 0;
@@ -237,7 +237,7 @@ public class ServerTick_Main {
                 File[] fileList = directory.listFiles();
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager YAML = null;
-                ArrayList<Object_RankingSet> MoneyRankingSet = new ArrayList<Object_RankingSet>();
+                ArrayList<Object_RankingSet> MoneyRankingSet = new ArrayList<>();
                 Object_RankingSet ORS = null;
                 try {
                     for (int count = 0; count < fileList.length; count++)

@@ -35,9 +35,9 @@ import com.xxmicloxx.NoteBlockAPI.Song;
 import com.xxmicloxx.NoteBlockAPI.SongPlayer;
 
 public class NoteBlockAPIMain implements Listener {
-    public static List<Song> Musics = new ArrayList<Song>();
-    HashMap<Player, SongPlayer> currentStations = new HashMap<Player, SongPlayer>();
-    HashMap<Player, SongPlayer> joinedPlayer = new HashMap<Player, SongPlayer>();
+    public static List<Song> Musics = new ArrayList<>();
+    HashMap<Player, SongPlayer> currentStations = new HashMap<>();
+    HashMap<Player, SongPlayer> joinedPlayer = new HashMap<>();
     short maxStations = 1000;
     static boolean MusicAdded = false;
     public File MusicFolder = new File("plugins/GoldBigDragonRPG/NoteBlockSound/");

@@ -66,7 +66,7 @@ public class Struct_PostBox extends GuiUtil {
                 String PostMemo = PlayerPost.getString("Recieve." + PostList[count].toString() + ".Memo");
                 ItemStack PostItem = PlayerPost.getItemStack("Recieve." + PostList[count].toString() + ".Item");
 
-                List<String> Memo = new ArrayList<String>();
+                List<String> Memo = new ArrayList<>();
                 Memo.add("");
                 Memo.add(ChatColor.BLUE + "제목 : " + ChatColor.WHITE + PostTitle);
                 Memo.add("");
@@ -132,7 +132,7 @@ public class Struct_PostBox extends GuiUtil {
                 String PostMemo = PlayerPost.getString("Send." + PostList[count].toString() + ".Memo");
                 ItemStack PostItem = PlayerPost.getItemStack("Send." + PostList[count].toString() + ".Item");
 
-                List<String> Memo = new ArrayList<String>();
+                List<String> Memo = new ArrayList<>();
                 Memo.add("");
                 Memo.add(ChatColor.BLUE + "제목 : " + ChatColor.WHITE + PostTitle);
                 Memo.add("");

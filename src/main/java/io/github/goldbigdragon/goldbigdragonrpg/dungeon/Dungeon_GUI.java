@@ -2068,7 +2068,7 @@ public final class Dungeon_Gui extends GuiUtil {
             long UTC = Main_ServerOption.PartyJoiner.get(player);
             if (Main_ServerOption.Party.get(UTC).getLeader().compareTo(player.getName()) == 0) {
                 //파티원 추가하기//
-                ArrayList<Player> NearPartyMember = new ArrayList<Player>();
+                ArrayList<Player> NearPartyMember = new ArrayList<>();
                 Main_ServerOption.Party.get(UTC).getMember();
                 for (int count = 0; count < Main_ServerOption.Party.get(UTC).getPartyMembers(); count++) {
                     if (player.getWorld().getName().compareTo(Main_ServerOption.Party.get(UTC).getMember()[count].getWorld().getName()) == 0)

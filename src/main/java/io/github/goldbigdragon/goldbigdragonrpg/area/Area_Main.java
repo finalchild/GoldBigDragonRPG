@@ -58,7 +58,7 @@ public class Area_Main {
                 Main_ServerOption.AreaList.remove(AreaList.getString(arealist[count].toString() + ".World"));
                 Main_ServerOption.AreaList.put(AreaList.getString(arealist[count].toString() + ".World"), areaList);
             } else {
-                ArrayList<Area_Object> areaList = new ArrayList<Area_Object>();
+                ArrayList<Area_Object> areaList = new ArrayList<>();
                 areaList.add(AO);
                 Main_ServerOption.AreaList.put(AreaList.getString(arealist[count].toString() + ".World"), areaList);
             }
@@ -157,7 +157,7 @@ public class Area_Main {
             Main_ServerOption.AreaList.remove(AreaList.getString(name + ".World"));
             Main_ServerOption.AreaList.put(AreaList.getString(name + ".World"), areaList);
         } else {
-            ArrayList<Area_Object> areaList = new ArrayList<Area_Object>();
+            ArrayList<Area_Object> areaList = new ArrayList<>();
             areaList.add(AO);
             Main_ServerOption.AreaList.put(AreaList.getString(name + ".World"), areaList);
         }
@@ -241,7 +241,7 @@ public class Area_Main {
 
     public String[] SearchAreaName(Location loc) {
         if (Main_ServerOption.AreaList.containsKey(loc.getWorld().getName())) {
-            ArrayList<String> AreaName = new ArrayList<String>();
+            ArrayList<String> AreaName = new ArrayList<>();
             ArrayList<Area_Object> AreaList = Main_ServerOption.AreaList.get(loc.getWorld().getName());
             for (short count = 0; count < AreaList.size(); count++) {
                 if (AreaList.get(count).minX <= loc.getX() && AreaList.get(count).maxX >= loc.getX())

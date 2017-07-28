@@ -101,8 +101,8 @@ public class Struct_TradeBoard extends GuiUtil {
 
         short Added = 0;
         boolean isFinished = false;
-        ArrayList<String> AddItem = new ArrayList<String>();
-        ArrayList<String> AddPlayer = new ArrayList<String>();
+        ArrayList<String> AddItem = new ArrayList<>();
+        ArrayList<String> AddPlayer = new ArrayList<>();
         if (page == 0) {
             for (int count = ItemList.length - 1; count >= 0; count--) {
                 Object[] PlayerList = Board.getConfigurationSection(ShopTypeString + "." + ItemList[count].toString()).getKeys(false).toArray();
@@ -195,7 +195,7 @@ public class Struct_TradeBoard extends GuiUtil {
                 if (itemM.hasLore())
                     Memo = itemM.getLore();
                 else
-                    Memo = new ArrayList<String>();
+                    Memo = new ArrayList<>();
                 Memo.add("");
                 if (ShopType == 0) {
                     Memo.add(ChatColor.BLUE + "판매자 : " + ChatColor.WHITE + RegisteredUser);

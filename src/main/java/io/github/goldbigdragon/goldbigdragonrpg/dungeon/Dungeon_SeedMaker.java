@@ -105,8 +105,8 @@ public class Dungeon_SeedMaker {
                 StartPoint = RoomCounter[count];
                 whenIChoosed = 'V';//V는 갈림길을 만난 적이 없음을 뜻함.
                 whenIsaved = RoomCounter[count];//마찬가지로 -1은 아직 갈림길을 만나지 않았음을 뜻한다.
-                RightPass = new ArrayList<Integer>();
-                PassedRoom = new ArrayList<Integer>();
+                RightPass = new ArrayList<>();
+                PassedRoom = new ArrayList<>();
                 RightPass.add(0, whenIsaved);
                 DungeonClearSimulation(whenIsaved, whenIChoosed, false);
                 //던전을 모의로 돌아 클리어 가능하게 방이 이어 졌는지 검사
@@ -753,7 +753,7 @@ public class Dungeon_SeedMaker {
     public boolean DoorCreator() {
         for (; ; ) {
             int LastNum = RightPass.get(0);
-            List<Integer> Wired = new ArrayList<Integer>();
+            List<Integer> Wired = new ArrayList<>();
             for (int count = 0; count < RightPass.size(); count++) {
                 int Gap = LastNum - RightPass.get(count);
                 if (Gap == 0 || Gap == 1 || Gap == -1 || Gap == size || Gap == -1 * size)

@@ -24,10 +24,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
+import java.util.*;
 
 import io.github.goldbigdragon.goldbigdragonrpg.admin.NewBie_Config;
 import io.github.goldbigdragon.goldbigdragonrpg.area.Area_Main;
@@ -56,7 +53,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 import net.milkbowl.vault.economy.Economy;
 
 public class Main_ServerOption {
-    public static ArrayList<String> DungeonTheme = new ArrayList<String>();
+    public static ArrayList<String> DungeonTheme = new ArrayList<>();
 
     public static Economy economy = null;
 
@@ -114,20 +111,20 @@ public class Main_ServerOption {
     public static String currentServerUpdate = "2017-07-08-12:35";
     public static String currentServerVersion = "Advanced";
 
-    public static java.util.Map<Long, Party_Object> Party = new LinkedHashMap<Long, Party_Object>();
-    public static java.util.Map<Player, Long> PartyJoiner = new LinkedHashMap<Player, Long>();
+    public static java.util.Map<Long, Party_Object> Party = new LinkedHashMap<>();
+    public static java.util.Map<Player, Long> PartyJoiner = new LinkedHashMap<>();
 
-    public static HashMap<Player, Location> catchedLocation1 = new HashMap<Player, Location>();
-    public static HashMap<Player, Location> catchedLocation2 = new HashMap<Player, Location>();
+    public static Map<Player, Location> catchedLocation1 = new HashMap<>();
+    public static Map<Player, Location> catchedLocation2 = new HashMap<>();
 
-    public static HashMap<Player, String> PlayerUseSpell = new HashMap<Player, String>();
-    public static HashMap<Player, ItemStack> PlayerlastItem = new HashMap<Player, ItemStack>();
+    public static Map<Player, String> PlayerUseSpell = new HashMap<>();
+    public static Map<Player, ItemStack> PlayerlastItem = new HashMap<>();
 
-    public static HashMap<String, ArrayList<Area_Object>> AreaList = new HashMap<String, ArrayList<Area_Object>>();
-    public static HashMap<Player, String> PlayerCurrentArea = new HashMap<Player, String>();
-    public static HashMap<String, User_Object> PlayerList = new HashMap<String, User_Object>();
-    public static HashMap<String, Monster_Object> MonsterList = new HashMap<String, Monster_Object>();
-    public static HashMap<String, String> MonsterNameMatching = new HashMap<String, String>();
+    public static Map<String, ? extends List<Area_Object>> AreaList = new HashMap<>();
+    public static Map<Player, String> PlayerCurrentArea = new HashMap<>();
+    public static Map<String, User_Object> PlayerList = new HashMap<>();
+    public static Map<String, Monster_Object> MonsterList = new HashMap<>();
+    public static Map<String, String> MonsterNameMatching = new HashMap<>();
 
     public static boolean MagicSpellsCatched = false;
     public static boolean MagicSpellsEnable = false;
@@ -279,7 +276,7 @@ public class Main_ServerOption {
                     File InnerDirectory = new File(Main_Main.plugin.getDataFolder() + "\\Dungeon\\Schematic\\" + fileList[count].getName());
                     File[] schematicList = InnerDirectory.listFiles();
                     if (schematicList.length != 25) {
-                        ArrayList<String> DungeonFile = new ArrayList<String>();
+                        ArrayList<String> DungeonFile = new ArrayList<>();
                         for (byte count2 = 0; count2 < schematicList.length; count2++)
                             DungeonFile.add(schematicList[count2].getName());
                         Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[Fail] " + fileList[count].getName() + " 던전 테마를 사용하려면 아래 구성물들이 더 필요합니다!");

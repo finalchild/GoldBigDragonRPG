@@ -85,7 +85,7 @@ public class Struct_Board extends GuiUtil {
 
                 String PostedTime = new ETC().getFrom(new ServerTick_Main().nowUTC, PostUTC);
 
-                List<String> Memo = new ArrayList<String>();
+                List<String> Memo = new ArrayList<>();
                 Memo.add("");
                 Memo.add(ChatColor.BLUE + "제목 : " + ChatColor.WHITE + PostTitle);
                 Memo.add("");
@@ -121,7 +121,7 @@ public class Struct_Board extends GuiUtil {
             Stack2(ChatColor.RED + " ", 160, (byte) 12, (byte) 1, Arrays.asList(""), (byte) count2, inv);
 
         if (Board.getString("Notice").compareTo("null") != 0) {
-            List<String> Memo = new ArrayList<String>();
+            List<String> Memo = new ArrayList<>();
             for (short count2 = 0; count2 < (Board.getString("Notice").length() / 20) + 1; count2++) {
                 if ((count2 + 1) * 20 < Board.getString("Notice").length())
                     Memo.add(ChatColor.WHITE + Board.getString("Notice").substring(0 + (count2 * 20), ((count2 + 1) * 20)));
@@ -157,7 +157,7 @@ public class Struct_Board extends GuiUtil {
         if (Board.getString("Notice").compareTo("null") == 0)
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "[게시판 알림]", 166, (byte) 0, (byte) 1, Arrays.asList(ChatColor.RED + "[게시판 알림 없음]"), (byte) 2, inv);
         else {
-            List<String> Memo = new ArrayList<String>();
+            List<String> Memo = new ArrayList<>();
             for (short count2 = 0; count2 < (Board.getString("Notice").length() / 20) + 1; count2++) {
                 if ((count2 + 1) * 20 < Board.getString("Notice").length())
                     Memo.add(ChatColor.WHITE + Board.getString("Notice").substring(0 + (count2 * 20), ((count2 + 1) * 20)));

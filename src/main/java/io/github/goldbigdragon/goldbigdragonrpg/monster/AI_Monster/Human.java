@@ -65,8 +65,8 @@ public class Human {
     int itemInHand;
     private UUID uuid;
 
-    public static ArrayList<Location> locations = new ArrayList<Location>();
-    public static ArrayList<Human> humans = new ArrayList<Human>();
+    public static ArrayList<Location> locations = new ArrayList<>();
+    public static ArrayList<Human> humans = new ArrayList<>();
 
     @SuppressWarnings("rawtypes")
     private void setPrivateField(Class type, Object object, String name, Object value) {
@@ -446,7 +446,7 @@ public class Human {
     }
 
     public static ArrayList<Human> deserialize() {
-        ArrayList<Human> humans = new ArrayList<Human>();
+        ArrayList<Human> humans = new ArrayList<>();
         File file = new File(plugin.getDataFolder() + "/npcs.yml");
         FileConfiguration npcs = YamlConfiguration.loadConfiguration(file);
         int current = 1;

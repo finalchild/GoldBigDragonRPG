@@ -38,7 +38,7 @@ public class NMSUtils {
             * 필자는 reflection을 사용했기 때문에, 나중에 마인크래프트가 필드 이름을 바꿔도 문제가 없다.
             * 맵들에 리스트들을 등록함으로 써, 우리들은 나중에 매우 쉽게 수정할 수 있게 된다.
             */
-            List<Map<?, ?>> dataMaps = new ArrayList<Map<?, ?>>();
+            List<Map<?, ?>> dataMaps = new ArrayList<>();
             for (Field f : EntityTypes.class.getDeclaredFields()) {
                 if (f.getType().getSimpleName().equals(Map.class.getSimpleName())) {
                     f.setAccessible(true);

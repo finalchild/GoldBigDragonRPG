@@ -236,7 +236,7 @@ public class Dungeon_Creater {
         } catch (FileNotFoundException e) {
             return null;
         }
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
         String s;
         try {
             while ((s = Read.readLine()) != null)

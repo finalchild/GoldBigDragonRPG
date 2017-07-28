@@ -664,7 +664,7 @@ public class Dungeon_Main {
             }
         }
         if (MobList != null && MobList.length != 0) {
-            ArrayList<String> Mob = new ArrayList<String>();
+            ArrayList<String> Mob = new ArrayList<>();
             for (int count = 0; count < 8; count++)
                 Mob.add(MobList[new Util_Number().RandomNum(0, MobList.length - 1)].toString());
             if (MobList.length > 0) {

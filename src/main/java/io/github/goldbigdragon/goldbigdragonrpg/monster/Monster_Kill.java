@@ -329,7 +329,7 @@ public class Monster_Kill {
                                     YamlManager DungeonConfig = YC.getNewConfig("Dungeon/Dungeon/" + Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getDungeon_Enter() + "/Entered/" + Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getDungeon_UTC() + ".yml");
                                     if (DungeonConfig.contains("Boss")) {
                                         int BossCount = DungeonConfig.getConfigurationSection("Boss").getKeys(false).size();
-                                        ArrayList<String> BossList = new ArrayList<String>();
+                                        ArrayList<String> BossList = new ArrayList<>();
                                         boolean isChecked = false;
                                         for (byte count = 0; count < BossCount; count++) {
                                             if (!isChecked && DungeonConfig.getString("Boss." + count).compareTo(name) == 0)
