@@ -837,7 +837,7 @@ public class Dungeon_Main {
             }
             for (int counter = 0; counter < 50; counter++)
                 p.PL(block.getLocation(), org.bukkit.Effect.MAGIC_CRIT, 0);
-            s.SL(block.getLocation(), org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_TOUCH, 1.0F, 0.5F);
+            s.SL(block.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.5F);
         } else if (block.getData() == 0 || block.getData() == 3 || block.getData() == 5 || block.getData() == 6 || block.getData() == 7) {
             for (int counter = 0; counter < 31; counter++)
                 p.PL(block.getLocation(), org.bukkit.Effect.CRIT, 0);

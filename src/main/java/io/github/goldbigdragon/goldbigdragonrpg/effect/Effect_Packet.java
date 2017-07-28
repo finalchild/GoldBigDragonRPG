@@ -19,8 +19,14 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.effect;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.events.PacketContainer;
+import com.comphenix.protocol.wrappers.EnumWrappers;
+import com.comphenix.protocol.wrappers.WrappedChatComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
@@ -76,10 +82,15 @@ public class Effect_Packet {
             sendActionBar(player[count], message);
     }
 
-    public void sendActionBar(Player p, String msg) {
-        IChatBaseComponent cbc = ChatSerializer.a("{\"text\": \"" + msg + "\"}");
-        PacketPlayOutChat ppoc = new PacketPlayOutChat(cbc, (byte) 2);
-        ((CraftPlayer) p).getHandle().playerConnection.sendPacket(ppoc);
+    public void sendActionBar(Player player, String message) {
+        PacketContainer packet = new PacketContainer(PacketType.Play.Server.CHAT);
+        packet.getChatComponents().write(0, WrappedChatComponent.fromText(message));
+        packet.getChatTypes().write(0, EnumWrappers.ChatType.GAME_INFO);
+        try {
+            ProtocolLibrary.getProtocolManager().sendServerPacket(player, packet);
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
     }
 
     public void switchHotbarSlot(Player p, int slot) {

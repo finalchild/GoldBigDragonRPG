@@ -21,6 +21,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.util;
 
 import java.io.File;
 import java.io.InputStream;
+import java.io.Reader;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -38,12 +39,11 @@ public class YamlManager {
     private File file;
     private FileConfiguration config;
 
-    @SuppressWarnings("deprecation")
-    public YamlManager(InputStream configStream, File configFile, int comments, JavaPlugin plugin) {
+    public YamlManager(Reader configReader, File configFile, int comments, JavaPlugin plugin) {
         this.comments = comments;
         this.manager = new YamlController(plugin);
         this.file = configFile;
-        this.config = YamlConfiguration.loadConfiguration(configStream);
+        this.config = YamlConfiguration.loadConfiguration(configReader);
     }
 
     public Object get(String path) {
