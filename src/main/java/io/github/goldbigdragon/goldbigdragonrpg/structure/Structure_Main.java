@@ -55,8 +55,7 @@ public class Structure_Main {
 
      */
     public void CreateSturcture(Player player, String StructureCode, short StructureID, int Direction) {
-        SoundUtil s = new SoundUtil();
-        ServerTick_Main.ServerTask = "[구조물 설치]";
+                ServerTick_Main.ServerTask = "[구조물 설치]";
         Long UTC = ServerTick_Main.nowUTC;
 
         ServerTick_Object STSO = new ServerTick_Object(UTC, "C_S");
@@ -160,23 +159,22 @@ public class Structure_Main {
     }
 
     public void StructureUse(Player player, String StructureName) {
-        SoundUtil s = new SoundUtil();
 
         String Structrue = ChatColor.stripColor(StructureName);
         if (Structrue.compareTo("[우편함]") == 0) {
-            SoundUtil.SP(player, Sound.BLOCK_CHEST_OPEN, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.BLOCK_CHEST_OPEN, 0.8F, 1.0F);
             new Struct_PostBox().PostBoxMainGUI(player, (byte) 0);
         } else if (Structrue.compareTo("[게시판]") == 0) {
-            SoundUtil.SP(player, Sound.ENTITY_ZOMBIE_ATTACK_DOOR_WOOD, 0.5F, 1.8F);
+            SoundUtil.playSound(player, Sound.ENTITY_ZOMBIE_ATTACK_DOOR_WOOD, 0.5F, 1.8F);
             new Struct_Board().BoardMainGUI(player, StructureName, (byte) 0);
         } else if (Structrue.compareTo("[거래 게시판]") == 0) {
-            SoundUtil.SP(player, Sound.ENTITY_VILLAGER_AMBIENT, 1.0F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_VILLAGER_AMBIENT, 1.0F, 1.0F);
             new Struct_TradeBoard().TradeBoardMainGUI(player, (byte) 0, (byte) 0);
         } else if (Structrue.compareTo("[모닥불]") == 0) {
-            SoundUtil.SP(player, Sound.BLOCK_FIRE_AMBIENT, 2.0F, 1.0F);
+            SoundUtil.playSound(player, Sound.BLOCK_FIRE_AMBIENT, 2.0F, 1.0F);
             new Struct_CampFire().CampFireMainGUI(player, StructureName);
         } else if (Structrue.compareTo("[제단]") == 0) {
-            SoundUtil.SP(player, Sound.AMBIENT_CAVE, 1.2F, 1.2F);
+            SoundUtil.playSound(player, Sound.AMBIENT_CAVE, 1.2F, 1.2F);
             new Dungeon_Gui().AltarUseGUI(player, StructureName);
         }
     }

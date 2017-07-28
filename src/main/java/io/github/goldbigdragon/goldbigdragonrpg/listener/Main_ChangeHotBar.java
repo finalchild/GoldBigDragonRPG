@@ -72,28 +72,27 @@ public class Main_ChangeHotBar implements Listener {
                                 if (nowlore.contains(" + ")) {
                                     YamlController YC = new YamlController(Main_Main.plugin);
                                     YamlManager Config = YC.getNewConfig("config.yml");
-                                    SoundUtil s = new SoundUtil();
-                                    if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
+                                                                        if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
                                         Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).addStat_RealLevel(1);
                                         Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setStat_Level(1);
                                         Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setStat_EXP(0);
                                         Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).setStat_MaxEXP(100);
 
-                                        SoundUtil.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 0.5F);
-                                        SoundUtil.SP(player, Sound.ENTITY_FIREWORK_LAUNCH, 1.0F, 1.2F);
-                                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
+                                        SoundUtil.playSound(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 0.5F);
+                                        SoundUtil.playSound(player, Sound.ENTITY_FIREWORK_LAUNCH, 1.0F, 1.2F);
+                                        SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 0.8F);
                                         PacketUtil PS = new PacketUtil();
                                         PacketUtil.sendTitleSubTitle(player, "\'" + ChatColor.YELLOW + "■ [ Rebirth ] ■" + "\'", "\'" + ChatColor.YELLOW + "[레벨 및 경험치가 초기화 되었습니다!]" + "\'", (byte) 1, (byte) 5, (byte) 1);
                                     } else {
                                         player.sendMessage(ChatColor.RED + "[SYSTEM] : 서버 시스템에 맞지 않아 환생을 할 수 없습니다!");
-                                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                        SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                     }
                                 }
                             }
                         }
                         SoundUtil sound = new SoundUtil();
                         if (Health > 0) {
-                            SoundUtil.SL(player.getLocation(), Sound.ENTITY_GENERIC_DRINK, 2.0F, 0.8F);
+                            SoundUtil.playSound(player.getLocation(), Sound.ENTITY_GENERIC_DRINK, 2.0F, 0.8F);
                             Damageable Dp = player;
                             if (Dp.getMaxHealth() < Dp.getHealth() + Health)
                                 Dp.setHealth(Dp.getMaxHealth());
@@ -104,11 +103,11 @@ public class Main_ChangeHotBar implements Listener {
                             if (Main_ServerOption.MagicSpellsCatched) {
                                 io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain MS = new io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain();
                                 MS.DrinkManaPotion(player, Mana);
-                                SoundUtil.SL(player.getLocation(), Sound.BLOCK_WATER_AMBIENT, 2.0F, 1.9F);
+                                SoundUtil.playSound(player.getLocation(), Sound.BLOCK_WATER_AMBIENT, 2.0F, 1.9F);
                             }
                         }
                         if (Food > 0) {
-                            SoundUtil.SL(player.getLocation(), Sound.ENTITY_GENERIC_EAT, 2.0F, 1.2F);
+                            SoundUtil.playSound(player.getLocation(), Sound.ENTITY_GENERIC_EAT, 2.0F, 1.2F);
                             if (player.getFoodLevel() + Food > 40)
                                 player.setFoodLevel(40);
                             else
@@ -321,8 +320,7 @@ public class Main_ChangeHotBar implements Listener {
                                         player.sendMessage(ChatColor.RED + "[스킬] : MagicSpells플러그인에 해당 스펠이 존재하지 않습니다! 관리자에게 문의하세요!");
                                         player.sendMessage(ChatColor.RED + "존재하지 않는 스펠 이름 : " + ChatColor.YELLOW + Spell);
                                         player.sendMessage(ChatColor.RED + "존재하지 않는 스펠이 등록된 스킬 : " + ChatColor.YELLOW + Skillname + " " + PlayerSkillRank + "랭크");
-                                        SoundUtil s = new SoundUtil();
-                                        SoundUtil.SP(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.9F);
+                                                                                SoundUtil.playSound(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.9F);
                                     }
                                 }
                             }
@@ -357,45 +355,44 @@ public class Main_ChangeHotBar implements Listener {
 
     public void HotBarSound(Player player, short itemID) {
         if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isOption_HotBarSound()) {
-            SoundUtil s = new SoundUtil();
-            if (itemID == -1)
-                SoundUtil.SP(player, Sound.BLOCK_WOOD_BUTTON_CLICK_ON, 0.8F, 0.5F);
+                        if (itemID == -1)
+                SoundUtil.playSound(player, Sound.BLOCK_WOOD_BUTTON_CLICK_ON, 0.8F, 0.5F);
             if (itemID >= 298 && itemID <= 317)
-                SoundUtil.SP(player, Sound.ENTITY_HORSE_ARMOR, 0.9F, 0.5F);
+                SoundUtil.playSound(player, Sound.ENTITY_HORSE_ARMOR, 0.9F, 0.5F);
             else if (itemID >= 290 && itemID <= 294)
-                SoundUtil.SP(player, Sound.ITEM_HOE_TILL, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ITEM_HOE_TILL, 0.8F, 1.0F);
             else if (itemID == 46)
-                SoundUtil.SP(player, Sound.ENTITY_TNT_PRIMED, 1.5F, 0.8F);
+                SoundUtil.playSound(player, Sound.ENTITY_TNT_PRIMED, 1.5F, 0.8F);
             else if (itemID == 261)
-                SoundUtil.SP(player, Sound.ENTITY_ARROW_HIT, 1.0F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ARROW_HIT, 1.0F, 1.0F);
             else if (itemID == 259)
-                SoundUtil.SP(player, Sound.ITEM_FLINTANDSTEEL_USE, 1.0F, 1.0F);
+                SoundUtil.playSound(player, Sound.ITEM_FLINTANDSTEEL_USE, 1.0F, 1.0F);
             else if (itemID == 256 || itemID == 269 || itemID == 273 || itemID == 277 || itemID == 284)
-                SoundUtil.SP(player, Sound.ITEM_SHOVEL_FLATTEN, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ITEM_SHOVEL_FLATTEN, 0.8F, 1.0F);
             else if (itemID == 257 || itemID == 270 || itemID == 274 || itemID == 278 || itemID == 285)
-                SoundUtil.SP(player, Sound.BLOCK_STONE_BREAK, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.BLOCK_STONE_BREAK, 0.8F, 1.0F);
             else if (itemID == 258 || itemID == 271 || itemID == 275 || itemID == 279 || itemID == 286)
-                SoundUtil.SP(player, Sound.BLOCK_WOOD_BREAK, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.BLOCK_WOOD_BREAK, 0.8F, 1.0F);
             else if (itemID == 267 || itemID == 268 || itemID == 272 || itemID == 276 || itemID == 283)
-                SoundUtil.SP(player, Sound.ENTITY_HORSE_ARMOR, 1.0F, 2.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_HORSE_ARMOR, 1.0F, 2.0F);
             else if (itemID == 346)
-                SoundUtil.SP(player, Sound.ENTITY_GENERIC_SWIM, 1.5F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_GENERIC_SWIM, 1.5F, 1.0F);
             else if (itemID == 359)
-                SoundUtil.SP(player, Sound.ENTITY_SHEEP_SHEAR, 1.5F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_SHEEP_SHEAR, 1.5F, 1.0F);
             else if (itemID == 368)
-                SoundUtil.SP(player, Sound.ENTITY_ENDERMEN_TELEPORT, 1.0F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ENDERMEN_TELEPORT, 1.0F, 1.0F);
             else if (itemID == 373)
-                SoundUtil.SP(player, Sound.ENTITY_GENERIC_DRINK, 1.0F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_GENERIC_DRINK, 1.0F, 1.0F);
             else if (itemID == 374)
-                SoundUtil.SP(player, Sound.ITEM_BOTTLE_FILL, 1.0F, 1.0F);
+                SoundUtil.playSound(player, Sound.ITEM_BOTTLE_FILL, 1.0F, 1.0F);
             else if (itemID == 437)
-                SoundUtil.SP(player, Sound.ITEM_BOTTLE_FILL_DRAGONBREATH, 1.0F, 1.0F);
+                SoundUtil.playSound(player, Sound.ITEM_BOTTLE_FILL_DRAGONBREATH, 1.0F, 1.0F);
             else if (itemID == 438)
-                SoundUtil.SP(player, Sound.ENTITY_SPLASH_POTION_BREAK, 1.0F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_SPLASH_POTION_BREAK, 1.0F, 1.0F);
             else if (itemID == 441)
-                SoundUtil.SP(player, Sound.ENTITY_WITCH_DRINK, 1.0F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_WITCH_DRINK, 1.0F, 1.0F);
             else
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
         }
     }
 }

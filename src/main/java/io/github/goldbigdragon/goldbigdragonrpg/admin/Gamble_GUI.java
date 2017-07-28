@@ -61,14 +61,13 @@ public class Gamble_Gui extends GuiUtil {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
-        SoundUtil s = new SoundUtil();
 
         if (slot == 44)//나가기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 36)//이전 목록
                 new OPbox_Gui().OPBoxGUI_Main(player, (byte) 3);
             else if (slot == 10)//상품 관리
@@ -119,14 +118,13 @@ public class Gamble_Gui extends GuiUtil {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
-        SoundUtil s = new SoundUtil();
 
         if (slot == 53)//나가기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
 
             short page = (short) (Short.parseShort(ChatColor.stripColor(event.getInventory().getTitle().split(" : ")[1])) - 1);
             byte isChoose = Byte.parseByte(ChatColor.stripColor(event.getInventory().getItem(45).getItemMeta().getLore().get(1)));
@@ -217,16 +215,15 @@ public class Gamble_Gui extends GuiUtil {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
-        SoundUtil s = new SoundUtil();
 
         if (slot >= 27)
             event.setCancelled(true);
         if (slot == 35)//나가기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 27)//이전 목록
                 GamblePresentGUI(player, (byte) 0, (byte) 0, (short) 0, null);
             else if (slot == 31)//등급 변경
@@ -236,7 +233,7 @@ public class Gamble_Gui extends GuiUtil {
                 String Package = ChatColor.stripColor(event.getInventory().getItem(27).getItemMeta().getLore().get(1));
                 String Grade = PresentList.getString(Package + ".Grade");
                 String MaximumGrade = ChatColor.DARK_RED + "" + ChatColor.BOLD + "[" + ChatColor.GOLD + "" + ChatColor.BOLD + "초" + ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "월" + ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "]";
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 if (Grade.compareTo(ChatColor.WHITE + "[일반]") == 0)
                     PresentList.set(Package + ".Grade", ChatColor.GREEN + "[상급]");
                 else if (Grade.compareTo(ChatColor.GREEN + "[상급]") == 0)
@@ -333,14 +330,13 @@ public class Gamble_Gui extends GuiUtil {
         int slot = event.getSlot();
         short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
 
-        SoundUtil s = new SoundUtil();
 
         if (slot == 53)//나가기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전목록
                 GambleMainGUI(player);
             else if (slot == 48)//이전 페이지
@@ -431,14 +427,13 @@ public class Gamble_Gui extends GuiUtil {
         String MachineNumber = ChatColor.stripColor(event.getInventory().getItem(27).getItemMeta().getLore().get(1));
         int slot = event.getSlot();
 
-        SoundUtil s = new SoundUtil();
 
         if (slot == 35)//나가기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot <= 6 || (slot >= 9 && slot <= 15))//각 확률별 보상 설정
                 GamblePresentGUI(player, (byte) 0, (byte) 1, (short) event.getSlot(), MachineNumber);
             else if (slot == 8)//코인 설정
@@ -476,16 +471,15 @@ public class Gamble_Gui extends GuiUtil {
         int slot = event.getSlot();
         String MachineNumber = ChatColor.stripColor(event.getInventory().getItem(0).getItemMeta().getLore().get(1));
 
-        SoundUtil s = new SoundUtil();
 
         if (event.getClickedInventory().getTitle().compareTo("container.inventory") != 0) {
             if (slot != 4)
                 event.setCancelled(true);
             if (slot == 0) {
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 SlotMachine_DetailGUI(player, MachineNumber);
             } else if (slot == 8) {
-                SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+                SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
                 player.closeInventory();
             }
         }
@@ -564,8 +558,7 @@ public class Gamble_Gui extends GuiUtil {
 
     public void SlotMachine_PlayGUI_Click(InventoryClickEvent event) {
         if (event.getSlot() == 15) {
-            SoundUtil s = new SoundUtil();
-            ItemStack Coin = event.getInventory().getItem(16);
+                        ItemStack Coin = event.getInventory().getItem(16);
             Player player = (Player) event.getWhoClicked();
             if (event.getCurrentItem().getTypeId() == 69)
                 return;
@@ -583,19 +576,19 @@ public class Gamble_Gui extends GuiUtil {
                             player.updateInventory();
                             if (event.getInventory().getItem(16).getTypeId() == 166 && event.getInventory().getItem(16).hasItemMeta())
                                 if (event.getInventory().getItem(16).getItemMeta().getDisplayName().compareTo(ChatColor.RED + "" + ChatColor.BOLD + "[기기 수리 중]") == 0) {
-                                    SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                    SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                     player.sendMessage(ChatColor.RED + "[슬롯 머신] : 현재 기기는 수리 중입니다! 관리자에게 문의하세요!");
                                     return;
                                 }
 
                             if (ServerTick_Main.PlayerTaskList.containsKey(player.getName())) {
-                                SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                 player.sendMessage(ChatColor.RED + "[슬롯 머신] : 이미 대기중인 작업이 있습니다! 볼일을 다 보고 오세요!");
                                 return;
                             }
 
-                            SoundUtil.SP(player, Sound.BLOCK_CHEST_CLOSE, 1.0F, 0.5F);
-                            SoundUtil.SP(player, Sound.BLOCK_CHEST_OPEN, 1.0F, 0.5F);
+                            SoundUtil.playSound(player, Sound.BLOCK_CHEST_CLOSE, 1.0F, 0.5F);
+                            SoundUtil.playSound(player, Sound.BLOCK_CHEST_OPEN, 1.0F, 0.5F);
 
                             ItemStack Icon = new MaterialData(69, (byte) 0).toItemStack(1);
                             ItemMeta Icon_Meta = Icon.getItemMeta();
@@ -652,7 +645,7 @@ public class Gamble_Gui extends GuiUtil {
                     }
                 }
             }
-            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+            SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
             player.sendMessage(ChatColor.RED + "[슬롯 머신] : 코인이 부족합니다!");
         }
     }
@@ -693,8 +686,7 @@ public class Gamble_Gui extends GuiUtil {
                 for (byte count = 0; count < 3; count++)
                     Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + "" + (count + 1) + " 번째 슬롯", itemID[count], 0, 1, Arrays.asList(""), count + 10, inv);
                 Bukkit.getServer().getPlayer(player).openInventory(inv);
-                SoundUtil s = new SoundUtil();
-                SoundUtil.SP(Bukkit.getServer().getPlayer(player), Sound.BLOCK_STONE_STEP, 1.0F, 1.0F);
+                                SoundUtil.playSound(Bukkit.getServer().getPlayer(player), Sound.BLOCK_STONE_STEP, 1.0F, 1.0F);
             }
         }
     }

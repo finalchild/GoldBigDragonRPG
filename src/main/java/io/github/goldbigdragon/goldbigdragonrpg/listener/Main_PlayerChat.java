@@ -147,7 +147,7 @@ public class Main_PlayerChat extends Util_Chat implements Listener {
                 case 1:
                     if (!Main_ServerOption.PartyJoiner.containsKey(player)) {
                         player.sendMessage(ChatColor.BLUE + "[파티] : 파티에 가입되어 있지 않습니다!");
-                        SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                        SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     } else {
                         Main_ServerOption.Party.get(Main_ServerOption.PartyJoiner.get(player)).PartyBroadCastMessage(ChatColor.BLUE + "[파티] " + Prefix, null);
                         Bukkit.getConsoleSender().sendMessage("[파티] " + Prefix);
@@ -160,7 +160,7 @@ public class Main_PlayerChat extends Util_Chat implements Listener {
                     event.setCancelled(true);
                     if (!player.isOp()) {
                         player.sendMessage(ChatColor.LIGHT_PURPLE + "[관리자] : 당신은 관리자가 아닙니다!");
-                        SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                        SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     } else {
                         Collection<? extends Player> playerlist = Bukkit.getServer().getOnlinePlayers();
                         Player[] a = new Player[playerlist.size()];
@@ -180,7 +180,7 @@ public class Main_PlayerChat extends Util_Chat implements Listener {
                     event.setCancelled(true);
                     if (!Main_ServerOption.PartyJoiner.containsKey(player)) {
                         player.sendMessage(ChatColor.BLUE + "[파티] : 파티에 가입되어 있지 않습니다!");
-                        SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                        SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     } else {
                         Main_ServerOption.Party.get(Main_ServerOption.PartyJoiner.get(player)).PartyBroadCastMessage(ChatColor.BLUE + "[파티] " + player.getName() + " : " + event.getMessage(), null);
                         Bukkit.getConsoleSender().sendMessage("[파티] " + player.getName() + " : " + event.getMessage());
@@ -193,7 +193,7 @@ public class Main_PlayerChat extends Util_Chat implements Listener {
                     event.setCancelled(true);
                     if (!player.isOp()) {
                         player.sendMessage(ChatColor.LIGHT_PURPLE + "[관리자] : 당신은 관리자가 아닙니다!");
-                        SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                        SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     } else {
                         Collection<? extends Player> playerlist = Bukkit.getServer().getOnlinePlayers();
                         Player[] a = new Player[playerlist.size()];
@@ -213,18 +213,17 @@ public class Main_PlayerChat extends Util_Chat implements Listener {
     public void TEMProuter(PlayerChatEvent event, String Temp) {
         event.setCancelled(true);
         Player player = event.getPlayer();
-        SoundUtil s = new SoundUtil();
-        String Message = ChatColor.stripColor(event.getMessage());
+                String Message = ChatColor.stripColor(event.getMessage());
         if (Temp.compareTo("FA") == 0) {
             if (Message.compareTo(player.getName()) == 0) {
-                SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                 player.sendMessage(ChatColor.RED + "[친구] : 자기 자신을 추가할 수 없습니다!");
             } else {
                 Message.replace(".", "");
                 if (Bukkit.getServer().getPlayer(Message) != null)
                     new Equip_Gui().SetFriends(player, Bukkit.getServer().getPlayer(Message));
                 else {
-                    SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                    SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                     player.sendMessage(ChatColor.RED + "[친구] : 해당 플레이어를 찾을 수 없습니다!");
                 }
             }

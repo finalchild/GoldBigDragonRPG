@@ -204,14 +204,13 @@ public class Navigation_Gui extends GuiUtil {
         short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
         int slot = event.getSlot();
 
-        SoundUtil s = new SoundUtil();
 
         if (slot == 53)//나가기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
                 new OPbox_Gui().OPBoxGUI_Main(player, (byte) 1);
             else if (slot == 48)//이전 페이지
@@ -227,10 +226,10 @@ public class Navigation_Gui extends GuiUtil {
                 NavigationListGUI(player, (short) (page + 1));
             else {
                 if (event.isLeftClick()) {
-                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                    SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                     NavigationOptionGUI(player, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                 } else if (event.isShiftClick() && event.isRightClick()) {
-                    SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
+                    SoundUtil.playSound(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager NavigationConfig = YC.getNewConfig("Navigation/NavigationList.yml");
                     NavigationConfig.removeKey(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
@@ -245,14 +244,13 @@ public class Navigation_Gui extends GuiUtil {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
-        SoundUtil s = new SoundUtil();
 
         if (slot == 35)//나가기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 27)//이전 목록
                 NavigationListGUI(player, (short) 0);
             else {
@@ -311,14 +309,13 @@ public class Navigation_Gui extends GuiUtil {
         short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
         int slot = event.getSlot();
 
-        SoundUtil s = new SoundUtil();
 
         if (slot == 53)//나가기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
                 new ETC_Gui().ETCGUI_Main(player);
             else if (slot == 48)//이전 페이지
@@ -328,7 +325,7 @@ public class Navigation_Gui extends GuiUtil {
             else if (event.isLeftClick()) {
                 for (int count = 0; count < ServerTick_Main.NaviUsingList.size(); count++) {
                     if (ServerTick_Main.NaviUsingList.get(count).equals(player.getName())) {
-                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                        SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.RED + "[네비게이션] : 당신은 이미 네비게이션을 사용 중입니다!");
                         return;
                     }
@@ -338,7 +335,7 @@ public class Navigation_Gui extends GuiUtil {
                 YamlManager NavigationConfig = YC.getNewConfig("Navigation/NavigationList.yml");
                 String UTC = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
                 player.closeInventory();
-                SoundUtil.SP(player, Sound.BLOCK_NOTE_PLING, 1.0F, 1.0F);
+                SoundUtil.playSound(player, Sound.BLOCK_NOTE_PLING, 1.0F, 1.0F);
 
                 ServerTick_Object STSO = new ServerTick_Object(ServerTick_Main.nowUTC, "NV");
                 STSO.setCount(0);//횟 수 초기화

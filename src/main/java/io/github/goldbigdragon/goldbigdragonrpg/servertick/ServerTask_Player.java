@@ -38,8 +38,7 @@ import org.bukkit.Location;
 
 public class ServerTask_Player {
     public void UseTeleportScroll(long UTC) {
-        SoundUtil s = new SoundUtil();
-        Player user = Bukkit.getServer().getPlayer(ServerTick_Main.Schedule.get(UTC).getString((byte) 2));
+                Player user = Bukkit.getServer().getPlayer(ServerTick_Main.Schedule.get(UTC).getString((byte) 2));
         if (user == null) {
             ServerTick_Main.Schedule.remove(UTC);
             ServerTick_Main.PlayerTaskList.remove(ServerTick_Main.Schedule.get(UTC).getString((byte) 2));
@@ -55,7 +54,7 @@ public class ServerTask_Player {
                 isCancel = true;
             if (isCancel) {
                 ServerTick_Main.Schedule.remove(UTC);
-                new SoundUtil().SP(user, Sound.ITEM_SHIELD_BREAK, 0.6F, 1.4F);
+                SoundUtil.playSound(user, Sound.ITEM_SHIELD_BREAK, 0.6F, 1.4F);
                 new PacketUtil().sendActionBar(user, "§c§l[텔레포트가 취소되었습니다!]");
                 ServerTick_Main.PlayerTaskList.remove(user.getName());
             } else {
@@ -66,7 +65,7 @@ public class ServerTask_Player {
                 } else {
                     String[] teleportLoc = ServerTick_Main.Schedule.get(UTC).getString((byte) 0).split(",");
                     user.teleport(new Location(Bukkit.getWorld(teleportLoc[0]), (double) Integer.parseInt(teleportLoc[1]), (double) Integer.parseInt(teleportLoc[2]), (double) Integer.parseInt(teleportLoc[3])));
-                    new SoundUtil().SP(user, Sound.ENTITY_ENDERMEN_TELEPORT, 0.6F, 1.0F);
+                    SoundUtil.playSound(user, Sound.ENTITY_ENDERMEN_TELEPORT, 0.6F, 1.0F);
                     ServerTick_Main.PlayerTaskList.remove(user.getName());
                 }
                 ServerTick_Main.Schedule.remove(UTC);
@@ -75,8 +74,7 @@ public class ServerTask_Player {
     }
 
     public void ExChangeTimer(long UTC) {
-        SoundUtil s = new SoundUtil();
-        Player caller = Bukkit.getServer().getPlayer(ServerTick_Main.Schedule.get(UTC).getString((byte) 0));
+                Player caller = Bukkit.getServer().getPlayer(ServerTick_Main.Schedule.get(UTC).getString((byte) 0));
         Player target = Bukkit.getServer().getPlayer(ServerTick_Main.Schedule.get(UTC).getString((byte) 1));
         if (caller == null) {
             Cancel(UTC, (short) 0);
@@ -93,8 +91,8 @@ public class ServerTask_Player {
                 fast = (float) 0.5;
             else
                 fast = (float) (ServerTick_Main.Schedule.get(UTC).getCount() / 10.0);
-            SoundUtil.SP(caller, Sound.BLOCK_NOTE_PLING, 0.8F, fast);
-            SoundUtil.SP(target, Sound.BLOCK_NOTE_PLING, 0.8F, fast);
+            SoundUtil.playSound(caller, Sound.BLOCK_NOTE_PLING, 0.8F, fast);
+            SoundUtil.playSound(target, Sound.BLOCK_NOTE_PLING, 0.8F, fast);
             PacketUtil.sendTitleSubTitle(caller, "\'" + ChatColor.YELLOW + "[교환 신청]" + "\'", "\'" + TimerBar(ServerTick_Main.Schedule.get(UTC).getCount(), 10) + "\'", (byte) 1, (byte) 0, (byte) 1);
             PacketUtil.sendTitleSubTitle(target, "\'" + ChatColor.YELLOW + "[교환 신청]" + "\'", "\'" + TimerBar(ServerTick_Main.Schedule.get(UTC).getCount(), 10) + "\'", (byte) 1, (byte) 0, (byte) 1);
             long tick = ServerTick_Main.Schedule.get(UTC).getTick() + 1500;
@@ -123,18 +121,17 @@ public class ServerTask_Player {
     }
 
     public void SendMessage(Player Receiver, short message) {
-        SoundUtil s = new SoundUtil();
-        switch (message) {
+                switch (message) {
             case 0://교환 신청자 - 교환 취소 메시지
             {
                 Receiver.sendMessage(ChatColor.RED + "[교환] : 상대가 교환을 취소하였습니다.");
-                SoundUtil.SP(Receiver, Sound.ENTITY_VILLAGER_NO, 1.2F, 1.1F);
+                SoundUtil.playSound(Receiver, Sound.ENTITY_VILLAGER_NO, 1.2F, 1.1F);
             }
             break;
             case 1://교환 상대 - 교환 취소 메시지
             {
                 Receiver.sendMessage(ChatColor.RED + "[교환] : 교환이 취소되었습니다.");
-                SoundUtil.SP(Receiver, Sound.ENTITY_VILLAGER_NO, 1.2F, 1.1F);
+                SoundUtil.playSound(Receiver, Sound.ENTITY_VILLAGER_NO, 1.2F, 1.1F);
             }
             break;
         }
@@ -289,12 +286,12 @@ public class ServerTask_Player {
                             Present = GambleConfig.getString(MachineNumber + ".0");
                     }
                     if (Present.compareTo("null") == 0) {
-                        new SoundUtil().SP(player, Sound.ENTITY_IRONGOLEM_HURT, 0.8F, 0.9F);
+                        SoundUtil.playSound(player, Sound.ENTITY_IRONGOLEM_HURT, 0.8F, 0.9F);
                         player.sendMessage(ChatColor.RED + "[슬롯 머신] : 꽝! 다음 기회에...");
                     } else {
                         YamlManager PresentList = YC.getNewConfig("Item/GamblePresent.yml");
                         String Grade = PresentList.getString(Present + ".Grade");
-                        new SoundUtil().SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.8F);
+                        SoundUtil.playSound(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.8F);
                         if (LuckyStar)
                             Bukkit.broadcastMessage(ChatColor.GREEN + "[슬롯 머신] : " + ChatColor.YELLOW + "" + ChatColor.BOLD + player.getName() + ChatColor.GREEN + "님께서 " + ChatColor.YELLOW + "" + ChatColor.BOLD + Present + " " + Grade + ChatColor.GREEN + " 상품에 당첨되셨습니다!");
                         else

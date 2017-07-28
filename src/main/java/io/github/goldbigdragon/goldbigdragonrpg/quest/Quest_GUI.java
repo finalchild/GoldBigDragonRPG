@@ -811,7 +811,6 @@ public class Quest_Gui extends GuiUtil {
 
     public void QuestRouter(Player player, String QuestName) {
         EffectUtil p = new EffectUtil();
-        SoundUtil s = new SoundUtil();
 
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager QuestList = YC.getNewConfig("Quest/QuestList.yml");
@@ -834,7 +833,7 @@ public class Quest_Gui extends GuiUtil {
             PlayerVarList.removeKey(QuestName);
             PlayerVarList.saveConfig();
             player.closeInventory();
-            SoundUtil.SP(player, Sound.BLOCK_NOTE_PLING, 1.0F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_NOTE_PLING, 1.0F, 1.8F);
 
         } else {
             PlayerQuestList.set("Started." + QuestName + ".Type", QuestList.getString(QuestName + ".FlowChart." + FlowChart + ".Type"));
@@ -954,7 +953,7 @@ public class Quest_Gui extends GuiUtil {
                         PlayerVarList.removeKey(QuestName);
                         PlayerVarList.saveConfig();
                         player.closeInventory();
-                        SoundUtil.SP(player, Sound.BLOCK_NOTE_PLING, 1.0F, 1.8F);
+                        SoundUtil.playSound(player, Sound.BLOCK_NOTE_PLING, 1.0F, 1.8F);
                     }
                 }
                 break;
@@ -991,7 +990,7 @@ public class Quest_Gui extends GuiUtil {
                         PlayerVarList.removeKey(QuestName);
                         PlayerVarList.saveConfig();
                         player.closeInventory();
-                        SoundUtil.SP(player, Sound.BLOCK_NOTE_PLING, 1.0F, 1.8F);
+                        SoundUtil.playSound(player, Sound.BLOCK_NOTE_PLING, 1.0F, 1.8F);
                     } else {
                         PlayerQuestList.set("Started." + QuestName + ".Flow", PlayerQuestList.getInt("Started." + QuestName + ".Flow") + 1);
                         PlayerQuestList.saveConfig();
@@ -1019,8 +1018,8 @@ public class Quest_Gui extends GuiUtil {
                     PlayerVarList.removeKey(QuestName);
                     PlayerVarList.saveConfig();
                     player.closeInventory();
-                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.8F);
-                    SoundUtil.SP(player, Sound.ENTITY_WITHER_DEATH, 0.7F, 0.8F);
+                    SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.8F);
+                    SoundUtil.playSound(player, Sound.ENTITY_WITHER_DEATH, 0.7F, 0.8F);
                 }
                 break;
                 case "QuestReset": {
@@ -1031,7 +1030,7 @@ public class Quest_Gui extends GuiUtil {
                     PlayerVarList.removeKey(QuestName);
                     PlayerVarList.saveConfig();
                     player.closeInventory();
-                    SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 1.2F, 0.8F);
+                    SoundUtil.playSound(player, Sound.BLOCK_LAVA_POP, 1.2F, 0.8F);
                 }
                 break;
                 case "VarChange": {
@@ -1052,7 +1051,7 @@ public class Quest_Gui extends GuiUtil {
                     if (NavigationConfig.contains(UTC)) {
                         ServerTick_Main.NaviUsingList.add(player.getName());
                         player.closeInventory();
-                        SoundUtil.SP(player, Sound.BLOCK_NOTE_PLING, 1.0F, 1.0F);
+                        SoundUtil.playSound(player, Sound.BLOCK_NOTE_PLING, 1.0F, 1.0F);
 
                         ServerTick_Object STSO = new ServerTick_Object(Long.parseLong(UTC), "NV");
                         STSO.setCount(0);//횟 수 초기화
@@ -1072,7 +1071,7 @@ public class Quest_Gui extends GuiUtil {
                         player.sendMessage(ChatColor.YELLOW + "(화살표가 보이지 않을 경우, [ESC] → [설정] → [비디오 설정] 속의 [입자]를 [모두]로 변경해 주세요!)");
 
                     } else {
-                        SoundUtil.SP(player, Sound.BLOCK_NOTE_BASS, 1.0F, 1.0F);
+                        SoundUtil.playSound(player, Sound.BLOCK_NOTE_BASS, 1.0F, 1.0F);
                         player.sendMessage(ChatColor.RED + "[네비게이션] : 등록된 네비게이션을 찾을 수 없습니다! 관리자에게 문의하세요!");
                     }
                     PlayerQuestList.set("Started." + QuestName + ".Flow", PlayerQuestList.getInt("Started." + QuestName + ".Flow") + 1);
@@ -1148,7 +1147,7 @@ public class Quest_Gui extends GuiUtil {
                             QuestList.getDouble(QuestName + ".FlowChart." + FlowChart + ".Y") + 1, QuestList.getDouble(QuestName + ".FlowChart." + FlowChart + ".Z"));
                     player.teleport(l);
                     EffectUtil.givePotionEffect(player, PotionEffectType.BLINDNESS, 1, 15);
-                    SoundUtil.SL(player.getLocation(), Sound.ENTITY_ENDERMEN_TELEPORT, 0.8F, 1.0F);
+                    SoundUtil.playSound(player.getLocation(), Sound.ENTITY_ENDERMEN_TELEPORT, 0.8F, 1.0F);
                     PlayerQuestList.set("Started." + QuestName + ".Flow", PlayerQuestList.getInt("Started." + QuestName + ".Flow") + 1);
                     PlayerQuestList.saveConfig();
                     QuestRouter(player, QuestName);
@@ -1178,8 +1177,7 @@ public class Quest_Gui extends GuiUtil {
 
 
     public void AllOfQuestListGUIClick(InventoryClickEvent event) {
-        SoundUtil s = new SoundUtil();
-        Player player = (Player) event.getWhoClicked();
+                Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         UserData_Object u = new UserData_Object();
@@ -1188,10 +1186,10 @@ public class Quest_Gui extends GuiUtil {
         {
             if (ChooseQuestGUI)
                 u.clearAll(player);
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
             {
                 if (ChooseQuestGUI) {
@@ -1214,7 +1212,7 @@ public class Quest_Gui extends GuiUtil {
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager QuestList = YC.getNewConfig("Quest/QuestList.yml");
                     if (QuestName.equalsIgnoreCase(u.getString(player, (byte) 1))) {
-                        SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.8F, 1.0F);
+                        SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.8F, 1.0F);
                         player.sendMessage(ChatColor.RED + "[퀘스트] : 같은 퀘스트는 등록할 수 없습니다!");
                     } else {
                         QuestList.set(u.getString(player, (byte) 1) + ".Need.PrevQuest", QuestName);
@@ -1236,7 +1234,7 @@ public class Quest_Gui extends GuiUtil {
                         playerlist.toArray(a);
                         for (short count = 0; count < a.length; count++) {
                             if (a[count].isOnline()) {
-                                SoundUtil.SP(a[count], Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
+                                SoundUtil.playSound(a[count], Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                                 a[count].sendMessage(ChatColor.LIGHT_PURPLE + "[관리자] : " + ChatColor.YELLOW + player.getName() + ChatColor.LIGHT_PURPLE + "님께서 " + ChatColor.YELLOW + QuestName + ChatColor.LIGHT_PURPLE + "퀘스트를 삭제하셨습니다!");
                             }
                         }
@@ -1253,14 +1251,13 @@ public class Quest_Gui extends GuiUtil {
     public void FixQuestGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        SoundUtil s = new SoundUtil();
 
         if (slot == 53) {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
             String QuestName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             int page = Integer.parseInt(event.getInventory().getTitle().split(" : ")[1]) - 1;
             if (slot == 45)//이전 목록
                 AllOfQuestListGUI(player, (short) 0, false);
@@ -1309,15 +1306,14 @@ public class Quest_Gui extends GuiUtil {
     }
 
     public void MyQuestListGUIClick(InventoryClickEvent event) {
-        SoundUtil s = new SoundUtil();
-        Player player = (Player) event.getWhoClicked();
+                Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 53) {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
                 new Stats_Gui().StatusGUI(player);
             else if (slot == 48)//이전 페이지
@@ -1346,8 +1342,7 @@ public class Quest_Gui extends GuiUtil {
     }
 
     public void SelectObjectPageClick(InventoryClickEvent event) {
-        SoundUtil s = new SoundUtil();
-        Player player = (Player) event.getWhoClicked();
+                Player player = (Player) event.getWhoClicked();
 
         UserData_Object u = new UserData_Object();
 
@@ -1358,7 +1353,7 @@ public class Quest_Gui extends GuiUtil {
 
         switch ((ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()))) {
             case "변수":
-                SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
+                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
                 u.setType(player, "Quest");
                 u.setString(player, (byte) 1, "CV");
                 u.setString(player, (byte) 2, QuestName);
@@ -1367,7 +1362,7 @@ public class Quest_Gui extends GuiUtil {
                 player.closeInventory();
                 return;
             case "선택":
-                SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
+                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
                 u.setType(player, "Quest");
                 u.setString(player, (byte) 1, "CS");
                 u.setString(player, (byte) 2, QuestName);
@@ -1376,12 +1371,12 @@ public class Quest_Gui extends GuiUtil {
                 player.closeInventory();
                 return;
             case "네비":
-                SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
+                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
                 Quest_NavigationListGUI(player, (short) 0, QuestName);
                 return;
             case "대사":
             case "독백":
-                SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
+                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
                 u.setType(player, "Quest");
                 if (ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()).equalsIgnoreCase("대사"))
                     u.setString(player, (byte) 1, "Script");
@@ -1404,7 +1399,7 @@ public class Quest_Gui extends GuiUtil {
                 Object[] arealist = AreaList.getConfigurationSection("").getKeys(false).toArray();
 
                 if (arealist.length <= 0) {
-                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 2.0F, 1.7F);
+                    SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 2.0F, 1.7F);
                     player.sendMessage(ChatColor.RED + "[퀘스트] : 생성된 영역이 없습니다!");
                     player.sendMessage(ChatColor.GOLD + "/영역 <이름> 생성" + ChatColor.YELLOW + " - 새로운 영역을 생성합니다. -");
                     player.closeInventory();
@@ -1416,7 +1411,7 @@ public class Quest_Gui extends GuiUtil {
                 }
                 player.sendMessage(ChatColor.GREEN + "└────────영역 목록────────┘");
                 player.sendMessage(ChatColor.DARK_AQUA + "[퀘스트] : 방문해야 할 영역 이름을 적어 주세요!");
-                SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 2.0F, 1.7F);
+                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 2.0F, 1.7F);
                 u.setType(player, "Quest");
                 u.setString(player, (byte) 1, "Visit");
                 u.setString(player, (byte) 2, QuestName);
@@ -1426,7 +1421,7 @@ public class Quest_Gui extends GuiUtil {
                 u.setType(player, "Quest");
                 u.setString(player, (byte) 1, "Give");
                 u.setString(player, (byte) 3, QuestName);
-                SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
+                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
                 player.sendMessage(ChatColor.GREEN + "[SYSTEM] : " + ChatColor.RED + "수집품을 먼저 준비하신 후," + ChatColor.GREEN + " 받을 NPC를 우클릭 하세요!");
                 player.closeInventory();
                 return;
@@ -1476,7 +1471,7 @@ public class Quest_Gui extends GuiUtil {
                 player.closeInventory();
                 return;
             case "블록":
-                SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
+                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
                 u.setType(player, "Quest");
                 u.setString(player, (byte) 1, "BlockPlace");
                 u.setString(player, (byte) 2, QuestName);
@@ -1490,7 +1485,7 @@ public class Quest_Gui extends GuiUtil {
             case "소리":
                 return;
             case "귓말":
-                SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
+                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
                 u.setType(player, "Quest");
                 u.setString(player, (byte) 1, "Whisper");
                 u.setString(player, (byte) 2, QuestName);
@@ -1505,7 +1500,7 @@ public class Quest_Gui extends GuiUtil {
                 player.closeInventory();
                 return;
             case "전체":
-                SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
+                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
                 u.setType(player, "Quest");
                 u.setString(player, (byte) 1, "BroadCast");
                 u.setString(player, (byte) 2, QuestName);
@@ -1520,11 +1515,11 @@ public class Quest_Gui extends GuiUtil {
                 player.closeInventory();
                 return;
             case "이전 목록":
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 FixQuestGUI(player, (short) 0, QuestName);
                 return;
             case "닫기":
-                SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+                SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
                 player.closeInventory();
                 return;
         }
@@ -1532,7 +1527,7 @@ public class Quest_Gui extends GuiUtil {
         if (size != 0) {
             switch ((ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()))) {
                 case "계산": {
-                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
+                    SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
                     u.setType(player, "Quest");
                     u.setString(player, (byte) 1, "Cal");
                     u.setString(player, (byte) 2, QuestName);
@@ -1548,21 +1543,21 @@ public class Quest_Gui extends GuiUtil {
                 return;
                 case "퀘스트 초기화": {
 
-                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
+                    SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
                     QuestConfig.set(QuestName + ".FlowChart." + size + ".Type", "QuestReset");
                     QuestConfig.saveConfig();
                     FixQuestGUI(player, (short) 0, QuestName);
                 }
                 break;
                 case "퀘스트 실패": {
-                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
+                    SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
                     QuestConfig.set(QuestName + ".FlowChart." + size + ".Type", "QuestFail");
                     QuestConfig.saveConfig();
                     FixQuestGUI(player, (short) 0, QuestName);
                 }
                 break;
                 case "IF": {
-                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
+                    SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
                     u.setType(player, "Quest");
                     u.setString(player, (byte) 1, "IFTS");
                     u.setString(player, (byte) 2, QuestName);
@@ -1579,14 +1574,14 @@ public class Quest_Gui extends GuiUtil {
                 }
                 break;
                 case "ELSE": {
-                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
+                    SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
                     QuestConfig.set(QuestName + ".FlowChart." + size + ".Type", "ELSE");
                     QuestConfig.saveConfig();
                     FixQuestGUI(player, (short) 0, QuestName);
                 }
                 break;
                 case "ENDIF": {
-                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
+                    SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
                     QuestConfig.set(QuestName + ".FlowChart." + size + ".Type", "ENDIF");
                     QuestConfig.saveConfig();
                     FixQuestGUI(player, (short) 0, QuestName);
@@ -1594,21 +1589,20 @@ public class Quest_Gui extends GuiUtil {
                 break;
             }
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.8F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.8F);
             player.sendMessage(ChatColor.RED + "[퀘스트] : 해당 항목은 첫 번째 구성 요소로 올 수 없습니다!");
         }
     }
 
     public void QuestScriptTypeGUIClick(InventoryClickEvent event) {
-        SoundUtil s = new SoundUtil();
-        Player player = (Player) event.getWhoClicked();
+                Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 26) {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else if (slot == 13) {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.8F);
             String QuestName = ChatColor.stripColor(event.getInventory().getItem(19).getItemMeta().getDisplayName());
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager PlayerQuestList = YC.getNewConfig("Quest/PlayerData/" + player.getUniqueId() + ".yml");
@@ -1626,15 +1620,14 @@ public class Quest_Gui extends GuiUtil {
     }
 
     public void ShowNeedGUIClick(InventoryClickEvent event) {
-        SoundUtil s = new SoundUtil();
-        Player player = (Player) event.getWhoClicked();
+                Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 26) {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.8F);
             if (slot == 18) {
                 if (ChatColor.stripColor(event.getCurrentItem().getItemMeta().getLore().get(1)).equalsIgnoreCase("false"))
                     MyQuestListGUI(player, (short) 0);
@@ -1665,7 +1658,7 @@ public class Quest_Gui extends GuiUtil {
                         for (short counter = 0; counter < p.length; counter++)
                             player.getInventory().addItem(item[counter]);
                     } else {
-                        SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 2.0F, 1.7F);
+                        SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 2.0F, 1.7F);
                         player.sendMessage(ChatColor.YELLOW + "[퀘스트] : 현재 플레이어의 인벤토리 공간이 충분하지 않아 보상을 받을 수 없습니다!");
                         return;
                     }
@@ -1697,18 +1690,17 @@ public class Quest_Gui extends GuiUtil {
     }
 
     public void PresentItemSettingGUIClick(InventoryClickEvent event) {
-        SoundUtil s = new SoundUtil();
-        Player player = (Player) event.getWhoClicked();
+                Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot <= 2 || slot == 8) {
             if (event.getClickedInventory().getTitle().compareTo("container.inventory") != 0) {
                 event.setCancelled(true);
                 if (slot == 8) {
-                    SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+                    SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
                     player.closeInventory();
                 } else {
-                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.8F);
+                    SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.8F);
                     UserData_Object u = new UserData_Object();
                     u.setType(player, "Quest");
                     if (slot == 0) {
@@ -1732,13 +1724,12 @@ public class Quest_Gui extends GuiUtil {
     public void KeepGoingClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        SoundUtil s = new SoundUtil();
 
         if (slot == 16) {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.8F);
             UserData_Object u = new UserData_Object();
             String QuestName = ChatColor.stripColor(event.getInventory().getItem(16).getItemMeta().getLore().get(1));
             short Flow = Short.parseShort(ChatColor.stripColor(event.getInventory().getItem(10).getItemMeta().getLore().get(1)));
@@ -1769,14 +1760,13 @@ public class Quest_Gui extends GuiUtil {
     public void QuestOptionGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        SoundUtil s = new SoundUtil();
 
         if (slot == 44) {
 
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.8F);
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager QuestList = YC.getNewConfig("Quest/QuestList.yml");
             String QuestName = ChatColor.stripColor(event.getInventory().getItem(44).getItemMeta().getLore().get(1));
@@ -1784,8 +1774,8 @@ public class Quest_Gui extends GuiUtil {
                 AllOfQuestListGUI(player, (short) 0, false);
             else if (slot == 15)//스킬 랭크 제한
             {
-                SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.8F);
+                SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.8F);
                 //스킬 선택 및 스킬 랭크 입력하는 창 업데이트 하기
             } else if (slot == 4)//퀘스트 타입
             {
@@ -1815,7 +1805,7 @@ public class Quest_Gui extends GuiUtil {
                     u.setString(player, (byte) 1, QuestName);
                     AllOfQuestListGUI(player, (short) 0, true);
                 } else if (event.isRightClick() && event.isShiftClick()) {
-                    SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.8F);
+                    SoundUtil.playSound(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.8F);
                     QuestList.set(QuestName + ".Need.PrevQuest", "null");
                     QuestList.saveConfig();
                     QuestOptionGUI(player, QuestName);
@@ -1863,30 +1853,29 @@ public class Quest_Gui extends GuiUtil {
     }
 
     public void Quest_NavigationListGUIClick(InventoryClickEvent event) {
-        SoundUtil s = new SoundUtil();
-        Player player = (Player) event.getWhoClicked();
+                Player player = (Player) event.getWhoClicked();
         short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
         String QuestName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
         switch (event.getSlot()) {
             case 45://이전 목록
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 SelectObjectPage(player, (byte) 0, QuestName);
                 return;
             case 53://나가기
-                SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+                SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
                 player.closeInventory();
                 return;
             case 48://이전 페이지
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 Quest_NavigationListGUI(player, (short) (page - 1), QuestName);
                 return;
             case 50://다음 페이지
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 Quest_NavigationListGUI(player, (short) (page + 1), QuestName);
                 return;
             default:
                 if (event.isLeftClick()) {
-                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                    SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager QuestConfig = YC.getNewConfig("Quest/QuestList.yml");
                     int size = QuestConfig.getConfigurationSection(QuestName + ".FlowChart").getKeys(false).size();
@@ -1900,27 +1889,25 @@ public class Quest_Gui extends GuiUtil {
     }
 
     public void Quest_OPChoiceClick(InventoryClickEvent event) {
-        SoundUtil s = new SoundUtil();
-        Player player = (Player) event.getWhoClicked();
+                Player player = (Player) event.getWhoClicked();
 
         short page = Short.parseShort(ChatColor.stripColor(event.getInventory().getItem(18).getItemMeta().getLore().get(1)));
         String QuestName = ChatColor.stripColor(event.getInventory().getItem(26).getItemMeta().getLore().get(1));
         switch (event.getSlot()) {
             case 18://이전 목록
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 FixQuestGUI(player, page, QuestName);
                 return;
             case 26://나가기
-                SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+                SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
                 player.closeInventory();
         }
     }
 
     public void Quest_UserChoiceClick(InventoryClickEvent event) {
-        SoundUtil s = new SoundUtil();
-        Player player = (Player) event.getWhoClicked();
+                Player player = (Player) event.getWhoClicked();
         if (event.getSlot() == 26) {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
             YamlController YC = new YamlController(Main_Main.plugin);
@@ -1934,7 +1921,7 @@ public class Quest_Gui extends GuiUtil {
             byte Slot = (byte) event.getSlot();
 
             if (event.getCurrentItem() != null)
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
 
             if ((ChoiceLevel == 1 && Slot == 13) || (ChoiceLevel == 2 && Slot == 12) || (ChoiceLevel == 3 && Slot == 11) || (ChoiceLevel == 4 && Slot == 10))
                 PlayerVarList.set(QuestName, QuestList.getInt(QuestName + ".FlowChart." + Flow + ".Choice.0.Var"));
@@ -1957,8 +1944,7 @@ public class Quest_Gui extends GuiUtil {
         Player player = (Player) event.getPlayer();
         UserData_Object u = new UserData_Object();
         u.setBoolean(player, (byte) 1, false);
-        SoundUtil s = new SoundUtil();
-        YamlController YC = new YamlController(Main_Main.plugin);
+                YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager QuestConfig = YC.getNewConfig("Quest/QuestList.yml");
 
         String QuestName = u.getString(player, (byte) 3);
@@ -1976,14 +1962,13 @@ public class Quest_Gui extends GuiUtil {
             }
         }
         QuestConfig.saveConfig();
-        SoundUtil.SP((Player) event.getPlayer(), org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
+        SoundUtil.playSound((Player) event.getPlayer(), org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
         event.getPlayer().sendMessage(ChatColor.GREEN + "[SYSTEM] : 성공적으로 등록되었습니다!");
         u.clearAll(player);
     }
 
     public void PresentItemSettingGUIClose(InventoryCloseEvent event) {
-        SoundUtil s = new SoundUtil();
-        Player player = (Player) event.getPlayer();
+                Player player = (Player) event.getPlayer();
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager QuestConfig = YC.getNewConfig("Quest/QuestList.yml");
         UserData_Object u = new UserData_Object();
@@ -2032,7 +2017,7 @@ public class Quest_Gui extends GuiUtil {
         }
         if (u.getString(player, (byte) 4) == null) {
             QuestConfig.saveConfig();
-            SoundUtil.SP((Player) event.getPlayer(), org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
+            SoundUtil.playSound((Player) event.getPlayer(), org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.5F, 1.2F);
             event.getPlayer().sendMessage(ChatColor.GREEN + "[SYSTEM] : 성공적으로 설정되었습니다!");
             u.clearAll(player);
         }

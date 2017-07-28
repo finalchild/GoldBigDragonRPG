@@ -32,10 +32,9 @@ import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 
 public class Quest_Command {
     public void onCommand(CommandSender talker, Command command, String string, String[] args) {
-        SoundUtil s = new SoundUtil();
-        Player player = (Player) talker;
+                Player player = (Player) talker;
         if (args.length == 0) {
-            SoundUtil.SP(player, Sound.ENTITY_HORSE_ARMOR, 1.0F, 0.8F);
+            SoundUtil.playSound(player, Sound.ENTITY_HORSE_ARMOR, 1.0F, 0.8F);
             new Quest_Gui().MyQuestListGUI(player, (short) 0);
             return;
         }
@@ -51,7 +50,7 @@ public class Quest_Command {
 
                 switch (ChatColor.stripColor(args[0])) {
                     case "구성": {
-                        SoundUtil.SP(player, Sound.ENTITY_HORSE_ARMOR, 1.0F, 0.8F);
+                        SoundUtil.playSound(player, Sound.ENTITY_HORSE_ARMOR, 1.0F, 0.8F);
                         new Quest_Gui().AllOfQuestListGUI(player, (short) 0, false);
                     }
                     break;
@@ -70,7 +69,7 @@ public class Quest_Command {
                             String QuestName = QN.toString().replace(".", "");
                             String QuestNameString = ChatColor.stripColor(QuestName);
                             if (QuestConfig.contains(QuestNameString)) {
-                                SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 2.0F, 1.7F);
+                                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 2.0F, 1.7F);
                                 player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 이름의 퀘스트가 이미 존재합니다!");
                                 return;
                             }
@@ -107,7 +106,7 @@ public class Quest_Command {
                             QuestConfig.createSection(QuestNameString + ".FlowChart");
                             QuestConfig.saveConfig();
                             player.sendMessage(ChatColor.GREEN + "[SYSTEM] : " + ChatColor.YELLOW + QuestNameString + ChatColor.DARK_AQUA + " 퀘스트가 생성되었습니다!");
-                            SoundUtil.SP(player, Sound.ENTITY_HORSE_ARMOR, 1.0F, 0.8F);
+                            SoundUtil.playSound(player, Sound.ENTITY_HORSE_ARMOR, 1.0F, 0.8F);
                             new Quest_Gui().FixQuestGUI(player, (short) 0, QuestNameString);
                         } else
                             HelpMessage(player);
@@ -119,7 +118,7 @@ public class Quest_Command {
                 }
             } else {
                 talker.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
-                SoundUtil.SP((Player) talker, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 2.0F, 1.7F);
+                SoundUtil.playSound((Player) talker, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 2.0F, 1.7F);
             }
         }
     }

@@ -70,13 +70,13 @@ public class Area_Main {
         YamlManager AreaList = YC.getNewConfig("Area/AreaList.yml");
 
         if (AreaList.contains(name)) {
-            new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 이름은 이미 등록되어 있습니다!");
             return;
         }
 
         if (!loc1.getWorld().equals(loc2.getWorld())) {
-            new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 서로 다른 월드간은 영역 지정을 할 수 없습니다!");
             return;
         }
@@ -138,7 +138,7 @@ public class Area_Main {
         AreaList.set(name + ".Restrict.MaxRealLevel", 0);
         AreaList.saveConfig();
 
-        new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_CHICKEN_EGG, 2.0F, 1.7F);
+        SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_CHICKEN_EGG, 2.0F, 1.7F);
         player.sendMessage(ChatColor.GREEN + "[SYSTEM] : 지정 구역 등록 성공!");
         Area_Gui AGUI = new Area_Gui();
         AGUI.AreaSettingGUI(player, name);
@@ -207,10 +207,10 @@ public class Area_Main {
             AreaList.removeKey(name + ".Restrict.MaxRealLevel");
             AreaList.removeKey(name);
             AreaList.saveConfig();
-            new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_CHICKEN_EGG, 2.0F, 1.7F);
+            SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_CHICKEN_EGG, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 지정 구역 삭제 성공!");
         } else {
-            new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 이름의 구역은 존재하지 않습니다!");
         }
     }
@@ -234,7 +234,7 @@ public class Area_Main {
             }
             AreaList.saveConfig();
         } else {
-            new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 이름의 구역은 존재하지 않습니다!");
         }
     }

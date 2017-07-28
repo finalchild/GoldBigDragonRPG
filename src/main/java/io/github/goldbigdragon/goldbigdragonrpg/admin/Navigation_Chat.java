@@ -41,12 +41,11 @@ public class Navigation_Chat extends Util_Chat {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager NavigationConfig = YC.getNewConfig("Navigation/NavigationList.yml");
 
-        SoundUtil s = new SoundUtil();
-        event.setCancelled(true);
+                event.setCancelled(true);
         String message = ChatColor.stripColor(event.getMessage());
         switch (u.getString(player, (byte) 0)) {
             case "NN"://NewNavigation
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 long UTC = new ETC().getNowUTC();
                 NavigationConfig.set(UTC + ".Name", event.getMessage());
                 NavigationConfig.set(UTC + ".world", player.getLocation().getWorld().getName());
@@ -62,7 +61,7 @@ public class Navigation_Chat extends Util_Chat {
                 new Navigation_Gui().NavigationOptionGUI(player, UTC + "");
                 return;
             case "CNN"://ChangeNavigationName이름 변경
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 NavigationConfig.set(u.getString(player, (byte) 1) + ".Name", event.getMessage());
                 NavigationConfig.saveConfig();
                 new Navigation_Gui().NavigationOptionGUI(player, u.getString(player, (byte) 1));
@@ -70,7 +69,7 @@ public class Navigation_Chat extends Util_Chat {
                 return;
             case "CNT"://ChangeNavigationTimer지속 시간
                 if (isIntMinMax(message, player, -1, 3600)) {
-                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                    SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                     NavigationConfig.set(u.getString(player, (byte) 1) + ".time", Integer.parseInt(message));
                     NavigationConfig.saveConfig();
                     new Navigation_Gui().NavigationOptionGUI(player, u.getString(player, (byte) 1));
@@ -79,7 +78,7 @@ public class Navigation_Chat extends Util_Chat {
                 return;
             case "CNS"://ChangeNavigationSensitive도착 반경
                 if (isIntMinMax(message, player, 1, 1000)) {
-                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                    SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                     NavigationConfig.set(u.getString(player, (byte) 1) + ".sensitive", Integer.parseInt(message));
                     NavigationConfig.saveConfig();
                     new Navigation_Gui().NavigationOptionGUI(player, u.getString(player, (byte) 1));
@@ -88,7 +87,7 @@ public class Navigation_Chat extends Util_Chat {
                 return;
             case "CNA"://ChangeNavigationArrow네비 타입
                 if (isIntMinMax(message, player, 0, 10)) {
-                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                    SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                     NavigationConfig.set(u.getString(player, (byte) 1) + ".ShowArrow", Integer.parseInt(message));
                     NavigationConfig.saveConfig();
                     new Navigation_Gui().NavigationOptionGUI(player, u.getString(player, (byte) 1));

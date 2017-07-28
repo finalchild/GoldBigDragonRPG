@@ -133,7 +133,7 @@ public class Party_Object {
                             if (this.PartyMember[count] == null) {
                                 if (player.isOnline()) {
                                     player.sendMessage(ChatColor.GREEN + "[파티] : 파티에 가입 하였습니다!");
-                                    new SoundUtil().SP(player, Sound.BLOCK_WOODEN_DOOR_OPEN, 1.1F, 1.0F);
+                                    SoundUtil.playSound(player, Sound.BLOCK_WOODEN_DOOR_OPEN, 1.1F, 1.0F);
                                 }
                                 this.PartyMember[count] = player.getName();
                                 Main_ServerOption.PartyJoiner.put(player, this.CreateTime);
@@ -156,7 +156,7 @@ public class Party_Object {
         Main_ServerOption.PartyJoiner.remove(player);
         if (player.isOnline()) {
             player.sendMessage(ChatColor.RED + "[파티] : 파티를 탈퇴하였습니다!");
-            new SoundUtil().SP(player, Sound.BLOCK_WOODEN_DOOR_CLOSE, 1.1F, 1.0F);
+            SoundUtil.playSound(player, Sound.BLOCK_WOODEN_DOOR_CLOSE, 1.1F, 1.0F);
         }
         if (getPartyMembers() == 1) {
             Main_ServerOption.Party.remove(this.CreateTime);
@@ -322,12 +322,12 @@ public class Party_Object {
         for (byte count = 0; count < p.length; count++)
             if (p[count] != null && p[count] != noAlertMember)
                 if (Bukkit.getServer().getOfflinePlayer(p[count].getName()).isOnline())
-                    SoundUtil.SP(p[count], s, volume, pitch);
+                    SoundUtil.playSound(p[count], s, volume, pitch);
     }
 
     public void Message(Player player, byte num) {
         SoundUtil sound = new SoundUtil();
-        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+        SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
         switch (num) {
             case 1:
                 player.sendMessage(ChatColor.RED + "[파티] : 당신은 파티 리더가 아닙니다!");

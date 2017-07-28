@@ -65,7 +65,7 @@ public class Main_BlockBreak implements Listener {
 
             if (!A.getAreaOption(Area[0], (char) 1) && !event.getPlayer().isOp()) {
                 event.setCancelled(true);
-                new SoundUtil().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                SoundUtil.playSound(event.getPlayer(), org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                 event.getPlayer().sendMessage(ChatColor.RED + "[SYSTEM] : " + ChatColor.YELLOW + Area[1] + ChatColor.RED + " 지역 에서는 블록 채집이 불가능합니다!");
                 return;
             }
@@ -257,15 +257,15 @@ public class Main_BlockBreak implements Listener {
             if (luckysize <= 80) {
                 PacketUtil.sendActionBar(player, ChatColor.YELLOW + "" + ChatColor.BOLD + "럭키 보너스!");
                 amount = 1;
-                SoundUtil.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 0.5F, 0.9F);
+                SoundUtil.playSound(player, Sound.ENTITY_PLAYER_LEVELUP, 0.5F, 0.9F);
             } else if (luckysize <= 95) {
                 PacketUtil.sendActionBar(player, ChatColor.YELLOW + "" + ChatColor.BOLD + "빅 럭키 보너스!");
                 amount = 5;
-                SoundUtil.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 0.7F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_PLAYER_LEVELUP, 0.7F, 1.0F);
             } else {
                 PacketUtil.sendActionBar(player, ChatColor.YELLOW + "" + ChatColor.BOLD + "휴즈 럭키 보너스!");
                 amount = 20;
-                SoundUtil.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.1F);
+                SoundUtil.playSound(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.1F);
             }
 
             int id = block.getTypeId();

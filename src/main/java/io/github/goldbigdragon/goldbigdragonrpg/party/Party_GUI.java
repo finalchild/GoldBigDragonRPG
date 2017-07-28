@@ -67,7 +67,7 @@ public final class Party_Gui extends GuiUtil {
 
         Object[] a = Main_ServerOption.Party.keySet().toArray();
         if (Main_ServerOption.Party.size() <= 0) {
-            new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[파티] : 생성된 파티가 없습니다!");
             player.sendMessage(ChatColor.GOLD + "/파티 생성 <이름>");
             return;
@@ -149,14 +149,13 @@ public final class Party_Gui extends GuiUtil {
     public void PartyGUI_MainClick(InventoryClickEvent event) {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
-        SoundUtil s = new SoundUtil();
 
         if (slot == 44)//나가기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 36)//이전 목록
                 new ETC_Gui().ETCGUI_Main(player);
             else if (slot == 10)//파티 개설 / 파티 정보
@@ -189,14 +188,13 @@ public final class Party_Gui extends GuiUtil {
     public void PartyListGUIClick(InventoryClickEvent event) {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
-        SoundUtil s = new SoundUtil();
 
         if (slot == 53)//닫기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
                 PartyGUI_Main(player);
             else if (slot == 48)//이전 페이지
@@ -205,7 +203,7 @@ public final class Party_Gui extends GuiUtil {
                 PartyListGUI(player, (short) Integer.parseInt(event.getInventory().getTitle().split(" : ")[1]));
             else {
                 if (Main_ServerOption.Party.get(Long.parseLong(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getLore().get(0).split(" : ")[1]))).getLock()) {
-                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                    SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     player.sendMessage(ChatColor.RED + "[파티] : 해당 파티는 잠긴 상태입니다! 리더에게 문의하세요!");
                 } else {
                     Main_ServerOption.Party.get(Long.parseLong(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getLore().get(0).split(" : ")[1]))).JoinParty(player);
@@ -218,13 +216,12 @@ public final class Party_Gui extends GuiUtil {
     public void PartyMemberInformationGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        SoundUtil s = new SoundUtil();
-        if (slot == 53)//닫기
+                if (slot == 53)//닫기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             boolean isLeaderChange = event.getInventory().getTitle().contains("교체");
             if (slot == 45)//이전 목록
                 PartyGUI_Main(player);

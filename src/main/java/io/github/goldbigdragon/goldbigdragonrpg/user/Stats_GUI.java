@@ -264,15 +264,14 @@ public class Stats_Gui extends GuiUtil {
     //각종 GUI창 속의 아이콘을 눌렸을 때, 해당 아이콘에 기능을 넣는 메소드1   -스텟 GUI, 오피박스, 커스텀 몬스터GUI-//
     public void StatusInventoryclick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
-        SoundUtil s = new SoundUtil();
 
         int slot = event.getSlot();
 
         if (slot == 26) {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot >= 29 && slot <= 33) {
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager Config = YC.getNewConfig("config.yml");
@@ -302,9 +301,9 @@ public class Stats_Gui extends GuiUtil {
                                 Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).addStat_WILL(1);
                             else if (slot == 33)
                                 Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).addStat_LUK(1);
-                            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                         } else {
-                            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                            SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                             new PacketUtil().sendActionBar(player, ChatColor.RED + "" + ChatColor.BOLD + "[해당 능력은 더 이상 상승시킬 수 없습니다!]");
                         }
                     }

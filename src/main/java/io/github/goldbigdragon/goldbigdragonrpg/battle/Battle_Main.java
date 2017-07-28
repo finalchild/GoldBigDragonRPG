@@ -238,8 +238,8 @@ public class Battle_Main implements Listener {
                     if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).isAlert_Critical())
                         PacketUtil.sendTitleSubTitle(player, "\'\'", "\'" + ChatColor.YELLOW + "크리티컬 히트!\'", (byte) 1, (byte) 0, (byte) 1);
             }
-            SoundUtil.SL(event.getEntity().getLocation(), Sound.ENTITY_ZOMBIE_ATTACK_IRON_DOOR, (float) 0.5, (float) 2.0);
-            SoundUtil.SL(event.getEntity().getLocation(), Sound.ENTITY_GENERIC_EXPLODE, (float) 0.5, (float) 1.7);
+            SoundUtil.playSound(event.getEntity().getLocation(), Sound.ENTITY_ZOMBIE_ATTACK_IRON_DOOR, (float) 0.5, (float) 2.0);
+            SoundUtil.playSound(event.getEntity().getLocation(), Sound.ENTITY_GENERIC_EXPLODE, (float) 0.5, (float) 1.7);
         }
 
         int DamageMinus = Defender_Stat[0] - Attacker_Stat[5];
@@ -401,7 +401,7 @@ public class Battle_Main implements Listener {
     //데미지가 0이 떴을 때 띄우는 랜덤 메시지를 정해주는 메소드//
     public void DamageCancellMessage(Player player, Entity defenser) {
         byte a = (byte) new Util_Number().RandomNum(1, 5);
-        new SoundUtil().SL(defenser.getLocation(), Sound.ENTITY_ZOMBIE_ATTACK_IRON_DOOR, (float) 1.0, (float) 0.7);
+        SoundUtil.playSound(defenser.getLocation(), Sound.ENTITY_ZOMBIE_ATTACK_IRON_DOOR, (float) 1.0, (float) 0.7);
         PacketUtil t = new PacketUtil();
 
         if (a == 1) PacketUtil.sendActionBar(player, ChatColor.RED + "" + ChatColor.BOLD + "이 공격은 전혀 통하지 않는다!");

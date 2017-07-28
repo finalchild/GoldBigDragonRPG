@@ -26,10 +26,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffectType;
 
 public class TeleportUtil {
-    public static void TeleportPlayer(Player player, String world, double X, float Y, double Z, float NEWS, float eye) {
-        Location loc = new Location(Bukkit.getServer().getWorld(world), X, Y, Z, NEWS, eye);
+    public static void teleportPlayer(Player player, String world, double x, float y, double z, float yaw, float pitch) {
+        Location loc = new Location(Bukkit.getServer().getWorld(world), x, y, z, yaw, pitch);
         player.teleport(loc);
-        new EffectUtil().givePotionEffect(player, PotionEffectType.BLINDNESS, 1, 15);
-        new SoundUtil().SL(player.getLocation(), Sound.ENTITY_ENDERMEN_TELEPORT, 0.8F, 1.0F);
+        EffectUtil.givePotionEffect(player, PotionEffectType.BLINDNESS, 1, 15);
+        SoundUtil.playSound(player.getLocation(), Sound.ENTITY_ENDERMEN_TELEPORT, 0.8F, 1.0F);
     }
 }

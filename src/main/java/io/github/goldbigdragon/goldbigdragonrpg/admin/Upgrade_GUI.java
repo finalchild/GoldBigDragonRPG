@@ -227,16 +227,15 @@ public class Upgrade_Gui extends GuiUtil {
 
 
     public void UpgradeRecipeGUIClick(InventoryClickEvent event) {
-        SoundUtil s = new SoundUtil();
-        Player player = (Player) event.getWhoClicked();
+                Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
         short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
         if (slot == 53)//나가기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
                 new OPbox_Gui().OPBoxGUI_Main(player, (byte) 2);
             else if (slot == 48)//이전 페이지
@@ -254,7 +253,7 @@ public class Upgrade_Gui extends GuiUtil {
                 if (event.isLeftClick() && !event.isShiftClick())
                     UpgradeRecipeSettingGUI(player, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                 else if (event.isRightClick() && event.isShiftClick()) {
-                    SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
+                    SoundUtil.playSound(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager ItemList = YC.getNewConfig("Item/Upgrade.yml");
                     ItemList.removeKey(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
@@ -266,7 +265,6 @@ public class Upgrade_Gui extends GuiUtil {
     }
 
     public void UpgradeRecipeSettingGUIClick(InventoryClickEvent event) {
-        SoundUtil s = new SoundUtil();
 
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
@@ -274,10 +272,10 @@ public class Upgrade_Gui extends GuiUtil {
         if (!((event.getSlot() >= 9 && event.getSlot() <= 11) || (event.getSlot() >= 18 && event.getSlot() <= 20) || (event.getSlot() >= 27 && event.getSlot() <= 29))) {
             if (slot == 53)//나가기
             {
-                SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+                SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
                 player.closeInventory();
             } else {
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 String RecipeName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
                 if (slot == 45)//이전 목록
                     UpgradeRecipeGUI(player, 0);

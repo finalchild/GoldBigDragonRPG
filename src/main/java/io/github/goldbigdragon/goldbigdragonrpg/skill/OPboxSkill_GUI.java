@@ -353,19 +353,18 @@ public class OPboxSkill_Gui extends GuiUtil {
     public void AllSkillsGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        SoundUtil s = new SoundUtil();
 
         boolean isJobGUI = Boolean.parseBoolean(ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1)));
         String WhatJob = ChatColor.stripColor(event.getInventory().getItem(45).getItemMeta().getLore().get(1));
         UserData_Object u = new UserData_Object();
         if (slot == 53)//나가기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
             if (isJobGUI && WhatJob.compareTo("Maple") == 0)
                 u.clearAll(player);
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             if (slot == 45)//이전 목록
             {
@@ -395,7 +394,7 @@ public class OPboxSkill_Gui extends GuiUtil {
                 if (isJobGUI) {
                     String SkillName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
                     if (WhatJob.compareTo("Maple") == 0) {
-                        SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                        SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                         YamlController YC = new YamlController(Main_Main.plugin);
                         YamlManager JobList = YC.getNewConfig("Skill/JobList.yml");
                         JobList.createSection("MapleStory." + u.getString(player, (byte) 3) + "." + u.getString(player, (byte) 2) + ".Skill." + SkillName);
@@ -408,7 +407,7 @@ public class OPboxSkill_Gui extends GuiUtil {
                         Config.saveConfig();
                         new Job_Main().AllPlayerFixAllSkillAndJobYML();
                     } else {
-                        SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                        SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                         YamlController YC = new YamlController(Main_Main.plugin);
                         YamlManager JobList = YC.getNewConfig("Skill/JobList.yml");
                         JobList.set("Mabinogi.Added." + SkillName, WhatJob);
@@ -418,17 +417,17 @@ public class OPboxSkill_Gui extends GuiUtil {
                     }
                 } else {
                     if (event.isShiftClick() && event.isLeftClick()) {
-                        SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                        SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                         player.closeInventory();
                         player.sendMessage(ChatColor.LIGHT_PURPLE + "[스킬] : 스킬 아이콘의 ID값을 입력 해 주세요!!");
                         u.setType(player, "Skill");
                         u.setString(player, (byte) 1, "CSID");
                         u.setString(player, (byte) 2, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                     } else if (event.isLeftClick() && !event.isRightClick()) {
-                        SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                        SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                         IndividualSkillOptionGUI(player, (short) 0, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                     } else if (event.isShiftClick() && event.isRightClick()) {
-                        SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
+                        SoundUtil.playSound(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                         YamlController YC = new YamlController(Main_Main.plugin);
                         YamlManager Config = YC.getNewConfig("Config.yml");
                         Config.set("Time.LastSkillChanged", new Util_Number().RandomNum(0, 100000) - new Util_Number().RandomNum(0, 100000));
@@ -448,16 +447,15 @@ public class OPboxSkill_Gui extends GuiUtil {
     public void IndividualSkillOptionGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        SoundUtil s = new SoundUtil();
 
         if (slot == 53)//나가기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             String SkillName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
                 AllSkillsGUI(player, (short) 0, false, "Maple");
             else if (slot == 48)//이전 페이지
@@ -481,12 +479,12 @@ public class OPboxSkill_Gui extends GuiUtil {
                 YamlManager SkillList = YC.getNewConfig("Skill/SkillList.yml");
                 short size = (short) SkillList.getConfigurationSection(SkillName + ".SkillRank").getKeys(false).size();
                 if (event.isLeftClick() && !event.isRightClick()) {
-                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                    SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                     SkillRankOptionGUI(player, SkillName, (short) ((page * 45) + event.getSlot() + 1));
                 } else if (event.isShiftClick() && event.isRightClick() && (page * 45) + event.getSlot() != 0 && (page * 45) + event.getSlot() + 1 == size) {
                     Config.set("Time.LastSkillChanged", new Util_Number().RandomNum(0, 100000) - new Util_Number().RandomNum(0, 100000));
                     Config.saveConfig();
-                    SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
+                    SoundUtil.playSound(player, Sound.BLOCK_LAVA_POP, 0.8F, 1.0F);
                     SkillList.removeKey(SkillName + ".SkillRank." + (size));
                     SkillList.saveConfig();
                     IndividualSkillOptionGUI(player, page, SkillName);
@@ -503,7 +501,6 @@ public class OPboxSkill_Gui extends GuiUtil {
 
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager SkillList = YC.getNewConfig("Skill/SkillList.yml");
-        SoundUtil s = new SoundUtil();
 
         UserData_Object u = new UserData_Object();
 
@@ -511,7 +508,7 @@ public class OPboxSkill_Gui extends GuiUtil {
         switch (event.getSlot()) {
             case 3://필요 레벨
             {
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 player.closeInventory();
                 player.sendMessage(ChatColor.LIGHT_PURPLE + "[스킬] : 스킬을 배울 수 있는 레벨을 설정해 주세요!");
                 player.sendMessage(ChatColor.LIGHT_PURPLE + "[제한 없음 : 0] [최대 : " + Integer.MAX_VALUE + "]");
@@ -523,19 +520,19 @@ public class OPboxSkill_Gui extends GuiUtil {
             return;
             case 4://필요 스킬 포인트
             {
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 player.closeInventory();
                 player.sendMessage(ChatColor.LIGHT_PURPLE + "[스킬] : 필요한 스킬 포인트를 설정해 주세요!");
                 player.sendMessage(ChatColor.LIGHT_PURPLE + "[최소 : 0] [최대 : " + Byte.MAX_VALUE + "]");
                 u.setType(player, "Skill");
-                u.setString(player, (byte) 1, "SP");
+                u.setString(player, (byte) 1, "playSound");
                 u.setString(player, (byte) 2, SkillName);
                 u.setInt(player, (byte) 4, SkillLevel);
             }
             return;
             case 11://커맨드 지정
             {
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 player.sendMessage(ChatColor.DARK_AQUA + "[스킬] : /커맨드 [실행할 커맨드 입력]");
                 player.sendMessage(ChatColor.LIGHT_PURPLE + "  /커맨드 없음" + ChatColor.WHITE + " 입력시 커맨드 해제");
                 u.setType(player, "Skill");
@@ -546,7 +543,7 @@ public class OPboxSkill_Gui extends GuiUtil {
             }
             return;
             case 13://커맨드 권한
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 if (SkillList.getBoolean(SkillName + ".SkillRank." + SkillLevel + ".BukkitPermission"))
                     SkillList.set(SkillName + ".SkillRank." + SkillLevel + ".BukkitPermission", false);
                 else
@@ -556,14 +553,14 @@ public class OPboxSkill_Gui extends GuiUtil {
                 return;
             case 15://매직 스펠
                 if (Bukkit.getPluginManager().isPluginEnabled("MagicSpells")) {
-                    SoundUtil.SP(player, Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.9F);
+                    SoundUtil.playSound(player, Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.9F);
                     player.closeInventory();
                     new io.github.goldbigdragon.goldbigdragonrpg.dependency.SpellMain().ShowAllMaigcGUI(player, (short) 0, SkillName, SkillLevel, (byte) 0);
                 } else
-                    SoundUtil.SP(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.8F);
+                    SoundUtil.playSound(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.8F);
                 return;
             case 19://무기 제한 변경
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 String DistrictWeapon = SkillList.getString(SkillName + ".SkillRank." + SkillLevel + ".DistrictWeapon");
                 YamlManager Target = YC.getNewConfig("Item/CustomType.yml");
 
@@ -670,7 +667,7 @@ public class OPboxSkill_Gui extends GuiUtil {
                 SkillRankOptionGUI(player, SkillName, SkillLevel);
                 return;
             case 21://스킬 대미지 상승
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 if (Bukkit.getPluginManager().isPluginEnabled("MagicSpells")) {
                     String switchNeed = SkillList.getString(SkillName + ".SkillRank." + SkillLevel + ".AffectStat");
                     if (switchNeed.compareTo("없음") == 0)
@@ -693,7 +690,7 @@ public class OPboxSkill_Gui extends GuiUtil {
                     SkillList.saveConfig();
                     SkillRankOptionGUI(player, SkillName, SkillLevel);
                 } else {
-                    SoundUtil.SP(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.8F);
+                    SoundUtil.playSound(player, Sound.BLOCK_ANVIL_LAND, 1.0F, 1.8F);
                 }
                 return;
 
@@ -777,17 +774,17 @@ public class OPboxSkill_Gui extends GuiUtil {
                 u.setString(player, (byte) 1, "BMPRO");
                 break;
             case 45://이전 목록
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 IndividualSkillOptionGUI(player, (short) 0, SkillName);
                 return;
             case 53://나가기
-                SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+                SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
                 player.closeInventory();
                 return;
         }
         player.closeInventory();
         player.sendMessage(ChatColor.LIGHT_PURPLE + "[최소 : " + Byte.MIN_VALUE + "] [최대 : " + Byte.MAX_VALUE + "]");
-        SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+        SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
         u.setType(player, "Skill");
         u.setString(player, (byte) 2, SkillName);
         u.setInt(player, (byte) 4, SkillLevel);

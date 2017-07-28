@@ -49,14 +49,13 @@ public class WorldCreate_Gui extends GuiUtil {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
-        SoundUtil s = new SoundUtil();
 
         if (slot == 8)//나가기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 0)//이전 목록
                 new OPbox_Gui().OPBoxGUI_Main(player, (byte) 2);
             else {

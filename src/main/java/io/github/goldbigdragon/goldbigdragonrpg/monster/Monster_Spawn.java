@@ -765,13 +765,12 @@ public class Monster_Spawn {
     }
 
     public void SpawnEffect(Entity mob, Location loc, byte type) {
-        SoundUtil s = new SoundUtil();
-        ParticleUtil p = new ParticleUtil();
+                ParticleUtil p = new ParticleUtil();
         switch (type) {
             case 0:
                 return;
             case 1: {
-                SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_ENDERDRAGON_GROWL, 1.0F, 0.5F);
+                SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_ENDERDRAGON_GROWL, 1.0F, 0.5F);
                 for (int counter = 0; counter < 400; counter++)
                     ParticleUtil.PLC(loc, Effect.SPELL, 4);
                 for (int counter = 0; counter < 300; counter++)
@@ -782,7 +781,7 @@ public class Monster_Spawn {
             return;
             case 2: {
                 loc.setY((double) (loc.getBlockY() + 1));
-                SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_ENDERMEN_TELEPORT, 1.0F, 0.5F);
+                SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_ENDERMEN_TELEPORT, 1.0F, 0.5F);
                 ParticleUtil.PLC(loc, Effect.ENDER_SIGNAL, 0);
                 for (int counter = 0; counter < 100; counter++)
                     ParticleUtil.PLC(loc, Effect.ENDER_SIGNAL, 0);
@@ -791,7 +790,7 @@ public class Monster_Spawn {
             }
             return;
             case 3: {
-                SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_GENERIC_EXPLODE, 1.0F, 0.5F);
+                SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_GENERIC_EXPLODE, 1.0F, 0.5F);
                 ParticleUtil.PLC(loc, Effect.EXPLOSION_LARGE, 0);
                 for (int counter = 0; counter < 3; counter++)
                     ParticleUtil.PLC(loc, Effect.EXPLOSION_HUGE, 0);
@@ -800,7 +799,7 @@ public class Monster_Spawn {
             }
             return;
             case 4: {
-                SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_GHAST_SHOOT, 1.0F, 0.5F);
+                SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_GHAST_SHOOT, 1.0F, 0.5F);
                 ParticleUtil.PLC(loc, Effect.FLAME, 0);
                 for (int counter = 0; counter < 200; counter++)
                     ParticleUtil.PLC(loc, Effect.SMOKE, 9);
@@ -809,7 +808,7 @@ public class Monster_Spawn {
             }
             return;
             case 5: {
-                SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_ZOMBIE_ATTACK_IRON_DOOR, 1.0F, 0.6F);
+                SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_ZOMBIE_ATTACK_IRON_DOOR, 1.0F, 0.6F);
                 ParticleUtil.PLC(loc, Effect.CRIT, 0);
                 for (int counter = 0; counter < 400; counter++)
                     ParticleUtil.PLC(loc, Effect.SPELL, 4);
@@ -819,7 +818,7 @@ public class Monster_Spawn {
             }
             return;
             case 6: {
-                SoundUtil.SL(loc, org.bukkit.Sound.BLOCK_CHEST_OPEN, 1.0F, 0.5F);
+                SoundUtil.playSound(loc, org.bukkit.Sound.BLOCK_CHEST_OPEN, 1.0F, 0.5F);
                 loc.setY((double) (loc.getBlockY() + 1.8));
                 ParticleUtil.PLC(loc, Effect.HEART, 0);
             }
@@ -828,7 +827,7 @@ public class Monster_Spawn {
                 switch (mob.getType()) {
                     case ZOMBIE:
                     case GIANT: {
-                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_ZOMBIE_AMBIENT, 1.0F, 0.5F);
+                        SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_ZOMBIE_AMBIENT, 1.0F, 0.5F);
                         loc.setY((double) (loc.getBlockY() + 1.8));
                         ParticleUtil.PLC(loc, Effect.VILLAGER_THUNDERCLOUD, 0);
                         for (int counter = 0; counter < 50; counter++)
@@ -836,7 +835,7 @@ public class Monster_Spawn {
                     }
                     break;
                     case SKELETON: {
-                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_SKELETON_DEATH, 1.0F, 0.5F);
+                        SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_SKELETON_DEATH, 1.0F, 0.5F);
                         loc.setY((double) (loc.getBlockY() + 1.8));
                         ParticleUtil.PLC(loc, Effect.VILLAGER_THUNDERCLOUD, 0);
                         for (int counter = 0; counter < 50; counter++)
@@ -845,14 +844,14 @@ public class Monster_Spawn {
                     break;
                     case ENDERMAN:
                     case ENDERMITE: {
-                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_ENDERMEN_TELEPORT, 1.0F, 0.5F);
+                        SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_ENDERMEN_TELEPORT, 1.0F, 0.5F);
                         loc.setY((double) (loc.getBlockY() + 1));
                         for (int counter = 0; counter < 100; counter++)
                             ParticleUtil.PLC(loc, Effect.ENDER_SIGNAL, 0);
                     }
                     break;
                     case CREEPER: {
-                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_GENERIC_EXPLODE, 1.0F, 0.5F);
+                        SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_GENERIC_EXPLODE, 1.0F, 0.5F);
                         loc.setY((double) (loc.getBlockY() + 1));
                         ParticleUtil.PLC(loc, Effect.EXPLOSION_LARGE, 0);
                         for (int counter = 0; counter < 3; counter++)
@@ -864,7 +863,7 @@ public class Monster_Spawn {
                     case SPIDER:
                     case CAVE_SPIDER:
                     case SILVERFISH: {
-                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_SPIDER_AMBIENT, 1.0F, 0.5F);
+                        SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_SPIDER_AMBIENT, 1.0F, 0.5F);
                         for (int counter = 0; counter < 10; counter++)
                             ParticleUtil.PLC(loc, Effect.LARGE_SMOKE, counter);
                         loc.setY((double) (loc.getBlockY() + 1));
@@ -872,7 +871,7 @@ public class Monster_Spawn {
                     }
                     break;
                     case SLIME: {
-                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_SLIME_JUMP, 1.0F, 0.5F);
+                        SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_SLIME_JUMP, 1.0F, 0.5F);
                         loc.setY((double) (loc.getBlockY() + 1));
                         for (int counter = 0; counter < 20; counter++)
                             ParticleUtil.PLC(loc, Effect.SLIME, counter);
@@ -880,13 +879,13 @@ public class Monster_Spawn {
                     break;
                     case MAGMA_CUBE: {
                         loc.setY((double) (loc.getBlockY() + 1));
-                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_SLIME_JUMP, 1.0F, 0.5F);
+                        SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_SLIME_JUMP, 1.0F, 0.5F);
                         for (int counter = 0; counter < 40; counter++)
                             ParticleUtil.PLC(loc, Effect.MOBSPAWNER_FLAMES, counter);
                     }
                     break;
                     case BLAZE: {
-                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_BLAZE_AMBIENT, 1.0F, 0.5F);
+                        SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_BLAZE_AMBIENT, 1.0F, 0.5F);
                         for (int counter = 0; counter < 200; counter++)
                             ParticleUtil.PLC(loc, Effect.SMOKE, 9);
                         for (int counter = 0; counter < 200; counter++)
@@ -894,7 +893,7 @@ public class Monster_Spawn {
                     }
                     break;
                     case GHAST: {
-                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_GHAST_AMBIENT, 1.0F, 0.5F);
+                        SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_GHAST_AMBIENT, 1.0F, 0.5F);
                         ParticleUtil.PLC(loc, Effect.FLAME, 0);
                         for (int counter = 0; counter < 100; counter++)
                             ParticleUtil.PLC(loc, Effect.SMOKE, 4);
@@ -903,7 +902,7 @@ public class Monster_Spawn {
                     }
                     break;
                     case PIG_ZOMBIE: {
-                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_ZOMBIE_AMBIENT, 1.0F, 0.5F);
+                        SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_ZOMBIE_AMBIENT, 1.0F, 0.5F);
                         for (int counter = 0; counter < 100; counter++)
                             ParticleUtil.PLC(loc, Effect.SMOKE, 4);
                         for (int counter = 0; counter < 40; counter++)
@@ -911,7 +910,7 @@ public class Monster_Spawn {
                     }
                     break;
                     case WITCH: {
-                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_WITCH_AMBIENT, 1.0F, 0.5F);
+                        SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_WITCH_AMBIENT, 1.0F, 0.5F);
                         for (int counter = 0; counter < 400; counter++)
                             ParticleUtil.PLC(loc, Effect.SPELL, 4);
                         for (int counter = 0; counter < 300; counter++)
@@ -921,25 +920,25 @@ public class Monster_Spawn {
                     }
                     break;
                     case GUARDIAN: {
-                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_GUARDIAN_AMBIENT, 1.0F, 0.5F);
+                        SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_GUARDIAN_AMBIENT, 1.0F, 0.5F);
                         for (int counter = 0; counter < 400; counter++)
                             ParticleUtil.PLC(loc, Effect.WATERDRIP, counter);
                     }
                     break;
                     case SNOWMAN: {
-                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_SNOWMAN_AMBIENT, 1.0F, 0.5F);
+                        SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_SNOWMAN_AMBIENT, 1.0F, 0.5F);
                         for (int counter = 0; counter < 200; counter++)
                             ParticleUtil.PLC(loc, Effect.SNOWBALL_BREAK, counter);
                     }
                     break;
                     case SHULKER: {
-                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_SHULKER_AMBIENT, 1.0F, 0.5F);
+                        SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_SHULKER_AMBIENT, 1.0F, 0.5F);
                         for (int counter = 0; counter < 400; counter++)
                             ParticleUtil.PLC(loc, Effect.ENDER_SIGNAL, counter);
                     }
                     break;
                     case POLAR_BEAR: {
-                        SoundUtil.SL(loc, org.bukkit.Sound.ENTITY_POLAR_BEAR_AMBIENT, 1.0F, 0.5F);
+                        SoundUtil.playSound(loc, org.bukkit.Sound.ENTITY_POLAR_BEAR_AMBIENT, 1.0F, 0.5F);
                         for (int counter = 0; counter < 200; counter++)
                             ParticleUtil.PLC(loc, Effect.VILLAGER_THUNDERCLOUD, counter);
                     }

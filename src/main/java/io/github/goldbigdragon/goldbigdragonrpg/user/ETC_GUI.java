@@ -41,8 +41,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.skill.UserSkill_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 
 public final class ETC_Gui extends GuiUtil {
-    private SoundUtil s = new SoundUtil();
-
+    private
     public void ETCGUI_Main(Player player) {
         String UniqueCode = "§0§0§0§0§2§r";
         Inventory inv = Bukkit.createInventory(null, 45, UniqueCode + "§0기타");
@@ -232,10 +231,10 @@ public final class ETC_Gui extends GuiUtil {
 
         if (slot == 26)//닫기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 0)
                 new Stats_Gui().StatusGUI(player);
             else if (slot == 9)
@@ -267,32 +266,31 @@ public final class ETC_Gui extends GuiUtil {
 
         if (slot == 45)//이전 목록
         {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             ETCGUI_Main(player);
         } else if (slot == 53)//닫기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else if (slot == 36)//유튜브 동영상
         {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "[YouTube] " + ChatColor.WHITE + "" + ChatColor.BOLD + ": " + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "https://www.youtube.com/playlist?list=PLxqihkJXVJABIlxU3n6bNhhC8x6xPbORP   " + ChatColor.YELLOW + "" + ChatColor.BOLD + "[클릭시 가이드 페이지로 연결됩니다]");
             player.closeInventory();
         }
     }
 
     public void FriendsGUIclick(InventoryClickEvent event) {
-        SoundUtil s = new SoundUtil();
-        Player player = (Player) event.getWhoClicked();
+                Player player = (Player) event.getWhoClicked();
         int page = Integer.parseInt(event.getInventory().getTitle().split(" : ")[1]) - 1;
         int slot = event.getSlot();
 
         if (slot == 53)//닫기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
                 ETCGUI_Main(player);
             else if (slot == 52)//친구 요청
@@ -312,7 +310,7 @@ public final class ETC_Gui extends GuiUtil {
                 YamlManager FriendsList = YC.getNewConfig("Friend/" + player.getUniqueId().toString() + ".yml");
                 FriendsList.removeKey("Friends." + FName);
                 FriendsList.saveConfig();
-                SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 1.0F, 0.7F);
+                SoundUtil.playSound(player, Sound.BLOCK_LAVA_POP, 1.0F, 0.7F);
                 player.sendMessage(ChatColor.LIGHT_PURPLE + "[친구] : " + ChatColor.YELLOW + FName + ChatColor.LIGHT_PURPLE + "님을 친구 목록에서 삭제하였습니다!");
                 FriendsGUI(player, (short) page);
             }
@@ -320,18 +318,17 @@ public final class ETC_Gui extends GuiUtil {
     }
 
     public void WaittingFriendsGUIclick(InventoryClickEvent event) {
-        SoundUtil s = new SoundUtil();
-        Player player = (Player) event.getWhoClicked();
+                Player player = (Player) event.getWhoClicked();
 
         int page = Integer.parseInt(event.getInventory().getTitle().split(" : ")[1]) - 1;
         int slot = event.getSlot();
 
         if (slot == 53)//닫기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 45)//이전 목록
                 FriendsGUI(player, (short) 0);
             else if (slot == 48)//이전 페이지
@@ -345,7 +342,7 @@ public final class ETC_Gui extends GuiUtil {
                 if (event.isShiftClick() && event.isRightClick()) {
                     FriendsList.removeKey("Waitting." + FName);
                     FriendsList.saveConfig();
-                    SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 1.0F, 0.7F);
+                    SoundUtil.playSound(player, Sound.BLOCK_LAVA_POP, 1.0F, 0.7F);
                 } else if (event.isLeftClick() && !event.isShiftClick())
                     new Equip_Gui().SetFriends(player, Bukkit.getPlayer(FName));
                 FriendsList = YC.getNewConfig("Friend/" + player.getUniqueId().toString() + ".yml");

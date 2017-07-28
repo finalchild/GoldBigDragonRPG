@@ -472,7 +472,7 @@ public class Battle_Calculator {
                                                     YamlController YC = new YamlController(Main_Main.plugin);
                                                     YamlManager Config = YC.getNewConfig("config.yml");
                                                     if (Config.getBoolean("Server.CustomWeaponBreak")) {
-                                                        new SoundUtil().SP(player, Sound.ENTITY_ITEM_BREAK, 1.2F, 1.0F);
+                                                        SoundUtil.playSound(player, Sound.ENTITY_ITEM_BREAK, 1.2F, 1.0F);
                                                         if (item.get(counter).getItemMeta().hasDisplayName())
                                                             player.sendMessage(ChatColor.RED + "[장비 파괴] : " + ChatColor.YELLOW + item.get(counter).getItemMeta().getDisplayName() + ChatColor.RED + " 장비가 파괴되었습니다!");
                                                         else
@@ -501,7 +501,7 @@ public class Battle_Calculator {
                                                         PLore.set(count, ChatColor.WHITE + Lore[0] + " : " + 0 + " / " + SubLore[1]);
                                                 } else {
                                                     if ((Integer.parseInt(SubLore[0]) - 1) == 20) {
-                                                        new SoundUtil().SP(player, Sound.BLOCK_ANVIL_USE, 0.8F, 0.5F);
+                                                        SoundUtil.playSound(player, Sound.BLOCK_ANVIL_USE, 0.8F, 0.5F);
                                                         if (counter == 0)
                                                             player.sendMessage(ChatColor.YELLOW + "[장비 파괴] : 투구의 내구도가 다 닳아 갑니다!");
                                                         else if (counter == 1)
@@ -597,7 +597,7 @@ public class Battle_Calculator {
                                                 YamlController YC = new YamlController(Main_Main.plugin);
                                                 YamlManager Config = YC.getNewConfig("config.yml");
                                                 if (Config.getBoolean("Server.CustomWeaponBreak")) {
-                                                    new SoundUtil().SP(player, Sound.ENTITY_ITEM_BREAK, 1.2F, 1.0F);
+                                                    SoundUtil.playSound(player, Sound.ENTITY_ITEM_BREAK, 1.2F, 1.0F);
                                                     if (item.get(counter).getItemMeta().hasDisplayName())
                                                         player.sendMessage(ChatColor.RED + "[장비 파괴] : " + ChatColor.YELLOW + item.get(counter).getItemMeta().getDisplayName() + ChatColor.RED + " 장비가 파괴되었습니다!");
                                                     else

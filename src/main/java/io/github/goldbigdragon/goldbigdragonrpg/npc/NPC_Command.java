@@ -38,11 +38,10 @@ import net.citizensnpcs.api.npc.NPC;
 
 public class NPC_Command {
     public void onCommand(CommandSender talker, Command command, String string, String[] args) {
-        SoundUtil s = new SoundUtil();
-        Player player = (Player) talker;
+                Player player = (Player) talker;
         if (!player.isOp()) {
             talker.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
-            SoundUtil.SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            SoundUtil.playSound((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             return;
         }
         if (args.length < 1) {
@@ -51,7 +50,7 @@ public class NPC_Command {
         }
         if (player.getInventory().getItemInMainHand().getType() == Material.AIR || player.getInventory().getItemInMainHand().getTypeId() == 0 || player.getInventory().getItemInMainHand().getAmount() == 0) {
             talker.sendMessage(ChatColor.RED + "[SYSTEM] : 상점에 등록할 아이템을 들고 있어야 합니다!");
-            SoundUtil.SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            SoundUtil.playSound((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             return;
         }
         List<Entity> NearbyEntity = player.getNearbyEntities(3.0, 3.0, 3.0);
@@ -71,7 +70,7 @@ public class NPC_Command {
                                 NPCscript.set("Shop.Sell." + directory + ".price", Integer.parseInt(args[1]));
                                 NPCscript.saveConfig();
                                 talker.sendMessage(ChatColor.GREEN + "[" + NearbyEntity.get(count).getCustomName() + "] : 상점에 물품을 등록하였습니다.");
-                                SoundUtil.SP((Player) talker, org.bukkit.Sound.BLOCK_CHEST_OPEN, 2.0F, 0.8F);
+                                SoundUtil.playSound((Player) talker, org.bukkit.Sound.BLOCK_CHEST_OPEN, 2.0F, 0.8F);
                             }
                         }
                         return;
@@ -82,7 +81,7 @@ public class NPC_Command {
                                 NPCscript.set("Shop.Buy." + directory + ".price", Integer.parseInt(args[1]));
                                 NPCscript.saveConfig();
                                 talker.sendMessage(ChatColor.GREEN + "[" + NearbyEntity.get(count).getCustomName() + "] : 보여주신 물품을 " + args[1] + Main_ServerOption.Money + ChatColor.GREEN + "에 사 들이겠습니다.");
-                                SoundUtil.SP((Player) talker, org.bukkit.Sound.BLOCK_CHEST_OPEN, 2.0F, 0.8F);
+                                SoundUtil.playSound((Player) talker, org.bukkit.Sound.BLOCK_CHEST_OPEN, 2.0F, 0.8F);
                             }
                         }
                         return;
@@ -91,7 +90,7 @@ public class NPC_Command {
             }
         }
         player.sendMessage(ChatColor.RED + "[SYSTEM] : NPC를 찾을 수 없습니다!");
-        SoundUtil.SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+        SoundUtil.playSound((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
     }
 
     private boolean isIntMinMax(String message, Player player, int Min, int Max) {
@@ -101,11 +100,11 @@ public class NPC_Command {
                 return true;
             else {
                 player.sendMessage(ChatColor.RED + "[SYSTEM] : 최소 " + ChatColor.YELLOW + "" + Min + ChatColor.RED + ", 최대 " + ChatColor.YELLOW + "" + Max + ChatColor.RED + " 이하의 숫자를 입력하세요!");
-                SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             }
         } catch (NumberFormatException e) {
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 정수 형태의 값(숫자)을 입력하세요. (" + ChatColor.YELLOW + "" + Min + ChatColor.RED + " ~ " + ChatColor.YELLOW + "" + Max + ChatColor.RED + ")");
-            SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
         }
         return false;
     }

@@ -38,18 +38,17 @@ public class Gamble_Chat {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager GambleYML = YC.getNewConfig("Item/GamblePresent.yml");
 
-        SoundUtil s = new SoundUtil();
-        event.setCancelled(true);
+                event.setCancelled(true);
         String message = ChatColor.stripColor(event.getMessage().replace(".", ""));
         switch (u.getString(player, (byte) 0)) {
             case "NP"://New Package
             {
                 if (GambleYML.contains(message)) {
-                    SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                    SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                     player.sendMessage(ChatColor.RED + "[도박] : 해당 이름의 상품은 이미 존재합니다!");
                     return;
                 }
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 GambleYML.set(message + ".Grade", ChatColor.WHITE + "[일반]");
                 GambleYML.createSection(message + ".Present");
                 GambleYML.saveConfig();

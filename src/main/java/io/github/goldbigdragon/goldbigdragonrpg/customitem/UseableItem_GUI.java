@@ -197,16 +197,15 @@ public class UseableItem_Gui extends GuiUtil {
 
 
     public void UseableItemListGUIClick(InventoryClickEvent event) {
-        SoundUtil s = new SoundUtil();
-        Player player = (Player) event.getWhoClicked();
+                Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 53)//나가기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             if (slot == 45)//이전 목록
                 new OPbox_Gui().OPBoxGUI_Main(player, (byte) 2);
@@ -240,15 +239,14 @@ public class UseableItem_Gui extends GuiUtil {
     }
 
     public void ChooseUseableItemTypeGUIClick(InventoryClickEvent event) {
-        SoundUtil s = new SoundUtil();
-        Player player = (Player) event.getWhoClicked();
+                Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
         if (slot == 8) {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 0)
                 UseableItemListGUI(player, 0);
             else {
@@ -357,8 +355,7 @@ public class UseableItem_Gui extends GuiUtil {
     }
 
     public void NewUseableItemGUIclick(InventoryClickEvent event) {
-        SoundUtil s = new SoundUtil();
-        Player player = (Player) event.getWhoClicked();
+                Player player = (Player) event.getWhoClicked();
         String IconName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
 
         int itemnumber = Integer.parseInt(ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1)));
@@ -367,16 +364,16 @@ public class UseableItem_Gui extends GuiUtil {
             YamlManager Config = YC.getNewConfig("config.yml");
 
             if (Config.getBoolean("Server.Like_The_Mabinogi_Online_Stat_System")) {
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 SelectSkillGUI(player, (short) 0, itemnumber);
             } else {
-                SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                 player.sendMessage(ChatColor.RED + "[스킬 북 생성] : 현재 서버 시스템이 " + ChatColor.YELLOW + "'마비노기'" + ChatColor.RED + "가 아닙니다!");
             }
         } else if (IconName.compareTo("[    위치 지정    ]") == 0) {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager ItemList = YC.getNewConfig("Item/Consume.yml");
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             ItemList.set(itemnumber + ".World", player.getLocation().getWorld().getName().toString());
             ItemList.set(itemnumber + ".X", player.getLocation().getX());
             ItemList.set(itemnumber + ".Y", player.getLocation().getY());
@@ -388,7 +385,7 @@ public class UseableItem_Gui extends GuiUtil {
         } else if (IconName.compareTo("[        환생        ]") == 0) {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager ItemList = YC.getNewConfig("Item/Consume.yml");
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (!ItemList.getBoolean(itemnumber + ".Rebirth"))
                 ItemList.set(itemnumber + ".Rebirth", true);
             else
@@ -398,7 +395,7 @@ public class UseableItem_Gui extends GuiUtil {
         } else if (IconName.compareTo("[    형식 변경    ]") == 0) {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager ItemList = YC.getNewConfig("Item/Consume.yml");
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (ItemList.getString(itemnumber + ".ShowType").contains("[깔끔]"))
                 ItemList.set(itemnumber + ".ShowType", ChatColor.YELLOW + "[컬러]");
             else if (ItemList.getString(itemnumber + ".ShowType").contains("[컬러]"))
@@ -410,11 +407,11 @@ public class UseableItem_Gui extends GuiUtil {
             ItemList.saveConfig();
             NewUseableItemGUI(player, itemnumber);
         } else if (IconName.compareTo("[    타입 변경    ]") == 0)
-            SoundUtil.SP(player, Sound.BLOCK_ANVIL_LAND, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_ANVIL_LAND, 0.8F, 1.8F);
         else if (IconName.compareTo("[    등급 변경    ]") == 0) {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager ItemList = YC.getNewConfig("Item/Consume.yml");
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (ItemList.getString(itemnumber + ".Grade").contains("[일반]"))
                 ItemList.set(itemnumber + ".Grade", ChatColor.GREEN + "[상급]");
             else if (ItemList.getString(itemnumber + ".Grade").contains("[상급]"))
@@ -434,14 +431,14 @@ public class UseableItem_Gui extends GuiUtil {
             ItemList.saveConfig();
             NewUseableItemGUI(player, itemnumber);
         } else if (IconName.compareTo("이전 목록") == 0) {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             UseableItemListGUI(player, 0);
         } else if (IconName.compareTo("닫기") == 0) {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else if (!((event.getSlot() >= 9 && event.getSlot() <= 11) || (event.getSlot() >= 18 && event.getSlot() <= 20) || (event.getSlot() >= 27 && event.getSlot() <= 29))) {
             UserData_Object u = new UserData_Object();
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             u.setType(player, "UseableItem");
             u.setInt(player, (byte) 3, itemnumber);
             u.setInt(player, (byte) 4, -1);
@@ -521,16 +518,15 @@ public class UseableItem_Gui extends GuiUtil {
     }
 
     public void SelectSkillGUIClick(InventoryClickEvent event) {
-        SoundUtil s = new SoundUtil();
-        int slot = event.getSlot();
+                int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
 
         if (slot == 53)//나가기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             int itemnumber = Integer.parseInt(ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1)));
             short page = (short) (Short.parseShort(event.getInventory().getTitle().split(" : ")[1]) - 1);
             if (slot == 45)//이전 목록

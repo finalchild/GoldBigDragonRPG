@@ -52,8 +52,6 @@ public class CitizensMain implements Listener {
     }
 
     public void NPCquest(NPCRightClickEvent event) {
-        SoundUtil s = new SoundUtil();
-
         YamlManager YM;
 
         Player player = event.getClicker();
@@ -220,7 +218,7 @@ public class CitizensMain implements Listener {
                                         QGUI.QuestRouter(player, QuestName);
                                         return;
                                     } else {
-                                        SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                                        SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                                         player.sendMessage(ChatColor.YELLOW + "[퀘스트] : 현재 플레이어의 인벤토리 공간이 충분하지 않아 보상을 받을 수 없습니다!");
                                         return;
                                     }
@@ -244,7 +242,7 @@ public class CitizensMain implements Listener {
                 DNPC.removeKey(event.getNPC().getUniqueId().toString());
                 DNPC.saveConfig();
                 player.sendMessage(ChatColor.GREEN + "[NPC] : 해당 NPC의 GUI창이 활성화 되었습니다!");
-                new SoundUtil().SP(player, Sound.ENTITY_VILLAGER_YES, 1.0F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_VILLAGER_YES, 1.0F, 1.0F);
                 new UserData_Object().setInt(player, (byte) 4, -1);
             }
         }

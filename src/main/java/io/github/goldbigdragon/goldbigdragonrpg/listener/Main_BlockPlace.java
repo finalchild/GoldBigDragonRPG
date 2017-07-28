@@ -55,7 +55,7 @@ public class Main_BlockPlace implements Listener {
         if (Area != null)
             if (!A.getAreaOption(Area[0], (char) 5) && !player.isOp()) {
                 event.setCancelled(true);
-                new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                 player.sendMessage(ChatColor.RED + "[SYSTEM] : " + ChatColor.YELLOW + Area[1] + ChatColor.RED + " 지역 에서는 블록 설치가 불가능합니다!");
                 return;
             }

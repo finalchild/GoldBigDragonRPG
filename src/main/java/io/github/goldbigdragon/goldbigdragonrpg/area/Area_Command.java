@@ -34,17 +34,16 @@ import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
 public class Area_Command {
     public void onCommand(CommandSender talker, Command command, String string, String[] args) {
-        SoundUtil s = new SoundUtil();
-        Player player = (Player) talker;
+                Player player = (Player) talker;
         if (!player.isOp()) {
             talker.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
-            SoundUtil.SP((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            SoundUtil.playSound((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             return;
         }
         if (args.length == 1) {
             if (args[0].equalsIgnoreCase("목록")) {
                 Area_Gui AGUI = new Area_Gui();
-                SoundUtil.SP(player, org.bukkit.Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
+                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
                 AGUI.AreaListGUI(player, (short) 0);
                 return;
             } else {
@@ -52,11 +51,11 @@ public class Area_Command {
                 YamlManager AreaList = YC.getNewConfig("Area/AreaList.yml");
 
                 if (AreaList.contains(args[0])) {
-                    SoundUtil.SP(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
+                    SoundUtil.playSound(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
                     Area_Gui AGUI = new Area_Gui();
                     AGUI.AreaSettingGUI(player, args[0]);
                 } else {
-                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                    SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 이름의 영역이 없습니다!");
                 }
                 return;
@@ -74,7 +73,7 @@ public class Area_Command {
                         YamlController YC = new YamlController(Main_Main.plugin);
                         YamlManager Config = YC.getNewConfig("config.yml");
                         player.sendMessage(ChatColor.RED + "[SYSTEM] : 먼저 " + IT.SetItemDefaultName((short) Config.getInt("Server.AreaSettingWand"), (byte) 0) + ChatColor.RED + " 아이템을 손에 든 채로 블록을 좌/우 클릭하여 구역을 설정해 주세요!");
-                        SoundUtil.SP((Player) player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                        SoundUtil.playSound((Player) player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     }
                     return;
                 case "삭제":

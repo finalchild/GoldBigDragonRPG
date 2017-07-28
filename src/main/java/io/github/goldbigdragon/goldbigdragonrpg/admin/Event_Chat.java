@@ -37,8 +37,7 @@ public class Event_Chat extends Util_Chat {
     public void EventChatting(PlayerChatEvent event) {
         UserData_Object u = new UserData_Object();
         Player player = event.getPlayer();
-        SoundUtil s = new SoundUtil();
-        PacketUtil PS = new PacketUtil();
+                PacketUtil PS = new PacketUtil();
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager Config = YC.getNewConfig("config.yml");
         event.setCancelled(true);
@@ -48,7 +47,7 @@ public class Event_Chat extends Util_Chat {
             case "SKP"://SkillPoint
                 if (isIntMinMax(message, player, 1, 10)) {
                     int Value = Integer.parseInt(message);
-                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                    SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                     if (Config.getInt("Event.Multiple_Level_Up_SkillPoint") == 1) {
                         if (Value != 1) {
                             Config.set("Event.Multiple_Level_Up_SkillPoint", Value);
@@ -78,7 +77,7 @@ public class Event_Chat extends Util_Chat {
             case "STP"://StatPoint
                 if (isIntMinMax(message, player, 1, 10)) {
                     int Value = Integer.parseInt(message);
-                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                    SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                     if (Config.getInt("Event.Multiple_Level_Up_StatPoint") == 1) {
                         if (Value != 1) {
                             Config.set("Event.Multiple_Level_Up_StatPoint", Value);
@@ -109,7 +108,7 @@ public class Event_Chat extends Util_Chat {
             case "EXP"://EXP
                 if (isIntMinMax(message, player, 1, 10)) {
                     int Value = Integer.parseInt(message);
-                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                    SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                     if (Config.getInt("Event.Multiple_EXP_Get") == 1) {
                         if (Value != 1) {
                             Config.set("Event.Multiple_EXP_Get", Value);
@@ -139,7 +138,7 @@ public class Event_Chat extends Util_Chat {
             case "DROP"://DropChance
                 if (isIntMinMax(message, player, 1, 10)) {
                     int Value = Integer.parseInt(message);
-                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                    SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                     if (Config.getInt("Event.DropChance") == 1) {
                         if (Value != 1) {
                             Config.set("Event.DropChance", Value);
@@ -169,7 +168,7 @@ public class Event_Chat extends Util_Chat {
             case "Proficiency"://Proficiency
                 if (isIntMinMax(message, player, 1, 10)) {
                     int Value = Integer.parseInt(message);
-                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                    SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                     if (Config.getInt("Event.Multiple_Proficiency_Get") == 1) {
                         if (Value != 1) {
                             Config.set("Event.Multiple_Proficiency_Get", Value);

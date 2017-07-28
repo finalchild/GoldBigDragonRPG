@@ -375,7 +375,7 @@ public class ServerTask_Navigation {
 
     public void FindedWay(Player player, Location DestinationLoc) {
         PacketUtil PS = new PacketUtil();
-        new SoundUtil().SP(player, Sound.BLOCK_NOTE_PLING, 1.0F, 1.0F);
+        SoundUtil.playSound(player, Sound.BLOCK_NOTE_PLING, 1.0F, 1.0F);
         PacketUtil.sendTitleSubTitle(player, "\'" + ChatColor.YELLOW + "도착하였습니다!" + "\'", "\'" + ChatColor.WHITE + "[네비게이션을 초기화 합니다.]" + "\'", (byte) 1, (byte) 1, (byte) 1);
 
         for (short count = 0; count < ServerTick_Main.NaviUsingList.size(); count++) {

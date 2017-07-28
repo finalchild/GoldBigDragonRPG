@@ -42,8 +42,7 @@ public class OPbox_Chat extends Util_Chat {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager Config = YC.getNewConfig("config.yml");
 
-        SoundUtil s = new SoundUtil();
-        event.setCancelled(true);
+                event.setCancelled(true);
         String message = ChatColor.stripColor(event.getMessage());
         switch (u.getString(player, (byte) 1)) {
             case "RO_S_H"://RespawnOption_SpawnPoint_Health
@@ -51,7 +50,7 @@ public class OPbox_Chat extends Util_Chat {
             case "RO_H_H"://RespawnOption_Help_Health
             case "RO_I_H"://RespawnOption_Item_Health
                 if (isIntMinMax(message, player, 1, 100)) {
-                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                    SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                     switch (u.getString(player, (byte) 1)) {
                         case "RO_S_H":
                             Config.set("Death.Spawn_Home.SetHealth", message + "%");
@@ -86,7 +85,7 @@ public class OPbox_Chat extends Util_Chat {
             case "RO_H_E"://RespawnOption_Help_EXP
             case "RO_I_E"://RespawnOption_Item_EXP
                 if (isIntMinMax(message, player, 0, 100)) {
-                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                    SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                     switch (u.getString(player, (byte) 1)) {
                         case "RO_S_E":
                             Config.set("Death.Spawn_Home.PenaltyEXP", message + "%");
@@ -121,7 +120,7 @@ public class OPbox_Chat extends Util_Chat {
             case "RO_H_M"://RespawnOption_Help_Money
             case "RO_I_M"://RespawnOption_Item_Money
                 if (isIntMinMax(message, player, 0, 100)) {
-                    SoundUtil.SP(player, Sound.BLOCK_ANVIL_USE, 1.0F, 1.0F);
+                    SoundUtil.playSound(player, Sound.BLOCK_ANVIL_USE, 1.0F, 1.0F);
                     switch (u.getString(player, (byte) 1)) {
                         case "RO_S_M":
                             Config.set("Death.Spawn_Home.PenaltyMoney", message + "%");
@@ -142,7 +141,7 @@ public class OPbox_Chat extends Util_Chat {
                 }
                 return;
             case "CCP"://ChangeChatPrefix
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 Config.set("Server.ChatPrefix", event.getMessage());
                 Config.saveConfig();
                 u.clearAll(player);
@@ -150,7 +149,7 @@ public class OPbox_Chat extends Util_Chat {
                 return;
             case "BMT"://BroadcastMessageTick
                 if (isIntMinMax(message, player, 1, 3600)) {
-                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                    SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                     Config.set("Server.BroadCastSecond", Integer.parseInt(message));
                     Config.saveConfig();
                     new OPbox_Gui().OPBoxGUI_BroadCast(player, (byte) 0);
@@ -158,7 +157,7 @@ public class OPbox_Chat extends Util_Chat {
                 }
                 return;
             case "NBM"://NewBroadcastMessage
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 YamlManager BroadCast = YC.getNewConfig("BroadCast.yml");
                 BroadCast.set(u.getInt(player, (byte) 0) + "", ChatColor.WHITE + event.getMessage());
                 BroadCast.saveConfig();
@@ -166,7 +165,7 @@ public class OPbox_Chat extends Util_Chat {
                 new OPbox_Gui().OPBoxGUI_BroadCast(player, (byte) 0);
                 return;
             case "JM"://JoinMessage
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 if (message.compareTo("없음") == 0)
                     Config.set("Server.JoinMessage", null);
                 else
@@ -176,7 +175,7 @@ public class OPbox_Chat extends Util_Chat {
                 new OPbox_Gui().OPBoxGUI_Setting(player);
                 return;
             case "QM"://QuitMessage
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 if (message.compareTo("없음") == 0)
                     Config.set("Server.QuitMessage", null);
                 else
@@ -193,7 +192,7 @@ public class OPbox_Chat extends Util_Chat {
                 String Message = event.getMessage();
                 Message.replace(".", "");
                 Message.replace(":", "");
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 switch (u.getString(player, (byte) 2)) {
                     case "체력":
                         Config.set("Server.STR", message);
@@ -267,7 +266,7 @@ public class OPbox_Chat extends Util_Chat {
                 if (isIntMinMax(message, player, 1, Integer.MAX_VALUE)) {
                     if (new Main_Interact().SetItemDefaultName(Short.parseShort(message), (byte) 0).compareTo("지정되지 않은 아이템") == 0) {
                         player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 아이템은 존재하지 않습니다!");
-                        SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                        SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                         return;
                     }
                     int value = Integer.parseInt(message);

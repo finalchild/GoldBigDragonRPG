@@ -38,9 +38,8 @@ public class WorldCreate_Chat {
         UserData_Object u = new UserData_Object();
         event.setCancelled(true);
         Player player = event.getPlayer();
-        SoundUtil s = new SoundUtil();
-        String Message = ChatColor.stripColor(event.getMessage());
-        SoundUtil.SP(player, Sound.BLOCK_ANVIL_USE, 1.0F, 0.8F);
+                String Message = ChatColor.stripColor(event.getMessage());
+        SoundUtil.playSound(player, Sound.BLOCK_ANVIL_USE, 1.0F, 0.8F);
         player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "[월드 생성] : 월드 생성 중...");
         WorldType TYPE = WorldType.FLAT;
 
@@ -69,7 +68,7 @@ public class WorldCreate_Chat {
         for (short count = 0; count < WorldConfig.getKeys().size(); count++)
             if (Bukkit.getWorld(worldname[count].toString()) == null)
                 WorldCreator.name(worldname[count].toString()).createWorld();
-        SoundUtil.SP(player, Sound.ENTITY_WOLF_AMBIENT, 1.0F, 0.8F);
+        SoundUtil.playSound(player, Sound.ENTITY_WOLF_AMBIENT, 1.0F, 0.8F);
         player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "[월드 생성] : 월드 생성 성공!");
     }
 

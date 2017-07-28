@@ -94,10 +94,9 @@ public class NPC_Main {
                 YamlManager PlayerSkill = YC.getNewConfig("Skill/PlayerData/" + player.getUniqueId() + ".yml");
                 String Categori = JobList.getString("Mabinogi.Added." + NPCscript.getString(TalkSubject + "." + randomScript + ".giveSkill"));
                 if (!PlayerSkill.contains("Mabinogi." + Categori + "." + NPCscript.getString(TalkSubject + "." + randomScript + ".giveSkill"))) {
-                    SoundUtil s = new SoundUtil();
                     PlayerSkill.set("Mabinogi." + Categori + "." + Skillname, 1);
                     PlayerSkill.saveConfig();
-                    SoundUtil.SP(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.8F);
+                    SoundUtil.playSound(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.8F);
                     player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "[새로운 스킬을 획득 하였습니다!] " + ChatColor.YELLOW + "" + ChatColor.BOLD + "" + ChatColor.UNDERLINE + Skillname);
                 } else {
                     scriptString = NPCscript.getString(TalkSubject + "." + randomScript + ".AlreadyGetScript");

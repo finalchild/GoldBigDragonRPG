@@ -58,21 +58,20 @@ public class Struct_CampFire extends GuiUtil {
     }
 
     public void CampFireGUIClick(InventoryClickEvent event) {
-        SoundUtil s = new SoundUtil();
-        Player player = (Player) event.getWhoClicked();
+                Player player = (Player) event.getWhoClicked();
         String CampFireName = ChatColor.stripColor(event.getInventory().getItem(5).getItemMeta().getLore().get(3)).replace("&", "§");
 
         if (event.getSlot() == 3 || event.getSlot() == 5) {
             if (event.getSlot() == 5) {
                 ItemStack item = new MaterialData(280, (byte) 0).toItemStack(1);
                 if (!new Util_Player().deleteItem(player, item, 10)) {
-                    SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                    SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                     player.sendMessage(ChatColor.RED + "[SYSTEM] : 불을 지피기 위해 필요한 막대기 개수가 모자랍니다!");
                     return;
                 } else
-                    SoundUtil.SP(player, Sound.ITEM_FLINTANDSTEEL_USE, 1.0F, 1.8F);
+                    SoundUtil.playSound(player, Sound.ITEM_FLINTANDSTEEL_USE, 1.0F, 1.8F);
             } else
-                SoundUtil.SP(player, Sound.BLOCK_FIRE_EXTINGUISH, 1.0F, 1.0F);
+                SoundUtil.playSound(player, Sound.BLOCK_FIRE_EXTINGUISH, 1.0F, 1.0F);
 
             Object[] e = player.getLocation().getWorld().getNearbyEntities(player.getLocation(), 6, 6, 6).toArray();
             for (int count = 0; count < e.length; count++)

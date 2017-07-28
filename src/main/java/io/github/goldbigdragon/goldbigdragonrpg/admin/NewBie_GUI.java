@@ -171,10 +171,9 @@ public class NewBie_Gui extends GuiUtil {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
-        SoundUtil s = new SoundUtil();
-        if (slot == 8)//닫기
+                if (slot == 8)//닫기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.0F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.0F);
             player.closeInventory();
         } else {
             if (slot == 3)//기본 퀘스트
@@ -182,7 +181,7 @@ public class NewBie_Gui extends GuiUtil {
                 if (event.isLeftClick())
                     NewBieQuestGUI(player, (short) 0);
                 else if (event.isRightClick() && event.isShiftClick()) {
-                    SoundUtil.SP(player, Sound.BLOCK_LAVA_POP, 1.0F, 1.0F);
+                    SoundUtil.playSound(player, Sound.BLOCK_LAVA_POP, 1.0F, 1.0F);
                     YamlController YC = new YamlController(Main_Main.plugin);
                     YamlManager NewBieYM = YC.getNewConfig("ETC/NewBie.yml");
                     NewBieYM.set("FirstQuest", "null");
@@ -190,7 +189,7 @@ public class NewBie_Gui extends GuiUtil {
                     NewBieGUIMain(player);
                 }
             } else {
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 if (slot == 0)//이전 목록
                     new OPbox_Gui().OPBoxGUI_Main(player, (byte) 2);
                 else if (slot == 2)//기본 아이템
@@ -215,24 +214,23 @@ public class NewBie_Gui extends GuiUtil {
     }
 
     public void NewBieSupportItemGUIInventoryclick(InventoryClickEvent event, String SubjectCode) {
-        SoundUtil s = new SoundUtil();
-        Player player = (Player) event.getWhoClicked();
+                Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
         if (slot >= 45)
             event.setCancelled(true);
         if (slot == 53)//닫기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.0F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.0F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
             if (slot == 45)//이전 목록
                 NewBieGUIMain(player);
             else if (slot == 49)//기본 지원
             {
                 if (SubjectCode.compareTo("1a") != 0)//초심자 가이드 설정창이 아닐 경우
                 {
-                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                    SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                     player.closeInventory();
                     player.sendMessage(ChatColor.DARK_AQUA + "[뉴비 지원금] : 얼마를 가지고 시작하도록 하시겠습니까?");
                     player.sendMessage(ChatColor.DARK_AQUA + "(0 ~ " + Integer.MAX_VALUE + ")");
@@ -245,16 +243,15 @@ public class NewBie_Gui extends GuiUtil {
     }
 
     public void NewBieQuestGUIInventoryclick(InventoryClickEvent event) {
-        SoundUtil s = new SoundUtil();
 
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
 
         if (slot == 53) {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.0F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.0F);
             player.closeInventory();
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+            SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
             if (slot == 45)//이전 목록
                 NewBieGUIMain(player);
             else if (slot == 48)//이전 페이지
@@ -273,11 +270,11 @@ public class NewBie_Gui extends GuiUtil {
                         NewBieYM.saveConfig();
                         NewBieGUIMain(player);
                     } else {
-                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                        SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.RED + "[뉴비 퀘스트] : 해당 퀘스트는 퀘스트 오브젝트가 존재하지 않습니다!");
                     }
                 } else {
-                    SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                    SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                     player.sendMessage(ChatColor.RED + "[뉴비 퀘스트] : 해당 퀘스트는 존재하지 않습니다!");
                 }
             }
@@ -302,12 +299,11 @@ public class NewBie_Gui extends GuiUtil {
         }
         NewBieYM.saveConfig();
 
-        SoundUtil s = new SoundUtil();
 
         if (SubjectCode.compareTo("1a") == 0)//가이드
             event.getPlayer().sendMessage(ChatColor.GREEN + "[뉴비 가이드] : 성공적으로 저장 되었습니다!");
         else//if(SubjectCode.compareTo("18")==0)//지원 아이템
             event.getPlayer().sendMessage(ChatColor.GREEN + "[뉴비 아이템] : 성공적으로 저장 되었습니다!");
-        SoundUtil.SP((Player) event.getPlayer(), Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
+        SoundUtil.playSound((Player) event.getPlayer(), Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
     }
 }

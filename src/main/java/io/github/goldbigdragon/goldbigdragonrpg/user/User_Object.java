@@ -213,7 +213,7 @@ public class User_Object {
             }
             if (isLevelUp) {
                 new PacketUtil().sendTitleSubTitle(Bukkit.getPlayer(PlayerName), "\'" + ChatColor.WHITE + "Level Up!\'", "\'" + ChatColor.WHITE + "레벨 " + ChatColor.YELLOW + Stat_Level + ChatColor.WHITE + "이 되었습니다!\'", (byte) 1, (byte) 3, (byte) 1);
-                new SoundUtil().SP(Bukkit.getPlayer(PlayerName), org.bukkit.Sound.ENTITY_PLAYER_LEVELUP, 1.5F, 1.8F);
+                SoundUtil.playSound(Bukkit.getPlayer(PlayerName), org.bukkit.Sound.ENTITY_PLAYER_LEVELUP, 1.5F, 1.8F);
             }
         }
         if (isAlert && Alert_EXPget) {

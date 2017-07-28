@@ -222,18 +222,17 @@ public class Struct_PostBox extends GuiUtil {
     public void PostBoxMainGUIClick(InventoryClickEvent event) {
         int slot = event.getSlot();
         Player player = (Player) event.getWhoClicked();
-        SoundUtil s = new SoundUtil();
-        if (slot == 26)//나가기
+                if (slot == 26)//나가기
         {
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else if (slot == 0)//수신함
         {
-            SoundUtil.SP(player, Sound.BLOCK_CHEST_OPEN, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.BLOCK_CHEST_OPEN, 0.8F, 1.0F);
             PostBoxMainGUI(player, (byte) 0);
         } else if (slot == 9)//송신함
         {
-            SoundUtil.SP(player, Sound.BLOCK_CHEST_OPEN, 0.8F, 1.0F);
+            SoundUtil.playSound(player, Sound.BLOCK_CHEST_OPEN, 0.8F, 1.0F);
             PostBoxMainGUI(player, (byte) 1);
         } else if (slot == 36)//새 우편
         {
@@ -242,7 +241,7 @@ public class Struct_PostBox extends GuiUtil {
             if (PlayerPost.contains("Send"))
                 if (PlayerPost.getConfigurationSection("Send").getKeys(false).size() < 25) {
                     UserData_Object u = new UserData_Object();
-                    SoundUtil.SP(player, Sound.BLOCK_CLOTH_STEP, 0.8F, 1.8F);
+                    SoundUtil.playSound(player, Sound.BLOCK_CLOTH_STEP, 0.8F, 1.8F);
                     u.setTemp(player, "Structure");
                     u.setType(player, "Post");
                     u.setString(player, (byte) 0, "RN");//Reciever Nickname
@@ -254,12 +253,12 @@ public class Struct_PostBox extends GuiUtil {
                     player.closeInventory();
                     player.sendMessage(ChatColor.GREEN + "[우편] : 받으실 분의 닉네임을 입력 하세요.");
                 } else {
-                    SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.8F, 1.8F);
+                    SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.8F, 1.8F);
                     player.sendMessage(ChatColor.RED + "[우편] : 우편은 최대 25개 까지만 보낼 수 있습니다.");
                 }
             else {
                 UserData_Object u = new UserData_Object();
-                SoundUtil.SP(player, Sound.BLOCK_CLOTH_STEP, 0.8F, 1.8F);
+                SoundUtil.playSound(player, Sound.BLOCK_CLOTH_STEP, 0.8F, 1.8F);
                 u.setTemp(player, "Structure");
                 u.setType(player, "Post");
                 u.setString(player, (byte) 0, "RN");//Reciever Nickname
@@ -276,7 +275,7 @@ public class Struct_PostBox extends GuiUtil {
             YamlManager PlayerPost = YC.getNewConfig("Post/" + player.getUniqueId().toString() + ".yml");
             if (event.getCurrentItem().hasItemMeta()) {
                 byte Type = Byte.parseByte(ChatColor.stripColor(event.getInventory().getItem(26).getItemMeta().getLore().get(1)));
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 long UTC = Long.parseLong(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getLore().get(event.getCurrentItem().getItemMeta().getLore().size() - 1)));
                 if (Type == 0)//수신함
                 {
@@ -292,7 +291,7 @@ public class Struct_PostBox extends GuiUtil {
                             PlayerPost.saveConfig();
                             PostBoxMainGUI(player, Type);
                         } else {
-                            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                            SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                             player.sendMessage(ChatColor.RED + "[우편] : 인벤토리 공간이 부족합니다!");
                         }
                     } else {
@@ -314,7 +313,7 @@ public class Struct_PostBox extends GuiUtil {
                                         SenderPost.saveConfig();
                                         PostBoxMainGUI(player, Type);
                                     } else {
-                                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                        SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                         player.sendMessage(ChatColor.RED + "[우편] : 인벤토리 공간이 부족합니다!");
                                     }
                                 } else {
@@ -336,11 +335,11 @@ public class Struct_PostBox extends GuiUtil {
                                             PostBoxMainGUI(player, Type);
                                             SendPost_Server(Sender, "[거래 영수증]", "[은행 입금 완료]", player.getName() + " 님께서 대금 " + value + " " + Main_ServerOption.Money + ChatColor.WHITE + " 입금하였습니다.", null);
                                         } else {
-                                            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                            SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                             player.sendMessage(ChatColor.RED + "[우편] : 인벤토리 공간이 부족합니다!");
                                         }
                                     } else {
-                                        SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                        SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                         player.sendMessage(ChatColor.RED + "[우편] : 소지금이 부족합니다!");
                                     }
                                 }
@@ -381,7 +380,7 @@ public class Struct_PostBox extends GuiUtil {
                             PlayerPost.saveConfig();
                             PostBoxMainGUI(player, Type);
                         } else {
-                            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                            SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                             player.sendMessage(ChatColor.RED + "[우편] : 인벤토리 공간이 부족합니다!");
                         }
                     }
@@ -393,11 +392,10 @@ public class Struct_PostBox extends GuiUtil {
     public void ItemPutterGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
-        SoundUtil s = new SoundUtil();
 
         if (slot != 4 && event.getCurrentItem().getTypeId() == 166) {
             if (event.getClickedInventory().getTitle().compareTo("container.inventory") != 0) {
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.9F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.9F);
                 event.setCancelled(true);
             }
         }
@@ -408,10 +406,9 @@ public class Struct_PostBox extends GuiUtil {
         ItemStack item = event.getInventory().getItem(4);
         Player player = (Player) event.getPlayer();
         if (item != null) {
-            SoundUtil s = new SoundUtil();
-            UserData_Object u = new UserData_Object();
+                        UserData_Object u = new UserData_Object();
             u.setItemStack(player, item);
-            SoundUtil.SP(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.0F);
+            SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.0F);
             u.setString(player, (byte) 0, "Value");
             u.setTemp(player, "Structure");
             player.sendMessage(ChatColor.GREEN + "[우편] : 우편물 수령을 위한 대금을 입력 하세요.");
@@ -421,8 +418,7 @@ public class Struct_PostBox extends GuiUtil {
 
 
     public void SendPost(Player player) {
-        SoundUtil s = new SoundUtil();
-        UserData_Object u = new UserData_Object();
+                UserData_Object u = new UserData_Object();
         String targetUID = Bukkit.getPlayer(u.getString(player, (byte) 1)).getUniqueId().toString();
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager TargetPost = YC.getNewConfig("Post/" + targetUID + ".yml");
@@ -449,10 +445,10 @@ public class Struct_PostBox extends GuiUtil {
             PlayerPost.set("Send." + UTC + ".Value", u.getInt(player, (byte) 0));
             TargetPost.saveConfig();
             PlayerPost.saveConfig();
-            SoundUtil.SP(player, Sound.BLOCK_CHEST_CLOSE, 1.0F, 1.8F);
+            SoundUtil.playSound(player, Sound.BLOCK_CHEST_CLOSE, 1.0F, 1.8F);
             player.sendMessage(ChatColor.GREEN + "[우편] : 우편물을 발송하였습니다!");
         } else {
-            SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+            SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
             player.sendMessage(ChatColor.RED + "[우편] : 해당 플레이어의 우편함이 가득 찼습니다.");
             if (u.getItemStack(player) != null) {
                 PlayerPost.set("Recieve." + UTC + ".From", "[시스템]");

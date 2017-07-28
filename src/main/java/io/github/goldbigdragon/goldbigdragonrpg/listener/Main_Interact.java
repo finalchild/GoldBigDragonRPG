@@ -81,7 +81,7 @@ public class Main_Interact {
                     if (Area != null) {
                         if (!A.getAreaOption(Area[0], (char) 7) && !event.getPlayer().isOp()) {
                             event.setCancelled(true);
-                            new SoundUtil().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                            SoundUtil.playSound(event.getPlayer(), org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                             event.getPlayer().sendMessage(ChatColor.RED + "[SYSTEM] : " + ChatColor.YELLOW + Area[1] + ChatColor.RED + " 지역에 있는 블록은 손 댈 수없습니다!");
                             return;
                         }
@@ -94,7 +94,7 @@ public class Main_Interact {
                         if (Area != null) {
                             if (!A.getAreaOption(Area[0], (char) 7) && !event.getPlayer().isOp()) {
                                 event.setCancelled(true);
-                                new SoundUtil().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                                SoundUtil.playSound(event.getPlayer(), org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                                 event.getPlayer().sendMessage(ChatColor.RED + "[SYSTEM] : " + ChatColor.YELLOW + Area[1] + ChatColor.RED + " 지역에서는 양동이를 사용할 수없습니다!");
                                 return;
                             }
@@ -131,7 +131,7 @@ public class Main_Interact {
             if (Area != null) {
                 if (!new Area_Main().getAreaOption(Area[0], (char) 7) && !event.getPlayer().isOp()) {
                     event.setCancelled(true);
-                    new SoundUtil().SP(event.getPlayer(), org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                    SoundUtil.playSound(event.getPlayer(), org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     event.getPlayer().sendMessage(ChatColor.RED + "[SYSTEM] : " + ChatColor.YELLOW + Area[1] + ChatColor.RED + " 지역에 있는 엔티티는 손 댈 수없습니다!");
                     return;
                 }
@@ -170,11 +170,11 @@ public class Main_Interact {
                             if (player.isOp())
                                 new Monster_Spawn().SpawnMob(event.getClickedBlock().getLocation(), ChatColor.stripColor(event.getItem().getItemMeta().getDisplayName()), (byte) -1, null, (char) -1, false);
                             else {
-                                new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                                 player.sendMessage(ChatColor.RED + "[SYSTEM] : 몬스터 스폰 권한이 없습니다!");
                             }
                         } else {
-                            new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                            SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                             player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 이름의 몬스터가 존재하지 않습니다!");
                         }
                         return;
@@ -244,7 +244,7 @@ public class Main_Interact {
                 AreaConfig.set(AreaName + ".Mining." + BlockData + ".100", item);
                 AreaConfig.saveConfig();
                 Area_Gui AGUI = new Area_Gui();
-                new SoundUtil().SP(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
+                SoundUtil.playSound(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
                 AGUI.AreaBlockItemSettingGUI(player, AreaName, BlockData);
                 u.clearAll(player);
             }
@@ -257,7 +257,7 @@ public class Main_Interact {
                 AreaConfig.set(AreaName + ".MonsterSpawnRule." + count + ".loc.y", (short) block.getLocation().getY() + 1);
                 AreaConfig.set(AreaName + ".MonsterSpawnRule." + count + ".loc.z", (int) block.getLocation().getZ());
                 AreaConfig.saveConfig();
-                new SoundUtil().SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.8F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.8F);
                 u.clearAll(player);
                 u.setType(player, "Area");
                 u.setString(player, (byte) 1, count);
@@ -288,7 +288,7 @@ public class Main_Interact {
 				AreaConfig.set(AreaName+".Mining."+BlockData,item);
 				AreaConfig.saveConfig();
 				GoldBigDragon_RPG.GUI.AreaGUI AGUI = new GoldBigDragon_RPG.GUI.AreaGUI();
-				new GoldBigDragon_RPG.Effect.Sound().SP(player, Sound.HORSE_SADDLE, 1.0F, 1.8F);
+				new GoldBigDragon_RPG.Effect.Sound().playSound(player, Sound.HORSE_SADDLE, 1.0F, 1.8F);
 				AGUI.AreaBlockItemSettingGUI(player, AreaName, BlockData);
 		    	u.clearAll(player);
 			}
@@ -298,7 +298,7 @@ public class Main_Interact {
             {
                 String Name = block.getLocation().getWorld().getName() + "_" + (int) block.getLocation().getX() + "," + (short) block.getLocation().getY() + "," + (int) block.getLocation().getZ();
                 if (GambleConfig.contains(Name)) {
-                    new SoundUtil().SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                    SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                     player.sendMessage(ChatColor.RED + "[도박] : 해당 블록에는 이미 다른 도박 기기가 설치되어 있습니다!");
                     return;
                 }
@@ -318,7 +318,7 @@ public class Main_Interact {
                 GambleConfig.set(Name + ".14", "null");
                 GambleConfig.set(Name + ".15", "null");
                 GambleConfig.saveConfig();
-                new SoundUtil().SP(player, Sound.ENTITY_IRONGOLEM_DEATH, 1.0F, 1.8F);
+                SoundUtil.playSound(player, Sound.ENTITY_IRONGOLEM_DEATH, 1.0F, 1.8F);
                 u.clearAll(player);
                 player.sendMessage(ChatColor.GREEN + "[도박] : 기계가 설치 되었습니다!");
                 new Gamble_Gui().SlotMachine_DetailGUI(player, Name);

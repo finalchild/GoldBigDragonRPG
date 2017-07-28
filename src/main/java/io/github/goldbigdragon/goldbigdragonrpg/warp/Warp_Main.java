@@ -33,17 +33,16 @@ import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
 public class Warp_Main {
     public void CreateNewTeleportSpot(Player player, String TeleportName) {
-        SoundUtil s = new SoundUtil();
 
         if (!player.isOp()) {
-            SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
         } else {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager TeleportList = YC.getNewConfig("Teleport/TeleportList.yml");
 
             if (TeleportList.contains(TeleportName)) {
-                SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                 player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 워프 지점은 이미 등록되어 있습니다!");
                 return;
             }
@@ -57,7 +56,7 @@ public class Warp_Main {
             TeleportList.set(TeleportName + ".OnlyOpUse", true);
             TeleportList.saveConfig();
 
-            SoundUtil.SP(player, org.bukkit.Sound.ENTITY_CHICKEN_EGG, 2.0F, 1.7F);
+            SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_CHICKEN_EGG, 2.0F, 1.7F);
             player.sendMessage(ChatColor.GREEN + "[SYSTEM] : 현재 위치로 워프 지점이 등록되었습니다!");
 
         }
@@ -77,13 +76,13 @@ public class Warp_Main {
 
                 }
                 TeleportList.saveConfig();
-                new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_CHICKEN_EGG, 2.0F, 1.7F);
+                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_CHICKEN_EGG, 2.0F, 1.7F);
             } else {
-                new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                 player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 이름으로 등록된 워프 지점이 없습니다!");
             }
         } else {
-            new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
         }
     }
@@ -91,7 +90,7 @@ public class Warp_Main {
 
     public void RemoveTeleportList(Player player, String TeleportName) {
         if (!player.isOp()) {
-            new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
             player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
             return;
         } else {
@@ -109,32 +108,31 @@ public class Warp_Main {
                 TeleportList.removeKey(TeleportName + "");
                 TeleportList.saveConfig();
 
-                new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.7F, 1.0F);
+                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ITEM_PICKUP, 0.7F, 1.0F);
                 player.sendMessage(ChatColor.GREEN + "[SYSTEM] : " + ChatColor.YELLOW + TeleportName + ChatColor.GREEN + " 워프 지점을 성공적으로 삭제하였습니다!");
             } else {
-                new SoundUtil().SP(player, org.bukkit.Sound.ENTITY_ITEM_BREAK, 0.7F, 1.0F);
+                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ITEM_BREAK, 0.7F, 1.0F);
                 player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 이름으로 등록된 워프 지점이 없습니다!");
             }
         }
     }
 
     public void TeleportUser(Player player, String TeleportSpotName) {
-        SoundUtil s = new SoundUtil();
-        EffectUtil p = new EffectUtil();
+                EffectUtil p = new EffectUtil();
 
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager TeleportList = YC.getNewConfig("Teleport/TeleportList.yml");
 
         if (TeleportList.contains(TeleportSpotName)) {
             if (TeleportList.getBoolean(TeleportSpotName + ".OnlyOpUse") && !player.isOp()) {
-                SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                 player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 구역은 제한된 지역입니다!");
                 return;
             } else {
-                SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ENDERMEN_TELEPORT, 0.8F, 1.0F);
+                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ENDERMEN_TELEPORT, 0.8F, 1.0F);
                 Location loc = new Location(Bukkit.getWorld(TeleportList.getString(TeleportSpotName + ".World")), TeleportList.getInt(TeleportSpotName + ".X") + 0.5, TeleportList.getInt(TeleportSpotName + ".Y") + 0.5, TeleportList.getInt(TeleportSpotName + ".Z") + 0.5, TeleportList.getInt(TeleportSpotName + ".Yaw"), TeleportList.getInt(TeleportSpotName + ".Pitch"));
                 player.teleport(loc);
-                SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ENDERMEN_TELEPORT, 0.8F, 1.0F);
+                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ENDERMEN_TELEPORT, 0.8F, 1.0F);
                 EffectUtil.givePotionEffect(player, PotionEffectType.BLINDNESS, 1, 15);
                 return;
             }
@@ -142,18 +140,18 @@ public class Warp_Main {
         for (short counter = 0; counter < Bukkit.getServer().getWorlds().size(); counter++) {
             if (Bukkit.getServer().getWorlds().get(counter).getName().equalsIgnoreCase(TeleportSpotName)) {
                 if (player.isOp()) {
-                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ENDERMEN_TELEPORT, 0.8F, 1.0F);
+                    SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ENDERMEN_TELEPORT, 0.8F, 1.0F);
                     player.teleport(Bukkit.getServer().getWorld(TeleportSpotName).getSpawnLocation());
                     EffectUtil.givePotionEffect(player, PotionEffectType.BLINDNESS, 1, 15);
-                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ENDERMEN_TELEPORT, 0.8F, 1.0F);
+                    SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ENDERMEN_TELEPORT, 0.8F, 1.0F);
                 } else {
-                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                    SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     player.sendMessage(ChatColor.RED + "[SYSTEM] : 월드간 이동은 관리자만 허용됩니다!");
                 }
                 return;
             }
         }
-        SoundUtil.SP(player, org.bukkit.Sound.ENTITY_ITEM_BREAK, 0.7F, 1.0F);
+        SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_ITEM_BREAK, 0.7F, 1.0F);
         player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 이름으로 등록된 워프 지점이 없습니다!");
     }
 }

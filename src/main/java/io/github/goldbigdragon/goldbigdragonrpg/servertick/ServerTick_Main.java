@@ -175,7 +175,7 @@ public class ServerTick_Main {
                                         zF = calc2;
                                     }
 
-                                    new SoundUtil().SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                                    SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                                     new PacketUtil().sendActionBar(player, "§c§l레벨이 맞지 않아 입장할 수 없습니다!");
                                     if (xF < zF)
                                         player.teleport(new Location(player.getWorld(), staticX, playerLoc.getY() + 0.2, playerLoc.getZ(), playerLoc.getYaw(), playerLoc.getPitch()));

@@ -41,7 +41,6 @@ public class CustomItem_Chat extends Util_Chat {
         Player player = event.getPlayer();
         CustomItem_Gui IGUI = new CustomItem_Gui();
         Upgrade_Gui UpGUI = new Upgrade_Gui();
-        SoundUtil s = new SoundUtil();
 
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager RecipeList = YC.getNewConfig("Item/Upgrade.yml");
@@ -65,7 +64,7 @@ public class CustomItem_Chat extends Util_Chat {
                 Main_Interact I = new Main_Interact();
                 if (I.SetItemDefaultName(Short.parseShort(Message), (byte) 0).compareTo("지정되지 않은 아이템") == 0) {
                     player.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 아이템은 존재하지 않습니다!");
-                    SoundUtil.SP(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+                    SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
                     return;
                 }
                 ItemList.set(number + "." + SayType, Integer.parseInt(Message));
@@ -183,7 +182,7 @@ public class CustomItem_Chat extends Util_Chat {
             if (isIntMinMax(Message, player, -127, 127)) {
                 ItemList.set(number + "." + SayType, Integer.parseInt(Message));
                 ItemList.saveConfig();
-                SoundUtil.SP(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
+                SoundUtil.playSound(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
                 if (u.getType(player).compareTo("UseableItem") == 0) {
                     UseableItem_Gui UGUI = new UseableItem_Gui();
                     UGUI.NewUseableItemGUI(player, number);
@@ -203,7 +202,7 @@ public class CustomItem_Chat extends Util_Chat {
             Message = Message.replace(".", "");
             if (RecipeList.contains(Message)) {
                 player.sendMessage(ChatColor.RED + "[개조] : 해당 이름의 개조식은 이미 존재합니다!");
-                SoundUtil.SP(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
+                SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                 return;
             }
             RecipeList.set(Message + ".Lore", ChatColor.WHITE + "무기의 날을 다듬는 개조식이다.%enter%" + ChatColor.WHITE + "날을 다듬은 무기는 내구성이%enter%" + ChatColor.WHITE + "떨어지지만, 위협적이다.");
@@ -222,7 +221,7 @@ public class CustomItem_Chat extends Util_Chat {
             RecipeList.set(Message + ".UpgradeAbleLevel", 0);
             RecipeList.set(Message + ".DecreaseProficiency", 30);
             RecipeList.saveConfig();
-            SoundUtil.SP(player, Sound.ENTITY_HORSE_ARMOR, 1.0F, 1.8F);
+            SoundUtil.playSound(player, Sound.ENTITY_HORSE_ARMOR, 1.0F, 1.8F);
             UpGUI.UpgradeRecipeSettingGUI(player, Message);
             u.clearAll(player);
             return;
@@ -231,7 +230,7 @@ public class CustomItem_Chat extends Util_Chat {
             if (isIntMinMax(Message, player, Integer.MIN_VALUE, Integer.MAX_VALUE)) {
                 RecipeList.set(u.getString(player, (byte) 6) + ".MinDamage", Integer.parseInt(Message));
                 RecipeList.saveConfig();
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 u.setType(player, u.getType(player));
                 u.setString(player, (byte) 1, "UMaxD");
                 player.sendMessage(ChatColor.DARK_AQUA + "[개조] : 변화될 최대 공격력 수치를 입력하세요!");
@@ -245,7 +244,7 @@ public class CustomItem_Chat extends Util_Chat {
                 RecipeList.saveConfig();
                 UpGUI.UpgradeRecipeSettingGUI(player, u.getString(player, (byte) 6));
                 u.clearAll(player);
-                SoundUtil.SP(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
+                SoundUtil.playSound(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
             }
             return;
         } else if (SayType.compareTo("UMMinD") == 0)//UpgradeMagicMinDamage
@@ -253,7 +252,7 @@ public class CustomItem_Chat extends Util_Chat {
             if (isIntMinMax(Message, player, Integer.MIN_VALUE, Integer.MAX_VALUE)) {
                 RecipeList.set(u.getString(player, (byte) 6) + ".MinMaDamage", Integer.parseInt(Message));
                 RecipeList.saveConfig();
-                SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
+                SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 u.setType(player, u.getType(player));
                 u.setString(player, (byte) 1, "UMMaxD");
                 player.sendMessage(ChatColor.DARK_AQUA + "[개조] : 변화될 최대 마법 공격력 수치를 입력하세요!");
@@ -267,7 +266,7 @@ public class CustomItem_Chat extends Util_Chat {
                 RecipeList.saveConfig();
                 UpGUI.UpgradeRecipeSettingGUI(player, u.getString(player, (byte) 6));
                 u.clearAll(player);
-                SoundUtil.SP(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
+                SoundUtil.playSound(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
             }
             return;
         } else if (SayType.compareTo("UB") == 0)//UpgradeBalance
@@ -277,7 +276,7 @@ public class CustomItem_Chat extends Util_Chat {
                 RecipeList.saveConfig();
                 UpGUI.UpgradeRecipeSettingGUI(player, u.getString(player, (byte) 6));
                 u.clearAll(player);
-                SoundUtil.SP(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
+                SoundUtil.playSound(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
             }
             return;
         } else if (SayType.compareTo("UDEF") == 0)//UpgradeDefense
@@ -287,7 +286,7 @@ public class CustomItem_Chat extends Util_Chat {
                 RecipeList.saveConfig();
                 UpGUI.UpgradeRecipeSettingGUI(player, u.getString(player, (byte) 6));
                 u.clearAll(player);
-                SoundUtil.SP(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
+                SoundUtil.playSound(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
             }
             return;
         } else if (SayType.compareTo("UP") == 0)//UpgradeProtect
@@ -297,7 +296,7 @@ public class CustomItem_Chat extends Util_Chat {
                 RecipeList.saveConfig();
                 UpGUI.UpgradeRecipeSettingGUI(player, u.getString(player, (byte) 6));
                 u.clearAll(player);
-                SoundUtil.SP(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
+                SoundUtil.playSound(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
             }
             return;
         } else if (SayType.compareTo("UMDEF") == 0)//UpgradeMagicDefense
@@ -307,7 +306,7 @@ public class CustomItem_Chat extends Util_Chat {
                 RecipeList.saveConfig();
                 UpGUI.UpgradeRecipeSettingGUI(player, u.getString(player, (byte) 6));
                 u.clearAll(player);
-                SoundUtil.SP(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
+                SoundUtil.playSound(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
             }
             return;
         } else if (SayType.compareTo("UMP") == 0)//UpgradeMagicProtect
@@ -317,7 +316,7 @@ public class CustomItem_Chat extends Util_Chat {
                 RecipeList.saveConfig();
                 UpGUI.UpgradeRecipeSettingGUI(player, u.getString(player, (byte) 6));
                 u.clearAll(player);
-                SoundUtil.SP(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
+                SoundUtil.playSound(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
             }
             return;
         } else if (SayType.compareTo("UC") == 0)//UpgradeCritical
@@ -327,7 +326,7 @@ public class CustomItem_Chat extends Util_Chat {
                 RecipeList.saveConfig();
                 UpGUI.UpgradeRecipeSettingGUI(player, u.getString(player, (byte) 6));
                 u.clearAll(player);
-                SoundUtil.SP(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
+                SoundUtil.playSound(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
             }
             return;
         } else if (SayType.compareTo("UMD") == 0)//UpgradeMaxDurability
@@ -337,7 +336,7 @@ public class CustomItem_Chat extends Util_Chat {
                 RecipeList.saveConfig();
                 UpGUI.UpgradeRecipeSettingGUI(player, u.getString(player, (byte) 6));
                 u.clearAll(player);
-                SoundUtil.SP(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
+                SoundUtil.playSound(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
             }
             return;
         } else if (SayType.compareTo("UUL") == 0)//UpgradeUpgradeLevel
@@ -347,7 +346,7 @@ public class CustomItem_Chat extends Util_Chat {
                 RecipeList.saveConfig();
                 UpGUI.UpgradeRecipeSettingGUI(player, u.getString(player, (byte) 6));
                 u.clearAll(player);
-                SoundUtil.SP(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
+                SoundUtil.playSound(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
             }
             return;
         } else if (SayType.compareTo("UDP") == 0)//UpgradeDecreaseProficiency
@@ -357,7 +356,7 @@ public class CustomItem_Chat extends Util_Chat {
                 RecipeList.saveConfig();
                 UpGUI.UpgradeRecipeSettingGUI(player, u.getString(player, (byte) 6));
                 u.clearAll(player);
-                SoundUtil.SP(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
+                SoundUtil.playSound(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
             }
             return;
         } else if (SayType.compareTo("ULC") == 0)//Upgrade Lore Change
@@ -366,7 +365,7 @@ public class CustomItem_Chat extends Util_Chat {
             RecipeList.saveConfig();
             UpGUI.UpgradeRecipeSettingGUI(player, u.getString(player, (byte) 6));
             u.clearAll(player);
-            SoundUtil.SP(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
+            SoundUtil.playSound(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
             return;
         } else if (SayType.compareTo("MinSTR") == 0 || SayType.compareTo("MinDEX") == 0 || SayType.compareTo("MinINT") == 0 || SayType.compareTo("MinWILL") == 0 ||
                 SayType.compareTo("MinLV") == 0 || SayType.compareTo("MinRLV") == 0 || SayType.compareTo("MinLUK") == 0) {
@@ -394,18 +393,18 @@ public class CustomItem_Chat extends Util_Chat {
                     player.sendMessage(ChatColor.DARK_AQUA + "[아이템] : 아이템의 " + Main_ServerOption.LUK + " 제한을 입력 해 주세요!");
                 }
                 if (SayType.compareTo("MinLUK") == 0) {
-                    SoundUtil.SP(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
+                    SoundUtil.playSound(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
                     IGUI.NewItemGUI(player, number);
                     u.clearAll(player);
                 } else {
-                    SoundUtil.SP(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.8F);
+                    SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.8F);
                     player.sendMessage(ChatColor.DARK_AQUA + "(0 ~ " + Integer.MAX_VALUE + ")");
                 }
             }
             return;
         }
         ItemList.saveConfig();
-        SoundUtil.SP(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
+        SoundUtil.playSound(player, Sound.ENTITY_HORSE_SADDLE, 1.0F, 1.8F);
         if (u.getType(player).compareTo("UseableItem") == 0)
             new UseableItem_Gui().NewUseableItemGUI(player, number);
         else
