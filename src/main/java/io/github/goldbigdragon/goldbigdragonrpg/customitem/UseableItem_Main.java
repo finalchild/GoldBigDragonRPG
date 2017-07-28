@@ -24,7 +24,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.effect.EffectUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick;
 import io.github.goldbigdragon.goldbigdragonrpg.util.ETC;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
@@ -77,7 +77,7 @@ public class UseableItem_Main {
             } else
                 player.getInventory().setItem(player.getInventory().getHeldItemSlot(), new ItemStack(0));
             long UTC = ServerTick_Main.nowUTC - 1;
-            ServerTick_Object STSO = new ServerTick_Object(UTC, "P_UTS");
+            ServerTick STSO = new ServerTick(UTC, "P_UTS");
             Location loc = player.getLocation();
             STSO.setTick(UTC);//텔레포트 시작 시간
             STSO.setCount(5);//텔레포트 시간

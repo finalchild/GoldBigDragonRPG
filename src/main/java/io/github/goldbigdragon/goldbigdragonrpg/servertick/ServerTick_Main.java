@@ -73,7 +73,7 @@ public class ServerTick_Main {
     public static ArrayList<String> NaviUsingList = new ArrayList<>();
     public static HashMap<String, String> PlayerTaskList = new HashMap<>();
     public static String ServerTask = "null";
-    public static HashMap<Long, ServerTick_Object> Schedule = new HashMap<>();
+    public static HashMap<Long, ServerTick> Schedule = new HashMap<>();
     public static HashMap<Long, Dungeon_ScheduleObject> DungeonSchedule = new HashMap<>();
     public static long nowUTC = 0;
     int BroadCastMessageTime = 0;
@@ -323,7 +323,7 @@ public class ServerTick_Main {
                 new ServerTask_Player().Gamble_SlotMachine_Rolling(UTC);
                 return;
             case "C_S"://Create_Structure
-                new ServerTask_Server().CreateStructureMain(UTC);
+                new ServerTask_Server().createStructureMain(UTC);
                 return;
             case "Sound":
                 new ServerTask_Effect().PlaySoundEffect(Schedule.get(UTC));

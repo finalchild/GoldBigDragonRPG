@@ -31,12 +31,12 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 
 public class ServerTask_Server {
-    public void CreateStructureMain(Long UTC) {
-        ServerTick_Object STSO = ServerTick_Main.Schedule.get(UTC);
+    public void createStructureMain(Long UTC) {
+        ServerTick STSO = ServerTick_Main.Schedule.get(UTC);
         if (STSO.getInt((byte) 3) == 0) {
             if (ServerTick_Main.Schedule.get(UTC).getCount() == 0)
                 CreateCommandBlock(new Location(Bukkit.getServer().getWorld(STSO.getString((byte) 1)), STSO.getInt((byte) 0), STSO.getInt((byte) 1), STSO.getInt((byte) 2)));
-            String CMD = new Structure_Main().getCMD(STSO.getString((byte) 0), STSO.getCount(), STSO.getString((byte) 2), STSO.getString((byte) 3));
+            String CMD = new Structure_Main().getCommand(STSO.getString((byte) 0), STSO.getCount(), STSO.getString((byte) 2), STSO.getString((byte) 3));
             if (CMD.compareTo("null") == 0) {
                 ServerTick_Main.Schedule.remove(UTC);
                 ServerTick_Main.ServerTask = "null";

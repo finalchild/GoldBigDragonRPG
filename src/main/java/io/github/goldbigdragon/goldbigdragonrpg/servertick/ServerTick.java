@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.servertick;
 
-public class ServerTick_Object {
+public class ServerTick {
     private long Tick = 0;
     private int count = 0;
     private int MaxCount = 0;
@@ -28,7 +28,7 @@ public class ServerTick_Object {
     private int Int[] = {-1, -1, -1, -1, -1, -1, -1, -1, -1};
     private boolean Boolean[] = new boolean[2];
 
-    public ServerTick_Object(long Tick, String Type) {
+    public ServerTick(long Tick, String Type) {
         this.Tick = Tick;
         this.Type = Type;
         for (byte count = 0; count < this.Stringa.length; count++)

@@ -46,7 +46,7 @@ public class ServerTask_Navigation {
             Routing(ServerTick_Main.Schedule.get(UTC));
     }
 
-    public void Routing(ServerTick_Object STSO) {
+    public void Routing(ServerTick STSO) {
         if (Bukkit.getServer().getPlayer(STSO.getString((byte) 2)) != null) {
             if (Bukkit.getServer().getPlayer(STSO.getString((byte) 2)).isOnline()) {
                 int Tick = 2500;

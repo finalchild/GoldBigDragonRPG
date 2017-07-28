@@ -27,7 +27,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_Config;
 import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Player;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
@@ -71,7 +71,7 @@ public class Main_BlockBreak implements Listener {
             }
             if (AreaConfig.getInt(Area[0] + ".RegenBlock") != 0) {
                 Long UTC = (AreaConfig.getInt(Area[0] + ".RegenBlock") * 1000) + ServerTick_Main.nowUTC + new Util_Number().RandomNum(1, 1000);
-                ServerTick_Object STSO = new ServerTick_Object(UTC, "A_RB");
+                ServerTick STSO = new ServerTick(UTC, "A_RB");
                 STSO.setMaxCount(-1);
                 Block block = event.getBlock();
                 STSO.setString((byte) 1, block.getWorld().getName());//목적지 월드 이름 저장

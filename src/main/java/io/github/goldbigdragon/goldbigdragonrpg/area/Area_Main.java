@@ -27,7 +27,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 import org.bukkit.ChatColor;
@@ -351,7 +351,7 @@ public class Area_Main {
                             else
                                 break;
                         }
-                        ServerTick_Object OBJECT = new ServerTick_Object(UTC, "A_MS");
+                        ServerTick OBJECT = new ServerTick(UTC, "A_MS");
                         OBJECT.setString((byte) 0, AreaName);
                         OBJECT.setString((byte) 1, AreaConfig.getString(AreaName + ".MonsterSpawnRule." + Count + ".loc.world"));
                         if (AreaConfig.contains(AreaName + ".MonsterSpawnRule." + Count + ".Monster"))
@@ -384,7 +384,7 @@ public class Area_Main {
                                     else
                                         break;
                                 }
-                                ServerTick_Object OBJECT = new ServerTick_Object(UTC, "A_MS");
+                                ServerTick OBJECT = new ServerTick(UTC, "A_MS");
                                 OBJECT.setString((byte) 0, AreaName);
                                 OBJECT.setString((byte) 1, AreaConfig.getString(AreaName + ".MonsterSpawnRule." + ruleNumber + ".loc.world"));
                                 if (AreaConfig.contains(AreaName + ".MonsterSpawnRule." + ruleNumber + ".Monster"))

@@ -25,7 +25,7 @@ import org.bukkit.Location;
 import org.bukkit.Sound;
 
 public class ServerTask_Effect {
-    public void PlaySoundEffect(ServerTick_Object STSO) {
+    public void PlaySoundEffect(ServerTick STSO) {
         if (STSO.getCount() < STSO.getMaxCount()) {
             Location loc = new Location(Bukkit.getServer().getWorld(STSO.getString((byte) 1)), STSO.getInt((byte) 0), STSO.getInt((byte) 1), STSO.getInt((byte) 2));
             switch (Integer.parseInt(STSO.getString((byte) 0).charAt(STSO.getCount()) + "")) {

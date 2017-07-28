@@ -24,7 +24,7 @@ import java.util.Collections;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick;
 import io.github.goldbigdragon.goldbigdragonrpg.user.ETC_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
 import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
@@ -338,7 +338,7 @@ public class Navigation_Gui extends GuiUtil {
                 player.closeInventory();
                 SoundUtil.playSound(player, Sound.BLOCK_NOTE_PLING, 1.0F, 1.0F);
 
-                ServerTick_Object STSO = new ServerTick_Object(ServerTick_Main.nowUTC, "NV");
+                ServerTick STSO = new ServerTick(ServerTick_Main.nowUTC, "NV");
                 STSO.setCount(0);//횟 수 초기화
                 STSO.setMaxCount(NavigationConfig.getInt(UTC + ".time"));//N초간 네비게이션
                 //-1초 설정시, N초간이 아닌, 찾아 갈 때 까지 네비게이션 지원

@@ -24,7 +24,7 @@ import java.util.Arrays;
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick;
 import io.github.goldbigdragon.goldbigdragonrpg.util.ETC;
 import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
@@ -692,7 +692,7 @@ public class Equip_Gui extends GuiUtil {
         ServerTick_Main.PlayerTaskList.put(player.getName(), "" + UTC);
         ServerTick_Main.PlayerTaskList.put(player.getName(), "" + UTC);
         player.closeInventory();
-        ServerTick_Object STSO = new ServerTick_Object(UTC, "P_EC");
+        ServerTick STSO = new ServerTick(UTC, "P_EC");
         STSO.setCount(0);//횟 수 초기화
         STSO.setMaxCount(10);//교환 요청 최대 대기 시간
         STSO.setString((byte) 0, player.getName());//교환 요청 한 플레이어 이름 저장(플레이어가 오프라인인지 확인해야 하므로)

@@ -25,7 +25,7 @@ import java.util.Collections;
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick;
 import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
 import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
@@ -631,7 +631,7 @@ public class Gamble_Gui extends GuiUtil {
                                     break;
                             }
 
-                            ServerTick_Object OBJECT = new ServerTick_Object(UTC, "G_SM");
+                            ServerTick OBJECT = new ServerTick(UTC, "G_SM");
                             OBJECT.setString((byte) 0, player.getName());
                             OBJECT.setString((byte) 1, ChatColor.stripColor(event.getInventory().getItem(17).getItemMeta().getLore().get(0)));
 

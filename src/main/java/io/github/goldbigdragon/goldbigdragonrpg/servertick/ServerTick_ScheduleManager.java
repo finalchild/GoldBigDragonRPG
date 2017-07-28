@@ -133,7 +133,7 @@ public class ServerTick_ScheduleManager {
         if (PHSF.contains("Schedule")) {
             for (short count = 0; count < PHSF.getConfigurationSection("Schedule").getKeys(false).size(); count++) {
                 long UTC = PHSF.getLong("Schedule." + count + ".Tick");
-                ServerTick_Object STSO = new ServerTick_Object(UTC, PHSF.getString("Schedule." + count + ".Type"));
+                ServerTick STSO = new ServerTick(UTC, PHSF.getString("Schedule." + count + ".Type"));
                 STSO.setCount(PHSF.getInt("Schedule." + count + ".count"));
                 STSO.setMaxCount(PHSF.getInt("Schedule." + count + ".MaxCount"));
                 for (short counter = 0; counter < STSO.getStringSize(); counter++)

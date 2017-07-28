@@ -21,7 +21,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.structure;
 
 import io.github.goldbigdragon.goldbigdragonrpg.dungeon.Dungeon_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
-import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
@@ -58,7 +58,7 @@ public class Structure_Main {
         ServerTick_Main.ServerTask = "[구조물 설치]";
         Long UTC = ServerTick_Main.nowUTC;
 
-        ServerTick_Object STSO = new ServerTick_Object(UTC, "C_S");
+        ServerTick STSO = new ServerTick(UTC, "C_S");
         STSO.setCount(0);//현재 진행 단계
 
         Location PlayerLoc = player.getLocation();
@@ -116,26 +116,26 @@ public class Structure_Main {
         ServerTick_Main.Schedule.put(ServerTick_Main.nowUTC, STSO);
     }
 
-    public String getCMD(String StructureName, int LineNumber, String StructureCode, String Direction) {
-        if (StructureName.compareTo("PB") == 0)
-            return new Struct_PostBox().CreatePostBox(LineNumber, StructureCode, Byte.parseByte(Direction));
-        else if (StructureName.compareTo("B") == 0)
-            return new Struct_Board().CreateBoard(LineNumber, StructureCode, Byte.parseByte(Direction));
-        else if (StructureName.compareTo("TB") == 0)
-            return new Struct_TradeBoard().CreateTradeBoard(LineNumber, StructureCode, Byte.parseByte(Direction));
-        else if (StructureName.compareTo("CF") == 0)
-            return new Struct_CampFire().CreateCampFire(LineNumber, StructureCode, Byte.parseByte(Direction));
+    public String getCommand(String structureName, int lineNumber, String structureCode, String direction) {
+        if (structureName.compareTo("PB") == 0)
+            return new Struct_PostBox().CreatePostBox(lineNumber, structureCode, Byte.parseByte(direction));
+        else if (structureName.compareTo("B") == 0)
+            return new Struct_Board().CreateBoard(lineNumber, structureCode, Byte.parseByte(direction));
+        else if (structureName.compareTo("TB") == 0)
+            return new Struct_TradeBoard().CreateTradeBoard(lineNumber, structureCode, Byte.parseByte(direction));
+        else if (structureName.compareTo("CF") == 0)
+            return new Struct_CampFire().CreateCampFire(lineNumber, structureCode, Byte.parseByte(direction));
 
-        else if (StructureName.compareTo("A_M") == 0)
-            return new Struct_Altar().CreateMossyAltar(LineNumber, StructureCode, Byte.parseByte(Direction));
-        else if (StructureName.compareTo("A_GoldBigDragon") == 0)
-            return new Struct_Altar().CreateGoldBigDragon1(LineNumber, StructureCode, Byte.parseByte(Direction));
-        else if (StructureName.compareTo("A_SH") == 0)
-            return new Struct_Altar().CreateStoneHenge(LineNumber, StructureCode, Byte.parseByte(Direction));
-        else if (StructureName.compareTo("A_AB") == 0)
-            return new Struct_Altar().CreateAtonomicBoard(LineNumber, StructureCode, Byte.parseByte(Direction));
-        else if (StructureName.compareTo("A_TEST") == 0)
-            return new Struct_Altar().CreateTestAltar(LineNumber, StructureCode, Byte.parseByte(Direction));
+        else if (structureName.compareTo("A_M") == 0)
+            return Struct_Altar.createMossyAltar(lineNumber, structureCode, Byte.parseByte(direction));
+        else if (structureName.compareTo("A_GoldBigDragon") == 0)
+            return Struct_Altar.CreateGoldBigDragon1(lineNumber, structureCode, Byte.parseByte(direction));
+        else if (structureName.compareTo("A_SH") == 0)
+            return Struct_Altar.CreateStoneHenge(lineNumber, structureCode, Byte.parseByte(direction));
+        else if (structureName.compareTo("A_AB") == 0)
+            return Struct_Altar.CreateAtonomicBoard(lineNumber, structureCode, Byte.parseByte(direction));
+        else if (structureName.compareTo("A_TEST") == 0)
+            return Struct_Altar.createTestAltar(lineNumber, structureCode, Byte.parseByte(direction));
         return "null";
     }
 

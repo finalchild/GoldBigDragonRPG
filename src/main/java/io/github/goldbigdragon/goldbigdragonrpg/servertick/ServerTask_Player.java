@@ -163,7 +163,7 @@ public class ServerTask_Player {
     }
 
     public void Gamble_SlotMachine_Rolling(long UTC) {
-        ServerTick_Object STSO = ServerTick_Main.Schedule.get(UTC);
+        ServerTick STSO = ServerTick_Main.Schedule.get(UTC);
         int count = STSO.getCount() + 1;
         if (count < STSO.getMaxCount()) {
             STSO.setCount(count);

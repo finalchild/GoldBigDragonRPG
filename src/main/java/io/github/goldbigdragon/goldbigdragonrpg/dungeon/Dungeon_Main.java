@@ -29,7 +29,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_ItemDrop;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.monster.Monster_Spawn;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Player;
 import org.bukkit.ChatColor;
@@ -51,7 +51,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 public class Dungeon_Main {
 
     public void IronDoorOpening(Location loc) {
-        ServerTick_Object STSO = new ServerTick_Object(0, "Sound");
+        ServerTick STSO = new ServerTick(0, "Sound");
         STSO.setType("Sound");
         STSO.setString((byte) 1, loc.getWorld().getName());
         STSO.setInt((byte) 0, (int) loc.getX());

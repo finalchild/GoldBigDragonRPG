@@ -26,7 +26,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 
 public class Struct_Altar extends GuiUtil {
 
-    public static String CreateTestAltar(int LineNumber, String StructureCode, byte Direction) {
+    public static String createTestAltar(int LineNumber, String StructureCode, byte Direction) {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager Board = YC.getNewConfig("Schematic/test.yml");
         switch (LineNumber) {
@@ -35,7 +35,7 @@ public class Struct_Altar extends GuiUtil {
         return "null";
     }
 
-    public static String CreateMossyAltar(int LineNumber, String StructureCode, byte Direction) {
+    public static String createMossyAltar(int LineNumber, String StructureCode, byte Direction) {
         if (LineNumber <= 19) //제단 다리 4개
         {
             if (LineNumber <= 4)

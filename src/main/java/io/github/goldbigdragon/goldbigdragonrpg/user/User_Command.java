@@ -24,7 +24,7 @@ import java.util.Arrays;
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTask_Player;
-import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -45,7 +45,7 @@ public class User_Command {
             case "수락": {
                 if (ServerTick_Main.PlayerTaskList.containsKey(player.getName())) {
                     long UTC = Long.parseLong(ServerTick_Main.PlayerTaskList.get(player.getName()));
-                    ServerTick_Object STSO = ServerTick_Main.Schedule.get(UTC);
+                    ServerTick STSO = ServerTick_Main.Schedule.get(UTC);
                     String taskType = STSO.getType();
 
                     switch (taskType) {
@@ -68,7 +68,7 @@ public class User_Command {
             return;
             case "거절": {
                 if (ServerTick_Main.PlayerTaskList.containsKey(player.getName())) {
-                    ServerTick_Object STSO = ServerTick_Main.Schedule.get(Long.parseLong(ServerTick_Main.PlayerTaskList.get(player.getName())));
+                    ServerTick STSO = ServerTick_Main.Schedule.get(Long.parseLong(ServerTick_Main.PlayerTaskList.get(player.getName())));
                     String taskType = STSO.getType();
                     switch (taskType) {
                         case "P_EC"://Player Exchange
