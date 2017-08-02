@@ -27,8 +27,29 @@ version '0.0.1-SNAPSHOT'
 
 description 'Minecraft RPG Plugin! [KOR]'
 
+configurations {
+    ecj
+}
+
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
+}
+
+compileJava {
+    options.fork = true
+    options.forkOptions.executable = 'java'
+    options.forkOptions.jvmArgs = ['-classpath', configurations.ecj.asPath, 'org.eclipse.jdt.internal.compiler.batch.Main']
+}
+
+dependencies {
+    ecj group: 'org.eclipse.jdt.core.compiler', name: 'ecj', version: '4.6.1'
+    compile group: 'org.spigotmc', name: 'spigot', version: '1.12-R0.1-SNAPSHOT'
+    compile group: 'com.comphenix.protocol', name: 'ProtocolLib', version: '4.4.0-SNAPSHOT'
+    compile group: 'net.milkbowl.vault', name: 'VaultAPI', version: '1.6'
+    compile group: 'net.citizensnpcs', name: 'citizensapi', version: '2.0.22-SNAPSHOT'
+    compile group: 'com.github.koca2000', name: 'NoteBlockAPI', version: '1.1.5'
+    compile group: 'com.nisovin', name: 'magicspells', version: 'untagged-110138d95f13538cbbfe'
+    compile group: 'org.jnbt', name: 'jnbt', version: '1.1'
 }
 
 repositories {
@@ -57,14 +78,4 @@ repositories {
         dir 'lib'
     }
     mavenLocal()
-}
-
-dependencies {
-    compile group: 'org.spigotmc', name: 'spigot', version: '1.12-R0.1-SNAPSHOT'
-    compile group: 'com.comphenix.protocol', name: 'ProtocolLib', version: '4.4.0-SNAPSHOT'
-    compile group: 'net.milkbowl.vault', name: 'VaultAPI', version: '1.6'
-    compile group: 'net.citizensnpcs', name: 'citizensapi', version: '2.0.22-SNAPSHOT'
-    compile group: 'com.github.koca2000', name: 'NoteBlockAPI', version: '1.1.5'
-    compile group: 'com.nisovin', name: 'magicspells', version: 'untagged-110138d95f13538cbbfe'
-    compile group: 'org.jnbt', name: 'jnbt', version: '1.1'
 }
