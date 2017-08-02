@@ -24,19 +24,19 @@ import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_Interact;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.skill.OPboxSkill_Gui;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Chat;
+import io.github.goldbigdragon.goldbigdragonrpg.util.ChatUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerChatEvent;
 
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
-public class Job_Chat extends Util_Chat {
+public class Job_Chat extends ChatUtil {
     public void JobTypeChatting(PlayerChatEvent event) {
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         event.setCancelled(true);
         SoundUtil sound = new SoundUtil();
         Player player = event.getPlayer();

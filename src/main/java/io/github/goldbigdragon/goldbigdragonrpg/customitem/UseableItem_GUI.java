@@ -25,7 +25,7 @@ import java.util.Collections;
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -438,7 +438,7 @@ public class UseableItem_Gui extends GuiUtil {
             SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
             player.closeInventory();
         } else if (!((event.getSlot() >= 9 && event.getSlot() <= 11) || (event.getSlot() >= 18 && event.getSlot() <= 20) || (event.getSlot() >= 27 && event.getSlot() <= 29))) {
-            UserData_Object u = new UserData_Object();
+            UserData u = new UserData();
             SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             u.setType(player, "UseableItem");
             u.setInt(player, (byte) 3, itemnumber);

@@ -96,7 +96,7 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import io.github.goldbigdragon.goldbigdragonrpg.party.Party_DataManager;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import net.milkbowl.vault.economy.Economy;
 import net.minecraft.server.v1_12_R1.PacketPlayInClientCommand;
@@ -562,7 +562,7 @@ public class Main_Main extends JavaPlugin implements Listener {
                     if (player.isOp()) {
                         SoundUtil.playSound((Player) talker, org.bukkit.Sound.ENTITY_VILLAGER_YES, 1.0F, 1.8F);
                         player.sendMessage(ChatColor.GREEN + "[NPC] : GUI를 활성화 시킬 NPC를 우클릭 하세요!");
-                        new UserData_Object().setInt(player, (byte) 4, 114);
+                        new UserData().setInt(player, (byte) 4, 114);
                     } else {
                         talker.sendMessage(ChatColor.RED + "[SYSTEM] : 해당 명령어를 실행하기 위해서는 관리자 권한이 필요합니다!");
                         SoundUtil.playSound((Player) talker, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
@@ -681,7 +681,7 @@ public class Main_Main extends JavaPlugin implements Listener {
                 case "커맨드":
                 case "gbdcommand":
                     if (player.isOp()) {
-                        UserData_Object u = new UserData_Object();
+                        UserData u = new UserData();
                         if (u.getType(player) != null && u.getType(player).compareTo("Skill") == 0) {
                             if (u.getString(player, (byte) 1).equalsIgnoreCase("SKC")) {
                                 String CommandString = "";

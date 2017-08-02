@@ -37,8 +37,8 @@ import io.github.goldbigdragon.goldbigdragonrpg.skill.Skill_Chat;
 import io.github.goldbigdragon.goldbigdragonrpg.structure.Structure_Chat;
 import io.github.goldbigdragon.goldbigdragonrpg.user.ETC_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.user.Equip_Gui;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Chat;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
+import io.github.goldbigdragon.goldbigdragonrpg.util.ChatUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.warp.Warp_Chat;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -52,11 +52,11 @@ import org.bukkit.event.player.PlayerChatEvent;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
-public class Main_PlayerChat extends Util_Chat implements Listener {
+public class Main_PlayerChat extends ChatUtil implements Listener {
     @EventHandler
     public void PlayerChatting(PlayerChatEvent event) {
         event.setMessage(ChatColor.translateAlternateColorCodes('&', event.getMessage()));
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         SoundUtil sound = new SoundUtil();
         Player player = event.getPlayer();
         String playerUUID = event.getPlayer().getUniqueId().toString();
@@ -228,7 +228,7 @@ public class Main_PlayerChat extends Util_Chat implements Listener {
                 }
             }
             new ETC_Gui().FriendsGUI(player, (short) 0);
-            new UserData_Object().initTemp(player);
+            new UserData().initTemp(player);
         } else if (Temp.compareTo("Structure") == 0)
             new Structure_Chat().PlayerChatrouter(event);
         else if (Temp.compareTo("Dungeon") == 0)

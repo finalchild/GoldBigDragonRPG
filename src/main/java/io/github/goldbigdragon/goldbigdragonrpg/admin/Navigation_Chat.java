@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.admin;
 
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Chat;
+import io.github.goldbigdragon.goldbigdragonrpg.util.ChatUtil;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
@@ -29,13 +29,13 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerChatEvent;
 
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
-public class Navigation_Chat extends Util_Chat {
+public class Navigation_Chat extends ChatUtil {
     public void NaviTypeChatting(PlayerChatEvent event) {
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         Player player = event.getPlayer();
 
         YamlController YC = new YamlController(Main_Main.plugin);

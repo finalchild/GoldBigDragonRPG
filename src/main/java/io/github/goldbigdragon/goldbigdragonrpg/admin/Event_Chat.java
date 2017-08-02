@@ -23,8 +23,8 @@ import io.github.goldbigdragon.goldbigdragonrpg.effect.PacketUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Chat;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
+import io.github.goldbigdragon.goldbigdragonrpg.util.ChatUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 import org.bukkit.Bukkit;
@@ -33,9 +33,9 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerChatEvent;
 
-public class Event_Chat extends Util_Chat {
+public class Event_Chat extends ChatUtil {
     public void EventChatting(PlayerChatEvent event) {
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         Player player = event.getPlayer();
         PacketUtil PS = new PacketUtil();
         YamlController YC = new YamlController(Main_Main.plugin);

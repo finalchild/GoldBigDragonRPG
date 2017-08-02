@@ -24,7 +24,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Player;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -39,7 +39,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 public class Structure_Chat {
     public void PlayerChatrouter(PlayerChatEvent event) {
         Player player = event.getPlayer();
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         if (u.getType(player).compareTo("Post") == 0)
             PostChatting(event);
         else if (u.getType(player).compareTo("Board") == 0)
@@ -53,7 +53,7 @@ public class Structure_Chat {
 
     private void PostChatting(PlayerChatEvent event) {
         Player player = event.getPlayer();
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         String Message = ChatColor.stripColor(event.getMessage());
         //Reciever NickName
         if (u.getString(player, (byte) 0).compareTo("RN") == 0) {
@@ -100,7 +100,7 @@ public class Structure_Chat {
 
     private void BoardChatting(PlayerChatEvent event) {
         Player player = event.getPlayer();
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         String Message = ChatColor.stripColor(event.getMessage());
 
         //Board_PostTitle
@@ -137,7 +137,7 @@ public class Structure_Chat {
 
     private void TradeBoardChatting(PlayerChatEvent event) {
         Player player = event.getPlayer();
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         String Message = ChatColor.stripColor(event.getMessage());
 
         if (u.getString(player, (byte) 0).compareTo("Notice") == 0) {
@@ -528,7 +528,7 @@ public class Structure_Chat {
 
     private void CampFireChatting(PlayerChatEvent event) {
         Player player = event.getPlayer();
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         String Message = ChatColor.stripColor(event.getMessage());
         //Reciever NickName
         if (u.getString(player, (byte) 0).compareTo("RN") == 0) {

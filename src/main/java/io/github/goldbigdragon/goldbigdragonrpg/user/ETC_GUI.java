@@ -302,7 +302,7 @@ public final class ETC_Gui extends GuiUtil {
             {
                 player.closeInventory();
                 player.sendMessage(ChatColor.GREEN + "[친구] : 친구 요청을 하실 상대방의 닉네임을 입력 하세요!");
-                new UserData_Object().setTemp(player, "FA");
+                new UserData().setTemp(player, "FA");
             } else if (slot == 50)//다음 페이지
                 FriendsGUI(player, (short) (page + 1));
             else if (event.isShiftClick() && event.isRightClick()) {

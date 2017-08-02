@@ -19,7 +19,7 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.structure;
 
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -73,7 +73,7 @@ public class _StructureGUIManager {
     }
 
     public void InventoryCloseRouter(InventoryCloseEvent event, String InventoryName) {
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         Player player = (Player) event.getPlayer();
 
         if (InventoryName.compareTo("보낼 아이템") == 0)

@@ -34,7 +34,7 @@ import org.bukkit.Sound;
 import org.bukkit.inventory.Inventory;
 
 import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_Gui;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
@@ -263,7 +263,7 @@ public class Job_Gui extends GuiUtil {
             {
                 player.closeInventory();
                 player.sendMessage(ChatColor.LIGHT_PURPLE + "[직업] : 새로운 직업 이름을 설정해 주세요!");
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 u.setType(player, "Job");
                 u.setString(player, (byte) 1, "CJ");
             } else if (slot == 50)//다음 페이지
@@ -325,7 +325,7 @@ public class Job_Gui extends GuiUtil {
                 } else {
                     player.closeInventory();
                     player.sendMessage(ChatColor.LIGHT_PURPLE + "[직업] : " + ChatColor.YELLOW + JobName + ChatColor.LIGHT_PURPLE + "의 새 승급 형태 이름을 설정해 주세요!");
-                    UserData_Object u = new UserData_Object();
+                    UserData u = new UserData();
                     u.setType(player, "Job");
                     u.setString(player, (byte) 1, "CJL");
                     u.setString(player, (byte) 2, JobName);
@@ -333,7 +333,7 @@ public class Job_Gui extends GuiUtil {
             } else {
                 String JobNick = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
                 if (event.isLeftClick() && !event.isShiftClick()) {
-                    UserData_Object u = new UserData_Object();
+                    UserData u = new UserData();
                     u.setType(player, "Job");
                     u.setString(player, (byte) 2, JobNick);
                     u.setString(player, (byte) 3, JobName);
@@ -342,7 +342,7 @@ public class Job_Gui extends GuiUtil {
                     player.closeInventory();
                     player.sendMessage(ChatColor.LIGHT_PURPLE + "[직업] : " + ChatColor.YELLOW + JobNick + ChatColor.LIGHT_PURPLE + "의 승급 필요 레벨을 입력 하세요!");
 
-                    UserData_Object u = new UserData_Object();
+                    UserData u = new UserData();
                     u.setType(player, "Job");
                     u.setString(player, (byte) 1, "JNL");
                     u.setString(player, (byte) 2, JobName);
@@ -427,7 +427,7 @@ public class Job_Gui extends GuiUtil {
             else if (slot == 49)//새 카테고리
             {
                 player.sendMessage(ChatColor.LIGHT_PURPLE + "[카테고리] : 새 카테고리의 이름을 설정해 주세요!");
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 u.setType(player, "Job");
                 u.setString(player, (byte) 1, "CC");
             } else {

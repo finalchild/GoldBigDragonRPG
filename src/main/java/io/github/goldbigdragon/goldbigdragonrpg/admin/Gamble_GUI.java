@@ -26,7 +26,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
@@ -151,7 +151,7 @@ public class Gamble_Gui extends GuiUtil {
                     SlotMachine_DetailGUI(player, DeDetailChoose);
                     return;
                 }
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 player.closeInventory();
                 u.setType(player, "Gamble");
                 u.setString(player, (byte) 0, "NP");
@@ -344,7 +344,7 @@ public class Gamble_Gui extends GuiUtil {
                 SlotMachine_MainGUI(player, page - 1);
             else if (slot == 49)//새 슬롯 머신
             {
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 player.closeInventory();
                 u.setType(player, "Gamble");
                 u.setString(player, (byte) 0, "NSM");

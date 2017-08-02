@@ -33,7 +33,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.monster.Monster_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.structure.Structure_Gui;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
@@ -651,7 +651,7 @@ public class OPbox_Gui extends GuiUtil {
                     OPBoxGUI_Death(player);
                 else {
                     player.closeInventory();
-                    UserData_Object u = new UserData_Object();
+                    UserData u = new UserData();
                     if (slot == 14)//입장 메시지 변경
                     {
                         u.setString(player, (byte) 1, "JM");
@@ -731,7 +731,7 @@ public class OPbox_Gui extends GuiUtil {
                 player.closeInventory();
                 player.sendMessage(ChatColor.DARK_AQUA + "[공지] : 몇 초마다 공지를 띄울까요?");
                 player.sendMessage(ChatColor.YELLOW + "(최소 1초 ~ 최대 3600초(1시간) 이하 숫자를 입력 하세요!)");
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 u.setType(player, "System");
                 u.setString(player, (byte) 1, "BMT");
             } else if (slot == 48)//이전 페이지
@@ -750,7 +750,7 @@ public class OPbox_Gui extends GuiUtil {
                         ChatColor.GOLD + "&6 " + ChatColor.GRAY + "&7 " + ChatColor.DARK_GRAY + "&8 " +
                         ChatColor.BLUE + "&9 " + ChatColor.GREEN + "&a " + ChatColor.AQUA + "&b " + ChatColor.RED + "&c " +
                         ChatColor.LIGHT_PURPLE + "&d " + ChatColor.YELLOW + "&e " + ChatColor.WHITE + "&f");
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 u.setType(player, "System");
                 u.setString(player, (byte) 1, "NBM");
                 u.setInt(player, (byte) 0, BCnumber);
@@ -795,7 +795,7 @@ public class OPbox_Gui extends GuiUtil {
                     player.sendMessage(ChatColor.DARK_AQUA + "[System] : 새로운 " + ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()) + " 스텟 이름을 입력 해 주세요!");
                     player.sendMessage(ChatColor.GRAY + "(띄어 쓰기 및 기호 사용 불가)");
                 }
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 u.setType(player, "System");
                 u.setString(player, (byte) 1, "CSN");
                 u.setString(player, (byte) 2, ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
@@ -853,7 +853,7 @@ public class OPbox_Gui extends GuiUtil {
             OPBoxGUI_Money(player);
         } else {
             SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
-            UserData_Object u = new UserData_Object();
+            UserData u = new UserData();
             u.setType(player, "System");
             if (slot >= 28 && slot <= 33) {
                 if (slot == 28)
@@ -936,7 +936,7 @@ public class OPbox_Gui extends GuiUtil {
             } else if (slot == 45)//이전 목록
                 OPBoxGUI_Setting(player);
             else {
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 u.setType(player, "System");
                 if (slot == 10)//가까운 마을에서 부활
                 {

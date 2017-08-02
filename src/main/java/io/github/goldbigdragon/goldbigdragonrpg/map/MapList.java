@@ -27,7 +27,7 @@ import javax.imageio.ImageIO;
 
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import org.bukkit.entity.Player;
 import org.bukkit.map.MapView;
 
@@ -48,11 +48,11 @@ public class MapList extends MapRenderer {
 
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager MapConfig = YC.getNewConfig("MapImageURL.yml");
-            String Name = new UserData_Object().getString(player, (byte) 1);
+            String Name = new UserData().getString(player, (byte) 1);
             URL = MapConfig.getString(Name + ".URL");
             Xcenter = MapConfig.getInt(Name + ".Xcenter");
             Ycenter = MapConfig.getInt(Name + ".Ycenter");
-            new UserData_Object().clearAll(player);
+            new UserData().clearAll(player);
             if (URL == "null") {
             } else {
                 try {

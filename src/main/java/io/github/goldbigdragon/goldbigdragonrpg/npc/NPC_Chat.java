@@ -21,8 +21,8 @@ package io.github.goldbigdragon.goldbigdragonrpg.npc;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Chat;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
+import io.github.goldbigdragon.goldbigdragonrpg.util.ChatUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 import org.bukkit.ChatColor;
@@ -30,9 +30,9 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerChatEvent;
 
-public class NPC_Chat extends Util_Chat {
+public class NPC_Chat extends ChatUtil {
     public void NPCTypeChatting(PlayerChatEvent event) {
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         SoundUtil sound = new SoundUtil();
         Player player = event.getPlayer();
 
@@ -58,7 +58,7 @@ public class NPC_Chat extends Util_Chat {
                 return;
             case "SaleSetting2":
                 if (isIntMinMax(Message, player, 0, 100)) {
-                    YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+                    YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
                     NPCConfig.set("Sale.Enable", true);
                     NPCConfig.set("Sale.Minlove", u.getInt(player, (byte) 0));
                     NPCConfig.set("Sale.discount", Integer.parseInt(Message));
@@ -70,7 +70,7 @@ public class NPC_Chat extends Util_Chat {
                 return;
             case "PresentLove":
                 if (isIntMinMax(Message, player, -1000, 1000)) {
-                    YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+                    YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
                     NPCConfig.set("Present." + u.getInt(player, (byte) 0) + ".love", Integer.parseInt(Message));
                     NPCConfig.saveConfig();
                     new NPC_Gui().PresentSettingGUI(player, u.getString(player, (byte) 2));
@@ -80,7 +80,7 @@ public class NPC_Chat extends Util_Chat {
                 return;
             case "NUC"://NPC'sUpgradeCost
                 if (isIntMinMax(Message, player, 0, Integer.MAX_VALUE)) {
-                    YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+                    YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
                     NPCConfig.set("Job.UpgradeRecipe." + u.getString(player, (byte) 6), Integer.parseInt(Message));
                     NPCConfig.saveConfig();
                     NPC_Gui NGUI = new NPC_Gui();

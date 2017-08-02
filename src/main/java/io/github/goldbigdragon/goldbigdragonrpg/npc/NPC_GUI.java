@@ -29,7 +29,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_Interact;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_Gui;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.ETC;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Player;
@@ -55,7 +55,7 @@ public class NPC_Gui extends GuiUtil {
     public void MainGUI(Player player, String NPCname, boolean isOP) {
         String UniqueCode = "§0§0§7§0§0§r";
         Inventory inv = Bukkit.createInventory(null, 27, UniqueCode + "§0[NPC] " + ChatColor.stripColor(NPCname));
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "대화를 한다", 340, 0, 1, Arrays.asList(ChatColor.YELLOW + "" + ChatColor.stripColor(NPCname) + ChatColor.GRAY + "에게", ChatColor.GRAY + "대화를 합니다."), 10, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "거래를 한다", 371, 0, 1, Arrays.asList(ChatColor.YELLOW + "" + ChatColor.stripColor(NPCname) + ChatColor.GRAY + "에게", ChatColor.GRAY + "거래를 요청합니다."), 12, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "퀘스트", 386, 0, 1, Arrays.asList(ChatColor.YELLOW + "" + ChatColor.stripColor(NPCname) + ChatColor.GRAY + "에게", ChatColor.GRAY + "도울 일이 없는지", ChatColor.GRAY + "물어봅니다."), 14, inv);
@@ -64,18 +64,18 @@ public class NPC_Gui extends GuiUtil {
         YamlManager PlayerNPC = null;
         if (!YC.isExit("NPC/PlayerData/" + player.getUniqueId() + ".yml")) {
             PlayerNPC = YC.getNewConfig("NPC/PlayerData/" + player.getUniqueId() + ".yml");
-            PlayerNPC.set(u.getNPCuuid(player) + ".love", 0);
-            PlayerNPC.set(u.getNPCuuid(player) + ".Career", 0);
+            PlayerNPC.set(u.getNpcUuid(player) + ".love", 0);
+            PlayerNPC.set(u.getNpcUuid(player) + ".Career", 0);
             PlayerNPC.saveConfig();
         } else
             PlayerNPC = YC.getNewConfig("NPC/PlayerData/" + player.getUniqueId() + ".yml");
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "선물하기", 54, 0, 1, Arrays.asList(ChatColor.YELLOW + "" + ChatColor.stripColor(NPCname) + ChatColor.GRAY + "에게", ChatColor.GRAY + "자신이 가지고 있는", ChatColor.GRAY + "아이템을 선물합니다.", ChatColor.GRAY + "(NPC와의 호감도 상승)", "",
-                ChatColor.LIGHT_PURPLE + "[현재 호감도]", ChatColor.RED + "" + ChatColor.BOLD + " ♥ " + ChatColor.WHITE + "" + ChatColor.BOLD + PlayerNPC.getInt(u.getNPCuuid(player) + ".love") + " / 1000"), 16, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "나가기", 324, 0, 1, Arrays.asList(ChatColor.YELLOW + "" + ChatColor.stripColor(NPCname) + ChatColor.GRAY + "와의", ChatColor.GRAY + "대화를 종료합니다.", ChatColor.BLACK + u.getNPCuuid(player)), 26, inv);
+                ChatColor.LIGHT_PURPLE + "[현재 호감도]", ChatColor.RED + "" + ChatColor.BOLD + " ♥ " + ChatColor.WHITE + "" + ChatColor.BOLD + PlayerNPC.getInt(u.getNpcUuid(player) + ".love") + " / 1000"), 16, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "나가기", 324, 0, 1, Arrays.asList(ChatColor.YELLOW + "" + ChatColor.stripColor(NPCname) + ChatColor.GRAY + "와의", ChatColor.GRAY + "대화를 종료합니다.", ChatColor.BLACK + u.getNpcUuid(player)), 26, inv);
         if (player.isOp())
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "GUI 비 활성화", 166, 0, 1, Arrays.asList(ChatColor.GRAY + "이 NPC는 GoldBigDragonRPG의", ChatColor.GRAY + "NPC GUI 화면을 사용하지 않게 합니다.", ""), 8, inv);
 
-        YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+        YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
         if (!NPCscript.contains("Job")) {
             NPCscript.set("Job.Type", "null");
             NPCscript.saveConfig();
@@ -326,16 +326,16 @@ public class NPC_Gui extends GuiUtil {
     }
 
     public void ShopGUI(Player player, String NPCname, short page, boolean Buy, boolean isEditMode) {
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         String UniqueCode = "§0§0§7§0§1§r";
         Inventory inv = Bukkit.createInventory(null, 54, UniqueCode + "§0[NPC] " + ChatColor.stripColor(NPCname));
 
         YamlController YC = new YamlController(Main_Main.plugin);
-        if (!YC.isExit("NPC/NPCData/" + u.getNPCuuid(player) + ".yml")) {
+        if (!YC.isExit("NPC/NPCData/" + u.getNpcUuid(player) + ".yml")) {
             NPC_Config NPCC = new NPC_Config();
-            NPCC.NPCNPCconfig(u.getNPCuuid(player));
+            NPCC.NPCNPCconfig(u.getNpcUuid(player));
         }
-        YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+        YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
         ItemStack item;
         ItemMeta IM = null;
         short a = 0;
@@ -379,12 +379,12 @@ public class NPC_Gui extends GuiUtil {
                 YamlManager PlayerNPC = null;
                 if (!YC.isExit("NPC/PlayerData/" + player.getUniqueId() + ".yml")) {
                     PlayerNPC = YC.getNewConfig("NPC/PlayerData/" + player.getUniqueId() + ".yml");
-                    PlayerNPC.set(u.getNPCuuid(player) + ".love", 0);
-                    PlayerNPC.set(u.getNPCuuid(player) + ".Career", 0);
+                    PlayerNPC.set(u.getNpcUuid(player) + ".love", 0);
+                    PlayerNPC.set(u.getNpcUuid(player) + ".Career", 0);
                     PlayerNPC.saveConfig();
                 } else
                     PlayerNPC = YC.getNewConfig("NPC/PlayerData/" + player.getUniqueId() + ".yml");
-                if (PlayerNPC.getInt(u.getNPCuuid(player) + ".love") >= NPCscript.getInt("Sale.Minlove"))
+                if (PlayerNPC.getInt(u.getNpcUuid(player) + ".love") >= NPCscript.getInt("Sale.Minlove"))
                     discount = NPCscript.getInt("Sale.discount");
                 else
                     Sale = false;
@@ -551,13 +551,13 @@ public class NPC_Gui extends GuiUtil {
 
 
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + u.getNPCuuid(player)), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + u.getNpcUuid(player)), 53, inv);
 
         player.openInventory(inv);
     }
 
     public void TalkGUI(Player player, String NPCname, String[] strings, char TalkType) {
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         String UniqueCode = "§0§0§7§0§2§r";
         Inventory inv = Bukkit.createInventory(null, 9, UniqueCode + "§0[NPC] " + ChatColor.stripColor(NPCname));
 
@@ -568,21 +568,21 @@ public class NPC_Gui extends GuiUtil {
             if (strings != null)
                 Stack2(ChatColor.YELLOW + "" + ChatColor.BOLD + " " + NPCname, 386, 0, 1, Arrays.asList(new NPC_Main().getScript(player, TalkType)), (int) TalkType, inv);
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 메뉴", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 메뉴로 돌아갑니다."), 0, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "나가기", 324, 0, 1, Arrays.asList(ChatColor.YELLOW + "" + ChatColor.stripColor(NPCname) + ChatColor.GRAY + "와의", ChatColor.GRAY + "대화를 종료합니다.", ChatColor.BLACK + u.getNPCuuid(player)), 8, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "나가기", 324, 0, 1, Arrays.asList(ChatColor.YELLOW + "" + ChatColor.stripColor(NPCname) + ChatColor.GRAY + "와의", ChatColor.GRAY + "대화를 종료합니다.", ChatColor.BLACK + u.getNpcUuid(player)), 8, inv);
 
         player.openInventory(inv);
     }
 
     public void QuestAddGUI(Player player, short page) {
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager QuestList = YC.getNewConfig("Quest/QuestList.yml");
 
-        if (!YC.isExit("NPC/NPCData/" + u.getNPCuuid(player) + ".yml")) {
+        if (!YC.isExit("NPC/NPCData/" + u.getNpcUuid(player) + ".yml")) {
             NPC_Config NPCC = new NPC_Config();
-            NPCC.NPCNPCconfig(u.getNPCuuid(player));
+            NPCC.NPCNPCconfig(u.getNpcUuid(player));
         }
-        YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+        YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
 
         String UniqueCode = "§0§0§7§0§3§r";
         Inventory inv = Bukkit.createInventory(null, 54, UniqueCode + "§0등록 가능 퀘스트 목록 : " + (page + 1));
@@ -703,20 +703,20 @@ public class NPC_Gui extends GuiUtil {
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
         //Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323,0,1,Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + u.getNPCuuid(player)), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + u.getNpcUuid(player)), 53, inv);
         player.openInventory(inv);
     }
 
     public void QuestListGUI(Player player, short page) {
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager QuestList = YC.getNewConfig("Quest/QuestList.yml");
 
-        if (!YC.isExit("NPC/NPCData/" + u.getNPCuuid(player) + ".yml")) {
+        if (!YC.isExit("NPC/NPCData/" + u.getNpcUuid(player) + ".yml")) {
             NPC_Config NPCC = new NPC_Config();
-            NPCC.NPCNPCconfig(u.getNPCuuid(player));
+            NPCC.NPCNPCconfig(u.getNpcUuid(player));
         }
-        YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+        YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
 
         String UniqueCode = "§0§0§7§0§4§r";
         Inventory inv = Bukkit.createInventory(null, 54, UniqueCode + "§0진행 가능한 퀘스트 목록 : " + (page + 1));
@@ -741,8 +741,8 @@ public class NPC_Gui extends GuiUtil {
         YamlManager PlayerNPC;
         if (!YC.isExit("NPC/PlayerData/" + player.getUniqueId() + ".yml")) {
             PlayerNPC = YC.getNewConfig("NPC/PlayerData/" + player.getUniqueId() + ".yml");
-            PlayerNPC.set(u.getNPCuuid(player) + ".love", 0);
-            PlayerNPC.set(u.getNPCuuid(player) + ".Career", 0);
+            PlayerNPC.set(u.getNpcUuid(player) + ".love", 0);
+            PlayerNPC.set(u.getNpcUuid(player) + ".Career", 0);
             PlayerNPC.saveConfig();
         }
 
@@ -790,7 +790,7 @@ public class NPC_Gui extends GuiUtil {
                         lorecount++;
                     }
                     if (QuestList.getInt(QuestName + ".Need.Love") != 0) {
-                        if (PlayerNPC.getInt(u.getNPCuuid(player) + ".love") >= QuestList.getInt(QuestName + ".Need.Love"))
+                        if (PlayerNPC.getInt(u.getNpcUuid(player) + ".love") >= QuestList.getInt(QuestName + ".Need.Love"))
                             Temp[lorecount] = ChatColor.GREEN + "호감도 제한 : " + QuestList.getInt(QuestName + ".Need.Love") + " 이상";
                         else
                             Temp[lorecount] = ChatColor.RED + "호감도 제한 : " + QuestList.getInt(QuestName + ".Need.Love") + " 이상";
@@ -1035,12 +1035,12 @@ public class NPC_Gui extends GuiUtil {
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 페이지", 323, 0, 1, Collections.singletonList(ChatColor.GRAY + "이전 페이지로 이동 합니다."), 48, inv);
 
         //Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 목록", 323,0,1,Arrays.asList(ChatColor.GRAY + "이전 화면으로 돌아갑니다."), 45, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + u.getNPCuuid(player)), 53, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기", 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + u.getNpcUuid(player)), 53, inv);
         player.openInventory(inv);
     }
 
     public void NPCjobGUI(Player player, String NPCname) {
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         String UniqueCode = "§0§0§7§0§5§r";
         Inventory inv = Bukkit.createInventory(null, 27, UniqueCode + "§0NPC 직업 선택");
 
@@ -1054,15 +1054,15 @@ public class NPC_Gui extends GuiUtil {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "룬 세공사", 351, 10, 1, Collections.singletonList(ChatColor.GRAY + "아이템에 룬을 장착 시켜줍니다."), 10, inv);
 
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "이전 메뉴", 323, 0, 1, Arrays.asList(ChatColor.GRAY + "이전 메뉴로 돌아갑니다.", ChatColor.BLACK + NPCname), 18, inv);
-        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "나가기", 324, 0, 1, Arrays.asList(ChatColor.YELLOW + "" + ChatColor.stripColor(NPCname) + ChatColor.GRAY + "와의", ChatColor.GRAY + "대화를 종료합니다.", ChatColor.BLACK + u.getNPCuuid(player)), 26, inv);
+        Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "나가기", 324, 0, 1, Arrays.asList(ChatColor.YELLOW + "" + ChatColor.stripColor(NPCname) + ChatColor.GRAY + "와의", ChatColor.GRAY + "대화를 종료합니다.", ChatColor.BLACK + u.getNpcUuid(player)), 26, inv);
 
         player.openInventory(inv);
     }
 
     public void WarpMainGUI(Player player, int page, String NPCname) {
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         YamlController YC = new YamlController(Main_Main.plugin);
-        YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+        YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
         String UniqueCode = "§0§0§7§0§6§r";
         Inventory inv = Bukkit.createInventory(null, 54, UniqueCode + "§0NPC 워프 가능 목록 : " + (page + 1));
         Object[] WarpList = NPCConfig.getConfigurationSection("Job.WarpList").getKeys(false).toArray();
@@ -1158,9 +1158,9 @@ public class NPC_Gui extends GuiUtil {
     }
 
     public void UpgraderGUI(Player player, short page, String NPCname) {
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         YamlController YC = new YamlController(Main_Main.plugin);
-        YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+        YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
         YamlManager UpgradeRecipe = YC.getNewConfig("Item/Upgrade.yml");
 
         String UniqueCode = "§0§0§7§0§8§r";
@@ -1351,12 +1351,12 @@ public class NPC_Gui extends GuiUtil {
     }
 
     public void RuneEquipGUI(Player player, String NPCname) {
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         String UniqueCode = "§1§0§7§0§a§r";
         Inventory inv = Bukkit.createInventory(null, 27, UniqueCode + "§0NPC 룬 장착");
 
         YamlController YC = new YamlController(Main_Main.plugin);
-        YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+        YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
         Stack2(ChatColor.BLUE + "", 160, 7, 1, null, 0, inv);
         Stack2(ChatColor.BLUE + "", 160, 7, 1, null, 1, inv);
         Stack2(ChatColor.BLUE + "", 160, 7, 1, null, 2, inv);
@@ -1389,9 +1389,9 @@ public class NPC_Gui extends GuiUtil {
     }
 
     public void NPCTalkGUI(Player player, short page, String NPCname, String TalkType) {
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         YamlController YC = new YamlController(Main_Main.plugin);
-        YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+        YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
 
         String UniqueCode = "§0§0§7§0§b§r";
         Inventory inv = Bukkit.createInventory(null, 54, UniqueCode + "§0NPC 일반 대사 : " + (page + 1));
@@ -1469,9 +1469,9 @@ public class NPC_Gui extends GuiUtil {
     }
 
     public void TalkSettingGUI(Player player, String NPCname, String TalkType, short TalkNumber) {
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         YamlController YC = new YamlController(Main_Main.plugin);
-        YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+        YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
 
         String UniqueCode = "§0§0§7§0§c§r";
         Inventory inv = Bukkit.createInventory(null, 36, UniqueCode + "§0NPC 대사 설정");
@@ -1672,7 +1672,7 @@ public class NPC_Gui extends GuiUtil {
         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "닫기" + ChatColor.BLACK + ChatColor.YELLOW + ChatColor.RED, 324, 0, 1, Arrays.asList(ChatColor.GRAY + "창을 닫습니다.", ChatColor.BLACK + NPCname), 8, inv);
 
         YamlController YC = new YamlController(Main_Main.plugin);
-        YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + new UserData_Object().getNPCuuid(player) + ".yml");
+        YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + new UserData().getNpcUuid(player) + ".yml");
 
         Stack2(ChatColor.WHITE + "기타 아이템", 138, 0, 1, Arrays.asList(ChatColor.GRAY + "정해진 아이템 외의 다른", ChatColor.GRAY + "아이템을 주었을 때의", ChatColor.GRAY + "호감도 상승량을 설정합니다.", "", ChatColor.GREEN + "호감도 : " + NPCConfig.getInt("Present.1.love")), 1, inv);
 
@@ -1704,7 +1704,7 @@ public class NPC_Gui extends GuiUtil {
             Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "선물 등록" + ChatColor.BLACK + ChatColor.YELLOW + ChatColor.RED, 389, 0, 1, Arrays.asList(ChatColor.GRAY + "이 아이템으로 설정합니다.", ChatColor.BLACK + "" + isSettingMode), 0, inv);
 
             YamlController YC = new YamlController(Main_Main.plugin);
-            YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + new UserData_Object().getNPCuuid(player) + ".yml");
+            YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + new UserData().getNpcUuid(player) + ".yml");
             ItemStack item = NPCConfig.getItemStack("Present." + number + ".item");
             if (item != null)
                 ItemStackStack(item, 4, inv);
@@ -1738,8 +1738,8 @@ public class NPC_Gui extends GuiUtil {
                 QuestAddGUI(player, (short) Integer.parseInt(event.getInventory().getTitle().split(" : ")[1]));
             else {
                 YamlController YC = new YamlController(Main_Main.plugin);
-                UserData_Object u = new UserData_Object();
-                YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+                UserData u = new UserData();
+                YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
 
                 String QuestName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
                 Set<String> NPChasQuest = NPCscript.getConfigurationSection("Quest").getKeys(false);
@@ -1822,9 +1822,9 @@ public class NPC_Gui extends GuiUtil {
                                 NeedINT <= Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_INT() &&
                                 NeedWILL <= Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_WILL() &&
                                 NeedLUK <= Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_LUK()) {
-                            UserData_Object u = new UserData_Object();
+                            UserData u = new UserData();
                             YamlManager PlayerNPC = YC.getNewConfig("NPC/PlayerData/" + player.getUniqueId() + ".yml");
-                            if (NeedLove <= PlayerNPC.getInt(u.getNPCuuid(player) + ".love")) {
+                            if (NeedLove <= PlayerNPC.getInt(u.getNpcUuid(player) + ".love")) {
                                 if (PrevQuest.equalsIgnoreCase("null") || PlayerQuest.contains("Ended." + PrevQuest)) {
                                     if (QuestList.getInt(QuestName + ".Server.Limit") != 0) {
                                         if (QuestList.getInt(QuestName + ".Server.Limit") == 1 || QuestList.getInt(QuestName + ".Server.Limit") < -1) {
@@ -1880,8 +1880,8 @@ public class NPC_Gui extends GuiUtil {
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager DNPC = YC.getNewConfig("NPC/DistrictNPC.yml");
 
-            UserData_Object u = new UserData_Object();
-            DNPC.set(u.getNPCuuid(player).toString(), true);
+            UserData u = new UserData();
+            DNPC.set(u.getNpcUuid(player).toString(), true);
             DNPC.saveConfig();
             player.closeInventory();
             player.sendMessage(ChatColor.YELLOW + "[NPC] : 해당 NPC는 GUI화면을 사용하지 않게 되었습니다!");
@@ -1895,12 +1895,12 @@ public class NPC_Gui extends GuiUtil {
                     Case.compareTo("개조 장인") == 0) {
                 if (event.getClick().isLeftClick()) {
                     YamlController YC = new YamlController(Main_Main.plugin);
-                    UserData_Object u = new UserData_Object();
-                    if (!YC.isExit("NPC/NPCData/" + u.getNPCuuid(player) + ".yml")) {
+                    UserData u = new UserData();
+                    if (!YC.isExit("NPC/NPCData/" + u.getNpcUuid(player) + ".yml")) {
                         NPC_Config NPCC = new NPC_Config();
-                        NPCC.NPCNPCconfig(u.getNPCuuid(player));
+                        NPCC.NPCNPCconfig(u.getNpcUuid(player));
                     }
-                    YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+                    YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
                     Util_Number n = new Util_Number();
 
                     SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
@@ -2121,9 +2121,9 @@ public class NPC_Gui extends GuiUtil {
             SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             if (slot == 7 && player.isOp())//세일 설정
             {
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 YamlController YC = new YamlController(Main_Main.plugin);
-                YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+                YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
                 if (event.isShiftClick() && event.isRightClick()) {
                     NPCConfig.set("Sale.Enable", false);
                     NPCConfig.saveConfig();
@@ -2133,7 +2133,7 @@ public class NPC_Gui extends GuiUtil {
                     SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                     u.setType(player, "NPC");
                     u.setString(player, (byte) 2, NPCname);
-                    u.setString(player, (byte) 3, u.getNPCuuid(player));
+                    u.setString(player, (byte) 3, u.getNpcUuid(player));
                     u.setString(player, (byte) 4, "SaleSetting1");
                     player.sendMessage(ChatColor.DARK_AQUA + "[NPC] : 세일을 시작 할 최소 호감도를 입력 해 주세요! (-1000 ~ 1000 사이 값)");
                     player.closeInventory();
@@ -2266,7 +2266,7 @@ public class NPC_Gui extends GuiUtil {
                     isBuy = false;
                 if (event.getInventory().getItem(0).getItemMeta().hasLore()) {
                     if (event.getClick().isRightClick()) {
-                        UserData_Object u = new UserData_Object();
+                        UserData u = new UserData();
                         String Type = null;
                         if (isBuy)
                             Type = "Sell";
@@ -2275,7 +2275,7 @@ public class NPC_Gui extends GuiUtil {
 
                         byte num = Byte.parseByte(ChatColor.stripColor(item.getItemMeta().getLore().get(item.getItemMeta().getLore().size() - 1)));
                         YamlController YC = new YamlController(Main_Main.plugin);
-                        YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+                        YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
 
                         Set<String> a = NPCscript.getConfigurationSection("Shop." + Type).getKeys(false);
 
@@ -2347,9 +2347,9 @@ public class NPC_Gui extends GuiUtil {
             player.closeInventory();
         } else {
             SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 0.8F);
-            UserData_Object u = new UserData_Object();
+            UserData u = new UserData();
             YamlController YC = new YamlController(Main_Main.plugin);
-            YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+            YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
             if (slot == 18)
                 MainGUI(player, NPCname, player.isOp());
             else {
@@ -2375,7 +2375,7 @@ public class NPC_Gui extends GuiUtil {
                     player.closeInventory();
                     u.setType(player, "NPC");
                     u.setString(player, (byte) 2, NPCname);
-                    u.setString(player, (byte) 3, u.getNPCuuid(player));
+                    u.setString(player, (byte) 3, u.getNpcUuid(player));
                     if (slot == 2)//대장장이
                     {
                         NPCscript.set("Job.Type", "BlackSmith");
@@ -2470,9 +2470,9 @@ public class NPC_Gui extends GuiUtil {
                         SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.8F);
                         return;
                     }
-                    UserData_Object u = new UserData_Object();
+                    UserData u = new UserData();
                     YamlController YC = new YamlController(Main_Main.plugin);
-                    YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+                    YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
                     if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money() >= NPCConfig.getInt("Job.WarpList." + ((page * 45) + event.getSlot()) + ".Cost")) {
                         Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).addStat_MoneyAndEXP(-1 * NPCConfig.getInt("Job.WarpList." + ((page * 45) + event.getSlot()) + ".Cost"), 0, false);
                         String AreaName = NPCConfig.getString("Job.WarpList." + ((page * 45) + event.getSlot()) + ".Area");
@@ -2485,9 +2485,9 @@ public class NPC_Gui extends GuiUtil {
                         player.sendMessage(ChatColor.RED + "[워프] : 텔레포트 비용이 부족합니다!");
                     }
                 } else if (event.isRightClick() && event.isShiftClick() && player.isOp()) {
-                    UserData_Object u = new UserData_Object();
+                    UserData u = new UserData();
                     YamlController YC = new YamlController(Main_Main.plugin);
-                    YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+                    YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
                     int number = ((page * 45) + event.getSlot());
                     int Acount = NPCConfig.getConfigurationSection("Job.WarpList").getKeys(false).toArray().length - 1;
 
@@ -2521,9 +2521,9 @@ public class NPC_Gui extends GuiUtil {
             else if (slot == 50)//다음 페이지
                 WarperGUI(player, (short) (page + 1), NPCname);
             else {
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 YamlController YC = new YamlController(Main_Main.plugin);
-                YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+                YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
                 int number = NPCConfig.getConfigurationSection("Job.WarpList").getKeys(false).size();
                 NPCConfig.set("Job.WarpList." + number + ".Area", ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                 NPCConfig.set("Job.WarpList." + number + ".DisplayName", "워프지점");
@@ -2531,7 +2531,7 @@ public class NPC_Gui extends GuiUtil {
                 NPCConfig.saveConfig();
                 u.setType(player, "NPC");
                 u.setString(player, (byte) 4, "WDN");
-                u.setString(player, (byte) 3, u.getNPCuuid(player));
+                u.setString(player, (byte) 3, u.getNpcUuid(player));
                 u.setString(player, (byte) 2, NPCname);
                 u.setInt(player, (byte) 4, number);
                 player.sendMessage(ChatColor.DARK_AQUA + "[NPC] : 해당 워프 지점의 이름을 설정해 주세요!");
@@ -2563,9 +2563,9 @@ public class NPC_Gui extends GuiUtil {
             } else if (slot == 50)//다음 페이지
                 UpgraderGUI(player, (short) (page + 1), NPCname);
             else {
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 YamlController YC = new YamlController(Main_Main.plugin);
-                YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+                YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
 
                 if (event.isLeftClick() && !event.isShiftClick()) {
                     if (player.getInventory().getItemInMainHand() != null) {
@@ -2757,9 +2757,9 @@ public class NPC_Gui extends GuiUtil {
             else if (slot == 50)//다음 페이지
                 SelectUpgradeRecipeGUI(player, (short) (page + 1), NPCname);
             else {
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 YamlController YC = new YamlController(Main_Main.plugin);
-                YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+                YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
                 String RecipeName = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
                 NPCConfig.set("Job.UpgradeRecipe." + RecipeName, 2147483647);
                 player.sendMessage("[NPC] : 선택한 개조식의 개조 비용을 입력 해 주세요!");
@@ -2963,9 +2963,9 @@ public class NPC_Gui extends GuiUtil {
                 MainGUI(player, NPCname, player.isOp());
             } else if (slot == 16)//룬 장착
             {
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 YamlController YC = new YamlController(Main_Main.plugin);
-                YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+                YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
                 int SuccessRate = NPCConfig.getInt("Job.SuccessRate");
                 boolean Success = false;
                 if (event.getInventory().getItem(13) != null) {
@@ -3221,9 +3221,9 @@ public class NPC_Gui extends GuiUtil {
             else if (slot == 49)//대사 추가
             {
                 short number = 1;
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 YamlController YC = new YamlController(Main_Main.plugin);
-                YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+                YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
                 if (TalkType.compareTo("NT") == 0) {
                     number = (short) (NPCConfig.getConfigurationSection("NatureTalk").getKeys(false).toArray().length + 1);
                     NPCConfig.set("NatureTalk." + number + ".love", 0);
@@ -3252,9 +3252,9 @@ public class NPC_Gui extends GuiUtil {
                 else
                     NPCTalkGUI(player, (short) 0, NPCname, "NN");
             } else {
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 YamlController YC = new YamlController(Main_Main.plugin);
-                YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+                YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
                 short Number = Short.parseShort(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                 if (event.isRightClick() && event.isShiftClick()) {
                     SoundUtil.playSound(player, Sound.BLOCK_LAVA_POP, 1.0F, 1.0F);
@@ -3337,10 +3337,10 @@ public class NPC_Gui extends GuiUtil {
                 }
             } else {
                 player.closeInventory();
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 u.setType(player, "NPC");
                 u.setString(player, (byte) 2, NPCname);
-                u.setString(player, (byte) 3, u.getNPCuuid(player));
+                u.setString(player, (byte) 3, u.getNpcUuid(player));
                 u.setString(player, (byte) 5, TalkType);
                 u.setString(player, (byte) 6, number + "");
                 if (slot == 13)//호감도
@@ -3393,9 +3393,9 @@ public class NPC_Gui extends GuiUtil {
             else if (slot == 50)//다음 페이지
                 AddAbleSkillsGUI(player, (short) (page + 1), NPCname, number);
             else {
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 YamlController YC = new YamlController(Main_Main.plugin);
-                YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+                YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
                 NPCConfig.set("AboutSkills." + number + ".giveSkill", ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()));
                 NPCConfig.saveConfig();
                 TalkSettingGUI(player, NPCname, TalkType, number);
@@ -3713,7 +3713,7 @@ public class NPC_Gui extends GuiUtil {
                 if (size >= 6 && DisplayName.charAt(size - 1) == 'c' && DisplayName.charAt(size - 2) == '§' && DisplayName.charAt(size - 3) == 'e' && DisplayName.charAt(size - 4) == '§' && DisplayName.charAt(size - 5) == '0' && DisplayName.charAt(size - 6) == '§') {
                     event.setCancelled(true);
                     YamlController YC = new YamlController(Main_Main.plugin);
-                    YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + new UserData_Object().getNPCuuid(player) + ".yml");
+                    YamlManager NPCConfig = YC.getNewConfig("NPC/NPCData/" + new UserData().getNpcUuid(player) + ".yml");
                     if (event.getSlot() == 0)//선물 설정
                     {
                         if (isSettingMode) {
@@ -3730,10 +3730,10 @@ public class NPC_Gui extends GuiUtil {
                             NPCConfig.set("Present." + number + ".love", 0);
                             NPCConfig.saveConfig();
                             SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
-                            UserData_Object u = new UserData_Object();
+                            UserData u = new UserData();
                             u.setType(player, "NPC");
                             u.setString(player, (byte) 2, NPCname);
-                            u.setString(player, (byte) 3, u.getNPCuuid(player));
+                            u.setString(player, (byte) 3, u.getNpcUuid(player));
                             u.setString(player, (byte) 4, "PresentLove");
                             u.setInt(player, (byte) 0, number);
                             player.sendMessage(ChatColor.DARK_AQUA + "[NPC] : 해당 아이템을 줄 때 상승하는 호감도 수치를 입력 해 주세요! (-1000 ~ 1000 사이 값)");
@@ -3751,10 +3751,10 @@ public class NPC_Gui extends GuiUtil {
                         }
                         YamlManager PlayerNPC = null;
                         if (!YC.isExit("NPC/PlayerData/" + player.getUniqueId() + ".yml")) {
-                            UserData_Object u = new UserData_Object();
+                            UserData u = new UserData();
                             PlayerNPC = YC.getNewConfig("NPC/PlayerData/" + player.getUniqueId() + ".yml");
-                            PlayerNPC.set(u.getNPCuuid(player) + ".love", 0);
-                            PlayerNPC.set(u.getNPCuuid(player) + ".Career", 0);
+                            PlayerNPC.set(u.getNpcUuid(player) + ".love", 0);
+                            PlayerNPC.set(u.getNpcUuid(player) + ".Career", 0);
                             PlayerNPC.saveConfig();
                         } else
                             PlayerNPC = YC.getNewConfig("NPC/PlayerData/" + player.getUniqueId() + ".yml");
@@ -3763,7 +3763,7 @@ public class NPC_Gui extends GuiUtil {
                             int Amount = Present.getAmount();
                             Present.setAmount(1);
 
-                            UserData_Object u = new UserData_Object();
+                            UserData u = new UserData();
                             for (int count = 2; count < 8; count++) {
                                 if (NPCConfig.getItemStack("Present." + count + ".item") != null) {
                                     ItemStack LoveItem = new ItemStack(NPCConfig.getItemStack("Present." + count + ".item"));
@@ -3780,12 +3780,12 @@ public class NPC_Gui extends GuiUtil {
                                                 love = LoveValue * (Amount / LoveItemAmount);
                                         } else
                                             love = LoveValue;
-                                        if (PlayerNPC.getInt(u.getNPCuuid(player) + ".love") + love >= 1000)
-                                            PlayerNPC.set(u.getNPCuuid(player) + ".love", 1000);
-                                        else if (PlayerNPC.getInt(u.getNPCuuid(player) + ".love") + love <= -1000)
-                                            PlayerNPC.set(u.getNPCuuid(player) + ".love", -1000);
+                                        if (PlayerNPC.getInt(u.getNpcUuid(player) + ".love") + love >= 1000)
+                                            PlayerNPC.set(u.getNpcUuid(player) + ".love", 1000);
+                                        else if (PlayerNPC.getInt(u.getNpcUuid(player) + ".love") + love <= -1000)
+                                            PlayerNPC.set(u.getNpcUuid(player) + ".love", -1000);
                                         else
-                                            PlayerNPC.set(u.getNPCuuid(player) + ".love", PlayerNPC.getInt(u.getNPCuuid(player) + ".love") + love);
+                                            PlayerNPC.set(u.getNpcUuid(player) + ".love", PlayerNPC.getInt(u.getNpcUuid(player) + ".love") + love);
                                         PlayerNPC.saveConfig();
                                         if (love >= 0) {
                                             SoundUtil.playSound(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.8F);
@@ -3806,12 +3806,12 @@ public class NPC_Gui extends GuiUtil {
                                     love = LoveValue * Amount;
                                 else
                                     love = LoveValue;
-                                if (PlayerNPC.getInt(u.getNPCuuid(player) + ".love") + love >= 1000)
-                                    PlayerNPC.set(u.getNPCuuid(player) + ".love", 1000);
-                                else if (PlayerNPC.getInt(u.getNPCuuid(player) + ".love") + love <= -1000)
-                                    PlayerNPC.set(u.getNPCuuid(player) + ".love", -1000);
+                                if (PlayerNPC.getInt(u.getNpcUuid(player) + ".love") + love >= 1000)
+                                    PlayerNPC.set(u.getNpcUuid(player) + ".love", 1000);
+                                else if (PlayerNPC.getInt(u.getNpcUuid(player) + ".love") + love <= -1000)
+                                    PlayerNPC.set(u.getNpcUuid(player) + ".love", -1000);
                                 else
-                                    PlayerNPC.set(u.getNPCuuid(player) + ".love", PlayerNPC.getInt(u.getNPCuuid(player) + ".love") + love);
+                                    PlayerNPC.set(u.getNpcUuid(player) + ".love", PlayerNPC.getInt(u.getNpcUuid(player) + ".love") + love);
                                 PlayerNPC.saveConfig();
                                 if (love >= 0) {
                                     SoundUtil.playSound(player, Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.8F);
@@ -3843,10 +3843,10 @@ public class NPC_Gui extends GuiUtil {
             } else {
                 SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 if (event.getSlot() == 1) {
-                    UserData_Object u = new UserData_Object();
+                    UserData u = new UserData();
                     u.setType(player, "NPC");
                     u.setString(player, (byte) 2, NPCname);
-                    u.setString(player, (byte) 3, u.getNPCuuid(player));
+                    u.setString(player, (byte) 3, u.getNpcUuid(player));
                     u.setString(player, (byte) 4, "PresentLove");
                     u.setInt(player, (byte) 0, 1);
                     player.sendMessage(ChatColor.DARK_AQUA + "[NPC] : 아무 아이템이나 줄 때 상승하는 호감도 수치를 입력 해 주세요! (-1000 ~ 1000 사이 값)");

@@ -31,7 +31,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick;
 import io.github.goldbigdragon.goldbigdragonrpg.user.Stats_Gui;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.ETC;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Player;
 import org.bukkit.Bukkit;
@@ -516,7 +516,7 @@ public class Quest_Gui extends GuiUtil {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager QuestConfig = YC.getNewConfig("Quest/QuestList.yml");
 
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
 
         String UniqueCode = "§1§0§5§0§7§r";
         Inventory inv = Bukkit.createInventory(null, 9, UniqueCode + "§0보상 아이템 등록");
@@ -566,7 +566,7 @@ public class Quest_Gui extends GuiUtil {
                 for (short count = 0; count < a.length; count++)
                     ItemStackStack(QuestList.getItemStack(QuestName + ".FlowChart." + Flow + ".Item." + a[count]), count + 11, inv);
                 if (player.isOp()) {
-                    UserData_Object u = new UserData_Object();
+                    UserData u = new UserData();
                     if (u.getInt(player, (byte) 1) != -9) {
                         u.clearAll(player);
                         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "보상 받기", 54, 0, 1, Arrays.asList(ChatColor.GRAY + "보상을 수령합니다.", ChatColor.BLACK + "" + Flow), 22, inv);
@@ -583,7 +583,7 @@ public class Quest_Gui extends GuiUtil {
                 Stack2(ChatColor.AQUA + "[경험치]", 384, 0, 1, Arrays.asList("", ChatColor.WHITE + "" + ChatColor.BOLD + QuestList.getInt(QuestName + ".FlowChart." + Flow + ".EXP") + ChatColor.AQUA + " EXP"), 4, inv);
                 Stack2(ChatColor.LIGHT_PURPLE + "[호감도]", 38, 0, 1, Arrays.asList("", ChatColor.WHITE + "" + ChatColor.BOLD + QuestList.getInt(QuestName + ".FlowChart." + Flow + ".Love") + ChatColor.LIGHT_PURPLE + " Love"), 5, inv);
                 if (player.isOp()) {
-                    UserData_Object u = new UserData_Object();
+                    UserData u = new UserData();
                     if (u.getInt(player, (byte) 1) != -9) {
                         u.clearAll(player);
                         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + "보상 받기", 54, 0, 1, Arrays.asList(ChatColor.GRAY + "보상을 수령합니다.", ChatColor.BLACK + "" + Flow), 22, inv);
@@ -1181,7 +1181,7 @@ public class Quest_Gui extends GuiUtil {
         Player player = (Player) event.getWhoClicked();
         int slot = event.getSlot();
 
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         boolean ChooseQuestGUI = Boolean.parseBoolean(ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1)));
         if (slot == 53)//닫기
         {
@@ -1277,7 +1277,7 @@ public class Quest_Gui extends GuiUtil {
                                 ShowItemGUI(player, QuestName, Flow, true, false);
                                 break;
                             case "보상": {
-                                new UserData_Object().setInt(player, (byte) 1, -9);
+                                new UserData().setInt(player, (byte) 1, -9);
                                 ShowItemGUI(player, QuestName, Flow, true, true);
                             }
                             break;
@@ -1345,7 +1345,7 @@ public class Quest_Gui extends GuiUtil {
     public void SelectObjectPageClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
 
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
 
         String QuestName = ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1));
         YamlController YC = new YamlController(Main_Main.plugin);
@@ -1702,7 +1702,7 @@ public class Quest_Gui extends GuiUtil {
                     player.closeInventory();
                 } else {
                     SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.8F);
-                    UserData_Object u = new UserData_Object();
+                    UserData u = new UserData();
                     u.setType(player, "Quest");
                     if (slot == 0) {
                         player.sendMessage(ChatColor.GREEN + "[SYSTEM] : 지급할 포상금을 입력 해 주세요. (" + ChatColor.YELLOW + "0" + ChatColor.GREEN + " ~ " + ChatColor.YELLOW + "" + Integer.MAX_VALUE + ChatColor.GREEN + ")");
@@ -1731,7 +1731,7 @@ public class Quest_Gui extends GuiUtil {
             player.closeInventory();
         } else {
             SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.8F);
-            UserData_Object u = new UserData_Object();
+            UserData u = new UserData();
             String QuestName = ChatColor.stripColor(event.getInventory().getItem(16).getItemMeta().getLore().get(1));
             short Flow = Short.parseShort(ChatColor.stripColor(event.getInventory().getItem(10).getItemMeta().getLore().get(1)));
             short Mob = Short.parseShort(ChatColor.stripColor(event.getInventory().getItem(10).getItemMeta().getLore().get(2)));
@@ -1802,7 +1802,7 @@ public class Quest_Gui extends GuiUtil {
             } else if (slot == 29)//필수 완료 퀘스트
             {
                 if (event.isLeftClick() && !event.isShiftClick()) {
-                    UserData_Object u = new UserData_Object();
+                    UserData u = new UserData();
                     u.setString(player, (byte) 1, QuestName);
                     AllOfQuestListGUI(player, (short) 0, true);
                 } else if (event.isRightClick() && event.isShiftClick()) {
@@ -1812,7 +1812,7 @@ public class Quest_Gui extends GuiUtil {
                     QuestOptionGUI(player, QuestName);
                 }
             } else {
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 u.setType(player, "Quest");
                 u.setString(player, (byte) 2, QuestName);
                 player.closeInventory();
@@ -1943,7 +1943,7 @@ public class Quest_Gui extends GuiUtil {
 
     public void GetterItemSetingGUIClose(InventoryCloseEvent event) {
         Player player = (Player) event.getPlayer();
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         u.setBoolean(player, (byte) 1, false);
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager QuestConfig = YC.getNewConfig("Quest/QuestList.yml");
@@ -1972,7 +1972,7 @@ public class Quest_Gui extends GuiUtil {
         Player player = (Player) event.getPlayer();
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager QuestConfig = YC.getNewConfig("Quest/QuestList.yml");
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         String QuestName = u.getString(player, (byte) 3);
 
         if (u.getInt(player, (byte) 5) == -1) {

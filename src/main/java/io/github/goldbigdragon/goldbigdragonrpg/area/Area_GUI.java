@@ -27,7 +27,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_Interact;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.ETC;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
 import org.bukkit.Bukkit;
@@ -909,7 +909,7 @@ public class Area_Gui extends GuiUtil {
                 AreaSettingGUI(player, AreaName);
             } else if (slot == 21)//우선 순위 변경
             {
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 player.closeInventory();
                 u.setType(player, "Area");
                 u.setString(player, (byte) 2, "Priority");
@@ -948,7 +948,7 @@ public class Area_Gui extends GuiUtil {
             {
                 if (AreaConfig.getInt(AreaName + ".RegenBlock") == 0) {
                     player.closeInventory();
-                    UserData_Object u = new UserData_Object();
+                    UserData u = new UserData();
                     AreaConfig.set(AreaName + ".RegenBlock", 1);
                     AreaConfig.saveConfig();
                     u.setType(player, "Area");
@@ -971,7 +971,7 @@ public class Area_Gui extends GuiUtil {
                 AreaMonsterSpawnSettingGUI(player, (short) 0, AreaName);
             else if (slot == 34)//레벨 제한
             {
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 player.closeInventory();
                 u.setType(player, "Area");
                 u.setString(player, (byte) 2, "MinNLR");
@@ -1065,7 +1065,7 @@ public class Area_Gui extends GuiUtil {
                 player.closeInventory();
                 player.sendMessage(ChatColor.DARK_AQUA + "[영역] : 설정할 블록을 좌클릭 하세요!");
 
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 u.setType(player, "Area");
                 u.setString(player, (byte) 2, AreaName);
                 u.setString(player, (byte) 3, "ANBI");
@@ -1132,7 +1132,7 @@ public class Area_Gui extends GuiUtil {
                 AreaConfig.set(AreaName + ".MonsterSpawnRule." + count + ".count", 4);
                 AreaConfig.set(AreaName + ".MonsterSpawnRule." + count + ".timer", 10);
                 AreaConfig.set(AreaName + ".MonsterSpawnRule." + count + ".max", 10);
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 u.setType(player, "Area");
                 u.setString(player, (byte) 1, count + "");
                 u.setString(player, (byte) 2, AreaName);

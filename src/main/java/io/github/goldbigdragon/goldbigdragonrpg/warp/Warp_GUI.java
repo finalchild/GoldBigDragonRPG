@@ -33,7 +33,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
@@ -153,7 +153,7 @@ public class Warp_Gui extends GuiUtil {
             {
                 player.closeInventory();
                 player.sendMessage(ChatColor.DARK_AQUA + "[워프] : 새 워프지점 이름을 적어 주세요!");
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 u.setType(player, "Teleport");
                 u.setString(player, (byte) 1, "NW");
             } else {

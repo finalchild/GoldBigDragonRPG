@@ -26,7 +26,7 @@ import java.util.Collections;
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_Interact;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -145,7 +145,7 @@ public class Event_Gui extends GuiUtil {
             else if (slot == 30)//랜덤 주기
                 AllPlayerGiveEventGUI(player, false);
             else {
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 if (slot == 10) {
                     player.sendMessage(ChatColor.GREEN + "[이벤트] : 스킬 포인트 상승량을 몇 배로 하실래요?");
                     u.setString(player, (byte) 1, "SKP");

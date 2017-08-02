@@ -23,7 +23,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerChatEvent;
@@ -35,7 +35,7 @@ import net.md_5.bungee.api.ChatColor;
 public class Dungeon_Chat {
     public void PlayerChatrouter(PlayerChatEvent event) {
         Player player = event.getPlayer();
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         if (u.getType(player).compareTo("DungeonMain") == 0)
             DungeonMainChatting(event);
         else if (u.getType(player).compareTo("EnterCard") == 0)
@@ -47,7 +47,7 @@ public class Dungeon_Chat {
 
     private void DungeonMainChatting(PlayerChatEvent event) {
         Player player = event.getPlayer();
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         String Message = ChatColor.stripColor(event.getMessage());
         YamlController YC = new YamlController(Main_Main.plugin);
         if (u.getString(player, (byte) 0).compareTo("ND") == 0) {
@@ -158,7 +158,7 @@ public class Dungeon_Chat {
 
     private void EnterCardChatting(PlayerChatEvent event) {
         Player player = event.getPlayer();
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         String Message = ChatColor.stripColor(event.getMessage());
         YamlController YC = new YamlController(Main_Main.plugin);
         if (u.getString(player, (byte) 0).compareTo("NEC") == 0) {
@@ -253,7 +253,7 @@ public class Dungeon_Chat {
 
     private void AltarChatting(PlayerChatEvent event) {
         Player player = event.getPlayer();
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         String Message = ChatColor.stripColor(event.getMessage());
         YamlController YC = new YamlController(Main_Main.plugin);
         if (u.getString(player, (byte) 0).compareTo("NA_Q") == 0) {

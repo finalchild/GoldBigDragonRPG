@@ -21,7 +21,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.quest;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
@@ -43,7 +43,7 @@ public class Quest_InteractEvent {
             Quest_Gui QGUI = new Quest_Gui();
             YamlController YC = new YamlController(Main_Main.plugin);
             YamlManager QuestConfig = YC.getNewConfig("Quest/QuestList.yml");
-            UserData_Object u = new UserData_Object();
+            UserData u = new UserData();
             if ((u.getString(player, (byte) 1).compareTo("Give") == 0 || u.getString(player, (byte) 1).compareTo("Present") == 0)
                     || u.getString(player, (byte) 1).compareTo("Hunt") == 0
                     && u.getString(player, (byte) 3) != null) {
@@ -139,7 +139,7 @@ public class Quest_InteractEvent {
         Player player = event.getPlayer();
         Block block = event.getClickedBlock();
 
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
 
         event.setCancelled(true);
         if (event.getAction() == Action.LEFT_CLICK_BLOCK) {

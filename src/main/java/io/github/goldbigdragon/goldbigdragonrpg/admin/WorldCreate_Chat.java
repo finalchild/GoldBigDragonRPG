@@ -21,7 +21,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.admin;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -35,7 +35,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 
 public class WorldCreate_Chat {
     public void WorldCreaterTypeChatting(PlayerChatEvent event) {
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         event.setCancelled(true);
         Player player = event.getPlayer();
         String Message = ChatColor.stripColor(event.getMessage());

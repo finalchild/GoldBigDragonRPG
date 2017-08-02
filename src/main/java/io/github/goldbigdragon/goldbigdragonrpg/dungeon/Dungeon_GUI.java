@@ -32,7 +32,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_ItemDrop;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.structure.Structure_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Player;
@@ -1128,7 +1128,7 @@ public final class Dungeon_Gui extends GuiUtil {
                     player.sendMessage(ChatColor.YELLOW + "(던전 테마 다운로드 : " + ChatColor.GOLD + "http://cafe.naver.com/goldbigdragon/56713" + ChatColor.YELLOW + ")");
                     return;
                 }
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 u.setTemp(player, "Dungeon");
                 player.closeInventory();
                 if (Type == 52) {
@@ -1290,7 +1290,7 @@ public final class Dungeon_Gui extends GuiUtil {
             else if (slot == 33)//보스BGM 설정
                 DungeonMusicSettingGUI(player, 0, DungeonName, true);
             else {
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 u.setTemp(player, "Dungeon");
                 u.setType(player, "DungeonMain");
                 u.setString(player, (byte) 1, DungeonName);
@@ -1573,7 +1573,7 @@ public final class Dungeon_Gui extends GuiUtil {
                 DungeonConfig.saveConfig();
                 EnterCardSetUpGUI(player, EnterCardName);
             } else {
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 player.closeInventory();
                 u.setTemp(player, "Dungeon");
                 u.setType(player, "EnterCard");
@@ -1709,7 +1709,7 @@ public final class Dungeon_Gui extends GuiUtil {
                 DungeonListMainGUI(player, 0, 120);
             else if (slot == 2)//이름 변경
             {
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
                 u.setTemp(player, "Dungeon");
                 player.closeInventory();

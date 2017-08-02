@@ -24,7 +24,7 @@ import java.util.Collections;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -245,7 +245,7 @@ public class Upgrade_Gui extends GuiUtil {
             {
                 player.closeInventory();
                 player.sendMessage(ChatColor.DARK_AQUA + "[개조] : 새로운 개조식의 이름을 입력 하세요!");
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 u.setType(player, "Upgrade");
                 u.setString(player, (byte) 1, "NUR");
             } else if (slot == 50)//다음 페이지
@@ -355,7 +355,7 @@ public class Upgrade_Gui extends GuiUtil {
                     RecipeList.saveConfig();
                     UpgradeRecipeSettingGUI(player, RecipeName);
                 } else {
-                    UserData_Object u = new UserData_Object();
+                    UserData u = new UserData();
                     player.closeInventory();
                     u.setType(player, "Upgrade");
                     u.setString(player, (byte) 6, RecipeName);

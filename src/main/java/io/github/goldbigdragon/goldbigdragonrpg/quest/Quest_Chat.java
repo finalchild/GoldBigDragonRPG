@@ -24,8 +24,8 @@ import java.util.Set;
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_Interact;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Chat;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
+import io.github.goldbigdragon.goldbigdragonrpg.util.ChatUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -34,10 +34,10 @@ import org.bukkit.event.player.PlayerChatEvent;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
-public class Quest_Chat extends Util_Chat {
+public class Quest_Chat extends ChatUtil {
 
     public void QuestTypeChatting(PlayerChatEvent event) {
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         SoundUtil sound = new SoundUtil();
         Player player = event.getPlayer();
         Quest_Gui QGUI = new Quest_Gui();

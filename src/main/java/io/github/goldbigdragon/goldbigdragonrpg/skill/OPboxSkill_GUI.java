@@ -29,7 +29,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.job.Job_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.job.Job_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
@@ -61,7 +61,7 @@ public class OPboxSkill_Gui extends GuiUtil {
             if (isJobGUI) {
                 YamlManager JobList = YC.getNewConfig("Skill/JobList.yml");
                 if (WhatJob.compareTo("Maple") == 0) {
-                    UserData_Object u = new UserData_Object();
+                    UserData u = new UserData();
                     if (!JobList.contains("MapleStory." + u.getString(player, (byte) 3) + "." + u.getString(player, (byte) 2) + ".Skill." + SkillName)) {
                         Stack2(ChatColor.WHITE + "" + ChatColor.BOLD + SkillName, SkillList.getInt(a[count].toString() + ".ID"), SkillList.getInt(a[count].toString() + ".DATA"), SkillList.getInt(a[count].toString() + ".Amount"), Arrays.asList(ChatColor.DARK_AQUA + "최대 스킬 레벨 : " + ChatColor.WHITE + JobLevel, "", ChatColor.YELLOW + "[좌 클릭시 스킬 등록]"), loc, inv);
                         loc++;
@@ -357,7 +357,7 @@ public class OPboxSkill_Gui extends GuiUtil {
 
         boolean isJobGUI = Boolean.parseBoolean(ChatColor.stripColor(event.getInventory().getItem(53).getItemMeta().getLore().get(1)));
         String WhatJob = ChatColor.stripColor(event.getInventory().getItem(45).getItemMeta().getLore().get(1));
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         if (slot == 53)//나가기
         {
             SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 0.8F, 1.8F);
@@ -503,7 +503,7 @@ public class OPboxSkill_Gui extends GuiUtil {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager SkillList = YC.getNewConfig("Skill/SkillList.yml");
 
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
 
         Player player = (Player) event.getWhoClicked();
         switch (event.getSlot()) {

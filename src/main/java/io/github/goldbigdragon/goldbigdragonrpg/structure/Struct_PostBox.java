@@ -28,7 +28,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Player;
@@ -241,7 +241,7 @@ public class Struct_PostBox extends GuiUtil {
             YamlManager PlayerPost = YC.getNewConfig("Post/" + player.getUniqueId().toString() + ".yml");
             if (PlayerPost.contains("Send"))
                 if (PlayerPost.getConfigurationSection("Send").getKeys(false).size() < 25) {
-                    UserData_Object u = new UserData_Object();
+                    UserData u = new UserData();
                     SoundUtil.playSound(player, Sound.BLOCK_CLOTH_STEP, 0.8F, 1.8F);
                     u.setTemp(player, "Structure");
                     u.setType(player, "Post");
@@ -258,7 +258,7 @@ public class Struct_PostBox extends GuiUtil {
                     player.sendMessage(ChatColor.RED + "[우편] : 우편은 최대 25개 까지만 보낼 수 있습니다.");
                 }
             else {
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 SoundUtil.playSound(player, Sound.BLOCK_CLOTH_STEP, 0.8F, 1.8F);
                 u.setTemp(player, "Structure");
                 u.setType(player, "Post");
@@ -407,7 +407,7 @@ public class Struct_PostBox extends GuiUtil {
         ItemStack item = event.getInventory().getItem(4);
         Player player = (Player) event.getPlayer();
         if (item != null) {
-            UserData_Object u = new UserData_Object();
+            UserData u = new UserData();
             u.setItemStack(player, item);
             SoundUtil.playSound(player, Sound.BLOCK_PISTON_CONTRACT, 1.0F, 1.0F);
             u.setString(player, (byte) 0, "Value");
@@ -419,7 +419,7 @@ public class Struct_PostBox extends GuiUtil {
 
 
     public void SendPost(Player player) {
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         String targetUID = Bukkit.getPlayer(u.getString(player, (byte) 1)).getUniqueId().toString();
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager TargetPost = YC.getNewConfig("Post/" + targetUID + ".yml");

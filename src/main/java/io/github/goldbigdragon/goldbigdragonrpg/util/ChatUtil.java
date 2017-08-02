@@ -21,11 +21,13 @@ package io.github.goldbigdragon.goldbigdragonrpg.util;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
-public class Util_Chat {
-    public boolean isIntMinMax(String message, Player player, int Min, int Max) {
-        SoundUtil sound = new SoundUtil();
+import java.util.Optional;
+
+public class ChatUtil {
+    public static boolean isIntMinMax(String message, Player player, int Min, int Max) {
         try {
             if (message.split(" ").length <= 1 && Integer.parseInt(message) >= Min && Integer.parseInt(message) <= Max)
                 return true;
@@ -40,22 +42,23 @@ public class Util_Chat {
         return false;
     }
 
-    public byte askOX(String message, Player player) {
-        SoundUtil sound = new SoundUtil();
+    public static Optional<Boolean> askOx(String message, Player player) {
         if (message.split(" ").length <= 1) {
-            if (message.compareTo("x") == 0 || message.compareTo("X") == 0 || message.compareTo("아니오") == 0)
-                return 0;
-            else if (message.compareTo("o") == 0 || message.compareTo("O") == 0 || message.compareTo("네") == 0)
-                return 1;
-            else {
-                player.sendMessage(ChatColor.RED + "[SYSTEM] : O 혹은 X를 입력 해 주세요!");
-                SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
-            }
+            switch (message) {
+                case "x":
+                case "X":
+                case "아니오":
+                    return Optional.of(false);
+                case "o":
+                case "O":
+                case "네":
+                    return Optional.of(true);
+                default:
 
-        } else {
-            player.sendMessage(ChatColor.RED + "[SYSTEM] : O 혹은 X를 입력 해 주세요!");
-            SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2.0F, 1.7F);
+            }
         }
-        return -1;
+        player.sendMessage(ChatColor.RED + "[SYSTEM] : O 혹은 X를 입력 해 주세요!");
+        player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2F, 1.7F);
+        return Optional.empty();
     }
 }

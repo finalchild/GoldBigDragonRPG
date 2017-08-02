@@ -37,7 +37,7 @@ import org.bukkit.inventory.ItemStack;
 
 import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
@@ -637,7 +637,7 @@ public class Monster_Gui extends GuiUtil {
             {
                 player.closeInventory();
                 player.sendMessage(ChatColor.GREEN + "[몬스터] : 새로운 몬스터 이름을 지어 주세요!");
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 u.setType(player, "Monster");
                 u.setString(player, (byte) 1, "NM");
             } else if (slot == 50)//다음 페이지
@@ -741,7 +741,7 @@ public class Monster_Gui extends GuiUtil {
             } else if (slot == 34)//몬스터 포션 효과
                 MonsterPotionGUI(player, MonsterName);
             else if (!((event.getSlot() >= 9 && event.getSlot() <= 11) || (event.getSlot() >= 18 && event.getSlot() <= 20) || (event.getSlot() >= 27 && event.getSlot() <= 29))) {
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 player.closeInventory();
                 u.setType(player, "Monster");
                 u.setString(player, (byte) 2, ChatColor.stripColor(event.getInventory().getItem(19).getItemMeta().getDisplayName()));
@@ -808,7 +808,7 @@ public class Monster_Gui extends GuiUtil {
             if (slot == 45)//이전 목록
                 MonsterOptionSettingGUI(player, MonsterName);
             else if (slot >= 10 && slot <= 16) {
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
                 player.closeInventory();
                 u.setType(player, "Monster");

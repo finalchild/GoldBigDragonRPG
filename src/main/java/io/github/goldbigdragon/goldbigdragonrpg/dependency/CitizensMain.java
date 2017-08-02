@@ -36,7 +36,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 import net.citizensnpcs.api.event.NPCCreateEvent;
@@ -233,17 +233,17 @@ public class CitizensMain implements Listener {
     @EventHandler
     public void NPCRightClick(NPCRightClickEvent event) {
         Player player = event.getClicker();
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         u.setNPCuuid(player, event.getNPC().getUniqueId().toString());
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager DNPC = YC.getNewConfig("NPC/DistrictNPC.yml");
         if (player.isOp()) {
-            if (new UserData_Object().getInt(player, (byte) 4) == 114) {
+            if (new UserData().getInt(player, (byte) 4) == 114) {
                 DNPC.removeKey(event.getNPC().getUniqueId().toString());
                 DNPC.saveConfig();
                 player.sendMessage(ChatColor.GREEN + "[NPC] : 해당 NPC의 GUI창이 활성화 되었습니다!");
                 SoundUtil.playSound(player, Sound.ENTITY_VILLAGER_YES, 1.0F, 1.0F);
-                new UserData_Object().setInt(player, (byte) 4, -1);
+                new UserData().setInt(player, (byte) 4, -1);
             }
         }
 

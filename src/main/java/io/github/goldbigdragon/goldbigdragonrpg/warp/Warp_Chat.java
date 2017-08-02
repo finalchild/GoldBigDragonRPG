@@ -19,15 +19,14 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.warp;
 
-import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerChatEvent;
 
 public class Warp_Chat {
     public void TeleportTypeChatting(PlayerChatEvent event) {
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         Player player = event.getPlayer();
         event.setCancelled(true);
         String message = ChatColor.stripColor(event.getMessage());

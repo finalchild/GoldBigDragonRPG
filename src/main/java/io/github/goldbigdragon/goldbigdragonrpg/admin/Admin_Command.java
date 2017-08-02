@@ -35,7 +35,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.MaterialData;
 
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 
@@ -49,7 +49,7 @@ public class Admin_Command {
             } else if (string.compareTo("테스트2") == 0 || string.compareTo("gbdtest2") == 0) {
                 player.sendMessage("테스트2");
             } else if (string.compareTo("오피박스") == 0 || string.compareTo("opbox") == 0) {
-                new UserData_Object().clearAll(player);
+                new UserData().clearAll(player);
                 SoundUtil.playSound(player, org.bukkit.Sound.ENTITY_HORSE_ARMOR, 0.8F, 1.8F);
                 new OPbox_Gui().OPBoxGUI_Main(player, (byte) 1);
             } else if (string.compareTo("타입추가") == 0 || string.compareTo("gbdaddtype") == 0) {

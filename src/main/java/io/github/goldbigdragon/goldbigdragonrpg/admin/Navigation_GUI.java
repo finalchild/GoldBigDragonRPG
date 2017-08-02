@@ -26,7 +26,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick;
 import io.github.goldbigdragon.goldbigdragonrpg.user.ETC_Gui;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 import org.bukkit.Bukkit;
@@ -220,7 +220,7 @@ public class Navigation_Gui extends GuiUtil {
             {
                 player.closeInventory();
                 player.sendMessage(ChatColor.GREEN + "[네비] : 새로운 네비게이션 이름을 입력 해 주세요!");
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 u.setType(player, "Navi");
                 u.setString(player, (byte) 0, "NN");
             } else if (slot == 50)//다음 페이지
@@ -277,7 +277,7 @@ public class Navigation_Gui extends GuiUtil {
                     NavigationOptionGUI(player, UTC);
                 } else {
                     player.closeInventory();
-                    UserData_Object u = new UserData_Object();
+                    UserData u = new UserData();
                     u.setType(player, "Navi");
                     u.setString(player, (byte) 1, UTC);
                     if (slot == 10)//이름 변경

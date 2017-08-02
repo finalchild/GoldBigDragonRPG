@@ -19,11 +19,10 @@
 
 package io.github.goldbigdragon.goldbigdragonrpg.admin;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -60,7 +59,7 @@ public class WorldCreate_Gui extends GuiUtil {
             if (slot == 0)//이전 목록
                 new OPbox_Gui().OPBoxGUI_Main(player, (byte) 2);
             else {
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 u.setType(player, "WorldCreater");
                 u.setString(player, (byte) 2, "WorldCreate");
                 player.closeInventory();

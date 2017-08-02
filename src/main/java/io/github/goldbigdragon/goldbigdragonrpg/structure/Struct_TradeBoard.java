@@ -29,7 +29,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.listener.Main_Interact;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 import org.bukkit.Bukkit;
@@ -457,7 +457,7 @@ public class Struct_TradeBoard extends GuiUtil {
                 YamlManager Board = YC.getNewConfig("Structure/UserShopBoard.yml");
 
                 if (Main_ServerOption.PlayerList.get(player.getUniqueId().toString()).getStat_Money() >= Board.getInt(ShopTypeString + "." + ItemName + "." + RegisterUUID + ".Price")) {
-                    UserData_Object u = new UserData_Object();
+                    UserData u = new UserData();
                     u.setTemp(player, "Structure");
                     u.setType(player, "TradeBoard");
                     u.setString(player, (byte) 0, "BuyTrade");
@@ -505,7 +505,7 @@ public class Struct_TradeBoard extends GuiUtil {
                     player.sendMessage(ChatColor.RED + "[거래 게시판] : 해당 물건을 가지고 있지 않습니다!");
                     return;
                 }
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 u.setTemp(player, "Structure");
                 u.setType(player, "TradeBoard");
                 u.setString(player, (byte) 0, "SellTrade");
@@ -534,7 +534,7 @@ public class Struct_TradeBoard extends GuiUtil {
                 YamlController YC = new YamlController(Main_Main.plugin);
                 YamlManager Board = YC.getNewConfig("Structure/UserShopBoard.yml");
 
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 short needAmount = (short) Board.getInt("Exchange." + ItemName + "." + RegisterUUID + ".WantItemAmount");
                 if (!Board.contains("Exchange." + ItemName + "." + RegisterUUID)) {
                     SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
@@ -637,7 +637,7 @@ public class Struct_TradeBoard extends GuiUtil {
         if (event.getSlot() >= 1 && event.getSlot() <= 3) {
             SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 0.8F, 1.0F);
             player.closeInventory();
-            UserData_Object u = new UserData_Object();
+            UserData u = new UserData();
             u.setTemp(player, "Structure");
             u.setType(player, "TradeBoard");
             u.setString(player, (byte) 0, "TradeBoardSetting");
@@ -685,7 +685,7 @@ public class Struct_TradeBoard extends GuiUtil {
 
 
             SoundUtil.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.8F, 1.8F);
-            UserData_Object u = new UserData_Object();
+            UserData u = new UserData();
             u.setTemp(player, "Structure");
             u.setType(player, "TradeBoard");
             u.setString(player, (byte) 0, "Notice");
@@ -718,7 +718,7 @@ public class Struct_TradeBoard extends GuiUtil {
 
     public void SelectSellItemGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         if (event.getCurrentItem() != null) {
             if (event.getCurrentItem().getTypeId() != 0) {
                 ItemStack item = event.getCurrentItem();
@@ -743,7 +743,7 @@ public class Struct_TradeBoard extends GuiUtil {
 
     public void SelectBuyItemGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         if (event.getCurrentItem() != null) {
             if (event.getCurrentItem().getTypeId() != 0) {
                 ItemStack item = event.getCurrentItem();
@@ -797,7 +797,7 @@ public class Struct_TradeBoard extends GuiUtil {
                 default:
                     player.closeInventory();
                     SoundUtil.playSound(player, Sound.ENTITY_ITEM_PICKUP, 1.0F, 1.0F);
-                    UserData_Object u = new UserData_Object();
+                    UserData u = new UserData();
                     u.setInt(player, (byte) 0, ShopType);
                     u.setTemp(player, "Structure");
                     u.setType(player, "TradeBoard");
@@ -814,7 +814,7 @@ public class Struct_TradeBoard extends GuiUtil {
 
     public void SelectExchangeItem_YouGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         if (event.getCurrentItem().getTypeId() != 0) {
             ItemStack item = event.getCurrentItem();
 
@@ -854,7 +854,7 @@ public class Struct_TradeBoard extends GuiUtil {
 
     public void SelectExchangeItem_MyGUIClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         if (event.getCurrentItem().getTypeId() != 0) {
             ItemStack item = event.getCurrentItem();
             byte amount = (byte) item.getAmount();

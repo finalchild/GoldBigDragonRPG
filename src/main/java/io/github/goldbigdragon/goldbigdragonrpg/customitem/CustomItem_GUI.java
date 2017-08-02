@@ -27,7 +27,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.admin.OPbox_Gui;
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 import org.bukkit.Bukkit;
@@ -390,7 +390,7 @@ public class CustomItem_Gui extends GuiUtil {
                         NewItemGUI(player, itemnumber);
                     }
                 } else {
-                    UserData_Object u = new UserData_Object();
+                    UserData u = new UserData();
                     player.closeInventory();
                     u.setType(player, "Item");
                     u.setInt(player, (byte) 3, itemnumber);

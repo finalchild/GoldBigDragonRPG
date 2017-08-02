@@ -21,7 +21,7 @@ package io.github.goldbigdragon.goldbigdragonrpg.npc;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Number;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
@@ -31,7 +31,7 @@ import org.bukkit.entity.Player;
 
 public class NPC_Main {
     public String[] getScript(Player player, char ScriptType) {
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         if (ScriptType == -1) {
             String[] script = new String[1];
             script[0] = "a";
@@ -41,11 +41,11 @@ public class NPC_Main {
         String TalkSubject = "NatureTalk";
 
         NPC_Config NPCconfig = new NPC_Config();
-        NPCconfig.PlayerNPCconfig(player, u.getNPCuuid(player));
-        NPCconfig.NPCNPCconfig(u.getNPCuuid(player));
+        NPCconfig.PlayerNPCconfig(player, u.getNpcUuid(player));
+        NPCconfig.NPCNPCconfig(u.getNpcUuid(player));
 
         YamlManager PlayerNPC = YC.getNewConfig("NPC/PlayerData/" + player.getUniqueId() + ".yml");
-        YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNPCuuid(player) + ".yml");
+        YamlManager NPCscript = YC.getNewConfig("NPC/NPCData/" + u.getNpcUuid(player) + ".yml");
 
         if (ScriptType == 2)
             TalkSubject = "NatureTalk";
@@ -75,9 +75,9 @@ public class NPC_Main {
         byte randomScript = 0;
         for (int counter = 1; counter < 125; counter++) {
             randomScript = (byte) new Util_Number().RandomNum(1, Size);
-            if (PlayerNPC.getInt(u.getNPCuuid(player) + ".love") >= NPCscript.getInt(TalkSubject + "." + randomScript + ".love")) {
+            if (PlayerNPC.getInt(u.getNpcUuid(player) + ".love") >= NPCscript.getInt(TalkSubject + "." + randomScript + ".love")) {
                 if (NPCscript.getInt(TalkSubject + "." + randomScript + ".loveMax") != 0) {
-                    if (PlayerNPC.getInt(u.getNPCuuid(player) + ".love") <= NPCscript.getInt(TalkSubject + "." + randomScript + ".loveMax"))
+                    if (PlayerNPC.getInt(u.getNpcUuid(player) + ".love") <= NPCscript.getInt(TalkSubject + "." + randomScript + ".loveMax"))
                         textOK = true;
                 } else
                     textOK = true;

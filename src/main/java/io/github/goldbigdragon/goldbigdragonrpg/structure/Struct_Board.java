@@ -27,7 +27,7 @@ import java.util.List;
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.servertick.ServerTick_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.ETC;
 import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import org.bukkit.Bukkit;
@@ -209,7 +209,7 @@ public class Struct_Board extends GuiUtil {
                 player.sendMessage(ChatColor.RED + "[게시판] : 게시글 작성 권한이 없습니다!");
                 return;
             }
-            UserData_Object u = new UserData_Object();
+            UserData u = new UserData();
             SoundUtil.playSound(player, Sound.BLOCK_CLOTH_STEP, 0.8F, 1.8F);
             u.setTemp(player, "Structure");
             u.setType(player, "Board");
@@ -259,7 +259,7 @@ public class Struct_Board extends GuiUtil {
                 new Structure_Gui().StructureListGUI(player, 0);
             else if (slot == 2)//게시판 알림 설정
             {
-                UserData_Object u = new UserData_Object();
+                UserData u = new UserData();
                 u.setTemp(player, "Structure");
                 u.setType(player, "Board");
                 u.setString(player, (byte) 0, "Notice");

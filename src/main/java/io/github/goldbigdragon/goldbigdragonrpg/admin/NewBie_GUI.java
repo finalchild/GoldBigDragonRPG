@@ -25,7 +25,7 @@ import java.util.Set;
 
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.GuiUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 import org.bukkit.Bukkit;
@@ -235,7 +235,7 @@ public class NewBie_Gui extends GuiUtil {
                     player.closeInventory();
                     player.sendMessage(ChatColor.DARK_AQUA + "[뉴비 지원금] : 얼마를 가지고 시작하도록 하시겠습니까?");
                     player.sendMessage(ChatColor.DARK_AQUA + "(0 ~ " + Integer.MAX_VALUE + ")");
-                    UserData_Object u = new UserData_Object();
+                    UserData u = new UserData();
                     u.setType(player, "NewBie");
                     u.setString(player, (byte) 1, "NSM");
                 }

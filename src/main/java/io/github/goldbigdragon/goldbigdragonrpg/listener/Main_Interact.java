@@ -31,7 +31,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.monster.Monster_Spawn;
 import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_InteractEvent;
 import io.github.goldbigdragon.goldbigdragonrpg.user.Equip_Gui;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -121,9 +121,9 @@ public class Main_Interact {
                 }
             }
             if (player.isOp()) {
-                String Type = new UserData_Object().getType(player);
+                String Type = new UserData().getType(player);
                 if (Type != null)
-                    if (new UserData_Object().getType(player).compareTo("Quest") == 0)
+                    if (new UserData().getType(player).compareTo("Quest") == 0)
                         new Quest_InteractEvent().EntityInteract(event, Type);
             }
 
@@ -148,7 +148,7 @@ public class Main_Interact {
 
     private void OPwork(PlayerInteractEvent event) {
         Player player = event.getPlayer();
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         if (u.getType(player) != null) {
             if (u.getType(player).compareTo("Quest") == 0)
                 new Quest_InteractEvent().BlockInteract(event);
@@ -184,7 +184,7 @@ public class Main_Interact {
                         Object[] lore = player.getInventory().getItemInMainHand().getItemMeta().getLore().toArray();
                         for (byte counter = 0; counter < lore.length; counter++)
                             if (lore[counter].toString().contains("내용")) {
-                                UserData_Object u = new UserData_Object();
+                                UserData u = new UserData();
                                 //지도에 이미지 넣는 작업
                                 if (player.isOp()) {
                                     u.setType(player, "Map");
@@ -234,7 +234,7 @@ public class Main_Interact {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager AreaConfig = YC.getNewConfig("Area/AreaList.yml");
 
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
 
         String AreaName = u.getString(player, (byte) 2);
         if (event.getAction() == Action.LEFT_CLICK_BLOCK) {
@@ -276,7 +276,7 @@ public class Main_Interact {
         YamlController YC = new YamlController(Main_Main.plugin);
         YamlManager GambleConfig = YC.getNewConfig("ETC/SlotMachine.yml");
 
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
 
         String AreaName = u.getString(player, (byte) 2);
         if (event.getAction() == Action.LEFT_CLICK_BLOCK) {

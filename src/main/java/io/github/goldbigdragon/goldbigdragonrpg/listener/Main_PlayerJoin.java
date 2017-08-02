@@ -28,7 +28,7 @@ import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
 import io.github.goldbigdragon.goldbigdragonrpg.quest.Quest_Config;
 import io.github.goldbigdragon.goldbigdragonrpg.skill.Skill_Config;
 import io.github.goldbigdragon.goldbigdragonrpg.user.Equip_Gui;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
 import io.github.goldbigdragon.goldbigdragonrpg.user.User_Object;
 import io.github.goldbigdragon.goldbigdragonrpg.util.ETC;
 import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Player;
@@ -66,7 +66,7 @@ public class Main_PlayerJoin implements Listener {
         new Main_ServerOption().MagicSpellCatch();
         new Main_ServerOption().CitizensCatch();
 
-        new UserData_Object().UserDataInit(player);
+        new UserData().UserDataInit(player);
 
         if (player.isOp())
             new PacketUtil().sendTitleSubTitle(player, "\'§e/오피박스\'", "\'§eGoldBigDragonAdvanced 가이드 및 서버 설정이 가능합니다.\'", (byte) 1, (byte) 10, (byte) 1);

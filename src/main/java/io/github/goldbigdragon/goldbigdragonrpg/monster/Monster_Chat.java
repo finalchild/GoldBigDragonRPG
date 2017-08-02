@@ -22,8 +22,8 @@ package io.github.goldbigdragon.goldbigdragonrpg.monster;
 import io.github.goldbigdragon.goldbigdragonrpg.effect.SoundUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_Main;
 import io.github.goldbigdragon.goldbigdragonrpg.main.Main_ServerOption;
-import io.github.goldbigdragon.goldbigdragonrpg.user.UserData_Object;
-import io.github.goldbigdragon.goldbigdragonrpg.util.Util_Chat;
+import io.github.goldbigdragon.goldbigdragonrpg.user.UserData;
+import io.github.goldbigdragon.goldbigdragonrpg.util.ChatUtil;
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -32,9 +32,9 @@ import org.bukkit.event.player.PlayerChatEvent;
 
 import io.github.goldbigdragon.goldbigdragonrpg.util.YamlController;
 
-public class Monster_Chat extends Util_Chat {
+public class Monster_Chat extends ChatUtil {
     public void MonsterTypeChatting(PlayerChatEvent event) {
-        UserData_Object u = new UserData_Object();
+        UserData u = new UserData();
         Player player = event.getPlayer();
         Monster_Gui MGUI = new Monster_Gui();
         Monster_Spawn MC = new Monster_Spawn();
